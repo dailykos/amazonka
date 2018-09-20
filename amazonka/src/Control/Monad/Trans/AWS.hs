@@ -216,6 +216,13 @@ instance MonadMask m => MonadMask (AWST' r m) where
     uninterruptibleMask a = AWST' $ uninterruptibleMask $ \u ->
         unAWST $ a (AWST' . u . unAWST)
 
+    generalBracket acquire rel action = AWST' $
+      generalBracket
+        (unAWST acquire)
+        (\a ex -> unAWST $ rel a ex)
+        (\a -> unAWST $ action a)
+
+
 instance MonadBase b m => MonadBase b (AWST' r m) where
     liftBase = liftBaseDefault
 
