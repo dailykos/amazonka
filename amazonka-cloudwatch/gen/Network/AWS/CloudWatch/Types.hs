@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -113,6 +113,7 @@ module Network.AWS.CloudWatch.Types
     , metricAlarm
     , maAlarmName
     , maStateUpdatedTimestamp
+    , maMetrics
     , maTreatMissingData
     , maPeriod
     , maAlarmDescription
@@ -159,6 +160,8 @@ module Network.AWS.CloudWatch.Types
     -- * MetricDatum
     , MetricDatum
     , metricDatum
+    , mdValues
+    , mdCounts
     , mdValue
     , mdStorageResolution
     , mdDimensions

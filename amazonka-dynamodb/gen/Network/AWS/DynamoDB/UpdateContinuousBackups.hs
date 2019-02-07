@@ -21,9 +21,9 @@
 -- @UpdateContinuousBackups@ enables or disables point in time recovery for the specified table. A successful @UpdateContinuousBackups@ call returns the current @ContinuousBackupsDescription@ . Continuous backups are @ENABLED@ on all tables at table creation. If point in time recovery is enabled, @PointInTimeRecoveryStatus@ will be set to ENABLED.
 --
 --
--- Once continuous backups and point in time recovery are enabled, you can restore to any point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ .
+-- Once continuous backups and point in time recovery are enabled, you can restore to any point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ . 
 --
--- @LatestRestorableDateTime@ is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days..
+-- @LatestRestorableDateTime@ is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days.. 
 --
 module Network.AWS.DynamoDB.UpdateContinuousBackups
     (
@@ -51,7 +51,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateContinuousBackups' smart constructor.
 data UpdateContinuousBackups = UpdateContinuousBackups'
-  { _ucbTableName                        :: !Text
+  { _ucbTableName :: !Text
   , _ucbPointInTimeRecoverySpecification :: !PointInTimeRecoverySpecification
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery UpdateContinuousBackups where
 -- | /See:/ 'updateContinuousBackupsResponse' smart constructor.
 data UpdateContinuousBackupsResponse = UpdateContinuousBackupsResponse'
   { _ucbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
-  , _ucbrsResponseStatus               :: !Int
+  , _ucbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

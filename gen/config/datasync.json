@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-datasync",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.DataSync.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- /See:/ 'putApprovalResult' smart constructor.
 data PutApprovalResult = PutApprovalResult'
   { _parPipelineName :: !Text
-  , _parStageName    :: !Text
-  , _parActionName   :: !Text
-  , _parResult       :: !ApprovalResult
-  , _parToken        :: !Text
+  , _parStageName :: !Text
+  , _parActionName :: !Text
+  , _parResult :: !ApprovalResult
+  , _parToken :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -66,7 +66,7 @@ data PutApprovalResult = PutApprovalResult'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'parPipelineName' - The name of the pipeline that contains the action.
+-- * 'parPipelineName' - The name of the pipeline that contains the action. 
 --
 -- * 'parStageName' - The name of the stage that contains the action.
 --
@@ -92,7 +92,7 @@ putApprovalResult pPipelineName_ pStageName_ pActionName_ pResult_ pToken_ =
     }
 
 
--- | The name of the pipeline that contains the action.
+-- | The name of the pipeline that contains the action. 
 parPipelineName :: Lens' PutApprovalResult Text
 parPipelineName = lens _parPipelineName (\ s a -> s{_parPipelineName = a})
 
@@ -157,7 +157,7 @@ instance ToQuery PutApprovalResult where
 --
 -- /See:/ 'putApprovalResultResponse' smart constructor.
 data PutApprovalResultResponse = PutApprovalResultResponse'
-  { _parrsApprovedAt     :: !(Maybe POSIX)
+  { _parrsApprovedAt :: !(Maybe POSIX)
   , _parrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

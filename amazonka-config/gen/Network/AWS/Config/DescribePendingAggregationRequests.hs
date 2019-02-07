@@ -21,6 +21,8 @@
 -- Returns a list of all pending aggregation requests.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Config.DescribePendingAggregationRequests
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.Config.DescribePendingAggregationRequests
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -49,7 +52,7 @@ import Network.AWS.Response
 -- | /See:/ 'describePendingAggregationRequests' smart constructor.
 data DescribePendingAggregationRequests = DescribePendingAggregationRequests'
   { _dparNextToken :: !(Maybe Text)
-  , _dparLimit     :: !(Maybe Nat)
+  , _dparLimit :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -74,6 +77,15 @@ dparNextToken = lens _dparNextToken (\ s a -> s{_dparNextToken = a})
 -- | The maximum number of evaluation results returned on each page. The default is maximum. If you specify 0, AWS Config uses the default.
 dparLimit :: Lens' DescribePendingAggregationRequests (Maybe Natural)
 dparLimit = lens _dparLimit (\ s a -> s{_dparLimit = a}) . mapping _Nat
+
+instance AWSPager DescribePendingAggregationRequests
+         where
+        page rq rs
+          | stop (rs ^. dparrsNextToken) = Nothing
+          | stop (rs ^. dparrsPendingAggregationRequests) =
+            Nothing
+          | otherwise =
+            Just $ rq & dparNextToken .~ rs ^. dparrsNextToken
 
 instance AWSRequest
            DescribePendingAggregationRequests
@@ -124,9 +136,9 @@ instance ToQuery DescribePendingAggregationRequests
 
 -- | /See:/ 'describePendingAggregationRequestsResponse' smart constructor.
 data DescribePendingAggregationRequestsResponse = DescribePendingAggregationRequestsResponse'
-  { _dparrsNextToken                  :: !(Maybe Text)
+  { _dparrsNextToken :: !(Maybe Text)
   , _dparrsPendingAggregationRequests :: !(Maybe [PendingAggregationRequest])
-  , _dparrsResponseStatus             :: !Int
+  , _dparrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -50,7 +50,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'deleteMethodResponse' smart constructor.
 data DeleteMethodResponse = DeleteMethodResponse'
-  { _dmRestAPIId  :: !Text
+  { _dmRestAPIId :: !Text
   , _dmResourceId :: !Text
   , _dmHttpMethod :: !Text
   , _dmStatusCode :: !Text

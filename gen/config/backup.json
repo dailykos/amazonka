@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-backup",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.Backup.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

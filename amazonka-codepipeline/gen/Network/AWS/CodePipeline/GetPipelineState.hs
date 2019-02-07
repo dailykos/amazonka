@@ -116,12 +116,12 @@ instance ToQuery GetPipelineState where
 --
 -- /See:/ 'getPipelineStateResponse' smart constructor.
 data GetPipelineStateResponse = GetPipelineStateResponse'
-  { _gpsrsPipelineName    :: !(Maybe Text)
-  , _gpsrsCreated         :: !(Maybe POSIX)
-  , _gpsrsStageStates     :: !(Maybe [StageState])
+  { _gpsrsPipelineName :: !(Maybe Text)
+  , _gpsrsCreated :: !(Maybe POSIX)
+  , _gpsrsStageStates :: !(Maybe [StageState])
   , _gpsrsPipelineVersion :: !(Maybe Nat)
-  , _gpsrsUpdated         :: !(Maybe POSIX)
-  , _gpsrsResponseStatus  :: !Int
+  , _gpsrsUpdated :: !(Maybe POSIX)
+  , _gpsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

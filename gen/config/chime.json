@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-chime",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.Chime.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

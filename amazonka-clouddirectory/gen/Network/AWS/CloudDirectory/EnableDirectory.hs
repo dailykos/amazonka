@@ -97,7 +97,7 @@ instance ToQuery EnableDirectory where
 -- | /See:/ 'enableDirectoryResponse' smart constructor.
 data EnableDirectoryResponse = EnableDirectoryResponse'
   { _edrsResponseStatus :: !Int
-  , _edrsDirectoryARN   :: !Text
+  , _edrsDirectoryARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

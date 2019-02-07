@@ -116,8 +116,8 @@ instance ToQuery GetRepositoryTriggers where
 -- /See:/ 'getRepositoryTriggersResponse' smart constructor.
 data GetRepositoryTriggersResponse = GetRepositoryTriggersResponse'
   { _grtrsConfigurationId :: !(Maybe Text)
-  , _grtrsTriggers        :: !(Maybe [RepositoryTrigger])
-  , _grtrsResponseStatus  :: !Int
+  , _grtrsTriggers :: !(Maybe [RepositoryTrigger])
+  , _grtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

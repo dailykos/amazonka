@@ -44,14 +44,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'addTagsToResource' smart constructor.
 data AddTagsToResource = AddTagsToResource'
   { _attrResourceARN :: !Text
-  , _attrTags        :: ![Tag]
+  , _attrTags :: ![Tag]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -112,7 +112,7 @@ instance ToPath AddTagsToResource where
 instance ToQuery AddTagsToResource where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --

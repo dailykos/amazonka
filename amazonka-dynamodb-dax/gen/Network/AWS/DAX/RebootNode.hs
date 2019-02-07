@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'rebootNode' smart constructor.
 data RebootNode = RebootNode'
   { _rnClusterName :: !Text
-  , _rnNodeId      :: !Text
+  , _rnNodeId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -112,7 +112,7 @@ instance ToQuery RebootNode where
 
 -- | /See:/ 'rebootNodeResponse' smart constructor.
 data RebootNodeResponse = RebootNodeResponse'
-  { _rnrsCluster        :: !(Maybe Cluster)
+  { _rnrsCluster :: !(Maybe Cluster)
   , _rnrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

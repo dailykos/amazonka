@@ -51,10 +51,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'getMergeConflicts' smart constructor.
 data GetMergeConflicts = GetMergeConflicts'
-  { _gmcRepositoryName             :: !Text
+  { _gmcRepositoryName :: !Text
   , _gmcDestinationCommitSpecifier :: !Text
-  , _gmcSourceCommitSpecifier      :: !Text
-  , _gmcMergeOption                :: !MergeOptionTypeEnum
+  , _gmcSourceCommitSpecifier :: !Text
+  , _gmcMergeOption :: !MergeOptionTypeEnum
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -146,10 +146,10 @@ instance ToQuery GetMergeConflicts where
 
 -- | /See:/ 'getMergeConflictsResponse' smart constructor.
 data GetMergeConflictsResponse = GetMergeConflictsResponse'
-  { _gmcrsResponseStatus      :: !Int
-  , _gmcrsMergeable           :: !Bool
+  { _gmcrsResponseStatus :: !Int
+  , _gmcrsMergeable :: !Bool
   , _gmcrsDestinationCommitId :: !Text
-  , _gmcrsSourceCommitId      :: !Text
+  , _gmcrsSourceCommitId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

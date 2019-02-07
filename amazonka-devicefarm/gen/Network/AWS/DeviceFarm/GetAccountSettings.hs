@@ -99,7 +99,7 @@ instance ToQuery GetAccountSettings where
 -- /See:/ 'getAccountSettingsResponse' smart constructor.
 data GetAccountSettingsResponse = GetAccountSettingsResponse'
   { _gasrsAccountSettings :: !(Maybe AccountSettings)
-  , _gasrsResponseStatus  :: !Int
+  , _gasrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

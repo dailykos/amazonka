@@ -46,7 +46,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The request to create a new distribution with tags.
+-- | The request to create a new distribution with tags. 
 --
 --
 --
@@ -60,7 +60,7 @@ newtype CreateDistributionWithTags = CreateDistributionWithTags'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cdwtDistributionConfigWithTags' - The distribution's configuration information.
+-- * 'cdwtDistributionConfigWithTags' - The distribution's configuration information. 
 createDistributionWithTags
     :: DistributionConfigWithTags -- ^ 'cdwtDistributionConfigWithTags'
     -> CreateDistributionWithTags
@@ -69,7 +69,7 @@ createDistributionWithTags pDistributionConfigWithTags_ =
     {_cdwtDistributionConfigWithTags = pDistributionConfigWithTags_}
 
 
--- | The distribution's configuration information.
+-- | The distribution's configuration information. 
 cdwtDistributionConfigWithTags :: Lens' CreateDistributionWithTags DistributionConfigWithTags
 cdwtDistributionConfigWithTags = lens _cdwtDistributionConfigWithTags (\ s a -> s{_cdwtDistributionConfigWithTags = a})
 
@@ -92,7 +92,7 @@ instance NFData CreateDistributionWithTags where
 instance ToElement CreateDistributionWithTags where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}DistributionConfigWithTags"
+              "{http://cloudfront.amazonaws.com/doc/2018-11-05/}DistributionConfigWithTags"
               .
               _cdwtDistributionConfigWithTags
 
@@ -100,20 +100,20 @@ instance ToHeaders CreateDistributionWithTags where
         toHeaders = const mempty
 
 instance ToPath CreateDistributionWithTags where
-        toPath = const "/2017-10-30/distribution"
+        toPath = const "/2018-11-05/distribution"
 
 instance ToQuery CreateDistributionWithTags where
         toQuery = const (mconcat ["WithTags"])
 
--- | The returned result of the corresponding request.
+-- | The returned result of the corresponding request. 
 --
 --
 --
 -- /See:/ 'createDistributionWithTagsResponse' smart constructor.
 data CreateDistributionWithTagsResponse = CreateDistributionWithTagsResponse'
-  { _cdwtrsETag           :: !(Maybe Text)
-  , _cdwtrsDistribution   :: !(Maybe Distribution)
-  , _cdwtrsLocation       :: !(Maybe Text)
+  { _cdwtrsETag :: !(Maybe Text)
+  , _cdwtrsDistribution :: !(Maybe Distribution)
+  , _cdwtrsLocation :: !(Maybe Text)
   , _cdwtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,9 +124,9 @@ data CreateDistributionWithTagsResponse = CreateDistributionWithTagsResponse'
 --
 -- * 'cdwtrsETag' - The current version of the distribution created.
 --
--- * 'cdwtrsDistribution' - The distribution's information.
+-- * 'cdwtrsDistribution' - The distribution's information. 
 --
--- * 'cdwtrsLocation' - The fully qualified URI of the new distribution resource just created. For example: @https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5@ .
+-- * 'cdwtrsLocation' - The fully qualified URI of the new distribution resource just created. For example: @https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5@ . 
 --
 -- * 'cdwtrsResponseStatus' - -- | The response status code.
 createDistributionWithTagsResponse
@@ -145,11 +145,11 @@ createDistributionWithTagsResponse pResponseStatus_ =
 cdwtrsETag :: Lens' CreateDistributionWithTagsResponse (Maybe Text)
 cdwtrsETag = lens _cdwtrsETag (\ s a -> s{_cdwtrsETag = a})
 
--- | The distribution's information.
+-- | The distribution's information. 
 cdwtrsDistribution :: Lens' CreateDistributionWithTagsResponse (Maybe Distribution)
 cdwtrsDistribution = lens _cdwtrsDistribution (\ s a -> s{_cdwtrsDistribution = a})
 
--- | The fully qualified URI of the new distribution resource just created. For example: @https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5@ .
+-- | The fully qualified URI of the new distribution resource just created. For example: @https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5@ . 
 cdwtrsLocation :: Lens' CreateDistributionWithTagsResponse (Maybe Text)
 cdwtrsLocation = lens _cdwtrsLocation (\ s a -> s{_cdwtrsLocation = a})
 

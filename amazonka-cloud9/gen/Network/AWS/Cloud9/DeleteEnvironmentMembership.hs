@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteEnvironmentMembership' smart constructor.
 data DeleteEnvironmentMembership = DeleteEnvironmentMembership'
   { _demEnvironmentId :: !Text
-  , _demUserARN       :: !Text
+  , _demUserARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

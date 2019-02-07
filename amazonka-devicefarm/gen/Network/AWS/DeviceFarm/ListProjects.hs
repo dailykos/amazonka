@@ -55,7 +55,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'listProjects' smart constructor.
 data ListProjects = ListProjects'
-  { _lpArn       :: !(Maybe Text)
+  { _lpArn :: !(Maybe Text)
   , _lpNextToken :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,8 +129,8 @@ instance ToQuery ListProjects where
 --
 -- /See:/ 'listProjectsResponse' smart constructor.
 data ListProjectsResponse = ListProjectsResponse'
-  { _lprsNextToken      :: !(Maybe Text)
-  , _lprsProjects       :: !(Maybe [Project])
+  { _lprsNextToken :: !(Maybe Text)
+  , _lprsProjects :: !(Maybe [Project])
   , _lprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

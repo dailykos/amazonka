@@ -65,16 +65,16 @@ module Network.AWS.CloudWatch
     -- * Operations
     -- $operations
 
-    -- ** EnableAlarmActions
+    -- ** EnableAlarmActions 
     , module Network.AWS.CloudWatch.EnableAlarmActions
 
-    -- ** GetDashboard
+    -- ** GetDashboard 
     , module Network.AWS.CloudWatch.GetDashboard
 
-    -- ** GetMetricData
+    -- ** GetMetricData (Paginated)
     , module Network.AWS.CloudWatch.GetMetricData
 
-    -- ** PutMetricData
+    -- ** PutMetricData 
     , module Network.AWS.CloudWatch.PutMetricData
 
     -- ** ListDashboards (Paginated)
@@ -86,31 +86,34 @@ module Network.AWS.CloudWatch
     -- ** ListMetrics (Paginated)
     , module Network.AWS.CloudWatch.ListMetrics
 
-    -- ** DeleteDashboards
+    -- ** DeleteDashboards 
     , module Network.AWS.CloudWatch.DeleteDashboards
 
-    -- ** DeleteAlarms
+    -- ** GetMetricWidgetImage 
+    , module Network.AWS.CloudWatch.GetMetricWidgetImage
+
+    -- ** DeleteAlarms 
     , module Network.AWS.CloudWatch.DeleteAlarms
 
     -- ** DescribeAlarmHistory (Paginated)
     , module Network.AWS.CloudWatch.DescribeAlarmHistory
 
-    -- ** GetMetricStatistics
+    -- ** GetMetricStatistics 
     , module Network.AWS.CloudWatch.GetMetricStatistics
 
-    -- ** DescribeAlarmsForMetric
+    -- ** DescribeAlarmsForMetric 
     , module Network.AWS.CloudWatch.DescribeAlarmsForMetric
 
-    -- ** DisableAlarmActions
+    -- ** DisableAlarmActions 
     , module Network.AWS.CloudWatch.DisableAlarmActions
 
-    -- ** PutDashboard
+    -- ** PutDashboard 
     , module Network.AWS.CloudWatch.PutDashboard
 
-    -- ** PutMetricAlarm
+    -- ** PutMetricAlarm 
     , module Network.AWS.CloudWatch.PutMetricAlarm
 
-    -- ** SetAlarmState
+    -- ** SetAlarmState 
     , module Network.AWS.CloudWatch.SetAlarmState
 
     -- * Types
@@ -201,6 +204,7 @@ module Network.AWS.CloudWatch
     , metricAlarm
     , maAlarmName
     , maStateUpdatedTimestamp
+    , maMetrics
     , maTreatMissingData
     , maPeriod
     , maAlarmDescription
@@ -247,6 +251,8 @@ module Network.AWS.CloudWatch
     -- ** MetricDatum
     , MetricDatum
     , metricDatum
+    , mdValues
+    , mdCounts
     , mdValue
     , mdStorageResolution
     , mdDimensions
@@ -282,6 +288,7 @@ import Network.AWS.CloudWatch.EnableAlarmActions
 import Network.AWS.CloudWatch.GetDashboard
 import Network.AWS.CloudWatch.GetMetricData
 import Network.AWS.CloudWatch.GetMetricStatistics
+import Network.AWS.CloudWatch.GetMetricWidgetImage
 import Network.AWS.CloudWatch.ListDashboards
 import Network.AWS.CloudWatch.ListMetrics
 import Network.AWS.CloudWatch.PutDashboard

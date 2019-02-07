@@ -54,7 +54,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getMethodResponse' smart constructor.
 data GetMethodResponse = GetMethodResponse'
-  { _gmRestAPIId  :: !Text
+  { _gmRestAPIId :: !Text
   , _gmResourceId :: !Text
   , _gmHttpMethod :: !Text
   , _gmStatusCode :: !Text

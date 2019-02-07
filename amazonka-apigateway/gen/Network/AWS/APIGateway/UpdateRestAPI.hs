@@ -61,7 +61,7 @@ import Network.AWS.Response
 -- /See:/ 'updateRestAPI' smart constructor.
 data UpdateRestAPI = UpdateRestAPI'
   { _uraPatchOperations :: !(Maybe [PatchOperation])
-  , _uraRestAPIId       :: !Text
+  , _uraRestAPIId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -49,10 +49,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateResourceServer' smart constructor.
 data UpdateResourceServer = UpdateResourceServer'
-  { _ursScopes     :: !(Maybe [ResourceServerScopeType])
+  { _ursScopes :: !(Maybe [ResourceServerScopeType])
   , _ursUserPoolId :: !Text
   , _ursIdentifier :: !Text
-  , _ursName       :: !Text
+  , _ursName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

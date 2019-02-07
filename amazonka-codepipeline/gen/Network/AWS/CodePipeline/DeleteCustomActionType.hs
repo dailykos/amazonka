@@ -53,7 +53,7 @@ import Network.AWS.Response
 data DeleteCustomActionType = DeleteCustomActionType'
   { _dcatCategory :: !ActionCategory
   , _dcatProvider :: !Text
-  , _dcatVersion  :: !Text
+  , _dcatVersion :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

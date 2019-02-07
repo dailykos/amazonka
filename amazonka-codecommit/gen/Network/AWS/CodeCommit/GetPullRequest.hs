@@ -103,7 +103,7 @@ instance ToQuery GetPullRequest where
 -- | /See:/ 'getPullRequestResponse' smart constructor.
 data GetPullRequestResponse = GetPullRequestResponse'
   { _gprrsResponseStatus :: !Int
-  , _gprrsPullRequest    :: !PullRequest
+  , _gprrsPullRequest :: !PullRequest
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

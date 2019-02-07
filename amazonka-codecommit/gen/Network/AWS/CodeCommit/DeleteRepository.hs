@@ -113,7 +113,7 @@ instance ToQuery DeleteRepository where
 --
 -- /See:/ 'deleteRepositoryResponse' smart constructor.
 data DeleteRepositoryResponse = DeleteRepositoryResponse'
-  { _drrsRepositoryId   :: !(Maybe Text)
+  { _drrsRepositoryId :: !(Maybe Text)
   , _drrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

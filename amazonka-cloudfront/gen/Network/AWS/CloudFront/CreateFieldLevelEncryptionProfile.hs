@@ -94,7 +94,7 @@ instance ToElement CreateFieldLevelEncryptionProfile
          where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}FieldLevelEncryptionProfileConfig"
+              "{http://cloudfront.amazonaws.com/doc/2018-11-05/}FieldLevelEncryptionProfileConfig"
               .
               _cflepFieldLevelEncryptionProfileConfig
 
@@ -105,7 +105,7 @@ instance ToHeaders CreateFieldLevelEncryptionProfile
 instance ToPath CreateFieldLevelEncryptionProfile
          where
         toPath
-          = const "/2017-10-30/field-level-encryption-profile"
+          = const "/2018-11-05/field-level-encryption-profile"
 
 instance ToQuery CreateFieldLevelEncryptionProfile
          where
@@ -113,10 +113,10 @@ instance ToQuery CreateFieldLevelEncryptionProfile
 
 -- | /See:/ 'createFieldLevelEncryptionProfileResponse' smart constructor.
 data CreateFieldLevelEncryptionProfileResponse = CreateFieldLevelEncryptionProfileResponse'
-  { _cfleprsETag                        :: !(Maybe Text)
-  , _cfleprsLocation                    :: !(Maybe Text)
+  { _cfleprsETag :: !(Maybe Text)
+  , _cfleprsLocation :: !(Maybe Text)
   , _cfleprsFieldLevelEncryptionProfile :: !(Maybe FieldLevelEncryptionProfile)
-  , _cfleprsResponseStatus              :: !Int
+  , _cfleprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

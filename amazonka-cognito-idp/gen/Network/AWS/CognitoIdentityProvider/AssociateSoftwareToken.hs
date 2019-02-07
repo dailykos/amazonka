@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- | /See:/ 'associateSoftwareToken' smart constructor.
 data AssociateSoftwareToken = AssociateSoftwareToken'
   { _astAccessToken :: !(Maybe (Sensitive Text))
-  , _astSession     :: !(Maybe Text)
+  , _astSession :: !(Maybe Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -114,8 +114,8 @@ instance ToQuery AssociateSoftwareToken where
 
 -- | /See:/ 'associateSoftwareTokenResponse' smart constructor.
 data AssociateSoftwareTokenResponse = AssociateSoftwareTokenResponse'
-  { _astrsSecretCode     :: !(Maybe (Sensitive Text))
-  , _astrsSession        :: !(Maybe Text)
+  { _astrsSecretCode :: !(Maybe (Sensitive Text))
+  , _astrsSession :: !(Maybe Text)
   , _astrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 

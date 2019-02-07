@@ -111,7 +111,7 @@ instance ToQuery GetRemoteAccessSession where
 -- /See:/ 'getRemoteAccessSessionResponse' smart constructor.
 data GetRemoteAccessSessionResponse = GetRemoteAccessSessionResponse'
   { _grasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
-  , _grasrsResponseStatus      :: !Int
+  , _grasrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

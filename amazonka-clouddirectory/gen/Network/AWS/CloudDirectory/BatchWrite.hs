@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'batchWrite' smart constructor.
 data BatchWrite = BatchWrite'
   { _bwDirectoryARN :: !Text
-  , _bwOperations   :: ![BatchWriteOperation]
+  , _bwOperations :: ![BatchWriteOperation]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -106,7 +106,7 @@ instance ToQuery BatchWrite where
 
 -- | /See:/ 'batchWriteResponse' smart constructor.
 data BatchWriteResponse = BatchWriteResponse'
-  { _bwrsResponses      :: !(Maybe [BatchWriteOperationResponse])
+  { _bwrsResponses :: !(Maybe [BatchWriteOperationResponse])
   , _bwrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -28,6 +28,9 @@ module Network.AWS.Athena.Types
 
     -- * QueryExecutionState
     , QueryExecutionState (..)
+
+    -- * StatementType
+    , StatementType (..)
 
     -- * ColumnInfo
     , ColumnInfo
@@ -70,6 +73,7 @@ module Network.AWS.Athena.Types
     , qeQueryExecutionContext
     , qeResultConfiguration
     , qeQuery
+    , qeStatementType
     , qeStatistics
     , qeQueryExecutionId
 
@@ -181,7 +185,7 @@ _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceE
 _InvalidRequestException = _MatchServiceError athena "InvalidRequestException"
 
 
--- | Indicates that the request was throttled.
+-- | Indicates that the request was throttled and includes the reason for throttling, for example, the limit of concurrent queries has been exceeded.
 --
 --
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError

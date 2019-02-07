@@ -87,16 +87,16 @@ instance ToHeaders GetFieldLevelEncryption where
 instance ToPath GetFieldLevelEncryption where
         toPath GetFieldLevelEncryption'{..}
           = mconcat
-              ["/2017-10-30/field-level-encryption/", toBS _gfleId]
+              ["/2018-11-05/field-level-encryption/", toBS _gfleId]
 
 instance ToQuery GetFieldLevelEncryption where
         toQuery = const mempty
 
 -- | /See:/ 'getFieldLevelEncryptionResponse' smart constructor.
 data GetFieldLevelEncryptionResponse = GetFieldLevelEncryptionResponse'
-  { _gflersETag                 :: !(Maybe Text)
+  { _gflersETag :: !(Maybe Text)
   , _gflersFieldLevelEncryption :: !(Maybe FieldLevelEncryption)
-  , _gflersResponseStatus       :: !Int
+  , _gflersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

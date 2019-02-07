@@ -68,14 +68,14 @@ import Network.AWS.Response
 -- /See:/ 'createRestAPI' smart constructor.
 data CreateRestAPI = CreateRestAPI'
   { _craMinimumCompressionSize :: !(Maybe Int)
-  , _craBinaryMediaTypes       :: !(Maybe [Text])
-  , _craVersion                :: !(Maybe Text)
-  , _craApiKeySource           :: !(Maybe APIKeySourceType)
-  , _craCloneFrom              :: !(Maybe Text)
-  , _craPolicy                 :: !(Maybe Text)
-  , _craEndpointConfiguration  :: !(Maybe EndpointConfiguration)
-  , _craDescription            :: !(Maybe Text)
-  , _craName                   :: !Text
+  , _craBinaryMediaTypes :: !(Maybe [Text])
+  , _craVersion :: !(Maybe Text)
+  , _craApiKeySource :: !(Maybe APIKeySourceType)
+  , _craCloneFrom :: !(Maybe Text)
+  , _craPolicy :: !(Maybe Text)
+  , _craEndpointConfiguration :: !(Maybe EndpointConfiguration)
+  , _craDescription :: !(Maybe Text)
+  , _craName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -93,9 +93,9 @@ data CreateRestAPI = CreateRestAPI'
 --
 -- * 'craCloneFrom' - The ID of the 'RestApi' that you want to clone from.
 --
--- * 'craPolicy' - 'Method'
+-- * 'craPolicy' - 'Method' 
 --
--- * 'craEndpointConfiguration' - The endpoint configuration of this 'RestApi' showing the endpoint types of the API.
+-- * 'craEndpointConfiguration' - The endpoint configuration of this 'RestApi' showing the endpoint types of the API. 
 --
 -- * 'craDescription' - The description of the 'RestApi' .
 --
@@ -137,11 +137,11 @@ craApiKeySource = lens _craApiKeySource (\ s a -> s{_craApiKeySource = a})
 craCloneFrom :: Lens' CreateRestAPI (Maybe Text)
 craCloneFrom = lens _craCloneFrom (\ s a -> s{_craCloneFrom = a})
 
--- | 'Method'
+-- | 'Method' 
 craPolicy :: Lens' CreateRestAPI (Maybe Text)
 craPolicy = lens _craPolicy (\ s a -> s{_craPolicy = a})
 
--- | The endpoint configuration of this 'RestApi' showing the endpoint types of the API.
+-- | The endpoint configuration of this 'RestApi' showing the endpoint types of the API. 
 craEndpointConfiguration :: Lens' CreateRestAPI (Maybe EndpointConfiguration)
 craEndpointConfiguration = lens _craEndpointConfiguration (\ s a -> s{_craEndpointConfiguration = a})
 

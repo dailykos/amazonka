@@ -56,10 +56,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateFacet' smart constructor.
 data UpdateFacet = UpdateFacet'
-  { _ufObjectType       :: !(Maybe ObjectType)
+  { _ufObjectType :: !(Maybe ObjectType)
   , _ufAttributeUpdates :: !(Maybe [FacetAttributeUpdate])
-  , _ufSchemaARN        :: !Text
-  , _ufName             :: !Text
+  , _ufSchemaARN :: !Text
+  , _ufName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -69,7 +69,7 @@ data UpdateFacet = UpdateFacet'
 --
 -- * 'ufObjectType' - The object type that is associated with the facet. See 'CreateFacetRequest$ObjectType' for more details.
 --
--- * 'ufAttributeUpdates' - List of attributes that need to be updated in a given schema 'Facet' . Each attribute is followed by @AttributeAction@ , which specifies the type of update operation to perform.
+-- * 'ufAttributeUpdates' - List of attributes that need to be updated in a given schema 'Facet' . Each attribute is followed by @AttributeAction@ , which specifies the type of update operation to perform. 
 --
 -- * 'ufSchemaARN' - The Amazon Resource Name (ARN) that is associated with the 'Facet' . For more information, see 'arns' .
 --
@@ -91,7 +91,7 @@ updateFacet pSchemaARN_ pName_ =
 ufObjectType :: Lens' UpdateFacet (Maybe ObjectType)
 ufObjectType = lens _ufObjectType (\ s a -> s{_ufObjectType = a})
 
--- | List of attributes that need to be updated in a given schema 'Facet' . Each attribute is followed by @AttributeAction@ , which specifies the type of update operation to perform.
+-- | List of attributes that need to be updated in a given schema 'Facet' . Each attribute is followed by @AttributeAction@ , which specifies the type of update operation to perform. 
 ufAttributeUpdates :: Lens' UpdateFacet [FacetAttributeUpdate]
 ufAttributeUpdates = lens _ufAttributeUpdates (\ s a -> s{_ufAttributeUpdates = a}) . _Default . _Coerce
 

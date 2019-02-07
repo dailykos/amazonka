@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateDevice' smart constructor.
 data UpdateDevice = UpdateDevice'
-  { _udDeviceARN  :: !(Maybe Text)
+  { _udDeviceARN :: !(Maybe Text)
   , _udDeviceName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

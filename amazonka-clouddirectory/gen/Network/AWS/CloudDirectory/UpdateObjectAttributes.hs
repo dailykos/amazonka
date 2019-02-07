@@ -48,8 +48,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateObjectAttributes' smart constructor.
 data UpdateObjectAttributes = UpdateObjectAttributes'
-  { _uoaDirectoryARN     :: !Text
-  , _uoaObjectReference  :: !ObjectReference
+  { _uoaDirectoryARN :: !Text
+  , _uoaObjectReference :: !ObjectReference
   , _uoaAttributeUpdates :: ![ObjectAttributeUpdate]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery UpdateObjectAttributes where
 -- | /See:/ 'updateObjectAttributesResponse' smart constructor.
 data UpdateObjectAttributesResponse = UpdateObjectAttributesResponse'
   { _uoarsObjectIdentifier :: !(Maybe Text)
-  , _uoarsResponseStatus   :: !Int
+  , _uoarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

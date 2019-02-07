@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -30,6 +30,45 @@ module Network.AWS.CodeStar.Types
     , _UserProfileNotFoundException
     , _LimitExceededException
 
+    -- * Code
+    , Code
+    , code
+    , cSource
+    , cDestination
+
+    -- * CodeCommitCodeDestination
+    , CodeCommitCodeDestination
+    , codeCommitCodeDestination
+    , cccdName
+
+    -- * CodeDestination
+    , CodeDestination
+    , codeDestination
+    , cdCodeCommit
+    , cdGitHub
+
+    -- * CodeSource
+    , CodeSource
+    , codeSource
+    , csS3
+
+    -- * GitHubCodeDestination
+    , GitHubCodeDestination
+    , gitHubCodeDestination
+    , ghcdDescription
+    , ghcdName
+    , ghcdType
+    , ghcdOwner
+    , ghcdPrivateRepository
+    , ghcdIssuesEnabled
+    , ghcdToken
+
+    -- * ProjectStatus
+    , ProjectStatus
+    , projectStatus
+    , psReason
+    , psState
+
     -- * ProjectSummary
     , ProjectSummary
     , projectSummary
@@ -41,12 +80,30 @@ module Network.AWS.CodeStar.Types
     , resource
     , rId
 
+    -- * S3Location
+    , S3Location
+    , s3Location
+    , slBucketKey
+    , slBucketName
+
     -- * TeamMember
     , TeamMember
     , teamMember
     , tmRemoteAccessAllowed
     , tmUserARN
     , tmProjectRole
+
+    -- * Toolchain
+    , Toolchain
+    , toolchain
+    , tStackParameters
+    , tRoleARN
+    , tSource
+
+    -- * ToolchainSource
+    , ToolchainSource
+    , toolchainSource
+    , tsS3
 
     -- * UserProfileSummary
     , UserProfileSummary
@@ -133,7 +190,7 @@ _ProjectCreationFailedException =
   _MatchServiceError codeStar "ProjectCreationFailedException"
 
 
--- | A user profile with that name already exists in this region for the AWS account. AWS CodeStar user profile names must be unique within a region for the AWS account.
+-- | A user profile with that name already exists in this region for the AWS account. AWS CodeStar user profile names must be unique within a region for the AWS account. 
 --
 --
 _UserProfileAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError

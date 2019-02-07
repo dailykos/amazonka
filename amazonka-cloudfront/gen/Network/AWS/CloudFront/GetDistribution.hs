@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get the information about a distribution.
+-- Get the information about a distribution. 
 --
 --
 module Network.AWS.CloudFront.GetDistribution
@@ -89,7 +89,7 @@ instance ToHeaders GetDistribution where
 
 instance ToPath GetDistribution where
         toPath GetDistribution'{..}
-          = mconcat ["/2017-10-30/distribution/", toBS _gdId]
+          = mconcat ["/2018-11-05/distribution/", toBS _gdId]
 
 instance ToQuery GetDistribution where
         toQuery = const mempty
@@ -100,8 +100,8 @@ instance ToQuery GetDistribution where
 --
 -- /See:/ 'getDistributionResponse' smart constructor.
 data GetDistributionResponse = GetDistributionResponse'
-  { _gdrsETag           :: !(Maybe Text)
-  , _gdrsDistribution   :: !(Maybe Distribution)
+  { _gdrsETag :: !(Maybe Text)
+  , _gdrsDistribution :: !(Maybe Distribution)
   , _gdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

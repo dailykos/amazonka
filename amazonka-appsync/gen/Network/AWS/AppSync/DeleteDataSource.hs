@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteDataSource' smart constructor.
 data DeleteDataSource = DeleteDataSource'
   { _ddsApiId :: !Text
-  , _ddsName  :: !Text
+  , _ddsName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'createPullRequest' smart constructor.
 data CreatePullRequest = CreatePullRequest'
   { _cprClientRequestToken :: !(Maybe Text)
-  , _cprDescription        :: !(Maybe Text)
-  , _cprTitle              :: !Text
-  , _cprTargets            :: ![Target]
+  , _cprDescription :: !(Maybe Text)
+  , _cprTitle :: !Text
+  , _cprTargets :: ![Target]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -137,7 +137,7 @@ instance ToQuery CreatePullRequest where
 -- | /See:/ 'createPullRequestResponse' smart constructor.
 data CreatePullRequestResponse = CreatePullRequestResponse'
   { _cprrsResponseStatus :: !Int
-  , _cprrsPullRequest    :: !PullRequest
+  , _cprrsPullRequest :: !PullRequest
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

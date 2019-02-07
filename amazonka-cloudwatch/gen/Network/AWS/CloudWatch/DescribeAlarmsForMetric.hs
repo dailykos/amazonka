@@ -52,13 +52,13 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeAlarmsForMetric' smart constructor.
 data DescribeAlarmsForMetric = DescribeAlarmsForMetric'
-  { _dafmPeriod            :: !(Maybe Nat)
-  , _dafmDimensions        :: !(Maybe [Dimension])
-  , _dafmUnit              :: !(Maybe StandardUnit)
-  , _dafmStatistic         :: !(Maybe Statistic)
+  { _dafmPeriod :: !(Maybe Nat)
+  , _dafmDimensions :: !(Maybe [Dimension])
+  , _dafmUnit :: !(Maybe StandardUnit)
+  , _dafmStatistic :: !(Maybe Statistic)
   , _dafmExtendedStatistic :: !(Maybe Text)
-  , _dafmMetricName        :: !Text
-  , _dafmNamespace         :: !Text
+  , _dafmMetricName :: !Text
+  , _dafmNamespace :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -161,7 +161,7 @@ instance ToQuery DescribeAlarmsForMetric where
 
 -- | /See:/ 'describeAlarmsForMetricResponse' smart constructor.
 data DescribeAlarmsForMetricResponse = DescribeAlarmsForMetricResponse'
-  { _dafmrsMetricAlarms   :: !(Maybe [MetricAlarm])
+  { _dafmrsMetricAlarms :: !(Maybe [MetricAlarm])
   , _dafmrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

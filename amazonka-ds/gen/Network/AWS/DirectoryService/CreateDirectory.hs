@@ -21,7 +21,7 @@
 -- Creates a Simple AD directory.
 --
 --
--- Before you call /CreateDirectory/ , ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the /CreateDirectory/ operation, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference> .
+-- Before you call @CreateDirectory@ , ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the @CreateDirectory@ operation, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference> .
 --
 module Network.AWS.DirectoryService.CreateDirectory
     (
@@ -51,18 +51,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the inputs for the 'CreateDirectory' operation.
+-- | Contains the inputs for the 'CreateDirectory' operation. 
 --
 --
 --
 -- /See:/ 'createDirectory' smart constructor.
 data CreateDirectory = CreateDirectory'
-  { _cShortName   :: !(Maybe Text)
+  { _cShortName :: !(Maybe Text)
   , _cVPCSettings :: !(Maybe DirectoryVPCSettings)
   , _cDescription :: !(Maybe Text)
-  , _cName        :: !Text
-  , _cPassword    :: !(Sensitive Text)
-  , _cSize        :: !DirectorySize
+  , _cName :: !Text
+  , _cPassword :: !(Sensitive Text)
+  , _cSize :: !DirectorySize
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -78,7 +78,7 @@ data CreateDirectory = CreateDirectory'
 --
 -- * 'cName' - The fully qualified name for the directory, such as @corp.example.com@ .
 --
--- * 'cPassword' - The password for the directory administrator. The directory creation process creates a directory administrator account with the username @Administrator@ and this password.
+-- * 'cPassword' - The password for the directory administrator. The directory creation process creates a directory administrator account with the user name @Administrator@ and this password.
 --
 -- * 'cSize' - The size of the directory.
 createDirectory
@@ -113,7 +113,7 @@ cDescription = lens _cDescription (\ s a -> s{_cDescription = a})
 cName :: Lens' CreateDirectory Text
 cName = lens _cName (\ s a -> s{_cName = a})
 
--- | The password for the directory administrator. The directory creation process creates a directory administrator account with the username @Administrator@ and this password.
+-- | The password for the directory administrator. The directory creation process creates a directory administrator account with the user name @Administrator@ and this password.
 cPassword :: Lens' CreateDirectory Text
 cPassword = lens _cPassword (\ s a -> s{_cPassword = a}) . _Sensitive
 
@@ -167,7 +167,7 @@ instance ToQuery CreateDirectory where
 --
 -- /See:/ 'createDirectoryResponse' smart constructor.
 data CreateDirectoryResponse = CreateDirectoryResponse'
-  { _crsDirectoryId    :: !(Maybe Text)
+  { _crsDirectoryId :: !(Maybe Text)
   , _crsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

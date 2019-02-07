@@ -107,7 +107,7 @@ instance ToQuery GetDevicePool where
 --
 -- /See:/ 'getDevicePoolResponse' smart constructor.
 data GetDevicePoolResponse = GetDevicePoolResponse'
-  { _gdprsDevicePool     :: !(Maybe DevicePool)
+  { _gdprsDevicePool :: !(Maybe DevicePool)
   , _gdprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

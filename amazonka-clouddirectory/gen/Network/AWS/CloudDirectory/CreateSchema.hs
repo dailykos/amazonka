@@ -25,7 +25,7 @@
 --
 --     * /Published:/ Published schemas are immutable and have a version associated with them.
 --
---     * /Applied:/ Applied schemas are mutable in a way that allows you to add new schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply only published schemas to directories.
+--     * /Applied:/ Applied schemas are mutable in a way that allows you to add new schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply only published schemas to directories. 
 --
 --
 --
@@ -103,7 +103,7 @@ instance ToQuery CreateSchema where
 
 -- | /See:/ 'createSchemaResponse' smart constructor.
 data CreateSchemaResponse = CreateSchemaResponse'
-  { _csrsSchemaARN      :: !(Maybe Text)
+  { _csrsSchemaARN :: !(Maybe Text)
   , _csrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

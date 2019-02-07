@@ -21,7 +21,7 @@ import Network.AWS.CloudSearchDomains.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A container for facet information.
+-- | A container for facet information. 
 --
 --
 --
@@ -135,14 +135,14 @@ instance NFData DocumentServiceWarning where
 --
 -- /See:/ 'fieldStats' smart constructor.
 data FieldStats = FieldStats'
-  { _fsMax          :: !(Maybe Text)
-  , _fsMean         :: !(Maybe Text)
-  , _fsCount        :: !(Maybe Integer)
-  , _fsMissing      :: !(Maybe Integer)
-  , _fsStddev       :: !(Maybe Double)
-  , _fsMin          :: !(Maybe Text)
+  { _fsMax :: !(Maybe Text)
+  , _fsMean :: !(Maybe Text)
+  , _fsCount :: !(Maybe Integer)
+  , _fsMissing :: !(Maybe Integer)
+  , _fsStddev :: !(Maybe Double)
+  , _fsMin :: !(Maybe Text)
   , _fsSumOfSquares :: !(Maybe Double)
-  , _fsSum          :: !(Maybe Double)
+  , _fsSum :: !(Maybe Double)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -234,10 +234,10 @@ instance NFData FieldStats where
 --
 -- /See:/ 'hit' smart constructor.
 data Hit = Hit'
-  { _hitExprs      :: !(Maybe (Map Text Text))
-  , _hitId         :: !(Maybe Text)
+  { _hitExprs :: !(Maybe (Map Text Text))
+  , _hitId :: !(Maybe Text)
   , _hitHighlights :: !(Maybe (Map Text Text))
-  , _hitFields     :: !(Maybe (Map Text [Text]))
+  , _hitFields :: !(Maybe (Map Text [Text]))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -299,9 +299,9 @@ instance NFData Hit where
 -- /See:/ 'hits' smart constructor.
 data Hits = Hits'
   { _hCursor :: !(Maybe Text)
-  , _hHit    :: !(Maybe [Hit])
-  , _hStart  :: !(Maybe Integer)
-  , _hFound  :: !(Maybe Integer)
+  , _hHit :: !(Maybe [Hit])
+  , _hStart :: !(Maybe Integer)
+  , _hFound :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -358,7 +358,7 @@ instance NFData Hits where
 --
 -- /See:/ 'searchStatus' smart constructor.
 data SearchStatus = SearchStatus'
-  { _sRid    :: !(Maybe Text)
+  { _sRid :: !(Maybe Text)
   , _sTimems :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -399,9 +399,9 @@ instance NFData SearchStatus where
 --
 -- /See:/ 'suggestModel' smart constructor.
 data SuggestModel = SuggestModel'
-  { _smFound       :: !(Maybe Integer)
+  { _smFound :: !(Maybe Integer)
   , _smSuggestions :: !(Maybe [SuggestionMatch])
-  , _smQuery       :: !(Maybe Text)
+  , _smQuery :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -451,7 +451,7 @@ instance NFData SuggestModel where
 --
 -- /See:/ 'suggestStatus' smart constructor.
 data SuggestStatus = SuggestStatus'
-  { _ssRid    :: !(Maybe Text)
+  { _ssRid :: !(Maybe Text)
   , _ssTimems :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -487,15 +487,15 @@ instance Hashable SuggestStatus where
 
 instance NFData SuggestStatus where
 
--- | An autocomplete suggestion that matches the query string specified in a @SuggestRequest@ .
+-- | An autocomplete suggestion that matches the query string specified in a @SuggestRequest@ . 
 --
 --
 --
 -- /See:/ 'suggestionMatch' smart constructor.
 data SuggestionMatch = SuggestionMatch'
   { _smSuggestion :: !(Maybe Text)
-  , _smScore      :: !(Maybe Integer)
-  , _smId         :: !(Maybe Text)
+  , _smScore :: !(Maybe Integer)
+  , _smId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -503,7 +503,7 @@ data SuggestionMatch = SuggestionMatch'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smSuggestion' - The string that matches the query string specified in the @SuggestRequest@ .
+-- * 'smSuggestion' - The string that matches the query string specified in the @SuggestRequest@ . 
 --
 -- * 'smScore' - The relevance score of a suggested match.
 --
@@ -515,7 +515,7 @@ suggestionMatch =
     {_smSuggestion = Nothing, _smScore = Nothing, _smId = Nothing}
 
 
--- | The string that matches the query string specified in the @SuggestRequest@ .
+-- | The string that matches the query string specified in the @SuggestRequest@ . 
 smSuggestion :: Lens' SuggestionMatch (Maybe Text)
 smSuggestion = lens _smSuggestion (\ s a -> s{_smSuggestion = a})
 

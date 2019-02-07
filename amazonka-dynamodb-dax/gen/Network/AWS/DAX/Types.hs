@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -27,6 +27,7 @@ module Network.AWS.DAX.Types
     , _TagNotFoundFault
     , _NodeQuotaForClusterExceededFault
     , _InvalidClusterStateFault
+    , _ServiceLinkedRoleNotFoundFault
     , _InsufficientClusterCapacityFault
     , _NodeNotFoundFault
     , _ParameterGroupQuotaExceededFault
@@ -51,6 +52,9 @@ module Network.AWS.DAX.Types
     -- * ParameterType
     , ParameterType (..)
 
+    -- * SSEStatus
+    , SSEStatus (..)
+
     -- * SourceType
     , SourceType (..)
 
@@ -71,6 +75,7 @@ module Network.AWS.DAX.Types
     , cNodeType
     , cNodes
     , cClusterDiscoveryEndpoint
+    , cSSEDescription
     , cDescription
     , cParameterGroup
 
@@ -142,6 +147,16 @@ module Network.AWS.DAX.Types
     , parameterNameValue
     , pnvParameterValue
     , pnvParameterName
+
+    -- * SSEDescription
+    , SSEDescription
+    , sSEDescription
+    , ssedStatus
+
+    -- * SSESpecification
+    , SSESpecification
+    , sSESpecification
+    , ssesEnabled
 
     -- * SecurityGroupMembership
     , SecurityGroupMembership
@@ -297,7 +312,13 @@ _InvalidClusterStateFault :: AsError a => Getting (First ServiceError) a Service
 _InvalidClusterStateFault = _MatchServiceError dax "InvalidClusterStateFault"
 
 
--- | There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster).
+-- | Prism for ServiceLinkedRoleNotFoundFault' errors.
+_ServiceLinkedRoleNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceLinkedRoleNotFoundFault =
+  _MatchServiceError dax "ServiceLinkedRoleNotFoundFault"
+
+
+-- | There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). 
 --
 --
 _InsufficientClusterCapacityFault :: AsError a => Getting (First ServiceError) a ServiceError

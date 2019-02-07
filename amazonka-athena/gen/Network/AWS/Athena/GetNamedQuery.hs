@@ -102,7 +102,7 @@ instance ToQuery GetNamedQuery where
 
 -- | /See:/ 'getNamedQueryResponse' smart constructor.
 data GetNamedQueryResponse = GetNamedQueryResponse'
-  { _gnqrsNamedQuery     :: !(Maybe NamedQuery)
+  { _gnqrsNamedQuery :: !(Maybe NamedQuery)
   , _gnqrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

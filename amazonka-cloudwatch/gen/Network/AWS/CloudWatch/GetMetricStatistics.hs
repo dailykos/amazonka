@@ -33,6 +33,8 @@
 --
 --
 --
+-- Percentile statistics are not available for metrics when any of the metric values are negative numbers.
+--
 -- Amazon CloudWatch retains metric data as follows:
 --
 --     * Data points with a period of less than 60 seconds are available for 3 hours. These data points are high-resolution metrics and are available only for custom metrics that have been defined with a @StorageResolution@ of 1.
@@ -86,14 +88,14 @@ import Network.AWS.Response
 -- | /See:/ 'getMetricStatistics' smart constructor.
 data GetMetricStatistics = GetMetricStatistics'
   { _gmsExtendedStatistics :: !(Maybe (List1 Text))
-  , _gmsStatistics         :: !(Maybe (List1 Statistic))
-  , _gmsDimensions         :: !(Maybe [Dimension])
-  , _gmsUnit               :: !(Maybe StandardUnit)
-  , _gmsNamespace          :: !Text
-  , _gmsMetricName         :: !Text
-  , _gmsStartTime          :: !ISO8601
-  , _gmsEndTime            :: !ISO8601
-  , _gmsPeriod             :: !Nat
+  , _gmsStatistics :: !(Maybe (List1 Statistic))
+  , _gmsDimensions :: !(Maybe [Dimension])
+  , _gmsUnit :: !(Maybe StandardUnit)
+  , _gmsNamespace :: !Text
+  , _gmsMetricName :: !Text
+  , _gmsStartTime :: !ISO8601
+  , _gmsEndTime :: !ISO8601
+  , _gmsPeriod :: !Nat
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -101,7 +103,7 @@ data GetMetricStatistics = GetMetricStatistics'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gmsExtendedStatistics' - The percentile statistics. Specify values between p0.0 and p100. When calling @GetMetricStatistics@ , you must specify either @Statistics@ or @ExtendedStatistics@ , but not both.
+-- * 'gmsExtendedStatistics' - The percentile statistics. Specify values between p0.0 and p100. When calling @GetMetricStatistics@ , you must specify either @Statistics@ or @ExtendedStatistics@ , but not both. Percentile statistics are not available for metrics when any of the metric values are negative numbers.
 --
 -- * 'gmsStatistics' - The metric statistics, other than percentile. For percentile statistics, use @ExtendedStatistics@ . When calling @GetMetricStatistics@ , you must specify either @Statistics@ or @ExtendedStatistics@ , but not both.
 --
@@ -113,7 +115,7 @@ data GetMetricStatistics = GetMetricStatistics'
 --
 -- * 'gmsMetricName' - The name of the metric, with or without spaces.
 --
--- * 'gmsStartTime' - The time stamp that determines the first data point to return. Start times are evaluated relative to the time that CloudWatch receives the request. The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z). CloudWatch rounds the specified time stamp as follows:     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00. If you set @Period@ to 5, 10, or 30, the start time of your request is rounded down to the nearest time that corresponds to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of your request is rounded down and you receive data from 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of data, using a period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
+-- * 'gmsStartTime' - The time stamp that determines the first data point to return. Start times are evaluated relative to the time that CloudWatch receives the request. The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z). CloudWatch rounds the specified time stamp as follows:     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00. If you set @Period@ to 5, 10, or 30, the start time of your request is rounded down to the nearest time that corresponds to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of your request is rounded down and you receive data from 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of data, using a period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15. 
 --
 -- * 'gmsEndTime' - The time stamp that determines the last data point to return. The value specified is exclusive; results include data points up to the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
 --
@@ -139,7 +141,7 @@ getMetricStatistics pNamespace_ pMetricName_ pStartTime_ pEndTime_ pPeriod_ =
     }
 
 
--- | The percentile statistics. Specify values between p0.0 and p100. When calling @GetMetricStatistics@ , you must specify either @Statistics@ or @ExtendedStatistics@ , but not both.
+-- | The percentile statistics. Specify values between p0.0 and p100. When calling @GetMetricStatistics@ , you must specify either @Statistics@ or @ExtendedStatistics@ , but not both. Percentile statistics are not available for metrics when any of the metric values are negative numbers.
 gmsExtendedStatistics :: Lens' GetMetricStatistics (Maybe (NonEmpty Text))
 gmsExtendedStatistics = lens _gmsExtendedStatistics (\ s a -> s{_gmsExtendedStatistics = a}) . mapping _List1
 
@@ -163,7 +165,7 @@ gmsNamespace = lens _gmsNamespace (\ s a -> s{_gmsNamespace = a})
 gmsMetricName :: Lens' GetMetricStatistics Text
 gmsMetricName = lens _gmsMetricName (\ s a -> s{_gmsMetricName = a})
 
--- | The time stamp that determines the first data point to return. Start times are evaluated relative to the time that CloudWatch receives the request. The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z). CloudWatch rounds the specified time stamp as follows:     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00. If you set @Period@ to 5, 10, or 30, the start time of your request is rounded down to the nearest time that corresponds to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of your request is rounded down and you receive data from 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of data, using a period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
+-- | The time stamp that determines the first data point to return. Start times are evaluated relative to the time that CloudWatch receives the request. The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z). CloudWatch rounds the specified time stamp as follows:     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00. If you set @Period@ to 5, 10, or 30, the start time of your request is rounded down to the nearest time that corresponds to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of your request is rounded down and you receive data from 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of data, using a period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15. 
 gmsStartTime :: Lens' GetMetricStatistics UTCTime
 gmsStartTime = lens _gmsStartTime (\ s a -> s{_gmsStartTime = a}) . _Time
 
@@ -217,8 +219,8 @@ instance ToQuery GetMetricStatistics where
 
 -- | /See:/ 'getMetricStatisticsResponse' smart constructor.
 data GetMetricStatisticsResponse = GetMetricStatisticsResponse'
-  { _gmsrsDatapoints     :: !(Maybe [Datapoint])
-  , _gmsrsLabel          :: !(Maybe Text)
+  { _gmsrsDatapoints :: !(Maybe [Datapoint])
+  , _gmsrsLabel :: !(Maybe Text)
   , _gmsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

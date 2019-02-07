@@ -55,16 +55,16 @@ import Network.AWS.Response
 
 -- | /See:/ 'createProfile' smart constructor.
 data CreateProfile = CreateProfile'
-  { _cpSetupModeDisabled  :: !(Maybe Bool)
-  , _cpPSTNEnabled        :: !(Maybe Bool)
+  { _cpSetupModeDisabled :: !(Maybe Bool)
+  , _cpPSTNEnabled :: !(Maybe Bool)
   , _cpClientRequestToken :: !(Maybe Text)
-  , _cpMaxVolumeLimit     :: !(Maybe Int)
-  , _cpProfileName        :: !Text
-  , _cpTimezone           :: !Text
-  , _cpAddress            :: !Text
-  , _cpDistanceUnit       :: !DistanceUnit
-  , _cpTemperatureUnit    :: !TemperatureUnit
-  , _cpWakeWord           :: !WakeWord
+  , _cpMaxVolumeLimit :: !(Maybe Int)
+  , _cpProfileName :: !Text
+  , _cpTimezone :: !Text
+  , _cpAddress :: !Text
+  , _cpDistanceUnit :: !DistanceUnit
+  , _cpTemperatureUnit :: !TemperatureUnit
+  , _cpWakeWord :: !WakeWord
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -199,7 +199,7 @@ instance ToQuery CreateProfile where
 
 -- | /See:/ 'createProfileResponse' smart constructor.
 data CreateProfileResponse = CreateProfileResponse'
-  { _cprsProfileARN     :: !(Maybe Text)
+  { _cprsProfileARN :: !(Maybe Text)
   , _cprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

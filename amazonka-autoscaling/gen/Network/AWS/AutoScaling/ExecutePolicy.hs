@@ -47,11 +47,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'executePolicy' smart constructor.
 data ExecutePolicy = ExecutePolicy'
-  { _epHonorCooldown        :: !(Maybe Bool)
-  , _epMetricValue          :: !(Maybe Double)
+  { _epHonorCooldown :: !(Maybe Bool)
+  , _epMetricValue :: !(Maybe Double)
   , _epAutoScalingGroupName :: !(Maybe Text)
-  , _epBreachThreshold      :: !(Maybe Double)
-  , _epPolicyName           :: !Text
+  , _epBreachThreshold :: !(Maybe Double)
+  , _epPolicyName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -59,7 +59,7 @@ data ExecutePolicy = ExecutePolicy'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'epHonorCooldown' - Indicates whether Auto Scaling waits for the cooldown period to complete before executing the policy. This parameter is not supported if the policy type is @StepScaling@ . For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html Auto Scaling Cooldowns> in the /Auto Scaling User Guide/ .
+-- * 'epHonorCooldown' - Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before executing the policy. This parameter is not supported if the policy type is @StepScaling@ . For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html Scaling Cooldowns> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 -- * 'epMetricValue' - The metric value to compare to @BreachThreshold@ . This enables you to execute a policy of type @StepScaling@ and determine which step adjustment to use. For example, if the breach threshold is 50 and you want to use a step adjustment with a lower bound of 0 and an upper bound of 10, you can set the metric value to 59. If you specify a metric value that doesn't correspond to a step adjustment for the policy, the call returns an error. This parameter is required if the policy type is @StepScaling@ and not supported otherwise.
 --
@@ -81,7 +81,7 @@ executePolicy pPolicyName_ =
     }
 
 
--- | Indicates whether Auto Scaling waits for the cooldown period to complete before executing the policy. This parameter is not supported if the policy type is @StepScaling@ . For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html Auto Scaling Cooldowns> in the /Auto Scaling User Guide/ .
+-- | Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before executing the policy. This parameter is not supported if the policy type is @StepScaling@ . For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html Scaling Cooldowns> in the /Amazon EC2 Auto Scaling User Guide/ .
 epHonorCooldown :: Lens' ExecutePolicy (Maybe Bool)
 epHonorCooldown = lens _epHonorCooldown (\ s a -> s{_epHonorCooldown = a})
 

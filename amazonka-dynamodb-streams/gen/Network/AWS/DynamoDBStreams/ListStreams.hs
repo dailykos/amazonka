@@ -54,8 +54,8 @@ import Network.AWS.Response
 -- /See:/ 'listStreams' smart constructor.
 data ListStreams = ListStreams'
   { _lsExclusiveStartStreamARN :: !(Maybe Text)
-  , _lsLimit                   :: !(Maybe Nat)
-  , _lsTableName               :: !(Maybe Text)
+  , _lsLimit :: !(Maybe Nat)
+  , _lsTableName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -63,7 +63,7 @@ data ListStreams = ListStreams'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lsExclusiveStartStreamARN' - The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedStreamArn@ in the previous operation.
+-- * 'lsExclusiveStartStreamARN' - The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedStreamArn@ in the previous operation. 
 --
 -- * 'lsLimit' - The maximum number of streams to return. The upper limit is 100.
 --
@@ -78,7 +78,7 @@ listStreams =
     }
 
 
--- | The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedStreamArn@ in the previous operation.
+-- | The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedStreamArn@ in the previous operation. 
 lsExclusiveStartStreamARN :: Lens' ListStreams (Maybe Text)
 lsExclusiveStartStreamARN = lens _lsExclusiveStartStreamARN (\ s a -> s{_lsExclusiveStartStreamARN = a})
 
@@ -137,8 +137,8 @@ instance ToQuery ListStreams where
 -- /See:/ 'listStreamsResponse' smart constructor.
 data ListStreamsResponse = ListStreamsResponse'
   { _lsrsLastEvaluatedStreamARN :: !(Maybe Text)
-  , _lsrsStreams                :: !(Maybe [Stream])
-  , _lsrsResponseStatus         :: !Int
+  , _lsrsStreams :: !(Maybe [Stream])
+  , _lsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

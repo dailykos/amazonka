@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -57,7 +57,6 @@ module Network.AWS.CloudFront.Types
     , _TooManyFieldLevelEncryptionEncryptionEntities
     , _TooManyStreamingDistributionCNAMEs
     , _FieldLevelEncryptionProfileAlreadyExists
-    , _ResourceInUse
     , _InvalidRequiredProtocol
     , _TooManyDistributions
     , _TooManyCertificates
@@ -77,6 +76,7 @@ module Network.AWS.CloudFront.Types
     , _PublicKeyInUse
     , _TrustedSignerDoesNotExist
     , _InvalidProtocolSettings
+    , _TooManyOriginGroupsPerDistribution
     , _TooManyPublicKeys
     , _NoSuchFieldLevelEncryptionConfig
     , _TooManyFieldLevelEncryptionContentTypeProfiles
@@ -309,6 +309,7 @@ module Network.AWS.CloudFront.Types
     , DistributionConfig
     , distributionConfig
     , dcHTTPVersion
+    , dcOriginGroups
     , dcAliases
     , dcDefaultRootObject
     , dcPriceClass
@@ -344,6 +345,7 @@ module Network.AWS.CloudFront.Types
     -- * DistributionSummary
     , DistributionSummary
     , distributionSummary
+    , dsOriginGroups
     , dsId
     , dsARN
     , dsStatus
@@ -507,6 +509,7 @@ module Network.AWS.CloudFront.Types
     -- * LambdaFunctionAssociation
     , LambdaFunctionAssociation
     , lambdaFunctionAssociation
+    , lfaIncludeBody
     , lfaLambdaFunctionARN
     , lfaEventType
 
@@ -540,6 +543,35 @@ module Network.AWS.CloudFront.Types
     , ochHeaderName
     , ochHeaderValue
 
+    -- * OriginGroup
+    , OriginGroup
+    , originGroup
+    , ogId
+    , ogFailoverCriteria
+    , ogMembers
+
+    -- * OriginGroupFailoverCriteria
+    , OriginGroupFailoverCriteria
+    , originGroupFailoverCriteria
+    , ogfcStatusCodes
+
+    -- * OriginGroupMember
+    , OriginGroupMember
+    , originGroupMember
+    , ogmOriginId
+
+    -- * OriginGroupMembers
+    , OriginGroupMembers
+    , originGroupMembers
+    , ogmQuantity
+    , ogmItems
+
+    -- * OriginGroups
+    , OriginGroups
+    , originGroups
+    , ogItems
+    , ogQuantity
+
     -- * OriginSSLProtocols
     , OriginSSLProtocols
     , originSSLProtocols
@@ -549,8 +581,8 @@ module Network.AWS.CloudFront.Types
     -- * Origins
     , Origins
     , origins
-    , oItems
     , oQuantity
+    , oItems
 
     -- * Paths
     , Paths
@@ -635,6 +667,12 @@ module Network.AWS.CloudFront.Types
     , signer
     , sAWSAccountNumber
     , sKeyPairIds
+
+    -- * StatusCodes
+    , StatusCodes
+    , statusCodes
+    , scQuantity
+    , scItems
 
     -- * StreamingDistribution
     , StreamingDistribution
@@ -738,14 +776,14 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 
--- | API version @2017-10-30@ of the Amazon CloudFront SDK configuration.
+-- | API version @2018-11-05@ of the Amazon CloudFront SDK configuration.
 cloudFront :: Service
 cloudFront =
   Service
     { _svcAbbrev = "CloudFront"
     , _svcSigner = v4
     , _svcPrefix = "cloudfront"
-    , _svcVersion = "2017-10-30"
+    , _svcVersion = "2018-11-05"
     , _svcEndpoint = defaultEndpoint cloudFront
     , _svcTimeout = Just 70
     , _svcCheck = statusSuccess
@@ -1028,7 +1066,7 @@ _PublicKeyAlreadyExists =
   _MatchServiceError cloudFront "PublicKeyAlreadyExists" . hasStatus 409
 
 
--- | No origin exists with the specified @Origin Id@ .
+-- | No origin exists with the specified @Origin Id@ . 
 --
 --
 _NoSuchOrigin :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1083,11 +1121,6 @@ _FieldLevelEncryptionProfileAlreadyExists :: AsError a => Getting (First Service
 _FieldLevelEncryptionProfileAlreadyExists =
   _MatchServiceError cloudFront "FieldLevelEncryptionProfileAlreadyExists" .
   hasStatus 409
-
-
--- | Prism for ResourceInUse' errors.
-_ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUse = _MatchServiceError cloudFront "ResourceInUse" . hasStatus 409
 
 
 -- | This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the @RequiredProtocols@ element from your distribution configuration.
@@ -1157,7 +1190,7 @@ _IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior =
   hasStatus 400
 
 
--- | Origin and @CallerReference@ cannot be updated.
+-- | Origin and @CallerReference@ cannot be updated. 
 --
 --
 _IllegalUpdate :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1181,7 +1214,7 @@ _FieldLevelEncryptionConfigAlreadyExists =
   hasStatus 409
 
 
--- | The precondition given in one or more of the request-header fields evaluated to @false@ .
+-- | The precondition given in one or more of the request-header fields evaluated to @false@ . 
 --
 --
 _PreconditionFailed :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1215,7 +1248,7 @@ _NoSuchPublicKey =
   _MatchServiceError cloudFront "NoSuchPublicKey" . hasStatus 404
 
 
--- | The specified public key is in use.
+-- | The specified public key is in use. 
 --
 --
 _PublicKeyInUse :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1236,6 +1269,15 @@ _TrustedSignerDoesNotExist =
 _InvalidProtocolSettings :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidProtocolSettings =
   _MatchServiceError cloudFront "InvalidProtocolSettings" . hasStatus 400
+
+
+-- | Processing your request would cause you to exceed the maximum number of origin groups allowed.
+--
+--
+_TooManyOriginGroupsPerDistribution :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyOriginGroupsPerDistribution =
+  _MatchServiceError cloudFront "TooManyOriginGroupsPerDistribution" .
+  hasStatus 400
 
 
 -- | The maximum number of public keys for field-level encryption have been created. To create a new public key, delete one of the existing keys.
@@ -1291,7 +1333,7 @@ _TooManyLambdaFunctionAssociations =
   hasStatus 400
 
 
--- | If the @CallerReference@ is a value you already sent in a previous request to create an identity but the content of the @CloudFrontOriginAccessIdentityConfig@ is different from the original request, CloudFront returns a @CloudFrontOriginAccessIdentityAlreadyExists@ error.
+-- | If the @CallerReference@ is a value you already sent in a previous request to create an identity but the content of the @CloudFrontOriginAccessIdentityConfig@ is different from the original request, CloudFront returns a @CloudFrontOriginAccessIdentityAlreadyExists@ error. 
 --
 --
 _CloudFrontOriginAccessIdentityAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError

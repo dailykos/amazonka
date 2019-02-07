@@ -47,9 +47,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'setUserMFAPreference' smart constructor.
 data SetUserMFAPreference = SetUserMFAPreference'
-  { _sumpSMSMFASettings           :: !(Maybe SMSMFASettingsType)
+  { _sumpSMSMFASettings :: !(Maybe SMSMFASettingsType)
   , _sumpSoftwareTokenMFASettings :: !(Maybe SoftwareTokenMFASettingsType)
-  , _sumpAccessToken              :: !(Sensitive Text)
+  , _sumpAccessToken :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

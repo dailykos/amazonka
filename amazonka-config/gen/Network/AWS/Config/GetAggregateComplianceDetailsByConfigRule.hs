@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule. The results indicate which AWS resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
+-- Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule. The results indicate which AWS resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule. 
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
     (
     -- * Creating a Request
@@ -47,19 +49,20 @@ module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAggregateComplianceDetailsByConfigRule' smart constructor.
 data GetAggregateComplianceDetailsByConfigRule = GetAggregateComplianceDetailsByConfigRule'
-  { _gacdbcrNextToken                   :: !(Maybe Text)
-  , _gacdbcrLimit                       :: !(Maybe Nat)
-  , _gacdbcrComplianceType              :: !(Maybe ComplianceType)
+  { _gacdbcrNextToken :: !(Maybe Text)
+  , _gacdbcrLimit :: !(Maybe Nat)
+  , _gacdbcrComplianceType :: !(Maybe ComplianceType)
   , _gacdbcrConfigurationAggregatorName :: !Text
-  , _gacdbcrConfigRuleName              :: !Text
-  , _gacdbcrAccountId                   :: !Text
-  , _gacdbcrAWSRegion                   :: !Text
+  , _gacdbcrConfigRuleName :: !Text
+  , _gacdbcrAccountId :: !Text
+  , _gacdbcrAWSRegion :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -126,6 +129,17 @@ gacdbcrAccountId = lens _gacdbcrAccountId (\ s a -> s{_gacdbcrAccountId = a})
 gacdbcrAWSRegion :: Lens' GetAggregateComplianceDetailsByConfigRule Text
 gacdbcrAWSRegion = lens _gacdbcrAWSRegion (\ s a -> s{_gacdbcrAWSRegion = a})
 
+instance AWSPager
+           GetAggregateComplianceDetailsByConfigRule
+         where
+        page rq rs
+          | stop (rs ^. gacdbcrrsNextToken) = Nothing
+          | stop (rs ^. gacdbcrrsAggregateEvaluationResults) =
+            Nothing
+          | otherwise =
+            Just $ rq &
+              gacdbcrNextToken .~ rs ^. gacdbcrrsNextToken
+
 instance AWSRequest
            GetAggregateComplianceDetailsByConfigRule
          where
@@ -189,9 +203,9 @@ instance ToQuery
 
 -- | /See:/ 'getAggregateComplianceDetailsByConfigRuleResponse' smart constructor.
 data GetAggregateComplianceDetailsByConfigRuleResponse = GetAggregateComplianceDetailsByConfigRuleResponse'
-  { _gacdbcrrsNextToken                  :: !(Maybe Text)
+  { _gacdbcrrsNextToken :: !(Maybe Text)
   , _gacdbcrrsAggregateEvaluationResults :: !(Maybe [AggregateEvaluationResult])
-  , _gacdbcrrsResponseStatus             :: !Int
+  , _gacdbcrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'createRepository' smart constructor.
 data CreateRepository = CreateRepository'
   { _crRepositoryDescription :: !(Maybe Text)
-  , _crRepositoryName        :: !Text
+  , _crRepositoryName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -123,7 +123,7 @@ instance ToQuery CreateRepository where
 -- /See:/ 'createRepositoryResponse' smart constructor.
 data CreateRepositoryResponse = CreateRepositoryResponse'
   { _crrsRepositoryMetadata :: !(Maybe RepositoryMetadata)
-  , _crrsResponseStatus     :: !Int
+  , _crrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

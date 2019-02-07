@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -30,6 +30,9 @@ module Network.AWS.Budgets.Types
     -- * ComparisonOperator
     , ComparisonOperator (..)
 
+    -- * NotificationState
+    , NotificationState (..)
+
     -- * NotificationType
     , NotificationType (..)
 
@@ -46,6 +49,7 @@ module Network.AWS.Budgets.Types
     , Budget
     , budget
     , bCalculatedSpend
+    , bLastUpdatedTime
     , bBudgetLimit
     , bTimePeriod
     , bCostTypes
@@ -53,6 +57,23 @@ module Network.AWS.Budgets.Types
     , bBudgetName
     , bTimeUnit
     , bBudgetType
+
+    -- * BudgetPerformanceHistory
+    , BudgetPerformanceHistory
+    , budgetPerformanceHistory
+    , bphBudgetedAndActualAmountsList
+    , bphTimeUnit
+    , bphBudgetName
+    , bphBudgetType
+    , bphCostTypes
+    , bphCostFilters
+
+    -- * BudgetedAndActualAmounts
+    , BudgetedAndActualAmounts
+    , budgetedAndActualAmounts
+    , baaaTimePeriod
+    , baaaActualAmount
+    , baaaBudgetedAmount
 
     -- * CalculatedSpend
     , CalculatedSpend
@@ -79,6 +100,7 @@ module Network.AWS.Budgets.Types
     , Notification
     , notification
     , nThresholdType
+    , nNotificationState
     , nNotificationType
     , nComparisonOperator
     , nThreshold

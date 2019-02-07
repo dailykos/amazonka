@@ -47,8 +47,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'removeFacetFromObject' smart constructor.
 data RemoveFacetFromObject = RemoveFacetFromObject'
-  { _rffoDirectoryARN    :: !Text
-  , _rffoSchemaFacet     :: !SchemaFacet
+  { _rffoDirectoryARN :: !Text
+  , _rffoSchemaFacet :: !SchemaFacet
   , _rffoObjectReference :: !ObjectReference
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

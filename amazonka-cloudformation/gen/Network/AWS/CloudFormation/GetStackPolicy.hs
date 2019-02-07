@@ -102,7 +102,7 @@ instance ToQuery GetStackPolicy where
 -- /See:/ 'getStackPolicyResponse' smart constructor.
 data GetStackPolicyResponse = GetStackPolicyResponse'
   { _gsprsStackPolicyBody :: !(Maybe Text)
-  , _gsprsResponseStatus  :: !Int
+  , _gsprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -54,8 +54,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'getDeployment' smart constructor.
 data GetDeployment = GetDeployment'
-  { _gEmbed        :: !(Maybe [Text])
-  , _gRestAPIId    :: !Text
+  { _gEmbed :: !(Maybe [Text])
+  , _gRestAPIId :: !Text
   , _gDeploymentId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

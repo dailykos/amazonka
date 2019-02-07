@@ -54,11 +54,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'listPullRequests' smart constructor.
 data ListPullRequests = ListPullRequests'
-  { _lprAuthorARN         :: !(Maybe Text)
-  , _lprNextToken         :: !(Maybe Text)
+  { _lprAuthorARN :: !(Maybe Text)
+  , _lprNextToken :: !(Maybe Text)
   , _lprPullRequestStatus :: !(Maybe PullRequestStatusEnum)
-  , _lprMaxResults        :: !(Maybe Int)
-  , _lprRepositoryName    :: !Text
+  , _lprMaxResults :: !(Maybe Int)
+  , _lprRepositoryName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -157,7 +157,7 @@ instance ToQuery ListPullRequests where
 
 -- | /See:/ 'listPullRequestsResponse' smart constructor.
 data ListPullRequestsResponse = ListPullRequestsResponse'
-  { _lprrsNextToken      :: !(Maybe Text)
+  { _lprrsNextToken :: !(Maybe Text)
   , _lprrsResponseStatus :: !Int
   , _lprrsPullRequestIds :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)

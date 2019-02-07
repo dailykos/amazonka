@@ -49,13 +49,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeOrderableReplicationInstances' smart constructor.
 data DescribeOrderableReplicationInstances = DescribeOrderableReplicationInstances'
-  { _doriMarker     :: !(Maybe Text)
+  { _doriMarker :: !(Maybe Text)
   , _doriMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -64,7 +64,7 @@ data DescribeOrderableReplicationInstances = DescribeOrderableReplicationInstanc
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'doriMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'doriMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'doriMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeOrderableReplicationInstances
@@ -74,7 +74,7 @@ describeOrderableReplicationInstances =
     {_doriMarker = Nothing, _doriMaxRecords = Nothing}
 
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 doriMarker :: Lens' DescribeOrderableReplicationInstances (Maybe Text)
 doriMarker = lens _doriMarker (\ s a -> s{_doriMarker = a})
 
@@ -142,7 +142,7 @@ instance ToQuery
          where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
@@ -158,7 +158,7 @@ data DescribeOrderableReplicationInstancesResponse = DescribeOrderableReplicatio
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dorirsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dorirsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dorirsOrderableReplicationInstances' - The order-able replication instances available.
 --
@@ -174,7 +174,7 @@ describeOrderableReplicationInstancesResponse pResponseStatus_ =
     }
 
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dorirsMarker :: Lens' DescribeOrderableReplicationInstancesResponse (Maybe Text)
 dorirsMarker = lens _dorirsMarker (\ s a -> s{_dorirsMarker = a})
 

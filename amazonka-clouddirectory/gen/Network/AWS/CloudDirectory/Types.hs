@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -63,6 +63,9 @@ module Network.AWS.CloudDirectory.Types
 
     -- * FacetAttributeType
     , FacetAttributeType (..)
+
+    -- * FacetStyle
+    , FacetStyle (..)
 
     -- * ObjectType
     , ObjectType (..)
@@ -234,6 +237,17 @@ module Network.AWS.CloudDirectory.Types
     , BatchDetachTypedLinkResponse
     , batchDetachTypedLinkResponse
 
+    -- * BatchGetLinkAttributes
+    , BatchGetLinkAttributes
+    , batchGetLinkAttributes
+    , bglaTypedLinkSpecifier
+    , bglaAttributeNames
+
+    -- * BatchGetLinkAttributesResponse
+    , BatchGetLinkAttributesResponse
+    , batchGetLinkAttributesResponse
+    , bglaAttributes
+
     -- * BatchGetObjectAttributes
     , BatchGetObjectAttributes
     , batchGetObjectAttributes
@@ -339,18 +353,31 @@ module Network.AWS.CloudDirectory.Types
     , bloppPathToObjectIdentifiersList
     , bloppNextToken
 
+    -- * BatchListObjectParents
+    , BatchListObjectParents
+    , batchListObjectParents
+    , bloplNextToken
+    , bloplMaxResults
+    , bloplObjectReference
+
+    -- * BatchListObjectParentsResponse
+    , BatchListObjectParentsResponse
+    , batchListObjectParentsResponse
+    , blopNextToken
+    , blopParentLinks
+
     -- * BatchListObjectPolicies
     , BatchListObjectPolicies
     , batchListObjectPolicies
-    , blopsNextToken
-    , blopsMaxResults
-    , blopsObjectReference
+    , bbNextToken
+    , bbMaxResults
+    , bbObjectReference
 
     -- * BatchListObjectPoliciesResponse
     , BatchListObjectPoliciesResponse
     , batchListObjectPoliciesResponse
-    , blopNextToken
-    , blopAttachedPolicyIds
+    , blopsNextToken
+    , blopsAttachedPolicyIds
 
     -- * BatchListOutgoingTypedLinks
     , BatchListOutgoingTypedLinks
@@ -409,8 +436,10 @@ module Network.AWS.CloudDirectory.Types
     , broListObjectParentPaths
     , broListObjectAttributes
     , broListIncomingTypedLinks
+    , broGetLinkAttributes
     , broGetObjectAttributes
     , broListObjectChildren
+    , broListObjectParents
     , broListPolicyAttachments
     , broListOutgoingTypedLinks
     , broListObjectPolicies
@@ -431,8 +460,10 @@ module Network.AWS.CloudDirectory.Types
     , brsListObjectParentPaths
     , brsListObjectAttributes
     , brsListIncomingTypedLinks
+    , brsGetLinkAttributes
     , brsGetObjectAttributes
     , brsListObjectChildren
+    , brsListObjectParents
     , brsListPolicyAttachments
     , brsListOutgoingTypedLinks
     , brsListObjectPolicies
@@ -446,6 +477,16 @@ module Network.AWS.CloudDirectory.Types
     -- * BatchRemoveFacetFromObjectResponse
     , BatchRemoveFacetFromObjectResponse
     , batchRemoveFacetFromObjectResponse
+
+    -- * BatchUpdateLinkAttributes
+    , BatchUpdateLinkAttributes
+    , batchUpdateLinkAttributes
+    , bulaTypedLinkSpecifier
+    , bulaAttributeUpdates
+
+    -- * BatchUpdateLinkAttributesResponse
+    , BatchUpdateLinkAttributesResponse
+    , batchUpdateLinkAttributesResponse
 
     -- * BatchUpdateObjectAttributes
     , BatchUpdateObjectAttributes
@@ -474,6 +515,7 @@ module Network.AWS.CloudDirectory.Types
     , bDetachTypedLink
     , bUpdateObjectAttributes
     , bAttachPolicy
+    , bUpdateLinkAttributes
     , bAttachToIndex
 
     -- * BatchWriteOperationResponse
@@ -492,6 +534,7 @@ module Network.AWS.CloudDirectory.Types
     , bwoDetachTypedLink
     , bwoUpdateObjectAttributes
     , bwoAttachPolicy
+    , bwoUpdateLinkAttributes
     , bwoAttachToIndex
 
     -- * Directory
@@ -505,6 +548,7 @@ module Network.AWS.CloudDirectory.Types
     -- * Facet
     , Facet
     , facet
+    , fFacetStyle
     , fObjectType
     , fName
 
@@ -542,6 +586,18 @@ module Network.AWS.CloudDirectory.Types
     , iaIndexedAttributes
     , iaObjectIdentifier
 
+    -- * LinkAttributeAction
+    , LinkAttributeAction
+    , linkAttributeAction
+    , laaAttributeActionType
+    , laaAttributeUpdateValue
+
+    -- * LinkAttributeUpdate
+    , LinkAttributeUpdate
+    , linkAttributeUpdate
+    , lauAttributeAction
+    , lauAttributeKey
+
     -- * ObjectAttributeAction
     , ObjectAttributeAction
     , objectAttributeAction
@@ -559,6 +615,12 @@ module Network.AWS.CloudDirectory.Types
     , objectAttributeUpdate
     , oauObjectAttributeAction
     , oauObjectAttributeKey
+
+    -- * ObjectIdentifierAndLinkNameTuple
+    , ObjectIdentifierAndLinkNameTuple
+    , objectIdentifierAndLinkNameTuple
+    , oialntObjectIdentifier
+    , oialntLinkName
 
     -- * ObjectReference
     , ObjectReference
@@ -669,14 +731,14 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 
--- | API version @2016-05-10@ of the Amazon CloudDirectory SDK configuration.
+-- | API version @2017-01-11@ of the Amazon CloudDirectory SDK configuration.
 cloudDirectory :: Service
 cloudDirectory =
   Service
     { _svcAbbrev = "CloudDirectory"
     , _svcSigner = v4
     , _svcPrefix = "clouddirectory"
-    , _svcVersion = "2016-05-10"
+    , _svcVersion = "2017-01-11"
     , _svcEndpoint = defaultEndpoint cloudDirectory
     , _svcTimeout = Just 70
     , _svcCheck = statusSuccess
@@ -758,7 +820,7 @@ _InvalidSchemaDocException =
   _MatchServiceError cloudDirectory "InvalidSchemaDocException" . hasStatus 400
 
 
--- | Indicates that an attempt to attach an object with the same link name or to apply a schema with the same name has occurred. Rename the link or the schema and then try again.
+-- | Indicates that an attempt to make an attachment was invalid. For example, attaching two nodes with a link type that is not applicable to the nodes or attempting to apply a schema to a directory a second time.
 --
 --
 _InvalidAttachmentException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -986,7 +1048,7 @@ _FacetNotFoundException =
   _MatchServiceError cloudDirectory "FacetNotFoundException" . hasStatus 400
 
 
--- | Indicates that limits are exceeded. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html Limits> for more information.
+-- | Indicates that limits are exceeded. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html Limits> for more information.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError

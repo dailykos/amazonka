@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'updateUserAttributes' smart constructor.
 data UpdateUserAttributes = UpdateUserAttributes'
   { _uuaUserAttributes :: ![AttributeType]
-  , _uuaAccessToken    :: !(Sensitive Text)
+  , _uuaAccessToken :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -124,7 +124,7 @@ instance ToQuery UpdateUserAttributes where
 -- /See:/ 'updateUserAttributesResponse' smart constructor.
 data UpdateUserAttributesResponse = UpdateUserAttributesResponse'
   { _uuarsCodeDeliveryDetailsList :: !(Maybe [CodeDeliveryDetailsType])
-  , _uuarsResponseStatus          :: !Int
+  , _uuarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -27,9 +27,9 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'awsSessionCredentials' smart constructor.
 data AWSSessionCredentials = AWSSessionCredentials'
-  { _ascAccessKeyId     :: !Text
+  { _ascAccessKeyId :: !Text
   , _ascSecretAccessKey :: !Text
-  , _ascSessionToken    :: !Text
+  , _ascSessionToken :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -120,13 +120,13 @@ instance NFData ActionConfiguration where
 --
 -- /See:/ 'actionConfigurationProperty' smart constructor.
 data ActionConfigurationProperty = ActionConfigurationProperty'
-  { _acpQueryable   :: !(Maybe Bool)
-  , _acpType        :: !(Maybe ActionConfigurationPropertyType)
+  { _acpQueryable :: !(Maybe Bool)
+  , _acpType :: !(Maybe ActionConfigurationPropertyType)
   , _acpDescription :: !(Maybe Text)
-  , _acpName        :: !Text
-  , _acpRequired    :: !Bool
-  , _acpKey         :: !Bool
-  , _acpSecret      :: !Bool
+  , _acpName :: !Text
+  , _acpRequired :: !Bool
+  , _acpKey :: !Bool
+  , _acpSecret :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -261,12 +261,13 @@ instance NFData ActionContext where
 -- /See:/ 'actionDeclaration' smart constructor.
 data ActionDeclaration = ActionDeclaration'
   { _adOutputArtifacts :: !(Maybe [OutputArtifact])
-  , _adRunOrder        :: !(Maybe Nat)
-  , _adConfiguration   :: !(Maybe (Map Text Text))
-  , _adInputArtifacts  :: !(Maybe [InputArtifact])
-  , _adRoleARN         :: !(Maybe Text)
-  , _adName            :: !Text
-  , _adActionTypeId    :: !ActionTypeId
+  , _adRunOrder :: !(Maybe Nat)
+  , _adRegion :: !(Maybe Text)
+  , _adConfiguration :: !(Maybe (Map Text Text))
+  , _adInputArtifacts :: !(Maybe [InputArtifact])
+  , _adRoleARN :: !(Maybe Text)
+  , _adName :: !Text
+  , _adActionTypeId :: !ActionTypeId
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -277,6 +278,8 @@ data ActionDeclaration = ActionDeclaration'
 -- * 'adOutputArtifacts' - The name or ID of the result of the action declaration, such as a test or build artifact.
 --
 -- * 'adRunOrder' - The order in which actions are run.
+--
+-- * 'adRegion' - The action declaration's AWS Region, such as us-east-1.
 --
 -- * 'adConfiguration' - The action declaration's configuration.
 --
@@ -295,6 +298,7 @@ actionDeclaration pName_ pActionTypeId_ =
   ActionDeclaration'
     { _adOutputArtifacts = Nothing
     , _adRunOrder = Nothing
+    , _adRegion = Nothing
     , _adConfiguration = Nothing
     , _adInputArtifacts = Nothing
     , _adRoleARN = Nothing
@@ -310,6 +314,10 @@ adOutputArtifacts = lens _adOutputArtifacts (\ s a -> s{_adOutputArtifacts = a})
 -- | The order in which actions are run.
 adRunOrder :: Lens' ActionDeclaration (Maybe Natural)
 adRunOrder = lens _adRunOrder (\ s a -> s{_adRunOrder = a}) . mapping _Nat
+
+-- | The action declaration's AWS Region, such as us-east-1.
+adRegion :: Lens' ActionDeclaration (Maybe Text)
+adRegion = lens _adRegion (\ s a -> s{_adRegion = a})
 
 -- | The action declaration's configuration.
 adConfiguration :: Lens' ActionDeclaration (HashMap Text Text)
@@ -338,6 +346,7 @@ instance FromJSON ActionDeclaration where
                  ActionDeclaration' <$>
                    (x .:? "outputArtifacts" .!= mempty) <*>
                      (x .:? "runOrder")
+                     <*> (x .:? "region")
                      <*> (x .:? "configuration" .!= mempty)
                      <*> (x .:? "inputArtifacts" .!= mempty)
                      <*> (x .:? "roleArn")
@@ -354,6 +363,7 @@ instance ToJSON ActionDeclaration where
               (catMaybes
                  [("outputArtifacts" .=) <$> _adOutputArtifacts,
                   ("runOrder" .=) <$> _adRunOrder,
+                  ("region" .=) <$> _adRegion,
                   ("configuration" .=) <$> _adConfiguration,
                   ("inputArtifacts" .=) <$> _adInputArtifacts,
                   ("roleArn" .=) <$> _adRoleARN,
@@ -366,15 +376,15 @@ instance ToJSON ActionDeclaration where
 --
 -- /See:/ 'actionExecution' smart constructor.
 data ActionExecution = ActionExecution'
-  { _aeLastUpdatedBy        :: !(Maybe Text)
-  , _aeSummary              :: !(Maybe Text)
-  , _aeStatus               :: !(Maybe ActionExecutionStatus)
-  , _aeLastStatusChange     :: !(Maybe POSIX)
-  , _aeToken                :: !(Maybe Text)
+  { _aeLastUpdatedBy :: !(Maybe Text)
+  , _aeSummary :: !(Maybe Text)
+  , _aeStatus :: !(Maybe ActionExecutionStatus)
+  , _aeLastStatusChange :: !(Maybe POSIX)
+  , _aeToken :: !(Maybe Text)
   , _aeExternalExecutionURL :: !(Maybe Text)
-  , _aeExternalExecutionId  :: !(Maybe Text)
-  , _aeErrorDetails         :: !(Maybe ErrorDetails)
-  , _aePercentComplete      :: !(Maybe Nat)
+  , _aeExternalExecutionId :: !(Maybe Text)
+  , _aeErrorDetails :: !(Maybe ErrorDetails)
+  , _aePercentComplete :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -475,9 +485,9 @@ instance NFData ActionExecution where
 --
 -- /See:/ 'actionRevision' smart constructor.
 data ActionRevision = ActionRevision'
-  { _aRevisionId       :: !Text
+  { _aRevisionId :: !Text
   , _aRevisionChangeId :: !Text
-  , _aCreated          :: !POSIX
+  , _aCreated :: !POSIX
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -541,9 +551,9 @@ instance ToJSON ActionRevision where
 --
 -- /See:/ 'actionState' smart constructor.
 data ActionState = ActionState'
-  { _asRevisionURL     :: !(Maybe Text)
-  , _asEntityURL       :: !(Maybe Text)
-  , _asActionName      :: !(Maybe Text)
+  { _asRevisionURL :: !(Maybe Text)
+  , _asEntityURL :: !(Maybe Text)
+  , _asActionName :: !(Maybe Text)
   , _asCurrentRevision :: !(Maybe ActionRevision)
   , _asLatestExecution :: !(Maybe ActionExecution)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -614,11 +624,11 @@ instance NFData ActionState where
 --
 -- /See:/ 'actionType' smart constructor.
 data ActionType = ActionType'
-  { _atSettings                      :: !(Maybe ActionTypeSettings)
+  { _atSettings :: !(Maybe ActionTypeSettings)
   , _atActionConfigurationProperties :: !(Maybe [ActionConfigurationProperty])
-  , _atId                            :: !ActionTypeId
-  , _atInputArtifactDetails          :: !ArtifactDetails
-  , _atOutputArtifactDetails         :: !ArtifactDetails
+  , _atId :: !ActionTypeId
+  , _atInputArtifactDetails :: !ArtifactDetails
+  , _atOutputArtifactDetails :: !ArtifactDetails
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -692,9 +702,9 @@ instance NFData ActionType where
 -- /See:/ 'actionTypeId' smart constructor.
 data ActionTypeId = ActionTypeId'
   { _atiCategory :: !ActionCategory
-  , _atiOwner    :: !ActionOwner
+  , _atiOwner :: !ActionOwner
   , _atiProvider :: !Text
-  , _atiVersion  :: !Text
+  , _atiVersion :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -769,9 +779,9 @@ instance ToJSON ActionTypeId where
 -- /See:/ 'actionTypeSettings' smart constructor.
 data ActionTypeSettings = ActionTypeSettings'
   { _atsThirdPartyConfigurationURL :: !(Maybe Text)
-  , _atsExecutionURLTemplate       :: !(Maybe Text)
-  , _atsRevisionURLTemplate        :: !(Maybe Text)
-  , _atsEntityURLTemplate          :: !(Maybe Text)
+  , _atsExecutionURLTemplate :: !(Maybe Text)
+  , _atsRevisionURLTemplate :: !(Maybe Text)
+  , _atsEntityURLTemplate :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -846,7 +856,7 @@ instance ToJSON ActionTypeSettings where
 -- /See:/ 'approvalResult' smart constructor.
 data ApprovalResult = ApprovalResult'
   { _arSummary :: !Text
-  , _arStatus  :: !ApprovalStatus
+  , _arStatus :: !ApprovalStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -891,7 +901,7 @@ instance ToJSON ApprovalResult where
 -- /See:/ 'artifact' smart constructor.
 data Artifact = Artifact'
   { _aLocation :: !(Maybe ArtifactLocation)
-  , _aName     :: !(Maybe Text)
+  , _aName :: !(Maybe Text)
   , _aRevision :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -997,7 +1007,7 @@ instance ToJSON ArtifactDetails where
 -- /See:/ 'artifactLocation' smart constructor.
 data ArtifactLocation = ArtifactLocation'
   { _alS3Location :: !(Maybe S3ArtifactLocation)
-  , _alType       :: !(Maybe ArtifactLocationType)
+  , _alType :: !(Maybe ArtifactLocationType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1033,17 +1043,17 @@ instance Hashable ArtifactLocation where
 
 instance NFData ArtifactLocation where
 
--- | Represents revision details of an artifact.
+-- | Represents revision details of an artifact. 
 --
 --
 --
 -- /See:/ 'artifactRevision' smart constructor.
 data ArtifactRevision = ArtifactRevision'
-  { _arRevisionSummary          :: !(Maybe Text)
-  , _arRevisionURL              :: !(Maybe Text)
-  , _arCreated                  :: !(Maybe POSIX)
-  , _arName                     :: !(Maybe Text)
-  , _arRevisionId               :: !(Maybe Text)
+  { _arRevisionSummary :: !(Maybe Text)
+  , _arRevisionURL :: !(Maybe Text)
+  , _arCreated :: !(Maybe POSIX)
+  , _arName :: !(Maybe Text)
+  , _arRevisionId :: !(Maybe Text)
   , _arRevisionChangeIdentifier :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1122,8 +1132,8 @@ instance NFData ArtifactRevision where
 -- /See:/ 'artifactStore' smart constructor.
 data ArtifactStore = ArtifactStore'
   { _asEncryptionKey :: !(Maybe EncryptionKey)
-  , _asType          :: !ArtifactStoreType
-  , _asLocation      :: !Text
+  , _asType :: !ArtifactStoreType
+  , _asLocation :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1234,9 +1244,9 @@ instance ToJSON BlockerDeclaration where
 --
 -- /See:/ 'currentRevision' smart constructor.
 data CurrentRevision = CurrentRevision'
-  { _crRevisionSummary  :: !(Maybe Text)
-  , _crCreated          :: !(Maybe POSIX)
-  , _crRevision         :: !Text
+  { _crRevisionSummary :: !(Maybe Text)
+  , _crCreated :: !(Maybe POSIX)
+  , _crRevision :: !Text
   , _crChangeIdentifier :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1300,7 +1310,7 @@ instance ToJSON CurrentRevision where
 --
 -- /See:/ 'encryptionKey' smart constructor.
 data EncryptionKey = EncryptionKey'
-  { _ekId   :: !Text
+  { _ekId :: !Text
   , _ekType :: !EncryptionKeyType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1349,7 +1359,7 @@ instance ToJSON EncryptionKey where
 --
 -- /See:/ 'errorDetails' smart constructor.
 data ErrorDetails = ErrorDetails'
-  { _edCode    :: !(Maybe Text)
+  { _edCode :: !(Maybe Text)
   , _edMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1391,9 +1401,9 @@ instance NFData ErrorDetails where
 --
 -- /See:/ 'executionDetails' smart constructor.
 data ExecutionDetails = ExecutionDetails'
-  { _edSummary             :: !(Maybe Text)
+  { _edSummary :: !(Maybe Text)
   , _edExternalExecutionId :: !(Maybe Text)
-  , _edPercentComplete     :: !(Maybe Nat)
+  , _edPercentComplete :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1448,8 +1458,8 @@ instance ToJSON ExecutionDetails where
 -- /See:/ 'failureDetails' smart constructor.
 data FailureDetails = FailureDetails'
   { _fdExternalExecutionId :: !(Maybe Text)
-  , _fdType                :: !FailureType
-  , _fdMessage             :: !Text
+  , _fdType :: !FailureType
+  , _fdMessage :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1540,10 +1550,10 @@ instance ToJSON InputArtifact where
 --
 -- /See:/ 'job' smart constructor.
 data Job = Job'
-  { _jData      :: !(Maybe JobData)
+  { _jData :: !(Maybe JobData)
   , _jAccountId :: !(Maybe Text)
-  , _jId        :: !(Maybe Text)
-  , _jNonce     :: !(Maybe Text)
+  , _jId :: !(Maybe Text)
+  , _jNonce :: !(Maybe Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -1600,13 +1610,13 @@ instance NFData Job where
 --
 -- /See:/ 'jobData' smart constructor.
 data JobData = JobData'
-  { _jdContinuationToken   :: !(Maybe Text)
-  , _jdOutputArtifacts     :: !(Maybe [Artifact])
+  { _jdContinuationToken :: !(Maybe Text)
+  , _jdOutputArtifacts :: !(Maybe [Artifact])
   , _jdArtifactCredentials :: !(Maybe (Sensitive AWSSessionCredentials))
-  , _jdPipelineContext     :: !(Maybe PipelineContext)
-  , _jdEncryptionKey       :: !(Maybe EncryptionKey)
-  , _jdActionTypeId        :: !(Maybe ActionTypeId)
-  , _jdInputArtifacts      :: !(Maybe [Artifact])
+  , _jdPipelineContext :: !(Maybe PipelineContext)
+  , _jdEncryptionKey :: !(Maybe EncryptionKey)
+  , _jdActionTypeId :: !(Maybe ActionTypeId)
+  , _jdInputArtifacts :: !(Maybe [Artifact])
   , _jdActionConfiguration :: !(Maybe ActionConfiguration)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -1623,7 +1633,7 @@ data JobData = JobData'
 --
 -- * 'jdPipelineContext' - Represents information about a pipeline to a job worker.
 --
--- * 'jdEncryptionKey' - Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key.
+-- * 'jdEncryptionKey' - Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. 
 --
 -- * 'jdActionTypeId' - Represents information about an action type.
 --
@@ -1661,7 +1671,7 @@ jdArtifactCredentials = lens _jdArtifactCredentials (\ s a -> s{_jdArtifactCrede
 jdPipelineContext :: Lens' JobData (Maybe PipelineContext)
 jdPipelineContext = lens _jdPipelineContext (\ s a -> s{_jdPipelineContext = a})
 
--- | Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key.
+-- | Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. 
 jdEncryptionKey :: Lens' JobData (Maybe EncryptionKey)
 jdEncryptionKey = lens _jdEncryptionKey (\ s a -> s{_jdEncryptionKey = a})
 
@@ -1701,9 +1711,9 @@ instance NFData JobData where
 --
 -- /See:/ 'jobDetails' smart constructor.
 data JobDetails = JobDetails'
-  { _jdData      :: !(Maybe JobData)
+  { _jdData :: !(Maybe JobData)
   , _jdAccountId :: !(Maybe Text)
-  , _jdId        :: !(Maybe Text)
+  , _jdId :: !(Maybe Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -1711,7 +1721,7 @@ data JobDetails = JobDetails'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jdData' - Represents additional information about a job required for a job worker to complete the job.
+-- * 'jdData' - Represents additional information about a job required for a job worker to complete the job. 
 --
 -- * 'jdAccountId' - The AWS account ID associated with the job.
 --
@@ -1722,7 +1732,7 @@ jobDetails =
   JobDetails' {_jdData = Nothing, _jdAccountId = Nothing, _jdId = Nothing}
 
 
--- | Represents additional information about a job required for a job worker to complete the job.
+-- | Represents additional information about a job required for a job worker to complete the job. 
 jdData :: Lens' JobDetails (Maybe JobData)
 jdData = lens _jdData (\ s a -> s{_jdData = a})
 
@@ -1752,12 +1762,12 @@ instance NFData JobDetails where
 --
 -- /See:/ 'listWebhookItem' smart constructor.
 data ListWebhookItem = ListWebhookItem'
-  { _lwiArn           :: !(Maybe Text)
-  , _lwiErrorCode     :: !(Maybe Text)
+  { _lwiArn :: !(Maybe Text)
+  , _lwiErrorCode :: !(Maybe Text)
   , _lwiLastTriggered :: !(Maybe POSIX)
-  , _lwiErrorMessage  :: !(Maybe Text)
-  , _lwiDefinition    :: !WebhookDefinition
-  , _lwiUrl           :: !Text
+  , _lwiErrorMessage :: !(Maybe Text)
+  , _lwiDefinition :: !WebhookDefinition
+  , _lwiUrl :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1874,9 +1884,9 @@ instance ToJSON OutputArtifact where
 --
 -- /See:/ 'pipelineContext' smart constructor.
 data PipelineContext = PipelineContext'
-  { _pcStage        :: !(Maybe StageContext)
+  { _pcStage :: !(Maybe StageContext)
   , _pcPipelineName :: !(Maybe Text)
-  , _pcAction       :: !(Maybe ActionContext)
+  , _pcAction :: !(Maybe ActionContext)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1926,11 +1936,12 @@ instance NFData PipelineContext where
 --
 -- /See:/ 'pipelineDeclaration' smart constructor.
 data PipelineDeclaration = PipelineDeclaration'
-  { _pdVersion       :: !(Maybe Nat)
-  , _pdName          :: !Text
-  , _pdRoleARN       :: !Text
-  , _pdArtifactStore :: !ArtifactStore
-  , _pdStages        :: ![StageDeclaration]
+  { _pdArtifactStores :: !(Maybe (Map Text ArtifactStore))
+  , _pdArtifactStore :: !(Maybe ArtifactStore)
+  , _pdVersion :: !(Maybe Nat)
+  , _pdName :: !Text
+  , _pdRoleARN :: !Text
+  , _pdStages :: ![StageDeclaration]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1938,29 +1949,39 @@ data PipelineDeclaration = PipelineDeclaration'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'pdArtifactStores' - A mapping of artifactStore objects and their corresponding regions. There must be an artifact store for the pipeline region and for each cross-region action within the pipeline. You can only use either artifactStore or artifactStores, not both. If you create a cross-region action in your pipeline, you must use artifactStores.
+--
+-- * 'pdArtifactStore' - Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline. 
+--
 -- * 'pdVersion' - The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically incremented when a pipeline is updated.
 --
 -- * 'pdName' - The name of the action to be performed.
 --
 -- * 'pdRoleARN' - The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to use to assume roles for actions with an actionRoleArn.
 --
--- * 'pdArtifactStore' - Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.
---
 -- * 'pdStages' - The stage in which to perform the action.
 pipelineDeclaration
     :: Text -- ^ 'pdName'
     -> Text -- ^ 'pdRoleARN'
-    -> ArtifactStore -- ^ 'pdArtifactStore'
     -> PipelineDeclaration
-pipelineDeclaration pName_ pRoleARN_ pArtifactStore_ =
+pipelineDeclaration pName_ pRoleARN_ =
   PipelineDeclaration'
-    { _pdVersion = Nothing
+    { _pdArtifactStores = Nothing
+    , _pdArtifactStore = Nothing
+    , _pdVersion = Nothing
     , _pdName = pName_
     , _pdRoleARN = pRoleARN_
-    , _pdArtifactStore = pArtifactStore_
     , _pdStages = mempty
     }
 
+
+-- | A mapping of artifactStore objects and their corresponding regions. There must be an artifact store for the pipeline region and for each cross-region action within the pipeline. You can only use either artifactStore or artifactStores, not both. If you create a cross-region action in your pipeline, you must use artifactStores.
+pdArtifactStores :: Lens' PipelineDeclaration (HashMap Text ArtifactStore)
+pdArtifactStores = lens _pdArtifactStores (\ s a -> s{_pdArtifactStores = a}) . _Default . _Map
+
+-- | Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline. 
+pdArtifactStore :: Lens' PipelineDeclaration (Maybe ArtifactStore)
+pdArtifactStore = lens _pdArtifactStore (\ s a -> s{_pdArtifactStore = a})
 
 -- | The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically incremented when a pipeline is updated.
 pdVersion :: Lens' PipelineDeclaration (Maybe Natural)
@@ -1974,10 +1995,6 @@ pdName = lens _pdName (\ s a -> s{_pdName = a})
 pdRoleARN :: Lens' PipelineDeclaration Text
 pdRoleARN = lens _pdRoleARN (\ s a -> s{_pdRoleARN = a})
 
--- | Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.
-pdArtifactStore :: Lens' PipelineDeclaration ArtifactStore
-pdArtifactStore = lens _pdArtifactStore (\ s a -> s{_pdArtifactStore = a})
-
 -- | The stage in which to perform the action.
 pdStages :: Lens' PipelineDeclaration [StageDeclaration]
 pdStages = lens _pdStages (\ s a -> s{_pdStages = a}) . _Coerce
@@ -1987,9 +2004,11 @@ instance FromJSON PipelineDeclaration where
           = withObject "PipelineDeclaration"
               (\ x ->
                  PipelineDeclaration' <$>
-                   (x .:? "version") <*> (x .: "name") <*>
-                     (x .: "roleArn")
-                     <*> (x .: "artifactStore")
+                   (x .:? "artifactStores" .!= mempty) <*>
+                     (x .:? "artifactStore")
+                     <*> (x .:? "version")
+                     <*> (x .: "name")
+                     <*> (x .: "roleArn")
                      <*> (x .:? "stages" .!= mempty))
 
 instance Hashable PipelineDeclaration where
@@ -2000,10 +2019,11 @@ instance ToJSON PipelineDeclaration where
         toJSON PipelineDeclaration'{..}
           = object
               (catMaybes
-                 [("version" .=) <$> _pdVersion,
+                 [("artifactStores" .=) <$> _pdArtifactStores,
+                  ("artifactStore" .=) <$> _pdArtifactStore,
+                  ("version" .=) <$> _pdVersion,
                   Just ("name" .= _pdName),
                   Just ("roleArn" .= _pdRoleARN),
-                  Just ("artifactStore" .= _pdArtifactStore),
                   Just ("stages" .= _pdStages)])
 
 -- | Represents information about an execution of a pipeline.
@@ -2012,11 +2032,11 @@ instance ToJSON PipelineDeclaration where
 --
 -- /See:/ 'pipelineExecution' smart constructor.
 data PipelineExecution = PipelineExecution'
-  { _peStatus              :: !(Maybe PipelineExecutionStatus)
-  , _pePipelineName        :: !(Maybe Text)
-  , _pePipelineVersion     :: !(Maybe Nat)
+  { _peStatus :: !(Maybe PipelineExecutionStatus)
+  , _pePipelineName :: !(Maybe Text)
+  , _pePipelineVersion :: !(Maybe Nat)
   , _pePipelineExecutionId :: !(Maybe Text)
-  , _peArtifactRevisions   :: !(Maybe [ArtifactRevision])
+  , _peArtifactRevisions :: !(Maybe [ArtifactRevision])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2085,11 +2105,11 @@ instance NFData PipelineExecution where
 --
 -- /See:/ 'pipelineExecutionSummary' smart constructor.
 data PipelineExecutionSummary = PipelineExecutionSummary'
-  { _pesStatus              :: !(Maybe PipelineExecutionStatus)
-  , _pesStartTime           :: !(Maybe POSIX)
+  { _pesStatus :: !(Maybe PipelineExecutionStatus)
+  , _pesStartTime :: !(Maybe POSIX)
   , _pesPipelineExecutionId :: !(Maybe Text)
-  , _pesSourceRevisions     :: !(Maybe [SourceRevision])
-  , _pesLastUpdateTime      :: !(Maybe POSIX)
+  , _pesSourceRevisions :: !(Maybe [SourceRevision])
+  , _pesLastUpdateTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2103,7 +2123,7 @@ data PipelineExecutionSummary = PipelineExecutionSummary'
 --
 -- * 'pesPipelineExecutionId' - The ID of the pipeline execution.
 --
--- * 'pesSourceRevisions' - Undocumented member.
+-- * 'pesSourceRevisions' - A list of the source artifact revisions that initiated a pipeline execution.
 --
 -- * 'pesLastUpdateTime' - The date and time of the last change to the pipeline execution, in timestamp format.
 pipelineExecutionSummary
@@ -2130,7 +2150,7 @@ pesStartTime = lens _pesStartTime (\ s a -> s{_pesStartTime = a}) . mapping _Tim
 pesPipelineExecutionId :: Lens' PipelineExecutionSummary (Maybe Text)
 pesPipelineExecutionId = lens _pesPipelineExecutionId (\ s a -> s{_pesPipelineExecutionId = a})
 
--- | Undocumented member.
+-- | A list of the source artifact revisions that initiated a pipeline execution.
 pesSourceRevisions :: Lens' PipelineExecutionSummary [SourceRevision]
 pesSourceRevisions = lens _pesSourceRevisions (\ s a -> s{_pesSourceRevisions = a}) . _Default . _Coerce
 
@@ -2158,9 +2178,9 @@ instance NFData PipelineExecutionSummary where
 --
 -- /See:/ 'pipelineMetadata' smart constructor.
 data PipelineMetadata = PipelineMetadata'
-  { _pmCreated     :: !(Maybe POSIX)
+  { _pmCreated :: !(Maybe POSIX)
   , _pmPipelineARN :: !(Maybe Text)
-  , _pmUpdated     :: !(Maybe POSIX)
+  , _pmUpdated :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2211,7 +2231,7 @@ instance NFData PipelineMetadata where
 -- /See:/ 'pipelineSummary' smart constructor.
 data PipelineSummary = PipelineSummary'
   { _psCreated :: !(Maybe POSIX)
-  , _psName    :: !(Maybe Text)
+  , _psName :: !(Maybe Text)
   , _psVersion :: !(Maybe Nat)
   , _psUpdated :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2275,7 +2295,7 @@ instance NFData PipelineSummary where
 -- /See:/ 's3ArtifactLocation' smart constructor.
 data S3ArtifactLocation = S3ArtifactLocation'
   { _salBucketName :: !Text
-  , _salObjectKey  :: !Text
+  , _salObjectKey :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2314,12 +2334,16 @@ instance Hashable S3ArtifactLocation where
 
 instance NFData S3ArtifactLocation where
 
--- | /See:/ 'sourceRevision' smart constructor.
+-- | Information about the version (or revision) of a source artifact that initiated a pipeline execution.
+--
+--
+--
+-- /See:/ 'sourceRevision' smart constructor.
 data SourceRevision = SourceRevision'
   { _srRevisionSummary :: !(Maybe Text)
-  , _srRevisionURL     :: !(Maybe Text)
-  , _srRevisionId      :: !(Maybe Text)
-  , _srActionName      :: !Text
+  , _srRevisionURL :: !(Maybe Text)
+  , _srRevisionId :: !(Maybe Text)
+  , _srActionName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2327,13 +2351,13 @@ data SourceRevision = SourceRevision'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srRevisionSummary' - Undocumented member.
+-- * 'srRevisionSummary' - Summary information about the most recent revision of the artifact. For GitHub and AWS CodeCommit repositories, the commit message. For Amazon S3 buckets or actions, the user-provided content of a @codepipeline-artifact-revision-summary@ key specified in the object metadata.
 --
--- * 'srRevisionURL' - Undocumented member.
+-- * 'srRevisionURL' - The commit ID for the artifact revision. For artifacts stored in GitHub or AWS CodeCommit repositories, the commit ID is linked to a commit details page.
 --
--- * 'srRevisionId' - Undocumented member.
+-- * 'srRevisionId' - The system-generated unique ID that identifies the revision number of the artifact.
 --
--- * 'srActionName' - Undocumented member.
+-- * 'srActionName' - The name of the action that processed the revision to the source artifact.
 sourceRevision
     :: Text -- ^ 'srActionName'
     -> SourceRevision
@@ -2346,19 +2370,19 @@ sourceRevision pActionName_ =
     }
 
 
--- | Undocumented member.
+-- | Summary information about the most recent revision of the artifact. For GitHub and AWS CodeCommit repositories, the commit message. For Amazon S3 buckets or actions, the user-provided content of a @codepipeline-artifact-revision-summary@ key specified in the object metadata.
 srRevisionSummary :: Lens' SourceRevision (Maybe Text)
 srRevisionSummary = lens _srRevisionSummary (\ s a -> s{_srRevisionSummary = a})
 
--- | Undocumented member.
+-- | The commit ID for the artifact revision. For artifacts stored in GitHub or AWS CodeCommit repositories, the commit ID is linked to a commit details page.
 srRevisionURL :: Lens' SourceRevision (Maybe Text)
 srRevisionURL = lens _srRevisionURL (\ s a -> s{_srRevisionURL = a})
 
--- | Undocumented member.
+-- | The system-generated unique ID that identifies the revision number of the artifact.
 srRevisionId :: Lens' SourceRevision (Maybe Text)
 srRevisionId = lens _srRevisionId (\ s a -> s{_srRevisionId = a})
 
--- | Undocumented member.
+-- | The name of the action that processed the revision to the source artifact.
 srActionName :: Lens' SourceRevision Text
 srActionName = lens _srActionName (\ s a -> s{_srActionName = a})
 
@@ -2415,8 +2439,8 @@ instance NFData StageContext where
 -- /See:/ 'stageDeclaration' smart constructor.
 data StageDeclaration = StageDeclaration'
   { _sdBlockers :: !(Maybe [BlockerDeclaration])
-  , _sdName     :: !Text
-  , _sdActions  :: ![ActionDeclaration]
+  , _sdName :: !Text
+  , _sdActions :: ![ActionDeclaration]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2476,7 +2500,7 @@ instance ToJSON StageDeclaration where
 -- /See:/ 'stageExecution' smart constructor.
 data StageExecution = StageExecution'
   { _sePipelineExecutionId :: !Text
-  , _seStatus              :: !StageExecutionStatus
+  , _seStatus :: !StageExecutionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2522,9 +2546,9 @@ instance NFData StageExecution where
 -- /See:/ 'stageState' smart constructor.
 data StageState = StageState'
   { _ssInboundTransitionState :: !(Maybe TransitionState)
-  , _ssActionStates           :: !(Maybe [ActionState])
-  , _ssStageName              :: !(Maybe Text)
-  , _ssLatestExecution        :: !(Maybe StageExecution)
+  , _ssActionStates :: !(Maybe [ActionState])
+  , _ssStageName :: !(Maybe Text)
+  , _ssLatestExecution :: !(Maybe StageExecution)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2587,7 +2611,7 @@ instance NFData StageState where
 -- /See:/ 'thirdPartyJob' smart constructor.
 data ThirdPartyJob = ThirdPartyJob'
   { _tpjClientId :: !(Maybe Text)
-  , _tpjJobId    :: !(Maybe Text)
+  , _tpjJobId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2628,13 +2652,13 @@ instance NFData ThirdPartyJob where
 --
 -- /See:/ 'thirdPartyJobData' smart constructor.
 data ThirdPartyJobData = ThirdPartyJobData'
-  { _tpjdContinuationToken   :: !(Maybe Text)
-  , _tpjdOutputArtifacts     :: !(Maybe [Artifact])
+  { _tpjdContinuationToken :: !(Maybe Text)
+  , _tpjdOutputArtifacts :: !(Maybe [Artifact])
   , _tpjdArtifactCredentials :: !(Maybe (Sensitive AWSSessionCredentials))
-  , _tpjdPipelineContext     :: !(Maybe PipelineContext)
-  , _tpjdEncryptionKey       :: !(Maybe EncryptionKey)
-  , _tpjdActionTypeId        :: !(Maybe ActionTypeId)
-  , _tpjdInputArtifacts      :: !(Maybe [Artifact])
+  , _tpjdPipelineContext :: !(Maybe PipelineContext)
+  , _tpjdEncryptionKey :: !(Maybe EncryptionKey)
+  , _tpjdActionTypeId :: !(Maybe ActionTypeId)
+  , _tpjdInputArtifacts :: !(Maybe [Artifact])
   , _tpjdActionConfiguration :: !(Maybe ActionConfiguration)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -2647,7 +2671,7 @@ data ThirdPartyJobData = ThirdPartyJobData'
 --
 -- * 'tpjdOutputArtifacts' - The name of the artifact that will be the result of the action, if any. This name might be system-generated, such as "MyBuiltApp", or might be defined by the user when the action is created.
 --
--- * 'tpjdArtifactCredentials' - Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.
+-- * 'tpjdArtifactCredentials' - Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline. 
 --
 -- * 'tpjdPipelineContext' - Represents information about a pipeline to a job worker.
 --
@@ -2681,7 +2705,7 @@ tpjdContinuationToken = lens _tpjdContinuationToken (\ s a -> s{_tpjdContinuatio
 tpjdOutputArtifacts :: Lens' ThirdPartyJobData [Artifact]
 tpjdOutputArtifacts = lens _tpjdOutputArtifacts (\ s a -> s{_tpjdOutputArtifacts = a}) . _Default . _Coerce
 
--- | Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.
+-- | Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline. 
 tpjdArtifactCredentials :: Lens' ThirdPartyJobData (Maybe AWSSessionCredentials)
 tpjdArtifactCredentials = lens _tpjdArtifactCredentials (\ s a -> s{_tpjdArtifactCredentials = a}) . mapping _Sensitive
 
@@ -2729,8 +2753,8 @@ instance NFData ThirdPartyJobData where
 --
 -- /See:/ 'thirdPartyJobDetails' smart constructor.
 data ThirdPartyJobDetails = ThirdPartyJobDetails'
-  { _tpjdData  :: !(Maybe ThirdPartyJobData)
-  , _tpjdId    :: !(Maybe Text)
+  { _tpjdData :: !(Maybe ThirdPartyJobData)
+  , _tpjdId :: !(Maybe Text)
   , _tpjdNonce :: !(Maybe Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -2780,10 +2804,10 @@ instance NFData ThirdPartyJobDetails where
 --
 -- /See:/ 'transitionState' smart constructor.
 data TransitionState = TransitionState'
-  { _tsEnabled        :: !(Maybe Bool)
+  { _tsEnabled :: !(Maybe Bool)
   , _tsDisabledReason :: !(Maybe Text)
-  , _tsLastChangedAt  :: !(Maybe POSIX)
-  , _tsLastChangedBy  :: !(Maybe Text)
+  , _tsLastChangedAt :: !(Maybe POSIX)
+  , _tsLastChangedBy :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2838,10 +2862,14 @@ instance Hashable TransitionState where
 
 instance NFData TransitionState where
 
--- | /See:/ 'webhookAuthConfiguration' smart constructor.
+-- | The authentication applied to incoming webhook trigger requests.
+--
+--
+--
+-- /See:/ 'webhookAuthConfiguration' smart constructor.
 data WebhookAuthConfiguration = WebhookAuthConfiguration'
   { _wacAllowedIPRange :: !(Maybe Text)
-  , _wacSecretToken    :: !(Maybe Text)
+  , _wacSecretToken :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2849,9 +2877,9 @@ data WebhookAuthConfiguration = WebhookAuthConfiguration'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'wacAllowedIPRange' - Undocumented member.
+-- * 'wacAllowedIPRange' - The property used to configure acceptance of webhooks within a specific IP range. For IP, only the AllowedIPRange property must be set, and this property must be set to a valid CIDR range.
 --
--- * 'wacSecretToken' - Undocumented member.
+-- * 'wacSecretToken' - The property used to configure GitHub authentication. For GITHUB_HMAC, only the SecretToken property must be set.
 webhookAuthConfiguration
     :: WebhookAuthConfiguration
 webhookAuthConfiguration =
@@ -2859,11 +2887,11 @@ webhookAuthConfiguration =
     {_wacAllowedIPRange = Nothing, _wacSecretToken = Nothing}
 
 
--- | Undocumented member.
+-- | The property used to configure acceptance of webhooks within a specific IP range. For IP, only the AllowedIPRange property must be set, and this property must be set to a valid CIDR range.
 wacAllowedIPRange :: Lens' WebhookAuthConfiguration (Maybe Text)
 wacAllowedIPRange = lens _wacAllowedIPRange (\ s a -> s{_wacAllowedIPRange = a})
 
--- | Undocumented member.
+-- | The property used to configure GitHub authentication. For GITHUB_HMAC, only the SecretToken property must be set.
 wacSecretToken :: Lens' WebhookAuthConfiguration (Maybe Text)
 wacSecretToken = lens _wacSecretToken (\ s a -> s{_wacSecretToken = a})
 
@@ -2891,11 +2919,11 @@ instance ToJSON WebhookAuthConfiguration where
 --
 -- /See:/ 'webhookDefinition' smart constructor.
 data WebhookDefinition = WebhookDefinition'
-  { _wdName                        :: !Text
-  , _wdTargetPipeline              :: !Text
-  , _wdTargetAction                :: !Text
-  , _wdFilters                     :: ![WebhookFilterRule]
-  , _wdAuthentication              :: !WebhookAuthenticationType
+  { _wdName :: !Text
+  , _wdTargetPipeline :: !Text
+  , _wdTargetAction :: !Text
+  , _wdFilters :: ![WebhookFilterRule]
+  , _wdAuthentication :: !WebhookAuthenticationType
   , _wdAuthenticationConfiguration :: !WebhookAuthConfiguration
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2992,7 +3020,7 @@ instance ToJSON WebhookDefinition where
 -- /See:/ 'webhookFilterRule' smart constructor.
 data WebhookFilterRule = WebhookFilterRule'
   { _wfrMatchEquals :: !(Maybe Text)
-  , _wfrJsonPath    :: !Text
+  , _wfrJsonPath :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

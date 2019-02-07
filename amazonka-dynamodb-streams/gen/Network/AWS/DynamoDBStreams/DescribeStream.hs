@@ -55,8 +55,8 @@ import Network.AWS.Response
 -- /See:/ 'describeStream' smart constructor.
 data DescribeStream = DescribeStream'
   { _dsExclusiveStartShardId :: !(Maybe Text)
-  , _dsLimit                 :: !(Maybe Nat)
-  , _dsStreamARN             :: !Text
+  , _dsLimit :: !(Maybe Nat)
+  , _dsStreamARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -64,7 +64,7 @@ data DescribeStream = DescribeStream'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsExclusiveStartShardId' - The shard ID of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedShardId@ in the previous operation.
+-- * 'dsExclusiveStartShardId' - The shard ID of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedShardId@ in the previous operation. 
 --
 -- * 'dsLimit' - The maximum number of shard objects to return. The upper limit is 100.
 --
@@ -80,7 +80,7 @@ describeStream pStreamARN_ =
     }
 
 
--- | The shard ID of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedShardId@ in the previous operation.
+-- | The shard ID of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedShardId@ in the previous operation. 
 dsExclusiveStartShardId :: Lens' DescribeStream (Maybe Text)
 dsExclusiveStartShardId = lens _dsExclusiveStartShardId (\ s a -> s{_dsExclusiveStartShardId = a})
 
@@ -137,7 +137,7 @@ instance ToQuery DescribeStream where
 -- /See:/ 'describeStreamResponse' smart constructor.
 data DescribeStreamResponse = DescribeStreamResponse'
   { _dsrsStreamDescription :: !(Maybe StreamDescription)
-  , _dsrsResponseStatus    :: !Int
+  , _dsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

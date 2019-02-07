@@ -21,8 +21,6 @@
 -- Creates a scaling plan.
 --
 --
--- A scaling plan contains a set of instructions used to configure dynamic scaling for the scalable resources in your application. AWS Auto Scaling creates target tracking scaling policies based on the scaling instructions in your scaling plan.
---
 module Network.AWS.AutoScalingPlans.CreateScalingPlan
     (
     -- * Creating a Request
@@ -50,8 +48,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'createScalingPlan' smart constructor.
 data CreateScalingPlan = CreateScalingPlan'
-  { _cspScalingPlanName     :: !Text
-  , _cspApplicationSource   :: !ApplicationSource
+  { _cspScalingPlanName :: !Text
+  , _cspApplicationSource :: !ApplicationSource
   , _cspScalingInstructions :: ![ScalingInstruction]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,7 +127,7 @@ instance ToQuery CreateScalingPlan where
 
 -- | /See:/ 'createScalingPlanResponse' smart constructor.
 data CreateScalingPlanResponse = CreateScalingPlanResponse'
-  { _csprsResponseStatus     :: !Int
+  { _csprsResponseStatus :: !Int
   , _csprsScalingPlanVersion :: !Integer
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,7 +138,7 @@ data CreateScalingPlanResponse = CreateScalingPlanResponse'
 --
 -- * 'csprsResponseStatus' - -- | The response status code.
 --
--- * 'csprsScalingPlanVersion' - The version of the scaling plan. This value is always 1.
+-- * 'csprsScalingPlanVersion' - The version number of the scaling plan. This value is always 1. Currently, you cannot specify multiple scaling plan versions.
 createScalingPlanResponse
     :: Int -- ^ 'csprsResponseStatus'
     -> Integer -- ^ 'csprsScalingPlanVersion'
@@ -156,7 +154,7 @@ createScalingPlanResponse pResponseStatus_ pScalingPlanVersion_ =
 csprsResponseStatus :: Lens' CreateScalingPlanResponse Int
 csprsResponseStatus = lens _csprsResponseStatus (\ s a -> s{_csprsResponseStatus = a})
 
--- | The version of the scaling plan. This value is always 1.
+-- | The version number of the scaling plan. This value is always 1. Currently, you cannot specify multiple scaling plan versions.
 csprsScalingPlanVersion :: Lens' CreateScalingPlanResponse Integer
 csprsScalingPlanVersion = lens _csprsScalingPlanVersion (\ s a -> s{_csprsScalingPlanVersion = a})
 

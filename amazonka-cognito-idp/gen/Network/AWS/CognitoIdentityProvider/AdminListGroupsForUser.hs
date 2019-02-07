@@ -23,6 +23,8 @@
 --
 -- Requires developer credentials.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CognitoIdentityProvider.AdminListGroupsForUser
     (
     -- * Creating a Request
@@ -46,15 +48,16 @@ module Network.AWS.CognitoIdentityProvider.AdminListGroupsForUser
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'adminListGroupsForUser' smart constructor.
 data AdminListGroupsForUser = AdminListGroupsForUser'
-  { _algfuNextToken  :: !(Maybe Text)
-  , _algfuLimit      :: !(Maybe Nat)
-  , _algfuUsername   :: !(Sensitive Text)
+  { _algfuNextToken :: !(Maybe Text)
+  , _algfuLimit :: !(Maybe Nat)
+  , _algfuUsername :: !(Sensitive Text)
   , _algfuUserPoolId :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -99,6 +102,13 @@ algfuUsername = lens _algfuUsername (\ s a -> s{_algfuUsername = a}) . _Sensitiv
 algfuUserPoolId :: Lens' AdminListGroupsForUser Text
 algfuUserPoolId = lens _algfuUserPoolId (\ s a -> s{_algfuUserPoolId = a})
 
+instance AWSPager AdminListGroupsForUser where
+        page rq rs
+          | stop (rs ^. algfursNextToken) = Nothing
+          | stop (rs ^. algfursGroups) = Nothing
+          | otherwise =
+            Just $ rq & algfuNextToken .~ rs ^. algfursNextToken
+
 instance AWSRequest AdminListGroupsForUser where
         type Rs AdminListGroupsForUser =
              AdminListGroupsForUserResponse
@@ -141,8 +151,8 @@ instance ToQuery AdminListGroupsForUser where
 
 -- | /See:/ 'adminListGroupsForUserResponse' smart constructor.
 data AdminListGroupsForUserResponse = AdminListGroupsForUserResponse'
-  { _algfursGroups         :: !(Maybe [GroupType])
-  , _algfursNextToken      :: !(Maybe Text)
+  { _algfursGroups :: !(Maybe [GroupType])
+  , _algfursNextToken :: !(Maybe Text)
   , _algfursResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -52,8 +52,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeCertificates' smart constructor.
 data DescribeCertificates = DescribeCertificates'
-  { _dFilters    :: !(Maybe [Filter])
-  , _dMarker     :: !(Maybe Text)
+  { _dFilters :: !(Maybe [Filter])
+  , _dMarker :: !(Maybe Text)
   , _dMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -64,7 +64,7 @@ data DescribeCertificates = DescribeCertificates'
 --
 -- * 'dFilters' - Filters applied to the certificate described in the form of key-value pairs.
 --
--- * 'dMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 10
 describeCertificates
@@ -78,7 +78,7 @@ describeCertificates =
 dFilters :: Lens' DescribeCertificates [Filter]
 dFilters = lens _dFilters (\ s a -> s{_dFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dMarker :: Lens' DescribeCertificates (Maybe Text)
 dMarker = lens _dMarker (\ s a -> s{_dMarker = a})
 
@@ -134,8 +134,8 @@ instance ToQuery DescribeCertificates where
 
 -- | /See:/ 'describeCertificatesResponse' smart constructor.
 data DescribeCertificatesResponse = DescribeCertificatesResponse'
-  { _dcrsCertificates   :: !(Maybe [Certificate])
-  , _dcrsMarker         :: !(Maybe Text)
+  { _dcrsCertificates :: !(Maybe [Certificate])
+  , _dcrsMarker :: !(Maybe Text)
   , _dcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

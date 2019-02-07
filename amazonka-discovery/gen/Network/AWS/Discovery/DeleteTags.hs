@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteTags' smart constructor.
 data DeleteTags = DeleteTags'
-  { _dtTags             :: !(Maybe [Tag])
+  { _dtTags :: !(Maybe [Tag])
   , _dtConfigurationIds :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -55,7 +55,7 @@ data DeleteTags = DeleteTags'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtTags' - Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a /key/ -/value/ format. For example: @{"key": "serverType", "value": "webServer"}@
+-- * 'dtTags' - Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a /key/ -/value/ format. For example: @{"key": "serverType", "value": "webServer"}@ 
 --
 -- * 'dtConfigurationIds' - A list of configuration items with tags that you want to delete.
 deleteTags
@@ -63,7 +63,7 @@ deleteTags
 deleteTags = DeleteTags' {_dtTags = Nothing, _dtConfigurationIds = mempty}
 
 
--- | Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a /key/ -/value/ format. For example: @{"key": "serverType", "value": "webServer"}@
+-- | Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a /key/ -/value/ format. For example: @{"key": "serverType", "value": "webServer"}@ 
 dtTags :: Lens' DeleteTags [Tag]
 dtTags = lens _dtTags (\ s a -> s{_dtTags = a}) . _Default . _Coerce
 

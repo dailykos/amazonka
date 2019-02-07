@@ -14,11 +14,11 @@
 module Test.AWS.Gen.CognitoIdentityProvider where
 
 import Data.Proxy
-import Network.AWS.CognitoIdentityProvider
-import Test.AWS.CognitoIdentityProvider.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.CognitoIdentityProvider
+import Test.AWS.CognitoIdentityProvider.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.
@@ -33,6 +33,9 @@ import Test.Tasty
 --
 --         , requestUpdateUserPool $
 --             updateUserPool
+--
+--         , requestUpdateUserPoolDomain $
+--             updateUserPoolDomain
 --
 --         , requestDeleteUserPoolDomain $
 --             deleteUserPoolDomain
@@ -321,6 +324,9 @@ import Test.Tasty
 --
 --         , responseUpdateUserPool $
 --             updateUserPoolResponse
+--
+--         , responseUpdateUserPoolDomain $
+--             updateUserPoolDomainResponse
 --
 --         , responseDeleteUserPoolDomain $
 --             deleteUserPoolDomainResponse
@@ -615,6 +621,11 @@ requestUpdateUserPool :: UpdateUserPool -> TestTree
 requestUpdateUserPool = req
     "UpdateUserPool"
     "fixture/UpdateUserPool.yaml"
+
+requestUpdateUserPoolDomain :: UpdateUserPoolDomain -> TestTree
+requestUpdateUserPoolDomain = req
+    "UpdateUserPoolDomain"
+    "fixture/UpdateUserPoolDomain.yaml"
 
 requestDeleteUserPoolDomain :: DeleteUserPoolDomain -> TestTree
 requestDeleteUserPoolDomain = req
@@ -1096,6 +1107,13 @@ responseUpdateUserPool = res
     "fixture/UpdateUserPoolResponse.proto"
     cognitoIdentityProvider
     (Proxy :: Proxy UpdateUserPool)
+
+responseUpdateUserPoolDomain :: UpdateUserPoolDomainResponse -> TestTree
+responseUpdateUserPoolDomain = res
+    "UpdateUserPoolDomainResponse"
+    "fixture/UpdateUserPoolDomainResponse.proto"
+    cognitoIdentityProvider
+    (Proxy :: Proxy UpdateUserPoolDomain)
 
 responseDeleteUserPoolDomain :: DeleteUserPoolDomainResponse -> TestTree
 responseDeleteUserPoolDomain = res

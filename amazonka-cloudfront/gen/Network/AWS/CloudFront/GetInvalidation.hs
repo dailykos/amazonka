@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get the information about an invalidation.
+-- Get the information about an invalidation. 
 --
 --
 module Network.AWS.CloudFront.GetInvalidation
@@ -45,14 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The request to get an invalidation's information.
+-- | The request to get an invalidation's information. 
 --
 --
 --
 -- /See:/ 'getInvalidation' smart constructor.
 data GetInvalidation = GetInvalidation'
   { _giDistributionId :: !Text
-  , _giId             :: !Text
+  , _giId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -98,7 +98,7 @@ instance ToHeaders GetInvalidation where
 instance ToPath GetInvalidation where
         toPath GetInvalidation'{..}
           = mconcat
-              ["/2017-10-30/distribution/", toBS _giDistributionId,
+              ["/2018-11-05/distribution/", toBS _giDistributionId,
                "/invalidation/", toBS _giId]
 
 instance ToQuery GetInvalidation where
@@ -110,7 +110,7 @@ instance ToQuery GetInvalidation where
 --
 -- /See:/ 'getInvalidationResponse' smart constructor.
 data GetInvalidationResponse = GetInvalidationResponse'
-  { _girsInvalidation   :: !(Maybe Invalidation)
+  { _girsInvalidation :: !(Maybe Invalidation)
   , _girsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ data GetInvalidationResponse = GetInvalidationResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'girsInvalidation' - The invalidation's information. For more information, see <http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html Invalidation Complex Type> .
+-- * 'girsInvalidation' - The invalidation's information. For more information, see <http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html Invalidation Complex Type> . 
 --
 -- * 'girsResponseStatus' - -- | The response status code.
 getInvalidationResponse
@@ -130,7 +130,7 @@ getInvalidationResponse pResponseStatus_ =
     {_girsInvalidation = Nothing, _girsResponseStatus = pResponseStatus_}
 
 
--- | The invalidation's information. For more information, see <http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html Invalidation Complex Type> .
+-- | The invalidation's information. For more information, see <http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html Invalidation Complex Type> . 
 girsInvalidation :: Lens' GetInvalidationResponse (Maybe Invalidation)
 girsInvalidation = lens _girsInvalidation (\ s a -> s{_girsInvalidation = a})
 

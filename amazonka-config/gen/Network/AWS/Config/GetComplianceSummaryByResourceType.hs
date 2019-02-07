@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -115,7 +115,7 @@ instance ToQuery GetComplianceSummaryByResourceType
          where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --

@@ -48,8 +48,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'getRoomSkillParameter' smart constructor.
 data GetRoomSkillParameter = GetRoomSkillParameter'
-  { _grspRoomARN      :: !(Maybe Text)
-  , _grspSkillId      :: !Text
+  { _grspRoomARN :: !(Maybe Text)
+  , _grspSkillId :: !Text
   , _grspParameterKey :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -58,7 +58,7 @@ data GetRoomSkillParameter = GetRoomSkillParameter'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grspRoomARN' - The ARN of the room from which to get the room skill parameter details.
+-- * 'grspRoomARN' - The ARN of the room from which to get the room skill parameter details. 
 --
 -- * 'grspSkillId' - The ARN of the skill from which to get the room skill parameter details. Required.
 --
@@ -75,7 +75,7 @@ getRoomSkillParameter pSkillId_ pParameterKey_ =
     }
 
 
--- | The ARN of the room from which to get the room skill parameter details.
+-- | The ARN of the room from which to get the room skill parameter details. 
 grspRoomARN :: Lens' GetRoomSkillParameter (Maybe Text)
 grspRoomARN = lens _grspRoomARN (\ s a -> s{_grspRoomARN = a})
 
@@ -128,7 +128,7 @@ instance ToQuery GetRoomSkillParameter where
 -- | /See:/ 'getRoomSkillParameterResponse' smart constructor.
 data GetRoomSkillParameterResponse = GetRoomSkillParameterResponse'
   { _grsprsRoomSkillParameter :: !(Maybe RoomSkillParameter)
-  , _grsprsResponseStatus     :: !Int
+  , _grsprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'forgetDevice' smart constructor.
 data ForgetDevice = ForgetDevice'
   { _fdAccessToken :: !(Maybe (Sensitive Text))
-  , _fdDeviceKey   :: !Text
+  , _fdDeviceKey :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

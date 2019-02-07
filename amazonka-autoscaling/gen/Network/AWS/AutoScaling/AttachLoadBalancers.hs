@@ -25,7 +25,7 @@
 --
 -- To describe the load balancers for an Auto Scaling group, use 'DescribeLoadBalancers' . To detach the load balancer from the Auto Scaling group, use 'DetachLoadBalancers' .
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html Attach a Load Balancer to Your Auto Scaling Group> in the /Auto Scaling User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html Attach a Load Balancer to Your Auto Scaling Group> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.AttachLoadBalancers
     (
@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- | /See:/ 'attachLoadBalancers' smart constructor.
 data AttachLoadBalancers = AttachLoadBalancers'
   { _albAutoScalingGroupName :: !Text
-  , _albLoadBalancerNames    :: ![Text]
+  , _albLoadBalancerNames :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

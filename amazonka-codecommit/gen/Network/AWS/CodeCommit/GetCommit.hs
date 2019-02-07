@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getCommit' smart constructor.
 data GetCommit = GetCommit'
   { _gcRepositoryName :: !Text
-  , _gcCommitId       :: !Text
+  , _gcCommitId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -121,7 +121,7 @@ instance ToQuery GetCommit where
 -- /See:/ 'getCommitResponse' smart constructor.
 data GetCommitResponse = GetCommitResponse'
   { _gcrsResponseStatus :: !Int
-  , _gcrsCommit         :: !Commit
+  , _gcrsCommit :: !Commit
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

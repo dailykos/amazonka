@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CloudTrail__
+-- __AWS CloudTrail__ 
 --
 -- This is the CloudTrail API Reference. It provides descriptions of actions, data types, common parameters, and common errors for CloudTrail.
 --
@@ -36,6 +36,9 @@ module Network.AWS.CloudTrail
     -- ** MaximumNumberOfTrailsExceededException
     , _MaximumNumberOfTrailsExceededException
 
+    -- ** InsufficientDependencyServiceAccessPermissionException
+    , _InsufficientDependencyServiceAccessPermissionException
+
     -- ** UnsupportedOperationException
     , _UnsupportedOperationException
 
@@ -50,6 +53,9 @@ module Network.AWS.CloudTrail
 
     -- ** InvalidCloudWatchLogsRoleARNException
     , _InvalidCloudWatchLogsRoleARNException
+
+    -- ** CloudTrailAccessNotEnabledException
+    , _CloudTrailAccessNotEnabledException
 
     -- ** TagsLimitExceededException
     , _TagsLimitExceededException
@@ -72,11 +78,17 @@ module Network.AWS.CloudTrail
     -- ** CloudWatchLogsDeliveryUnavailableException
     , _CloudWatchLogsDeliveryUnavailableException
 
+    -- ** OrganizationsNotInUseException
+    , _OrganizationsNotInUseException
+
     -- ** KMSKeyNotFoundException
     , _KMSKeyNotFoundException
 
     -- ** TrailNotFoundException
     , _TrailNotFoundException
+
+    -- ** NotOrganizationMasterAccountException
+    , _NotOrganizationMasterAccountException
 
     -- ** InvalidEventSelectorsException
     , _InvalidEventSelectorsException
@@ -114,6 +126,9 @@ module Network.AWS.CloudTrail
     -- ** TrailAlreadyExistsException
     , _TrailAlreadyExistsException
 
+    -- ** OrganizationNotInAllFeaturesModeException
+    , _OrganizationNotInAllFeaturesModeException
+
     -- ** InvalidS3PrefixException
     , _InvalidS3PrefixException
 
@@ -135,46 +150,46 @@ module Network.AWS.CloudTrail
     -- * Operations
     -- $operations
 
-    -- ** DescribeTrails
+    -- ** DescribeTrails 
     , module Network.AWS.CloudTrail.DescribeTrails
 
-    -- ** ListPublicKeys
+    -- ** ListPublicKeys (Paginated)
     , module Network.AWS.CloudTrail.ListPublicKeys
 
-    -- ** RemoveTags
+    -- ** RemoveTags 
     , module Network.AWS.CloudTrail.RemoveTags
 
     -- ** LookupEvents (Paginated)
     , module Network.AWS.CloudTrail.LookupEvents
 
-    -- ** StopLogging
+    -- ** StopLogging 
     , module Network.AWS.CloudTrail.StopLogging
 
-    -- ** DeleteTrail
+    -- ** DeleteTrail 
     , module Network.AWS.CloudTrail.DeleteTrail
 
-    -- ** UpdateTrail
+    -- ** UpdateTrail 
     , module Network.AWS.CloudTrail.UpdateTrail
 
-    -- ** CreateTrail
+    -- ** CreateTrail 
     , module Network.AWS.CloudTrail.CreateTrail
 
-    -- ** GetEventSelectors
+    -- ** GetEventSelectors 
     , module Network.AWS.CloudTrail.GetEventSelectors
 
-    -- ** GetTrailStatus
+    -- ** GetTrailStatus 
     , module Network.AWS.CloudTrail.GetTrailStatus
 
-    -- ** AddTags
+    -- ** AddTags 
     , module Network.AWS.CloudTrail.AddTags
 
-    -- ** ListTags
+    -- ** ListTags (Paginated)
     , module Network.AWS.CloudTrail.ListTags
 
-    -- ** PutEventSelectors
+    -- ** PutEventSelectors 
     , module Network.AWS.CloudTrail.PutEventSelectors
 
-    -- ** StartLogging
+    -- ** StartLogging 
     , module Network.AWS.CloudTrail.StartLogging
 
     -- * Types
@@ -199,6 +214,8 @@ module Network.AWS.CloudTrail
     , eEventTime
     , eCloudTrailEvent
     , eEventName
+    , eReadOnly
+    , eAccessKeyId
     , eEventSource
     , eEventId
 
@@ -255,6 +272,7 @@ module Network.AWS.CloudTrail
     , tName
     , tIncludeGlobalServiceEvents
     , tHasCustomEventSelectors
+    , tIsOrganizationTrail
     , tCloudWatchLogsRoleARN
     , tS3BucketName
     , tIsMultiRegionTrail

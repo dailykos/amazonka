@@ -60,13 +60,13 @@ import Network.AWS.Response
 -- /See:/ 'signUp' smart constructor.
 data SignUp = SignUp'
   { _suAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-  , _suUserContextData   :: !(Maybe UserContextDataType)
-  , _suUserAttributes    :: !(Maybe [AttributeType])
-  , _suSecretHash        :: !(Maybe (Sensitive Text))
-  , _suValidationData    :: !(Maybe [AttributeType])
-  , _suClientId          :: !(Sensitive Text)
-  , _suUsername          :: !(Sensitive Text)
-  , _suPassword          :: !(Sensitive Text)
+  , _suUserContextData :: !(Maybe UserContextDataType)
+  , _suUserAttributes :: !(Maybe [AttributeType])
+  , _suSecretHash :: !(Maybe (Sensitive Text))
+  , _suValidationData :: !(Maybe [AttributeType])
+  , _suClientId :: !(Sensitive Text)
+  , _suUsername :: !(Sensitive Text)
+  , _suPassword :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -190,9 +190,9 @@ instance ToQuery SignUp where
 -- /See:/ 'signUpResponse' smart constructor.
 data SignUpResponse = SignUpResponse'
   { _sursCodeDeliveryDetails :: !(Maybe CodeDeliveryDetailsType)
-  , _sursResponseStatus      :: !Int
-  , _sursUserConfirmed       :: !Bool
-  , _sursUserSub             :: !Text
+  , _sursResponseStatus :: !Int
+  , _sursUserConfirmed :: !Bool
+  , _sursUserSub :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -50,7 +50,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getDocumentationVersion' smart constructor.
 data GetDocumentationVersion = GetDocumentationVersion'
-  { _gdvdRestAPIId            :: !Text
+  { _gdvdRestAPIId :: !Text
   , _gdvdDocumentationVersion :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

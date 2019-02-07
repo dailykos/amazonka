@@ -96,7 +96,7 @@ instance ToQuery GetDirectory where
 -- | /See:/ 'getDirectoryResponse' smart constructor.
 data GetDirectoryResponse = GetDirectoryResponse'
   { _gdrsResponseStatus :: !Int
-  , _gdrsDirectory      :: !Directory
+  , _gdrsDirectory :: !Directory
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

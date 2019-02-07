@@ -57,7 +57,7 @@ import Network.AWS.Response
 data GetTemplate = GetTemplate'
   { _gtChangeSetName :: !(Maybe Text)
   , _gtTemplateStage :: !(Maybe TemplateStage)
-  , _gtStackName     :: !(Maybe Text)
+  , _gtStackName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -67,7 +67,7 @@ data GetTemplate = GetTemplate'
 --
 -- * 'gtChangeSetName' - The name or Amazon Resource Name (ARN) of a change set for which AWS CloudFormation returns the associated template. If you specify a name, you must also specify the @StackName@ .
 --
--- * 'gtTemplateStage' - For templates that include transforms, the stage of the template that AWS CloudFormation returns. To get the user-submitted template, specify @Original@ . To get the template after AWS CloudFormation has processed all transforms, specify @Processed@ .  If the template doesn't include transforms, @Original@ and @Processed@ return the same template. By default, AWS CloudFormation specifies @Original@ .
+-- * 'gtTemplateStage' - For templates that include transforms, the stage of the template that AWS CloudFormation returns. To get the user-submitted template, specify @Original@ . To get the template after AWS CloudFormation has processed all transforms, specify @Processed@ .  If the template doesn't include transforms, @Original@ and @Processed@ return the same template. By default, AWS CloudFormation specifies @Original@ . 
 --
 -- * 'gtStackName' - The name or the unique stack ID that is associated with the stack, which are not always interchangeable:     * Running stacks: You can specify either the stack's name or its unique stack ID.     * Deleted stacks: You must specify the unique stack ID. Default: There is no default value.
 getTemplate
@@ -84,7 +84,7 @@ getTemplate =
 gtChangeSetName :: Lens' GetTemplate (Maybe Text)
 gtChangeSetName = lens _gtChangeSetName (\ s a -> s{_gtChangeSetName = a})
 
--- | For templates that include transforms, the stage of the template that AWS CloudFormation returns. To get the user-submitted template, specify @Original@ . To get the template after AWS CloudFormation has processed all transforms, specify @Processed@ .  If the template doesn't include transforms, @Original@ and @Processed@ return the same template. By default, AWS CloudFormation specifies @Original@ .
+-- | For templates that include transforms, the stage of the template that AWS CloudFormation returns. To get the user-submitted template, specify @Original@ . To get the template after AWS CloudFormation has processed all transforms, specify @Processed@ .  If the template doesn't include transforms, @Original@ and @Processed@ return the same template. By default, AWS CloudFormation specifies @Original@ . 
 gtTemplateStage :: Lens' GetTemplate (Maybe TemplateStage)
 gtTemplateStage = lens _gtTemplateStage (\ s a -> s{_gtTemplateStage = a})
 
@@ -130,8 +130,8 @@ instance ToQuery GetTemplate where
 -- /See:/ 'getTemplateResponse' smart constructor.
 data GetTemplateResponse = GetTemplateResponse'
   { _gtrsStagesAvailable :: !(Maybe [TemplateStage])
-  , _gtrsTemplateBody    :: !(Maybe Text)
-  , _gtrsResponseStatus  :: !Int
+  , _gtrsTemplateBody :: !(Maybe Text)
+  , _gtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

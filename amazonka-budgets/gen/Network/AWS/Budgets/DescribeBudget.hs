@@ -45,13 +45,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of DescribeBudget
+-- | Request of DescribeBudget 
 --
 --
 --
 -- /See:/ 'describeBudget' smart constructor.
 data DescribeBudget = DescribeBudget'
-  { _desAccountId  :: !Text
+  { _desAccountId :: !Text
   , _desBudgetName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,13 +115,13 @@ instance ToPath DescribeBudget where
 instance ToQuery DescribeBudget where
         toQuery = const mempty
 
--- | Response of DescribeBudget
+-- | Response of DescribeBudget 
 --
 --
 --
 -- /See:/ 'describeBudgetResponse' smart constructor.
 data DescribeBudgetResponse = DescribeBudgetResponse'
-  { _desrsBudget         :: !(Maybe Budget)
+  { _desrsBudget :: !(Maybe Budget)
   , _desrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

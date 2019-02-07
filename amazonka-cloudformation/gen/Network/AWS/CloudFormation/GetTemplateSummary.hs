@@ -65,9 +65,9 @@ import Network.AWS.Response
 -- /See:/ 'getTemplateSummary' smart constructor.
 data GetTemplateSummary = GetTemplateSummary'
   { _gtsTemplateBody :: !(Maybe Text)
-  , _gtsTemplateURL  :: !(Maybe Text)
+  , _gtsTemplateURL :: !(Maybe Text)
   , _gtsStackSetName :: !(Maybe Text)
-  , _gtsStackName    :: !(Maybe Text)
+  , _gtsStackName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -161,14 +161,14 @@ instance ToQuery GetTemplateSummary where
 -- /See:/ 'getTemplateSummaryResponse' smart constructor.
 data GetTemplateSummaryResponse = GetTemplateSummaryResponse'
   { _gtsrsDeclaredTransforms :: !(Maybe [Text])
-  , _gtsrsVersion            :: !(Maybe Text)
+  , _gtsrsVersion :: !(Maybe Text)
   , _gtsrsCapabilitiesReason :: !(Maybe Text)
-  , _gtsrsParameters         :: !(Maybe [ParameterDeclaration])
-  , _gtsrsMetadata           :: !(Maybe Text)
-  , _gtsrsDescription        :: !(Maybe Text)
-  , _gtsrsCapabilities       :: !(Maybe [Capability])
-  , _gtsrsResourceTypes      :: !(Maybe [Text])
-  , _gtsrsResponseStatus     :: !Int
+  , _gtsrsParameters :: !(Maybe [ParameterDeclaration])
+  , _gtsrsMetadata :: !(Maybe Text)
+  , _gtsrsDescription :: !(Maybe Text)
+  , _gtsrsCapabilities :: !(Maybe [Capability])
+  , _gtsrsResourceTypes :: !(Maybe [Text])
+  , _gtsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- /See:/ 'adminUpdateDeviceStatus' smart constructor.
 data AdminUpdateDeviceStatus = AdminUpdateDeviceStatus'
   { _audsDeviceRememberedStatus :: !(Maybe DeviceRememberedStatusType)
-  , _audsUserPoolId             :: !Text
-  , _audsUsername               :: !(Sensitive Text)
-  , _audsDeviceKey              :: !Text
+  , _audsUserPoolId :: !Text
+  , _audsUsername :: !(Sensitive Text)
+  , _audsDeviceKey :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

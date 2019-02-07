@@ -50,8 +50,8 @@ import Network.AWS.Response
 -- | /See:/ 'getObjectInformation' smart constructor.
 data GetObjectInformation = GetObjectInformation'
   { _goiConsistencyLevel :: !(Maybe ConsistencyLevel)
-  , _goiDirectoryARN     :: !Text
-  , _goiObjectReference  :: !ObjectReference
+  , _goiDirectoryARN :: !Text
+  , _goiObjectReference :: !ObjectReference
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -127,8 +127,8 @@ instance ToQuery GetObjectInformation where
 -- | /See:/ 'getObjectInformationResponse' smart constructor.
 data GetObjectInformationResponse = GetObjectInformationResponse'
   { _goirsObjectIdentifier :: !(Maybe Text)
-  , _goirsSchemaFacets     :: !(Maybe [SchemaFacet])
-  , _goirsResponseStatus   :: !Int
+  , _goirsSchemaFacets :: !(Maybe [SchemaFacet])
+  , _goirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -54,7 +54,7 @@ import Network.AWS.Response
 -- | /See:/ 'addTagsToResource' smart constructor.
 data AddTagsToResource = AddTagsToResource'
   { _attrResourceARN :: !Text
-  , _attrTagList     :: ![Tag]
+  , _attrTagList :: ![Tag]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -119,7 +119,7 @@ instance ToQuery AddTagsToResource where
 -- | /See:/ 'addTagsToResourceResponse' smart constructor.
 data AddTagsToResourceResponse = AddTagsToResourceResponse'
   { _attrrsResponseStatus :: !Int
-  , _attrrsStatus         :: !Text
+  , _attrrsStatus :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

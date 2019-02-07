@@ -53,7 +53,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'listNamedQueries' smart constructor.
 data ListNamedQueries = ListNamedQueries'
-  { _lnqNextToken  :: !(Maybe Text)
+  { _lnqNextToken :: !(Maybe Text)
   , _lnqMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,8 +124,8 @@ instance ToQuery ListNamedQueries where
 
 -- | /See:/ 'listNamedQueriesResponse' smart constructor.
 data ListNamedQueriesResponse = ListNamedQueriesResponse'
-  { _lnqrsNextToken      :: !(Maybe Text)
-  , _lnqrsNamedQueryIds  :: !(Maybe (List1 Text))
+  { _lnqrsNextToken :: !(Maybe Text)
+  , _lnqrsNamedQueryIds :: !(Maybe (List1 Text))
   , _lnqrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

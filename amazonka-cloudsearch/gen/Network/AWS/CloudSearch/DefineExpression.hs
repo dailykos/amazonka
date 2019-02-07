@@ -113,7 +113,7 @@ instance ToQuery DefineExpression where
 -- /See:/ 'defineExpressionResponse' smart constructor.
 data DefineExpressionResponse = DefineExpressionResponse'
   { _dersResponseStatus :: !Int
-  , _dersExpression     :: !ExpressionStatus
+  , _dersExpression :: !ExpressionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

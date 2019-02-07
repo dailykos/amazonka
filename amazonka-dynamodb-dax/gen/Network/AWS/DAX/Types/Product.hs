@@ -27,22 +27,23 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'cluster' smart constructor.
 data Cluster = Cluster'
-  { _cStatus                     :: !(Maybe Text)
-  , _cIAMRoleARN                 :: !(Maybe Text)
-  , _cClusterARN                 :: !(Maybe Text)
-  , _cActiveNodes                :: !(Maybe Int)
-  , _cSecurityGroups             :: !(Maybe [SecurityGroupMembership])
-  , _cNotificationConfiguration  :: !(Maybe NotificationConfiguration)
-  , _cNodeIdsToRemove            :: !(Maybe [Text])
-  , _cTotalNodes                 :: !(Maybe Int)
+  { _cStatus :: !(Maybe Text)
+  , _cIAMRoleARN :: !(Maybe Text)
+  , _cClusterARN :: !(Maybe Text)
+  , _cActiveNodes :: !(Maybe Int)
+  , _cSecurityGroups :: !(Maybe [SecurityGroupMembership])
+  , _cNotificationConfiguration :: !(Maybe NotificationConfiguration)
+  , _cNodeIdsToRemove :: !(Maybe [Text])
+  , _cTotalNodes :: !(Maybe Int)
   , _cPreferredMaintenanceWindow :: !(Maybe Text)
-  , _cSubnetGroup                :: !(Maybe Text)
-  , _cClusterName                :: !(Maybe Text)
-  , _cNodeType                   :: !(Maybe Text)
-  , _cNodes                      :: !(Maybe [Node])
-  , _cClusterDiscoveryEndpoint   :: !(Maybe Endpoint)
-  , _cDescription                :: !(Maybe Text)
-  , _cParameterGroup             :: !(Maybe ParameterGroupStatus)
+  , _cSubnetGroup :: !(Maybe Text)
+  , _cClusterName :: !(Maybe Text)
+  , _cNodeType :: !(Maybe Text)
+  , _cNodes :: !(Maybe [Node])
+  , _cClusterDiscoveryEndpoint :: !(Maybe Endpoint)
+  , _cSSEDescription :: !(Maybe SSEDescription)
+  , _cDescription :: !(Maybe Text)
+  , _cParameterGroup :: !(Maybe ParameterGroupStatus)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -54,7 +55,7 @@ data Cluster = Cluster'
 --
 -- * 'cIAMRoleARN' - A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.
 --
--- * 'cClusterARN' - The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+-- * 'cClusterARN' - The Amazon Resource Name (ARN) that uniquely identifies the cluster. 
 --
 -- * 'cActiveNodes' - The number of nodes in the cluster that are active (i.e., capable of serving requests).
 --
@@ -78,6 +79,8 @@ data Cluster = Cluster'
 --
 -- * 'cClusterDiscoveryEndpoint' - The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.
 --
+-- * 'cSSEDescription' - The description of the server-side encryption status on the specified DAX cluster.
+--
 -- * 'cDescription' - The description of the cluster.
 --
 -- * 'cParameterGroup' - The parameter group being used by nodes in the cluster.
@@ -99,6 +102,7 @@ cluster =
     , _cNodeType = Nothing
     , _cNodes = Nothing
     , _cClusterDiscoveryEndpoint = Nothing
+    , _cSSEDescription = Nothing
     , _cDescription = Nothing
     , _cParameterGroup = Nothing
     }
@@ -112,7 +116,7 @@ cStatus = lens _cStatus (\ s a -> s{_cStatus = a})
 cIAMRoleARN :: Lens' Cluster (Maybe Text)
 cIAMRoleARN = lens _cIAMRoleARN (\ s a -> s{_cIAMRoleARN = a})
 
--- | The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+-- | The Amazon Resource Name (ARN) that uniquely identifies the cluster. 
 cClusterARN :: Lens' Cluster (Maybe Text)
 cClusterARN = lens _cClusterARN (\ s a -> s{_cClusterARN = a})
 
@@ -160,6 +164,10 @@ cNodes = lens _cNodes (\ s a -> s{_cNodes = a}) . _Default . _Coerce
 cClusterDiscoveryEndpoint :: Lens' Cluster (Maybe Endpoint)
 cClusterDiscoveryEndpoint = lens _cClusterDiscoveryEndpoint (\ s a -> s{_cClusterDiscoveryEndpoint = a})
 
+-- | The description of the server-side encryption status on the specified DAX cluster.
+cSSEDescription :: Lens' Cluster (Maybe SSEDescription)
+cSSEDescription = lens _cSSEDescription (\ s a -> s{_cSSEDescription = a})
+
 -- | The description of the cluster.
 cDescription :: Lens' Cluster (Maybe Text)
 cDescription = lens _cDescription (\ s a -> s{_cDescription = a})
@@ -186,6 +194,7 @@ instance FromJSON Cluster where
                      <*> (x .:? "NodeType")
                      <*> (x .:? "Nodes" .!= mempty)
                      <*> (x .:? "ClusterDiscoveryEndpoint")
+                     <*> (x .:? "SSEDescription")
                      <*> (x .:? "Description")
                      <*> (x .:? "ParameterGroup"))
 
@@ -200,7 +209,7 @@ instance NFData Cluster where
 -- /See:/ 'endpoint' smart constructor.
 data Endpoint = Endpoint'
   { _eAddress :: !(Maybe Text)
-  , _ePort    :: !(Maybe Int)
+  , _ePort :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -242,8 +251,8 @@ instance NFData Endpoint where
 data Event = Event'
   { _eSourceName :: !(Maybe Text)
   , _eSourceType :: !(Maybe SourceType)
-  , _eDate       :: !(Maybe POSIX)
-  , _eMessage    :: !(Maybe Text)
+  , _eDate :: !(Maybe POSIX)
+  , _eMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -304,12 +313,12 @@ instance NFData Event where
 --
 -- /See:/ 'node' smart constructor.
 data Node = Node'
-  { _nNodeStatus           :: !(Maybe Text)
+  { _nNodeStatus :: !(Maybe Text)
   , _nParameterGroupStatus :: !(Maybe Text)
-  , _nAvailabilityZone     :: !(Maybe Text)
-  , _nNodeId               :: !(Maybe Text)
-  , _nEndpoint             :: !(Maybe Endpoint)
-  , _nNodeCreateTime       :: !(Maybe POSIX)
+  , _nAvailabilityZone :: !(Maybe Text)
+  , _nNodeId :: !(Maybe Text)
+  , _nEndpoint :: !(Maybe Endpoint)
+  , _nNodeCreateTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -387,7 +396,7 @@ instance NFData Node where
 --
 -- /See:/ 'nodeTypeSpecificValue' smart constructor.
 data NodeTypeSpecificValue = NodeTypeSpecificValue'
-  { _ntsvValue    :: !(Maybe Text)
+  { _ntsvValue :: !(Maybe Text)
   , _ntsvNodeType :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -431,7 +440,7 @@ instance NFData NodeTypeSpecificValue where
 -- /See:/ 'notificationConfiguration' smart constructor.
 data NotificationConfiguration = NotificationConfiguration'
   { _ncTopicStatus :: !(Maybe Text)
-  , _ncTopicARN    :: !(Maybe Text)
+  , _ncTopicARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -441,7 +450,7 @@ data NotificationConfiguration = NotificationConfiguration'
 --
 -- * 'ncTopicStatus' - The current state of the topic.
 --
--- * 'ncTopicARN' - The Amazon Resource Name (ARN) that identifies the topic.
+-- * 'ncTopicARN' - The Amazon Resource Name (ARN) that identifies the topic. 
 notificationConfiguration
     :: NotificationConfiguration
 notificationConfiguration =
@@ -452,7 +461,7 @@ notificationConfiguration =
 ncTopicStatus :: Lens' NotificationConfiguration (Maybe Text)
 ncTopicStatus = lens _ncTopicStatus (\ s a -> s{_ncTopicStatus = a})
 
--- | The Amazon Resource Name (ARN) that identifies the topic.
+-- | The Amazon Resource Name (ARN) that identifies the topic. 
 ncTopicARN :: Lens' NotificationConfiguration (Maybe Text)
 ncTopicARN = lens _ncTopicARN (\ s a -> s{_ncTopicARN = a})
 
@@ -473,16 +482,16 @@ instance NFData NotificationConfiguration where
 --
 -- /See:/ 'parameter' smart constructor.
 data Parameter = Parameter'
-  { _pParameterValue         :: !(Maybe Text)
-  , _pParameterType          :: !(Maybe ParameterType)
-  , _pSource                 :: !(Maybe Text)
-  , _pIsModifiable           :: !(Maybe IsModifiable)
-  , _pDataType               :: !(Maybe Text)
+  { _pParameterValue :: !(Maybe Text)
+  , _pParameterType :: !(Maybe ParameterType)
+  , _pSource :: !(Maybe Text)
+  , _pIsModifiable :: !(Maybe IsModifiable)
+  , _pDataType :: !(Maybe Text)
   , _pNodeTypeSpecificValues :: !(Maybe [NodeTypeSpecificValue])
-  , _pAllowedValues          :: !(Maybe Text)
-  , _pParameterName          :: !(Maybe Text)
-  , _pDescription            :: !(Maybe Text)
-  , _pChangeType             :: !(Maybe ChangeType)
+  , _pAllowedValues :: !(Maybe Text)
+  , _pParameterName :: !(Maybe Text)
+  , _pDescription :: !(Maybe Text)
+  , _pChangeType :: !(Maybe ChangeType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -591,7 +600,7 @@ instance NFData Parameter where
 --
 -- /See:/ 'parameterGroup' smart constructor.
 data ParameterGroup = ParameterGroup'
-  { _pgDescription        :: !(Maybe Text)
+  { _pgDescription :: !(Maybe Text)
   , _pgParameterGroupName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -635,9 +644,9 @@ instance NFData ParameterGroup where
 --
 -- /See:/ 'parameterGroupStatus' smart constructor.
 data ParameterGroupStatus = ParameterGroupStatus'
-  { _pgsNodeIdsToReboot      :: !(Maybe [Text])
+  { _pgsNodeIdsToReboot :: !(Maybe [Text])
   , _pgsParameterApplyStatus :: !(Maybe Text)
-  , _pgsParameterGroupName   :: !(Maybe Text)
+  , _pgsParameterGroupName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -647,7 +656,7 @@ data ParameterGroupStatus = ParameterGroupStatus'
 --
 -- * 'pgsNodeIdsToReboot' - The node IDs of one or more nodes to be rebooted.
 --
--- * 'pgsParameterApplyStatus' - The status of parameter updates.
+-- * 'pgsParameterApplyStatus' - The status of parameter updates. 
 --
 -- * 'pgsParameterGroupName' - The name of the parameter group.
 parameterGroupStatus
@@ -664,7 +673,7 @@ parameterGroupStatus =
 pgsNodeIdsToReboot :: Lens' ParameterGroupStatus [Text]
 pgsNodeIdsToReboot = lens _pgsNodeIdsToReboot (\ s a -> s{_pgsNodeIdsToReboot = a}) . _Default . _Coerce
 
--- | The status of parameter updates.
+-- | The status of parameter updates. 
 pgsParameterApplyStatus :: Lens' ParameterGroupStatus (Maybe Text)
 pgsParameterApplyStatus = lens _pgsParameterApplyStatus (\ s a -> s{_pgsParameterApplyStatus = a})
 
@@ -692,7 +701,7 @@ instance NFData ParameterGroupStatus where
 -- /See:/ 'parameterNameValue' smart constructor.
 data ParameterNameValue = ParameterNameValue'
   { _pnvParameterValue :: !(Maybe Text)
-  , _pnvParameterName  :: !(Maybe Text)
+  , _pnvParameterName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -729,13 +738,80 @@ instance ToJSON ParameterNameValue where
                  [("ParameterValue" .=) <$> _pnvParameterValue,
                   ("ParameterName" .=) <$> _pnvParameterName])
 
+-- | The description of the server-side encryption status on the specified DAX cluster.
+--
+--
+--
+-- /See:/ 'sSEDescription' smart constructor.
+newtype SSEDescription = SSEDescription'
+  { _ssedStatus :: Maybe SSEStatus
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'SSEDescription' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ssedStatus' - The current state of server-side encryption:     * @ENABLING@ - Server-side encryption is being enabled.     * @ENABLED@ - Server-side encryption is enabled.     * @DISABLING@ - Server-side encryption is being disabled.     * @DISABLED@ - Server-side encryption is disabled.
+sSEDescription
+    :: SSEDescription
+sSEDescription = SSEDescription' {_ssedStatus = Nothing}
+
+
+-- | The current state of server-side encryption:     * @ENABLING@ - Server-side encryption is being enabled.     * @ENABLED@ - Server-side encryption is enabled.     * @DISABLING@ - Server-side encryption is being disabled.     * @DISABLED@ - Server-side encryption is disabled.
+ssedStatus :: Lens' SSEDescription (Maybe SSEStatus)
+ssedStatus = lens _ssedStatus (\ s a -> s{_ssedStatus = a})
+
+instance FromJSON SSEDescription where
+        parseJSON
+          = withObject "SSEDescription"
+              (\ x -> SSEDescription' <$> (x .:? "Status"))
+
+instance Hashable SSEDescription where
+
+instance NFData SSEDescription where
+
+-- | Represents the settings used to enable server-side encryption.
+--
+--
+--
+-- /See:/ 'sSESpecification' smart constructor.
+newtype SSESpecification = SSESpecification'
+  { _ssesEnabled :: Bool
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'SSESpecification' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ssesEnabled' - Indicates whether server-side encryption is enabled (true) or disabled (false) on the cluster.
+sSESpecification
+    :: Bool -- ^ 'ssesEnabled'
+    -> SSESpecification
+sSESpecification pEnabled_ = SSESpecification' {_ssesEnabled = pEnabled_}
+
+
+-- | Indicates whether server-side encryption is enabled (true) or disabled (false) on the cluster.
+ssesEnabled :: Lens' SSESpecification Bool
+ssesEnabled = lens _ssesEnabled (\ s a -> s{_ssesEnabled = a})
+
+instance Hashable SSESpecification where
+
+instance NFData SSESpecification where
+
+instance ToJSON SSESpecification where
+        toJSON SSESpecification'{..}
+          = object
+              (catMaybes [Just ("Enabled" .= _ssesEnabled)])
+
 -- | An individual VPC security group and its status.
 --
 --
 --
 -- /See:/ 'securityGroupMembership' smart constructor.
 data SecurityGroupMembership = SecurityGroupMembership'
-  { _sgmStatus                  :: !(Maybe Text)
+  { _sgmStatus :: !(Maybe Text)
   , _sgmSecurityGroupIdentifier :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -780,7 +856,7 @@ instance NFData SecurityGroupMembership where
 --
 -- /See:/ 'subnet' smart constructor.
 data Subnet = Subnet'
-  { _sSubnetIdentifier       :: !(Maybe Text)
+  { _sSubnetIdentifier :: !(Maybe Text)
   , _sSubnetAvailabilityZone :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -821,19 +897,19 @@ instance NFData Subnet where
 -- | Represents the output of one of the following actions:
 --
 --
---     * /CreateSubnetGroup/
+--     * /CreateSubnetGroup/ 
 --
---     * /ModifySubnetGroup/
+--     * /ModifySubnetGroup/ 
 --
 --
 --
 --
 -- /See:/ 'subnetGroup' smart constructor.
 data SubnetGroup = SubnetGroup'
-  { _sgVPCId           :: !(Maybe Text)
-  , _sgSubnets         :: !(Maybe [Subnet])
+  { _sgVPCId :: !(Maybe Text)
+  , _sgSubnets :: !(Maybe [Subnet])
   , _sgSubnetGroupName :: !(Maybe Text)
-  , _sgDescription     :: !(Maybe Text)
+  , _sgDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -843,7 +919,7 @@ data SubnetGroup = SubnetGroup'
 --
 -- * 'sgVPCId' - The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.
 --
--- * 'sgSubnets' - A list of subnets associated with the subnet group.
+-- * 'sgSubnets' - A list of subnets associated with the subnet group. 
 --
 -- * 'sgSubnetGroupName' - The name of the subnet group.
 --
@@ -863,7 +939,7 @@ subnetGroup =
 sgVPCId :: Lens' SubnetGroup (Maybe Text)
 sgVPCId = lens _sgVPCId (\ s a -> s{_sgVPCId = a})
 
--- | A list of subnets associated with the subnet group.
+-- | A list of subnets associated with the subnet group. 
 sgSubnets :: Lens' SubnetGroup [Subnet]
 sgSubnets = lens _sgSubnets (\ s a -> s{_sgSubnets = a}) . _Default . _Coerce
 
@@ -899,7 +975,7 @@ instance NFData SubnetGroup where
 -- /See:/ 'tag' smart constructor.
 data Tag = Tag'
   { _tagValue :: !(Maybe Text)
-  , _tagKey   :: !(Maybe Text)
+  , _tagKey :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -907,7 +983,7 @@ data Tag = Tag'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagValue' - The value of the tag. Tag values are case-sensitive and can be null.
+-- * 'tagValue' - The value of the tag. Tag values are case-sensitive and can be null. 
 --
 -- * 'tagKey' - The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.
 tag
@@ -915,7 +991,7 @@ tag
 tag = Tag' {_tagValue = Nothing, _tagKey = Nothing}
 
 
--- | The value of the tag. Tag values are case-sensitive and can be null.
+-- | The value of the tag. Tag values are case-sensitive and can be null. 
 tagValue :: Lens' Tag (Maybe Text)
 tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 

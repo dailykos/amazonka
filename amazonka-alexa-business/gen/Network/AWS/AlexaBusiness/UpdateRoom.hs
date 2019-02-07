@@ -49,11 +49,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateRoom' smart constructor.
 data UpdateRoom = UpdateRoom'
-  { _urProfileARN         :: !(Maybe Text)
+  { _urProfileARN :: !(Maybe Text)
   , _urProviderCalendarId :: !(Maybe Text)
-  , _urRoomARN            :: !(Maybe Text)
-  , _urRoomName           :: !(Maybe Text)
-  , _urDescription        :: !(Maybe Text)
+  , _urRoomARN :: !(Maybe Text)
+  , _urRoomName :: !(Maybe Text)
+  , _urDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -65,7 +65,7 @@ data UpdateRoom = UpdateRoom'
 --
 -- * 'urProviderCalendarId' - The updated provider calendar ARN for the room.
 --
--- * 'urRoomARN' - The ARN of the room to update.
+-- * 'urRoomARN' - The ARN of the room to update. 
 --
 -- * 'urRoomName' - The updated name for the room.
 --
@@ -90,7 +90,7 @@ urProfileARN = lens _urProfileARN (\ s a -> s{_urProfileARN = a})
 urProviderCalendarId :: Lens' UpdateRoom (Maybe Text)
 urProviderCalendarId = lens _urProviderCalendarId (\ s a -> s{_urProviderCalendarId = a})
 
--- | The ARN of the room to update.
+-- | The ARN of the room to update. 
 urRoomARN :: Lens' UpdateRoom (Maybe Text)
 urRoomARN = lens _urRoomARN (\ s a -> s{_urRoomARN = a})
 

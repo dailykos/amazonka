@@ -21,9 +21,9 @@
 -- Begins the export of discovered data to an S3 bucket.
 --
 --
--- If you specify @agentIds@ in a filter, the task exports up to 72 hours of detailed data collected by the identified Application Discovery Agent, including network, process, and performance details. A time range for exported agent data may be set by using @startTime@ and @endTime@ . Export of detailed agent data is limited to five concurrently running exports.
+-- If you specify @agentIds@ in a filter, the task exports up to 72 hours of detailed data collected by the identified Application Discovery Agent, including network, process, and performance details. A time range for exported agent data may be set by using @startTime@ and @endTime@ . Export of detailed agent data is limited to five concurrently running exports. 
 --
--- If you do not include an @agentIds@ filter, summary data is exported that includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery Agents. Export of summary data is limited to two exports per day.
+-- If you do not include an @agentIds@ filter, summary data is exported that includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery Agents. Export of summary data is limited to two exports per day. 
 --
 module Network.AWS.Discovery.StartExportTask
     (
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- | /See:/ 'startExportTask' smart constructor.
 data StartExportTask = StartExportTask'
   { _setExportDataFormat :: !(Maybe [ExportDataFormat])
-  , _setStartTime        :: !(Maybe POSIX)
-  , _setFilters          :: !(Maybe [ExportFilter])
-  , _setEndTime          :: !(Maybe POSIX)
+  , _setStartTime :: !(Maybe POSIX)
+  , _setFilters :: !(Maybe [ExportFilter])
+  , _setEndTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -64,11 +64,11 @@ data StartExportTask = StartExportTask'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'setExportDataFormat' - The file format for the returned export data. Default value is @CSV@ . __Note:__ /The/ @GRAPHML@ /option has been deprecated./
+-- * 'setExportDataFormat' - The file format for the returned export data. Default value is @CSV@ . __Note:__ /The/ @GRAPHML@ /option has been deprecated./ 
 --
 -- * 'setStartTime' - The start timestamp for exported data from the single Application Discovery Agent selected in the filters. If no value is specified, data is exported starting from the first data collected by the agent.
 --
--- * 'setFilters' - If a filter is present, it selects the single @agentId@ of the Application Discovery Agent for which data is exported. The @agentId@ can be found in the results of the @DescribeAgents@ API or CLI. If no filter is present, @startTime@ and @endTime@ are ignored and exported data includes both Agentless Discovery Connector data and summary data from Application Discovery agents.
+-- * 'setFilters' - If a filter is present, it selects the single @agentId@ of the Application Discovery Agent for which data is exported. The @agentId@ can be found in the results of the @DescribeAgents@ API or CLI. If no filter is present, @startTime@ and @endTime@ are ignored and exported data includes both Agentless Discovery Connector data and summary data from Application Discovery agents. 
 --
 -- * 'setEndTime' - The end timestamp for exported data from the single Application Discovery Agent selected in the filters. If no value is specified, exported data includes the most recent data collected by the agent.
 startExportTask
@@ -82,7 +82,7 @@ startExportTask =
     }
 
 
--- | The file format for the returned export data. Default value is @CSV@ . __Note:__ /The/ @GRAPHML@ /option has been deprecated./
+-- | The file format for the returned export data. Default value is @CSV@ . __Note:__ /The/ @GRAPHML@ /option has been deprecated./ 
 setExportDataFormat :: Lens' StartExportTask [ExportDataFormat]
 setExportDataFormat = lens _setExportDataFormat (\ s a -> s{_setExportDataFormat = a}) . _Default . _Coerce
 
@@ -90,7 +90,7 @@ setExportDataFormat = lens _setExportDataFormat (\ s a -> s{_setExportDataFormat
 setStartTime :: Lens' StartExportTask (Maybe UTCTime)
 setStartTime = lens _setStartTime (\ s a -> s{_setStartTime = a}) . mapping _Time
 
--- | If a filter is present, it selects the single @agentId@ of the Application Discovery Agent for which data is exported. The @agentId@ can be found in the results of the @DescribeAgents@ API or CLI. If no filter is present, @startTime@ and @endTime@ are ignored and exported data includes both Agentless Discovery Connector data and summary data from Application Discovery agents.
+-- | If a filter is present, it selects the single @agentId@ of the Application Discovery Agent for which data is exported. The @agentId@ can be found in the results of the @DescribeAgents@ API or CLI. If no filter is present, @startTime@ and @endTime@ are ignored and exported data includes both Agentless Discovery Connector data and summary data from Application Discovery agents. 
 setFilters :: Lens' StartExportTask [ExportFilter]
 setFilters = lens _setFilters (\ s a -> s{_setFilters = a}) . _Default . _Coerce
 
@@ -138,7 +138,7 @@ instance ToQuery StartExportTask where
 
 -- | /See:/ 'startExportTaskResponse' smart constructor.
 data StartExportTaskResponse = StartExportTaskResponse'
-  { _setrsExportId       :: !(Maybe Text)
+  { _setrsExportId :: !(Maybe Text)
   , _setrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

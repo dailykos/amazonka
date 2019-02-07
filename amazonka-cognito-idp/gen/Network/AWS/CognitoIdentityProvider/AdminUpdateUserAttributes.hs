@@ -57,8 +57,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'adminUpdateUserAttributes' smart constructor.
 data AdminUpdateUserAttributes = AdminUpdateUserAttributes'
-  { _auuaUserPoolId     :: !Text
-  , _auuaUsername       :: !(Sensitive Text)
+  { _auuaUserPoolId :: !Text
+  , _auuaUsername :: !(Sensitive Text)
   , _auuaUserAttributes :: ![AttributeType]
   } deriving (Eq, Show, Data, Typeable, Generic)
 

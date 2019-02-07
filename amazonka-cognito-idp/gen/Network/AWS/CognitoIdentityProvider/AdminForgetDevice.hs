@@ -52,8 +52,8 @@ import Network.AWS.Response
 -- /See:/ 'adminForgetDevice' smart constructor.
 data AdminForgetDevice = AdminForgetDevice'
   { _afdUserPoolId :: !Text
-  , _afdUsername   :: !(Sensitive Text)
-  , _afdDeviceKey  :: !Text
+  , _afdUsername :: !(Sensitive Text)
+  , _afdDeviceKey :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

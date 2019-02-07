@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+-- Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account. 
 --
 --
 -- You can call @RestoreTableFromBackup@ at a maximum rate of 10 times per second.
@@ -66,7 +66,7 @@ import Network.AWS.Response
 -- | /See:/ 'restoreTableFromBackup' smart constructor.
 data RestoreTableFromBackup = RestoreTableFromBackup'
   { _rtfbTargetTableName :: !Text
-  , _rtfbBackupARN       :: !Text
+  , _rtfbBackupARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -134,7 +134,7 @@ instance ToQuery RestoreTableFromBackup where
 -- | /See:/ 'restoreTableFromBackupResponse' smart constructor.
 data RestoreTableFromBackupResponse = RestoreTableFromBackupResponse'
   { _rtfbrsTableDescription :: !(Maybe TableDescription)
-  , _rtfbrsResponseStatus   :: !Int
+  , _rtfbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

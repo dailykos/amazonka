@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon CloudSearch Configuration Service__
+-- __Amazon CloudSearch Configuration Service__ 
 --
 -- You use the Amazon CloudSearch configuration service to create, configure, and manage search domains. Configuration service requests are submitted using the AWS Query protocol. AWS Query requests are HTTP or HTTPS requests submitted via HTTP GET or POST with a query parameter named Action.
 --
@@ -49,76 +49,76 @@ module Network.AWS.CloudSearch
     -- * Operations
     -- $operations
 
-    -- ** DescribeAvailabilityOptions
+    -- ** DescribeAvailabilityOptions 
     , module Network.AWS.CloudSearch.DescribeAvailabilityOptions
 
-    -- ** DescribeExpressions
+    -- ** DescribeExpressions 
     , module Network.AWS.CloudSearch.DescribeExpressions
 
-    -- ** DefineExpression
+    -- ** DefineExpression 
     , module Network.AWS.CloudSearch.DefineExpression
 
-    -- ** DescribeScalingParameters
+    -- ** DescribeScalingParameters 
     , module Network.AWS.CloudSearch.DescribeScalingParameters
 
-    -- ** DescribeServiceAccessPolicies
+    -- ** DescribeServiceAccessPolicies 
     , module Network.AWS.CloudSearch.DescribeServiceAccessPolicies
 
-    -- ** DescribeSuggesters
+    -- ** DescribeSuggesters 
     , module Network.AWS.CloudSearch.DescribeSuggesters
 
-    -- ** UpdateAvailabilityOptions
+    -- ** UpdateAvailabilityOptions 
     , module Network.AWS.CloudSearch.UpdateAvailabilityOptions
 
-    -- ** DeleteExpression
+    -- ** DeleteExpression 
     , module Network.AWS.CloudSearch.DeleteExpression
 
-    -- ** ListDomainNames
+    -- ** ListDomainNames 
     , module Network.AWS.CloudSearch.ListDomainNames
 
-    -- ** DefineSuggester
+    -- ** DefineSuggester 
     , module Network.AWS.CloudSearch.DefineSuggester
 
-    -- ** DescribeDomains
+    -- ** DescribeDomains 
     , module Network.AWS.CloudSearch.DescribeDomains
 
-    -- ** DeleteAnalysisScheme
+    -- ** DeleteAnalysisScheme 
     , module Network.AWS.CloudSearch.DeleteAnalysisScheme
 
-    -- ** DescribeAnalysisSchemes
+    -- ** DescribeAnalysisSchemes 
     , module Network.AWS.CloudSearch.DescribeAnalysisSchemes
 
-    -- ** CreateDomain
+    -- ** CreateDomain 
     , module Network.AWS.CloudSearch.CreateDomain
 
-    -- ** DescribeIndexFields
+    -- ** DescribeIndexFields 
     , module Network.AWS.CloudSearch.DescribeIndexFields
 
-    -- ** DeleteSuggester
+    -- ** DeleteSuggester 
     , module Network.AWS.CloudSearch.DeleteSuggester
 
-    -- ** DefineAnalysisScheme
+    -- ** DefineAnalysisScheme 
     , module Network.AWS.CloudSearch.DefineAnalysisScheme
 
-    -- ** IndexDocuments
+    -- ** IndexDocuments 
     , module Network.AWS.CloudSearch.IndexDocuments
 
-    -- ** DeleteIndexField
+    -- ** DeleteIndexField 
     , module Network.AWS.CloudSearch.DeleteIndexField
 
-    -- ** UpdateServiceAccessPolicies
+    -- ** UpdateServiceAccessPolicies 
     , module Network.AWS.CloudSearch.UpdateServiceAccessPolicies
 
-    -- ** UpdateScalingParameters
+    -- ** UpdateScalingParameters 
     , module Network.AWS.CloudSearch.UpdateScalingParameters
 
-    -- ** BuildSuggesters
+    -- ** BuildSuggesters 
     , module Network.AWS.CloudSearch.BuildSuggesters
 
-    -- ** DeleteDomain
+    -- ** DeleteDomain 
     , module Network.AWS.CloudSearch.DeleteDomain
 
-    -- ** DefineIndexField
+    -- ** DefineIndexField 
     , module Network.AWS.CloudSearch.DefineIndexField
 
     -- * Types

@@ -21,6 +21,8 @@
 -- Describes the target groups for the specified Auto Scaling group.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AutoScaling.DescribeLoadBalancerTargetGroups
     (
     -- * Creating a Request
@@ -43,14 +45,15 @@ module Network.AWS.AutoScaling.DescribeLoadBalancerTargetGroups
 import Network.AWS.AutoScaling.Types
 import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLoadBalancerTargetGroups' smart constructor.
 data DescribeLoadBalancerTargetGroups = DescribeLoadBalancerTargetGroups'
-  { _dlbtgsNextToken            :: !(Maybe Text)
-  , _dlbtgsMaxRecords           :: !(Maybe Int)
+  { _dlbtgsNextToken :: !(Maybe Text)
+  , _dlbtgsMaxRecords :: !(Maybe Int)
   , _dlbtgsAutoScalingGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -86,6 +89,16 @@ dlbtgsMaxRecords = lens _dlbtgsMaxRecords (\ s a -> s{_dlbtgsMaxRecords = a})
 -- | The name of the Auto Scaling group.
 dlbtgsAutoScalingGroupName :: Lens' DescribeLoadBalancerTargetGroups Text
 dlbtgsAutoScalingGroupName = lens _dlbtgsAutoScalingGroupName (\ s a -> s{_dlbtgsAutoScalingGroupName = a})
+
+instance AWSPager DescribeLoadBalancerTargetGroups
+         where
+        page rq rs
+          | stop (rs ^. dlbtgsrsNextToken) = Nothing
+          | stop (rs ^. dlbtgsrsLoadBalancerTargetGroups) =
+            Nothing
+          | otherwise =
+            Just $ rq &
+              dlbtgsNextToken .~ rs ^. dlbtgsrsNextToken
 
 instance AWSRequest DescribeLoadBalancerTargetGroups
          where
@@ -131,8 +144,8 @@ instance ToQuery DescribeLoadBalancerTargetGroups
 -- | /See:/ 'describeLoadBalancerTargetGroupsResponse' smart constructor.
 data DescribeLoadBalancerTargetGroupsResponse = DescribeLoadBalancerTargetGroupsResponse'
   { _dlbtgsrsLoadBalancerTargetGroups :: !(Maybe [LoadBalancerTargetGroupState])
-  , _dlbtgsrsNextToken                :: !(Maybe Text)
-  , _dlbtgsrsResponseStatus           :: !Int
+  , _dlbtgsrsNextToken :: !(Maybe Text)
+  , _dlbtgsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

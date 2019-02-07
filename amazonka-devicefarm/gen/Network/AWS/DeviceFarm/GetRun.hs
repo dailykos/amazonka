@@ -107,7 +107,7 @@ instance ToQuery GetRun where
 --
 -- /See:/ 'getRunResponse' smart constructor.
 data GetRunResponse = GetRunResponse'
-  { _grrsRun            :: !(Maybe Run)
+  { _grrsRun :: !(Maybe Run)
   , _grrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

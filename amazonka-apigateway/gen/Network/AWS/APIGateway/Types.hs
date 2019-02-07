@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -93,6 +93,7 @@ module Network.AWS.APIGateway.Types
     , apiStage
     , asStage
     , asApiId
+    , asThrottle
 
     -- * AccessLogSettings
     , AccessLogSettings
@@ -363,11 +364,13 @@ module Network.AWS.APIGateway.Types
     , sAccessLogSettings
     , sDocumentationVersion
     , sClientCertificateId
+    , sTracingEnabled
     , sCreatedDate
     , sCacheClusterStatus
     , sMethodSettings
     , sLastUpdatedDate
     , sCacheClusterSize
+    , sWebACLARN
     , sCanarySettings
     , sCacheClusterEnabled
     , sStageName

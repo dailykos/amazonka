@@ -51,8 +51,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateDocumentationVersion' smart constructor.
 data UpdateDocumentationVersion = UpdateDocumentationVersion'
-  { _udvPatchOperations      :: !(Maybe [PatchOperation])
-  , _udvRestAPIId            :: !Text
+  { _udvPatchOperations :: !(Maybe [PatchOperation])
+  , _udvRestAPIId :: !Text
   , _udvDocumentationVersion :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

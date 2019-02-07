@@ -50,8 +50,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeReplicationInstanceTaskLogs' smart constructor.
 data DescribeReplicationInstanceTaskLogs = DescribeReplicationInstanceTaskLogs'
-  { _dritlMarker                 :: !(Maybe Text)
-  , _dritlMaxRecords             :: !(Maybe Int)
+  { _dritlMarker :: !(Maybe Text)
+  , _dritlMaxRecords :: !(Maybe Int)
   , _dritlReplicationInstanceARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,9 +143,9 @@ instance ToQuery DescribeReplicationInstanceTaskLogs
 -- | /See:/ 'describeReplicationInstanceTaskLogsResponse' smart constructor.
 data DescribeReplicationInstanceTaskLogsResponse = DescribeReplicationInstanceTaskLogsResponse'
   { _dritlrsReplicationInstanceTaskLogs :: !(Maybe [ReplicationInstanceTaskLog])
-  , _dritlrsMarker                      :: !(Maybe Text)
-  , _dritlrsReplicationInstanceARN      :: !(Maybe Text)
-  , _dritlrsResponseStatus              :: !Int
+  , _dritlrsMarker :: !(Maybe Text)
+  , _dritlrsReplicationInstanceARN :: !(Maybe Text)
+  , _dritlrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -153,7 +153,7 @@ data DescribeReplicationInstanceTaskLogsResponse = DescribeReplicationInstanceTa
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dritlrsReplicationInstanceTaskLogs' - An array of replication task log metadata. Each member of the array contains the replication task name, ARN, and task log size (in bytes).
+-- * 'dritlrsReplicationInstanceTaskLogs' - An array of replication task log metadata. Each member of the array contains the replication task name, ARN, and task log size (in bytes). 
 --
 -- * 'dritlrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
 --
@@ -172,7 +172,7 @@ describeReplicationInstanceTaskLogsResponse pResponseStatus_ =
     }
 
 
--- | An array of replication task log metadata. Each member of the array contains the replication task name, ARN, and task log size (in bytes).
+-- | An array of replication task log metadata. Each member of the array contains the replication task name, ARN, and task log size (in bytes). 
 dritlrsReplicationInstanceTaskLogs :: Lens' DescribeReplicationInstanceTaskLogsResponse [ReplicationInstanceTaskLog]
 dritlrsReplicationInstanceTaskLogs = lens _dritlrsReplicationInstanceTaskLogs (\ s a -> s{_dritlrsReplicationInstanceTaskLogs = a}) . _Default . _Coerce
 

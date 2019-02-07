@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Configures an @'IndexField' @ for the search domain. Used to create new fields and modify existing ones. You must specify the name of the domain you are configuring and an index field configuration. The index field configuration specifies a unique name, the index field type, and the options you want to configure for the field. The options you can specify depend on the @'IndexFieldType' @ . If the field exists, the new configuration replaces the old one. For more information, see <http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html Configuring Index Fields> in the /Amazon CloudSearch Developer Guide/ .
+-- Configures an @'IndexField' @ for the search domain. Used to create new fields and modify existing ones. You must specify the name of the domain you are configuring and an index field configuration. The index field configuration specifies a unique name, the index field type, and the options you want to configure for the field. The options you can specify depend on the @'IndexFieldType' @ . If the field exists, the new configuration replaces the old one. For more information, see <http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html Configuring Index Fields> in the /Amazon CloudSearch Developer Guide/ . 
 --
 --
 module Network.AWS.CloudSearch.DefineIndexField
@@ -62,7 +62,7 @@ data DefineIndexField = DefineIndexField'
 --
 -- * 'defeDomainName' - Undocumented member.
 --
--- * 'defeIndexField' - The index field and field options you want to configure.
+-- * 'defeIndexField' - The index field and field options you want to configure. 
 defineIndexField
     :: Text -- ^ 'defeDomainName'
     -> IndexField -- ^ 'defeIndexField'
@@ -76,7 +76,7 @@ defineIndexField pDomainName_ pIndexField_ =
 defeDomainName :: Lens' DefineIndexField Text
 defeDomainName = lens _defeDomainName (\ s a -> s{_defeDomainName = a})
 
--- | The index field and field options you want to configure.
+-- | The index field and field options you want to configure. 
 defeIndexField :: Lens' DefineIndexField IndexField
 defeIndexField = lens _defeIndexField (\ s a -> s{_defeIndexField = a})
 
@@ -114,7 +114,7 @@ instance ToQuery DefineIndexField where
 -- /See:/ 'defineIndexFieldResponse' smart constructor.
 data DefineIndexFieldResponse = DefineIndexFieldResponse'
   { _defrsResponseStatus :: !Int
-  , _defrsIndexField     :: !IndexFieldStatus
+  , _defrsIndexField :: !IndexFieldStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

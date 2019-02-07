@@ -109,7 +109,7 @@ instance ToQuery ListTagsForResource where
 -- | /See:/ 'listTagsForResourceResponse' smart constructor.
 data ListTagsForResourceResponse = ListTagsForResourceResponse'
   { _ltfrrsResponseStatus :: !Int
-  , _ltfrrsTagList        :: ![Tag]
+  , _ltfrrsTagList :: ![Tag]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

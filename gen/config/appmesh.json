@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-appmesh",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.AppMesh.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

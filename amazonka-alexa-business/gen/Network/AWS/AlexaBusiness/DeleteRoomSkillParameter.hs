@@ -47,8 +47,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteRoomSkillParameter' smart constructor.
 data DeleteRoomSkillParameter = DeleteRoomSkillParameter'
-  { _drspRoomARN      :: !(Maybe Text)
-  , _drspSkillId      :: !Text
+  { _drspRoomARN :: !(Maybe Text)
+  , _drspSkillId :: !Text
   , _drspParameterKey :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

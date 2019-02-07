@@ -47,8 +47,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateEnvironment' smart constructor.
 data UpdateEnvironment = UpdateEnvironment'
-  { _ueName          :: !(Maybe Text)
-  , _ueDescription   :: !(Maybe Text)
+  { _ueName :: !(Maybe Text)
+  , _ueDescription :: !(Maybe Text)
   , _ueEnvironmentId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new RMTP distribution. An RTMP distribution is similar to a web distribution, but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using HTTP.
+-- Creates a new RMTP distribution. An RTMP distribution is similar to a web distribution, but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using HTTP. 
 --
 --
 -- To create a new web distribution, submit a @POST@ request to the /CloudFront API version/ /distribution resource. The request body must include a document with a /StreamingDistributionConfig/ element. The response echoes the @StreamingDistributionConfig@ element and returns other information about the RTMP distribution.
@@ -100,7 +100,7 @@ instance NFData CreateStreamingDistribution where
 instance ToElement CreateStreamingDistribution where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}StreamingDistributionConfig"
+              "{http://cloudfront.amazonaws.com/doc/2018-11-05/}StreamingDistributionConfig"
               .
               _csdStreamingDistributionConfig
 
@@ -108,7 +108,7 @@ instance ToHeaders CreateStreamingDistribution where
         toHeaders = const mempty
 
 instance ToPath CreateStreamingDistribution where
-        toPath = const "/2017-10-30/streaming-distribution"
+        toPath = const "/2018-11-05/streaming-distribution"
 
 instance ToQuery CreateStreamingDistribution where
         toQuery = const mempty
@@ -119,10 +119,10 @@ instance ToQuery CreateStreamingDistribution where
 --
 -- /See:/ 'createStreamingDistributionResponse' smart constructor.
 data CreateStreamingDistributionResponse = CreateStreamingDistributionResponse'
-  { _csdrsETag                  :: !(Maybe Text)
-  , _csdrsLocation              :: !(Maybe Text)
+  { _csdrsETag :: !(Maybe Text)
+  , _csdrsLocation :: !(Maybe Text)
   , _csdrsStreamingDistribution :: !(Maybe StreamingDistribution)
-  , _csdrsResponseStatus        :: !Int
+  , _csdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -54,7 +54,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'listIdentityPoolUsage' smart constructor.
 data ListIdentityPoolUsage = ListIdentityPoolUsage'
-  { _lipuNextToken  :: !(Maybe Text)
+  { _lipuNextToken :: !(Maybe Text)
   , _lipuMaxResults :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,10 +119,10 @@ instance ToQuery ListIdentityPoolUsage where
 -- /See:/ 'listIdentityPoolUsageResponse' smart constructor.
 data ListIdentityPoolUsageResponse = ListIdentityPoolUsageResponse'
   { _lipursIdentityPoolUsages :: !(Maybe [IdentityPoolUsage])
-  , _lipursCount              :: !(Maybe Int)
-  , _lipursNextToken          :: !(Maybe Text)
-  , _lipursMaxResults         :: !(Maybe Int)
-  , _lipursResponseStatus     :: !Int
+  , _lipursCount :: !(Maybe Int)
+  , _lipursNextToken :: !(Maybe Text)
+  , _lipursMaxResults :: !(Maybe Int)
+  , _lipursResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

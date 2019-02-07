@@ -51,11 +51,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'listStackInstances' smart constructor.
 data ListStackInstances = ListStackInstances'
-  { _lsiStackInstanceRegion  :: !(Maybe Text)
-  , _lsiNextToken            :: !(Maybe Text)
+  { _lsiStackInstanceRegion :: !(Maybe Text)
+  , _lsiNextToken :: !(Maybe Text)
   , _lsiStackInstanceAccount :: !(Maybe Text)
-  , _lsiMaxResults           :: !(Maybe Nat)
-  , _lsiStackSetName         :: !Text
+  , _lsiMaxResults :: !(Maybe Nat)
+  , _lsiStackSetName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -63,7 +63,7 @@ data ListStackInstances = ListStackInstances'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lsiStackInstanceRegion' - The name of the region where you want to list stack instances.
+-- * 'lsiStackInstanceRegion' - The name of the region where you want to list stack instances. 
 --
 -- * 'lsiNextToken' - If the previous request didn't return all of the remaining results, the response's @NextToken@ parameter value is set to a token. To retrieve the next set of results, call @ListStackInstances@ again and assign that token to the request object's @NextToken@ parameter. If there are no remaining results, the previous response object's @NextToken@ parameter is set to @null@ .
 --
@@ -85,7 +85,7 @@ listStackInstances pStackSetName_ =
     }
 
 
--- | The name of the region where you want to list stack instances.
+-- | The name of the region where you want to list stack instances. 
 lsiStackInstanceRegion :: Lens' ListStackInstances (Maybe Text)
 lsiStackInstanceRegion = lens _lsiStackInstanceRegion (\ s a -> s{_lsiStackInstanceRegion = a})
 
@@ -141,8 +141,8 @@ instance ToQuery ListStackInstances where
 
 -- | /See:/ 'listStackInstancesResponse' smart constructor.
 data ListStackInstancesResponse = ListStackInstancesResponse'
-  { _lsirsNextToken      :: !(Maybe Text)
-  , _lsirsSummaries      :: !(Maybe [StackInstanceSummary])
+  { _lsirsNextToken :: !(Maybe Text)
+  , _lsirsSummaries :: !(Maybe [StackInstanceSummary])
   , _lsirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

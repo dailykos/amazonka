@@ -91,7 +91,7 @@ instance ToHeaders GetFieldLevelEncryptionProfile
 instance ToPath GetFieldLevelEncryptionProfile where
         toPath GetFieldLevelEncryptionProfile'{..}
           = mconcat
-              ["/2017-10-30/field-level-encryption-profile/",
+              ["/2018-11-05/field-level-encryption-profile/",
                toBS _gflepId]
 
 instance ToQuery GetFieldLevelEncryptionProfile where
@@ -99,9 +99,9 @@ instance ToQuery GetFieldLevelEncryptionProfile where
 
 -- | /See:/ 'getFieldLevelEncryptionProfileResponse' smart constructor.
 data GetFieldLevelEncryptionProfileResponse = GetFieldLevelEncryptionProfileResponse'
-  { _gfleprsETag                        :: !(Maybe Text)
+  { _gfleprsETag :: !(Maybe Text)
   , _gfleprsFieldLevelEncryptionProfile :: !(Maybe FieldLevelEncryptionProfile)
-  , _gfleprsResponseStatus              :: !Int
+  , _gfleprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

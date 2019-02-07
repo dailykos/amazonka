@@ -54,11 +54,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'getCommentsForComparedCommit' smart constructor.
 data GetCommentsForComparedCommit = GetCommentsForComparedCommit'
-  { _gcfccNextToken      :: !(Maybe Text)
+  { _gcfccNextToken :: !(Maybe Text)
   , _gcfccBeforeCommitId :: !(Maybe Text)
-  , _gcfccMaxResults     :: !(Maybe Int)
+  , _gcfccMaxResults :: !(Maybe Int)
   , _gcfccRepositoryName :: !Text
-  , _gcfccAfterCommitId  :: !Text
+  , _gcfccAfterCommitId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -66,7 +66,7 @@ data GetCommentsForComparedCommit = GetCommentsForComparedCommit'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcfccNextToken' - An enumeration token that when provided in a request, returns the next batch of the results.
+-- * 'gcfccNextToken' - An enumeration token that when provided in a request, returns the next batch of the results. 
 --
 -- * 'gcfccBeforeCommitId' - To establish the directionality of the comparison, the full commit ID of the 'before' commit.
 --
@@ -89,7 +89,7 @@ getCommentsForComparedCommit pRepositoryName_ pAfterCommitId_ =
     }
 
 
--- | An enumeration token that when provided in a request, returns the next batch of the results.
+-- | An enumeration token that when provided in a request, returns the next batch of the results. 
 gcfccNextToken :: Lens' GetCommentsForComparedCommit (Maybe Text)
 gcfccNextToken = lens _gcfccNextToken (\ s a -> s{_gcfccNextToken = a})
 

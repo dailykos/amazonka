@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update a field-level encryption configuration.
+-- Update a field-level encryption configuration. 
 --
 --
 module Network.AWS.CloudFront.UpdateFieldLevelEncryptionConfig
@@ -49,9 +49,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateFieldLevelEncryptionConfig' smart constructor.
 data UpdateFieldLevelEncryptionConfig = UpdateFieldLevelEncryptionConfig'
-  { _uflecIfMatch                    :: !(Maybe Text)
+  { _uflecIfMatch :: !(Maybe Text)
   , _uflecFieldLevelEncryptionConfig :: !FieldLevelEncryptionConfig
-  , _uflecId                         :: !Text
+  , _uflecId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -61,7 +61,7 @@ data UpdateFieldLevelEncryptionConfig = UpdateFieldLevelEncryptionConfig'
 --
 -- * 'uflecIfMatch' - The value of the @ETag@ header that you received when retrieving the configuration identity to update. For example: @E2QWRUHAPOMQZL@ .
 --
--- * 'uflecFieldLevelEncryptionConfig' - Request to update a field-level encryption configuration.
+-- * 'uflecFieldLevelEncryptionConfig' - Request to update a field-level encryption configuration. 
 --
 -- * 'uflecId' - The ID of the configuration you want to update.
 updateFieldLevelEncryptionConfig
@@ -80,7 +80,7 @@ updateFieldLevelEncryptionConfig pFieldLevelEncryptionConfig_ pId_ =
 uflecIfMatch :: Lens' UpdateFieldLevelEncryptionConfig (Maybe Text)
 uflecIfMatch = lens _uflecIfMatch (\ s a -> s{_uflecIfMatch = a})
 
--- | Request to update a field-level encryption configuration.
+-- | Request to update a field-level encryption configuration. 
 uflecFieldLevelEncryptionConfig :: Lens' UpdateFieldLevelEncryptionConfig FieldLevelEncryptionConfig
 uflecFieldLevelEncryptionConfig = lens _uflecFieldLevelEncryptionConfig (\ s a -> s{_uflecFieldLevelEncryptionConfig = a})
 
@@ -110,7 +110,7 @@ instance ToElement UpdateFieldLevelEncryptionConfig
          where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}FieldLevelEncryptionConfig"
+              "{http://cloudfront.amazonaws.com/doc/2018-11-05/}FieldLevelEncryptionConfig"
               .
               _uflecFieldLevelEncryptionConfig
 
@@ -123,7 +123,7 @@ instance ToPath UpdateFieldLevelEncryptionConfig
          where
         toPath UpdateFieldLevelEncryptionConfig'{..}
           = mconcat
-              ["/2017-10-30/field-level-encryption/",
+              ["/2018-11-05/field-level-encryption/",
                toBS _uflecId, "/config"]
 
 instance ToQuery UpdateFieldLevelEncryptionConfig
@@ -132,9 +132,9 @@ instance ToQuery UpdateFieldLevelEncryptionConfig
 
 -- | /See:/ 'updateFieldLevelEncryptionConfigResponse' smart constructor.
 data UpdateFieldLevelEncryptionConfigResponse = UpdateFieldLevelEncryptionConfigResponse'
-  { _uflecrsETag                 :: !(Maybe Text)
+  { _uflecrsETag :: !(Maybe Text)
   , _uflecrsFieldLevelEncryption :: !(Maybe FieldLevelEncryption)
-  , _uflecrsResponseStatus       :: !Int
+  , _uflecrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

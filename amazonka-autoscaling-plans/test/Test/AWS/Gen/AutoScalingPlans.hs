@@ -14,11 +14,11 @@
 module Test.AWS.Gen.AutoScalingPlans where
 
 import Data.Proxy
-import Network.AWS.AutoScalingPlans
-import Test.AWS.AutoScalingPlans.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.AutoScalingPlans
+import Test.AWS.AutoScalingPlans.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.
@@ -43,6 +43,9 @@ import Test.Tasty
 --         , requestDescribeScalingPlans $
 --             describeScalingPlans
 --
+--         , requestGetScalingPlanResourceForecastData $
+--             getScalingPlanResourceForecastData
+--
 --           ]
 
 --     , testGroup "response"
@@ -60,6 +63,9 @@ import Test.Tasty
 --
 --         , responseDescribeScalingPlans $
 --             describeScalingPlansResponse
+--
+--         , responseGetScalingPlanResourceForecastData $
+--             getScalingPlanResourceForecastDataResponse
 --
 --           ]
 --     ]
@@ -90,6 +96,11 @@ requestDescribeScalingPlans :: DescribeScalingPlans -> TestTree
 requestDescribeScalingPlans = req
     "DescribeScalingPlans"
     "fixture/DescribeScalingPlans.yaml"
+
+requestGetScalingPlanResourceForecastData :: GetScalingPlanResourceForecastData -> TestTree
+requestGetScalingPlanResourceForecastData = req
+    "GetScalingPlanResourceForecastData"
+    "fixture/GetScalingPlanResourceForecastData.yaml"
 
 -- Responses
 
@@ -127,3 +138,10 @@ responseDescribeScalingPlans = res
     "fixture/DescribeScalingPlansResponse.proto"
     autoScalingPlans
     (Proxy :: Proxy DescribeScalingPlans)
+
+responseGetScalingPlanResourceForecastData :: GetScalingPlanResourceForecastDataResponse -> TestTree
+responseGetScalingPlanResourceForecastData = res
+    "GetScalingPlanResourceForecastDataResponse"
+    "fixture/GetScalingPlanResourceForecastDataResponse.proto"
+    autoScalingPlans
+    (Proxy :: Proxy GetScalingPlanResourceForecastData)

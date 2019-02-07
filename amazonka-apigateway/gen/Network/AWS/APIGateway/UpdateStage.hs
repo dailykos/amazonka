@@ -40,11 +40,13 @@ module Network.AWS.APIGateway.UpdateStage
     , sAccessLogSettings
     , sDocumentationVersion
     , sClientCertificateId
+    , sTracingEnabled
     , sCreatedDate
     , sCacheClusterStatus
     , sMethodSettings
     , sLastUpdatedDate
     , sCacheClusterSize
+    , sWebACLARN
     , sCanarySettings
     , sCacheClusterEnabled
     , sStageName
@@ -66,8 +68,8 @@ import Network.AWS.Response
 -- /See:/ 'updateStage' smart constructor.
 data UpdateStage = UpdateStage'
   { _usPatchOperations :: !(Maybe [PatchOperation])
-  , _usRestAPIId       :: !Text
-  , _usStageName       :: !Text
+  , _usRestAPIId :: !Text
+  , _usStageName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

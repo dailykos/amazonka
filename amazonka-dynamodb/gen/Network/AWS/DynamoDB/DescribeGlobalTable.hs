@@ -106,7 +106,7 @@ instance ToQuery DescribeGlobalTable where
 -- | /See:/ 'describeGlobalTableResponse' smart constructor.
 data DescribeGlobalTableResponse = DescribeGlobalTableResponse'
   { _dgtrsGlobalTableDescription :: !(Maybe GlobalTableDescription)
-  , _dgtrsResponseStatus         :: !Int
+  , _dgtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

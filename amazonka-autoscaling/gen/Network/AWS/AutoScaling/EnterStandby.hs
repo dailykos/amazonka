@@ -21,7 +21,7 @@
 -- Moves the specified instances into the standby state.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html Temporarily Removing Instances from Your Auto Scaling Group> in the /Auto Scaling User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html Temporarily Removing Instances from Your Auto Scaling Group> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.EnterStandby
     (
@@ -50,8 +50,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'enterStandby' smart constructor.
 data EnterStandby = EnterStandby'
-  { _esInstanceIds                    :: !(Maybe [Text])
-  , _esAutoScalingGroupName           :: !Text
+  { _esInstanceIds :: !(Maybe [Text])
+  , _esAutoScalingGroupName :: !Text
   , _esShouldDecrementDesiredCapacity :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery EnterStandby where
 
 -- | /See:/ 'enterStandbyResponse' smart constructor.
 data EnterStandbyResponse = EnterStandbyResponse'
-  { _ersActivities     :: !(Maybe [Activity])
+  { _ersActivities :: !(Maybe [Activity])
   , _ersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

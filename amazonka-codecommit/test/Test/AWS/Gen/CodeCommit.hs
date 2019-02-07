@@ -14,11 +14,11 @@
 module Test.AWS.Gen.CodeCommit where
 
 import Data.Proxy
-import Network.AWS.CodeCommit
-import Test.AWS.CodeCommit.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.CodeCommit
+import Test.AWS.CodeCommit.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.
@@ -64,6 +64,9 @@ import Test.Tasty
 --         , requestCreateBranch $
 --             createBranch
 --
+--         , requestGetFolder $
+--             getFolder
+--
 --         , requestCreatePullRequest $
 --             createPullRequest
 --
@@ -94,6 +97,9 @@ import Test.Tasty
 --         , requestPutFile $
 --             putFile
 --
+--         , requestDeleteFile $
+--             deleteFile
+--
 --         , requestGetCommentsForComparedCommit $
 --             getCommentsForComparedCommit
 --
@@ -114,6 +120,9 @@ import Test.Tasty
 --
 --         , requestPutRepositoryTriggers $
 --             putRepositoryTriggers
+--
+--         , requestGetFile $
+--             getFile
 --
 --         , requestGetMergeConflicts $
 --             getMergeConflicts
@@ -175,6 +184,9 @@ import Test.Tasty
 --         , responseCreateBranch $
 --             createBranchResponse
 --
+--         , responseGetFolder $
+--             getFolderResponse
+--
 --         , responseCreatePullRequest $
 --             createPullRequestResponse
 --
@@ -205,6 +217,9 @@ import Test.Tasty
 --         , responsePutFile $
 --             putFileResponse
 --
+--         , responseDeleteFile $
+--             deleteFileResponse
+--
 --         , responseGetCommentsForComparedCommit $
 --             getCommentsForComparedCommitResponse
 --
@@ -225,6 +240,9 @@ import Test.Tasty
 --
 --         , responsePutRepositoryTriggers $
 --             putRepositoryTriggersResponse
+--
+--         , responseGetFile $
+--             getFileResponse
 --
 --         , responseGetMergeConflicts $
 --             getMergeConflictsResponse
@@ -312,6 +330,11 @@ requestCreateBranch = req
     "CreateBranch"
     "fixture/CreateBranch.yaml"
 
+requestGetFolder :: GetFolder -> TestTree
+requestGetFolder = req
+    "GetFolder"
+    "fixture/GetFolder.yaml"
+
 requestCreatePullRequest :: CreatePullRequest -> TestTree
 requestCreatePullRequest = req
     "CreatePullRequest"
@@ -362,6 +385,11 @@ requestPutFile = req
     "PutFile"
     "fixture/PutFile.yaml"
 
+requestDeleteFile :: DeleteFile -> TestTree
+requestDeleteFile = req
+    "DeleteFile"
+    "fixture/DeleteFile.yaml"
+
 requestGetCommentsForComparedCommit :: GetCommentsForComparedCommit -> TestTree
 requestGetCommentsForComparedCommit = req
     "GetCommentsForComparedCommit"
@@ -396,6 +424,11 @@ requestPutRepositoryTriggers :: PutRepositoryTriggers -> TestTree
 requestPutRepositoryTriggers = req
     "PutRepositoryTriggers"
     "fixture/PutRepositoryTriggers.yaml"
+
+requestGetFile :: GetFile -> TestTree
+requestGetFile = req
+    "GetFile"
+    "fixture/GetFile.yaml"
 
 requestGetMergeConflicts :: GetMergeConflicts -> TestTree
 requestGetMergeConflicts = req
@@ -518,6 +551,13 @@ responseCreateBranch = res
     codeCommit
     (Proxy :: Proxy CreateBranch)
 
+responseGetFolder :: GetFolderResponse -> TestTree
+responseGetFolder = res
+    "GetFolderResponse"
+    "fixture/GetFolderResponse.proto"
+    codeCommit
+    (Proxy :: Proxy GetFolder)
+
 responseCreatePullRequest :: CreatePullRequestResponse -> TestTree
 responseCreatePullRequest = res
     "CreatePullRequestResponse"
@@ -588,6 +628,13 @@ responsePutFile = res
     codeCommit
     (Proxy :: Proxy PutFile)
 
+responseDeleteFile :: DeleteFileResponse -> TestTree
+responseDeleteFile = res
+    "DeleteFileResponse"
+    "fixture/DeleteFileResponse.proto"
+    codeCommit
+    (Proxy :: Proxy DeleteFile)
+
 responseGetCommentsForComparedCommit :: GetCommentsForComparedCommitResponse -> TestTree
 responseGetCommentsForComparedCommit = res
     "GetCommentsForComparedCommitResponse"
@@ -636,6 +683,13 @@ responsePutRepositoryTriggers = res
     "fixture/PutRepositoryTriggersResponse.proto"
     codeCommit
     (Proxy :: Proxy PutRepositoryTriggers)
+
+responseGetFile :: GetFileResponse -> TestTree
+responseGetFile = res
+    "GetFileResponse"
+    "fixture/GetFileResponse.proto"
+    codeCommit
+    (Proxy :: Proxy GetFile)
 
 responseGetMergeConflicts :: GetMergeConflictsResponse -> TestTree
 responseGetMergeConflicts = res

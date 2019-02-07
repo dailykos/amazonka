@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Sets the result of a Lambda validation function. The function validates one or both lifecycle events (@BeforeAllowTraffic@ and @AfterAllowTraffic@ ) and returns @Succeeded@ or @Failed@ .
+-- Sets the result of a Lambda validation function. The function validates one or both lifecycle events (@BeforeAllowTraffic@ and @AfterAllowTraffic@ ) and returns @Succeeded@ or @Failed@ . 
 --
 --
 module Network.AWS.CodeDeploy.PutLifecycleEventHookExecutionStatus
@@ -48,8 +48,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'putLifecycleEventHookExecutionStatus' smart constructor.
 data PutLifecycleEventHookExecutionStatus = PutLifecycleEventHookExecutionStatus'
-  { _plehesStatus                        :: !(Maybe LifecycleEventStatus)
-  , _plehesDeploymentId                  :: !(Maybe Text)
+  { _plehesStatus :: !(Maybe LifecycleEventStatus)
+  , _plehesDeploymentId :: !(Maybe Text)
   , _plehesLifecycleEventHookExecutionId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -60,9 +60,9 @@ data PutLifecycleEventHookExecutionStatus = PutLifecycleEventHookExecutionStatus
 --
 -- * 'plehesStatus' - The result of a Lambda function that validates a deployment lifecycle event (@Succeeded@ or @Failed@ ).
 --
--- * 'plehesDeploymentId' - The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
+-- * 'plehesDeploymentId' - The unique ID of a deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event. 
 --
--- * 'plehesLifecycleEventHookExecutionId' - The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the @hooks@ section of the AppSpec file.
+-- * 'plehesLifecycleEventHookExecutionId' - The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the @hooks@ section of the AppSpec file. 
 putLifecycleEventHookExecutionStatus
     :: PutLifecycleEventHookExecutionStatus
 putLifecycleEventHookExecutionStatus =
@@ -77,11 +77,11 @@ putLifecycleEventHookExecutionStatus =
 plehesStatus :: Lens' PutLifecycleEventHookExecutionStatus (Maybe LifecycleEventStatus)
 plehesStatus = lens _plehesStatus (\ s a -> s{_plehesStatus = a})
 
--- | The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
+-- | The unique ID of a deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event. 
 plehesDeploymentId :: Lens' PutLifecycleEventHookExecutionStatus (Maybe Text)
 plehesDeploymentId = lens _plehesDeploymentId (\ s a -> s{_plehesDeploymentId = a})
 
--- | The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the @hooks@ section of the AppSpec file.
+-- | The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the @hooks@ section of the AppSpec file. 
 plehesLifecycleEventHookExecutionId :: Lens' PutLifecycleEventHookExecutionStatus (Maybe Text)
 plehesLifecycleEventHookExecutionId = lens _plehesLifecycleEventHookExecutionId (\ s a -> s{_plehesLifecycleEventHookExecutionId = a})
 
@@ -138,7 +138,7 @@ instance ToQuery PutLifecycleEventHookExecutionStatus
 -- | /See:/ 'putLifecycleEventHookExecutionStatusResponse' smart constructor.
 data PutLifecycleEventHookExecutionStatusResponse = PutLifecycleEventHookExecutionStatusResponse'
   { _plehesrsLifecycleEventHookExecutionId :: !(Maybe Text)
-  , _plehesrsResponseStatus                :: !Int
+  , _plehesrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

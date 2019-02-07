@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Restores the specified table to the specified point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ . You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+-- Restores the specified table to the specified point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ . You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account. 
 --
 --
--- When you restore using point in time recovery, DynamoDB restores your table data to the state based on the selected date and time (day:hour:minute:second) to a new table.
+-- When you restore using point in time recovery, DynamoDB restores your table data to the state based on the selected date and time (day:hour:minute:second) to a new table. 
 --
--- Along with data, the following are also included on the new restored table using point in time recovery:
+-- Along with data, the following are also included on the new restored table using point in time recovery: 
 --
 --     * Global secondary indexes (GSIs)
 --
@@ -33,7 +33,7 @@
 --
 --     * Encryption settings
 --
--- /Important:/ All these settings come from the current settings of the source table at the time of restore.
+-- /Important:/ All these settings come from the current settings of the source table at the time of restore. 
 --
 --
 --
@@ -84,9 +84,9 @@ import Network.AWS.Response
 -- | /See:/ 'restoreTableToPointInTime' smart constructor.
 data RestoreTableToPointInTime = RestoreTableToPointInTime'
   { _rttpitUseLatestRestorableTime :: !(Maybe Bool)
-  , _rttpitRestoreDateTime         :: !(Maybe POSIX)
-  , _rttpitSourceTableName         :: !Text
-  , _rttpitTargetTableName         :: !Text
+  , _rttpitRestoreDateTime :: !(Maybe POSIX)
+  , _rttpitSourceTableName :: !Text
+  , _rttpitTargetTableName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -94,7 +94,7 @@ data RestoreTableToPointInTime = RestoreTableToPointInTime'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rttpitUseLatestRestorableTime' - Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time.
+-- * 'rttpitUseLatestRestorableTime' - Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time. 
 --
 -- * 'rttpitRestoreDateTime' - Time in the past to restore the table to.
 --
@@ -114,7 +114,7 @@ restoreTableToPointInTime pSourceTableName_ pTargetTableName_ =
     }
 
 
--- | Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time.
+-- | Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time. 
 rttpitUseLatestRestorableTime :: Lens' RestoreTableToPointInTime (Maybe Bool)
 rttpitUseLatestRestorableTime = lens _rttpitUseLatestRestorableTime (\ s a -> s{_rttpitUseLatestRestorableTime = a})
 
@@ -173,7 +173,7 @@ instance ToQuery RestoreTableToPointInTime where
 -- | /See:/ 'restoreTableToPointInTimeResponse' smart constructor.
 data RestoreTableToPointInTimeResponse = RestoreTableToPointInTimeResponse'
   { _rttpitrsTableDescription :: !(Maybe TableDescription)
-  , _rttpitrsResponseStatus   :: !Int
+  , _rttpitrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

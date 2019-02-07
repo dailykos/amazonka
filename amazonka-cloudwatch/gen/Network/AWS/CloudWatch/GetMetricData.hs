@@ -23,6 +23,22 @@
 --
 -- Calls to the @GetMetricData@ API have a different pricing structure than calls to @GetMetricStatistics@ . For more information about pricing, see <https://aws.amazon.com/cloudwatch/pricing/ Amazon CloudWatch Pricing> .
 --
+-- Amazon CloudWatch retains metric data as follows:
+--
+--     * Data points with a period of less than 60 seconds are available for 3 hours. These data points are high-resolution metrics and are available only for custom metrics that have been defined with a @StorageResolution@ of 1.
+--
+--     * Data points with a period of 60 seconds (1-minute) are available for 15 days.
+--
+--     * Data points with a period of 300 seconds (5-minute) are available for 63 days.
+--
+--     * Data points with a period of 3600 seconds (1 hour) are available for 455 days (15 months).
+--
+--
+--
+-- Data points that are initially published with a shorter period are aggregated together for long-term storage. For example, if you collect data using a period of 1 minute, the data remains available for 15 days with 1-minute resolution. After 15 days, this data is still available, but is aggregated and retrievable only with a resolution of 5 minutes. After 63 days, the data is further aggregated and is available with a resolution of 1 hour.
+--
+--
+-- This operation returns paginated results.
 module Network.AWS.CloudWatch.GetMetricData
     (
     -- * Creating a Request
@@ -48,18 +64,19 @@ module Network.AWS.CloudWatch.GetMetricData
 import Network.AWS.CloudWatch.Types
 import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMetricData' smart constructor.
 data GetMetricData = GetMetricData'
-  { _gmdMaxDatapoints     :: !(Maybe Int)
-  , _gmdNextToken         :: !(Maybe Text)
-  , _gmdScanBy            :: !(Maybe ScanBy)
+  { _gmdMaxDatapoints :: !(Maybe Int)
+  , _gmdNextToken :: !(Maybe Text)
+  , _gmdScanBy :: !(Maybe ScanBy)
   , _gmdMetricDataQueries :: ![MetricDataQuery]
-  , _gmdStartTime         :: !ISO8601
-  , _gmdEndTime           :: !ISO8601
+  , _gmdStartTime :: !ISO8601
+  , _gmdEndTime :: !ISO8601
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -73,11 +90,11 @@ data GetMetricData = GetMetricData'
 --
 -- * 'gmdScanBy' - The order in which data points should be returned. @TimestampDescending@ returns the newest data first and paginates when the @MaxDatapoints@ limit is reached. @TimestampAscending@ returns the oldest data first and paginates when the @MaxDatapoints@ limit is reached.
 --
--- * 'gmdMetricDataQueries' - The metric queries to be returned. A single @GetMetricData@ call can include as many as 100 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.
+-- * 'gmdMetricDataQueries' - The metric queries to be returned. A single @GetMetricData@ call can include as many as 100 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data. 
 --
--- * 'gmdStartTime' - The time stamp indicating the earliest data to be returned.
+-- * 'gmdStartTime' - The time stamp indicating the earliest data to be returned. For better performance, specify @StartTime@ and @EndTime@ values that align with the value of the metric's @Period@ and sync up with the beginning and end of an hour. For example, if the @Period@ of a metric is 5 minutes, specifying 12:05 or 12:30 as @StartTime@ can get a faster response from CloudWatch then setting 12:07 or 12:29 as the @StartTime@ .
 --
--- * 'gmdEndTime' - The time stamp indicating the latest data to be returned.
+-- * 'gmdEndTime' - The time stamp indicating the latest data to be returned. For better performance, specify @StartTime@ and @EndTime@ values that align with the value of the metric's @Period@ and sync up with the beginning and end of an hour. For example, if the @Period@ of a metric is 5 minutes, specifying 12:05 or 12:30 as @EndTime@ can get a faster response from CloudWatch then setting 12:07 or 12:29 as the @EndTime@ .
 getMetricData
     :: UTCTime -- ^ 'gmdStartTime'
     -> UTCTime -- ^ 'gmdEndTime'
@@ -105,17 +122,24 @@ gmdNextToken = lens _gmdNextToken (\ s a -> s{_gmdNextToken = a})
 gmdScanBy :: Lens' GetMetricData (Maybe ScanBy)
 gmdScanBy = lens _gmdScanBy (\ s a -> s{_gmdScanBy = a})
 
--- | The metric queries to be returned. A single @GetMetricData@ call can include as many as 100 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.
+-- | The metric queries to be returned. A single @GetMetricData@ call can include as many as 100 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data. 
 gmdMetricDataQueries :: Lens' GetMetricData [MetricDataQuery]
 gmdMetricDataQueries = lens _gmdMetricDataQueries (\ s a -> s{_gmdMetricDataQueries = a}) . _Coerce
 
--- | The time stamp indicating the earliest data to be returned.
+-- | The time stamp indicating the earliest data to be returned. For better performance, specify @StartTime@ and @EndTime@ values that align with the value of the metric's @Period@ and sync up with the beginning and end of an hour. For example, if the @Period@ of a metric is 5 minutes, specifying 12:05 or 12:30 as @StartTime@ can get a faster response from CloudWatch then setting 12:07 or 12:29 as the @StartTime@ .
 gmdStartTime :: Lens' GetMetricData UTCTime
 gmdStartTime = lens _gmdStartTime (\ s a -> s{_gmdStartTime = a}) . _Time
 
--- | The time stamp indicating the latest data to be returned.
+-- | The time stamp indicating the latest data to be returned. For better performance, specify @StartTime@ and @EndTime@ values that align with the value of the metric's @Period@ and sync up with the beginning and end of an hour. For example, if the @Period@ of a metric is 5 minutes, specifying 12:05 or 12:30 as @EndTime@ can get a faster response from CloudWatch then setting 12:07 or 12:29 as the @EndTime@ .
 gmdEndTime :: Lens' GetMetricData UTCTime
 gmdEndTime = lens _gmdEndTime (\ s a -> s{_gmdEndTime = a}) . _Time
+
+instance AWSPager GetMetricData where
+        page rq rs
+          | stop (rs ^. gmdrsNextToken) = Nothing
+          | stop (rs ^. gmdrsMetricDataResults) = Nothing
+          | otherwise =
+            Just $ rq & gmdNextToken .~ rs ^. gmdrsNextToken
 
 instance AWSRequest GetMetricData where
         type Rs GetMetricData = GetMetricDataResponse
@@ -154,8 +178,8 @@ instance ToQuery GetMetricData where
 -- | /See:/ 'getMetricDataResponse' smart constructor.
 data GetMetricDataResponse = GetMetricDataResponse'
   { _gmdrsMetricDataResults :: !(Maybe [MetricDataResult])
-  , _gmdrsNextToken         :: !(Maybe Text)
-  , _gmdrsResponseStatus    :: !Int
+  , _gmdrsNextToken :: !(Maybe Text)
+  , _gmdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

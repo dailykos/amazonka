@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'disassociateContactFromAddressBook' smart constructor.
 data DisassociateContactFromAddressBook = DisassociateContactFromAddressBook'
-  { _dcfabContactARN     :: !Text
+  { _dcfabContactARN :: !Text
   , _dcfabAddressBookARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

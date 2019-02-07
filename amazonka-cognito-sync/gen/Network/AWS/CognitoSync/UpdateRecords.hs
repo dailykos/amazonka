@@ -60,12 +60,12 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateRecords' smart constructor.
 data UpdateRecords = UpdateRecords'
-  { _urRecordPatches    :: !(Maybe [RecordPatch])
-  , _urDeviceId         :: !(Maybe Text)
-  , _urClientContext    :: !(Maybe Text)
-  , _urIdentityPoolId   :: !Text
-  , _urIdentityId       :: !Text
-  , _urDatasetName      :: !Text
+  { _urRecordPatches :: !(Maybe [RecordPatch])
+  , _urDeviceId :: !(Maybe Text)
+  , _urClientContext :: !(Maybe Text)
+  , _urIdentityPoolId :: !Text
+  , _urIdentityId :: !Text
+  , _urDatasetName :: !Text
   , _urSyncSessionToken :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,7 +175,7 @@ instance ToQuery UpdateRecords where
 --
 -- /See:/ 'updateRecordsResponse' smart constructor.
 data UpdateRecordsResponse = UpdateRecordsResponse'
-  { _urrsRecords        :: !(Maybe [Record])
+  { _urrsRecords :: !(Maybe [Record])
   , _urrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -98,7 +98,7 @@ instance ToQuery GetRoom where
 
 -- | /See:/ 'getRoomResponse' smart constructor.
 data GetRoomResponse = GetRoomResponse'
-  { _grrsRoom           :: !(Maybe Room)
+  { _grrsRoom :: !(Maybe Room)
   , _grrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

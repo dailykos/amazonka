@@ -14,11 +14,11 @@
 module Test.AWS.Gen.Budgets where
 
 import Data.Proxy
-import Network.AWS.Budgets
-import Test.AWS.Budgets.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.Budgets
+import Test.AWS.Budgets.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.
@@ -51,6 +51,9 @@ import Test.Tasty
 --
 --         , requestUpdateNotification $
 --             updateNotification
+--
+--         , requestDescribeBudgetPerformanceHistory $
+--             describeBudgetPerformanceHistory
 --
 --         , requestDescribeBudget $
 --             describeBudget
@@ -93,6 +96,9 @@ import Test.Tasty
 --
 --         , responseUpdateNotification $
 --             updateNotificationResponse
+--
+--         , responseDescribeBudgetPerformanceHistory $
+--             describeBudgetPerformanceHistoryResponse
 --
 --         , responseDescribeBudget $
 --             describeBudgetResponse
@@ -153,6 +159,11 @@ requestUpdateNotification :: UpdateNotification -> TestTree
 requestUpdateNotification = req
     "UpdateNotification"
     "fixture/UpdateNotification.yaml"
+
+requestDescribeBudgetPerformanceHistory :: DescribeBudgetPerformanceHistory -> TestTree
+requestDescribeBudgetPerformanceHistory = req
+    "DescribeBudgetPerformanceHistory"
+    "fixture/DescribeBudgetPerformanceHistory.yaml"
 
 requestDescribeBudget :: DescribeBudget -> TestTree
 requestDescribeBudget = req
@@ -236,6 +247,13 @@ responseUpdateNotification = res
     "fixture/UpdateNotificationResponse.proto"
     budgets
     (Proxy :: Proxy UpdateNotification)
+
+responseDescribeBudgetPerformanceHistory :: DescribeBudgetPerformanceHistoryResponse -> TestTree
+responseDescribeBudgetPerformanceHistory = res
+    "DescribeBudgetPerformanceHistoryResponse"
+    "fixture/DescribeBudgetPerformanceHistoryResponse.proto"
+    budgets
+    (Proxy :: Proxy DescribeBudgetPerformanceHistory)
 
 responseDescribeBudget :: DescribeBudgetResponse -> TestTree
 responseDescribeBudget = res

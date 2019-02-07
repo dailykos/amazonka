@@ -21,6 +21,8 @@
 -- Lists the clients that have been created for the specified user pool.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CognitoIdentityProvider.ListUserPoolClients
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.CognitoIdentityProvider.ListUserPoolClients
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -53,7 +56,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'listUserPoolClients' smart constructor.
 data ListUserPoolClients = ListUserPoolClients'
-  { _lupcNextToken  :: !(Maybe Text)
+  { _lupcNextToken :: !(Maybe Text)
   , _lupcMaxResults :: !(Maybe Nat)
   , _lupcUserPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -90,6 +93,13 @@ lupcMaxResults = lens _lupcMaxResults (\ s a -> s{_lupcMaxResults = a}) . mappin
 -- | The user pool ID for the user pool where you want to list user pool clients.
 lupcUserPoolId :: Lens' ListUserPoolClients Text
 lupcUserPoolId = lens _lupcUserPoolId (\ s a -> s{_lupcUserPoolId = a})
+
+instance AWSPager ListUserPoolClients where
+        page rq rs
+          | stop (rs ^. lupcrsNextToken) = Nothing
+          | stop (rs ^. lupcrsUserPoolClients) = Nothing
+          | otherwise =
+            Just $ rq & lupcNextToken .~ rs ^. lupcrsNextToken
 
 instance AWSRequest ListUserPoolClients where
         type Rs ListUserPoolClients =
@@ -137,9 +147,9 @@ instance ToQuery ListUserPoolClients where
 --
 -- /See:/ 'listUserPoolClientsResponse' smart constructor.
 data ListUserPoolClientsResponse = ListUserPoolClientsResponse'
-  { _lupcrsNextToken       :: !(Maybe Text)
+  { _lupcrsNextToken :: !(Maybe Text)
   , _lupcrsUserPoolClients :: !(Maybe [UserPoolClientDescription])
-  , _lupcrsResponseStatus  :: !Int
+  , _lupcrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

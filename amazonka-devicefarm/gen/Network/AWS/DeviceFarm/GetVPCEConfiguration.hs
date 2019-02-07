@@ -102,7 +102,7 @@ instance ToQuery GetVPCEConfiguration where
 -- | /See:/ 'getVPCEConfigurationResponse' smart constructor.
 data GetVPCEConfigurationResponse = GetVPCEConfigurationResponse'
   { _gvecrsVpceConfiguration :: !(Maybe VPCEConfiguration)
-  , _gvecrsResponseStatus    :: !Int
+  , _gvecrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

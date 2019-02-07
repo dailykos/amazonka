@@ -148,6 +148,33 @@ instance ToJSON DmsSSLModeValue where
 instance FromJSON DmsSSLModeValue where
     parseJSON = parseJSONText "DmsSSLModeValue"
 
+data MessageFormatValue =
+  JSON
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText MessageFormatValue where
+    parser = takeLowerText >>= \case
+        "json" -> pure JSON
+        e -> fromTextError $ "Failure parsing MessageFormatValue from value: '" <> e
+           <> "'. Accepted values: json"
+
+instance ToText MessageFormatValue where
+    toText = \case
+        JSON -> "json"
+
+instance Hashable     MessageFormatValue
+instance NFData       MessageFormatValue
+instance ToByteString MessageFormatValue
+instance ToQuery      MessageFormatValue
+instance ToHeader     MessageFormatValue
+
+instance ToJSON MessageFormatValue where
+    toJSON = toJSONText
+
+instance FromJSON MessageFormatValue where
+    parseJSON = parseJSONText "MessageFormatValue"
+
 data MigrationTypeValue
   = Cdc
   | FullLoad
@@ -240,6 +267,33 @@ instance ToHeader     RefreshSchemasStatusTypeValue
 
 instance FromJSON RefreshSchemasStatusTypeValue where
     parseJSON = parseJSONText "RefreshSchemasStatusTypeValue"
+
+data ReloadOptionValue
+  = DataReload
+  | ValidateOnly
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ReloadOptionValue where
+    parser = takeLowerText >>= \case
+        "data-reload" -> pure DataReload
+        "validate-only" -> pure ValidateOnly
+        e -> fromTextError $ "Failure parsing ReloadOptionValue from value: '" <> e
+           <> "'. Accepted values: data-reload, validate-only"
+
+instance ToText ReloadOptionValue where
+    toText = \case
+        DataReload -> "data-reload"
+        ValidateOnly -> "validate-only"
+
+instance Hashable     ReloadOptionValue
+instance NFData       ReloadOptionValue
+instance ToByteString ReloadOptionValue
+instance ToQuery      ReloadOptionValue
+instance ToHeader     ReloadOptionValue
+
+instance ToJSON ReloadOptionValue where
+    toJSON = toJSONText
 
 data ReplicationEndpointTypeValue
   = Source

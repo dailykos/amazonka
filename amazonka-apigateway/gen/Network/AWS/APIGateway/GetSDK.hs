@@ -56,9 +56,9 @@ import Network.AWS.Response
 -- /See:/ 'getSDK' smart constructor.
 data GetSDK = GetSDK'
   { _gsdkParameters :: !(Maybe (Map Text Text))
-  , _gsdkRestAPIId  :: !Text
-  , _gsdkStageName  :: !Text
-  , _gsdkSdkType    :: !Text
+  , _gsdkRestAPIId :: !Text
+  , _gsdkStageName :: !Text
+  , _gsdkSdkType :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -66,7 +66,7 @@ data GetSDK = GetSDK'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsdkParameters' - A string-to-string key-value map of query parameters @sdkType@ -dependent properties of the SDK. For @sdkType@ of @objectivec@ or @swift@ , a parameter named @classPrefix@ is required. For @sdkType@ of @android@ , parameters named @groupId@ , @artifactId@ , @artifactVersion@ , and @invokerPackage@ are required. For @sdkType@ of @java@ , parameters named @serviceName@ and @javaPackageName@ are required.
+-- * 'gsdkParameters' - A string-to-string key-value map of query parameters @sdkType@ -dependent properties of the SDK. For @sdkType@ of @objectivec@ or @swift@ , a parameter named @classPrefix@ is required. For @sdkType@ of @android@ , parameters named @groupId@ , @artifactId@ , @artifactVersion@ , and @invokerPackage@ are required. For @sdkType@ of @java@ , parameters named @serviceName@ and @javaPackageName@ are required. 
 --
 -- * 'gsdkRestAPIId' - [Required] The string identifier of the associated 'RestApi' .
 --
@@ -87,7 +87,7 @@ getSDK pRestAPIId_ pStageName_ pSdkType_ =
     }
 
 
--- | A string-to-string key-value map of query parameters @sdkType@ -dependent properties of the SDK. For @sdkType@ of @objectivec@ or @swift@ , a parameter named @classPrefix@ is required. For @sdkType@ of @android@ , parameters named @groupId@ , @artifactId@ , @artifactVersion@ , and @invokerPackage@ are required. For @sdkType@ of @java@ , parameters named @serviceName@ and @javaPackageName@ are required.
+-- | A string-to-string key-value map of query parameters @sdkType@ -dependent properties of the SDK. For @sdkType@ of @objectivec@ or @swift@ , a parameter named @classPrefix@ is required. For @sdkType@ of @android@ , parameters named @groupId@ , @artifactId@ , @artifactVersion@ , and @invokerPackage@ are required. For @sdkType@ of @java@ , parameters named @serviceName@ and @javaPackageName@ are required. 
 gsdkParameters :: Lens' GetSDK (HashMap Text Text)
 gsdkParameters = lens _gsdkParameters (\ s a -> s{_gsdkParameters = a}) . _Default . _Map
 
@@ -144,10 +144,10 @@ instance ToQuery GetSDK where
 --
 -- /See:/ 'getSDKResponse' smart constructor.
 data GetSDKResponse = GetSDKResponse'
-  { _gsdkrsBody               :: !(Maybe ByteString)
+  { _gsdkrsBody :: !(Maybe ByteString)
   , _gsdkrsContentDisposition :: !(Maybe Text)
-  , _gsdkrsContentType        :: !(Maybe Text)
-  , _gsdkrsResponseStatus     :: !Int
+  , _gsdkrsContentType :: !(Maybe Text)
+  , _gsdkrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

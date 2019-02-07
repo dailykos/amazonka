@@ -21,7 +21,7 @@
 -- Deletes a notification.
 --
 --
--- __Deleting a notification also deletes the subscribers associated with the notification.__
+-- /Important:/ Deleting a notification also deletes the subscribers that are associated with the notification.
 --
 module Network.AWS.Budgets.DeleteNotification
     (
@@ -47,14 +47,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of DeleteNotification
+-- | Request of DeleteNotification 
 --
 --
 --
 -- /See:/ 'deleteNotification' smart constructor.
 data DeleteNotification = DeleteNotification'
-  { _dnAccountId    :: !Text
-  , _dnBudgetName   :: !Text
+  { _dnAccountId :: !Text
+  , _dnBudgetName :: !Text
   , _dnNotification :: !Notification
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ instance ToPath DeleteNotification where
 instance ToQuery DeleteNotification where
         toQuery = const mempty
 
--- | Response of DeleteNotification
+-- | Response of DeleteNotification 
 --
 --
 --

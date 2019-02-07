@@ -23,6 +23,8 @@
 --
 -- Requires developer credentials.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CognitoIdentityProvider.ListGroups
     (
     -- * Creating a Request
@@ -45,14 +47,15 @@ module Network.AWS.CognitoIdentityProvider.ListGroups
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGroups' smart constructor.
 data ListGroups = ListGroups'
-  { _lgNextToken  :: !(Maybe Text)
-  , _lgLimit      :: !(Maybe Nat)
+  { _lgNextToken :: !(Maybe Text)
+  , _lgLimit :: !(Maybe Nat)
   , _lgUserPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -85,6 +88,13 @@ lgLimit = lens _lgLimit (\ s a -> s{_lgLimit = a}) . mapping _Nat
 -- | The user pool ID for the user pool.
 lgUserPoolId :: Lens' ListGroups Text
 lgUserPoolId = lens _lgUserPoolId (\ s a -> s{_lgUserPoolId = a})
+
+instance AWSPager ListGroups where
+        page rq rs
+          | stop (rs ^. lgrsNextToken) = Nothing
+          | stop (rs ^. lgrsGroups) = Nothing
+          | otherwise =
+            Just $ rq & lgNextToken .~ rs ^. lgrsNextToken
 
 instance AWSRequest ListGroups where
         type Rs ListGroups = ListGroupsResponse
@@ -126,8 +136,8 @@ instance ToQuery ListGroups where
 
 -- | /See:/ 'listGroupsResponse' smart constructor.
 data ListGroupsResponse = ListGroupsResponse'
-  { _lgrsGroups         :: !(Maybe [GroupType])
-  , _lgrsNextToken      :: !(Maybe Text)
+  { _lgrsGroups :: !(Maybe [GroupType])
+  , _lgrsNextToken :: !(Maybe Text)
   , _lgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

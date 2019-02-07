@@ -18,14 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Suspends the specified Auto Scaling processes, or all processes, for the specified Auto Scaling group.
+-- Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group.
 --
 --
--- Note that if you suspend either the @Launch@ or @Terminate@ process types, it can prevent other process types from functioning properly.
+-- If you suspend either the @Launch@ or @Terminate@ process types, it can prevent other process types from functioning properly.
 --
 -- To resume processes that have been suspended, use 'ResumeProcesses' .
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html Suspending and Resuming Auto Scaling Processes> in the /Auto Scaling User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html Suspending and Resuming Scaling Processes> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.SuspendProcesses
     (
@@ -50,7 +50,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'suspendProcesses' smart constructor.
 data SuspendProcesses = SuspendProcesses'
-  { _spScalingProcesses     :: !(Maybe [Text])
+  { _spScalingProcesses :: !(Maybe [Text])
   , _spAutoScalingGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -59,7 +59,7 @@ data SuspendProcesses = SuspendProcesses'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'spScalingProcesses' - One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@
+-- * 'spScalingProcesses' - One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@ 
 --
 -- * 'spAutoScalingGroupName' - The name of the Auto Scaling group.
 suspendProcesses
@@ -72,7 +72,7 @@ suspendProcesses pAutoScalingGroupName_ =
     }
 
 
--- | One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@
+-- | One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@ 
 spScalingProcesses :: Lens' SuspendProcesses [Text]
 spScalingProcesses = lens _spScalingProcesses (\ s a -> s{_spScalingProcesses = a}) . _Default . _Coerce
 

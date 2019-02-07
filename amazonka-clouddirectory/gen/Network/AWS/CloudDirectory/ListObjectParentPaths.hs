@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure Directory Structure> .
+-- Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html Directory Structure> .
 --
 --
 -- Use this API to evaluate all parents for an object. The call returns all objects from the root of the directory up to the requested object. The API returns the number of paths based on user-defined @MaxResults@ , in case there are multiple paths to the parent. The order of the paths and nodes returned is consistent among multiple API calls unless the objects are deleted or moved. Paths not leading to the directory root are ignored from the target object.
@@ -55,9 +55,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'listObjectParentPaths' smart constructor.
 data ListObjectParentPaths = ListObjectParentPaths'
-  { _loppNextToken       :: !(Maybe Text)
-  , _loppMaxResults      :: !(Maybe Nat)
-  , _loppDirectoryARN    :: !Text
+  { _loppNextToken :: !(Maybe Text)
+  , _loppMaxResults :: !(Maybe Nat)
+  , _loppDirectoryARN :: !Text
   , _loppObjectReference :: !ObjectReference
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,8 +150,8 @@ instance ToQuery ListObjectParentPaths where
 -- | /See:/ 'listObjectParentPathsResponse' smart constructor.
 data ListObjectParentPathsResponse = ListObjectParentPathsResponse'
   { _lopprsPathToObjectIdentifiersList :: !(Maybe [PathToObjectIdentifiers])
-  , _lopprsNextToken                   :: !(Maybe Text)
-  , _lopprsResponseStatus              :: !Int
+  , _lopprsNextToken :: !(Maybe Text)
+  , _lopprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful,
+-- Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
 --
 --
 module Network.AWS.CognitoIdentityProvider.VerifySoftwareToken
@@ -50,10 +50,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'verifySoftwareToken' smart constructor.
 data VerifySoftwareToken = VerifySoftwareToken'
-  { _vstAccessToken        :: !(Maybe (Sensitive Text))
+  { _vstAccessToken :: !(Maybe (Sensitive Text))
   , _vstFriendlyDeviceName :: !(Maybe Text)
-  , _vstSession            :: !(Maybe Text)
-  , _vstUserCode           :: !Text
+  , _vstSession :: !(Maybe Text)
+  , _vstUserCode :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -67,7 +67,7 @@ data VerifySoftwareToken = VerifySoftwareToken'
 --
 -- * 'vstSession' - The session which should be passed both ways in challenge-response calls to the service.
 --
--- * 'vstUserCode' - The one time password computed using the secret code returned by
+-- * 'vstUserCode' - The one time password computed using the secret code returned by 
 verifySoftwareToken
     :: Text -- ^ 'vstUserCode'
     -> VerifySoftwareToken
@@ -92,7 +92,7 @@ vstFriendlyDeviceName = lens _vstFriendlyDeviceName (\ s a -> s{_vstFriendlyDevi
 vstSession :: Lens' VerifySoftwareToken (Maybe Text)
 vstSession = lens _vstSession (\ s a -> s{_vstSession = a})
 
--- | The one time password computed using the secret code returned by
+-- | The one time password computed using the secret code returned by 
 vstUserCode :: Lens' VerifySoftwareToken Text
 vstUserCode = lens _vstUserCode (\ s a -> s{_vstUserCode = a})
 
@@ -138,8 +138,8 @@ instance ToQuery VerifySoftwareToken where
 
 -- | /See:/ 'verifySoftwareTokenResponse' smart constructor.
 data VerifySoftwareTokenResponse = VerifySoftwareTokenResponse'
-  { _vstrsStatus         :: !(Maybe VerifySoftwareTokenResponseType)
-  , _vstrsSession        :: !(Maybe Text)
+  { _vstrsStatus :: !(Maybe VerifySoftwareTokenResponseType)
+  , _vstrsSession :: !(Maybe Text)
   , _vstrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

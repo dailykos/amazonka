@@ -109,7 +109,7 @@ instance ToQuery DescribeGlobalTableSettings where
 data DescribeGlobalTableSettingsResponse = DescribeGlobalTableSettingsResponse'
   { _dgtsrsReplicaSettings :: !(Maybe [ReplicaSettingsDescription])
   , _dgtsrsGlobalTableName :: !(Maybe Text)
-  , _dgtsrsResponseStatus  :: !Int
+  , _dgtsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

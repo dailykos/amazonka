@@ -58,14 +58,14 @@ newtype CreatePipeline = CreatePipeline'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpPipeline' - Represents the structure of actions and stages to be performed in the pipeline.
+-- * 'cpPipeline' - Represents the structure of actions and stages to be performed in the pipeline. 
 createPipeline
     :: PipelineDeclaration -- ^ 'cpPipeline'
     -> CreatePipeline
 createPipeline pPipeline_ = CreatePipeline' {_cpPipeline = pPipeline_}
 
 
--- | Represents the structure of actions and stages to be performed in the pipeline.
+-- | Represents the structure of actions and stages to be performed in the pipeline. 
 cpPipeline :: Lens' CreatePipeline PipelineDeclaration
 cpPipeline = lens _cpPipeline (\ s a -> s{_cpPipeline = a})
 
@@ -109,7 +109,7 @@ instance ToQuery CreatePipeline where
 --
 -- /See:/ 'createPipelineResponse' smart constructor.
 data CreatePipelineResponse = CreatePipelineResponse'
-  { _cprsPipeline       :: !(Maybe PipelineDeclaration)
+  { _cprsPipeline :: !(Maybe PipelineDeclaration)
   , _cprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ data CreatePipelineResponse = CreatePipelineResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cprsPipeline' - Represents the structure of actions and stages to be performed in the pipeline.
+-- * 'cprsPipeline' - Represents the structure of actions and stages to be performed in the pipeline. 
 --
 -- * 'cprsResponseStatus' - -- | The response status code.
 createPipelineResponse
@@ -129,7 +129,7 @@ createPipelineResponse pResponseStatus_ =
     {_cprsPipeline = Nothing, _cprsResponseStatus = pResponseStatus_}
 
 
--- | Represents the structure of actions and stages to be performed in the pipeline.
+-- | Represents the structure of actions and stages to be performed in the pipeline. 
 cprsPipeline :: Lens' CreatePipelineResponse (Maybe PipelineDeclaration)
 cprsPipeline = lens _cprsPipeline (\ s a -> s{_cprsPipeline = a})
 

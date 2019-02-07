@@ -55,7 +55,7 @@ import Network.AWS.Response
 -- /See:/ 'adminResetUserPassword' smart constructor.
 data AdminResetUserPassword = AdminResetUserPassword'
   { _arupUserPoolId :: !Text
-  , _arupUsername   :: !(Sensitive Text)
+  , _arupUsername :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

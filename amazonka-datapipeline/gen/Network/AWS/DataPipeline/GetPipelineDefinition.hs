@@ -53,7 +53,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getPipelineDefinition' smart constructor.
 data GetPipelineDefinition = GetPipelineDefinition'
-  { _gpdVersion    :: !(Maybe Text)
+  { _gpdVersion :: !(Maybe Text)
   , _gpdPipelineId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,10 +125,10 @@ instance ToQuery GetPipelineDefinition where
 --
 -- /See:/ 'getPipelineDefinitionResponse' smart constructor.
 data GetPipelineDefinitionResponse = GetPipelineDefinitionResponse'
-  { _gpdrsPipelineObjects  :: !(Maybe [PipelineObject])
+  { _gpdrsPipelineObjects :: !(Maybe [PipelineObject])
   , _gpdrsParameterObjects :: !(Maybe [ParameterObject])
-  , _gpdrsParameterValues  :: !(Maybe [ParameterValue])
-  , _gpdrsResponseStatus   :: !Int
+  , _gpdrsParameterValues :: !(Maybe [ParameterValue])
+  , _gpdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

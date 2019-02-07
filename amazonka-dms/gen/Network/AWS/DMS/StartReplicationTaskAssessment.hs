@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Starts the replication task assessment for unsupported data types in the source database.
+-- Starts the replication task assessment for unsupported data types in the source database. 
 --
 --
 module Network.AWS.DMS.StartReplicationTaskAssessment
@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -58,7 +58,7 @@ newtype StartReplicationTaskAssessment = StartReplicationTaskAssessment'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srtaReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task.
+-- * 'srtaReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task. 
 startReplicationTaskAssessment
     :: Text -- ^ 'srtaReplicationTaskARN'
     -> StartReplicationTaskAssessment
@@ -67,7 +67,7 @@ startReplicationTaskAssessment pReplicationTaskARN_ =
     {_srtaReplicationTaskARN = pReplicationTaskARN_}
 
 
--- | The Amazon Resource Name (ARN) of the replication task.
+-- | The Amazon Resource Name (ARN) of the replication task. 
 srtaReplicationTaskARN :: Lens' StartReplicationTaskAssessment Text
 srtaReplicationTaskARN = lens _srtaReplicationTaskARN (\ s a -> s{_srtaReplicationTaskARN = a})
 
@@ -111,14 +111,14 @@ instance ToPath StartReplicationTaskAssessment where
 instance ToQuery StartReplicationTaskAssessment where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'startReplicationTaskAssessmentResponse' smart constructor.
 data StartReplicationTaskAssessmentResponse = StartReplicationTaskAssessmentResponse'
   { _srtarsReplicationTask :: !(Maybe ReplicationTask)
-  , _srtarsResponseStatus  :: !Int
+  , _srtarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -126,7 +126,7 @@ data StartReplicationTaskAssessmentResponse = StartReplicationTaskAssessmentResp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srtarsReplicationTask' - The assessed replication task.
+-- * 'srtarsReplicationTask' - The assessed replication task. 
 --
 -- * 'srtarsResponseStatus' - -- | The response status code.
 startReplicationTaskAssessmentResponse
@@ -137,7 +137,7 @@ startReplicationTaskAssessmentResponse pResponseStatus_ =
     {_srtarsReplicationTask = Nothing, _srtarsResponseStatus = pResponseStatus_}
 
 
--- | The assessed replication task.
+-- | The assessed replication task. 
 srtarsReplicationTask :: Lens' StartReplicationTaskAssessmentResponse (Maybe ReplicationTask)
 srtarsReplicationTask = lens _srtarsReplicationTask (\ s a -> s{_srtarsReplicationTask = a})
 

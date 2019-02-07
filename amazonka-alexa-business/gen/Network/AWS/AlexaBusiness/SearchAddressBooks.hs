@@ -51,10 +51,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'searchAddressBooks' smart constructor.
 data SearchAddressBooks = SearchAddressBooks'
-  { _sabFilters      :: !(Maybe [Filter])
+  { _sabFilters :: !(Maybe [Filter])
   , _sabSortCriteria :: !(Maybe [Sort])
-  , _sabNextToken    :: !(Maybe Text)
-  , _sabMaxResults   :: !(Maybe Nat)
+  , _sabNextToken :: !(Maybe Text)
+  , _sabMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -140,9 +140,9 @@ instance ToQuery SearchAddressBooks where
 
 -- | /See:/ 'searchAddressBooksResponse' smart constructor.
 data SearchAddressBooksResponse = SearchAddressBooksResponse'
-  { _sabrsNextToken      :: !(Maybe Text)
-  , _sabrsAddressBooks   :: !(Maybe [AddressBookData])
-  , _sabrsTotalCount     :: !(Maybe Int)
+  { _sabrsNextToken :: !(Maybe Text)
+  , _sabrsAddressBooks :: !(Maybe [AddressBookData])
+  , _sabrsTotalCount :: !(Maybe Int)
   , _sabrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

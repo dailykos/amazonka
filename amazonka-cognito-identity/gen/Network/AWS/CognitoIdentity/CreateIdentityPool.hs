@@ -21,15 +21,15 @@
 -- Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The limit on identity pools is 60 per account. The keys for @SupportedLoginProviders@ are as follows:
 --
 --
---     * Facebook: @graph.facebook.com@
+--     * Facebook: @graph.facebook.com@ 
 --
---     * Google: @accounts.google.com@
+--     * Google: @accounts.google.com@ 
 --
---     * Amazon: @www.amazon.com@
+--     * Amazon: @www.amazon.com@ 
 --
---     * Twitter: @api.twitter.com@
+--     * Twitter: @api.twitter.com@ 
 --
---     * Digits: @www.digits.com@
+--     * Digits: @www.digits.com@ 
 --
 --
 --
@@ -76,12 +76,12 @@ import Network.AWS.Response
 --
 -- /See:/ 'createIdentityPool' smart constructor.
 data CreateIdentityPool = CreateIdentityPool'
-  { _cipSamlProviderARNs               :: !(Maybe [Text])
-  , _cipSupportedLoginProviders        :: !(Maybe (Map Text Text))
-  , _cipDeveloperProviderName          :: !(Maybe Text)
-  , _cipOpenIdConnectProviderARNs      :: !(Maybe [Text])
-  , _cipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
-  , _cipIdentityPoolName               :: !Text
+  { _cipSamlProviderARNs :: !(Maybe [Text])
+  , _cipSupportedLoginProviders :: !(Maybe (Map Text Text))
+  , _cipDeveloperProviderName :: !(Maybe Text)
+  , _cipOpenIdConnectProviderARNs :: !(Maybe [Text])
+  , _cipCognitoIdentityProviders :: !(Maybe [CognitoIdentityProvider])
+  , _cipIdentityPoolName :: !Text
   , _cipAllowUnauthenticatedIdentities :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

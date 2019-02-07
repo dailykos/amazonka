@@ -46,7 +46,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -104,13 +104,13 @@ instance ToPath DeleteEndpoint where
 instance ToQuery DeleteEndpoint where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteEndpointResponse' smart constructor.
 data DeleteEndpointResponse = DeleteEndpointResponse'
-  { _delrsEndpoint       :: !(Maybe Endpoint)
+  { _delrsEndpoint :: !(Maybe Endpoint)
   , _delrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 

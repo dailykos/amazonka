@@ -18,18 +18,18 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- The @Query@ operation finds items based on primary key values. You can query any table or secondary index that has a composite primary key (a partition key and a sort key).
+-- The @Query@ operation finds items based on primary key values. You can query any table or secondary index that has a composite primary key (a partition key and a sort key). 
 --
 --
--- Use the @KeyConditionExpression@ parameter to provide a specific value for the partition key. The @Query@ operation will return all of the items from the table or index with that partition key value. You can optionally narrow the scope of the @Query@ operation by specifying a sort key value and a comparison operator in @KeyConditionExpression@ . To further refine the @Query@ results, you can optionally provide a @FilterExpression@ . A @FilterExpression@ determines which items within the results should be returned to you. All of the other results are discarded.
+-- Use the @KeyConditionExpression@ parameter to provide a specific value for the partition key. The @Query@ operation will return all of the items from the table or index with that partition key value. You can optionally narrow the scope of the @Query@ operation by specifying a sort key value and a comparison operator in @KeyConditionExpression@ . To further refine the @Query@ results, you can optionally provide a @FilterExpression@ . A @FilterExpression@ determines which items within the results should be returned to you. All of the other results are discarded. 
 --
--- A @Query@ operation always returns a result set. If no matching items are found, the result set will be empty. Queries that do not return results consume the minimum number of read capacity units for that type of read operation.
+-- A @Query@ operation always returns a result set. If no matching items are found, the result set will be empty. Queries that do not return results consume the minimum number of read capacity units for that type of read operation. 
 --
--- @Query@ results are always sorted by the sort key value. If the data type of the sort key is Number, the results are returned in numeric order; otherwise, the results are returned in order of UTF-8 bytes. By default, the sort order is ascending. To reverse the order, set the @ScanIndexForward@ parameter to false.
+-- @Query@ results are always sorted by the sort key value. If the data type of the sort key is Number, the results are returned in numeric order; otherwise, the results are returned in order of UTF-8 bytes. By default, the sort order is ascending. To reverse the order, set the @ScanIndexForward@ parameter to false. 
 --
--- A single @Query@ operation will read up to the maximum number of items set (if using the @Limit@ parameter) or a maximum of 1 MB of data and then apply any filtering to the results using @FilterExpression@ . If @LastEvaluatedKey@ is present in the response, you will need to paginate the result set. For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination Paginating the Results> in the /Amazon DynamoDB Developer Guide/ .
+-- A single @Query@ operation will read up to the maximum number of items set (if using the @Limit@ parameter) or a maximum of 1 MB of data and then apply any filtering to the results using @FilterExpression@ . If @LastEvaluatedKey@ is present in the response, you will need to paginate the result set. For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination Paginating the Results> in the /Amazon DynamoDB Developer Guide/ . 
 --
--- @FilterExpression@ is applied after a @Query@ finishes, but before the results are returned. A @FilterExpression@ cannot contain partition key or sort key attributes. You need to specify those attributes in the @KeyConditionExpression@ .
+-- @FilterExpression@ is applied after a @Query@ finishes, but before the results are returned. A @FilterExpression@ cannot contain partition key or sort key attributes. You need to specify those attributes in the @KeyConditionExpression@ . 
 --
 -- You can query a table, a local secondary index, or a global secondary index. For a query on a table or on a local secondary index, you can set the @ConsistentRead@ parameter to @true@ and obtain a strongly consistent result. Global secondary indexes support eventually consistent reads only, so do not specify @ConsistentRead@ when querying a global secondary index.
 --
@@ -85,23 +85,23 @@ import Network.AWS.Response
 --
 -- /See:/ 'query' smart constructor.
 data Query = Query'
-  { _qKeyConditions             :: !(Maybe (Map Text Condition))
-  , _qProjectionExpression      :: !(Maybe Text)
-  , _qAttributesToGet           :: !(Maybe (List1 Text))
-  , _qExpressionAttributeNames  :: !(Maybe (Map Text Text))
-  , _qFilterExpression          :: !(Maybe Text)
-  , _qQueryFilter               :: !(Maybe (Map Text Condition))
-  , _qConsistentRead            :: !(Maybe Bool)
+  { _qKeyConditions :: !(Maybe (Map Text Condition))
+  , _qProjectionExpression :: !(Maybe Text)
+  , _qAttributesToGet :: !(Maybe (List1 Text))
+  , _qExpressionAttributeNames :: !(Maybe (Map Text Text))
+  , _qFilterExpression :: !(Maybe Text)
+  , _qQueryFilter :: !(Maybe (Map Text Condition))
+  , _qConsistentRead :: !(Maybe Bool)
   , _qExpressionAttributeValues :: !(Maybe (Map Text AttributeValue))
-  , _qReturnConsumedCapacity    :: !(Maybe ReturnConsumedCapacity)
-  , _qScanIndexForward          :: !(Maybe Bool)
-  , _qLimit                     :: !(Maybe Nat)
-  , _qSelect                    :: !(Maybe Select)
-  , _qKeyConditionExpression    :: !(Maybe Text)
-  , _qConditionalOperator       :: !(Maybe ConditionalOperator)
-  , _qExclusiveStartKey         :: !(Maybe (Map Text AttributeValue))
-  , _qIndexName                 :: !(Maybe Text)
-  , _qTableName                 :: !Text
+  , _qReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
+  , _qScanIndexForward :: !(Maybe Bool)
+  , _qLimit :: !(Maybe Nat)
+  , _qSelect :: !(Maybe Select)
+  , _qKeyConditionExpression :: !(Maybe Text)
+  , _qConditionalOperator :: !(Maybe ConditionalOperator)
+  , _qExclusiveStartKey :: !(Maybe (Map Text AttributeValue))
+  , _qIndexName :: !(Maybe Text)
+  , _qTableName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -139,7 +139,7 @@ data Query = Query'
 --
 -- * 'qExclusiveStartKey' - The primary key of the first item that this operation will evaluate. Use the value that was returned for @LastEvaluatedKey@ in the previous operation. The data type for @ExclusiveStartKey@ must be String, Number or Binary. No set data types are allowed.
 --
--- * 'qIndexName' - The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that if you use the @IndexName@ parameter, you must also provide @TableName.@
+-- * 'qIndexName' - The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that if you use the @IndexName@ parameter, you must also provide @TableName.@ 
 --
 -- * 'qTableName' - The name of the table containing the requested items.
 query
@@ -227,7 +227,7 @@ qConditionalOperator = lens _qConditionalOperator (\ s a -> s{_qConditionalOpera
 qExclusiveStartKey :: Lens' Query (HashMap Text AttributeValue)
 qExclusiveStartKey = lens _qExclusiveStartKey (\ s a -> s{_qExclusiveStartKey = a}) . _Default . _Map
 
--- | The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that if you use the @IndexName@ parameter, you must also provide @TableName.@
+-- | The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that if you use the @IndexName@ parameter, you must also provide @TableName.@ 
 qIndexName :: Lens' Query (Maybe Text)
 qIndexName = lens _qIndexName (\ s a -> s{_qIndexName = a})
 
@@ -308,11 +308,11 @@ instance ToQuery Query where
 -- /See:/ 'queryResponse' smart constructor.
 data QueryResponse = QueryResponse'
   { _qrsLastEvaluatedKey :: !(Maybe (Map Text AttributeValue))
-  , _qrsCount            :: !(Maybe Int)
-  , _qrsScannedCount     :: !(Maybe Int)
-  , _qrsItems            :: !(Maybe [Map Text AttributeValue])
+  , _qrsCount :: !(Maybe Int)
+  , _qrsScannedCount :: !(Maybe Int)
+  , _qrsItems :: !(Maybe [Map Text AttributeValue])
   , _qrsConsumedCapacity :: !(Maybe ConsumedCapacity)
-  , _qrsResponseStatus   :: !Int
+  , _qrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

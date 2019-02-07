@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'deletePolicy' smart constructor.
 data DeletePolicy = DeletePolicy'
   { _dpAutoScalingGroupName :: !(Maybe Text)
-  , _dpPolicyName           :: !Text
+  , _dpPolicyName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

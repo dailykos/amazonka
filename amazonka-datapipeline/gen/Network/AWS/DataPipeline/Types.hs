@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -201,7 +201,7 @@ _PipelineNotFoundException =
   _MatchServiceError dataPipeline "PipelineNotFoundException"
 
 
--- | The specified task was not found.
+-- | The specified task was not found. 
 --
 --
 _TaskNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError

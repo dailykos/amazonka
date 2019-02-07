@@ -23,6 +23,8 @@
 --
 -- For an overview on tagging DynamoDB resources, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html Tagging for DynamoDB> in the /Amazon DynamoDB Developer Guide/ .
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DynamoDB.ListTagsOfResource
     (
     -- * Creating a Request
@@ -44,13 +46,14 @@ module Network.AWS.DynamoDB.ListTagsOfResource
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsOfResource' smart constructor.
 data ListTagsOfResource = ListTagsOfResource'
-  { _ltorNextToken   :: !(Maybe Text)
+  { _ltorNextToken :: !(Maybe Text)
   , _ltorResourceARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -77,6 +80,13 @@ ltorNextToken = lens _ltorNextToken (\ s a -> s{_ltorNextToken = a})
 -- | The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).
 ltorResourceARN :: Lens' ListTagsOfResource Text
 ltorResourceARN = lens _ltorResourceARN (\ s a -> s{_ltorResourceARN = a})
+
+instance AWSPager ListTagsOfResource where
+        page rq rs
+          | stop (rs ^. ltorrsNextToken) = Nothing
+          | stop (rs ^. ltorrsTags) = Nothing
+          | otherwise =
+            Just $ rq & ltorNextToken .~ rs ^. ltorrsNextToken
 
 instance AWSRequest ListTagsOfResource where
         type Rs ListTagsOfResource =
@@ -118,8 +128,8 @@ instance ToQuery ListTagsOfResource where
 
 -- | /See:/ 'listTagsOfResourceResponse' smart constructor.
 data ListTagsOfResourceResponse = ListTagsOfResourceResponse'
-  { _ltorrsNextToken      :: !(Maybe Text)
-  , _ltorrsTags           :: !(Maybe [Tag])
+  { _ltorrsNextToken :: !(Maybe Text)
+  , _ltorrsTags :: !(Maybe [Tag])
   , _ltorrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

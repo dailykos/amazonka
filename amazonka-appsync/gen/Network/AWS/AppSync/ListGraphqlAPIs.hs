@@ -21,6 +21,8 @@
 -- Lists your GraphQL APIs.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AppSync.ListGraphqlAPIs
     (
     -- * Creating a Request
@@ -42,13 +44,14 @@ module Network.AWS.AppSync.ListGraphqlAPIs
 import Network.AWS.AppSync.Types
 import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGraphqlAPIs' smart constructor.
 data ListGraphqlAPIs = ListGraphqlAPIs'
-  { _lgaNextToken  :: !(Maybe Text)
+  { _lgaNextToken :: !(Maybe Text)
   , _lgaMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -57,7 +60,7 @@ data ListGraphqlAPIs = ListGraphqlAPIs'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lgaNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- * 'lgaNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 --
 -- * 'lgaMaxResults' - The maximum number of results you want the request to return.
 listGraphqlAPIs
@@ -66,13 +69,20 @@ listGraphqlAPIs =
   ListGraphqlAPIs' {_lgaNextToken = Nothing, _lgaMaxResults = Nothing}
 
 
--- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 lgaNextToken :: Lens' ListGraphqlAPIs (Maybe Text)
 lgaNextToken = lens _lgaNextToken (\ s a -> s{_lgaNextToken = a})
 
 -- | The maximum number of results you want the request to return.
 lgaMaxResults :: Lens' ListGraphqlAPIs (Maybe Natural)
 lgaMaxResults = lens _lgaMaxResults (\ s a -> s{_lgaMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListGraphqlAPIs where
+        page rq rs
+          | stop (rs ^. lgarsNextToken) = Nothing
+          | stop (rs ^. lgarsGraphqlAPIs) = Nothing
+          | otherwise =
+            Just $ rq & lgaNextToken .~ rs ^. lgarsNextToken
 
 instance AWSRequest ListGraphqlAPIs where
         type Rs ListGraphqlAPIs = ListGraphqlAPIsResponse
@@ -107,8 +117,8 @@ instance ToQuery ListGraphqlAPIs where
 
 -- | /See:/ 'listGraphqlAPIsResponse' smart constructor.
 data ListGraphqlAPIsResponse = ListGraphqlAPIsResponse'
-  { _lgarsNextToken      :: !(Maybe Text)
-  , _lgarsGraphqlAPIs    :: !(Maybe [GraphqlAPI])
+  { _lgarsNextToken :: !(Maybe Text)
+  , _lgarsGraphqlAPIs :: !(Maybe [GraphqlAPI])
   , _lgarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

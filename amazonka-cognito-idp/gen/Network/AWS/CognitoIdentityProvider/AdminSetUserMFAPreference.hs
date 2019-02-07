@@ -48,10 +48,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'adminSetUserMFAPreference' smart constructor.
 data AdminSetUserMFAPreference = AdminSetUserMFAPreference'
-  { _asumpSMSMFASettings           :: !(Maybe SMSMFASettingsType)
+  { _asumpSMSMFASettings :: !(Maybe SMSMFASettingsType)
   , _asumpSoftwareTokenMFASettings :: !(Maybe SoftwareTokenMFASettingsType)
-  , _asumpUsername                 :: !(Sensitive Text)
-  , _asumpUserPoolId               :: !Text
+  , _asumpUsername :: !(Sensitive Text)
+  , _asumpUserPoolId :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

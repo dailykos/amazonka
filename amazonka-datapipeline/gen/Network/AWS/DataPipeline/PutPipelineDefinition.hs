@@ -21,11 +21,11 @@
 -- Adds tasks, schedules, and preconditions to the specified pipeline. You can use @PutPipelineDefinition@ to populate a new pipeline.
 --
 --
--- @PutPipelineDefinition@ also validates the configuration as it adds it to the pipeline. Changes to the pipeline are saved unless one of the following three validation errors exists in the pipeline.
+-- @PutPipelineDefinition@ also validates the configuration as it adds it to the pipeline. Changes to the pipeline are saved unless one of the following three validation errors exists in the pipeline. 
 --
 --     * An object is missing a name or identifier field.    * A string or reference field is empty.    * The number of objects in the pipeline exceeds the maximum allowed objects.    * The pipeline is in a FINISHED state.
 --
--- Pipeline object definitions are passed to the @PutPipelineDefinition@ action and returned by the 'GetPipelineDefinition' action.
+-- Pipeline object definitions are passed to the @PutPipelineDefinition@ action and returned by the 'GetPipelineDefinition' action. 
 --
 module Network.AWS.DataPipeline.PutPipelineDefinition
     (
@@ -62,9 +62,9 @@ import Network.AWS.Response
 -- /See:/ 'putPipelineDefinition' smart constructor.
 data PutPipelineDefinition = PutPipelineDefinition'
   { _ppdParameterObjects :: !(Maybe [ParameterObject])
-  , _ppdParameterValues  :: !(Maybe [ParameterValue])
-  , _ppdPipelineId       :: !Text
-  , _ppdPipelineObjects  :: ![PipelineObject]
+  , _ppdParameterValues :: !(Maybe [ParameterValue])
+  , _ppdPipelineId :: !Text
+  , _ppdPipelineObjects :: ![PipelineObject]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -154,10 +154,10 @@ instance ToQuery PutPipelineDefinition where
 --
 -- /See:/ 'putPipelineDefinitionResponse' smart constructor.
 data PutPipelineDefinitionResponse = PutPipelineDefinitionResponse'
-  { _ppdrsValidationErrors   :: !(Maybe [ValidationError])
+  { _ppdrsValidationErrors :: !(Maybe [ValidationError])
   , _ppdrsValidationWarnings :: !(Maybe [ValidationWarning])
-  , _ppdrsResponseStatus     :: !Int
-  , _ppdrsErrored            :: !Bool
+  , _ppdrsResponseStatus :: !Int
+  , _ppdrsErrored :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

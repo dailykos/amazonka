@@ -23,6 +23,8 @@
 --
 -- If no input parameters are provided, such as DirectoryId or TrustIds, this request describes all the trust relationships belonging to the account.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DirectoryService.DescribeTrusts
     (
     -- * Creating a Request
@@ -46,20 +48,21 @@ module Network.AWS.DirectoryService.DescribeTrusts
 import Network.AWS.DirectoryService.Types
 import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Describes the trust relationships for a particular Microsoft AD in the AWS cloud. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.
+-- | Describes the trust relationships for a particular AWS Managed Microsoft AD directory. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.
 --
 --
 --
 -- /See:/ 'describeTrusts' smart constructor.
 data DescribeTrusts = DescribeTrusts'
   { _dtDirectoryId :: !(Maybe Text)
-  , _dtNextToken   :: !(Maybe Text)
-  , _dtTrustIds    :: !(Maybe [Text])
-  , _dtLimit       :: !(Maybe Nat)
+  , _dtNextToken :: !(Maybe Text)
+  , _dtTrustIds :: !(Maybe [Text])
+  , _dtLimit :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -100,6 +103,13 @@ dtTrustIds = lens _dtTrustIds (\ s a -> s{_dtTrustIds = a}) . _Default . _Coerce
 -- | The maximum number of objects to return.
 dtLimit :: Lens' DescribeTrusts (Maybe Natural)
 dtLimit = lens _dtLimit (\ s a -> s{_dtLimit = a}) . mapping _Nat
+
+instance AWSPager DescribeTrusts where
+        page rq rs
+          | stop (rs ^. dtrsNextToken) = Nothing
+          | stop (rs ^. dtrsTrusts) = Nothing
+          | otherwise =
+            Just $ rq & dtNextToken .~ rs ^. dtrsNextToken
 
 instance AWSRequest DescribeTrusts where
         type Rs DescribeTrusts = DescribeTrustsResponse
@@ -146,8 +156,8 @@ instance ToQuery DescribeTrusts where
 --
 -- /See:/ 'describeTrustsResponse' smart constructor.
 data DescribeTrustsResponse = DescribeTrustsResponse'
-  { _dtrsNextToken      :: !(Maybe Text)
-  , _dtrsTrusts         :: !(Maybe [Trust])
+  { _dtrsNextToken :: !(Maybe Text)
+  , _dtrsTrusts :: !(Maybe [Trust])
   , _dtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

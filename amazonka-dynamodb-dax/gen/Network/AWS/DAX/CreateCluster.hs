@@ -28,6 +28,7 @@ module Network.AWS.DAX.CreateCluster
     , CreateCluster
     -- * Request Lenses
     , ccSecurityGroupIds
+    , ccSSESpecification
     , ccSubnetGroupName
     , ccPreferredMaintenanceWindow
     , ccAvailabilityZones
@@ -57,18 +58,19 @@ import Network.AWS.Response
 
 -- | /See:/ 'createCluster' smart constructor.
 data CreateCluster = CreateCluster'
-  { _ccSecurityGroupIds           :: !(Maybe [Text])
-  , _ccSubnetGroupName            :: !(Maybe Text)
+  { _ccSecurityGroupIds :: !(Maybe [Text])
+  , _ccSSESpecification :: !(Maybe SSESpecification)
+  , _ccSubnetGroupName :: !(Maybe Text)
   , _ccPreferredMaintenanceWindow :: !(Maybe Text)
-  , _ccAvailabilityZones          :: !(Maybe [Text])
-  , _ccDescription                :: !(Maybe Text)
-  , _ccNotificationTopicARN       :: !(Maybe Text)
-  , _ccTags                       :: !(Maybe [Tag])
-  , _ccParameterGroupName         :: !(Maybe Text)
-  , _ccClusterName                :: !Text
-  , _ccNodeType                   :: !Text
-  , _ccReplicationFactor          :: !Int
-  , _ccIAMRoleARN                 :: !Text
+  , _ccAvailabilityZones :: !(Maybe [Text])
+  , _ccDescription :: !(Maybe Text)
+  , _ccNotificationTopicARN :: !(Maybe Text)
+  , _ccTags :: !(Maybe [Tag])
+  , _ccParameterGroupName :: !(Maybe Text)
+  , _ccClusterName :: !Text
+  , _ccNodeType :: !Text
+  , _ccReplicationFactor :: !Int
+  , _ccIAMRoleARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -78,9 +80,11 @@ data CreateCluster = CreateCluster'
 --
 -- * 'ccSecurityGroupIds' - A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.) If this parameter is not specified, DAX assigns the default VPC security group to each node.
 --
+-- * 'ccSSESpecification' - Represents the settings used to enable server-side encryption on the cluster.
+--
 -- * 'ccSubnetGroupName' - The name of the subnet group to be used for the replication group. /Important:/ DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.
 --
--- * 'ccPreferredMaintenanceWindow' - Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:05:00-sun:09:00@
+-- * 'ccPreferredMaintenanceWindow' - Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:05:00-sun:09:00@ 
 --
 -- * 'ccAvailabilityZones' - The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.
 --
@@ -88,7 +92,7 @@ data CreateCluster = CreateCluster'
 --
 -- * 'ccNotificationTopicARN' - The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.
 --
--- * 'ccTags' - A set of tags to associate with the DAX cluster.
+-- * 'ccTags' - A set of tags to associate with the DAX cluster. 
 --
 -- * 'ccParameterGroupName' - The parameter group to be associated with the DAX cluster.
 --
@@ -108,6 +112,7 @@ createCluster
 createCluster pClusterName_ pNodeType_ pReplicationFactor_ pIAMRoleARN_ =
   CreateCluster'
     { _ccSecurityGroupIds = Nothing
+    , _ccSSESpecification = Nothing
     , _ccSubnetGroupName = Nothing
     , _ccPreferredMaintenanceWindow = Nothing
     , _ccAvailabilityZones = Nothing
@@ -126,11 +131,15 @@ createCluster pClusterName_ pNodeType_ pReplicationFactor_ pIAMRoleARN_ =
 ccSecurityGroupIds :: Lens' CreateCluster [Text]
 ccSecurityGroupIds = lens _ccSecurityGroupIds (\ s a -> s{_ccSecurityGroupIds = a}) . _Default . _Coerce
 
+-- | Represents the settings used to enable server-side encryption on the cluster.
+ccSSESpecification :: Lens' CreateCluster (Maybe SSESpecification)
+ccSSESpecification = lens _ccSSESpecification (\ s a -> s{_ccSSESpecification = a})
+
 -- | The name of the subnet group to be used for the replication group. /Important:/ DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.
 ccSubnetGroupName :: Lens' CreateCluster (Maybe Text)
 ccSubnetGroupName = lens _ccSubnetGroupName (\ s a -> s{_ccSubnetGroupName = a})
 
--- | Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:05:00-sun:09:00@
+-- | Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:05:00-sun:09:00@ 
 ccPreferredMaintenanceWindow :: Lens' CreateCluster (Maybe Text)
 ccPreferredMaintenanceWindow = lens _ccPreferredMaintenanceWindow (\ s a -> s{_ccPreferredMaintenanceWindow = a})
 
@@ -146,7 +155,7 @@ ccDescription = lens _ccDescription (\ s a -> s{_ccDescription = a})
 ccNotificationTopicARN :: Lens' CreateCluster (Maybe Text)
 ccNotificationTopicARN = lens _ccNotificationTopicARN (\ s a -> s{_ccNotificationTopicARN = a})
 
--- | A set of tags to associate with the DAX cluster.
+-- | A set of tags to associate with the DAX cluster. 
 ccTags :: Lens' CreateCluster [Tag]
 ccTags = lens _ccTags (\ s a -> s{_ccTags = a}) . _Default . _Coerce
 
@@ -197,6 +206,7 @@ instance ToJSON CreateCluster where
           = object
               (catMaybes
                  [("SecurityGroupIds" .=) <$> _ccSecurityGroupIds,
+                  ("SSESpecification" .=) <$> _ccSSESpecification,
                   ("SubnetGroupName" .=) <$> _ccSubnetGroupName,
                   ("PreferredMaintenanceWindow" .=) <$>
                     _ccPreferredMaintenanceWindow,
@@ -219,7 +229,7 @@ instance ToQuery CreateCluster where
 
 -- | /See:/ 'createClusterResponse' smart constructor.
 data CreateClusterResponse = CreateClusterResponse'
-  { _ccrsCluster        :: !(Maybe Cluster)
+  { _ccrsCluster :: !(Maybe Cluster)
   , _ccrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

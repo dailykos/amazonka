@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in <http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html Working with Events and Notifications > in the AWS Database Migration Service User Guide.
+-- Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in <http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html Working with Events and Notifications> in the /AWS Database Migration Service User Guide./ 
 --
 --
 module Network.AWS.DMS.DescribeEventCategories
@@ -45,14 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeEventCategories' smart constructor.
 data DescribeEventCategories = DescribeEventCategories'
   { _decSourceType :: !(Maybe Text)
-  , _decFilters    :: !(Maybe [Filter])
+  , _decFilters :: !(Maybe [Filter])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -115,14 +115,14 @@ instance ToPath DescribeEventCategories where
 instance ToQuery DescribeEventCategories where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeEventCategoriesResponse' smart constructor.
 data DescribeEventCategoriesResponse = DescribeEventCategoriesResponse'
   { _decrsEventCategoryGroupList :: !(Maybe [EventCategoryGroup])
-  , _decrsResponseStatus         :: !Int
+  , _decrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

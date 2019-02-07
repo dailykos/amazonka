@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets information about an on-premises instance.
+-- Gets information about an on-premises instance. 
 --
 --
 module Network.AWS.CodeDeploy.GetOnPremisesInstance
@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a GetOnPremisesInstance operation.
+-- | Represents the input of a GetOnPremisesInstance operation. 
 --
 --
 --
@@ -58,7 +58,7 @@ newtype GetOnPremisesInstance = GetOnPremisesInstance'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gopiInstanceName' - The name of the on-premises instance about which to get information.
+-- * 'gopiInstanceName' - The name of the on-premises instance about which to get information. 
 getOnPremisesInstance
     :: Text -- ^ 'gopiInstanceName'
     -> GetOnPremisesInstance
@@ -66,7 +66,7 @@ getOnPremisesInstance pInstanceName_ =
   GetOnPremisesInstance' {_gopiInstanceName = pInstanceName_}
 
 
--- | The name of the on-premises instance about which to get information.
+-- | The name of the on-premises instance about which to get information. 
 gopiInstanceName :: Lens' GetOnPremisesInstance Text
 gopiInstanceName = lens _gopiInstanceName (\ s a -> s{_gopiInstanceName = a})
 
@@ -106,13 +106,13 @@ instance ToPath GetOnPremisesInstance where
 instance ToQuery GetOnPremisesInstance where
         toQuery = const mempty
 
--- | Represents the output of a GetOnPremisesInstance operation.
+-- | Represents the output of a GetOnPremisesInstance operation. 
 --
 --
 --
 -- /See:/ 'getOnPremisesInstanceResponse' smart constructor.
 data GetOnPremisesInstanceResponse = GetOnPremisesInstanceResponse'
-  { _gopirsInstanceInfo   :: !(Maybe InstanceInfo)
+  { _gopirsInstanceInfo :: !(Maybe InstanceInfo)
   , _gopirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ data GetOnPremisesInstanceResponse = GetOnPremisesInstanceResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gopirsInstanceInfo' - Information about the on-premises instance.
+-- * 'gopirsInstanceInfo' - Information about the on-premises instance. 
 --
 -- * 'gopirsResponseStatus' - -- | The response status code.
 getOnPremisesInstanceResponse
@@ -132,7 +132,7 @@ getOnPremisesInstanceResponse pResponseStatus_ =
     {_gopirsInstanceInfo = Nothing, _gopirsResponseStatus = pResponseStatus_}
 
 
--- | Information about the on-premises instance.
+-- | Information about the on-premises instance. 
 gopirsInstanceInfo :: Lens' GetOnPremisesInstanceResponse (Maybe InstanceInfo)
 gopirsInstanceInfo = lens _gopirsInstanceInfo (\ s a -> s{_gopirsInstanceInfo = a})
 

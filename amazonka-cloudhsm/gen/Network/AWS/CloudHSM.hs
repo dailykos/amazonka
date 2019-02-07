@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CloudHSM Service__
+-- __AWS CloudHSM Service__ 
 --
 -- This is documentation for __AWS CloudHSM Classic__ . For more information, see <http://aws.amazon.com/cloudhsm/faqs-classic/ AWS CloudHSM Classic FAQs> , the <http://docs.aws.amazon.com/cloudhsm/classic/userguide/ AWS CloudHSM Classic User Guide> , and the <http://docs.aws.amazon.com/cloudhsm/classic/APIReference/ AWS CloudHSM Classic API Reference> .
 --
@@ -40,64 +40,64 @@ module Network.AWS.CloudHSM
     -- * Operations
     -- $operations
 
-    -- ** DeleteHAPG
+    -- ** DeleteHAPG 
     , module Network.AWS.CloudHSM.DeleteHAPG
 
-    -- ** ListHAPGs
+    -- ** ListHAPGs (Paginated)
     , module Network.AWS.CloudHSM.ListHAPGs
 
-    -- ** ModifyLunaClient
+    -- ** ModifyLunaClient 
     , module Network.AWS.CloudHSM.ModifyLunaClient
 
-    -- ** ListHSMs
+    -- ** ListHSMs (Paginated)
     , module Network.AWS.CloudHSM.ListHSMs
 
-    -- ** DescribeLunaClient
+    -- ** DescribeLunaClient 
     , module Network.AWS.CloudHSM.DescribeLunaClient
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.CloudHSM.ListTagsForResource
 
-    -- ** CreateHAPG
+    -- ** CreateHAPG 
     , module Network.AWS.CloudHSM.CreateHAPG
 
-    -- ** CreateHSM
+    -- ** CreateHSM 
     , module Network.AWS.CloudHSM.CreateHSM
 
-    -- ** RemoveTagsFromResource
+    -- ** RemoveTagsFromResource 
     , module Network.AWS.CloudHSM.RemoveTagsFromResource
 
-    -- ** DescribeHAPG
+    -- ** DescribeHAPG 
     , module Network.AWS.CloudHSM.DescribeHAPG
 
-    -- ** CreateLunaClient
+    -- ** CreateLunaClient 
     , module Network.AWS.CloudHSM.CreateLunaClient
 
-    -- ** ListLunaClients
+    -- ** ListLunaClients (Paginated)
     , module Network.AWS.CloudHSM.ListLunaClients
 
-    -- ** AddTagsToResource
+    -- ** AddTagsToResource 
     , module Network.AWS.CloudHSM.AddTagsToResource
 
-    -- ** GetConfig
+    -- ** GetConfig 
     , module Network.AWS.CloudHSM.GetConfig
 
-    -- ** DeleteHSM
+    -- ** DeleteHSM 
     , module Network.AWS.CloudHSM.DeleteHSM
 
-    -- ** DescribeHSM
+    -- ** DescribeHSM 
     , module Network.AWS.CloudHSM.DescribeHSM
 
-    -- ** ModifyHAPG
+    -- ** ModifyHAPG 
     , module Network.AWS.CloudHSM.ModifyHAPG
 
-    -- ** DeleteLunaClient
+    -- ** DeleteLunaClient 
     , module Network.AWS.CloudHSM.DeleteLunaClient
 
-    -- ** ModifyHSM
+    -- ** ModifyHSM 
     , module Network.AWS.CloudHSM.ModifyHSM
 
-    -- ** ListAvailableZones
+    -- ** ListAvailableZones 
     , module Network.AWS.CloudHSM.ListAvailableZones
 
     -- * Types

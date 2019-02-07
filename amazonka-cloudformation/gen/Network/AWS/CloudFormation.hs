@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CloudFormation__
+-- __AWS CloudFormation__ 
 --
 -- AWS CloudFormation allows you to create and manage AWS infrastructure deployments predictably and repeatedly. You can use AWS CloudFormation to leverage AWS products, such as Amazon Elastic Compute Cloud, Amazon Elastic Block Store, Amazon Simple Notification Service, Elastic Load Balancing, and Auto Scaling to build highly-reliable, highly scalable, cost-effective applications without creating or configuring the underlying AWS infrastructure.
 --
@@ -98,127 +98,139 @@ module Network.AWS.CloudFormation
     -- * Operations
     -- $operations
 
-    -- ** DescribeStackSetOperation
+    -- ** DescribeStackSetOperation 
     , module Network.AWS.CloudFormation.DescribeStackSetOperation
 
-    -- ** DeleteStack
+    -- ** DeleteStack 
     , module Network.AWS.CloudFormation.DeleteStack
 
-    -- ** UpdateStack
+    -- ** UpdateStack 
     , module Network.AWS.CloudFormation.UpdateStack
 
-    -- ** GetTemplateSummary
+    -- ** GetTemplateSummary 
     , module Network.AWS.CloudFormation.GetTemplateSummary
 
-    -- ** ListChangeSets
+    -- ** ListChangeSets 
     , module Network.AWS.CloudFormation.ListChangeSets
 
     -- ** ListStackResources (Paginated)
     , module Network.AWS.CloudFormation.ListStackResources
 
-    -- ** UpdateStackInstances
+    -- ** UpdateStackInstances 
     , module Network.AWS.CloudFormation.UpdateStackInstances
 
-    -- ** DeleteStackInstances
+    -- ** DeleteStackInstances 
     , module Network.AWS.CloudFormation.DeleteStackInstances
 
-    -- ** CreateStackInstances
+    -- ** CreateStackInstances 
     , module Network.AWS.CloudFormation.CreateStackInstances
 
-    -- ** GetStackPolicy
+    -- ** GetStackPolicy 
     , module Network.AWS.CloudFormation.GetStackPolicy
 
     -- ** DescribeStacks (Paginated)
     , module Network.AWS.CloudFormation.DescribeStacks
 
-    -- ** CreateChangeSet
+    -- ** CreateChangeSet 
     , module Network.AWS.CloudFormation.CreateChangeSet
 
-    -- ** ListStackSetOperations
+    -- ** ListStackSetOperations 
     , module Network.AWS.CloudFormation.ListStackSetOperations
 
-    -- ** ExecuteChangeSet
+    -- ** ExecuteChangeSet 
     , module Network.AWS.CloudFormation.ExecuteChangeSet
 
-    -- ** ListStackInstances
+    -- ** ListStackInstances 
     , module Network.AWS.CloudFormation.ListStackInstances
 
-    -- ** ContinueUpdateRollback
+    -- ** ContinueUpdateRollback 
     , module Network.AWS.CloudFormation.ContinueUpdateRollback
 
-    -- ** ValidateTemplate
+    -- ** ValidateTemplate 
     , module Network.AWS.CloudFormation.ValidateTemplate
 
-    -- ** CancelUpdateStack
+    -- ** CancelUpdateStack 
     , module Network.AWS.CloudFormation.CancelUpdateStack
+
+    -- ** DetectStackDrift 
+    , module Network.AWS.CloudFormation.DetectStackDrift
 
     -- ** DescribeStackEvents (Paginated)
     , module Network.AWS.CloudFormation.DescribeStackEvents
 
-    -- ** SignalResource
+    -- ** SignalResource 
     , module Network.AWS.CloudFormation.SignalResource
 
-    -- ** SetStackPolicy
+    -- ** SetStackPolicy 
     , module Network.AWS.CloudFormation.SetStackPolicy
 
     -- ** ListImports (Paginated)
     , module Network.AWS.CloudFormation.ListImports
 
+    -- ** DescribeStackResourceDrifts 
+    , module Network.AWS.CloudFormation.DescribeStackResourceDrifts
+
     -- ** ListStacks (Paginated)
     , module Network.AWS.CloudFormation.ListStacks
 
-    -- ** DescribeAccountLimits
+    -- ** DescribeAccountLimits 
     , module Network.AWS.CloudFormation.DescribeAccountLimits
 
-    -- ** DescribeStackResources
+    -- ** DescribeStackResources 
     , module Network.AWS.CloudFormation.DescribeStackResources
 
-    -- ** DescribeStackInstance
+    -- ** DescribeStackInstance 
     , module Network.AWS.CloudFormation.DescribeStackInstance
 
-    -- ** CreateStack
+    -- ** CreateStack 
     , module Network.AWS.CloudFormation.CreateStack
 
-    -- ** UpdateStackSet
+    -- ** UpdateStackSet 
     , module Network.AWS.CloudFormation.UpdateStackSet
 
-    -- ** DeleteStackSet
+    -- ** DeleteStackSet 
     , module Network.AWS.CloudFormation.DeleteStackSet
 
-    -- ** EstimateTemplateCost
+    -- ** EstimateTemplateCost 
     , module Network.AWS.CloudFormation.EstimateTemplateCost
 
-    -- ** DeleteChangeSet
+    -- ** DeleteChangeSet 
     , module Network.AWS.CloudFormation.DeleteChangeSet
 
-    -- ** ListStackSets
+    -- ** ListStackSets 
     , module Network.AWS.CloudFormation.ListStackSets
 
     -- ** ListExports (Paginated)
     , module Network.AWS.CloudFormation.ListExports
 
-    -- ** CreateStackSet
+    -- ** DescribeStackDriftDetectionStatus 
+    , module Network.AWS.CloudFormation.DescribeStackDriftDetectionStatus
+
+    -- ** CreateStackSet 
     , module Network.AWS.CloudFormation.CreateStackSet
 
-    -- ** UpdateTerminationProtection
+    -- ** UpdateTerminationProtection 
     , module Network.AWS.CloudFormation.UpdateTerminationProtection
 
-    -- ** GetTemplate
+    -- ** GetTemplate 
     , module Network.AWS.CloudFormation.GetTemplate
 
-    -- ** DescribeChangeSet
+    -- ** DetectStackResourceDrift 
+    , module Network.AWS.CloudFormation.DetectStackResourceDrift
+
+    -- ** DescribeChangeSet 
     , module Network.AWS.CloudFormation.DescribeChangeSet
 
-    -- ** DescribeStackSet
+    -- ** DescribeStackSet 
     , module Network.AWS.CloudFormation.DescribeStackSet
 
-    -- ** ListStackSetOperationResults
+    -- ** ListStackSetOperationResults 
     , module Network.AWS.CloudFormation.ListStackSetOperationResults
 
-    -- ** StopStackSetOperation
+    -- ** StopStackSetOperation 
     , module Network.AWS.CloudFormation.StopStackSetOperation
 
-    -- ** DescribeStackResource
+    -- ** DescribeStackResource 
     , module Network.AWS.CloudFormation.DescribeStackResource
 
     -- * Types
@@ -244,6 +256,9 @@ module Network.AWS.CloudFormation
     -- ** ChangeType
     , ChangeType (..)
 
+    -- ** DifferenceType
+    , DifferenceType (..)
+
     -- ** EvaluationType
     , EvaluationType (..)
 
@@ -268,8 +283,17 @@ module Network.AWS.CloudFormation
     -- ** ResourceStatus
     , ResourceStatus (..)
 
+    -- ** StackDriftDetectionStatus
+    , StackDriftDetectionStatus (..)
+
+    -- ** StackDriftStatus
+    , StackDriftStatus (..)
+
     -- ** StackInstanceStatus
     , StackInstanceStatus (..)
+
+    -- ** StackResourceDriftStatus
+    , StackResourceDriftStatus (..)
 
     -- ** StackSetOperationAction
     , StackSetOperationAction (..)
@@ -358,6 +382,20 @@ module Network.AWS.CloudFormation
     , pdNoEcho
     , pdDescription
 
+    -- ** PhysicalResourceIdContextKeyValuePair
+    , PhysicalResourceIdContextKeyValuePair
+    , physicalResourceIdContextKeyValuePair
+    , prickvpKey
+    , prickvpValue
+
+    -- ** PropertyDifference
+    , PropertyDifference
+    , propertyDifference
+    , pdPropertyPath
+    , pdExpectedValue
+    , pdActualValue
+    , pdDifferenceType
+
     -- ** ResourceChange
     , ResourceChange
     , resourceChange
@@ -399,27 +437,40 @@ module Network.AWS.CloudFormation
     -- ** Stack
     , Stack
     , stack
-    , sDisableRollback
-    , sLastUpdatedTime
-    , sRootId
-    , sNotificationARNs
-    , sStackStatusReason
-    , sEnableTerminationProtection
-    , sChangeSetId
-    , sDeletionTime
-    , sOutputs
-    , sParameters
-    , sStackId
-    , sDescription
-    , sCapabilities
-    , sRollbackConfiguration
-    , sTags
-    , sTimeoutInMinutes
-    , sParentId
-    , sRoleARN
-    , sStackName
-    , sCreationTime
-    , sStackStatus
+    , staDisableRollback
+    , staLastUpdatedTime
+    , staRootId
+    , staNotificationARNs
+    , staStackStatusReason
+    , staEnableTerminationProtection
+    , staDriftInformation
+    , staChangeSetId
+    , staDeletionTime
+    , staOutputs
+    , staParameters
+    , staStackId
+    , staDescription
+    , staCapabilities
+    , staRollbackConfiguration
+    , staTags
+    , staTimeoutInMinutes
+    , staParentId
+    , staRoleARN
+    , staStackName
+    , staCreationTime
+    , staStackStatus
+
+    -- ** StackDriftInformation
+    , StackDriftInformation
+    , stackDriftInformation
+    , sdiLastCheckTimestamp
+    , sdiStackDriftStatus
+
+    -- ** StackDriftInformationSummary
+    , StackDriftInformationSummary
+    , stackDriftInformationSummary
+    , sdisLastCheckTimestamp
+    , sdisStackDriftStatus
 
     -- ** StackEvent
     , StackEvent
@@ -462,6 +513,7 @@ module Network.AWS.CloudFormation
     , stackResource
     , srPhysicalResourceId
     , srResourceStatusReason
+    , srDriftInformation
     , srStackId
     , srDescription
     , srStackName
@@ -473,22 +525,50 @@ module Network.AWS.CloudFormation
     -- ** StackResourceDetail
     , StackResourceDetail
     , stackResourceDetail
+    , sPhysicalResourceId
+    , sResourceStatusReason
+    , sDriftInformation
+    , sMetadata
+    , sStackId
+    , sDescription
+    , sStackName
+    , sLogicalResourceId
+    , sResourceType
+    , sLastUpdatedTimestamp
+    , sResourceStatus
+
+    -- ** StackResourceDrift
+    , StackResourceDrift
+    , stackResourceDrift
+    , srdActualProperties
     , srdPhysicalResourceId
-    , srdResourceStatusReason
-    , srdMetadata
+    , srdPhysicalResourceIdContext
+    , srdPropertyDifferences
+    , srdExpectedProperties
     , srdStackId
-    , srdDescription
-    , srdStackName
     , srdLogicalResourceId
     , srdResourceType
-    , srdLastUpdatedTimestamp
-    , srdResourceStatus
+    , srdStackResourceDriftStatus
+    , srdTimestamp
+
+    -- ** StackResourceDriftInformation
+    , StackResourceDriftInformation
+    , stackResourceDriftInformation
+    , srdiLastCheckTimestamp
+    , srdiStackResourceDriftStatus
+
+    -- ** StackResourceDriftInformationSummary
+    , StackResourceDriftInformationSummary
+    , stackResourceDriftInformationSummary
+    , srdisLastCheckTimestamp
+    , srdisStackResourceDriftStatus
 
     -- ** StackResourceSummary
     , StackResourceSummary
     , stackResourceSummary
     , srsPhysicalResourceId
     , srsResourceStatusReason
+    , srsDriftInformation
     , srsLogicalResourceId
     , srsResourceType
     , srsLastUpdatedTimestamp
@@ -507,6 +587,7 @@ module Network.AWS.CloudFormation
     , ssCapabilities
     , ssTags
     , ssStackSetId
+    , ssExecutionRoleName
 
     -- ** StackSetOperation
     , StackSetOperation
@@ -520,6 +601,7 @@ module Network.AWS.CloudFormation
     , ssoOperationId
     , ssoRetainStacks
     , ssoStackSetId
+    , ssoExecutionRoleName
 
     -- ** StackSetOperationPreferences
     , StackSetOperationPreferences
@@ -563,6 +645,7 @@ module Network.AWS.CloudFormation
     , ssRootId
     , ssStackStatusReason
     , ssTemplateDescription
+    , ssDriftInformation
     , ssDeletionTime
     , ssStackId
     , ssParentId
@@ -597,13 +680,17 @@ import Network.AWS.CloudFormation.DeleteStackInstances
 import Network.AWS.CloudFormation.DeleteStackSet
 import Network.AWS.CloudFormation.DescribeAccountLimits
 import Network.AWS.CloudFormation.DescribeChangeSet
+import Network.AWS.CloudFormation.DescribeStackDriftDetectionStatus
 import Network.AWS.CloudFormation.DescribeStackEvents
 import Network.AWS.CloudFormation.DescribeStackInstance
 import Network.AWS.CloudFormation.DescribeStackResource
+import Network.AWS.CloudFormation.DescribeStackResourceDrifts
 import Network.AWS.CloudFormation.DescribeStackResources
-import Network.AWS.CloudFormation.DescribeStacks
 import Network.AWS.CloudFormation.DescribeStackSet
 import Network.AWS.CloudFormation.DescribeStackSetOperation
+import Network.AWS.CloudFormation.DescribeStacks
+import Network.AWS.CloudFormation.DetectStackDrift
+import Network.AWS.CloudFormation.DetectStackResourceDrift
 import Network.AWS.CloudFormation.EstimateTemplateCost
 import Network.AWS.CloudFormation.ExecuteChangeSet
 import Network.AWS.CloudFormation.GetStackPolicy
@@ -614,10 +701,10 @@ import Network.AWS.CloudFormation.ListExports
 import Network.AWS.CloudFormation.ListImports
 import Network.AWS.CloudFormation.ListStackInstances
 import Network.AWS.CloudFormation.ListStackResources
-import Network.AWS.CloudFormation.ListStacks
 import Network.AWS.CloudFormation.ListStackSetOperationResults
 import Network.AWS.CloudFormation.ListStackSetOperations
 import Network.AWS.CloudFormation.ListStackSets
+import Network.AWS.CloudFormation.ListStacks
 import Network.AWS.CloudFormation.SetStackPolicy
 import Network.AWS.CloudFormation.SignalResource
 import Network.AWS.CloudFormation.StopStackSetOperation

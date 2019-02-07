@@ -51,16 +51,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'getComplianceDetailsByResource' smart constructor.
 data GetComplianceDetailsByResource = GetComplianceDetailsByResource'
   { _gcdbrComplianceTypes :: !(Maybe [ComplianceType])
-  , _gcdbrNextToken       :: !(Maybe Text)
-  , _gcdbrResourceType    :: !Text
-  , _gcdbrResourceId      :: !Text
+  , _gcdbrNextToken :: !(Maybe Text)
+  , _gcdbrResourceType :: !Text
+  , _gcdbrResourceId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -156,15 +156,15 @@ instance ToPath GetComplianceDetailsByResource where
 instance ToQuery GetComplianceDetailsByResource where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'getComplianceDetailsByResourceResponse' smart constructor.
 data GetComplianceDetailsByResourceResponse = GetComplianceDetailsByResourceResponse'
   { _gcdbrrsEvaluationResults :: !(Maybe [EvaluationResult])
-  , _gcdbrrsNextToken         :: !(Maybe Text)
-  , _gcdbrrsResponseStatus    :: !Int
+  , _gcdbrrsNextToken :: !(Maybe Text)
+  , _gcdbrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

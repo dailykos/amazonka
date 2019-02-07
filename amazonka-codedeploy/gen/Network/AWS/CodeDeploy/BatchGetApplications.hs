@@ -112,7 +112,7 @@ instance ToQuery BatchGetApplications where
 -- /See:/ 'batchGetApplicationsResponse' smart constructor.
 data BatchGetApplicationsResponse = BatchGetApplicationsResponse'
   { _bgarsApplicationsInfo :: !(Maybe [ApplicationInfo])
-  , _bgarsResponseStatus   :: !Int
+  , _bgarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

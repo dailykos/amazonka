@@ -50,14 +50,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeEndpoints' smart constructor.
 data DescribeEndpoints = DescribeEndpoints'
-  { _desFilters    :: !(Maybe [Filter])
-  , _desMarker     :: !(Maybe Text)
+  { _desFilters :: !(Maybe [Filter])
+  , _desMarker :: !(Maybe Text)
   , _desMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -68,7 +68,7 @@ data DescribeEndpoints = DescribeEndpoints'
 --
 -- * 'desFilters' - Filters applied to the describe action. Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name
 --
--- * 'desMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'desMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'desMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeEndpoints
@@ -82,7 +82,7 @@ describeEndpoints =
 desFilters :: Lens' DescribeEndpoints [Filter]
 desFilters = lens _desFilters (\ s a -> s{_desFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 desMarker :: Lens' DescribeEndpoints (Maybe Text)
 desMarker = lens _desMarker (\ s a -> s{_desMarker = a})
 
@@ -135,14 +135,14 @@ instance ToPath DescribeEndpoints where
 instance ToQuery DescribeEndpoints where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeEndpointsResponse' smart constructor.
 data DescribeEndpointsResponse = DescribeEndpointsResponse'
-  { _dersMarker         :: !(Maybe Text)
-  , _dersEndpoints      :: !(Maybe [Endpoint])
+  { _dersMarker :: !(Maybe Text)
+  , _dersEndpoints :: !(Maybe [Endpoint])
   , _dersResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -151,7 +151,7 @@ data DescribeEndpointsResponse = DescribeEndpointsResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dersMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dersMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dersEndpoints' - Endpoint description.
 --
@@ -167,7 +167,7 @@ describeEndpointsResponse pResponseStatus_ =
     }
 
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dersMarker :: Lens' DescribeEndpointsResponse (Maybe Text)
 dersMarker = lens _dersMarker (\ s a -> s{_dersMarker = a})
 

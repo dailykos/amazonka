@@ -57,9 +57,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'getUsagePlanKeys' smart constructor.
 data GetUsagePlanKeys = GetUsagePlanKeys'
-  { _gupkNameQuery   :: !(Maybe Text)
-  , _gupkLimit       :: !(Maybe Int)
-  , _gupkPosition    :: !(Maybe Text)
+  { _gupkNameQuery :: !(Maybe Text)
+  , _gupkLimit :: !(Maybe Int)
+  , _gupkPosition :: !(Maybe Text)
   , _gupkUsagePlanId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,12 +144,12 @@ instance ToQuery GetUsagePlanKeys where
 -- | Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans> 
 --
 -- /See:/ 'getUsagePlanKeysResponse' smart constructor.
 data GetUsagePlanKeysResponse = GetUsagePlanKeysResponse'
-  { _gupkrsItems          :: !(Maybe [UsagePlanKey])
-  , _gupkrsPosition       :: !(Maybe Text)
+  { _gupkrsItems :: !(Maybe [UsagePlanKey])
+  , _gupkrsPosition :: !(Maybe Text)
   , _gupkrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

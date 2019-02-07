@@ -23,6 +23,8 @@
 --
 -- By default, only the events occurring within the last hour are returned; however, you can retrieve up to 14 days' worth of events if necessary.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DAX.DescribeEvents
     (
     -- * Creating a Request
@@ -49,6 +51,7 @@ module Network.AWS.DAX.DescribeEvents
 import Network.AWS.DAX.Types
 import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -56,11 +59,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeEvents' smart constructor.
 data DescribeEvents = DescribeEvents'
   { _deSourceName :: !(Maybe Text)
-  , _deStartTime  :: !(Maybe POSIX)
+  , _deStartTime :: !(Maybe POSIX)
   , _deSourceType :: !(Maybe SourceType)
-  , _deNextToken  :: !(Maybe Text)
-  , _deEndTime    :: !(Maybe POSIX)
-  , _deDuration   :: !(Maybe Int)
+  , _deNextToken :: !(Maybe Text)
+  , _deEndTime :: !(Maybe POSIX)
+  , _deDuration :: !(Maybe Int)
   , _deMaxResults :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,6 +127,13 @@ deDuration = lens _deDuration (\ s a -> s{_deDuration = a})
 deMaxResults :: Lens' DescribeEvents (Maybe Int)
 deMaxResults = lens _deMaxResults (\ s a -> s{_deMaxResults = a})
 
+instance AWSPager DescribeEvents where
+        page rq rs
+          | stop (rs ^. dersNextToken) = Nothing
+          | stop (rs ^. dersEvents) = Nothing
+          | otherwise =
+            Just $ rq & deNextToken .~ rs ^. dersNextToken
+
 instance AWSRequest DescribeEvents where
         type Rs DescribeEvents = DescribeEventsResponse
         request = postJSON dax
@@ -167,8 +177,8 @@ instance ToQuery DescribeEvents where
 
 -- | /See:/ 'describeEventsResponse' smart constructor.
 data DescribeEventsResponse = DescribeEventsResponse'
-  { _dersNextToken      :: !(Maybe Text)
-  , _dersEvents         :: !(Maybe [Event])
+  { _dersNextToken :: !(Maybe Text)
+  , _dersEvents :: !(Maybe [Event])
   , _dersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

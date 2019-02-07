@@ -49,7 +49,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'resolveRoom' smart constructor.
 data ResolveRoom = ResolveRoom'
-  { _rrUserId  :: !Text
+  { _rrUserId :: !Text
   , _rrSkillId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,9 +118,9 @@ instance ToQuery ResolveRoom where
 -- | /See:/ 'resolveRoomResponse' smart constructor.
 data ResolveRoomResponse = ResolveRoomResponse'
   { _rrrsRoomSkillParameters :: !(Maybe [RoomSkillParameter])
-  , _rrrsRoomARN             :: !(Maybe Text)
-  , _rrrsRoomName            :: !(Maybe Text)
-  , _rrrsResponseStatus      :: !Int
+  , _rrrsRoomARN :: !(Maybe Text)
+  , _rrrsRoomName :: !(Maybe Text)
+  , _rrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

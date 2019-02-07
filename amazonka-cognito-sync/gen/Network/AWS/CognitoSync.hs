@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Cognito Sync__
+-- __Amazon Cognito Sync__ 
 --
 -- Amazon Cognito Sync provides an AWS service and client library that enable cross-device syncing of application-related user data. High-level client libraries are available for both iOS and Android. You can use these libraries to persist data locally so that it's available even if the device is offline. Developer credentials don't need to be stored on the mobile device to access the service. You can use Amazon Cognito to obtain a normalized user ID and credentials. User data is persisted in a dataset that can store up to 1 MB of key-value pairs, and you can have up to 20 datasets per user identity.
 --
@@ -72,55 +72,55 @@ module Network.AWS.CognitoSync
     -- * Operations
     -- $operations
 
-    -- ** DescribeDataset
+    -- ** DescribeDataset 
     , module Network.AWS.CognitoSync.DescribeDataset
 
-    -- ** SetCognitoEvents
+    -- ** SetCognitoEvents 
     , module Network.AWS.CognitoSync.SetCognitoEvents
 
-    -- ** DescribeIdentityPoolUsage
+    -- ** DescribeIdentityPoolUsage 
     , module Network.AWS.CognitoSync.DescribeIdentityPoolUsage
 
-    -- ** GetBulkPublishDetails
+    -- ** GetBulkPublishDetails 
     , module Network.AWS.CognitoSync.GetBulkPublishDetails
 
-    -- ** ListIdentityPoolUsage
+    -- ** ListIdentityPoolUsage 
     , module Network.AWS.CognitoSync.ListIdentityPoolUsage
 
-    -- ** SetIdentityPoolConfiguration
+    -- ** SetIdentityPoolConfiguration 
     , module Network.AWS.CognitoSync.SetIdentityPoolConfiguration
 
-    -- ** DeleteDataset
+    -- ** DeleteDataset 
     , module Network.AWS.CognitoSync.DeleteDataset
 
-    -- ** GetCognitoEvents
+    -- ** GetCognitoEvents 
     , module Network.AWS.CognitoSync.GetCognitoEvents
 
-    -- ** DescribeIdentityUsage
+    -- ** DescribeIdentityUsage 
     , module Network.AWS.CognitoSync.DescribeIdentityUsage
 
-    -- ** RegisterDevice
+    -- ** RegisterDevice 
     , module Network.AWS.CognitoSync.RegisterDevice
 
-    -- ** SubscribeToDataset
+    -- ** SubscribeToDataset 
     , module Network.AWS.CognitoSync.SubscribeToDataset
 
-    -- ** GetIdentityPoolConfiguration
+    -- ** GetIdentityPoolConfiguration 
     , module Network.AWS.CognitoSync.GetIdentityPoolConfiguration
 
-    -- ** ListRecords
+    -- ** ListRecords 
     , module Network.AWS.CognitoSync.ListRecords
 
-    -- ** UnsubscribeFromDataset
+    -- ** UnsubscribeFromDataset 
     , module Network.AWS.CognitoSync.UnsubscribeFromDataset
 
-    -- ** UpdateRecords
+    -- ** UpdateRecords 
     , module Network.AWS.CognitoSync.UpdateRecords
 
-    -- ** ListDatasets
+    -- ** ListDatasets 
     , module Network.AWS.CognitoSync.ListDatasets
 
-    -- ** BulkPublish
+    -- ** BulkPublish 
     , module Network.AWS.CognitoSync.BulkPublish
 
     -- * Types

@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'copyImage' smart constructor.
 data CopyImage = CopyImage'
   { _ciDestinationImageDescription :: !(Maybe Text)
-  , _ciSourceImageName             :: !Text
-  , _ciDestinationImageName        :: !Text
-  , _ciDestinationRegion           :: !Text
+  , _ciSourceImageName :: !Text
+  , _ciDestinationImageName :: !Text
+  , _ciDestinationRegion :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -140,7 +140,7 @@ instance ToQuery CopyImage where
 -- | /See:/ 'copyImageResponse' smart constructor.
 data CopyImageResponse = CopyImageResponse'
   { _cirsDestinationImageName :: !(Maybe Text)
-  , _cirsResponseStatus       :: !Int
+  , _cirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

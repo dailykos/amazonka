@@ -53,9 +53,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'listAppliedSchemaARNs' smart constructor.
 data ListAppliedSchemaARNs = ListAppliedSchemaARNs'
-  { _lasaNextToken    :: !(Maybe Text)
-  , _lasaSchemaARN    :: !(Maybe Text)
-  , _lasaMaxResults   :: !(Maybe Nat)
+  { _lasaNextToken :: !(Maybe Text)
+  , _lasaSchemaARN :: !(Maybe Text)
+  , _lasaMaxResults :: !(Maybe Nat)
   , _lasaDirectoryARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,8 +144,8 @@ instance ToQuery ListAppliedSchemaARNs where
 
 -- | /See:/ 'listAppliedSchemaARNsResponse' smart constructor.
 data ListAppliedSchemaARNsResponse = ListAppliedSchemaARNsResponse'
-  { _lasarsSchemaARNs     :: !(Maybe [Text])
-  , _lasarsNextToken      :: !(Maybe Text)
+  { _lasarsSchemaARNs :: !(Maybe [Text])
+  , _lasarsNextToken :: !(Maybe Text)
   , _lasarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

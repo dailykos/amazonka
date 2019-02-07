@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -33,6 +33,7 @@ module Network.AWS.CodeCommit.Types
     , _CommitMessageLengthExceededException
     , _BlobIdDoesNotExistException
     , _MaximumRepositoryNamesExceededException
+    , _FolderDoesNotExistException
     , _InvalidRepositoryDescriptionException
     , _RepositoryNameExistsException
     , _ReferenceNameRequiredException
@@ -51,12 +52,15 @@ module Network.AWS.CodeCommit.Types
     , _RepositoryNamesRequiredException
     , _InvalidActorARNException
     , _InvalidCommentIdException
+    , _FilePathConflictsWithSubmodulePathException
     , _InvalidDescriptionException
     , _InvalidBlobIdException
     , _PullRequestDoesNotExistException
     , _InvalidOrderException
     , _BranchDoesNotExistException
     , _DefaultBranchCannotBeDeletedException
+    , _FolderContentSizeLimitExceededException
+    , _InvalidDeletionParameterException
     , _InvalidPathException
     , _PathRequiredException
     , _RepositoryTriggerNameRequiredException
@@ -98,6 +102,7 @@ module Network.AWS.CodeCommit.Types
     , _InvalidReferenceNameException
     , _SameFileContentException
     , _CommitIdRequiredException
+    , _FileDoesNotExistException
     , _InvalidCommitIdException
     , _TipOfSourceReferenceIsDifferentException
     , _RepositoryTriggerDestinationARNRequiredException
@@ -220,6 +225,21 @@ module Network.AWS.CodeCommit.Types
     , dBeforeBlob
     , dChangeType
 
+    -- * File
+    , File
+    , file
+    , fAbsolutePath
+    , fFileMode
+    , fBlobId
+    , fRelativePath
+
+    -- * Folder
+    , Folder
+    , folder
+    , folAbsolutePath
+    , folTreeId
+    , folRelativePath
+
     -- * Location
     , Location
     , location
@@ -246,10 +266,19 @@ module Network.AWS.CodeCommit.Types
     , prPullRequestTargets
     , prDescription
 
+    -- * PullRequestCreatedEventMetadata
+    , PullRequestCreatedEventMetadata
+    , pullRequestCreatedEventMetadata
+    , prcemDestinationCommitId
+    , prcemMergeBase
+    , prcemRepositoryName
+    , prcemSourceCommitId
+
     -- * PullRequestEvent
     , PullRequestEvent
     , pullRequestEvent
     , prePullRequestMergedStateChangedEventMetadata
+    , prePullRequestCreatedEventMetadata
     , prePullRequestEventType
     , prePullRequestStatusChangedEventMetadata
     , preActorARN
@@ -269,6 +298,7 @@ module Network.AWS.CodeCommit.Types
     , pullRequestSourceReferenceUpdatedEventMetadata
     , prsruemAfterCommitId
     , prsruemBeforeCommitId
+    , prsruemMergeBase
     , prsruemRepositoryName
 
     -- * PullRequestStatusChangedEventMetadata
@@ -282,6 +312,7 @@ module Network.AWS.CodeCommit.Types
     , prtSourceCommit
     , prtDestinationReference
     , prtMergeMetadata
+    , prtMergeBase
     , prtDestinationCommit
     , prtRepositoryName
     , prtSourceReference
@@ -320,6 +351,21 @@ module Network.AWS.CodeCommit.Types
     , repositoryTriggerExecutionFailure
     , rtefFailureMessage
     , rtefTrigger
+
+    -- * SubModule
+    , SubModule
+    , subModule
+    , smCommitId
+    , smAbsolutePath
+    , smRelativePath
+
+    -- * SymbolicLink
+    , SymbolicLink
+    , symbolicLink
+    , slAbsolutePath
+    , slFileMode
+    , slBlobId
+    , slRelativePath
 
     -- * Target
     , Target
@@ -492,7 +538,7 @@ _InvalidEmailException :: AsError a => Getting (First ServiceError) a ServiceErr
 _InvalidEmailException = _MatchServiceError codeCommit "InvalidEmailException"
 
 
--- | The commit message is too long. Provide a shorter string.
+-- | The commit message is too long. Provide a shorter string. 
 --
 --
 _CommitMessageLengthExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -514,6 +560,14 @@ _BlobIdDoesNotExistException =
 _MaximumRepositoryNamesExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _MaximumRepositoryNamesExceededException =
   _MatchServiceError codeCommit "MaximumRepositoryNamesExceededException"
+
+
+-- | The specified folder does not exist. Either the folder name is not correct, or you did not provide the full path to the folder.
+--
+--
+_FolderDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_FolderDoesNotExistException =
+  _MatchServiceError codeCommit "FolderDoesNotExistException"
 
 
 -- | The specified repository description is not valid.
@@ -662,6 +716,14 @@ _InvalidCommentIdException =
   _MatchServiceError codeCommit "InvalidCommentIdException"
 
 
+-- | The specified file path or folder has the same path as a submodule in this repository. Either provide a different name for the file, or save the file in a directory that does not conflict with the submodule path.
+--
+--
+_FilePathConflictsWithSubmodulePathException :: AsError a => Getting (First ServiceError) a ServiceError
+_FilePathConflictsWithSubmodulePathException =
+  _MatchServiceError codeCommit "FilePathConflictsWithSubmodulePathException"
+
+
 -- | The pull request description is not valid. Descriptions are limited to 1,000 characters in length.
 --
 --
@@ -708,6 +770,22 @@ _DefaultBranchCannotBeDeletedException =
   _MatchServiceError codeCommit "DefaultBranchCannotBeDeletedException"
 
 
+-- | The specified file is in a folder that exceeds the folder content size limit. Either save the file in a folder that has less content, or remove files or subfolders from the folder so it does not exceed the size limit. For more information about limits in AWS CodeCommit, see <http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html AWS CodeCommit User Guide> .
+--
+--
+_FolderContentSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_FolderContentSizeLimitExceededException =
+  _MatchServiceError codeCommit "FolderContentSizeLimitExceededException"
+
+
+-- | The specified deletion parameter is not valid.
+--
+--
+_InvalidDeletionParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeletionParameterException =
+  _MatchServiceError codeCommit "InvalidDeletionParameterException"
+
+
 -- | The specified path is not valid.
 --
 --
@@ -715,7 +793,7 @@ _InvalidPathException :: AsError a => Getting (First ServiceError) a ServiceErro
 _InvalidPathException = _MatchServiceError codeCommit "InvalidPathException"
 
 
--- | The filePath for a location cannot be empty or null.
+-- | The folderPath for a location cannot be null.
 --
 --
 _PathRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -730,7 +808,7 @@ _RepositoryTriggerNameRequiredException =
   _MatchServiceError codeCommit "RepositoryTriggerNameRequiredException"
 
 
--- | The specified file mode permission is not valid. For a list of valid file mode permissions, see 'PutFile' .
+-- | The specified file mode permission is not valid. For a list of valid file mode permissions, see 'PutFile' . 
 --
 --
 _InvalidFileModeException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -801,7 +879,7 @@ _InvalidParentCommitIdException =
   _MatchServiceError codeCommit "InvalidParentCommitIdException"
 
 
--- | The pull request event type is not valid.
+-- | The pull request event type is not valid. 
 --
 --
 _InvalidPullRequestEventTypeException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -904,7 +982,7 @@ _TargetRequiredException =
   _MatchServiceError codeCommit "TargetRequiredException"
 
 
--- | The destination commit specifier is not valid. You must provide a valid branch name, tag, or full commit ID.
+-- | The destination commit specifier is not valid. You must provide a valid branch name, tag, or full commit ID. 
 --
 --
 _InvalidDestinationCommitSpecifierException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -920,7 +998,7 @@ _CommentDoesNotExistException =
   _MatchServiceError codeCommit "CommentDoesNotExistException"
 
 
--- | The specified reference is not a supported type.
+-- | The specified reference is not a supported type. 
 --
 --
 _ReferenceTypeNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -936,7 +1014,7 @@ _FileNameConflictsWithDirectoryNameException =
   _MatchServiceError codeCommit "FileNameConflictsWithDirectoryNameException"
 
 
--- | The file name is not valid because it has exceeded the character limit for file names. File names, including the path to the file, cannot exceed the character limit.
+-- | The user name is not valid because it has exceeded the character limit for file names. File names, including the path to the file, cannot exceed the character limit. 
 --
 --
 _NameLengthExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1028,6 +1106,14 @@ _SameFileContentException =
 _CommitIdRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
 _CommitIdRequiredException =
   _MatchServiceError codeCommit "CommitIdRequiredException"
+
+
+-- | The specified file does not exist. Verify that you have provided the correct name of the file, including its full path and extension.
+--
+--
+_FileDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_FileDoesNotExistException =
+  _MatchServiceError codeCommit "FileDoesNotExistException"
 
 
 -- | The specified commit ID is not valid.
@@ -1242,7 +1328,7 @@ _CommentDeletedException =
   _MatchServiceError codeCommit "CommentDeletedException"
 
 
--- | The parent commit ID is not valid. The specified parent commit ID does not exist in the specified branch of the repository.
+-- | The parent commit ID is not valid because it does not exist. The specified parent commit ID does not exist in the specified branch of the repository.
 --
 --
 _ParentCommitDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError

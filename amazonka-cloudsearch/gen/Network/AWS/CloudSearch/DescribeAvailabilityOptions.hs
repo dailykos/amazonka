@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'describeAvailabilityOptions' smart constructor.
 data DescribeAvailabilityOptions = DescribeAvailabilityOptions'
-  { _daoDeployed   :: !(Maybe Bool)
+  { _daoDeployed :: !(Maybe Bool)
   , _daoDomainName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,14 +110,14 @@ instance ToQuery DescribeAvailabilityOptions where
                "Deployed" =: _daoDeployed,
                "DomainName" =: _daoDomainName]
 
--- | The result of a @DescribeAvailabilityOptions@ request. Indicates whether or not the Multi-AZ option is enabled for the domain specified in the request.
+-- | The result of a @DescribeAvailabilityOptions@ request. Indicates whether or not the Multi-AZ option is enabled for the domain specified in the request. 
 --
 --
 --
 -- /See:/ 'describeAvailabilityOptionsResponse' smart constructor.
 data DescribeAvailabilityOptionsResponse = DescribeAvailabilityOptionsResponse'
   { _daorsAvailabilityOptions :: !(Maybe AvailabilityOptionsStatus)
-  , _daorsResponseStatus      :: !Int
+  , _daorsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -125,7 +125,7 @@ data DescribeAvailabilityOptionsResponse = DescribeAvailabilityOptionsResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daorsAvailabilityOptions' - The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain.
+-- * 'daorsAvailabilityOptions' - The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. 
 --
 -- * 'daorsResponseStatus' - -- | The response status code.
 describeAvailabilityOptionsResponse
@@ -138,7 +138,7 @@ describeAvailabilityOptionsResponse pResponseStatus_ =
     }
 
 
--- | The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain.
+-- | The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. 
 daorsAvailabilityOptions :: Lens' DescribeAvailabilityOptionsResponse (Maybe AvailabilityOptionsStatus)
 daorsAvailabilityOptions = lens _daorsAvailabilityOptions (\ s a -> s{_daorsAvailabilityOptions = a})
 

@@ -11,10 +11,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- You use the AmazonCloudSearch2013 API to upload documents to a search domain and search those documents.
+-- You use the AmazonCloudSearch2013 API to upload documents to a search domain and search those documents. 
 --
 --
--- The endpoints for submitting @UploadDocuments@ , @Search@ , and @Suggest@ requests are domain-specific. To get the endpoints for your domain, use the Amazon CloudSearch configuration service @DescribeDomains@ action. The domain endpoints are also displayed on the domain dashboard in the Amazon CloudSearch console. You submit suggest requests to the search endpoint.
+-- The endpoints for submitting @UploadDocuments@ , @Search@ , and @Suggest@ requests are domain-specific. To get the endpoints for your domain, use the Amazon CloudSearch configuration service @DescribeDomains@ action. The domain endpoints are also displayed on the domain dashboard in the Amazon CloudSearch console. You submit suggest requests to the search endpoint. 
 --
 -- For more information, see the <http://docs.aws.amazon.com/cloudsearch/latest/developerguide Amazon CloudSearch Developer Guide> .
 --
@@ -38,13 +38,13 @@ module Network.AWS.CloudSearchDomains
     -- * Operations
     -- $operations
 
-    -- ** Suggest
+    -- ** Suggest 
     , module Network.AWS.CloudSearchDomains.Suggest
 
-    -- ** UploadDocuments
+    -- ** UploadDocuments 
     , module Network.AWS.CloudSearchDomains.UploadDocuments
 
-    -- ** Search
+    -- ** Search 
     , module Network.AWS.CloudSearchDomains.Search
 
     -- * Types

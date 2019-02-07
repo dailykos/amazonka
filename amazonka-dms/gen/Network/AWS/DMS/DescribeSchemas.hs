@@ -52,14 +52,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeSchemas' smart constructor.
 data DescribeSchemas = DescribeSchemas'
-  { _dsMarker      :: !(Maybe Text)
-  , _dsMaxRecords  :: !(Maybe Int)
+  { _dsMarker :: !(Maybe Text)
+  , _dsMaxRecords :: !(Maybe Int)
   , _dsEndpointARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -68,7 +68,7 @@ data DescribeSchemas = DescribeSchemas'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dsMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
@@ -84,7 +84,7 @@ describeSchemas pEndpointARN_ =
     }
 
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dsMarker :: Lens' DescribeSchemas (Maybe Text)
 dsMarker = lens _dsMarker (\ s a -> s{_dsMarker = a})
 
@@ -140,14 +140,14 @@ instance ToPath DescribeSchemas where
 instance ToQuery DescribeSchemas where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeSchemasResponse' smart constructor.
 data DescribeSchemasResponse = DescribeSchemasResponse'
-  { _dsrsSchemas        :: !(Maybe [Text])
-  , _dsrsMarker         :: !(Maybe Text)
+  { _dsrsSchemas :: !(Maybe [Text])
+  , _dsrsMarker :: !(Maybe Text)
   , _dsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ data DescribeSchemasResponse = DescribeSchemasResponse'
 --
 -- * 'dsrsSchemas' - The described schema.
 --
--- * 'dsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dsrsResponseStatus' - -- | The response status code.
 describeSchemasResponse
@@ -176,7 +176,7 @@ describeSchemasResponse pResponseStatus_ =
 dsrsSchemas :: Lens' DescribeSchemasResponse [Text]
 dsrsSchemas = lens _dsrsSchemas (\ s a -> s{_dsrsSchemas = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dsrsMarker :: Lens' DescribeSchemasResponse (Maybe Text)
 dsrsMarker = lens _dsrsMarker (\ s a -> s{_dsrsMarker = a})
 

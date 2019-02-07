@@ -111,7 +111,7 @@ instance ToQuery GetSigningCertificate where
 --
 -- /See:/ 'getSigningCertificateResponse' smart constructor.
 data GetSigningCertificateResponse = GetSigningCertificateResponse'
-  { _gscrsCertificate    :: !(Maybe Text)
+  { _gscrsCertificate :: !(Maybe Text)
   , _gscrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -56,8 +56,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeTags' smart constructor.
 data DescribeTags = DescribeTags'
-  { _dtFilters    :: !(Maybe [Filter])
-  , _dtNextToken  :: !(Maybe Text)
+  { _dtFilters :: !(Maybe [Filter])
+  , _dtNextToken :: !(Maybe Text)
   , _dtMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -66,7 +66,7 @@ data DescribeTags = DescribeTags'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtFilters' - A filter used to scope the tags to return.
+-- * 'dtFilters' - One or more filters to scope the tags to return. The maximum number of filters per filter type (for example, @auto-scaling-group@ ) is 1000.
 --
 -- * 'dtNextToken' - The token for the next set of items to return. (You received this token from a previous call.)
 --
@@ -78,7 +78,7 @@ describeTags =
     {_dtFilters = Nothing, _dtNextToken = Nothing, _dtMaxRecords = Nothing}
 
 
--- | A filter used to scope the tags to return.
+-- | One or more filters to scope the tags to return. The maximum number of filters per filter type (for example, @auto-scaling-group@ ) is 1000.
 dtFilters :: Lens' DescribeTags [Filter]
 dtFilters = lens _dtFilters (\ s a -> s{_dtFilters = a}) . _Default . _Coerce
 
@@ -131,8 +131,8 @@ instance ToQuery DescribeTags where
 
 -- | /See:/ 'describeTagsResponse' smart constructor.
 data DescribeTagsResponse = DescribeTagsResponse'
-  { _dtrsNextToken      :: !(Maybe Text)
-  , _dtrsTags           :: !(Maybe [TagDescription])
+  { _dtrsNextToken :: !(Maybe Text)
+  , _dtrsTags :: !(Maybe [TagDescription])
   , _dtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

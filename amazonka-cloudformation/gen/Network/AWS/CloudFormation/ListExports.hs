@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists all exported output values in the account and region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html @Fn::ImportValue@ > function.
+-- Lists all exported output values in the account and region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html @Fn::ImportValue@ > function. 
 --
 --
 -- For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html AWS CloudFormation Export Stack Output Values> .
@@ -108,8 +108,8 @@ instance ToQuery ListExports where
 
 -- | /See:/ 'listExportsResponse' smart constructor.
 data ListExportsResponse = ListExportsResponse'
-  { _lersNextToken      :: !(Maybe Text)
-  , _lersExports        :: !(Maybe [Export])
+  { _lersNextToken :: !(Maybe Text)
+  , _lersExports :: !(Maybe [Export])
   , _lersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

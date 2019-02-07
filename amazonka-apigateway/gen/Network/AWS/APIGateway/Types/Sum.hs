@@ -319,11 +319,12 @@ instance ToJSON DocumentationPartType where
 instance FromJSON DocumentationPartType where
     parseJSON = parseJSONText "DocumentationPartType"
 
--- | The endpoint type. The valid value is @EDGE@ for edge-optimized API setup, most suitable for mobile applications, @REGIONAL@ for regional API endpoint setup, most suitable for calling from AWS Region
+-- | The endpoint type. The valid values are @EDGE@ for edge-optimized API setup, most suitable for mobile applications; @REGIONAL@ for regional API endpoint setup, most suitable for calling from AWS Region; and @PRIVATE@ for private APIs.
 --
 --
 data EndpointType
   = Edge
+  | Private
   | Regional
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
@@ -331,13 +332,15 @@ data EndpointType
 instance FromText EndpointType where
     parser = takeLowerText >>= \case
         "edge" -> pure Edge
+        "private" -> pure Private
         "regional" -> pure Regional
         e -> fromTextError $ "Failure parsing EndpointType from value: '" <> e
-           <> "'. Accepted values: edge, regional"
+           <> "'. Accepted values: edge, private, regional"
 
 instance ToText EndpointType where
     toText = \case
         Edge -> "EDGE"
+        Private -> "PRIVATE"
         Regional -> "REGIONAL"
 
 instance Hashable     EndpointType
@@ -436,7 +439,7 @@ instance ToJSON GatewayResponseType where
 instance FromJSON GatewayResponseType where
     parseJSON = parseJSONText "GatewayResponseType"
 
--- | The integration type. The valid value is @HTTP@ for integrating an API method with an HTTP backend; @AWS@ with any AWS service endpoints; @MOCK@ for testing without actually invoking the backend; @HTTP_PROXY@ for integrating with the HTTP proxy integration; @AWS_PROXY@ for integrating with the Lambda proxy integration.
+-- | The integration type. The valid value is @HTTP@ for integrating an API method with an HTTP backend; @AWS@ with any AWS service endpoints; @MOCK@ for testing without actually invoking the backend; @HTTP_PROXY@ for integrating with the HTTP proxy integration; @AWS_PROXY@ for integrating with the Lambda proxy integration. 
 --
 --
 data IntegrationType

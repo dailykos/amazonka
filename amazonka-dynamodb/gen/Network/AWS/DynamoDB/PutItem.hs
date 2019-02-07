@@ -25,23 +25,23 @@
 --
 -- For information on how to call the @PutItem@ API using the AWS SDK in specific languages, see the following:
 --
---     * <http://docs.aws.amazon.com/goto/aws-cli/dynamodb-2012-08-10/PutItem PutItem in the AWS Command Line Interface >
+--     * <http://docs.aws.amazon.com/goto/aws-cli/dynamodb-2012-08-10/PutItem PutItem in the AWS Command Line Interface > 
 --
---     * <http://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for .NET >
+--     * <http://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for .NET > 
 --
---     * <http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for C++ >
+--     * <http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for C++ > 
 --
---     * <http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Go >
+--     * <http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Go > 
 --
---     * <http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Java >
+--     * <http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Java > 
 --
---     * <http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for JavaScript >
+--     * <http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for JavaScript > 
 --
---     * <http://docs.aws.amazon.com/goto/SdkForPHPV3/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for PHP V3 >
+--     * <http://docs.aws.amazon.com/goto/SdkForPHPV3/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for PHP V3 > 
 --
---     * <http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Python >
+--     * <http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Python > 
 --
---     * <http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Ruby V2 >
+--     * <http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem PutItem in the AWS SDK for Ruby V2 > 
 --
 --
 --
@@ -89,16 +89,16 @@ import Network.AWS.Response
 --
 -- /See:/ 'putItem' smart constructor.
 data PutItem = PutItem'
-  { _piExpressionAttributeNames    :: !(Maybe (Map Text Text))
-  , _piReturnValues                :: !(Maybe ReturnValue)
-  , _piExpressionAttributeValues   :: !(Maybe (Map Text AttributeValue))
-  , _piReturnConsumedCapacity      :: !(Maybe ReturnConsumedCapacity)
+  { _piExpressionAttributeNames :: !(Maybe (Map Text Text))
+  , _piReturnValues :: !(Maybe ReturnValue)
+  , _piExpressionAttributeValues :: !(Maybe (Map Text AttributeValue))
+  , _piReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
   , _piReturnItemCollectionMetrics :: !(Maybe ReturnItemCollectionMetrics)
-  , _piConditionExpression         :: !(Maybe Text)
-  , _piConditionalOperator         :: !(Maybe ConditionalOperator)
-  , _piExpected                    :: !(Maybe (Map Text ExpectedAttributeValue))
-  , _piTableName                   :: !Text
-  , _piItem                        :: !(Map Text AttributeValue)
+  , _piConditionExpression :: !(Maybe Text)
+  , _piConditionalOperator :: !(Maybe ConditionalOperator)
+  , _piExpected :: !(Maybe (Map Text ExpectedAttributeValue))
+  , _piTableName :: !Text
+  , _piItem :: !(Map Text AttributeValue)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -242,9 +242,9 @@ instance ToQuery PutItem where
 -- /See:/ 'putItemResponse' smart constructor.
 data PutItemResponse = PutItemResponse'
   { _pirsItemCollectionMetrics :: !(Maybe ItemCollectionMetrics)
-  , _pirsConsumedCapacity      :: !(Maybe ConsumedCapacity)
-  , _pirsAttributes            :: !(Maybe (Map Text AttributeValue))
-  , _pirsResponseStatus        :: !Int
+  , _pirsConsumedCapacity :: !(Maybe ConsumedCapacity)
+  , _pirsAttributes :: !(Maybe (Map Text AttributeValue))
+  , _pirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

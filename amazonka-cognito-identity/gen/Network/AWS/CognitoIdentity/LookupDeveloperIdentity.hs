@@ -59,10 +59,10 @@ import Network.AWS.Response
 -- /See:/ 'lookupDeveloperIdentity' smart constructor.
 data LookupDeveloperIdentity = LookupDeveloperIdentity'
   { _ldiDeveloperUserIdentifier :: !(Maybe Text)
-  , _ldiNextToken               :: !(Maybe Text)
-  , _ldiIdentityId              :: !(Maybe Text)
-  , _ldiMaxResults              :: !(Maybe Nat)
-  , _ldiIdentityPoolId          :: !Text
+  , _ldiNextToken :: !(Maybe Text)
+  , _ldiIdentityId :: !(Maybe Text)
+  , _ldiMaxResults :: !(Maybe Nat)
+  , _ldiIdentityPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -161,10 +161,10 @@ instance ToQuery LookupDeveloperIdentity where
 --
 -- /See:/ 'lookupDeveloperIdentityResponse' smart constructor.
 data LookupDeveloperIdentityResponse = LookupDeveloperIdentityResponse'
-  { _ldirsNextToken                   :: !(Maybe Text)
-  , _ldirsIdentityId                  :: !(Maybe Text)
+  { _ldirsNextToken :: !(Maybe Text)
+  , _ldirsIdentityId :: !(Maybe Text)
   , _ldirsDeveloperUserIdentifierList :: !(Maybe [Text])
-  , _ldirsResponseStatus              :: !Int
+  , _ldirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

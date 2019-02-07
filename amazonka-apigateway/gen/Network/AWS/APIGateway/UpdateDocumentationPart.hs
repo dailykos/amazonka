@@ -51,8 +51,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateDocumentationPart' smart constructor.
 data UpdateDocumentationPart = UpdateDocumentationPart'
-  { _udpPatchOperations     :: !(Maybe [PatchOperation])
-  , _udpRestAPIId           :: !Text
+  { _udpPatchOperations :: !(Maybe [PatchOperation])
+  , _udpRestAPIId :: !Text
   , _udpDocumentationPartId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

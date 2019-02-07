@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'getIdentityProviderByIdentifier' smart constructor.
 data GetIdentityProviderByIdentifier = GetIdentityProviderByIdentifier'
-  { _gipbiUserPoolId    :: !Text
+  { _gipbiUserPoolId :: !Text
   , _gipbiIdpIdentifier :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery GetIdentityProviderByIdentifier
 
 -- | /See:/ 'getIdentityProviderByIdentifierResponse' smart constructor.
 data GetIdentityProviderByIdentifierResponse = GetIdentityProviderByIdentifierResponse'
-  { _gipbirsResponseStatus   :: !Int
+  { _gipbirsResponseStatus :: !Int
   , _gipbirsIdentityProvider :: !IdentityProviderType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

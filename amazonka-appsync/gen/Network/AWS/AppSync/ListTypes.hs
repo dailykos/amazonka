@@ -21,6 +21,8 @@
 -- Lists the types for a given API.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AppSync.ListTypes
     (
     -- * Creating a Request
@@ -44,16 +46,17 @@ module Network.AWS.AppSync.ListTypes
 import Network.AWS.AppSync.Types
 import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTypes' smart constructor.
 data ListTypes = ListTypes'
-  { _ltNextToken  :: !(Maybe Text)
+  { _ltNextToken :: !(Maybe Text)
   , _ltMaxResults :: !(Maybe Nat)
-  , _ltApiId      :: !Text
-  , _ltFormat     :: !TypeDefinitionFormat
+  , _ltApiId :: !Text
+  , _ltFormat :: !TypeDefinitionFormat
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -61,7 +64,7 @@ data ListTypes = ListTypes'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- * 'ltNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 --
 -- * 'ltMaxResults' - The maximum number of results you want the request to return.
 --
@@ -81,7 +84,7 @@ listTypes pApiId_ pFormat_ =
     }
 
 
--- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 ltNextToken :: Lens' ListTypes (Maybe Text)
 ltNextToken = lens _ltNextToken (\ s a -> s{_ltNextToken = a})
 
@@ -96,6 +99,13 @@ ltApiId = lens _ltApiId (\ s a -> s{_ltApiId = a})
 -- | The type format: SDL or JSON.
 ltFormat :: Lens' ListTypes TypeDefinitionFormat
 ltFormat = lens _ltFormat (\ s a -> s{_ltFormat = a})
+
+instance AWSPager ListTypes where
+        page rq rs
+          | stop (rs ^. ltrsNextToken) = Nothing
+          | stop (rs ^. ltrsTypes) = Nothing
+          | otherwise =
+            Just $ rq & ltNextToken .~ rs ^. ltrsNextToken
 
 instance AWSRequest ListTypes where
         type Rs ListTypes = ListTypesResponse
@@ -130,8 +140,8 @@ instance ToQuery ListTypes where
 
 -- | /See:/ 'listTypesResponse' smart constructor.
 data ListTypesResponse = ListTypesResponse'
-  { _ltrsTypes          :: !(Maybe [Type])
-  , _ltrsNextToken      :: !(Maybe Text)
+  { _ltrsTypes :: !(Maybe [Type])
+  , _ltrsNextToken :: !(Maybe Text)
   , _ltrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

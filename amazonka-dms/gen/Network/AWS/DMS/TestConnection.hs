@@ -45,14 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'testConnection' smart constructor.
 data TestConnection = TestConnection'
   { _tcReplicationInstanceARN :: !Text
-  , _tcEndpointARN            :: !Text
+  , _tcEndpointARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -119,13 +119,13 @@ instance ToPath TestConnection where
 instance ToQuery TestConnection where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'testConnectionResponse' smart constructor.
 data TestConnectionResponse = TestConnectionResponse'
-  { _tcrsConnection     :: !(Maybe Connection)
+  { _tcrsConnection :: !(Maybe Connection)
   , _tcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

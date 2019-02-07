@@ -102,7 +102,7 @@ instance ToQuery GetAddressBook where
 
 -- | /See:/ 'getAddressBookResponse' smart constructor.
 data GetAddressBookResponse = GetAddressBookResponse'
-  { _gabrsAddressBook    :: !(Maybe AddressBook)
+  { _gabrsAddressBook :: !(Maybe AddressBook)
   , _gabrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

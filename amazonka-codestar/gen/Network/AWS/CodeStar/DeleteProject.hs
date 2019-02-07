@@ -49,9 +49,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteProject' smart constructor.
 data DeleteProject = DeleteProject'
-  { _dpDeleteStack        :: !(Maybe Bool)
+  { _dpDeleteStack :: !(Maybe Bool)
   , _dpClientRequestToken :: !(Maybe Text)
-  , _dpId                 :: !Text
+  , _dpId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -61,7 +61,7 @@ data DeleteProject = DeleteProject'
 --
 -- * 'dpDeleteStack' - Whether to send a delete request for the primary stack in AWS CloudFormation originally used to generate the project and its resources. This option will delete all AWS resources for the project (except for any buckets in Amazon S3) as well as deleting the project itself. Recommended for most use cases.
 --
--- * 'dpClientRequestToken' - A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request.
+-- * 'dpClientRequestToken' - A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request. 
 --
 -- * 'dpId' - The ID of the project to be deleted in AWS CodeStar.
 deleteProject
@@ -76,7 +76,7 @@ deleteProject pId_ =
 dpDeleteStack :: Lens' DeleteProject (Maybe Bool)
 dpDeleteStack = lens _dpDeleteStack (\ s a -> s{_dpDeleteStack = a})
 
--- | A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request.
+-- | A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request. 
 dpClientRequestToken :: Lens' DeleteProject (Maybe Text)
 dpClientRequestToken = lens _dpClientRequestToken (\ s a -> s{_dpClientRequestToken = a})
 
@@ -123,8 +123,8 @@ instance ToQuery DeleteProject where
 
 -- | /See:/ 'deleteProjectResponse' smart constructor.
 data DeleteProjectResponse = DeleteProjectResponse'
-  { _dprsProjectARN     :: !(Maybe Text)
-  , _dprsStackId        :: !(Maybe Text)
+  { _dprsProjectARN :: !(Maybe Text)
+  , _dprsStackId :: !(Maybe Text)
   , _dprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

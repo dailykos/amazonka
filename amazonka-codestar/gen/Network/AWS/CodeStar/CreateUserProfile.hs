@@ -55,8 +55,8 @@ import Network.AWS.Response
 -- | /See:/ 'createUserProfile' smart constructor.
 data CreateUserProfile = CreateUserProfile'
   { _cupSshPublicKey :: !(Maybe Text)
-  , _cupUserARN      :: !Text
-  , _cupDisplayName  :: !Text
+  , _cupUserARN :: !Text
+  , _cupDisplayName :: !(Sensitive Text)
   , _cupEmailAddress :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -69,7 +69,7 @@ data CreateUserProfile = CreateUserProfile'
 --
 -- * 'cupUserARN' - The Amazon Resource Name (ARN) of the user in IAM.
 --
--- * 'cupDisplayName' - The name that will be displayed as the friendly name for the user in AWS CodeStar.
+-- * 'cupDisplayName' - The name that will be displayed as the friendly name for the user in AWS CodeStar. 
 --
 -- * 'cupEmailAddress' - The email address that will be displayed as part of the user's profile in AWS CodeStar.
 createUserProfile
@@ -81,7 +81,7 @@ createUserProfile pUserARN_ pDisplayName_ pEmailAddress_ =
   CreateUserProfile'
     { _cupSshPublicKey = Nothing
     , _cupUserARN = pUserARN_
-    , _cupDisplayName = pDisplayName_
+    , _cupDisplayName = _Sensitive # pDisplayName_
     , _cupEmailAddress = _Sensitive # pEmailAddress_
     }
 
@@ -94,9 +94,9 @@ cupSshPublicKey = lens _cupSshPublicKey (\ s a -> s{_cupSshPublicKey = a})
 cupUserARN :: Lens' CreateUserProfile Text
 cupUserARN = lens _cupUserARN (\ s a -> s{_cupUserARN = a})
 
--- | The name that will be displayed as the friendly name for the user in AWS CodeStar.
+-- | The name that will be displayed as the friendly name for the user in AWS CodeStar. 
 cupDisplayName :: Lens' CreateUserProfile Text
-cupDisplayName = lens _cupDisplayName (\ s a -> s{_cupDisplayName = a})
+cupDisplayName = lens _cupDisplayName (\ s a -> s{_cupDisplayName = a}) . _Sensitive
 
 -- | The email address that will be displayed as part of the user's profile in AWS CodeStar.
 cupEmailAddress :: Lens' CreateUserProfile Text
@@ -149,12 +149,12 @@ instance ToQuery CreateUserProfile where
 -- | /See:/ 'createUserProfileResponse' smart constructor.
 data CreateUserProfileResponse = CreateUserProfileResponse'
   { _cuprsLastModifiedTimestamp :: !(Maybe POSIX)
-  , _cuprsSshPublicKey          :: !(Maybe Text)
-  , _cuprsEmailAddress          :: !(Maybe (Sensitive Text))
-  , _cuprsDisplayName           :: !(Maybe Text)
-  , _cuprsCreatedTimestamp      :: !(Maybe POSIX)
-  , _cuprsResponseStatus        :: !Int
-  , _cuprsUserARN               :: !Text
+  , _cuprsSshPublicKey :: !(Maybe Text)
+  , _cuprsEmailAddress :: !(Maybe (Sensitive Text))
+  , _cuprsDisplayName :: !(Maybe (Sensitive Text))
+  , _cuprsCreatedTimestamp :: !(Maybe POSIX)
+  , _cuprsResponseStatus :: !Int
+  , _cuprsUserARN :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -205,7 +205,7 @@ cuprsEmailAddress = lens _cuprsEmailAddress (\ s a -> s{_cuprsEmailAddress = a})
 
 -- | The name that is displayed as the friendly name for the user in AWS CodeStar.
 cuprsDisplayName :: Lens' CreateUserProfileResponse (Maybe Text)
-cuprsDisplayName = lens _cuprsDisplayName (\ s a -> s{_cuprsDisplayName = a})
+cuprsDisplayName = lens _cuprsDisplayName (\ s a -> s{_cuprsDisplayName = a}) . mapping _Sensitive
 
 -- | The date the user profile was created, in timestamp format.
 cuprsCreatedTimestamp :: Lens' CreateUserProfileResponse (Maybe UTCTime)

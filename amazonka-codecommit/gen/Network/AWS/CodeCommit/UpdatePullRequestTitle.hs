@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'updatePullRequestTitle' smart constructor.
 data UpdatePullRequestTitle = UpdatePullRequestTitle'
   { _uprtPullRequestId :: !Text
-  , _uprtTitle         :: !Text
+  , _uprtTitle :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -116,7 +116,7 @@ instance ToQuery UpdatePullRequestTitle where
 -- | /See:/ 'updatePullRequestTitleResponse' smart constructor.
 data UpdatePullRequestTitleResponse = UpdatePullRequestTitleResponse'
   { _uprtrsResponseStatus :: !Int
-  , _uprtrsPullRequest    :: !PullRequest
+  , _uprtrsPullRequest :: !PullRequest
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

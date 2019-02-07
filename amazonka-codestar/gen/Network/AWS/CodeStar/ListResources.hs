@@ -21,6 +21,8 @@
 -- Lists resources associated with a project in AWS CodeStar.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CodeStar.ListResources
     (
     -- * Creating a Request
@@ -43,15 +45,16 @@ module Network.AWS.CodeStar.ListResources
 import Network.AWS.CodeStar.Types
 import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResources' smart constructor.
 data ListResources = ListResources'
-  { _lrNextToken  :: !(Maybe Text)
+  { _lrNextToken :: !(Maybe Text)
   , _lrMaxResults :: !(Maybe Nat)
-  , _lrProjectId  :: !Text
+  , _lrProjectId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -86,6 +89,13 @@ lrMaxResults = lens _lrMaxResults (\ s a -> s{_lrMaxResults = a}) . mapping _Nat
 -- | The ID of the project.
 lrProjectId :: Lens' ListResources Text
 lrProjectId = lens _lrProjectId (\ s a -> s{_lrProjectId = a})
+
+instance AWSPager ListResources where
+        page rq rs
+          | stop (rs ^. lrrsNextToken) = Nothing
+          | stop (rs ^. lrrsResources) = Nothing
+          | otherwise =
+            Just $ rq & lrNextToken .~ rs ^. lrrsNextToken
 
 instance AWSRequest ListResources where
         type Rs ListResources = ListResourcesResponse
@@ -127,8 +137,8 @@ instance ToQuery ListResources where
 
 -- | /See:/ 'listResourcesResponse' smart constructor.
 data ListResourcesResponse = ListResourcesResponse'
-  { _lrrsResources      :: !(Maybe [Resource])
-  , _lrrsNextToken      :: !(Maybe Text)
+  { _lrrsResources :: !(Maybe [Resource])
+  , _lrrsNextToken :: !(Maybe Text)
   , _lrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,7 +147,7 @@ data ListResourcesResponse = ListResourcesResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrrsResources' - An array of resources associated with the project.
+-- * 'lrrsResources' - An array of resources associated with the project. 
 --
 -- * 'lrrsNextToken' - The continuation token to use when requesting the next set of results, if there are more results to be returned.
 --
@@ -153,7 +163,7 @@ listResourcesResponse pResponseStatus_ =
     }
 
 
--- | An array of resources associated with the project.
+-- | An array of resources associated with the project. 
 lrrsResources :: Lens' ListResourcesResponse [Resource]
 lrrsResources = lens _lrrsResources (\ s a -> s{_lrrsResources = a}) . _Default . _Coerce
 

@@ -100,9 +100,9 @@ instance ToQuery GetDashboard where
 
 -- | /See:/ 'getDashboardResponse' smart constructor.
 data GetDashboardResponse = GetDashboardResponse'
-  { _gdrsDashboardName  :: !(Maybe Text)
-  , _gdrsDashboardBody  :: !(Maybe Text)
-  , _gdrsDashboardARN   :: !(Maybe Text)
+  { _gdrsDashboardName :: !(Maybe Text)
+  , _gdrsDashboardBody :: !(Maybe Text)
+  , _gdrsDashboardARN :: !(Maybe Text)
   , _gdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -113,7 +113,7 @@ data GetDashboardResponse = GetDashboardResponse'
 --
 -- * 'gdrsDashboardName' - The name of the dashboard.
 --
--- * 'gdrsDashboardBody' - The detailed information about the dashboard, including what widgets are included and their location on the dashboard. For more information about the @DashboardBody@ syntax, see 'CloudWatch-Dashboard-Body-Structure' .
+-- * 'gdrsDashboardBody' - The detailed information about the dashboard, including what widgets are included and their location on the dashboard. For more information about the @DashboardBody@ syntax, see 'CloudWatch-Dashboard-Body-Structure' . 
 --
 -- * 'gdrsDashboardARN' - The Amazon Resource Name (ARN) of the dashboard.
 --
@@ -134,7 +134,7 @@ getDashboardResponse pResponseStatus_ =
 gdrsDashboardName :: Lens' GetDashboardResponse (Maybe Text)
 gdrsDashboardName = lens _gdrsDashboardName (\ s a -> s{_gdrsDashboardName = a})
 
--- | The detailed information about the dashboard, including what widgets are included and their location on the dashboard. For more information about the @DashboardBody@ syntax, see 'CloudWatch-Dashboard-Body-Structure' .
+-- | The detailed information about the dashboard, including what widgets are included and their location on the dashboard. For more information about the @DashboardBody@ syntax, see 'CloudWatch-Dashboard-Body-Structure' . 
 gdrsDashboardBody :: Lens' GetDashboardResponse (Maybe Text)
 gdrsDashboardBody = lens _gdrsDashboardBody (\ s a -> s{_gdrsDashboardBody = a})
 

@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'confirmDevice' smart constructor.
 data ConfirmDevice = ConfirmDevice'
   { _cdDeviceSecretVerifierConfig :: !(Maybe DeviceSecretVerifierConfigType)
-  , _cdDeviceName                 :: !(Maybe Text)
-  , _cdAccessToken                :: !(Sensitive Text)
-  , _cdDeviceKey                  :: !Text
+  , _cdDeviceName :: !(Maybe Text)
+  , _cdAccessToken :: !(Sensitive Text)
+  , _cdDeviceKey :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -147,7 +147,7 @@ instance ToQuery ConfirmDevice where
 -- /See:/ 'confirmDeviceResponse' smart constructor.
 data ConfirmDeviceResponse = ConfirmDeviceResponse'
   { _cdrsUserConfirmationNecessary :: !(Maybe Bool)
-  , _cdrsResponseStatus            :: !Int
+  , _cdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

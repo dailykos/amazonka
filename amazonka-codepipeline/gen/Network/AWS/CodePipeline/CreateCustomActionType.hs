@@ -56,13 +56,13 @@ import Network.AWS.Response
 --
 -- /See:/ 'createCustomActionType' smart constructor.
 data CreateCustomActionType = CreateCustomActionType'
-  { _ccatSettings                :: !(Maybe ActionTypeSettings)
+  { _ccatSettings :: !(Maybe ActionTypeSettings)
   , _ccatConfigurationProperties :: !(Maybe [ActionConfigurationProperty])
-  , _ccatCategory                :: !ActionCategory
-  , _ccatProvider                :: !Text
-  , _ccatVersion                 :: !Text
-  , _ccatInputArtifactDetails    :: !ArtifactDetails
-  , _ccatOutputArtifactDetails   :: !ArtifactDetails
+  , _ccatCategory :: !ActionCategory
+  , _ccatProvider :: !Text
+  , _ccatVersion :: !Text
+  , _ccatInputArtifactDetails :: !ArtifactDetails
+  , _ccatOutputArtifactDetails :: !ArtifactDetails
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -184,7 +184,7 @@ instance ToQuery CreateCustomActionType where
 -- /See:/ 'createCustomActionTypeResponse' smart constructor.
 data CreateCustomActionTypeResponse = CreateCustomActionTypeResponse'
   { _ccatrsResponseStatus :: !Int
-  , _ccatrsActionType     :: !ActionType
+  , _ccatrsActionType :: !ActionType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

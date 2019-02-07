@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'startDeviceSync' smart constructor.
 data StartDeviceSync = StartDeviceSync'
   { _sdsDeviceARN :: !(Maybe Text)
-  , _sdsRoomARN   :: !(Maybe Text)
-  , _sdsFeatures  :: ![Feature]
+  , _sdsRoomARN :: !(Maybe Text)
+  , _sdsFeatures :: ![Feature]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

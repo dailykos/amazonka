@@ -51,7 +51,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'listEnvironments' smart constructor.
 data ListEnvironments = ListEnvironments'
-  { _leNextToken  :: !(Maybe Text)
+  { _leNextToken :: !(Maybe Text)
   , _leMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery ListEnvironments where
 -- | /See:/ 'listEnvironmentsResponse' smart constructor.
 data ListEnvironmentsResponse = ListEnvironmentsResponse'
   { _lersEnvironmentIds :: !(Maybe [Text])
-  , _lersNextToken      :: !(Maybe Text)
+  , _lersNextToken :: !(Maybe Text)
   , _lersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

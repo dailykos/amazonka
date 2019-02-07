@@ -21,6 +21,8 @@
 -- Creates a 'Directory' by copying the published schema into the directory. A directory cannot be created without a schema.
 --
 --
+-- You can also quickly create a directory using a managed schema, called the @QuickStartSchema@ . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html Managed Schema> in the /Amazon Cloud Directory Developer Guide/ .
+--
 module Network.AWS.CloudDirectory.CreateDirectory
     (
     -- * Creating a Request
@@ -50,7 +52,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'createDirectory' smart constructor.
 data CreateDirectory = CreateDirectory'
-  { _cdName      :: !Text
+  { _cdName :: !Text
   , _cdSchemaARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,9 +114,9 @@ instance ToQuery CreateDirectory where
 
 -- | /See:/ 'createDirectoryResponse' smart constructor.
 data CreateDirectoryResponse = CreateDirectoryResponse'
-  { _cdrsResponseStatus   :: !Int
-  , _cdrsDirectoryARN     :: !Text
-  , _cdrsName             :: !Text
+  { _cdrsResponseStatus :: !Int
+  , _cdrsDirectoryARN :: !Text
+  , _cdrsName :: !Text
   , _cdrsObjectIdentifier :: !Text
   , _cdrsAppliedSchemaARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)

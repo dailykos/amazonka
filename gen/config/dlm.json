@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-dlm",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.DLM.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

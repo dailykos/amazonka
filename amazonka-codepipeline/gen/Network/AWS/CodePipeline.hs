@@ -11,15 +11,15 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CodePipeline__
+-- __AWS CodePipeline__ 
 --
--- __Overview__
+-- __Overview__ 
 --
 -- This is the AWS CodePipeline API Reference. This guide provides descriptions of the actions and data types for AWS CodePipeline. Some functionality for your pipeline is only configurable through the API. For additional information, see the <http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html AWS CodePipeline User Guide> .
 --
 -- You can use the AWS CodePipeline API to work with pipelines, stages, actions, and transitions, as described below.
 --
--- /Pipelines/ are models of automated release processes. Each pipeline is uniquely named, and consists of stages, actions, and transitions.
+-- /Pipelines/ are models of automated release processes. Each pipeline is uniquely named, and consists of stages, actions, and transitions. 
 --
 -- You can work with pipelines by calling:
 --
@@ -67,15 +67,15 @@
 --
 --     * 'DisableStageTransition' , which prevents artifacts from transitioning to the next stage in a pipeline.
 --
---     * 'EnableStageTransition' , which enables transition of artifacts between stages in a pipeline.
+--     * 'EnableStageTransition' , which enables transition of artifacts between stages in a pipeline. 
 --
 --
 --
--- __Using the API to integrate with AWS CodePipeline__
+-- __Using the API to integrate with AWS CodePipeline__ 
 --
 -- For third-party integrators or developers who want to create their own integrations with AWS CodePipeline, the expected sequence varies from the standard API user. In order to integrate with AWS CodePipeline, developers will need to work with the following items:
 --
--- __Jobs__ , which are instances of an action. For example, a job for a source action might import a revision of an artifact from a source.
+-- __Jobs__ , which are instances of an action. For example, a job for a source action might import a revision of an artifact from a source. 
 --
 -- You can work with jobs by calling:
 --
@@ -83,7 +83,7 @@
 --
 --     * 'GetJobDetails' , which returns the details of a job,
 --
---     * 'PollForJobs' , which determines whether there are any jobs to act upon,
+--     * 'PollForJobs' , which determines whether there are any jobs to act upon, 
 --
 --     * 'PutJobFailureResult' , which provides details of a job failure, and
 --
@@ -99,7 +99,7 @@
 --
 --     * 'GetThirdPartyJobDetails' , which requests the details of a job for a partner action,
 --
---     * 'PollForThirdPartyJobs' , which determines whether there are any jobs to act upon,
+--     * 'PollForThirdPartyJobs' , which determines whether there are any jobs to act upon, 
 --
 --     * 'PutThirdPartyJobFailureResult' , which provides details of a job failure, and
 --
@@ -199,100 +199,100 @@ module Network.AWS.CodePipeline
     -- * Operations
     -- $operations
 
-    -- ** GetPipeline
+    -- ** GetPipeline 
     , module Network.AWS.CodePipeline.GetPipeline
 
-    -- ** PutJobFailureResult
+    -- ** PutJobFailureResult 
     , module Network.AWS.CodePipeline.PutJobFailureResult
 
-    -- ** PutApprovalResult
+    -- ** PutApprovalResult 
     , module Network.AWS.CodePipeline.PutApprovalResult
 
-    -- ** AcknowledgeThirdPartyJob
+    -- ** AcknowledgeThirdPartyJob 
     , module Network.AWS.CodePipeline.AcknowledgeThirdPartyJob
 
-    -- ** PutThirdPartyJobFailureResult
+    -- ** PutThirdPartyJobFailureResult 
     , module Network.AWS.CodePipeline.PutThirdPartyJobFailureResult
 
-    -- ** RegisterWebhookWithThirdParty
+    -- ** RegisterWebhookWithThirdParty 
     , module Network.AWS.CodePipeline.RegisterWebhookWithThirdParty
 
-    -- ** PollForThirdPartyJobs
+    -- ** PollForThirdPartyJobs 
     , module Network.AWS.CodePipeline.PollForThirdPartyJobs
 
-    -- ** PollForJobs
+    -- ** PollForJobs 
     , module Network.AWS.CodePipeline.PollForJobs
 
-    -- ** StartPipelineExecution
+    -- ** StartPipelineExecution 
     , module Network.AWS.CodePipeline.StartPipelineExecution
 
-    -- ** UpdatePipeline
+    -- ** UpdatePipeline 
     , module Network.AWS.CodePipeline.UpdatePipeline
 
-    -- ** DeletePipeline
+    -- ** DeletePipeline 
     , module Network.AWS.CodePipeline.DeletePipeline
 
-    -- ** GetPipelineState
+    -- ** GetPipelineState 
     , module Network.AWS.CodePipeline.GetPipelineState
 
-    -- ** GetJobDetails
+    -- ** GetJobDetails 
     , module Network.AWS.CodePipeline.GetJobDetails
 
-    -- ** ListPipelines
+    -- ** ListPipelines (Paginated)
     , module Network.AWS.CodePipeline.ListPipelines
 
-    -- ** RetryStageExecution
+    -- ** RetryStageExecution 
     , module Network.AWS.CodePipeline.RetryStageExecution
 
-    -- ** GetPipelineExecution
+    -- ** GetPipelineExecution 
     , module Network.AWS.CodePipeline.GetPipelineExecution
 
-    -- ** PutJobSuccessResult
+    -- ** PutJobSuccessResult 
     , module Network.AWS.CodePipeline.PutJobSuccessResult
 
-    -- ** DeregisterWebhookWithThirdParty
+    -- ** DeregisterWebhookWithThirdParty 
     , module Network.AWS.CodePipeline.DeregisterWebhookWithThirdParty
 
-    -- ** DeleteCustomActionType
+    -- ** DeleteCustomActionType 
     , module Network.AWS.CodePipeline.DeleteCustomActionType
 
-    -- ** PutActionRevision
+    -- ** PutActionRevision 
     , module Network.AWS.CodePipeline.PutActionRevision
 
-    -- ** DisableStageTransition
+    -- ** DisableStageTransition 
     , module Network.AWS.CodePipeline.DisableStageTransition
 
-    -- ** ListActionTypes
+    -- ** ListActionTypes (Paginated)
     , module Network.AWS.CodePipeline.ListActionTypes
 
-    -- ** AcknowledgeJob
+    -- ** AcknowledgeJob 
     , module Network.AWS.CodePipeline.AcknowledgeJob
 
-    -- ** EnableStageTransition
+    -- ** EnableStageTransition 
     , module Network.AWS.CodePipeline.EnableStageTransition
 
-    -- ** DeleteWebhook
+    -- ** DeleteWebhook 
     , module Network.AWS.CodePipeline.DeleteWebhook
 
-    -- ** PutWebhook
+    -- ** PutWebhook 
     , module Network.AWS.CodePipeline.PutWebhook
 
-    -- ** ListWebhooks
+    -- ** ListWebhooks (Paginated)
     , module Network.AWS.CodePipeline.ListWebhooks
 
-    -- ** CreatePipeline
+    -- ** CreatePipeline 
     , module Network.AWS.CodePipeline.CreatePipeline
 
-    -- ** GetThirdPartyJobDetails
+    -- ** GetThirdPartyJobDetails 
     , module Network.AWS.CodePipeline.GetThirdPartyJobDetails
 
-    -- ** PutThirdPartyJobSuccessResult
+    -- ** PutThirdPartyJobSuccessResult 
     , module Network.AWS.CodePipeline.PutThirdPartyJobSuccessResult
 
-    -- ** CreateCustomActionType
+    -- ** CreateCustomActionType 
     , module Network.AWS.CodePipeline.CreateCustomActionType
 
-    -- ** ListPipelineExecutions
+    -- ** ListPipelineExecutions (Paginated)
     , module Network.AWS.CodePipeline.ListPipelineExecutions
 
     -- * Types
@@ -378,6 +378,7 @@ module Network.AWS.CodePipeline
     , actionDeclaration
     , adOutputArtifacts
     , adRunOrder
+    , adRegion
     , adConfiguration
     , adInputArtifacts
     , adRoleARN
@@ -577,10 +578,11 @@ module Network.AWS.CodePipeline
     -- ** PipelineDeclaration
     , PipelineDeclaration
     , pipelineDeclaration
+    , pdArtifactStores
+    , pdArtifactStore
     , pdVersion
     , pdName
     , pdRoleARN
-    , pdArtifactStore
     , pdStages
 
     -- ** PipelineExecution

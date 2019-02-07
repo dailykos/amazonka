@@ -104,7 +104,7 @@ instance ToQuery DeleteReportDefinition where
 -- /See:/ 'deleteReportDefinitionResponse' smart constructor.
 data DeleteReportDefinitionResponse = DeleteReportDefinitionResponse'
   { _drsResponseMessage :: !(Maybe Text)
-  , _drsResponseStatus  :: !Int
+  , _drsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

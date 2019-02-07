@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -106,13 +106,13 @@ instance ToPath ListTagsForResource where
 instance ToQuery ListTagsForResource where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'listTagsForResourceResponse' smart constructor.
 data ListTagsForResourceResponse = ListTagsForResourceResponse'
-  { _ltfrrsTagList        :: !(Maybe [Tag])
+  { _ltfrrsTagList :: !(Maybe [Tag])
   , _ltfrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

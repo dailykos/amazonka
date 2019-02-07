@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the streaming sessions for the specified stack and fleet. If a user ID is provided, only the streaming sessions for only that user are returned. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
+-- Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AppStream.DescribeSessions
     (
     -- * Creating a Request
@@ -46,18 +48,19 @@ module Network.AWS.AppStream.DescribeSessions
 import Network.AWS.AppStream.Types
 import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeSessions' smart constructor.
 data DescribeSessions = DescribeSessions'
-  { _dsUserId             :: !(Maybe Text)
-  , _dsNextToken          :: !(Maybe Text)
-  , _dsLimit              :: !(Maybe Int)
+  { _dsUserId :: !(Maybe Text)
+  , _dsNextToken :: !(Maybe Text)
+  , _dsLimit :: !(Maybe Int)
   , _dsAuthenticationType :: !(Maybe AuthenticationType)
-  , _dsStackName          :: !Text
-  , _dsFleetName          :: !Text
+  , _dsStackName :: !Text
+  , _dsFleetName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -65,7 +68,7 @@ data DescribeSessions = DescribeSessions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsUserId' - The user ID.
+-- * 'dsUserId' - The user identifier.
 --
 -- * 'dsNextToken' - The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 --
@@ -91,7 +94,7 @@ describeSessions pStackName_ pFleetName_ =
     }
 
 
--- | The user ID.
+-- | The user identifier.
 dsUserId :: Lens' DescribeSessions (Maybe Text)
 dsUserId = lens _dsUserId (\ s a -> s{_dsUserId = a})
 
@@ -114,6 +117,13 @@ dsStackName = lens _dsStackName (\ s a -> s{_dsStackName = a})
 -- | The name of the fleet. This value is case-sensitive.
 dsFleetName :: Lens' DescribeSessions Text
 dsFleetName = lens _dsFleetName (\ s a -> s{_dsFleetName = a})
+
+instance AWSPager DescribeSessions where
+        page rq rs
+          | stop (rs ^. dssrsNextToken) = Nothing
+          | stop (rs ^. dssrsSessions) = Nothing
+          | otherwise =
+            Just $ rq & dsNextToken .~ rs ^. dssrsNextToken
 
 instance AWSRequest DescribeSessions where
         type Rs DescribeSessions = DescribeSessionsResponse
@@ -158,8 +168,8 @@ instance ToQuery DescribeSessions where
 
 -- | /See:/ 'describeSessionsResponse' smart constructor.
 data DescribeSessionsResponse = DescribeSessionsResponse'
-  { _dssrsNextToken      :: !(Maybe Text)
-  , _dssrsSessions       :: !(Maybe [Session])
+  { _dssrsNextToken :: !(Maybe Text)
+  , _dssrsSessions :: !(Maybe [Session])
   , _dssrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

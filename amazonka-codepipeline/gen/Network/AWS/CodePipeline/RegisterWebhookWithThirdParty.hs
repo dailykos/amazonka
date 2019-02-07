@@ -53,14 +53,14 @@ newtype RegisterWebhookWithThirdParty = RegisterWebhookWithThirdParty'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rwwtpWebhookName' - The name of an existing webhook created with PutWebhook to register with a supported third party.
+-- * 'rwwtpWebhookName' - The name of an existing webhook created with PutWebhook to register with a supported third party. 
 registerWebhookWithThirdParty
     :: RegisterWebhookWithThirdParty
 registerWebhookWithThirdParty =
   RegisterWebhookWithThirdParty' {_rwwtpWebhookName = Nothing}
 
 
--- | The name of an existing webhook created with PutWebhook to register with a supported third party.
+-- | The name of an existing webhook created with PutWebhook to register with a supported third party. 
 rwwtpWebhookName :: Lens' RegisterWebhookWithThirdParty (Maybe Text)
 rwwtpWebhookName = lens _rwwtpWebhookName (\ s a -> s{_rwwtpWebhookName = a})
 

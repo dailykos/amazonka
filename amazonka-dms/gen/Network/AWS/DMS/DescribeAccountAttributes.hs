@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -95,13 +95,13 @@ instance ToPath DescribeAccountAttributes where
 instance ToQuery DescribeAccountAttributes where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeAccountAttributesResponse' smart constructor.
 data DescribeAccountAttributesResponse = DescribeAccountAttributesResponse'
-  { _daarsAccountQuotas  :: !(Maybe [AccountQuota])
+  { _daarsAccountQuotas :: !(Maybe [AccountQuota])
   , _daarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -51,10 +51,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'setUserPoolMFAConfig' smart constructor.
 data SetUserPoolMFAConfig = SetUserPoolMFAConfig'
-  { _supmcSmsMFAConfiguration           :: !(Maybe SmsMFAConfigType)
+  { _supmcSmsMFAConfiguration :: !(Maybe SmsMFAConfigType)
   , _supmcSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-  , _supmcMFAConfiguration              :: !(Maybe UserPoolMFAType)
-  , _supmcUserPoolId                    :: !Text
+  , _supmcMFAConfiguration :: !(Maybe UserPoolMFAType)
+  , _supmcUserPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -143,10 +143,10 @@ instance ToQuery SetUserPoolMFAConfig where
 
 -- | /See:/ 'setUserPoolMFAConfigResponse' smart constructor.
 data SetUserPoolMFAConfigResponse = SetUserPoolMFAConfigResponse'
-  { _supmcrsSmsMFAConfiguration           :: !(Maybe SmsMFAConfigType)
+  { _supmcrsSmsMFAConfiguration :: !(Maybe SmsMFAConfigType)
   , _supmcrsSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-  , _supmcrsMFAConfiguration              :: !(Maybe UserPoolMFAType)
-  , _supmcrsResponseStatus                :: !Int
+  , _supmcrsMFAConfiguration :: !(Maybe UserPoolMFAType)
+  , _supmcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

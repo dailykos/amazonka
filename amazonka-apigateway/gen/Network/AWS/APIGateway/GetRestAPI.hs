@@ -53,7 +53,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The GET request to list an existing 'RestApi' defined for your collection.
+-- | The GET request to list an existing 'RestApi' defined for your collection. 
 --
 --
 --

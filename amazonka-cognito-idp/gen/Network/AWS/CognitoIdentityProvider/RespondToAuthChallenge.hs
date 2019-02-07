@@ -58,12 +58,12 @@ import Network.AWS.Response
 --
 -- /See:/ 'respondToAuthChallenge' smart constructor.
 data RespondToAuthChallenge = RespondToAuthChallenge'
-  { _rtacAnalyticsMetadata  :: !(Maybe AnalyticsMetadataType)
+  { _rtacAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
   , _rtacChallengeResponses :: !(Maybe (Map Text Text))
-  , _rtacUserContextData    :: !(Maybe UserContextDataType)
-  , _rtacSession            :: !(Maybe Text)
-  , _rtacClientId           :: !(Sensitive Text)
-  , _rtacChallengeName      :: !ChallengeNameType
+  , _rtacUserContextData :: !(Maybe UserContextDataType)
+  , _rtacSession :: !(Maybe Text)
+  , _rtacClientId :: !(Sensitive Text)
+  , _rtacChallengeName :: !ChallengeNameType
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -73,7 +73,7 @@ data RespondToAuthChallenge = RespondToAuthChallenge'
 --
 -- * 'rtacAnalyticsMetadata' - The Amazon Pinpoint analytics metadata for collecting metrics for @RespondToAuthChallenge@ calls.
 --
--- * 'rtacChallengeResponses' - The challenge responses. These are inputs corresponding to the value of @ChallengeName@ , for example:     * @SMS_MFA@ : @SMS_MFA_CODE@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @PASSWORD_VERIFIER@ : @PASSWORD_CLAIM_SIGNATURE@ , @PASSWORD_CLAIM_SECRET_BLOCK@ , @TIMESTAMP@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @NEW_PASSWORD_REQUIRED@ : @NEW_PASSWORD@ , any other required attributes, @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).
+-- * 'rtacChallengeResponses' - The challenge responses. These are inputs corresponding to the value of @ChallengeName@ , for example:     * @SMS_MFA@ : @SMS_MFA_CODE@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @PASSWORD_VERIFIER@ : @PASSWORD_CLAIM_SIGNATURE@ , @PASSWORD_CLAIM_SECRET_BLOCK@ , @TIMESTAMP@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @NEW_PASSWORD_REQUIRED@ : @NEW_PASSWORD@ , any other required attributes, @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret). 
 --
 -- * 'rtacUserContextData' - Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
 --
@@ -101,7 +101,7 @@ respondToAuthChallenge pClientId_ pChallengeName_ =
 rtacAnalyticsMetadata :: Lens' RespondToAuthChallenge (Maybe AnalyticsMetadataType)
 rtacAnalyticsMetadata = lens _rtacAnalyticsMetadata (\ s a -> s{_rtacAnalyticsMetadata = a})
 
--- | The challenge responses. These are inputs corresponding to the value of @ChallengeName@ , for example:     * @SMS_MFA@ : @SMS_MFA_CODE@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @PASSWORD_VERIFIER@ : @PASSWORD_CLAIM_SIGNATURE@ , @PASSWORD_CLAIM_SECRET_BLOCK@ , @TIMESTAMP@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @NEW_PASSWORD_REQUIRED@ : @NEW_PASSWORD@ , any other required attributes, @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).
+-- | The challenge responses. These are inputs corresponding to the value of @ChallengeName@ , for example:     * @SMS_MFA@ : @SMS_MFA_CODE@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @PASSWORD_VERIFIER@ : @PASSWORD_CLAIM_SIGNATURE@ , @PASSWORD_CLAIM_SECRET_BLOCK@ , @TIMESTAMP@ , @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret).     * @NEW_PASSWORD_REQUIRED@ : @NEW_PASSWORD@ , any other required attributes, @USERNAME@ , @SECRET_HASH@ (if app client is configured with client secret). 
 rtacChallengeResponses :: Lens' RespondToAuthChallenge (HashMap Text Text)
 rtacChallengeResponses = lens _rtacChallengeResponses (\ s a -> s{_rtacChallengeResponses = a}) . _Default . _Map
 
@@ -173,11 +173,11 @@ instance ToQuery RespondToAuthChallenge where
 --
 -- /See:/ 'respondToAuthChallengeResponse' smart constructor.
 data RespondToAuthChallengeResponse = RespondToAuthChallengeResponse'
-  { _rtacrsChallengeName        :: !(Maybe ChallengeNameType)
-  , _rtacrsChallengeParameters  :: !(Maybe (Map Text Text))
+  { _rtacrsChallengeName :: !(Maybe ChallengeNameType)
+  , _rtacrsChallengeParameters :: !(Maybe (Map Text Text))
   , _rtacrsAuthenticationResult :: !(Maybe AuthenticationResultType)
-  , _rtacrsSession              :: !(Maybe Text)
-  , _rtacrsResponseStatus       :: !Int
+  , _rtacrsSession :: !(Maybe Text)
+  , _rtacrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

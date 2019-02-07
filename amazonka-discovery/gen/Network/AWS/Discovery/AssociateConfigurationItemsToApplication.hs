@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'associateConfigurationItemsToApplication' smart constructor.
 data AssociateConfigurationItemsToApplication = AssociateConfigurationItemsToApplication'
   { _acitaApplicationConfigurationId :: !Text
-  , _acitaConfigurationIds           :: ![Text]
+  , _acitaConfigurationIds :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteUserPoolDomain' smart constructor.
 data DeleteUserPoolDomain = DeleteUserPoolDomain'
-  { _dupdDomain     :: !Text
+  { _dupdDomain :: !Text
   , _dupdUserPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

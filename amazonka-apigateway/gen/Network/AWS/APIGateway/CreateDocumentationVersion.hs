@@ -52,9 +52,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'createDocumentationVersion' smart constructor.
 data CreateDocumentationVersion = CreateDocumentationVersion'
-  { _cdvStageName            :: !(Maybe Text)
-  , _cdvDescription          :: !(Maybe Text)
-  , _cdvRestAPIId            :: !Text
+  { _cdvStageName :: !(Maybe Text)
+  , _cdvDescription :: !(Maybe Text)
+  , _cdvRestAPIId :: !Text
   , _cdvDocumentationVersion :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -43,7 +43,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -109,7 +109,7 @@ instance ToPath DeleteReplicationSubnetGroup where
 instance ToQuery DeleteReplicationSubnetGroup where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --

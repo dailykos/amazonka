@@ -45,13 +45,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'refreshSchemas' smart constructor.
 data RefreshSchemas = RefreshSchemas'
-  { _rsEndpointARN            :: !Text
+  { _rsEndpointARN :: !Text
   , _rsReplicationInstanceARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,14 +120,14 @@ instance ToPath RefreshSchemas where
 instance ToQuery RefreshSchemas where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'refreshSchemasResponse' smart constructor.
 data RefreshSchemasResponse = RefreshSchemasResponse'
   { _rsrsRefreshSchemasStatus :: !(Maybe RefreshSchemasStatus)
-  , _rsrsResponseStatus       :: !Int
+  , _rsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

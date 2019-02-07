@@ -88,7 +88,7 @@ instance ToQuery DescribeScalingProcessTypes where
 
 -- | /See:/ 'describeScalingProcessTypesResponse' smart constructor.
 data DescribeScalingProcessTypesResponse = DescribeScalingProcessTypesResponse'
-  { _dsptrsProcesses      :: !(Maybe [ProcessType])
+  { _dsptrsProcesses :: !(Maybe [ProcessType])
   , _dsptrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

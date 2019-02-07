@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates a user's profile in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
+-- Updates a user's profile in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar. 
 --
 --
 module Network.AWS.CodeStar.UpdateUserProfile
@@ -56,8 +56,8 @@ import Network.AWS.Response
 data UpdateUserProfile = UpdateUserProfile'
   { _uupSshPublicKey :: !(Maybe Text)
   , _uupEmailAddress :: !(Maybe (Sensitive Text))
-  , _uupDisplayName  :: !(Maybe Text)
-  , _uupUserARN      :: !Text
+  , _uupDisplayName :: !(Maybe (Sensitive Text))
+  , _uupUserARN :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -94,7 +94,7 @@ uupEmailAddress = lens _uupEmailAddress (\ s a -> s{_uupEmailAddress = a}) . map
 
 -- | The name that is displayed as the friendly name for the user in AWS CodeStar.
 uupDisplayName :: Lens' UpdateUserProfile (Maybe Text)
-uupDisplayName = lens _uupDisplayName (\ s a -> s{_uupDisplayName = a})
+uupDisplayName = lens _uupDisplayName (\ s a -> s{_uupDisplayName = a}) . mapping _Sensitive
 
 -- | The name that will be displayed as the friendly name for the user in AWS CodeStar.
 uupUserARN :: Lens' UpdateUserProfile Text
@@ -147,12 +147,12 @@ instance ToQuery UpdateUserProfile where
 -- | /See:/ 'updateUserProfileResponse' smart constructor.
 data UpdateUserProfileResponse = UpdateUserProfileResponse'
   { _uuprsLastModifiedTimestamp :: !(Maybe POSIX)
-  , _uuprsSshPublicKey          :: !(Maybe Text)
-  , _uuprsEmailAddress          :: !(Maybe (Sensitive Text))
-  , _uuprsDisplayName           :: !(Maybe Text)
-  , _uuprsCreatedTimestamp      :: !(Maybe POSIX)
-  , _uuprsResponseStatus        :: !Int
-  , _uuprsUserARN               :: !Text
+  , _uuprsSshPublicKey :: !(Maybe Text)
+  , _uuprsEmailAddress :: !(Maybe (Sensitive Text))
+  , _uuprsDisplayName :: !(Maybe (Sensitive Text))
+  , _uuprsCreatedTimestamp :: !(Maybe POSIX)
+  , _uuprsResponseStatus :: !Int
+  , _uuprsUserARN :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -203,7 +203,7 @@ uuprsEmailAddress = lens _uuprsEmailAddress (\ s a -> s{_uuprsEmailAddress = a})
 
 -- | The name that is displayed as the friendly name for the user in AWS CodeStar.
 uuprsDisplayName :: Lens' UpdateUserProfileResponse (Maybe Text)
-uuprsDisplayName = lens _uuprsDisplayName (\ s a -> s{_uuprsDisplayName = a})
+uuprsDisplayName = lens _uuprsDisplayName (\ s a -> s{_uuprsDisplayName = a}) . mapping _Sensitive
 
 -- | The date the user profile was created, in timestamp format.
 uuprsCreatedTimestamp :: Lens' UpdateUserProfileResponse (Maybe UTCTime)

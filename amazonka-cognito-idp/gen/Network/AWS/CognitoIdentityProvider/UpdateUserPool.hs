@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the specified user pool with the specified attributes.
+-- Updates the specified user pool with the specified attributes. If you don't provide a value for an attribute, it will be set to the default value. You can get a list of the current user pool settings with .
 --
 --
 module Network.AWS.CognitoIdentityProvider.UpdateUserPool
@@ -64,22 +64,22 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateUserPool' smart constructor.
 data UpdateUserPool = UpdateUserPool'
-  { _uupUserPoolTags                :: !(Maybe (Map Text Text))
+  { _uupUserPoolTags :: !(Maybe (Map Text Text))
   , _uupVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
-  , _uupEmailVerificationMessage    :: !(Maybe Text)
-  , _uupSmsAuthenticationMessage    :: !(Maybe Text)
-  , _uupUserPoolAddOns              :: !(Maybe UserPoolAddOnsType)
-  , _uupEmailVerificationSubject    :: !(Maybe Text)
-  , _uupEmailConfiguration          :: !(Maybe EmailConfigurationType)
-  , _uupSmsVerificationMessage      :: !(Maybe Text)
-  , _uupMFAConfiguration            :: !(Maybe UserPoolMFAType)
-  , _uupLambdaConfig                :: !(Maybe LambdaConfigType)
-  , _uupSmsConfiguration            :: !(Maybe SmsConfigurationType)
-  , _uupAdminCreateUserConfig       :: !(Maybe AdminCreateUserConfigType)
-  , _uupDeviceConfiguration         :: !(Maybe DeviceConfigurationType)
-  , _uupAutoVerifiedAttributes      :: !(Maybe [VerifiedAttributeType])
-  , _uupPolicies                    :: !(Maybe UserPoolPolicyType)
-  , _uupUserPoolId                  :: !Text
+  , _uupEmailVerificationMessage :: !(Maybe Text)
+  , _uupSmsAuthenticationMessage :: !(Maybe Text)
+  , _uupUserPoolAddOns :: !(Maybe UserPoolAddOnsType)
+  , _uupEmailVerificationSubject :: !(Maybe Text)
+  , _uupEmailConfiguration :: !(Maybe EmailConfigurationType)
+  , _uupSmsVerificationMessage :: !(Maybe Text)
+  , _uupMFAConfiguration :: !(Maybe UserPoolMFAType)
+  , _uupLambdaConfig :: !(Maybe LambdaConfigType)
+  , _uupSmsConfiguration :: !(Maybe SmsConfigurationType)
+  , _uupAdminCreateUserConfig :: !(Maybe AdminCreateUserConfigType)
+  , _uupDeviceConfiguration :: !(Maybe DeviceConfigurationType)
+  , _uupAutoVerifiedAttributes :: !(Maybe [VerifiedAttributeType])
+  , _uupPolicies :: !(Maybe UserPoolPolicyType)
+  , _uupUserPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -87,7 +87,7 @@ data UpdateUserPool = UpdateUserPool'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uupUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- * 'uupUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool> 
 --
 -- * 'uupVerificationMessageTemplate' - The template for verification messages.
 --
@@ -142,7 +142,7 @@ updateUserPool pUserPoolId_ =
     }
 
 
--- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool> 
 uupUserPoolTags :: Lens' UpdateUserPool (HashMap Text Text)
 uupUserPoolTags = lens _uupUserPoolTags (\ s a -> s{_uupUserPoolTags = a}) . _Default . _Map
 

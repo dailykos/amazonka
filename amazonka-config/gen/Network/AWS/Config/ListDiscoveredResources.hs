@@ -55,18 +55,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'listDiscoveredResources' smart constructor.
 data ListDiscoveredResources = ListDiscoveredResources'
-  { _ldrResourceIds             :: !(Maybe [Text])
-  , _ldrResourceName            :: !(Maybe Text)
+  { _ldrResourceIds :: !(Maybe [Text])
+  , _ldrResourceName :: !(Maybe Text)
   , _ldrIncludeDeletedResources :: !(Maybe Bool)
-  , _ldrNextToken               :: !(Maybe Text)
-  , _ldrLimit                   :: !(Maybe Nat)
-  , _ldrResourceType            :: !ResourceType
+  , _ldrNextToken :: !(Maybe Text)
+  , _ldrLimit :: !(Maybe Nat)
+  , _ldrResourceType :: !ResourceType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -174,15 +174,15 @@ instance ToPath ListDiscoveredResources where
 instance ToQuery ListDiscoveredResources where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'listDiscoveredResourcesResponse' smart constructor.
 data ListDiscoveredResourcesResponse = ListDiscoveredResourcesResponse'
-  { _ldrrsNextToken           :: !(Maybe Text)
+  { _ldrrsNextToken :: !(Maybe Text)
   , _ldrrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
-  , _ldrrsResponseStatus      :: !Int
+  , _ldrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

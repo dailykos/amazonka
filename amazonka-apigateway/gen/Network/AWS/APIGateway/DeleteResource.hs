@@ -48,7 +48,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'deleteResource' smart constructor.
 data DeleteResource = DeleteResource'
-  { _drRestAPIId  :: !Text
+  { _drRestAPIId :: !Text
   , _drResourceId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

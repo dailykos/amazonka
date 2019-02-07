@@ -21,6 +21,8 @@
 -- Returns information about all the instance profiles in an AWS account.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DeviceFarm.ListInstanceProfiles
     (
     -- * Creating a Request
@@ -42,13 +44,14 @@ module Network.AWS.DeviceFarm.ListInstanceProfiles
 import Network.AWS.DeviceFarm.Types
 import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listInstanceProfiles' smart constructor.
 data ListInstanceProfiles = ListInstanceProfiles'
-  { _lipNextToken  :: !(Maybe Text)
+  { _lipNextToken :: !(Maybe Text)
   , _lipMaxResults :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -73,6 +76,13 @@ lipNextToken = lens _lipNextToken (\ s a -> s{_lipNextToken = a})
 -- | An integer specifying the maximum number of items you want to return in the API response.
 lipMaxResults :: Lens' ListInstanceProfiles (Maybe Int)
 lipMaxResults = lens _lipMaxResults (\ s a -> s{_lipMaxResults = a})
+
+instance AWSPager ListInstanceProfiles where
+        page rq rs
+          | stop (rs ^. liprsNextToken) = Nothing
+          | stop (rs ^. liprsInstanceProfiles) = Nothing
+          | otherwise =
+            Just $ rq & lipNextToken .~ rs ^. liprsNextToken
 
 instance AWSRequest ListInstanceProfiles where
         type Rs ListInstanceProfiles =
@@ -115,9 +125,9 @@ instance ToQuery ListInstanceProfiles where
 
 -- | /See:/ 'listInstanceProfilesResponse' smart constructor.
 data ListInstanceProfilesResponse = ListInstanceProfilesResponse'
-  { _liprsNextToken        :: !(Maybe Text)
+  { _liprsNextToken :: !(Maybe Text)
   , _liprsInstanceProfiles :: !(Maybe [InstanceProfile])
-  , _liprsResponseStatus   :: !Int
+  , _liprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

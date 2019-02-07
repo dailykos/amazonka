@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'createCluster' smart constructor.
 data CreateCluster = CreateCluster'
   { _ccSourceBackupId :: !(Maybe Text)
-  , _ccSubnetIds      :: !(List1 Text)
-  , _ccHSMType        :: !Text
+  , _ccSubnetIds :: !(List1 Text)
+  , _ccHSMType :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -125,7 +125,7 @@ instance ToQuery CreateCluster where
 
 -- | /See:/ 'createClusterResponse' smart constructor.
 data CreateClusterResponse = CreateClusterResponse'
-  { _ccrsCluster        :: !(Maybe Cluster)
+  { _ccrsCluster :: !(Maybe Cluster)
   , _ccrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

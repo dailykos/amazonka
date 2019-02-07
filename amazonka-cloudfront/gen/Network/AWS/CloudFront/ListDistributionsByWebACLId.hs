@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- List the distributions that are associated with a specified AWS WAF web ACL.
+-- List the distributions that are associated with a specified AWS WAF web ACL. 
 --
 --
 module Network.AWS.CloudFront.ListDistributionsByWebACLId
@@ -46,13 +46,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The request to list distributions that are associated with a specified AWS WAF web ACL.
+-- | The request to list distributions that are associated with a specified AWS WAF web ACL. 
 --
 --
 --
 -- /See:/ 'listDistributionsByWebACLId' smart constructor.
 data ListDistributionsByWebACLId = ListDistributionsByWebACLId'
-  { _ldbwaiMarker   :: !(Maybe Text)
+  { _ldbwaiMarker :: !(Maybe Text)
   , _ldbwaiMaxItems :: !(Maybe Text)
   , _ldbwaiWebACLId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -62,11 +62,11 @@ data ListDistributionsByWebACLId = ListDistributionsByWebACLId'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ldbwaiMarker' - Use @Marker@ and @MaxItems@ to control pagination of results. If you have more than @MaxItems@ distributions that satisfy the request, the response includes a @NextMarker@ element. To get the next page of results, submit another request. For the value of @Marker@ , specify the value of @NextMarker@ from the last response. (For the first request, omit @Marker@ .)
+-- * 'ldbwaiMarker' - Use @Marker@ and @MaxItems@ to control pagination of results. If you have more than @MaxItems@ distributions that satisfy the request, the response includes a @NextMarker@ element. To get the next page of results, submit another request. For the value of @Marker@ , specify the value of @NextMarker@ from the last response. (For the first request, omit @Marker@ .) 
 --
 -- * 'ldbwaiMaxItems' - The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.
 --
--- * 'ldbwaiWebACLId' - The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL.
+-- * 'ldbwaiWebACLId' - The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL. 
 listDistributionsByWebACLId
     :: Text -- ^ 'ldbwaiWebACLId'
     -> ListDistributionsByWebACLId
@@ -78,7 +78,7 @@ listDistributionsByWebACLId pWebACLId_ =
     }
 
 
--- | Use @Marker@ and @MaxItems@ to control pagination of results. If you have more than @MaxItems@ distributions that satisfy the request, the response includes a @NextMarker@ element. To get the next page of results, submit another request. For the value of @Marker@ , specify the value of @NextMarker@ from the last response. (For the first request, omit @Marker@ .)
+-- | Use @Marker@ and @MaxItems@ to control pagination of results. If you have more than @MaxItems@ distributions that satisfy the request, the response includes a @NextMarker@ element. To get the next page of results, submit another request. For the value of @Marker@ , specify the value of @NextMarker@ from the last response. (For the first request, omit @Marker@ .) 
 ldbwaiMarker :: Lens' ListDistributionsByWebACLId (Maybe Text)
 ldbwaiMarker = lens _ldbwaiMarker (\ s a -> s{_ldbwaiMarker = a})
 
@@ -86,7 +86,7 @@ ldbwaiMarker = lens _ldbwaiMarker (\ s a -> s{_ldbwaiMarker = a})
 ldbwaiMaxItems :: Lens' ListDistributionsByWebACLId (Maybe Text)
 ldbwaiMaxItems = lens _ldbwaiMaxItems (\ s a -> s{_ldbwaiMaxItems = a})
 
--- | The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL.
+-- | The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL. 
 ldbwaiWebACLId :: Lens' ListDistributionsByWebACLId Text
 ldbwaiWebACLId = lens _ldbwaiWebACLId (\ s a -> s{_ldbwaiWebACLId = a})
 
@@ -110,7 +110,7 @@ instance ToHeaders ListDistributionsByWebACLId where
 instance ToPath ListDistributionsByWebACLId where
         toPath ListDistributionsByWebACLId'{..}
           = mconcat
-              ["/2017-10-30/distributionsByWebACLId/",
+              ["/2018-11-05/distributionsByWebACLId/",
                toBS _ldbwaiWebACLId]
 
 instance ToQuery ListDistributionsByWebACLId where
@@ -119,14 +119,14 @@ instance ToQuery ListDistributionsByWebACLId where
               ["Marker" =: _ldbwaiMarker,
                "MaxItems" =: _ldbwaiMaxItems]
 
--- | The response to a request to list the distributions that are associated with a specified AWS WAF web ACL.
+-- | The response to a request to list the distributions that are associated with a specified AWS WAF web ACL. 
 --
 --
 --
 -- /See:/ 'listDistributionsByWebACLIdResponse' smart constructor.
 data ListDistributionsByWebACLIdResponse = ListDistributionsByWebACLIdResponse'
   { _ldbwairsDistributionList :: !(Maybe DistributionList)
-  , _ldbwairsResponseStatus   :: !Int
+  , _ldbwairsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -134,7 +134,7 @@ data ListDistributionsByWebACLIdResponse = ListDistributionsByWebACLIdResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ldbwairsDistributionList' - The @DistributionList@ type.
+-- * 'ldbwairsDistributionList' - The @DistributionList@ type. 
 --
 -- * 'ldbwairsResponseStatus' - -- | The response status code.
 listDistributionsByWebACLIdResponse
@@ -147,7 +147,7 @@ listDistributionsByWebACLIdResponse pResponseStatus_ =
     }
 
 
--- | The @DistributionList@ type.
+-- | The @DistributionList@ type. 
 ldbwairsDistributionList :: Lens' ListDistributionsByWebACLIdResponse (Maybe DistributionList)
 ldbwairsDistributionList = lens _ldbwairsDistributionList (\ s a -> s{_ldbwairsDistributionList = a})
 

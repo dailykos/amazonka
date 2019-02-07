@@ -55,7 +55,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getClientCertificates' smart constructor.
 data GetClientCertificates = GetClientCertificates'
-  { _gccLimit    :: !(Maybe Int)
+  { _gccLimit :: !(Maybe Int)
   , _gccPosition :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,12 +120,12 @@ instance ToQuery GetClientCertificates where
 -- | Represents a collection of 'ClientCertificate' resources.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html Use Client-Side Certificate>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html Use Client-Side Certificate> 
 --
 -- /See:/ 'getClientCertificatesResponse' smart constructor.
 data GetClientCertificatesResponse = GetClientCertificatesResponse'
-  { _gccrsItems          :: !(Maybe [ClientCertificate])
-  , _gccrsPosition       :: !(Maybe Text)
+  { _gccrsItems :: !(Maybe [ClientCertificate])
+  , _gccrsPosition :: !(Maybe Text)
   , _gccrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

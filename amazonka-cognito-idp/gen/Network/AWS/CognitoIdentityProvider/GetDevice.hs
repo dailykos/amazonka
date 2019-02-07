@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getDevice' smart constructor.
 data GetDevice = GetDevice'
   { _gdAccessToken :: !(Maybe (Sensitive Text))
-  , _gdDeviceKey   :: !Text
+  , _gdDeviceKey :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -121,7 +121,7 @@ instance ToQuery GetDevice where
 -- /See:/ 'getDeviceResponse' smart constructor.
 data GetDeviceResponse = GetDeviceResponse'
   { _gdrsResponseStatus :: !Int
-  , _gdrsDevice         :: !DeviceType
+  , _gdrsDevice :: !DeviceType
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

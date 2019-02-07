@@ -21,7 +21,7 @@
 -- Updates an existing 'Authorizer' resource.
 --
 --
--- <http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html AWS CLI>
+-- <https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html AWS CLI> 
 module Network.AWS.APIGateway.UpdateAuthorizer
     (
     -- * Creating a Request
@@ -62,8 +62,8 @@ import Network.AWS.Response
 -- /See:/ 'updateAuthorizer' smart constructor.
 data UpdateAuthorizer = UpdateAuthorizer'
   { _uaaPatchOperations :: !(Maybe [PatchOperation])
-  , _uaaRestAPIId       :: !Text
-  , _uaaAuthorizerId    :: !Text
+  , _uaaRestAPIId :: !Text
+  , _uaaAuthorizerId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -54,10 +54,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'searchUsers' smart constructor.
 data SearchUsers = SearchUsers'
-  { _suFilters      :: !(Maybe [Filter])
+  { _suFilters :: !(Maybe [Filter])
   , _suSortCriteria :: !(Maybe [Sort])
-  , _suNextToken    :: !(Maybe Text)
-  , _suMaxResults   :: !(Maybe Nat)
+  , _suNextToken :: !(Maybe Text)
+  , _suMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -147,9 +147,9 @@ instance ToQuery SearchUsers where
 
 -- | /See:/ 'searchUsersResponse' smart constructor.
 data SearchUsersResponse = SearchUsersResponse'
-  { _sursUsers          :: !(Maybe [UserData])
-  , _sursNextToken      :: !(Maybe Text)
-  , _sursTotalCount     :: !(Maybe Int)
+  { _sursUsers :: !(Maybe [UserData])
+  , _sursNextToken :: !(Maybe Text)
+  , _sursTotalCount :: !(Maybe Int)
   , _sursResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

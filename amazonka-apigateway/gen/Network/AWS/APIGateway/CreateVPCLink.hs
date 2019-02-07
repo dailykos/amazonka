@@ -57,8 +57,8 @@ import Network.AWS.Response
 -- /See:/ 'createVPCLink' smart constructor.
 data CreateVPCLink = CreateVPCLink'
   { _cvlDescription :: !(Maybe Text)
-  , _cvlName        :: !Text
-  , _cvlTargetARNs  :: ![Text]
+  , _cvlName :: !Text
+  , _cvlTargetARNs :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

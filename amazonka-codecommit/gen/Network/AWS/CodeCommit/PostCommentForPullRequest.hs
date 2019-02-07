@@ -59,13 +59,13 @@ import Network.AWS.Response
 
 -- | /See:/ 'postCommentForPullRequest' smart constructor.
 data PostCommentForPullRequest = PostCommentForPullRequest'
-  { _pcfprLocation           :: !(Maybe Location)
+  { _pcfprLocation :: !(Maybe Location)
   , _pcfprClientRequestToken :: !(Maybe Text)
-  , _pcfprPullRequestId      :: !Text
-  , _pcfprRepositoryName     :: !Text
-  , _pcfprBeforeCommitId     :: !Text
-  , _pcfprAfterCommitId      :: !Text
-  , _pcfprContent            :: !Text
+  , _pcfprPullRequestId :: !Text
+  , _pcfprRepositoryName :: !Text
+  , _pcfprBeforeCommitId :: !Text
+  , _pcfprAfterCommitId :: !Text
+  , _pcfprContent :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -185,14 +185,14 @@ instance ToQuery PostCommentForPullRequest where
 
 -- | /See:/ 'postCommentForPullRequestResponse' smart constructor.
 data PostCommentForPullRequestResponse = PostCommentForPullRequestResponse'
-  { _pcfprrsBeforeBlobId   :: !(Maybe Text)
-  , _pcfprrsLocation       :: !(Maybe Location)
-  , _pcfprrsAfterCommitId  :: !(Maybe Text)
-  , _pcfprrsPullRequestId  :: !(Maybe Text)
-  , _pcfprrsAfterBlobId    :: !(Maybe Text)
+  { _pcfprrsBeforeBlobId :: !(Maybe Text)
+  , _pcfprrsLocation :: !(Maybe Location)
+  , _pcfprrsAfterCommitId :: !(Maybe Text)
+  , _pcfprrsPullRequestId :: !(Maybe Text)
+  , _pcfprrsAfterBlobId :: !(Maybe Text)
   , _pcfprrsBeforeCommitId :: !(Maybe Text)
   , _pcfprrsRepositoryName :: !(Maybe Text)
-  , _pcfprrsComment        :: !(Maybe Comment)
+  , _pcfprrsComment :: !(Maybe Comment)
   , _pcfprrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -207,7 +207,7 @@ data PostCommentForPullRequestResponse = PostCommentForPullRequestResponse'
 --
 -- * 'pcfprrsAfterCommitId' - The full commit ID of the commit in the destination branch where the pull request will be merged.
 --
--- * 'pcfprrsPullRequestId' - The system-generated ID of the pull request.
+-- * 'pcfprrsPullRequestId' - The system-generated ID of the pull request. 
 --
 -- * 'pcfprrsAfterBlobId' - In the directionality of the pull request, the blob ID of the 'after' blob.
 --
@@ -247,7 +247,7 @@ pcfprrsLocation = lens _pcfprrsLocation (\ s a -> s{_pcfprrsLocation = a})
 pcfprrsAfterCommitId :: Lens' PostCommentForPullRequestResponse (Maybe Text)
 pcfprrsAfterCommitId = lens _pcfprrsAfterCommitId (\ s a -> s{_pcfprrsAfterCommitId = a})
 
--- | The system-generated ID of the pull request.
+-- | The system-generated ID of the pull request. 
 pcfprrsPullRequestId :: Lens' PostCommentForPullRequestResponse (Maybe Text)
 pcfprrsPullRequestId = lens _pcfprrsPullRequestId (\ s a -> s{_pcfprrsPullRequestId = a})
 

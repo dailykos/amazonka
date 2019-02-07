@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'listFieldLevelEncryptionConfigs' smart constructor.
 data ListFieldLevelEncryptionConfigs = ListFieldLevelEncryptionConfigs'
-  { _lflecMarker   :: !(Maybe Text)
+  { _lflecMarker :: !(Maybe Text)
   , _lflecMaxItems :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -56,9 +56,9 @@ data ListFieldLevelEncryptionConfigs = ListFieldLevelEncryptionConfigs'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lflecMarker' - Use this when paginating results to indicate where to begin in your list of configurations. The results include configurations in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last configuration on that page).
+-- * 'lflecMarker' - Use this when paginating results to indicate where to begin in your list of configurations. The results include configurations in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last configuration on that page). 
 --
--- * 'lflecMaxItems' - The maximum number of field-level encryption configurations you want in the response body.
+-- * 'lflecMaxItems' - The maximum number of field-level encryption configurations you want in the response body. 
 listFieldLevelEncryptionConfigs
     :: ListFieldLevelEncryptionConfigs
 listFieldLevelEncryptionConfigs =
@@ -66,11 +66,11 @@ listFieldLevelEncryptionConfigs =
     {_lflecMarker = Nothing, _lflecMaxItems = Nothing}
 
 
--- | Use this when paginating results to indicate where to begin in your list of configurations. The results include configurations in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last configuration on that page).
+-- | Use this when paginating results to indicate where to begin in your list of configurations. The results include configurations in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last configuration on that page). 
 lflecMarker :: Lens' ListFieldLevelEncryptionConfigs (Maybe Text)
 lflecMarker = lens _lflecMarker (\ s a -> s{_lflecMarker = a})
 
--- | The maximum number of field-level encryption configurations you want in the response body.
+-- | The maximum number of field-level encryption configurations you want in the response body. 
 lflecMaxItems :: Lens' ListFieldLevelEncryptionConfigs (Maybe Text)
 lflecMaxItems = lens _lflecMaxItems (\ s a -> s{_lflecMaxItems = a})
 
@@ -95,7 +95,7 @@ instance ToHeaders ListFieldLevelEncryptionConfigs
         toHeaders = const mempty
 
 instance ToPath ListFieldLevelEncryptionConfigs where
-        toPath = const "/2017-10-30/field-level-encryption"
+        toPath = const "/2018-11-05/field-level-encryption"
 
 instance ToQuery ListFieldLevelEncryptionConfigs
          where
@@ -107,7 +107,7 @@ instance ToQuery ListFieldLevelEncryptionConfigs
 -- | /See:/ 'listFieldLevelEncryptionConfigsResponse' smart constructor.
 data ListFieldLevelEncryptionConfigsResponse = ListFieldLevelEncryptionConfigsResponse'
   { _lflecrsFieldLevelEncryptionList :: !(Maybe FieldLevelEncryptionList)
-  , _lflecrsResponseStatus           :: !Int
+  , _lflecrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

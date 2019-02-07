@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getBlob' smart constructor.
 data GetBlob = GetBlob'
   { _gRepositoryName :: !Text
-  , _gBlobId         :: !Text
+  , _gBlobId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -121,7 +121,7 @@ instance ToQuery GetBlob where
 -- /See:/ 'getBlobResponse' smart constructor.
 data GetBlobResponse = GetBlobResponse'
   { _gbrsResponseStatus :: !Int
-  , _gbrsContent        :: !Base64
+  , _gbrsContent :: !Base64
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

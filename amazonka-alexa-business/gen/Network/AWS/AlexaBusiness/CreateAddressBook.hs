@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'createAddressBook' smart constructor.
 data CreateAddressBook = CreateAddressBook'
   { _cabClientRequestToken :: !(Maybe Text)
-  , _cabDescription        :: !(Maybe Text)
-  , _cabName               :: !Text
+  , _cabDescription :: !(Maybe Text)
+  , _cabName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

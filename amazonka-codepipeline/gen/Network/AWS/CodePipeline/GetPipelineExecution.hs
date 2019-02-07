@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getPipelineExecution' smart constructor.
 data GetPipelineExecution = GetPipelineExecution'
-  { _gpePipelineName        :: !Text
+  { _gpePipelineName :: !Text
   , _gpePipelineExecutionId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance ToQuery GetPipelineExecution where
 -- /See:/ 'getPipelineExecutionResponse' smart constructor.
 data GetPipelineExecutionResponse = GetPipelineExecutionResponse'
   { _gpersPipelineExecution :: !(Maybe PipelineExecution)
-  , _gpersResponseStatus    :: !Int
+  , _gpersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

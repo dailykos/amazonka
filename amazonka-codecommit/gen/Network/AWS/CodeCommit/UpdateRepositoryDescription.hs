@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'updateRepositoryDescription' smart constructor.
 data UpdateRepositoryDescription = UpdateRepositoryDescription'
   { _urdRepositoryDescription :: !(Maybe Text)
-  , _urdRepositoryName        :: !Text
+  , _urdRepositoryName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

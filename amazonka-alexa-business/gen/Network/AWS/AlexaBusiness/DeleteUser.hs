@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteUser' smart constructor.
 data DeleteUser = DeleteUser'
-  { _duUserARN      :: !(Maybe Text)
+  { _duUserARN :: !(Maybe Text)
   , _duEnrollmentId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

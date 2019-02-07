@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- | /See:/ 'listObjectPolicies' smart constructor.
 data ListObjectPolicies = ListObjectPolicies'
   { _lConsistencyLevel :: !(Maybe ConsistencyLevel)
-  , _lNextToken        :: !(Maybe Text)
-  , _lMaxResults       :: !(Maybe Nat)
-  , _lDirectoryARN     :: !Text
-  , _lObjectReference  :: !ObjectReference
+  , _lNextToken :: !(Maybe Text)
+  , _lMaxResults :: !(Maybe Nat)
+  , _lDirectoryARN :: !Text
+  , _lObjectReference :: !ObjectReference
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -156,9 +156,9 @@ instance ToQuery ListObjectPolicies where
 
 -- | /See:/ 'listObjectPoliciesResponse' smart constructor.
 data ListObjectPoliciesResponse = ListObjectPoliciesResponse'
-  { _loprsNextToken         :: !(Maybe Text)
+  { _loprsNextToken :: !(Maybe Text)
   , _loprsAttachedPolicyIds :: !(Maybe [Text])
-  , _loprsResponseStatus    :: !Int
+  , _loprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

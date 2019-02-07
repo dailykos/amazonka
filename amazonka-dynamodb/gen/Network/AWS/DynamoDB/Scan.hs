@@ -21,9 +21,9 @@
 -- The @Scan@ operation returns one or more items and item attributes by accessing every item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a @FilterExpression@ operation.
 --
 --
--- If the total number of scanned items exceeds the maximum data set size limit of 1 MB, the scan stops and results are returned to the user as a @LastEvaluatedKey@ value to continue the scan in a subsequent operation. The results also include the number of items exceeding the limit. A scan can result in no table data meeting the filter criteria.
+-- If the total number of scanned items exceeds the maximum data set size limit of 1 MB, the scan stops and results are returned to the user as a @LastEvaluatedKey@ value to continue the scan in a subsequent operation. The results also include the number of items exceeding the limit. A scan can result in no table data meeting the filter criteria. 
 --
--- A single @Scan@ operation will read up to the maximum number of items set (if using the @Limit@ parameter) or a maximum of 1 MB of data and then apply any filtering to the results using @FilterExpression@ . If @LastEvaluatedKey@ is present in the response, you will need to paginate the result set. For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination Paginating the Results> in the /Amazon DynamoDB Developer Guide/ .
+-- A single @Scan@ operation will read up to the maximum number of items set (if using the @Limit@ parameter) or a maximum of 1 MB of data and then apply any filtering to the results using @FilterExpression@ . If @LastEvaluatedKey@ is present in the response, you will need to paginate the result set. For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination Paginating the Results> in the /Amazon DynamoDB Developer Guide/ . 
 --
 -- @Scan@ operations proceed sequentially; however, for faster performance on a large table or secondary index, applications can request a parallel @Scan@ operation by providing the @Segment@ and @TotalSegments@ parameters. For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan Parallel Scan> in the /Amazon DynamoDB Developer Guide/ .
 --
@@ -80,22 +80,22 @@ import Network.AWS.Response
 --
 -- /See:/ 'scan' smart constructor.
 data Scan = Scan'
-  { _sProjectionExpression      :: !(Maybe Text)
-  , _sScanFilter                :: !(Maybe (Map Text Condition))
-  , _sAttributesToGet           :: !(Maybe (List1 Text))
-  , _sTotalSegments             :: !(Maybe Nat)
-  , _sExpressionAttributeNames  :: !(Maybe (Map Text Text))
-  , _sFilterExpression          :: !(Maybe Text)
-  , _sConsistentRead            :: !(Maybe Bool)
+  { _sProjectionExpression :: !(Maybe Text)
+  , _sScanFilter :: !(Maybe (Map Text Condition))
+  , _sAttributesToGet :: !(Maybe (List1 Text))
+  , _sTotalSegments :: !(Maybe Nat)
+  , _sExpressionAttributeNames :: !(Maybe (Map Text Text))
+  , _sFilterExpression :: !(Maybe Text)
+  , _sConsistentRead :: !(Maybe Bool)
   , _sExpressionAttributeValues :: !(Maybe (Map Text AttributeValue))
-  , _sReturnConsumedCapacity    :: !(Maybe ReturnConsumedCapacity)
-  , _sLimit                     :: !(Maybe Nat)
-  , _sSelect                    :: !(Maybe Select)
-  , _sSegment                   :: !(Maybe Nat)
-  , _sConditionalOperator       :: !(Maybe ConditionalOperator)
-  , _sExclusiveStartKey         :: !(Maybe (Map Text AttributeValue))
-  , _sIndexName                 :: !(Maybe Text)
-  , _sTableName                 :: !Text
+  , _sReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
+  , _sLimit :: !(Maybe Nat)
+  , _sSelect :: !(Maybe Select)
+  , _sSegment :: !(Maybe Nat)
+  , _sConditionalOperator :: !(Maybe ConditionalOperator)
+  , _sExclusiveStartKey :: !(Maybe (Map Text AttributeValue))
+  , _sIndexName :: !(Maybe Text)
+  , _sTableName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -293,11 +293,11 @@ instance ToQuery Scan where
 -- /See:/ 'scanResponse' smart constructor.
 data ScanResponse = ScanResponse'
   { _srsLastEvaluatedKey :: !(Maybe (Map Text AttributeValue))
-  , _srsCount            :: !(Maybe Int)
-  , _srsScannedCount     :: !(Maybe Int)
-  , _srsItems            :: !(Maybe [Map Text AttributeValue])
+  , _srsCount :: !(Maybe Int)
+  , _srsScannedCount :: !(Maybe Int)
+  , _srsItems :: !(Maybe [Map Text AttributeValue])
   , _srsConsumedCapacity :: !(Maybe ConsumedCapacity)
-  , _srsResponseStatus   :: !Int
+  , _srsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

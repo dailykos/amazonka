@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'putRepositoryTriggers' smart constructor.
 data PutRepositoryTriggers = PutRepositoryTriggers'
   { _pRepositoryName :: !Text
-  , _pTriggers       :: ![RepositoryTrigger]
+  , _pTriggers :: ![RepositoryTrigger]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -123,7 +123,7 @@ instance ToQuery PutRepositoryTriggers where
 -- /See:/ 'putRepositoryTriggersResponse' smart constructor.
 data PutRepositoryTriggersResponse = PutRepositoryTriggersResponse'
   { _prtrsConfigurationId :: !(Maybe Text)
-  , _prtrsResponseStatus  :: !Int
+  , _prtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

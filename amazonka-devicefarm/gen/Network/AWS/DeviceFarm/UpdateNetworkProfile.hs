@@ -57,18 +57,18 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateNetworkProfile' smart constructor.
 data UpdateNetworkProfile = UpdateNetworkProfile'
-  { _unpUplinkJitterMs        :: !(Maybe Integer)
-  , _unpUplinkLossPercent     :: !(Maybe Nat)
-  , _unpDownlinkJitterMs      :: !(Maybe Integer)
-  , _unpName                  :: !(Maybe Text)
-  , _unpDownlinkLossPercent   :: !(Maybe Nat)
-  , _unpType                  :: !(Maybe NetworkProfileType)
-  , _unpUplinkDelayMs         :: !(Maybe Integer)
-  , _unpUplinkBandwidthBits   :: !(Maybe Integer)
-  , _unpDescription           :: !(Maybe Text)
-  , _unpDownlinkDelayMs       :: !(Maybe Integer)
+  { _unpUplinkJitterMs :: !(Maybe Integer)
+  , _unpUplinkLossPercent :: !(Maybe Nat)
+  , _unpDownlinkJitterMs :: !(Maybe Integer)
+  , _unpName :: !(Maybe Text)
+  , _unpDownlinkLossPercent :: !(Maybe Nat)
+  , _unpType :: !(Maybe NetworkProfileType)
+  , _unpUplinkDelayMs :: !(Maybe Integer)
+  , _unpUplinkBandwidthBits :: !(Maybe Integer)
+  , _unpDescription :: !(Maybe Text)
+  , _unpDownlinkDelayMs :: !(Maybe Integer)
   , _unpDownlinkBandwidthBits :: !(Maybe Integer)
-  , _unpArn                   :: !Text
+  , _unpArn :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

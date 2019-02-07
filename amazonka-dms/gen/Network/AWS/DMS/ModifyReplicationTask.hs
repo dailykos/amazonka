@@ -21,9 +21,9 @@
 -- Modifies the specified replication task.
 --
 --
--- You can't modify the task endpoints. The task must be stopped before you can modify it.
+-- You can't modify the task endpoints. The task must be stopped before you can modify it. 
 --
--- For more information about AWS DMS tasks, see the AWS DMS user guide at <http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html Working with Migration Tasks >
+-- For more information about AWS DMS tasks, see <http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html Working with Migration Tasks> in the /AWS Database Migration Service User Guide/ .
 --
 module Network.AWS.DMS.ModifyReplicationTask
     (
@@ -55,20 +55,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyReplicationTask' smart constructor.
 data ModifyReplicationTask = ModifyReplicationTask'
-  { _mrtReplicationTaskSettings   :: !(Maybe Text)
+  { _mrtReplicationTaskSettings :: !(Maybe Text)
   , _mrtReplicationTaskIdentifier :: !(Maybe Text)
-  , _mrtCdcStartPosition          :: !(Maybe Text)
-  , _mrtTableMappings             :: !(Maybe Text)
-  , _mrtMigrationType             :: !(Maybe MigrationTypeValue)
-  , _mrtCdcStopPosition           :: !(Maybe Text)
-  , _mrtCdcStartTime              :: !(Maybe POSIX)
-  , _mrtReplicationTaskARN        :: !Text
+  , _mrtCdcStartPosition :: !(Maybe Text)
+  , _mrtTableMappings :: !(Maybe Text)
+  , _mrtMigrationType :: !(Maybe MigrationTypeValue)
+  , _mrtCdcStopPosition :: !(Maybe Text)
+  , _mrtCdcStartTime :: !(Maybe POSIX)
+  , _mrtReplicationTaskARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -88,7 +88,7 @@ data ModifyReplicationTask = ModifyReplicationTask'
 --
 -- * 'mrtCdcStopPosition' - Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time. Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12” Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “
 --
--- * 'mrtCdcStartTime' - Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
+-- * 'mrtCdcStartTime' - Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error. Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
 --
 -- * 'mrtReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task.
 modifyReplicationTask
@@ -131,7 +131,7 @@ mrtMigrationType = lens _mrtMigrationType (\ s a -> s{_mrtMigrationType = a})
 mrtCdcStopPosition :: Lens' ModifyReplicationTask (Maybe Text)
 mrtCdcStopPosition = lens _mrtCdcStopPosition (\ s a -> s{_mrtCdcStopPosition = a})
 
--- | Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
+-- | Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error. Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
 mrtCdcStartTime :: Lens' ModifyReplicationTask (Maybe UTCTime)
 mrtCdcStartTime = lens _mrtCdcStartTime (\ s a -> s{_mrtCdcStartTime = a}) . mapping _Time
 
@@ -185,14 +185,14 @@ instance ToPath ModifyReplicationTask where
 instance ToQuery ModifyReplicationTask where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyReplicationTaskResponse' smart constructor.
 data ModifyReplicationTaskResponse = ModifyReplicationTaskResponse'
   { _mrtrsReplicationTask :: !(Maybe ReplicationTask)
-  , _mrtrsResponseStatus  :: !Int
+  , _mrtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

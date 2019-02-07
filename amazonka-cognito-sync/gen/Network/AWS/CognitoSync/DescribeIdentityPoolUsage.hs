@@ -104,7 +104,7 @@ instance ToQuery DescribeIdentityPoolUsage where
 -- /See:/ 'describeIdentityPoolUsageResponse' smart constructor.
 data DescribeIdentityPoolUsageResponse = DescribeIdentityPoolUsageResponse'
   { _dipursIdentityPoolUsage :: !(Maybe IdentityPoolUsage)
-  , _dipursResponseStatus    :: !Int
+  , _dipursResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

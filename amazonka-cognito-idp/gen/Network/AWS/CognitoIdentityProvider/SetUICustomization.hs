@@ -21,7 +21,7 @@
 -- Sets the UI customization information for a user pool's built-in app UI.
 --
 --
--- You can specify app UI customization settings for a single client (with a specific @clientId@ ) or for all clients (by setting the @clientId@ to @ALL@ ). If you specify @ALL@ , the default configuration will be used for every client that has no UI customization set previously. If you specify UI customization settings for a particular client, it will no longer fall back to the @ALL@ configuration.
+-- You can specify app UI customization settings for a single client (with a specific @clientId@ ) or for all clients (by setting the @clientId@ to @ALL@ ). If you specify @ALL@ , the default configuration will be used for every client that has no UI customization set previously. If you specify UI customization settings for a particular client, it will no longer fall back to the @ALL@ configuration. 
 --
 module Network.AWS.CognitoIdentityProvider.SetUICustomization
     (
@@ -51,9 +51,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'setUICustomization' smart constructor.
 data SetUICustomization = SetUICustomization'
-  { _suicClientId   :: !(Maybe (Sensitive Text))
-  , _suicCSS        :: !(Maybe Text)
-  , _suicImageFile  :: !(Maybe Base64)
+  { _suicClientId :: !(Maybe (Sensitive Text))
+  , _suicCSS :: !(Maybe Text)
+  , _suicImageFile :: !(Maybe Base64)
   , _suicUserPoolId :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -138,7 +138,7 @@ instance ToQuery SetUICustomization where
 
 -- | /See:/ 'setUICustomizationResponse' smart constructor.
 data SetUICustomizationResponse = SetUICustomizationResponse'
-  { _suicrsResponseStatus  :: !Int
+  { _suicrsResponseStatus :: !Int
   , _suicrsUICustomization :: !UICustomizationType
   } deriving (Eq, Show, Data, Typeable, Generic)
 

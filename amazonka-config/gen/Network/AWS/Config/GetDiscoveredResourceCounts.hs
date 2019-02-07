@@ -18,14 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the resource types, the number of each resource type, and the total number of resources that AWS Config is recording in this region for your AWS account.
+-- Returns the resource types, the number of each resource type, and the total number of resources that AWS Config is recording in this region for your AWS account. 
 --
 --
--- __Example__
+-- __Example__ 
 --
 --     * AWS Config is recording three resource types in the US East (Ohio) Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3 buckets.
 --
---     * You make a call to the @GetDiscoveredResourceCounts@ action and specify that you want all resource types.
+--     * You make a call to the @GetDiscoveredResourceCounts@ action and specify that you want all resource types. 
 --
 --     * AWS Config returns the following:
 --
@@ -70,8 +70,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'getDiscoveredResourceCounts' smart constructor.
 data GetDiscoveredResourceCounts = GetDiscoveredResourceCounts'
-  { _gdrcNextToken     :: !(Maybe Text)
-  , _gdrcLimit         :: !(Maybe Nat)
+  { _gdrcNextToken :: !(Maybe Text)
+  , _gdrcLimit :: !(Maybe Nat)
   , _gdrcResourceTypes :: !(Maybe [Text])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,9 +151,9 @@ instance ToQuery GetDiscoveredResourceCounts where
 -- | /See:/ 'getDiscoveredResourceCountsResponse' smart constructor.
 data GetDiscoveredResourceCountsResponse = GetDiscoveredResourceCountsResponse'
   { _gdrcrsTotalDiscoveredResources :: !(Maybe Integer)
-  , _gdrcrsNextToken                :: !(Maybe Text)
-  , _gdrcrsResourceCounts           :: !(Maybe [ResourceCount])
-  , _gdrcrsResponseStatus           :: !Int
+  , _gdrcrsNextToken :: !(Maybe Text)
+  , _gdrcrsResourceCounts :: !(Maybe [ResourceCount])
+  , _gdrcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

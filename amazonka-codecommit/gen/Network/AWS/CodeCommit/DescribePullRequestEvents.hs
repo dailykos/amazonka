@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- | /See:/ 'describePullRequestEvents' smart constructor.
 data DescribePullRequestEvents = DescribePullRequestEvents'
   { _dprePullRequestEventType :: !(Maybe PullRequestEventType)
-  , _dpreActorARN             :: !(Maybe Text)
-  , _dpreNextToken            :: !(Maybe Text)
-  , _dpreMaxResults           :: !(Maybe Int)
-  , _dprePullRequestId        :: !Text
+  , _dpreActorARN :: !(Maybe Text)
+  , _dpreNextToken :: !(Maybe Text)
+  , _dpreMaxResults :: !(Maybe Int)
+  , _dprePullRequestId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -159,8 +159,8 @@ instance ToQuery DescribePullRequestEvents where
 
 -- | /See:/ 'describePullRequestEventsResponse' smart constructor.
 data DescribePullRequestEventsResponse = DescribePullRequestEventsResponse'
-  { _dprersNextToken         :: !(Maybe Text)
-  , _dprersResponseStatus    :: !Int
+  { _dprersNextToken :: !(Maybe Text)
+  , _dprersResponseStatus :: !Int
   , _dprersPullRequestEvents :: ![PullRequestEvent]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -107,7 +107,7 @@ instance ToQuery GetProject where
 --
 -- /See:/ 'getProjectResponse' smart constructor.
 data GetProjectResponse = GetProjectResponse'
-  { _gprsProject        :: !(Maybe Project)
+  { _gprsProject :: !(Maybe Project)
   , _gprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

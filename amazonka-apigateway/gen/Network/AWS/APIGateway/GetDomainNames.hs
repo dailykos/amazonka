@@ -55,7 +55,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getDomainNames' smart constructor.
 data GetDomainNames = GetDomainNames'
-  { _gdnLimit    :: !(Maybe Int)
+  { _gdnLimit :: !(Maybe Int)
   , _gdnPosition :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,12 +118,12 @@ instance ToQuery GetDomainNames where
 -- | Represents a collection of 'DomainName' resources.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Use Client-Side Certificate>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Use Client-Side Certificate> 
 --
 -- /See:/ 'getDomainNamesResponse' smart constructor.
 data GetDomainNamesResponse = GetDomainNamesResponse'
-  { _gdnrsItems          :: !(Maybe [DomainName])
-  , _gdnrsPosition       :: !(Maybe Text)
+  { _gdnrsItems :: !(Maybe [DomainName])
+  , _gdnrsPosition :: !(Maybe Text)
   , _gdnrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

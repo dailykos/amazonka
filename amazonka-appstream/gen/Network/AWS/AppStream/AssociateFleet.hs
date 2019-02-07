@@ -55,7 +55,7 @@ data AssociateFleet = AssociateFleet'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'afFleetName' - The name of the fleet.
+-- * 'afFleetName' - The name of the fleet. 
 --
 -- * 'afStackName' - The name of the stack.
 associateFleet
@@ -66,7 +66,7 @@ associateFleet pFleetName_ pStackName_ =
   AssociateFleet' {_afFleetName = pFleetName_, _afStackName = pStackName_}
 
 
--- | The name of the fleet.
+-- | The name of the fleet. 
 afFleetName :: Lens' AssociateFleet Text
 afFleetName = lens _afFleetName (\ s a -> s{_afFleetName = a})
 

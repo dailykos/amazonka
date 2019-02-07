@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-docdb",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.DocDB.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

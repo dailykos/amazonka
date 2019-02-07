@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Queries for available tag keys and tag values for a specified period. You can search the tag values for an arbitrary string.
+-- Queries for available tag keys and tag values for a specified period. You can search the tag values for an arbitrary string. 
 --
 --
 module Network.AWS.CostExplorer.GetTags
@@ -53,9 +53,9 @@ import Network.AWS.Response
 -- | /See:/ 'getTags' smart constructor.
 data GetTags = GetTags'
   { _gtNextPageToken :: !(Maybe Text)
-  , _gtSearchString  :: !(Maybe Text)
-  , _gtTagKey        :: !(Maybe Text)
-  , _gtTimePeriod    :: !DateInterval
+  , _gtSearchString :: !(Maybe Text)
+  , _gtTagKey :: !(Maybe Text)
+  , _gtTimePeriod :: !DateInterval
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -140,11 +140,11 @@ instance ToQuery GetTags where
 
 -- | /See:/ 'getTagsResponse' smart constructor.
 data GetTagsResponse = GetTagsResponse'
-  { _gtrsNextPageToken  :: !(Maybe Text)
+  { _gtrsNextPageToken :: !(Maybe Text)
   , _gtrsResponseStatus :: !Int
-  , _gtrsTags           :: ![Text]
-  , _gtrsReturnSize     :: !Int
-  , _gtrsTotalSize      :: !Int
+  , _gtrsTags :: ![Text]
+  , _gtrsReturnSize :: !Int
+  , _gtrsTotalSize :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

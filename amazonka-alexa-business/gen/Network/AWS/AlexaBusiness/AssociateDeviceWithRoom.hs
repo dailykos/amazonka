@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Associates a device with a given room. This applies all the settings from the room profile to the device, and all the skills in any skill groups added to that room. This operation requires the device to be online, or else a manual sync is required.
+-- Associates a device with a given room. This applies all the settings from the room profile to the device, and all the skills in any skill groups added to that room. This operation requires the device to be online, or else a manual sync is required. 
 --
 --
 module Network.AWS.AlexaBusiness.AssociateDeviceWithRoom
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'associateDeviceWithRoom' smart constructor.
 data AssociateDeviceWithRoom = AssociateDeviceWithRoom'
   { _adwrDeviceARN :: !(Maybe Text)
-  , _adwrRoomARN   :: !(Maybe Text)
+  , _adwrRoomARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

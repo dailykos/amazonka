@@ -56,7 +56,7 @@ import Network.AWS.Response
 -- /See:/ 'updateVPCLink' smart constructor.
 data UpdateVPCLink = UpdateVPCLink'
   { _uvlPatchOperations :: !(Maybe [PatchOperation])
-  , _uvlVpcLinkId       :: !Text
+  , _uvlVpcLinkId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

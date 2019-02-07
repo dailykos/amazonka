@@ -44,7 +44,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'disableMetricsCollection' smart constructor.
 data DisableMetricsCollection = DisableMetricsCollection'
-  { _dmcMetrics              :: !(Maybe [Text])
+  { _dmcMetrics :: !(Maybe [Text])
   , _dmcAutoScalingGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -53,7 +53,7 @@ data DisableMetricsCollection = DisableMetricsCollection'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmcMetrics' - One or more of the following metrics. If you omit this parameter, all metrics are disabled.     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@
+-- * 'dmcMetrics' - One or more of the following metrics. If you omit this parameter, all metrics are disabled.     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@ 
 --
 -- * 'dmcAutoScalingGroupName' - The name of the Auto Scaling group.
 disableMetricsCollection
@@ -64,7 +64,7 @@ disableMetricsCollection pAutoScalingGroupName_ =
     {_dmcMetrics = Nothing, _dmcAutoScalingGroupName = pAutoScalingGroupName_}
 
 
--- | One or more of the following metrics. If you omit this parameter, all metrics are disabled.     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@
+-- | One or more of the following metrics. If you omit this parameter, all metrics are disabled.     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@ 
 dmcMetrics :: Lens' DisableMetricsCollection [Text]
 dmcMetrics = lens _dmcMetrics (\ s a -> s{_dmcMetrics = a}) . _Default . _Coerce
 

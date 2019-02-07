@@ -23,7 +23,7 @@
 --
 -- If @MessageAction@ is not set, the default is to send a welcome message via email or phone (SMS).
 --
--- Alternatively, you can call AdminCreateUser with “SUPPRESS” for the @MessageAction@ parameter, and Amazon Cognito will not send any email.
+-- Alternatively, you can call AdminCreateUser with “SUPPRESS” for the @MessageAction@ parameter, and Amazon Cognito will not send any email. 
 --
 -- In either case, the user will be in the @FORCE_CHANGE_PASSWORD@ state until they sign in and change their password.
 --
@@ -65,14 +65,14 @@ import Network.AWS.Response
 --
 -- /See:/ 'adminCreateUser' smart constructor.
 data AdminCreateUser = AdminCreateUser'
-  { _acuTemporaryPassword      :: !(Maybe (Sensitive Text))
-  , _acuForceAliasCreation     :: !(Maybe Bool)
+  { _acuTemporaryPassword :: !(Maybe (Sensitive Text))
+  , _acuForceAliasCreation :: !(Maybe Bool)
   , _acuDesiredDeliveryMediums :: !(Maybe [DeliveryMediumType])
-  , _acuMessageAction          :: !(Maybe MessageActionType)
-  , _acuUserAttributes         :: !(Maybe [AttributeType])
-  , _acuValidationData         :: !(Maybe [AttributeType])
-  , _acuUserPoolId             :: !Text
-  , _acuUsername               :: !(Sensitive Text)
+  , _acuMessageAction :: !(Maybe MessageActionType)
+  , _acuUserAttributes :: !(Maybe [AttributeType])
+  , _acuValidationData :: !(Maybe [AttributeType])
+  , _acuUserPoolId :: !Text
+  , _acuUsername :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -193,7 +193,7 @@ instance ToQuery AdminCreateUser where
 --
 -- /See:/ 'adminCreateUserResponse' smart constructor.
 data AdminCreateUserResponse = AdminCreateUserResponse'
-  { _acursUser           :: !(Maybe UserType)
+  { _acursUser :: !(Maybe UserType)
   , _acursResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 

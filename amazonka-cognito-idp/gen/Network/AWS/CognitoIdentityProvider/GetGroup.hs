@@ -49,7 +49,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'getGroup' smart constructor.
 data GetGroup = GetGroup'
-  { _ggGroupName  :: !Text
+  { _ggGroupName :: !Text
   , _ggUserPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery GetGroup where
 
 -- | /See:/ 'getGroupResponse' smart constructor.
 data GetGroupResponse = GetGroupResponse'
-  { _ggrsGroup          :: !(Maybe GroupType)
+  { _ggrsGroup :: !(Maybe GroupType)
   , _ggrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

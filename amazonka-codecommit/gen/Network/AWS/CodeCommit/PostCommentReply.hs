@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'postCommentReply' smart constructor.
 data PostCommentReply = PostCommentReply'
   { _pcrClientRequestToken :: !(Maybe Text)
-  , _pcrInReplyTo          :: !Text
-  , _pcrContent            :: !Text
+  , _pcrInReplyTo :: !Text
+  , _pcrContent :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -127,7 +127,7 @@ instance ToQuery PostCommentReply where
 
 -- | /See:/ 'postCommentReplyResponse' smart constructor.
 data PostCommentReplyResponse = PostCommentReplyResponse'
-  { _pcrrsComment        :: !(Maybe Comment)
+  { _pcrrsComment :: !(Maybe Comment)
   , _pcrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

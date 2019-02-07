@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the reservation utilization for your account. Master accounts in an organization have access to member accounts. You can filter data by dimensions in a time period. You can use @GetDimensionValues@ to determine the possible dimension values. Currently, you can group only by @SUBSCRIPTION_ID@ .
+-- Retrieves the reservation utilization for your account. Master accounts in an organization have access to member accounts. You can filter data by dimensions in a time period. You can use @GetDimensionValues@ to determine the possible dimension values. Currently, you can group only by @SUBSCRIPTION_ID@ . 
 --
 --
 module Network.AWS.CostExplorer.GetReservationUtilization
@@ -52,11 +52,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'getReservationUtilization' smart constructor.
 data GetReservationUtilization = GetReservationUtilization'
-  { _gruGroupBy       :: !(Maybe [GroupDefinition])
+  { _gruGroupBy :: !(Maybe [GroupDefinition])
   , _gruNextPageToken :: !(Maybe Text)
-  , _gruGranularity   :: !(Maybe Granularity)
-  , _gruFilter        :: !(Maybe Expression)
-  , _gruTimePeriod    :: !DateInterval
+  , _gruGranularity :: !(Maybe Granularity)
+  , _gruFilter :: !(Maybe Expression)
+  , _gruTimePeriod :: !DateInterval
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -68,11 +68,11 @@ data GetReservationUtilization = GetReservationUtilization'
 --
 -- * 'gruNextPageToken' - The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 --
--- * 'gruGranularity' - If @GroupBy@ is set, @Granularity@ can't be set. If @Granularity@ isn't set, the response object doesn't include @Granularity@ , either @MONTHLY@ or @DAILY@ . If both @GroupBy@ and @Granularity@ aren't set, @GetReservationUtilization@ defaults to @DAILY@ .
+-- * 'gruGranularity' - If @GroupBy@ is set, @Granularity@ can't be set. If @Granularity@ isn't set, the response object doesn't include @Granularity@ , either @MONTHLY@ or @DAILY@ . If both @GroupBy@ and @Granularity@ aren't set, @GetReservationUtilization@ defaults to @DAILY@ . The @GetReservationUtilization@ operation supports only @DAILY@ and @MONTHLY@ granularities.
 --
--- * 'gruFilter' - Filters utilization data by dimensions. You can filter by the following dimensions:     * AZ     * CACHE_ENGINE     * DATABASE_ENGINE     * DEPLOYMENT_OPTION     * INSTANCE_TYPE     * LINKED_ACCOUNT     * OPERATING_SYSTEM     * PLATFORM     * REGION     * SERVICE     * SCOPE     * TENANCY @GetReservationUtilization@ uses the same @<http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> @ object as the other operations, but only @AND@ is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
+-- * 'gruFilter' - Filters utilization data by dimensions. You can filter by the following dimensions:     * AZ     * CACHE_ENGINE     * DATABASE_ENGINE     * DEPLOYMENT_OPTION     * INSTANCE_TYPE     * LINKED_ACCOUNT     * OPERATING_SYSTEM     * PLATFORM     * REGION     * SERVICE     * SCOPE     * TENANCY @GetReservationUtilization@ uses the same <http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> object as the other operations, but only @AND@ is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
 --
--- * 'gruTimePeriod' - Sets the start and end dates for retrieving Reserved Instance (RI) utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
+-- * 'gruTimePeriod' - Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ . 
 getReservationUtilization
     :: DateInterval -- ^ 'gruTimePeriod'
     -> GetReservationUtilization
@@ -94,15 +94,15 @@ gruGroupBy = lens _gruGroupBy (\ s a -> s{_gruGroupBy = a}) . _Default . _Coerce
 gruNextPageToken :: Lens' GetReservationUtilization (Maybe Text)
 gruNextPageToken = lens _gruNextPageToken (\ s a -> s{_gruNextPageToken = a})
 
--- | If @GroupBy@ is set, @Granularity@ can't be set. If @Granularity@ isn't set, the response object doesn't include @Granularity@ , either @MONTHLY@ or @DAILY@ . If both @GroupBy@ and @Granularity@ aren't set, @GetReservationUtilization@ defaults to @DAILY@ .
+-- | If @GroupBy@ is set, @Granularity@ can't be set. If @Granularity@ isn't set, the response object doesn't include @Granularity@ , either @MONTHLY@ or @DAILY@ . If both @GroupBy@ and @Granularity@ aren't set, @GetReservationUtilization@ defaults to @DAILY@ . The @GetReservationUtilization@ operation supports only @DAILY@ and @MONTHLY@ granularities.
 gruGranularity :: Lens' GetReservationUtilization (Maybe Granularity)
 gruGranularity = lens _gruGranularity (\ s a -> s{_gruGranularity = a})
 
--- | Filters utilization data by dimensions. You can filter by the following dimensions:     * AZ     * CACHE_ENGINE     * DATABASE_ENGINE     * DEPLOYMENT_OPTION     * INSTANCE_TYPE     * LINKED_ACCOUNT     * OPERATING_SYSTEM     * PLATFORM     * REGION     * SERVICE     * SCOPE     * TENANCY @GetReservationUtilization@ uses the same @<http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> @ object as the other operations, but only @AND@ is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
+-- | Filters utilization data by dimensions. You can filter by the following dimensions:     * AZ     * CACHE_ENGINE     * DATABASE_ENGINE     * DEPLOYMENT_OPTION     * INSTANCE_TYPE     * LINKED_ACCOUNT     * OPERATING_SYSTEM     * PLATFORM     * REGION     * SERVICE     * SCOPE     * TENANCY @GetReservationUtilization@ uses the same <http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> object as the other operations, but only @AND@ is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
 gruFilter :: Lens' GetReservationUtilization (Maybe Expression)
 gruFilter = lens _gruFilter (\ s a -> s{_gruFilter = a})
 
--- | Sets the start and end dates for retrieving Reserved Instance (RI) utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
+-- | Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ . 
 gruTimePeriod :: Lens' GetReservationUtilization DateInterval
 gruTimePeriod = lens _gruTimePeriod (\ s a -> s{_gruTimePeriod = a})
 
@@ -150,9 +150,9 @@ instance ToQuery GetReservationUtilization where
 
 -- | /See:/ 'getReservationUtilizationResponse' smart constructor.
 data GetReservationUtilizationResponse = GetReservationUtilizationResponse'
-  { _grursNextPageToken      :: !(Maybe Text)
-  , _grursTotal              :: !(Maybe ReservationAggregates)
-  , _grursResponseStatus     :: !Int
+  { _grursNextPageToken :: !(Maybe Text)
+  , _grursTotal :: !(Maybe ReservationAggregates)
+  , _grursResponseStatus :: !Int
   , _grursUtilizationsByTime :: ![UtilizationByTime]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -163,11 +163,11 @@ data GetReservationUtilizationResponse = GetReservationUtilizationResponse'
 --
 -- * 'grursNextPageToken' - The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 --
--- * 'grursTotal' - The total amount of time that you utilized your RIs.
+-- * 'grursTotal' - The total amount of time that you used your RIs.
 --
 -- * 'grursResponseStatus' - -- | The response status code.
 --
--- * 'grursUtilizationsByTime' - The amount of time that you utilized your RIs.
+-- * 'grursUtilizationsByTime' - The amount of time that you used your RIs.
 getReservationUtilizationResponse
     :: Int -- ^ 'grursResponseStatus'
     -> GetReservationUtilizationResponse
@@ -184,7 +184,7 @@ getReservationUtilizationResponse pResponseStatus_ =
 grursNextPageToken :: Lens' GetReservationUtilizationResponse (Maybe Text)
 grursNextPageToken = lens _grursNextPageToken (\ s a -> s{_grursNextPageToken = a})
 
--- | The total amount of time that you utilized your RIs.
+-- | The total amount of time that you used your RIs.
 grursTotal :: Lens' GetReservationUtilizationResponse (Maybe ReservationAggregates)
 grursTotal = lens _grursTotal (\ s a -> s{_grursTotal = a})
 
@@ -192,7 +192,7 @@ grursTotal = lens _grursTotal (\ s a -> s{_grursTotal = a})
 grursResponseStatus :: Lens' GetReservationUtilizationResponse Int
 grursResponseStatus = lens _grursResponseStatus (\ s a -> s{_grursResponseStatus = a})
 
--- | The amount of time that you utilized your RIs.
+-- | The amount of time that you used your RIs.
 grursUtilizationsByTime :: Lens' GetReservationUtilizationResponse [UtilizationByTime]
 grursUtilizationsByTime = lens _grursUtilizationsByTime (\ s a -> s{_grursUtilizationsByTime = a}) . _Coerce
 

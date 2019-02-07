@@ -14,11 +14,11 @@
 module Test.AWS.Gen.CertificateManagerPCA where
 
 import Data.Proxy
-import Network.AWS.CertificateManagerPCA
-import Test.AWS.CertificateManagerPCA.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.CertificateManagerPCA
+import Test.AWS.CertificateManagerPCA.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.
@@ -60,6 +60,9 @@ import Test.Tasty
 --
 --         , requestDescribeCertificateAuthority $
 --             describeCertificateAuthority
+--
+--         , requestRestoreCertificateAuthority $
+--             restoreCertificateAuthority
 --
 --         , requestIssueCertificate $
 --             issueCertificate
@@ -111,6 +114,9 @@ import Test.Tasty
 --
 --         , responseDescribeCertificateAuthority $
 --             describeCertificateAuthorityResponse
+--
+--         , responseRestoreCertificateAuthority $
+--             restoreCertificateAuthorityResponse
 --
 --         , responseIssueCertificate $
 --             issueCertificateResponse
@@ -186,6 +192,11 @@ requestDescribeCertificateAuthority :: DescribeCertificateAuthority -> TestTree
 requestDescribeCertificateAuthority = req
     "DescribeCertificateAuthority"
     "fixture/DescribeCertificateAuthority.yaml"
+
+requestRestoreCertificateAuthority :: RestoreCertificateAuthority -> TestTree
+requestRestoreCertificateAuthority = req
+    "RestoreCertificateAuthority"
+    "fixture/RestoreCertificateAuthority.yaml"
 
 requestIssueCertificate :: IssueCertificate -> TestTree
 requestIssueCertificate = req
@@ -290,6 +301,13 @@ responseDescribeCertificateAuthority = res
     "fixture/DescribeCertificateAuthorityResponse.proto"
     certificateManagerPCA
     (Proxy :: Proxy DescribeCertificateAuthority)
+
+responseRestoreCertificateAuthority :: RestoreCertificateAuthorityResponse -> TestTree
+responseRestoreCertificateAuthority = res
+    "RestoreCertificateAuthorityResponse"
+    "fixture/RestoreCertificateAuthorityResponse.proto"
+    certificateManagerPCA
+    (Proxy :: Proxy RestoreCertificateAuthority)
 
 responseIssueCertificate :: IssueCertificateResponse -> TestTree
 responseIssueCertificate = res

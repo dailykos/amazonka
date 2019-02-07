@@ -95,14 +95,14 @@ instance ToQuery GetComplianceSummaryByConfigRule
          where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'getComplianceSummaryByConfigRuleResponse' smart constructor.
 data GetComplianceSummaryByConfigRuleResponse = GetComplianceSummaryByConfigRuleResponse'
   { _gcsbcrrsComplianceSummary :: !(Maybe ComplianceSummary)
-  , _gcsbcrrsResponseStatus    :: !Int
+  , _gcsbcrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

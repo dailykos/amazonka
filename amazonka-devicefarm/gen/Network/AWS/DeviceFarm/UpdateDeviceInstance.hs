@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'updateDeviceInstance' smart constructor.
 data UpdateDeviceInstance = UpdateDeviceInstance'
   { _udiProfileARN :: !(Maybe Text)
-  , _udiLabels     :: !(Maybe [Text])
-  , _udiArn        :: !Text
+  , _udiLabels :: !(Maybe [Text])
+  , _udiArn :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

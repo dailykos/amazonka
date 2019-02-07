@@ -57,9 +57,9 @@ import Network.AWS.Response
 -- /See:/ 'adminListDevices' smart constructor.
 data AdminListDevices = AdminListDevices'
   { _aldPaginationToken :: !(Maybe Text)
-  , _aldLimit           :: !(Maybe Nat)
-  , _aldUserPoolId      :: !Text
-  , _aldUsername        :: !(Sensitive Text)
+  , _aldLimit :: !(Maybe Nat)
+  , _aldUserPoolId :: !Text
+  , _aldUsername :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -150,8 +150,8 @@ instance ToQuery AdminListDevices where
 -- /See:/ 'adminListDevicesResponse' smart constructor.
 data AdminListDevicesResponse = AdminListDevicesResponse'
   { _aldrsPaginationToken :: !(Maybe Text)
-  , _aldrsDevices         :: !(Maybe [DeviceType])
-  , _aldrsResponseStatus  :: !Int
+  , _aldrsDevices :: !(Maybe [DeviceType])
+  , _aldrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

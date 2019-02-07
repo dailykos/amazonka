@@ -54,7 +54,7 @@ import Network.AWS.Response
 -- /See:/ 'adminSetUserSettings' smart constructor.
 data AdminSetUserSettings = AdminSetUserSettings'
   { _asusUserPoolId :: !Text
-  , _asusUsername   :: !(Sensitive Text)
+  , _asusUsername :: !(Sensitive Text)
   , _asusMFAOptions :: ![MFAOptionType]
   } deriving (Eq, Show, Data, Typeable, Generic)
 

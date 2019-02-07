@@ -60,10 +60,10 @@ import Network.AWS.Response
 -- /See:/ 'getAPIKeys' smart constructor.
 data GetAPIKeys = GetAPIKeys'
   { _gakIncludeValues :: !(Maybe Bool)
-  , _gakCustomerId    :: !(Maybe Text)
-  , _gakNameQuery     :: !(Maybe Text)
-  , _gakLimit         :: !(Maybe Int)
-  , _gakPosition      :: !(Maybe Text)
+  , _gakCustomerId :: !(Maybe Text)
+  , _gakNameQuery :: !(Maybe Text)
+  , _gakLimit :: !(Maybe Int)
+  , _gakPosition :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -155,13 +155,13 @@ instance ToQuery GetAPIKeys where
 -- | Represents a collection of API keys as represented by an 'ApiKeys' resource.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html Use API Keys>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html Use API Keys> 
 --
 -- /See:/ 'getAPIKeysResponse' smart constructor.
 data GetAPIKeysResponse = GetAPIKeysResponse'
-  { _gakrsItems          :: !(Maybe [APIKey])
-  , _gakrsWarnings       :: !(Maybe [Text])
-  , _gakrsPosition       :: !(Maybe Text)
+  { _gakrsItems :: !(Maybe [APIKey])
+  , _gakrsWarnings :: !(Maybe [Text])
+  , _gakrsPosition :: !(Maybe Text)
   , _gakrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

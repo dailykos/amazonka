@@ -49,9 +49,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'registerOnPremisesInstance' smart constructor.
 data RegisterOnPremisesInstance = RegisterOnPremisesInstance'
-  { _ropiIamUserARN    :: !(Maybe Text)
+  { _ropiIamUserARN :: !(Maybe Text)
   , _ropiIamSessionARN :: !(Maybe Text)
-  , _ropiInstanceName  :: !Text
+  , _ropiInstanceName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

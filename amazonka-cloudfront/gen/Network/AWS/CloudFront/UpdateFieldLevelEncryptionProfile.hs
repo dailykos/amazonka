@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update a field-level encryption profile.
+-- Update a field-level encryption profile. 
 --
 --
 module Network.AWS.CloudFront.UpdateFieldLevelEncryptionProfile
@@ -61,9 +61,9 @@ data UpdateFieldLevelEncryptionProfile = UpdateFieldLevelEncryptionProfile'
 --
 -- * 'uflepIfMatch' - The value of the @ETag@ header that you received when retrieving the profile identity to update. For example: @E2QWRUHAPOMQZL@ .
 --
--- * 'uflepFieldLevelEncryptionProfileConfig' - Request to update a field-level encryption profile.
+-- * 'uflepFieldLevelEncryptionProfileConfig' - Request to update a field-level encryption profile. 
 --
--- * 'uflepId' - The ID of the field-level encryption profile request.
+-- * 'uflepId' - The ID of the field-level encryption profile request. 
 updateFieldLevelEncryptionProfile
     :: FieldLevelEncryptionProfileConfig -- ^ 'uflepFieldLevelEncryptionProfileConfig'
     -> Text -- ^ 'uflepId'
@@ -81,11 +81,11 @@ updateFieldLevelEncryptionProfile pFieldLevelEncryptionProfileConfig_ pId_ =
 uflepIfMatch :: Lens' UpdateFieldLevelEncryptionProfile (Maybe Text)
 uflepIfMatch = lens _uflepIfMatch (\ s a -> s{_uflepIfMatch = a})
 
--- | Request to update a field-level encryption profile.
+-- | Request to update a field-level encryption profile. 
 uflepFieldLevelEncryptionProfileConfig :: Lens' UpdateFieldLevelEncryptionProfile FieldLevelEncryptionProfileConfig
 uflepFieldLevelEncryptionProfileConfig = lens _uflepFieldLevelEncryptionProfileConfig (\ s a -> s{_uflepFieldLevelEncryptionProfileConfig = a})
 
--- | The ID of the field-level encryption profile request.
+-- | The ID of the field-level encryption profile request. 
 uflepId :: Lens' UpdateFieldLevelEncryptionProfile Text
 uflepId = lens _uflepId (\ s a -> s{_uflepId = a})
 
@@ -111,7 +111,7 @@ instance ToElement UpdateFieldLevelEncryptionProfile
          where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}FieldLevelEncryptionProfileConfig"
+              "{http://cloudfront.amazonaws.com/doc/2018-11-05/}FieldLevelEncryptionProfileConfig"
               .
               _uflepFieldLevelEncryptionProfileConfig
 
@@ -124,7 +124,7 @@ instance ToPath UpdateFieldLevelEncryptionProfile
          where
         toPath UpdateFieldLevelEncryptionProfile'{..}
           = mconcat
-              ["/2017-10-30/field-level-encryption-profile/",
+              ["/2018-11-05/field-level-encryption-profile/",
                toBS _uflepId, "/config"]
 
 instance ToQuery UpdateFieldLevelEncryptionProfile
@@ -133,9 +133,9 @@ instance ToQuery UpdateFieldLevelEncryptionProfile
 
 -- | /See:/ 'updateFieldLevelEncryptionProfileResponse' smart constructor.
 data UpdateFieldLevelEncryptionProfileResponse = UpdateFieldLevelEncryptionProfileResponse'
-  { _ufleprsETag                        :: !(Maybe Text)
+  { _ufleprsETag :: !(Maybe Text)
   , _ufleprsFieldLevelEncryptionProfile :: !(Maybe FieldLevelEncryptionProfile)
-  , _ufleprsResponseStatus              :: !Int
+  , _ufleprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -143,7 +143,7 @@ data UpdateFieldLevelEncryptionProfileResponse = UpdateFieldLevelEncryptionProfi
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ufleprsETag' - The result of the field-level encryption profile request.
+-- * 'ufleprsETag' - The result of the field-level encryption profile request. 
 --
 -- * 'ufleprsFieldLevelEncryptionProfile' - Return the results of updating the profile.
 --
@@ -159,7 +159,7 @@ updateFieldLevelEncryptionProfileResponse pResponseStatus_ =
     }
 
 
--- | The result of the field-level encryption profile request.
+-- | The result of the field-level encryption profile request. 
 ufleprsETag :: Lens' UpdateFieldLevelEncryptionProfileResponse (Maybe Text)
 ufleprsETag = lens _ufleprsETag (\ s a -> s{_ufleprsETag = a})
 

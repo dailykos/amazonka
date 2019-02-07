@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'removeTagsFromResource' smart constructor.
 data RemoveTagsFromResource = RemoveTagsFromResource'
   { _rtfrResourceId :: !Text
-  , _rtfrTagKeys    :: ![Text]
+  , _rtfrTagKeys :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

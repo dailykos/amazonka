@@ -1,3 +1,10 @@
 {
-    "libraryName": "amazonka-comprehend"
+    "libraryName": "amazonka-comprehend",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.Comprehend.Internal"
+    ],
+    "typeOverrides": {
+    }
 }

@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteUserPoolClient' smart constructor.
 data DeleteUserPoolClient = DeleteUserPoolClient'
   { _dupcUserPoolId :: !Text
-  , _dupcClientId   :: !(Sensitive Text)
+  , _dupcClientId :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

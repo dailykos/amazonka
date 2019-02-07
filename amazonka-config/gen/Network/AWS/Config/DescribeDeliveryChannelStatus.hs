@@ -116,7 +116,7 @@ instance ToQuery DescribeDeliveryChannelStatus where
 -- /See:/ 'describeDeliveryChannelStatusResponse' smart constructor.
 data DescribeDeliveryChannelStatusResponse = DescribeDeliveryChannelStatusResponse'
   { _ddcsrsDeliveryChannelsStatus :: !(Maybe [DeliveryChannelStatus])
-  , _ddcsrsResponseStatus         :: !Int
+  , _ddcsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

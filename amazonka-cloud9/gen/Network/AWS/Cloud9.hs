@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Cloud9__
+-- __AWS Cloud9__ 
 --
 -- AWS Cloud9 is a collection of tools that you can use to code, build, run, test, debug, and release software in the cloud.
 --
@@ -79,28 +79,28 @@ module Network.AWS.Cloud9
     -- ** ListEnvironments (Paginated)
     , module Network.AWS.Cloud9.ListEnvironments
 
-    -- ** UpdateEnvironment
+    -- ** UpdateEnvironment 
     , module Network.AWS.Cloud9.UpdateEnvironment
 
-    -- ** DeleteEnvironment
+    -- ** DeleteEnvironment 
     , module Network.AWS.Cloud9.DeleteEnvironment
 
-    -- ** DescribeEnvironmentStatus
+    -- ** DescribeEnvironmentStatus 
     , module Network.AWS.Cloud9.DescribeEnvironmentStatus
 
-    -- ** CreateEnvironmentEC
+    -- ** CreateEnvironmentEC 
     , module Network.AWS.Cloud9.CreateEnvironmentEC
 
-    -- ** CreateEnvironmentMembership
+    -- ** CreateEnvironmentMembership 
     , module Network.AWS.Cloud9.CreateEnvironmentMembership
 
-    -- ** DescribeEnvironments
+    -- ** DescribeEnvironments 
     , module Network.AWS.Cloud9.DescribeEnvironments
 
-    -- ** DeleteEnvironmentMembership
+    -- ** DeleteEnvironmentMembership 
     , module Network.AWS.Cloud9.DeleteEnvironmentMembership
 
-    -- ** UpdateEnvironmentMembership
+    -- ** UpdateEnvironmentMembership 
     , module Network.AWS.Cloud9.UpdateEnvironmentMembership
 
     -- ** DescribeEnvironmentMemberships (Paginated)
@@ -145,8 +145,8 @@ import Network.AWS.Cloud9.CreateEnvironmentMembership
 import Network.AWS.Cloud9.DeleteEnvironment
 import Network.AWS.Cloud9.DeleteEnvironmentMembership
 import Network.AWS.Cloud9.DescribeEnvironmentMemberships
-import Network.AWS.Cloud9.DescribeEnvironments
 import Network.AWS.Cloud9.DescribeEnvironmentStatus
+import Network.AWS.Cloud9.DescribeEnvironments
 import Network.AWS.Cloud9.ListEnvironments
 import Network.AWS.Cloud9.Types
 import Network.AWS.Cloud9.UpdateEnvironment

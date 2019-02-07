@@ -117,3 +117,33 @@ instance ToHeader     QueryExecutionState
 
 instance FromJSON QueryExecutionState where
     parseJSON = parseJSONText "QueryExecutionState"
+
+data StatementType
+  = Ddl
+  | Dml
+  | Utility
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText StatementType where
+    parser = takeLowerText >>= \case
+        "ddl" -> pure Ddl
+        "dml" -> pure Dml
+        "utility" -> pure Utility
+        e -> fromTextError $ "Failure parsing StatementType from value: '" <> e
+           <> "'. Accepted values: ddl, dml, utility"
+
+instance ToText StatementType where
+    toText = \case
+        Ddl -> "DDL"
+        Dml -> "DML"
+        Utility -> "UTILITY"
+
+instance Hashable     StatementType
+instance NFData       StatementType
+instance ToByteString StatementType
+instance ToQuery      StatementType
+instance ToHeader     StatementType
+
+instance FromJSON StatementType where
+    parseJSON = parseJSONText "StatementType"

@@ -24,19 +24,19 @@ import Network.AWS.Prelude
 -- | A resource that can be distributed to callers for executing 'Method' resources that require an API key. API keys can be mapped to any 'Stage' on any 'RestApi' , which indicates that the callers with the API key can make requests to that stage.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html Use API Keys>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html Use API Keys> 
 --
 -- /See:/ 'apiKey' smart constructor.
 data APIKey = APIKey'
-  { _akEnabled         :: !(Maybe Bool)
-  , _akValue           :: !(Maybe Text)
-  , _akCustomerId      :: !(Maybe Text)
-  , _akCreatedDate     :: !(Maybe POSIX)
-  , _akName            :: !(Maybe Text)
-  , _akId              :: !(Maybe Text)
-  , _akStageKeys       :: !(Maybe [Text])
+  { _akEnabled :: !(Maybe Bool)
+  , _akValue :: !(Maybe Text)
+  , _akCustomerId :: !(Maybe Text)
+  , _akCreatedDate :: !(Maybe POSIX)
+  , _akName :: !(Maybe Text)
+  , _akId :: !(Maybe Text)
+  , _akStageKeys :: !(Maybe [Text])
   , _akLastUpdatedDate :: !(Maybe POSIX)
-  , _akDescription     :: !(Maybe Text)
+  , _akDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -139,6 +139,7 @@ instance NFData APIKey where
 data APIStage = APIStage'
   { _asStage :: !(Maybe Text)
   , _asApiId :: !(Maybe Text)
+  , _asThrottle :: !(Maybe (Map Text ThrottleSettings))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -149,9 +150,12 @@ data APIStage = APIStage'
 -- * 'asStage' - API stage name of the associated API stage in a usage plan.
 --
 -- * 'asApiId' - API Id of the associated API stage in a usage plan.
+--
+-- * 'asThrottle' - Map containing method level throttling information for API stage in a usage plan.
 apiStage
     :: APIStage
-apiStage = APIStage' {_asStage = Nothing, _asApiId = Nothing}
+apiStage =
+  APIStage' {_asStage = Nothing, _asApiId = Nothing, _asThrottle = Nothing}
 
 
 -- | API stage name of the associated API stage in a usage plan.
@@ -162,11 +166,17 @@ asStage = lens _asStage (\ s a -> s{_asStage = a})
 asApiId :: Lens' APIStage (Maybe Text)
 asApiId = lens _asApiId (\ s a -> s{_asApiId = a})
 
+-- | Map containing method level throttling information for API stage in a usage plan.
+asThrottle :: Lens' APIStage (HashMap Text ThrottleSettings)
+asThrottle = lens _asThrottle (\ s a -> s{_asThrottle = a}) . _Default . _Map
+
 instance FromJSON APIStage where
         parseJSON
           = withObject "APIStage"
               (\ x ->
-                 APIStage' <$> (x .:? "stage") <*> (x .:? "apiId"))
+                 APIStage' <$>
+                   (x .:? "stage") <*> (x .:? "apiId") <*>
+                     (x .:? "throttle" .!= mempty))
 
 instance Hashable APIStage where
 
@@ -177,7 +187,8 @@ instance ToJSON APIStage where
           = object
               (catMaybes
                  [("stage" .=) <$> _asStage,
-                  ("apiId" .=) <$> _asApiId])
+                  ("apiId" .=) <$> _asApiId,
+                  ("throttle" .=) <$> _asThrottle])
 
 -- | Access log settings, including the access log format and access log destination ARN.
 --
@@ -185,7 +196,7 @@ instance ToJSON APIStage where
 --
 -- /See:/ 'accessLogSettings' smart constructor.
 data AccessLogSettings = AccessLogSettings'
-  { _alsFormat         :: !(Maybe Text)
+  { _alsFormat :: !(Maybe Text)
   , _alsDestinationARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -194,7 +205,7 @@ data AccessLogSettings = AccessLogSettings'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'alsFormat' - A single line format of the access logs of data, as specified by selected <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#context-variable-reference > context variables> . The format must include at least @> context.requestId@ .
+-- * 'alsFormat' - A single line format of the access logs of data, as specified by selected <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#context-variable-reference > context variables> . The format must include at least @> context.requestId@ .
 --
 -- * 'alsDestinationARN' - The ARN of the CloudWatch Logs log group to receive access logs.
 accessLogSettings
@@ -203,7 +214,7 @@ accessLogSettings =
   AccessLogSettings' {_alsFormat = Nothing, _alsDestinationARN = Nothing}
 
 
--- | A single line format of the access logs of data, as specified by selected <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#context-variable-reference > context variables> . The format must include at least @> context.requestId@ .
+-- | A single line format of the access logs of data, as specified by selected <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#context-variable-reference > context variables> . The format must include at least @> context.requestId@ .
 alsFormat :: Lens' AccessLogSettings (Maybe Text)
 alsFormat = lens _alsFormat (\ s a -> s{_alsFormat = a})
 
@@ -227,28 +238,28 @@ instance NFData AccessLogSettings where
 --
 -- To view the account info, call @GET@ on this resource.
 --
--- __Error Codes__
+-- __Error Codes__ 
 -- The following exception may be thrown when the request fails.
 --
 --     * UnauthorizedException    * NotFoundException    * TooManyRequestsException
 --
--- For detailed error code information, including the corresponding HTTP Status Codes, see <http://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes API Gateway Error Codes>
+-- For detailed error code information, including the corresponding HTTP Status Codes, see <https://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes API Gateway Error Codes> 
 --
--- __Example: Get the information about an account.__
--- __Request__
--- @@GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} @ @ __Response__
+-- __Example: Get the information about an account.__ 
+-- __Request__ 
+-- @@GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} @ @ __Response__ 
 -- The successful response returns a @200 OK@ status code and a payload similar to the following:
 --
--- @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html", "name": "account", "templated": true }, "self": { "href": "/account" }, "account:update": { "href": "/account" } }, "cloudwatchRoleArn": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "throttleSettings": { "rateLimit": 500, "burstLimit": 1000 } } @ @ In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.
+-- @@{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html", "name": "account", "templated": true }, "self": { "href": "/account" }, "account:update": { "href": "/account" } }, "cloudwatchRoleArn": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "throttleSettings": { "rateLimit": 500, "burstLimit": 1000 } } @ @ In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html API Gateway Limits> <http://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html Developer Guide> , <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html AWS CLI>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html API Gateway Limits> <https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html Developer Guide> , <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html AWS CLI> 
 --
 -- /See:/ 'account' smart constructor.
 data Account = Account'
-  { _aApiKeyVersion     :: !(Maybe Text)
+  { _aApiKeyVersion :: !(Maybe Text)
   , _aCloudwatchRoleARN :: !(Maybe Text)
-  , _aFeatures          :: !(Maybe [Text])
-  , _aThrottleSettings  :: !(Maybe ThrottleSettings)
+  , _aFeatures :: !(Maybe [Text])
+  , _aThrottleSettings :: !(Maybe ThrottleSettings)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -258,7 +269,7 @@ data Account = Account'
 --
 -- * 'aApiKeyVersion' - The version of the API keys used for the account.
 --
--- * 'aCloudwatchRoleARN' - The ARN of an Amazon CloudWatch role for the current 'Account' .
+-- * 'aCloudwatchRoleARN' - The ARN of an Amazon CloudWatch role for the current 'Account' . 
 --
 -- * 'aFeatures' - A list of features supported for the account. When usage plans are enabled, the features list will include an entry of @"UsagePlans"@ .
 --
@@ -278,7 +289,7 @@ account =
 aApiKeyVersion :: Lens' Account (Maybe Text)
 aApiKeyVersion = lens _aApiKeyVersion (\ s a -> s{_aApiKeyVersion = a})
 
--- | The ARN of an Amazon CloudWatch role for the current 'Account' .
+-- | The ARN of an Amazon CloudWatch role for the current 'Account' . 
 aCloudwatchRoleARN :: Lens' Account (Maybe Text)
 aCloudwatchRoleARN = lens _aCloudwatchRoleARN (\ s a -> s{_aCloudwatchRoleARN = a})
 
@@ -307,20 +318,20 @@ instance NFData Account where
 -- | Represents an authorization layer for methods. If enabled on a method, API Gateway will activate the authorizer when a client calls the method.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html Enable custom authorization>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html Enable custom authorization> 
 --
 -- /See:/ 'authorizer' smart constructor.
 data Authorizer = Authorizer'
-  { _aAuthorizerURI                :: !(Maybe Text)
+  { _aAuthorizerURI :: !(Maybe Text)
   , _aIdentityValidationExpression :: !(Maybe Text)
-  , _aProviderARNs                 :: !(Maybe [Text])
-  , _aName                         :: !(Maybe Text)
-  , _aId                           :: !(Maybe Text)
+  , _aProviderARNs :: !(Maybe [Text])
+  , _aName :: !(Maybe Text)
+  , _aId :: !(Maybe Text)
   , _aAuthorizerResultTtlInSeconds :: !(Maybe Int)
-  , _aAuthType                     :: !(Maybe Text)
-  , _aType                         :: !(Maybe AuthorizerType)
-  , _aIdentitySource               :: !(Maybe Text)
-  , _aAuthorizerCredentials        :: !(Maybe Text)
+  , _aAuthType :: !(Maybe Text)
+  , _aType :: !(Maybe AuthorizerType)
+  , _aIdentitySource :: !(Maybe Text)
+  , _aAuthorizerCredentials :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -332,7 +343,7 @@ data Authorizer = Authorizer'
 --
 -- * 'aIdentityValidationExpression' - A validation expression for the incoming identity token. For @TOKEN@ authorizers, this value is a regular expression. API Gateway will match the @aud@ field of the incoming token from the client against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation expression does not apply to the @REQUEST@ authorizer.
 --
--- * 'aProviderARNs' - A list of the Amazon Cognito user pool ARNs for the @COGNITO_USER_POOLS@ authorizer. Each element is of this format: @arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}@ . For a @TOKEN@ or @REQUEST@ authorizer, this is not defined.
+-- * 'aProviderARNs' - A list of the Amazon Cognito user pool ARNs for the @COGNITO_USER_POOLS@ authorizer. Each element is of this format: @arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}@ . For a @TOKEN@ or @REQUEST@ authorizer, this is not defined. 
 --
 -- * 'aName' - [Required] The name of the authorizer.
 --
@@ -340,7 +351,7 @@ data Authorizer = Authorizer'
 --
 -- * 'aAuthorizerResultTtlInSeconds' - The TTL in seconds of cached authorizer results. If it equals 0, authorization caching is disabled. If it is greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.
 --
--- * 'aAuthType' - Optional customer-defined field, used in Swagger imports and exports without functional impact.
+-- * 'aAuthType' - Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
 --
 -- * 'aType' - The authorizer type. Valid values are @TOKEN@ for a Lambda function using a single authorization token submitted in a custom header, @REQUEST@ for a Lambda function using incoming request parameters, and @COGNITO_USER_POOLS@ for using an Amazon Cognito user pool.
 --
@@ -372,7 +383,7 @@ aAuthorizerURI = lens _aAuthorizerURI (\ s a -> s{_aAuthorizerURI = a})
 aIdentityValidationExpression :: Lens' Authorizer (Maybe Text)
 aIdentityValidationExpression = lens _aIdentityValidationExpression (\ s a -> s{_aIdentityValidationExpression = a})
 
--- | A list of the Amazon Cognito user pool ARNs for the @COGNITO_USER_POOLS@ authorizer. Each element is of this format: @arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}@ . For a @TOKEN@ or @REQUEST@ authorizer, this is not defined.
+-- | A list of the Amazon Cognito user pool ARNs for the @COGNITO_USER_POOLS@ authorizer. Each element is of this format: @arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}@ . For a @TOKEN@ or @REQUEST@ authorizer, this is not defined. 
 aProviderARNs :: Lens' Authorizer [Text]
 aProviderARNs = lens _aProviderARNs (\ s a -> s{_aProviderARNs = a}) . _Default . _Coerce
 
@@ -388,7 +399,7 @@ aId = lens _aId (\ s a -> s{_aId = a})
 aAuthorizerResultTtlInSeconds :: Lens' Authorizer (Maybe Int)
 aAuthorizerResultTtlInSeconds = lens _aAuthorizerResultTtlInSeconds (\ s a -> s{_aAuthorizerResultTtlInSeconds = a})
 
--- | Optional customer-defined field, used in Swagger imports and exports without functional impact.
+-- | Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
 aAuthType :: Lens' Authorizer (Maybe Text)
 aAuthType = lens _aAuthType (\ s a -> s{_aAuthType = a})
 
@@ -427,12 +438,12 @@ instance NFData Authorizer where
 -- | Represents the base path that callers of the API must provide as part of the URL after the domain name.
 --
 --
--- A custom domain name plus a @BasePathMapping@ specification identifies a deployed 'RestApi' in a given stage of the owner 'Account' .<http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Use Custom Domain Names>
+-- A custom domain name plus a @BasePathMapping@ specification identifies a deployed 'RestApi' in a given stage of the owner 'Account' .<https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Use Custom Domain Names> 
 --
 -- /See:/ 'basePathMapping' smart constructor.
 data BasePathMapping = BasePathMapping'
-  { _bpmStage     :: !(Maybe Text)
-  , _bpmBasePath  :: !(Maybe Text)
+  { _bpmStage :: !(Maybe Text)
+  , _bpmBasePath :: !(Maybe Text)
   , _bpmRestAPIId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -483,10 +494,10 @@ instance NFData BasePathMapping where
 --
 -- /See:/ 'canarySettings' smart constructor.
 data CanarySettings = CanarySettings'
-  { _csDeploymentId           :: !(Maybe Text)
+  { _csDeploymentId :: !(Maybe Text)
   , _csStageVariableOverrides :: !(Maybe (Map Text Text))
-  , _csUseStageCache          :: !(Maybe Bool)
-  , _csPercentTraffic         :: !(Maybe Double)
+  , _csUseStageCache :: !(Maybe Bool)
+  , _csPercentTraffic :: !(Maybe Double)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -555,15 +566,15 @@ instance ToJSON CanarySettings where
 -- | Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.
 --
 --
--- Client certificates are used to authenticate an API by the backend server. To authenticate an API client (or user), use IAM roles and policies, a custom 'Authorizer' or an Amazon Cognito user pool.<http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html Use Client-Side Certificate>
+-- Client certificates are used to authenticate an API by the backend server. To authenticate an API client (or user), use IAM roles and policies, a custom 'Authorizer' or an Amazon Cognito user pool.<https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html Use Client-Side Certificate> 
 --
 -- /See:/ 'clientCertificate' smart constructor.
 data ClientCertificate = ClientCertificate'
   { _ccPemEncodedCertificate :: !(Maybe Text)
-  , _ccClientCertificateId   :: !(Maybe Text)
-  , _ccCreatedDate           :: !(Maybe POSIX)
-  , _ccExpirationDate        :: !(Maybe POSIX)
-  , _ccDescription           :: !(Maybe Text)
+  , _ccClientCertificateId :: !(Maybe Text)
+  , _ccCreatedDate :: !(Maybe POSIX)
+  , _ccExpirationDate :: !(Maybe POSIX)
+  , _ccDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -630,13 +641,13 @@ instance NFData ClientCertificate where
 -- | An immutable representation of a 'RestApi' resource that can be called by users using 'Stages' . A deployment must be associated with a 'Stage' for it to be callable over the Internet.
 --
 --
--- To create a deployment, call @POST@ on the 'Deployments' resource of a 'RestApi' . To view, update, or delete a deployment, call @GET@ , @PATCH@ , or @DELETE@ on the specified deployment resource (@/restapis/{restapi_id}/deployments/{deployment_id}@ ).'RestApi' , 'Deployments' , 'Stage' , <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html AWS CLI> , <https://aws.amazon.com/tools/ AWS SDKs>
+-- To create a deployment, call @POST@ on the 'Deployments' resource of a 'RestApi' . To view, update, or delete a deployment, call @GET@ , @PATCH@ , or @DELETE@ on the specified deployment resource (@/restapis/{restapi_id}/deployments/{deployment_id}@ ).'RestApi' , 'Deployments' , 'Stage' , <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html AWS CLI> , <https://aws.amazon.com/tools/ AWS SDKs> 
 --
 -- /See:/ 'deployment' smart constructor.
 data Deployment = Deployment'
-  { _dApiSummary  :: !(Maybe (Map Text (Map Text MethodSnapshot)))
+  { _dApiSummary :: !(Maybe (Map Text (Map Text MethodSnapshot)))
   , _dCreatedDate :: !(Maybe POSIX)
-  , _dId          :: !(Maybe Text)
+  , _dId :: !(Maybe Text)
   , _dDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -700,8 +711,8 @@ instance NFData Deployment where
 -- /See:/ 'deploymentCanarySettings' smart constructor.
 data DeploymentCanarySettings = DeploymentCanarySettings'
   { _dcsStageVariableOverrides :: !(Maybe (Map Text Text))
-  , _dcsUseStageCache          :: !(Maybe Bool)
-  , _dcsPercentTraffic         :: !(Maybe Double)
+  , _dcsUseStageCache :: !(Maybe Bool)
+  , _dcsPercentTraffic :: !(Maybe Double)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -754,14 +765,14 @@ instance ToJSON DeploymentCanarySettings where
 --
 -- A documentation part consists of a content map (@properties@ ) and a target (@location@ ). The target specifies an API entity to which the documentation content applies. The supported API entity types are @API@ , @AUTHORIZER@ , @MODEL@ , @RESOURCE@ , @METHOD@ , @PATH_PARAMETER@ , @QUERY_PARAMETER@ , @REQUEST_HEADER@ , @REQUEST_BODY@ , @RESPONSE@ , @RESPONSE_HEADER@ , and @RESPONSE_BODY@ . Valid @location@ fields depend on the API entity type. All valid fields are not required.
 --
--- The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the Swagger-compliant documentation fields will be injected into the associated API entity definition in the exported Swagger definition file.
+-- The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the OpenAPI-compliant documentation fields will be injected into the associated API entity definition in the exported OpenAPI definition file.
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , 'DocumentationParts'
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , 'DocumentationParts' 
 --
 -- /See:/ 'documentationPart' smart constructor.
 data DocumentationPart = DocumentationPart'
-  { _dpLocation   :: !(Maybe DocumentationPartLocation)
-  , _dpId         :: !(Maybe Text)
+  { _dpLocation :: !(Maybe DocumentationPartLocation)
+  , _dpId :: !(Maybe Text)
   , _dpProperties :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -774,7 +785,7 @@ data DocumentationPart = DocumentationPart'
 --
 -- * 'dpId' - The 'DocumentationPart' identifier, generated by API Gateway when the @DocumentationPart@ is created.
 --
--- * 'dpProperties' - A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., @"{ \"description\": \"The API does ...\" }"@ . Only Swagger-compliant documentation-related fields from the @properties@ map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a Swagger extension of @x-amazon-apigateway-documentation@ .
+-- * 'dpProperties' - A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., @"{ \"description\": \"The API does ...\" }"@ . Only OpenAPI-compliant documentation-related fields from the @properties@ map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a OpenAPI extension of @x-amazon-apigateway-documentation@ .
 documentationPart
     :: DocumentationPart
 documentationPart =
@@ -790,7 +801,7 @@ dpLocation = lens _dpLocation (\ s a -> s{_dpLocation = a})
 dpId :: Lens' DocumentationPart (Maybe Text)
 dpId = lens _dpId (\ s a -> s{_dpId = a})
 
--- | A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., @"{ \"description\": \"The API does ...\" }"@ . Only Swagger-compliant documentation-related fields from the @properties@ map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a Swagger extension of @x-amazon-apigateway-documentation@ .
+-- | A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., @"{ \"description\": \"The API does ...\" }"@ . Only OpenAPI-compliant documentation-related fields from the @properties@ map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a OpenAPI extension of @x-amazon-apigateway-documentation@ .
 dpProperties :: Lens' DocumentationPart (Maybe Text)
 dpProperties = lens _dpProperties (\ s a -> s{_dpProperties = a})
 
@@ -812,11 +823,11 @@ instance NFData DocumentationPart where
 --
 -- /See:/ 'documentationPartLocation' smart constructor.
 data DocumentationPartLocation = DocumentationPartLocation'
-  { _dplPath       :: !(Maybe Text)
-  , _dplName       :: !(Maybe Text)
-  , _dplMethod     :: !(Maybe Text)
+  { _dplPath :: !(Maybe Text)
+  , _dplName :: !(Maybe Text)
+  , _dplMethod :: !(Maybe Text)
   , _dplStatusCode :: !(Maybe Text)
-  , _dplType       :: !DocumentationPartType
+  , _dplType :: !DocumentationPartType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -892,14 +903,14 @@ instance ToJSON DocumentationPartLocation where
 -- | A snapshot of the documentation of an API.
 --
 --
--- Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., Swagger) file.
+-- Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., OpenAPI) file.
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , 'DocumentationPart' , 'DocumentationVersions'
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , 'DocumentationPart' , 'DocumentationVersions' 
 --
 -- /See:/ 'documentationVersion' smart constructor.
 data DocumentationVersion = DocumentationVersion'
   { _dvCreatedDate :: !(Maybe POSIX)
-  , _dvVersion     :: !(Maybe Text)
+  , _dvVersion :: !(Maybe Text)
   , _dvDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -947,23 +958,23 @@ instance NFData DocumentationVersion where
 -- | Represents a custom domain name as a user-friendly host name of an API ('RestApi' ).
 --
 --
--- When you deploy an API, API Gateway creates a default host name for the API. This default API host name is of the @{restapi-id}.execute-api.{region}.amazonaws.com@ format. With the default host name, you can access the API's root resource with the URL of @https://{restapi-id}.execute-api.{region}.amazonaws.com/{stage}/@ . When you set up a custom domain name of @apis.example.com@ for this API, you can then access the same resource using the URL of the @https://apis.examples.com/myApi@ , where @myApi@ is the base path mapping ('BasePathMapping' ) of your API under the custom domain name.
+-- When you deploy an API, API Gateway creates a default host name for the API. This default API host name is of the @{restapi-id}.execute-api.{region}.amazonaws.com@ format. With the default host name, you can access the API's root resource with the URL of @https://{restapi-id}.execute-api.{region}.amazonaws.com/{stage}/@ . When you set up a custom domain name of @apis.example.com@ for this API, you can then access the same resource using the URL of the @https://apis.examples.com/myApi@ , where @myApi@ is the base path mapping ('BasePathMapping' ) of your API under the custom domain name. 
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Set a Custom Host Name for an API>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Set a Custom Host Name for an API> 
 --
 -- /See:/ 'domainName' smart constructor.
 data DomainName = DomainName'
-  { _dnRegionalHostedZoneId     :: !(Maybe Text)
-  , _dnCertificateName          :: !(Maybe Text)
-  , _dnRegionalCertificateARN   :: !(Maybe Text)
-  , _dnCertificateARN           :: !(Maybe Text)
+  { _dnRegionalHostedZoneId :: !(Maybe Text)
+  , _dnCertificateName :: !(Maybe Text)
+  , _dnRegionalCertificateARN :: !(Maybe Text)
+  , _dnCertificateARN :: !(Maybe Text)
   , _dnDistributionHostedZoneId :: !(Maybe Text)
-  , _dnDomainName               :: !(Maybe Text)
-  , _dnRegionalCertificateName  :: !(Maybe Text)
-  , _dnRegionalDomainName       :: !(Maybe Text)
-  , _dnCertificateUploadDate    :: !(Maybe POSIX)
-  , _dnDistributionDomainName   :: !(Maybe Text)
-  , _dnEndpointConfiguration    :: !(Maybe EndpointConfiguration)
+  , _dnDomainName :: !(Maybe Text)
+  , _dnRegionalCertificateName :: !(Maybe Text)
+  , _dnRegionalDomainName :: !(Maybe Text)
+  , _dnCertificateUploadDate :: !(Maybe POSIX)
+  , _dnDistributionDomainName :: !(Maybe Text)
+  , _dnEndpointConfiguration :: !(Maybe EndpointConfiguration)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -971,7 +982,7 @@ data DomainName = DomainName'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dnRegionalHostedZoneId' - The region-specific Amazon Route 53 Hosted Zone ID of the regional endpoint. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> .
+-- * 'dnRegionalHostedZoneId' - The region-specific Amazon Route 53 Hosted Zone ID of the regional endpoint. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> . 
 --
 -- * 'dnCertificateName' - The name of the certificate that will be used by edge-optimized endpoint for this domain name.
 --
@@ -979,7 +990,7 @@ data DomainName = DomainName'
 --
 -- * 'dnCertificateARN' - The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
 --
--- * 'dnDistributionHostedZoneId' - The region-agnostic Amazon Route 53 Hosted Zone ID of the edge-optimized endpoint. The valid value is @Z2FDTNDATAQYW2@ for all the regions. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> .
+-- * 'dnDistributionHostedZoneId' - The region-agnostic Amazon Route 53 Hosted Zone ID of the edge-optimized endpoint. The valid value is @Z2FDTNDATAQYW2@ for all the regions. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> . 
 --
 -- * 'dnDomainName' - The custom domain name as an API host name, for example, @my-api.example.com@ .
 --
@@ -989,9 +1000,9 @@ data DomainName = DomainName'
 --
 -- * 'dnCertificateUploadDate' - The timestamp when the certificate that was used by edge-optimized endpoint for this domain name was uploaded.
 --
--- * 'dnDistributionDomainName' - The domain name of the Amazon CloudFront distribution associated with this custom domain name for an edge-optimized endpoint. You set up this association when adding a DNS record pointing the custom domain name to this distribution name. For more information about CloudFront distributions, see the <http://aws.amazon.com/documentation/cloudfront/ Amazon CloudFront documentation> .
+-- * 'dnDistributionDomainName' - The domain name of the Amazon CloudFront distribution associated with this custom domain name for an edge-optimized endpoint. You set up this association when adding a DNS record pointing the custom domain name to this distribution name. For more information about CloudFront distributions, see the <https://aws.amazon.com/documentation/cloudfront/ Amazon CloudFront documentation> .
 --
--- * 'dnEndpointConfiguration' - The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name.
+-- * 'dnEndpointConfiguration' - The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name. 
 domainName
     :: DomainName
 domainName =
@@ -1010,7 +1021,7 @@ domainName =
     }
 
 
--- | The region-specific Amazon Route 53 Hosted Zone ID of the regional endpoint. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> .
+-- | The region-specific Amazon Route 53 Hosted Zone ID of the regional endpoint. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> . 
 dnRegionalHostedZoneId :: Lens' DomainName (Maybe Text)
 dnRegionalHostedZoneId = lens _dnRegionalHostedZoneId (\ s a -> s{_dnRegionalHostedZoneId = a})
 
@@ -1026,7 +1037,7 @@ dnRegionalCertificateARN = lens _dnRegionalCertificateARN (\ s a -> s{_dnRegiona
 dnCertificateARN :: Lens' DomainName (Maybe Text)
 dnCertificateARN = lens _dnCertificateARN (\ s a -> s{_dnCertificateARN = a})
 
--- | The region-agnostic Amazon Route 53 Hosted Zone ID of the edge-optimized endpoint. The valid value is @Z2FDTNDATAQYW2@ for all the regions. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> .
+-- | The region-agnostic Amazon Route 53 Hosted Zone ID of the edge-optimized endpoint. The valid value is @Z2FDTNDATAQYW2@ for all the regions. For more information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html Set up a Regional Custom Domain Name> and <https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region AWS Regions and Endpoints for API Gateway> . 
 dnDistributionHostedZoneId :: Lens' DomainName (Maybe Text)
 dnDistributionHostedZoneId = lens _dnDistributionHostedZoneId (\ s a -> s{_dnDistributionHostedZoneId = a})
 
@@ -1046,11 +1057,11 @@ dnRegionalDomainName = lens _dnRegionalDomainName (\ s a -> s{_dnRegionalDomainN
 dnCertificateUploadDate :: Lens' DomainName (Maybe UTCTime)
 dnCertificateUploadDate = lens _dnCertificateUploadDate (\ s a -> s{_dnCertificateUploadDate = a}) . mapping _Time
 
--- | The domain name of the Amazon CloudFront distribution associated with this custom domain name for an edge-optimized endpoint. You set up this association when adding a DNS record pointing the custom domain name to this distribution name. For more information about CloudFront distributions, see the <http://aws.amazon.com/documentation/cloudfront/ Amazon CloudFront documentation> .
+-- | The domain name of the Amazon CloudFront distribution associated with this custom domain name for an edge-optimized endpoint. You set up this association when adding a DNS record pointing the custom domain name to this distribution name. For more information about CloudFront distributions, see the <https://aws.amazon.com/documentation/cloudfront/ Amazon CloudFront documentation> .
 dnDistributionDomainName :: Lens' DomainName (Maybe Text)
 dnDistributionDomainName = lens _dnDistributionDomainName (\ s a -> s{_dnDistributionDomainName = a})
 
--- | The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name.
+-- | The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name. 
 dnEndpointConfiguration :: Lens' DomainName (Maybe EndpointConfiguration)
 dnEndpointConfiguration = lens _dnEndpointConfiguration (\ s a -> s{_dnEndpointConfiguration = a})
 
@@ -1075,7 +1086,7 @@ instance Hashable DomainName where
 
 instance NFData DomainName where
 
--- | The endpoint configuration to indicate the types of endpoints an API ('RestApi' ) or its custom domain name ('DomainName' ) has.
+-- | The endpoint configuration to indicate the types of endpoints an API ('RestApi' ) or its custom domain name ('DomainName' ) has. 
 --
 --
 --
@@ -1089,13 +1100,13 @@ newtype EndpointConfiguration = EndpointConfiguration'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ecTypes' - A list of endpoint types of an API ('RestApi' ) or its custom domain name ('DomainName' ). For an edge-optimized API and its custom domain name, the endpoint type is @"EDGE"@ . For a regional API and its custom domain name, the endpoint type is @REGIONAL@ .
+-- * 'ecTypes' - A list of endpoint types of an API ('RestApi' ) or its custom domain name ('DomainName' ). For an edge-optimized API and its custom domain name, the endpoint type is @"EDGE"@ . For a regional API and its custom domain name, the endpoint type is @REGIONAL@ . For a private API, the endpoint type is @PRIVATE@ .
 endpointConfiguration
     :: EndpointConfiguration
 endpointConfiguration = EndpointConfiguration' {_ecTypes = Nothing}
 
 
--- | A list of endpoint types of an API ('RestApi' ) or its custom domain name ('DomainName' ). For an edge-optimized API and its custom domain name, the endpoint type is @"EDGE"@ . For a regional API and its custom domain name, the endpoint type is @REGIONAL@ .
+-- | A list of endpoint types of an API ('RestApi' ) or its custom domain name ('DomainName' ). For an edge-optimized API and its custom domain name, the endpoint type is @"EDGE"@ . For a regional API and its custom domain name, the endpoint type is @REGIONAL@ . For a private API, the endpoint type is @PRIVATE@ .
 ecTypes :: Lens' EndpointConfiguration [EndpointType]
 ecTypes = lens _ecTypes (\ s a -> s{_ecTypes = a}) . _Default . _Coerce
 
@@ -1117,25 +1128,25 @@ instance ToJSON EndpointConfiguration where
 -- | A gateway response of a given response type and status code, with optional response parameters and mapping templates.
 --
 --
--- For more information about valid gateway response types, see <http://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html Gateway Response Types Supported by API Gateway> __Example: Get a Gateway Response of a given response type__
--- __Request__
+-- For more information about valid gateway response types, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html Gateway Response Types Supported by API Gateway> __Example: Get a Gateway Response of a given response type__ 
+-- __Request__ 
 -- This example shows how to get a gateway response of the @MISSING_AUTHENTICATION_TOKEN@ type.
 --
 -- @@GET /restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN HTTP/1.1 Host: beta-apigateway.us-east-1.amazonaws.com Content-Type: application/json X-Amz-Date: 20170503T202516Z Authorization: AWS4-HMAC-SHA256 Credential={access-key-id}/20170503/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1b52460e3159c1a26cff29093855d50ea141c1c5b937528fecaf60f51129697a Cache-Control: no-cache Postman-Token: 3b2a1ce9-c848-2e26-2e2f-9c2caefbed45 @ @ The response type is specified as a URL path.
 --
--- __Response__
+-- __Response__ 
 -- The successful operation returns the @200 OK@ status code and a payload similar to the following:
 --
--- @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-gatewayresponse-{rel}.html", "name": "gatewayresponse", "templated": true }, "self": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:delete": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" } }, "defaultResponse": false, "responseParameters": { "gatewayresponse.header.x-request-path": "method.request.path.petId", "gatewayresponse.header.Access-Control-Allow-Origin": "'a.b.c'", "gatewayresponse.header.x-request-query": "method.request.querystring.q", "gatewayresponse.header.x-request-header": "method.request.header.Accept" }, "responseTemplates": { "application/json": "{\n \"message\": $context.error.messageString,\n \"type\": \"$context.error.responseType\",\n \"stage\": \"$context.stage\",\n \"resourcePath\": \"$context.resourcePath\",\n \"stageVariables.a\": \"$stageVariables.a\",\n \"statusCode\": \"'404'\"\n}" }, "responseType": "MISSING_AUTHENTICATION_TOKEN", "statusCode": "404" }@ @
+-- @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-gatewayresponse-{rel}.html", "name": "gatewayresponse", "templated": true }, "self": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:delete": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" } }, "defaultResponse": false, "responseParameters": { "gatewayresponse.header.x-request-path": "method.request.path.petId", "gatewayresponse.header.Access-Control-Allow-Origin": "'a.b.c'", "gatewayresponse.header.x-request-query": "method.request.querystring.q", "gatewayresponse.header.x-request-header": "method.request.header.Accept" }, "responseTemplates": { "application/json": "{\n \"message\": $context.error.messageString,\n \"type\": \"$context.error.responseType\",\n \"stage\": \"$context.stage\",\n \"resourcePath\": \"$context.resourcePath\",\n \"stageVariables.a\": \"$stageVariables.a\",\n \"statusCode\": \"'404'\"\n}" }, "responseType": "MISSING_AUTHENTICATION_TOKEN", "statusCode": "404" }@ @ 
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html Customize Gateway Responses>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html Customize Gateway Responses> 
 --
 -- /See:/ 'gatewayResponse' smart constructor.
 data GatewayResponse = GatewayResponse'
-  { _gDefaultResponse    :: !(Maybe Bool)
-  , _gResponseTemplates  :: !(Maybe (Map Text Text))
-  , _gResponseType       :: !(Maybe GatewayResponseType)
-  , _gStatusCode         :: !(Maybe Text)
+  { _gDefaultResponse :: !(Maybe Bool)
+  , _gResponseTemplates :: !(Maybe (Map Text Text))
+  , _gResponseType :: !(Maybe GatewayResponseType)
+  , _gStatusCode :: !(Maybe Text)
   , _gResponseParameters :: !(Maybe (Map Text Text))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1144,7 +1155,7 @@ data GatewayResponse = GatewayResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gDefaultResponse' - A Boolean flag to indicate whether this 'GatewayResponse' is the default gateway response (@true@ ) or not (@false@ ). A default gateway response is one generated by API Gateway without any customization by an API developer.
+-- * 'gDefaultResponse' - A Boolean flag to indicate whether this 'GatewayResponse' is the default gateway response (@true@ ) or not (@false@ ). A default gateway response is one generated by API Gateway without any customization by an API developer. 
 --
 -- * 'gResponseTemplates' - Response templates of the 'GatewayResponse' as a string-to-string map of key-value pairs.
 --
@@ -1165,7 +1176,7 @@ gatewayResponse =
     }
 
 
--- | A Boolean flag to indicate whether this 'GatewayResponse' is the default gateway response (@true@ ) or not (@false@ ). A default gateway response is one generated by API Gateway without any customization by an API developer.
+-- | A Boolean flag to indicate whether this 'GatewayResponse' is the default gateway response (@true@ ) or not (@false@ ). A default gateway response is one generated by API Gateway without any customization by an API developer. 
 gDefaultResponse :: Lens' GatewayResponse (Maybe Bool)
 gDefaultResponse = lens _gDefaultResponse (\ s a -> s{_gDefaultResponse = a})
 
@@ -1203,24 +1214,24 @@ instance NFData GatewayResponse where
 -- | Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.
 --
 --
--- In the API Gateway console, the built-in Lambda integration is an AWS integration.<http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API>
+-- In the API Gateway console, the built-in Lambda integration is an AWS integration.<https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API> 
 --
 -- /See:/ 'integration' smart constructor.
 data Integration = Integration'
-  { _iHttpMethod           :: !(Maybe Text)
-  , _iRequestTemplates     :: !(Maybe (Map Text Text))
-  , _iCredentials          :: !(Maybe Text)
-  , _iConnectionId         :: !(Maybe Text)
-  , _iRequestParameters    :: !(Maybe (Map Text Text))
-  , _iContentHandling      :: !(Maybe ContentHandlingStrategy)
-  , _iPassthroughBehavior  :: !(Maybe Text)
-  , _iUri                  :: !(Maybe Text)
+  { _iHttpMethod :: !(Maybe Text)
+  , _iRequestTemplates :: !(Maybe (Map Text Text))
+  , _iCredentials :: !(Maybe Text)
+  , _iConnectionId :: !(Maybe Text)
+  , _iRequestParameters :: !(Maybe (Map Text Text))
+  , _iContentHandling :: !(Maybe ContentHandlingStrategy)
+  , _iPassthroughBehavior :: !(Maybe Text)
+  , _iUri :: !(Maybe Text)
   , _iIntegrationResponses :: !(Maybe (Map Text IntegrationResponse))
-  , _iCacheNamespace       :: !(Maybe Text)
-  , _iTimeoutInMillis      :: !(Maybe Int)
-  , _iType                 :: !(Maybe IntegrationType)
-  , _iConnectionType       :: !(Maybe ConnectionType)
-  , _iCacheKeyParameters   :: !(Maybe [Text])
+  , _iCacheNamespace :: !(Maybe Text)
+  , _iTimeoutInMillis :: !(Maybe Int)
+  , _iType :: !(Maybe IntegrationType)
+  , _iConnectionType :: !(Maybe ConnectionType)
+  , _iCacheKeyParameters :: !(Maybe [Text])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1234,17 +1245,17 @@ data Integration = Integration'
 --
 -- * 'iCredentials' - Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string @arn:aws:iam::\*:user/\*@ . To use resource-based permissions on supported AWS services, specify null.
 --
--- * 'iConnectionId' - The (<http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id @id@ > ) of the 'VpcLink' used for the integration when @connectionType=VPC_LINK@ and undefined, otherwise.
+-- * 'iConnectionId' - The (<https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id @id@ > ) of the 'VpcLink' used for the integration when @connectionType=VPC_LINK@ and undefined, otherwise.
 --
 -- * 'iRequestParameters' - A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of @method.request.{location}.{name}@ , where @location@ is @querystring@ , @path@ , or @header@ and @name@ must be a valid and unique method request parameter name.
 --
 -- * 'iContentHandling' - Specifies how to handle request payload content type conversions. Supported values are @CONVERT_TO_BINARY@ and @CONVERT_TO_TEXT@ , with the following behaviors:     * @CONVERT_TO_BINARY@ : Converts a request payload from a Base64-encoded string to the corresponding binary blob.     * @CONVERT_TO_TEXT@ : Converts a request payload from a binary blob to a Base64-encoded string. If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the @passthroughBehaviors@ is configured to support payload pass-through.
 --
--- * 'iPassthroughBehavior' - Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in @requestTemplates@ . The valid value is one of the following:      * @WHEN_NO_MATCH@ : passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request.     * @WHEN_NO_TEMPLATES@ : passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP @415 Unsupported Media Type@ response.     * @NEVER@ : rejects the method request with an HTTP @415 Unsupported Media Type@ response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request.
+-- * 'iPassthroughBehavior' - Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in @requestTemplates@ . The valid value is one of the following:      * @WHEN_NO_MATCH@ : passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request.     * @WHEN_NO_TEMPLATES@ : passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP @415 Unsupported Media Type@ response.     * @NEVER@ : rejects the method request with an HTTP @415 Unsupported Media Type@ response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. 
 --
--- * 'iUri' - Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@
+-- * 'iUri' - Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@ 
 --
--- * 'iIntegrationResponses' - Specifies the integration's responses. __Example: Get integration responses of a method__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} @ @ __Response__  The successful response returns @200 OK@ status and a payload as follows: @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }@ @  <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API>
+-- * 'iIntegrationResponses' - Specifies the integration's responses. __Example: Get integration responses of a method__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} @ @ __Response__  The successful response returns @200 OK@ status and a payload as follows: @@{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }@ @  <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API> 
 --
 -- * 'iCacheNamespace' - Specifies the integration's cache namespace.
 --
@@ -1288,7 +1299,7 @@ iRequestTemplates = lens _iRequestTemplates (\ s a -> s{_iRequestTemplates = a})
 iCredentials :: Lens' Integration (Maybe Text)
 iCredentials = lens _iCredentials (\ s a -> s{_iCredentials = a})
 
--- | The (<http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id @id@ > ) of the 'VpcLink' used for the integration when @connectionType=VPC_LINK@ and undefined, otherwise.
+-- | The (<https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id @id@ > ) of the 'VpcLink' used for the integration when @connectionType=VPC_LINK@ and undefined, otherwise.
 iConnectionId :: Lens' Integration (Maybe Text)
 iConnectionId = lens _iConnectionId (\ s a -> s{_iConnectionId = a})
 
@@ -1300,15 +1311,15 @@ iRequestParameters = lens _iRequestParameters (\ s a -> s{_iRequestParameters = 
 iContentHandling :: Lens' Integration (Maybe ContentHandlingStrategy)
 iContentHandling = lens _iContentHandling (\ s a -> s{_iContentHandling = a})
 
--- | Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in @requestTemplates@ . The valid value is one of the following:      * @WHEN_NO_MATCH@ : passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request.     * @WHEN_NO_TEMPLATES@ : passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP @415 Unsupported Media Type@ response.     * @NEVER@ : rejects the method request with an HTTP @415 Unsupported Media Type@ response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request.
+-- | Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in @requestTemplates@ . The valid value is one of the following:      * @WHEN_NO_MATCH@ : passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request.     * @WHEN_NO_TEMPLATES@ : passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP @415 Unsupported Media Type@ response.     * @NEVER@ : rejects the method request with an HTTP @415 Unsupported Media Type@ response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. 
 iPassthroughBehavior :: Lens' Integration (Maybe Text)
 iPassthroughBehavior = lens _iPassthroughBehavior (\ s a -> s{_iPassthroughBehavior = a})
 
--- | Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@
+-- | Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@ 
 iUri :: Lens' Integration (Maybe Text)
 iUri = lens _iUri (\ s a -> s{_iUri = a})
 
--- | Specifies the integration's responses. __Example: Get integration responses of a method__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} @ @ __Response__  The successful response returns @200 OK@ status and a payload as follows: @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }@ @  <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API>
+-- | Specifies the integration's responses. __Example: Get integration responses of a method__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} @ @ __Response__  The successful response returns @200 OK@ status and a payload as follows: @@{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }@ @  <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API> 
 iIntegrationResponses :: Lens' Integration (HashMap Text IntegrationResponse)
 iIntegrationResponses = lens _iIntegrationResponses (\ s a -> s{_iIntegrationResponses = a}) . _Default . _Map
 
@@ -1359,14 +1370,14 @@ instance NFData Integration where
 -- | Represents an integration response. The status code must map to an existing 'MethodResponse' , and parameters and templates can be used to transform the back-end response.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API> 
 --
 -- /See:/ 'integrationResponse' smart constructor.
 data IntegrationResponse = IntegrationResponse'
-  { _intContentHandling    :: !(Maybe ContentHandlingStrategy)
-  , _intResponseTemplates  :: !(Maybe (Map Text Text))
-  , _intSelectionPattern   :: !(Maybe Text)
-  , _intStatusCode         :: !(Maybe Text)
+  { _intContentHandling :: !(Maybe ContentHandlingStrategy)
+  , _intResponseTemplates :: !(Maybe (Map Text Text))
+  , _intSelectionPattern :: !(Maybe Text)
+  , _intStatusCode :: !(Maybe Text)
   , _intResponseParameters :: !(Maybe (Map Text Text))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1431,35 +1442,35 @@ instance Hashable IntegrationResponse where
 
 instance NFData IntegrationResponse where
 
--- | Represents a client-facing interface by which the client calls the API to access back-end resources. A __Method__ resource is integrated with an 'Integration' resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a __Method__ resource, whereas an integration request is embodied in an 'Integration' resource. On the other hand, a method response is represented by a 'MethodResponse' resource, whereas an integration response is represented by an 'IntegrationResponse' resource.
+-- | Represents a client-facing interface by which the client calls the API to access back-end resources. A __Method__ resource is integrated with an 'Integration' resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a __Method__ resource, whereas an integration request is embodied in an 'Integration' resource. On the other hand, a method response is represented by a 'MethodResponse' resource, whereas an integration response is represented by an 'IntegrationResponse' resource. 
 --
 --
 --
 --
--- __Example: Retrive the GET method on a specified resource__
--- __Request__
--- The following example request retrieves the information about the GET method on an API resource (@3kzxbg5sa2@ ) of an API (@fugvjdxtri@ ).
+-- __Example: Retrive the GET method on a specified resource__ 
+-- __Request__ 
+-- The following example request retrieves the information about the GET method on an API resource (@3kzxbg5sa2@ ) of an API (@fugvjdxtri@ ). 
 --
--- @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__
+-- @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__ 
 -- The successful response returns a @200 OK@ status code and a payload similar to the following:
 --
--- @@{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": true, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }@ @ In the example above, the response template for the @200 OK@ response maps the JSON output from the @ListStreams@ action in the back end to an XML output. The mapping template is URL-encoded as @%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E@ and the output is decoded using the <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference > util.urlDecode()> helper function.
+-- @@{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": true, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }@ @ In the example above, the response template for the @200 OK@ response maps the JSON output from the @ListStreams@ action in the back end to an XML output. The mapping template is URL-encoded as @%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E@ and the output is decoded using the <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference > util.urlDecode()> helper function.
 --
--- 'MethodResponse' , 'Integration' , 'IntegrationResponse' , 'Resource' , <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html Set up an API's method>
+-- 'MethodResponse' , 'Integration' , 'IntegrationResponse' , 'Resource' , <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html Set up an API's method> 
 --
 -- /See:/ 'method' smart constructor.
 data Method = Method'
-  { _mMethodResponses     :: !(Maybe (Map Text MethodResponse))
-  , _mHttpMethod          :: !(Maybe Text)
+  { _mMethodResponses :: !(Maybe (Map Text MethodResponse))
+  , _mHttpMethod :: !(Maybe Text)
   , _mAuthorizationScopes :: !(Maybe [Text])
-  , _mRequestValidatorId  :: !(Maybe Text)
-  , _mRequestModels       :: !(Maybe (Map Text Text))
-  , _mRequestParameters   :: !(Maybe (Map Text Bool))
-  , _mAuthorizerId        :: !(Maybe Text)
-  , _mOperationName       :: !(Maybe Text)
-  , _mAuthorizationType   :: !(Maybe Text)
-  , _mApiKeyRequired      :: !(Maybe Bool)
-  , _mMethodIntegration   :: !(Maybe Integration)
+  , _mRequestValidatorId :: !(Maybe Text)
+  , _mRequestModels :: !(Maybe (Map Text Text))
+  , _mRequestParameters :: !(Maybe (Map Text Bool))
+  , _mAuthorizerId :: !(Maybe Text)
+  , _mOperationName :: !(Maybe Text)
+  , _mAuthorizationType :: !(Maybe Text)
+  , _mApiKeyRequired :: !(Maybe Bool)
+  , _mMethodIntegration :: !(Maybe Integration)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1467,7 +1478,7 @@ data Method = Method'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mMethodResponses' - Gets a method response associated with a given HTTP status code.  The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a 'MethodResponse' resource that specifies the response returned to the caller from the back end through the integration response. __Example: Get a 200 OK response of a GET method__  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }@ @  <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html AWS CLI>
+-- * 'mMethodResponses' - Gets a method response associated with a given HTTP status code.  The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a 'MethodResponse' resource that specifies the response returned to the caller from the back end through the integration response. __Example: Get a 200 OK response of a GET method__  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }@ @  <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html AWS CLI> 
 --
 -- * 'mHttpMethod' - The method's HTTP verb.
 --
@@ -1481,13 +1492,13 @@ data Method = Method'
 --
 -- * 'mAuthorizerId' - The identifier of an 'Authorizer' to use on this method. The @authorizationType@ must be @CUSTOM@ .
 --
--- * 'mOperationName' - A human-friendly operation identifier for the method. For example, you can assign the @operationName@ of @ListPets@ for the @GET /pets@ method in <http://petstore-demo-endpoint.execute-api.com/petstore/pets PetStore> example.
+-- * 'mOperationName' - A human-friendly operation identifier for the method. For example, you can assign the @operationName@ of @ListPets@ for the @GET /pets@ method in <https://petstore-demo-endpoint.execute-api.com/petstore/pets PetStore> example.
 --
 -- * 'mAuthorizationType' - The method's authorization type. Valid values are @NONE@ for open access, @AWS_IAM@ for using AWS IAM permissions, @CUSTOM@ for using a custom authorizer, or @COGNITO_USER_POOLS@ for using a Cognito user pool.
 --
 -- * 'mApiKeyRequired' - A boolean flag specifying whether a valid 'ApiKey' is required to invoke this method.
 --
--- * 'mMethodIntegration' - Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end. __Example: __  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }@ @  <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html AWS CLI>
+-- * 'mMethodIntegration' - Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end. __Example: __  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }@ @  <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html AWS CLI> 
 method
     :: Method
 method =
@@ -1506,7 +1517,7 @@ method =
     }
 
 
--- | Gets a method response associated with a given HTTP status code.  The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a 'MethodResponse' resource that specifies the response returned to the caller from the back end through the integration response. __Example: Get a 200 OK response of a GET method__  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }@ @  <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html AWS CLI>
+-- | Gets a method response associated with a given HTTP status code.  The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a 'MethodResponse' resource that specifies the response returned to the caller from the back end through the integration response. __Example: Get a 200 OK response of a GET method__  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }@ @  <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html AWS CLI> 
 mMethodResponses :: Lens' Method (HashMap Text MethodResponse)
 mMethodResponses = lens _mMethodResponses (\ s a -> s{_mMethodResponses = a}) . _Default . _Map
 
@@ -1534,7 +1545,7 @@ mRequestParameters = lens _mRequestParameters (\ s a -> s{_mRequestParameters = 
 mAuthorizerId :: Lens' Method (Maybe Text)
 mAuthorizerId = lens _mAuthorizerId (\ s a -> s{_mAuthorizerId = a})
 
--- | A human-friendly operation identifier for the method. For example, you can assign the @operationName@ of @ListPets@ for the @GET /pets@ method in <http://petstore-demo-endpoint.execute-api.com/petstore/pets PetStore> example.
+-- | A human-friendly operation identifier for the method. For example, you can assign the @operationName@ of @ListPets@ for the @GET /pets@ method in <https://petstore-demo-endpoint.execute-api.com/petstore/pets PetStore> example.
 mOperationName :: Lens' Method (Maybe Text)
 mOperationName = lens _mOperationName (\ s a -> s{_mOperationName = a})
 
@@ -1546,7 +1557,7 @@ mAuthorizationType = lens _mAuthorizationType (\ s a -> s{_mAuthorizationType = 
 mApiKeyRequired :: Lens' Method (Maybe Bool)
 mApiKeyRequired = lens _mApiKeyRequired (\ s a -> s{_mApiKeyRequired = a})
 
--- | Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end. __Example: __  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }@ @  <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html AWS CLI>
+-- | Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end. __Example: __  __Request__  @@GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  The successful response returns a @200 OK@ status code and a payload similar to the following: @@{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }@ @  <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html AWS CLI> 
 mMethodIntegration :: Lens' Method (Maybe Integration)
 mMethodIntegration = lens _mMethodIntegration (\ s a -> s{_mMethodIntegration = a})
 
@@ -1571,26 +1582,26 @@ instance Hashable Method where
 
 instance NFData Method where
 
--- | Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template.
+-- | Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template. 
 --
 --
 --
 --
--- __Example: A __MethodResponse__ instance of an API__
--- __Request__
+-- __Example: A __MethodResponse__ instance of an API__ 
+-- __Request__ 
 -- The example request retrieves a __MethodResponse__ of the 200 status code.
 --
--- @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__
+-- @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__ 
 -- The successful response returns @200 OK@ status and a payload as follows:
 --
--- @@{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" }@ @
+-- @@{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" }@ @ 
 --
--- 'Method' , 'IntegrationResponse' , 'Integration' <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API>
+-- 'Method' , 'IntegrationResponse' , 'Integration' <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Creating an API> 
 --
 -- /See:/ 'methodResponse' smart constructor.
 data MethodResponse = MethodResponse'
-  { _mResponseModels     :: !(Maybe (Map Text Text))
-  , _mStatusCode         :: !(Maybe Text)
+  { _mResponseModels :: !(Maybe (Map Text Text))
+  , _mStatusCode :: !(Maybe Text)
   , _mResponseParameters :: !(Maybe (Map Text Bool))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1664,13 +1675,13 @@ data MethodSetting = MethodSetting'
 --
 -- * 'msCacheTtlInSeconds' - Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached. The PATCH path for this setting is @/{method_setting_key}/caching/ttlInSeconds@ , and the value is an integer.
 --
--- * 'msDataTraceEnabled' - Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/dataTrace@ , and the value is a Boolean.
+-- * 'msDataTraceEnabled' - Specifies whether data trace logging is enabled for this method, which affects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/dataTrace@ , and the value is a Boolean.
 --
 -- * 'msThrottlingBurstLimit' - Specifies the throttling burst limit. The PATCH path for this setting is @/{method_setting_key}/throttling/burstLimit@ , and the value is an integer.
 --
 -- * 'msCacheDataEncrypted' - Specifies whether the cached responses are encrypted. The PATCH path for this setting is @/{method_setting_key}/caching/dataEncrypted@ , and the value is a Boolean.
 --
--- * 'msLoggingLevel' - Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/loglevel@ , and the available levels are @OFF@ , @ERROR@ , and @INFO@ .
+-- * 'msLoggingLevel' - Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/loglevel@ , and the available levels are @OFF@ , @ERROR@ , and @INFO@ .
 --
 -- * 'msRequireAuthorizationForCacheControl' - Specifies whether authorization is required for a cache invalidation request. The PATCH path for this setting is @/{method_setting_key}/caching/requireAuthorizationForCacheControl@ , and the value is a Boolean.
 --
@@ -1702,7 +1713,7 @@ methodSetting =
 msCacheTtlInSeconds :: Lens' MethodSetting (Maybe Int)
 msCacheTtlInSeconds = lens _msCacheTtlInSeconds (\ s a -> s{_msCacheTtlInSeconds = a})
 
--- | Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/dataTrace@ , and the value is a Boolean.
+-- | Specifies whether data trace logging is enabled for this method, which affects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/dataTrace@ , and the value is a Boolean.
 msDataTraceEnabled :: Lens' MethodSetting (Maybe Bool)
 msDataTraceEnabled = lens _msDataTraceEnabled (\ s a -> s{_msDataTraceEnabled = a})
 
@@ -1714,7 +1725,7 @@ msThrottlingBurstLimit = lens _msThrottlingBurstLimit (\ s a -> s{_msThrottlingB
 msCacheDataEncrypted :: Lens' MethodSetting (Maybe Bool)
 msCacheDataEncrypted = lens _msCacheDataEncrypted (\ s a -> s{_msCacheDataEncrypted = a})
 
--- | Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/loglevel@ , and the available levels are @OFF@ , @ERROR@ , and @INFO@ .
+-- | Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is @/{method_setting_key}/logging/loglevel@ , and the available levels are @OFF@ , @ERROR@ , and @INFO@ .
 msLoggingLevel :: Lens' MethodSetting (Maybe Text)
 msLoggingLevel = lens _msLoggingLevel (\ s a -> s{_msLoggingLevel = a})
 
@@ -1765,7 +1776,7 @@ instance NFData MethodSetting where
 -- /See:/ 'methodSnapshot' smart constructor.
 data MethodSnapshot = MethodSnapshot'
   { _msAuthorizationType :: !(Maybe Text)
-  , _msApiKeyRequired    :: !(Maybe Bool)
+  , _msApiKeyRequired :: !(Maybe Bool)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1809,13 +1820,13 @@ instance NFData MethodSnapshot where
 --
 -- A model is used for generating an API's SDK, validating the input request body, and creating a skeletal mapping template.
 --
--- 'Method' , 'MethodResponse' , <http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html Models and Mappings>
+-- 'Method' , 'MethodResponse' , <https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html Models and Mappings> 
 --
 -- /See:/ 'model' smart constructor.
 data Model = Model'
-  { _mSchema      :: !(Maybe Text)
-  , _mName        :: !(Maybe Text)
-  , _mId          :: !(Maybe Text)
+  { _mSchema :: !(Maybe Text)
+  , _mName :: !(Maybe Text)
+  , _mId :: !(Maybe Text)
   , _mDescription :: !(Maybe Text)
   , _mContentType :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1883,10 +1894,10 @@ instance NFData Model where
 --
 -- /See:/ 'patchOperation' smart constructor.
 data PatchOperation = PatchOperation'
-  { _poOp    :: !(Maybe Op)
-  , _poPath  :: !(Maybe Text)
+  { _poOp :: !(Maybe Op)
+  , _poPath :: !(Maybe Text)
   , _poValue :: !(Maybe Text)
-  , _poFrom  :: !(Maybe Text)
+  , _poFrom :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1898,7 +1909,7 @@ data PatchOperation = PatchOperation'
 --
 -- * 'poPath' - The @op@ operation's target, as identified by a <https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08 JSON Pointer> value that references a location within the targeted resource. For example, if the target resource has an updateable property of @{"name":"value"}@ , the path for this property is @/name@ . If the @name@ property value is a JSON object (e.g., @{"name": {"child/name": "child-value"}}@ ), the path for the @child/name@ property will be @/name/child~1name@ . Any slash ("/") character appearing in path names must be escaped with "~1", as shown in the example above. Each @op@ operation can have only one @path@ associated with it.
 --
--- * 'poValue' - The new target value of the update operation. It is applicable for the @add@ or @replace@ operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json Using JSON for Parameters> .
+-- * 'poValue' - The new target value of the update operation. It is applicable for the @add@ or @replace@ operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json Using JSON for Parameters> .
 --
 -- * 'poFrom' - The @copy@ update operation's source as identified by a @JSON-Pointer@ value referencing the location within the targeted resource to copy the value from. For example, to promote a canary deployment, you copy the canary deployment ID to the affiliated deployment ID by calling a PATCH request on a 'Stage' resource with @"op":"copy"@ , @"from":"/canarySettings/deploymentId"@ and @"path":"/deploymentId"@ .
 patchOperation
@@ -1916,7 +1927,7 @@ poOp = lens _poOp (\ s a -> s{_poOp = a})
 poPath :: Lens' PatchOperation (Maybe Text)
 poPath = lens _poPath (\ s a -> s{_poPath = a})
 
--- | The new target value of the update operation. It is applicable for the @add@ or @replace@ operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json Using JSON for Parameters> .
+-- | The new target value of the update operation. It is applicable for the @add@ or @replace@ operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json Using JSON for Parameters> .
 poValue :: Lens' PatchOperation (Maybe Text)
 poValue = lens _poValue (\ s a -> s{_poValue = a})
 
@@ -1943,7 +1954,7 @@ instance ToJSON PatchOperation where
 data QuotaSettings = QuotaSettings'
   { _qsOffset :: !(Maybe Int)
   , _qsPeriod :: !(Maybe QuotaPeriodType)
-  , _qsLimit  :: !(Maybe Int)
+  , _qsLimit :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1997,16 +2008,16 @@ instance ToJSON QuotaSettings where
 -- | A set of validation rules for incoming 'Method' requests.
 --
 --
--- In Swagger, a 'RequestValidator' of an API is defined by the <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html x-amazon-apigateway-request-validators.requestValidator> object. It the referenced using the <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator x-amazon-apigateway-request-validator> property.
+-- In OpenAPI, a 'RequestValidator' of an API is defined by the <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html x-amazon-apigateway-request-validators.requestValidator> object. It the referenced using the <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator x-amazon-apigateway-request-validator> property.
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html Enable Basic Request Validation in API Gateway>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html Enable Basic Request Validation in API Gateway> 
 --
 -- /See:/ 'requestValidator' smart constructor.
 data RequestValidator = RequestValidator'
   { _rvValidateRequestParameters :: !(Maybe Bool)
-  , _rvName                      :: !(Maybe Text)
-  , _rvValidateRequestBody       :: !(Maybe Bool)
-  , _rvId                        :: !(Maybe Text)
+  , _rvName :: !(Maybe Text)
+  , _rvValidateRequestBody :: !(Maybe Bool)
+  , _rvId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2016,7 +2027,7 @@ data RequestValidator = RequestValidator'
 --
 -- * 'rvValidateRequestParameters' - A Boolean flag to indicate whether to validate request parameters (@true@ ) or not (@false@ ).
 --
--- * 'rvName' - The name of this 'RequestValidator'
+-- * 'rvName' - The name of this 'RequestValidator' 
 --
 -- * 'rvValidateRequestBody' - A Boolean flag to indicate whether to validate a request body according to the configured 'Model' schema.
 --
@@ -2036,7 +2047,7 @@ requestValidator =
 rvValidateRequestParameters :: Lens' RequestValidator (Maybe Bool)
 rvValidateRequestParameters = lens _rvValidateRequestParameters (\ s a -> s{_rvValidateRequestParameters = a})
 
--- | The name of this 'RequestValidator'
+-- | The name of this 'RequestValidator' 
 rvName :: Lens' RequestValidator (Maybe Text)
 rvName = lens _rvName (\ s a -> s{_rvName = a})
 
@@ -2065,15 +2076,15 @@ instance NFData RequestValidator where
 -- | Represents an API resource.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API> 
 --
 -- /See:/ 'resource' smart constructor.
 data Resource = Resource'
-  { _rPathPart        :: !(Maybe Text)
-  , _rPath            :: !(Maybe Text)
-  , _rId              :: !(Maybe Text)
+  { _rPathPart :: !(Maybe Text)
+  , _rPath :: !(Maybe Text)
+  , _rId :: !(Maybe Text)
   , _rResourceMethods :: !(Maybe (Map Text Method))
-  , _rParentId        :: !(Maybe Text)
+  , _rParentId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2087,7 +2098,7 @@ data Resource = Resource'
 --
 -- * 'rId' - The resource's identifier.
 --
--- * 'rResourceMethods' - Gets an API resource's method of a given HTTP verb. The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the @200 OK@ response of the @GET /restapis/{restapi_id}/resources/{resource_id}@ or @GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods@ request. __Example: Get the GET method of an API resource__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  @@{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }@ @ If the @OPTIONS@ is enabled on the resource, you can follow the example here to get that method. Just replace the @GET@ of the last path segment in the request URL with @OPTIONS@ .
+-- * 'rResourceMethods' - Gets an API resource's method of a given HTTP verb. The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the @200 OK@ response of the @GET /restapis/{restapi_id}/resources/{resource_id}@ or @GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods@ request. __Example: Get the GET method of an API resource__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  @@{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }@ @ If the @OPTIONS@ is enabled on the resource, you can follow the example here to get that method. Just replace the @GET@ of the last path segment in the request URL with @OPTIONS@ .
 --
 -- * 'rParentId' - The parent resource's identifier.
 resource
@@ -2114,7 +2125,7 @@ rPath = lens _rPath (\ s a -> s{_rPath = a})
 rId :: Lens' Resource (Maybe Text)
 rId = lens _rId (\ s a -> s{_rId = a})
 
--- | Gets an API resource's method of a given HTTP verb. The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the @200 OK@ response of the @GET /restapis/{restapi_id}/resources/{resource_id}@ or @GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods@ request. __Example: Get the GET method of an API resource__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  @@{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }@ @ If the @OPTIONS@ is enabled on the resource, you can follow the example here to get that method. Just replace the @GET@ of the last path segment in the request URL with @OPTIONS@ .
+-- | Gets an API resource's method of a given HTTP verb. The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the @200 OK@ response of the @GET /restapis/{restapi_id}/resources/{resource_id}@ or @GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods@ request. __Example: Get the GET method of an API resource__  __Request__  @@GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}@ @ __Response__  @@{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }@ @ If the @OPTIONS@ is enabled on the resource, you can follow the example here to get that method. Just replace the @GET@ of the last path segment in the request URL with @OPTIONS@ .
 rResourceMethods :: Lens' Resource (HashMap Text Method)
 rResourceMethods = lens _rResourceMethods (\ s a -> s{_rResourceMethods = a}) . _Default . _Map
 
@@ -2139,21 +2150,21 @@ instance NFData Resource where
 -- | Represents a REST API.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API> 
 --
 -- /See:/ 'restAPI' smart constructor.
 data RestAPI = RestAPI'
   { _raMinimumCompressionSize :: !(Maybe Int)
-  , _raBinaryMediaTypes       :: !(Maybe [Text])
-  , _raWarnings               :: !(Maybe [Text])
-  , _raCreatedDate            :: !(Maybe POSIX)
-  , _raName                   :: !(Maybe Text)
-  , _raVersion                :: !(Maybe Text)
-  , _raApiKeySource           :: !(Maybe APIKeySourceType)
-  , _raId                     :: !(Maybe Text)
-  , _raPolicy                 :: !(Maybe Text)
-  , _raEndpointConfiguration  :: !(Maybe EndpointConfiguration)
-  , _raDescription            :: !(Maybe Text)
+  , _raBinaryMediaTypes :: !(Maybe [Text])
+  , _raWarnings :: !(Maybe [Text])
+  , _raCreatedDate :: !(Maybe POSIX)
+  , _raName :: !(Maybe Text)
+  , _raVersion :: !(Maybe Text)
+  , _raApiKeySource :: !(Maybe APIKeySourceType)
+  , _raId :: !(Maybe Text)
+  , _raPolicy :: !(Maybe Text)
+  , _raEndpointConfiguration :: !(Maybe EndpointConfiguration)
+  , _raDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2177,9 +2188,9 @@ data RestAPI = RestAPI'
 --
 -- * 'raId' - The API's identifier. This identifier is unique across all of your APIs in API Gateway.
 --
--- * 'raPolicy' - 'Method'
+-- * 'raPolicy' - 'Method' 
 --
--- * 'raEndpointConfiguration' - The endpoint configuration of this 'RestApi' showing the endpoint types of the API.
+-- * 'raEndpointConfiguration' - The endpoint configuration of this 'RestApi' showing the endpoint types of the API. 
 --
 -- * 'raDescription' - The API's description.
 restAPI
@@ -2232,11 +2243,11 @@ raApiKeySource = lens _raApiKeySource (\ s a -> s{_raApiKeySource = a})
 raId :: Lens' RestAPI (Maybe Text)
 raId = lens _raId (\ s a -> s{_raId = a})
 
--- | 'Method'
+-- | 'Method' 
 raPolicy :: Lens' RestAPI (Maybe Text)
 raPolicy = lens _raPolicy (\ s a -> s{_raPolicy = a})
 
--- | The endpoint configuration of this 'RestApi' showing the endpoint types of the API.
+-- | The endpoint configuration of this 'RestApi' showing the endpoint types of the API. 
 raEndpointConfiguration :: Lens' RestAPI (Maybe EndpointConfiguration)
 raEndpointConfiguration = lens _raEndpointConfiguration (\ s a -> s{_raEndpointConfiguration = a})
 
@@ -2272,10 +2283,10 @@ instance NFData RestAPI where
 -- /See:/ 'sdkConfigurationProperty' smart constructor.
 data SDKConfigurationProperty = SDKConfigurationProperty'
   { _scpFriendlyName :: !(Maybe Text)
-  , _scpRequired     :: !(Maybe Bool)
-  , _scpName         :: !(Maybe Text)
+  , _scpRequired :: !(Maybe Bool)
+  , _scpName :: !(Maybe Text)
   , _scpDefaultValue :: !(Maybe Text)
-  , _scpDescription  :: !(Maybe Text)
+  , _scpDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2344,10 +2355,10 @@ instance NFData SDKConfigurationProperty where
 --
 -- /See:/ 'sdkType' smart constructor.
 data SDKType = SDKType'
-  { _stFriendlyName            :: !(Maybe Text)
+  { _stFriendlyName :: !(Maybe Text)
   , _stConfigurationProperties :: !(Maybe [SDKConfigurationProperty])
-  , _stId                      :: !(Maybe Text)
-  , _stDescription             :: !(Maybe Text)
+  , _stId :: !(Maybe Text)
+  , _stDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2406,25 +2417,27 @@ instance NFData SDKType where
 -- | Represents a unique identifier for a version of a deployed 'RestApi' that is callable by users.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html Deploy an API>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html Deploy an API> 
 --
 -- /See:/ 'stage' smart constructor.
 data Stage = Stage'
-  { _sDeploymentId         :: !(Maybe Text)
-  , _sVariables            :: !(Maybe (Map Text Text))
-  , _sAccessLogSettings    :: !(Maybe AccessLogSettings)
+  { _sDeploymentId :: !(Maybe Text)
+  , _sVariables :: !(Maybe (Map Text Text))
+  , _sAccessLogSettings :: !(Maybe AccessLogSettings)
   , _sDocumentationVersion :: !(Maybe Text)
-  , _sClientCertificateId  :: !(Maybe Text)
-  , _sCreatedDate          :: !(Maybe POSIX)
-  , _sCacheClusterStatus   :: !(Maybe CacheClusterStatus)
-  , _sMethodSettings       :: !(Maybe (Map Text MethodSetting))
-  , _sLastUpdatedDate      :: !(Maybe POSIX)
-  , _sCacheClusterSize     :: !(Maybe CacheClusterSize)
-  , _sCanarySettings       :: !(Maybe CanarySettings)
-  , _sCacheClusterEnabled  :: !(Maybe Bool)
-  , _sStageName            :: !(Maybe Text)
-  , _sDescription          :: !(Maybe Text)
-  , _sTags                 :: !(Maybe (Map Text Text))
+  , _sClientCertificateId :: !(Maybe Text)
+  , _sTracingEnabled :: !(Maybe Bool)
+  , _sCreatedDate :: !(Maybe POSIX)
+  , _sCacheClusterStatus :: !(Maybe CacheClusterStatus)
+  , _sMethodSettings :: !(Maybe (Map Text MethodSetting))
+  , _sLastUpdatedDate :: !(Maybe POSIX)
+  , _sCacheClusterSize :: !(Maybe CacheClusterSize)
+  , _sWebACLARN :: !(Maybe Text)
+  , _sCanarySettings :: !(Maybe CanarySettings)
+  , _sCacheClusterEnabled :: !(Maybe Bool)
+  , _sStageName :: !(Maybe Text)
+  , _sDescription :: !(Maybe Text)
+  , _sTags :: !(Maybe (Map Text Text))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2442,15 +2455,19 @@ data Stage = Stage'
 --
 -- * 'sClientCertificateId' - The identifier of a client certificate for an API stage.
 --
+-- * 'sTracingEnabled' - Specifies whether active tracing with X-ray is enabled for the 'Stage' .
+--
 -- * 'sCreatedDate' - The timestamp when the stage was created.
 --
 -- * 'sCacheClusterStatus' - The status of the cache cluster for the stage, if enabled.
 --
--- * 'sMethodSettings' - A map that defines the method settings for a 'Stage' resource. Keys (designated as @/{method_setting_key@ below) are method paths defined as @{resource_path}/{http_method}@ for an individual method override, or @/\*/\*@ for overriding all methods in the stage.
+-- * 'sMethodSettings' - A map that defines the method settings for a 'Stage' resource. Keys (designated as @/{method_setting_key@ below) are method paths defined as @{resource_path}/{http_method}@ for an individual method override, or @/\*/\*@ for overriding all methods in the stage. 
 --
 -- * 'sLastUpdatedDate' - The timestamp when the stage last updated.
 --
 -- * 'sCacheClusterSize' - The size of the cache cluster for the stage, if enabled.
+--
+-- * 'sWebACLARN' - The ARN of the WebAcl associated with the 'Stage' .
 --
 -- * 'sCanarySettings' - Settings for the canary deployment in this stage.
 --
@@ -2470,11 +2487,13 @@ stage =
     , _sAccessLogSettings = Nothing
     , _sDocumentationVersion = Nothing
     , _sClientCertificateId = Nothing
+    , _sTracingEnabled = Nothing
     , _sCreatedDate = Nothing
     , _sCacheClusterStatus = Nothing
     , _sMethodSettings = Nothing
     , _sLastUpdatedDate = Nothing
     , _sCacheClusterSize = Nothing
+    , _sWebACLARN = Nothing
     , _sCanarySettings = Nothing
     , _sCacheClusterEnabled = Nothing
     , _sStageName = Nothing
@@ -2503,6 +2522,10 @@ sDocumentationVersion = lens _sDocumentationVersion (\ s a -> s{_sDocumentationV
 sClientCertificateId :: Lens' Stage (Maybe Text)
 sClientCertificateId = lens _sClientCertificateId (\ s a -> s{_sClientCertificateId = a})
 
+-- | Specifies whether active tracing with X-ray is enabled for the 'Stage' .
+sTracingEnabled :: Lens' Stage (Maybe Bool)
+sTracingEnabled = lens _sTracingEnabled (\ s a -> s{_sTracingEnabled = a})
+
 -- | The timestamp when the stage was created.
 sCreatedDate :: Lens' Stage (Maybe UTCTime)
 sCreatedDate = lens _sCreatedDate (\ s a -> s{_sCreatedDate = a}) . mapping _Time
@@ -2511,7 +2534,7 @@ sCreatedDate = lens _sCreatedDate (\ s a -> s{_sCreatedDate = a}) . mapping _Tim
 sCacheClusterStatus :: Lens' Stage (Maybe CacheClusterStatus)
 sCacheClusterStatus = lens _sCacheClusterStatus (\ s a -> s{_sCacheClusterStatus = a})
 
--- | A map that defines the method settings for a 'Stage' resource. Keys (designated as @/{method_setting_key@ below) are method paths defined as @{resource_path}/{http_method}@ for an individual method override, or @/\*/\*@ for overriding all methods in the stage.
+-- | A map that defines the method settings for a 'Stage' resource. Keys (designated as @/{method_setting_key@ below) are method paths defined as @{resource_path}/{http_method}@ for an individual method override, or @/\*/\*@ for overriding all methods in the stage. 
 sMethodSettings :: Lens' Stage (HashMap Text MethodSetting)
 sMethodSettings = lens _sMethodSettings (\ s a -> s{_sMethodSettings = a}) . _Default . _Map
 
@@ -2522,6 +2545,10 @@ sLastUpdatedDate = lens _sLastUpdatedDate (\ s a -> s{_sLastUpdatedDate = a}) . 
 -- | The size of the cache cluster for the stage, if enabled.
 sCacheClusterSize :: Lens' Stage (Maybe CacheClusterSize)
 sCacheClusterSize = lens _sCacheClusterSize (\ s a -> s{_sCacheClusterSize = a})
+
+-- | The ARN of the WebAcl associated with the 'Stage' .
+sWebACLARN :: Lens' Stage (Maybe Text)
+sWebACLARN = lens _sWebACLARN (\ s a -> s{_sWebACLARN = a})
 
 -- | Settings for the canary deployment in this stage.
 sCanarySettings :: Lens' Stage (Maybe CanarySettings)
@@ -2553,11 +2580,13 @@ instance FromJSON Stage where
                      <*> (x .:? "accessLogSettings")
                      <*> (x .:? "documentationVersion")
                      <*> (x .:? "clientCertificateId")
+                     <*> (x .:? "tracingEnabled")
                      <*> (x .:? "createdDate")
                      <*> (x .:? "cacheClusterStatus")
                      <*> (x .:? "methodSettings" .!= mempty)
                      <*> (x .:? "lastUpdatedDate")
                      <*> (x .:? "cacheClusterSize")
+                     <*> (x .:? "webAclArn")
                      <*> (x .:? "canarySettings")
                      <*> (x .:? "cacheClusterEnabled")
                      <*> (x .:? "stageName")
@@ -2617,7 +2646,7 @@ instance ToJSON StageKey where
 -- /See:/ 'throttleSettings' smart constructor.
 data ThrottleSettings = ThrottleSettings'
   { _tsBurstLimit :: !(Maybe Int)
-  , _tsRateLimit  :: !(Maybe Double)
+  , _tsRateLimit :: !(Maybe Double)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2663,15 +2692,15 @@ instance ToJSON ThrottleSettings where
 -- | Represents the usage data of a usage plan.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans> , <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage Manage Usage in a Usage Plan>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans> , <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage Manage Usage in a Usage Plan> 
 --
 -- /See:/ 'usage' smart constructor.
 data Usage = Usage'
   { _uUsagePlanId :: !(Maybe Text)
-  , _uEndDate     :: !(Maybe Text)
-  , _uItems       :: !(Maybe (Map Text [[Integer]]))
-  , _uStartDate   :: !(Maybe Text)
-  , _uPosition    :: !(Maybe Text)
+  , _uEndDate :: !(Maybe Text)
+  , _uItems :: !(Maybe (Map Text [[Integer]]))
+  , _uStartDate :: !(Maybe Text)
+  , _uPosition :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2737,17 +2766,17 @@ instance NFData Usage where
 -- | Represents a usage plan than can specify who can assess associated API stages with specified request limits and quotas.
 --
 --
--- In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan.
+-- In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan. 
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans> 
 --
 -- /See:/ 'usagePlan' smart constructor.
 data UsagePlan = UsagePlan'
-  { _upApiStages   :: !(Maybe [APIStage])
-  , _upName        :: !(Maybe Text)
-  , _upId          :: !(Maybe Text)
-  , _upThrottle    :: !(Maybe ThrottleSettings)
-  , _upQuota       :: !(Maybe QuotaSettings)
+  { _upApiStages :: !(Maybe [APIStage])
+  , _upName :: !(Maybe Text)
+  , _upId :: !(Maybe Text)
+  , _upThrottle :: !(Maybe ThrottleSettings)
+  , _upQuota :: !(Maybe QuotaSettings)
   , _upDescription :: !(Maybe Text)
   , _upProductCode :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2833,14 +2862,14 @@ instance NFData UsagePlan where
 --
 -- To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to represent the selected 'ApiKey' .
 --
--- " <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans>
+-- " <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans> 
 --
 -- /See:/ 'usagePlanKey' smart constructor.
 data UsagePlanKey = UsagePlanKey'
   { _upkValue :: !(Maybe Text)
-  , _upkName  :: !(Maybe Text)
-  , _upkId    :: !(Maybe Text)
-  , _upkType  :: !(Maybe Text)
+  , _upkName :: !(Maybe Text)
+  , _upkId :: !(Maybe Text)
+  , _upkType :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2904,12 +2933,12 @@ instance NFData UsagePlanKey where
 --
 -- /See:/ 'vpcLink' smart constructor.
 data VPCLink = VPCLink'
-  { _vlStatus        :: !(Maybe VPCLinkStatus)
-  , _vlTargetARNs    :: !(Maybe [Text])
-  , _vlName          :: !(Maybe Text)
+  { _vlStatus :: !(Maybe VPCLinkStatus)
+  , _vlTargetARNs :: !(Maybe [Text])
+  , _vlName :: !(Maybe Text)
   , _vlStatusMessage :: !(Maybe Text)
-  , _vlId            :: !(Maybe Text)
-  , _vlDescription   :: !(Maybe Text)
+  , _vlId :: !(Maybe Text)
+  , _vlDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2917,7 +2946,7 @@ data VPCLink = VPCLink'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vlStatus' - The status of the VPC link. The valid values are @AVAILABLE@ , @PENDING@ , @DELETING@ , or @FAILED@ . Deploying an API will wait if the status is @PENDING@ and will fail if the status is @DELETING@ .
+-- * 'vlStatus' - The status of the VPC link. The valid values are @AVAILABLE@ , @PENDING@ , @DELETING@ , or @FAILED@ . Deploying an API will wait if the status is @PENDING@ and will fail if the status is @DELETING@ . 
 --
 -- * 'vlTargetARNs' - The ARNs of network load balancers of the VPC targeted by the VPC link. The network load balancers must be owned by the same AWS account of the API owner.
 --
@@ -2941,7 +2970,7 @@ vpcLink =
     }
 
 
--- | The status of the VPC link. The valid values are @AVAILABLE@ , @PENDING@ , @DELETING@ , or @FAILED@ . Deploying an API will wait if the status is @PENDING@ and will fail if the status is @DELETING@ .
+-- | The status of the VPC link. The valid values are @AVAILABLE@ , @PENDING@ , @DELETING@ , or @FAILED@ . Deploying an API will wait if the status is @PENDING@ and will fail if the status is @DELETING@ . 
 vlStatus :: Lens' VPCLink (Maybe VPCLinkStatus)
 vlStatus = lens _vlStatus (\ s a -> s{_vlStatus = a})
 

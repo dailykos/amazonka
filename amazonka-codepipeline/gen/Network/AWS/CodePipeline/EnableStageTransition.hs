@@ -49,8 +49,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'enableStageTransition' smart constructor.
 data EnableStageTransition = EnableStageTransition'
-  { _estPipelineName   :: !Text
-  , _estStageName      :: !Text
+  { _estPipelineName :: !Text
+  , _estStageName :: !Text
   , _estTransitionType :: !StageTransitionType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

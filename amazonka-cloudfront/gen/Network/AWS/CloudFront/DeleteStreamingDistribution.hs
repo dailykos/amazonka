@@ -25,7 +25,7 @@
 --
 --     * Disable the RTMP distribution.
 --
---     * Submit a @GET Streaming Distribution Config@ request to get the current configuration and the @Etag@ header for the distribution.
+--     * Submit a @GET Streaming Distribution Config@ request to get the current configuration and the @Etag@ header for the distribution. 
 --
 --     * Update the XML document that was returned in the response to your @GET Streaming Distribution Config@ request to change the value of @Enabled@ to @false@ .
 --
@@ -71,7 +71,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteStreamingDistribution' smart constructor.
 data DeleteStreamingDistribution = DeleteStreamingDistribution'
   { _dsdIfMatch :: !(Maybe Text)
-  , _dsdId      :: !Text
+  , _dsdId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -81,7 +81,7 @@ data DeleteStreamingDistribution = DeleteStreamingDistribution'
 --
 -- * 'dsdIfMatch' - The value of the @ETag@ header that you received when you disabled the streaming distribution. For example: @E2QWRUHAPOMQZL@ .
 --
--- * 'dsdId' - The distribution ID.
+-- * 'dsdId' - The distribution ID. 
 deleteStreamingDistribution
     :: Text -- ^ 'dsdId'
     -> DeleteStreamingDistribution
@@ -93,7 +93,7 @@ deleteStreamingDistribution pId_ =
 dsdIfMatch :: Lens' DeleteStreamingDistribution (Maybe Text)
 dsdIfMatch = lens _dsdIfMatch (\ s a -> s{_dsdIfMatch = a})
 
--- | The distribution ID.
+-- | The distribution ID. 
 dsdId :: Lens' DeleteStreamingDistribution Text
 dsdId = lens _dsdId (\ s a -> s{_dsdId = a})
 
@@ -115,7 +115,7 @@ instance ToHeaders DeleteStreamingDistribution where
 instance ToPath DeleteStreamingDistribution where
         toPath DeleteStreamingDistribution'{..}
           = mconcat
-              ["/2017-10-30/streaming-distribution/", toBS _dsdId]
+              ["/2018-11-05/streaming-distribution/", toBS _dsdId]
 
 instance ToQuery DeleteStreamingDistribution where
         toQuery = const mempty

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Certificate Manager__
+-- __AWS Certificate Manager__ 
 --
 -- Welcome to the AWS Certificate Manager (ACM) API documentation.
 --
@@ -55,43 +55,46 @@ module Network.AWS.CertificateManager
     -- * Waiters
     -- $waiters
 
+    -- ** CertificateValidated
+    , certificateValidated
+
     -- * Operations
     -- $operations
 
-    -- ** ResendValidationEmail
+    -- ** ResendValidationEmail 
     , module Network.AWS.CertificateManager.ResendValidationEmail
 
-    -- ** UpdateCertificateOptions
+    -- ** UpdateCertificateOptions 
     , module Network.AWS.CertificateManager.UpdateCertificateOptions
 
-    -- ** ListTagsForCertificate
+    -- ** ListTagsForCertificate 
     , module Network.AWS.CertificateManager.ListTagsForCertificate
 
-    -- ** GetCertificate
+    -- ** GetCertificate 
     , module Network.AWS.CertificateManager.GetCertificate
 
-    -- ** AddTagsToCertificate
+    -- ** AddTagsToCertificate 
     , module Network.AWS.CertificateManager.AddTagsToCertificate
 
-    -- ** RequestCertificate
+    -- ** RequestCertificate 
     , module Network.AWS.CertificateManager.RequestCertificate
 
     -- ** ListCertificates (Paginated)
     , module Network.AWS.CertificateManager.ListCertificates
 
-    -- ** DeleteCertificate
+    -- ** DeleteCertificate 
     , module Network.AWS.CertificateManager.DeleteCertificate
 
-    -- ** RemoveTagsFromCertificate
+    -- ** RemoveTagsFromCertificate 
     , module Network.AWS.CertificateManager.RemoveTagsFromCertificate
 
-    -- ** ImportCertificate
+    -- ** ImportCertificate 
     , module Network.AWS.CertificateManager.ImportCertificate
 
-    -- ** DescribeCertificate
+    -- ** DescribeCertificate 
     , module Network.AWS.CertificateManager.DescribeCertificate
 
-    -- ** ExportCertificate
+    -- ** ExportCertificate 
     , module Network.AWS.CertificateManager.ExportCertificate
 
     -- * Types

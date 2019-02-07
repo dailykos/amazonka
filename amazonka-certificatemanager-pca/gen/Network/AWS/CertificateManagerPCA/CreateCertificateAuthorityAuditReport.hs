@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an audit report that lists every time that the your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The 'IssueCertificate' and 'RevokeCertificate' functions use the private key. You can generate a new report every 30 minutes.
+-- Creates an audit report that lists every time that the your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The 'IssueCertificate' and 'RevokeCertificate' operations use the private key. You can generate a new report every 30 minutes.
 --
 --
 module Network.AWS.CertificateManagerPCA.CreateCertificateAuthorityAuditReport
@@ -49,8 +49,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'createCertificateAuthorityAuditReport' smart constructor.
 data CreateCertificateAuthorityAuditReport = CreateCertificateAuthorityAuditReport'
-  { _ccaarCertificateAuthorityARN   :: !Text
-  , _ccaarS3BucketName              :: !Text
+  { _ccaarCertificateAuthorityARN :: !Text
+  , _ccaarS3BucketName :: !Text
   , _ccaarAuditReportResponseFormat :: !AuditReportResponseFormat
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -59,7 +59,7 @@ data CreateCertificateAuthorityAuditReport = CreateCertificateAuthorityAuditRepo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccaarCertificateAuthorityARN' - Amazon Resource Name (ARN) of the CA to be audited. This is of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
+-- * 'ccaarCertificateAuthorityARN' - Amazon Resource Name (ARN) of the CA to be audited. This is of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
 --
 -- * 'ccaarS3BucketName' - Name of the S3 bucket that will contain the audit report.
 --
@@ -77,7 +77,7 @@ createCertificateAuthorityAuditReport pCertificateAuthorityARN_ pS3BucketName_ p
     }
 
 
--- | Amazon Resource Name (ARN) of the CA to be audited. This is of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
+-- | Amazon Resource Name (ARN) of the CA to be audited. This is of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
 ccaarCertificateAuthorityARN :: Lens' CreateCertificateAuthorityAuditReport Text
 ccaarCertificateAuthorityARN = lens _ccaarCertificateAuthorityARN (\ s a -> s{_ccaarCertificateAuthorityARN = a})
 
@@ -145,8 +145,8 @@ instance ToQuery
 
 -- | /See:/ 'createCertificateAuthorityAuditReportResponse' smart constructor.
 data CreateCertificateAuthorityAuditReportResponse = CreateCertificateAuthorityAuditReportResponse'
-  { _ccaarrsS3Key          :: !(Maybe Text)
-  , _ccaarrsAuditReportId  :: !(Maybe Text)
+  { _ccaarrsS3Key :: !(Maybe Text)
+  , _ccaarrsAuditReportId :: !(Maybe Text)
   , _ccaarrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

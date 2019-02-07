@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteAPIKey' smart constructor.
 data DeleteAPIKey = DeleteAPIKey'
   { _dakApiId :: !Text
-  , _dakId    :: !Text
+  , _dakId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -49,9 +49,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'decreaseReplicationFactor' smart constructor.
 data DecreaseReplicationFactor = DecreaseReplicationFactor'
-  { _drfNodeIdsToRemove      :: !(Maybe [Text])
-  , _drfAvailabilityZones    :: !(Maybe [Text])
-  , _drfClusterName          :: !Text
+  { _drfNodeIdsToRemove :: !(Maybe [Text])
+  , _drfAvailabilityZones :: !(Maybe [Text])
+  , _drfClusterName :: !Text
   , _drfNewReplicationFactor :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,7 +139,7 @@ instance ToQuery DecreaseReplicationFactor where
 
 -- | /See:/ 'decreaseReplicationFactorResponse' smart constructor.
 data DecreaseReplicationFactorResponse = DecreaseReplicationFactorResponse'
-  { _drfrsCluster        :: !(Maybe Cluster)
+  { _drfrsCluster :: !(Maybe Cluster)
   , _drfrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

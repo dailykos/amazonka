@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes the association of tags from an Amazon DynamoDB resource. You can call UntagResource up to 5 times per second, per account.
+-- Removes the association of tags from an Amazon DynamoDB resource. You can call UntagResource up to 5 times per second, per account. 
 --
 --
 -- For an overview on tagging DynamoDB resources, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html Tagging for DynamoDB> in the /Amazon DynamoDB Developer Guide/ .
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'untagResource' smart constructor.
 data UntagResource = UntagResource'
   { _urResourceARN :: !Text
-  , _urTagKeys     :: ![Text]
+  , _urTagKeys :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

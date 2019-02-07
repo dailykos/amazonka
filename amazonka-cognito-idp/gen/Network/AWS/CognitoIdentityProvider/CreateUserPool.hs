@@ -68,25 +68,25 @@ import Network.AWS.Response
 --
 -- /See:/ 'createUserPool' smart constructor.
 data CreateUserPool = CreateUserPool'
-  { _cupUserPoolTags                :: !(Maybe (Map Text Text))
+  { _cupUserPoolTags :: !(Maybe (Map Text Text))
   , _cupVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
-  , _cupEmailVerificationMessage    :: !(Maybe Text)
-  , _cupSmsAuthenticationMessage    :: !(Maybe Text)
-  , _cupUserPoolAddOns              :: !(Maybe UserPoolAddOnsType)
-  , _cupEmailVerificationSubject    :: !(Maybe Text)
-  , _cupUsernameAttributes          :: !(Maybe [UsernameAttributeType])
-  , _cupAliasAttributes             :: !(Maybe [AliasAttributeType])
-  , _cupSchema                      :: !(Maybe (List1 SchemaAttributeType))
-  , _cupEmailConfiguration          :: !(Maybe EmailConfigurationType)
-  , _cupSmsVerificationMessage      :: !(Maybe Text)
-  , _cupMFAConfiguration            :: !(Maybe UserPoolMFAType)
-  , _cupLambdaConfig                :: !(Maybe LambdaConfigType)
-  , _cupSmsConfiguration            :: !(Maybe SmsConfigurationType)
-  , _cupAdminCreateUserConfig       :: !(Maybe AdminCreateUserConfigType)
-  , _cupDeviceConfiguration         :: !(Maybe DeviceConfigurationType)
-  , _cupAutoVerifiedAttributes      :: !(Maybe [VerifiedAttributeType])
-  , _cupPolicies                    :: !(Maybe UserPoolPolicyType)
-  , _cupPoolName                    :: !Text
+  , _cupEmailVerificationMessage :: !(Maybe Text)
+  , _cupSmsAuthenticationMessage :: !(Maybe Text)
+  , _cupUserPoolAddOns :: !(Maybe UserPoolAddOnsType)
+  , _cupEmailVerificationSubject :: !(Maybe Text)
+  , _cupUsernameAttributes :: !(Maybe [UsernameAttributeType])
+  , _cupAliasAttributes :: !(Maybe [AliasAttributeType])
+  , _cupSchema :: !(Maybe (List1 SchemaAttributeType))
+  , _cupEmailConfiguration :: !(Maybe EmailConfigurationType)
+  , _cupSmsVerificationMessage :: !(Maybe Text)
+  , _cupMFAConfiguration :: !(Maybe UserPoolMFAType)
+  , _cupLambdaConfig :: !(Maybe LambdaConfigType)
+  , _cupSmsConfiguration :: !(Maybe SmsConfigurationType)
+  , _cupAdminCreateUserConfig :: !(Maybe AdminCreateUserConfigType)
+  , _cupDeviceConfiguration :: !(Maybe DeviceConfigurationType)
+  , _cupAutoVerifiedAttributes :: !(Maybe [VerifiedAttributeType])
+  , _cupPolicies :: !(Maybe UserPoolPolicyType)
+  , _cupPoolName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -94,7 +94,7 @@ data CreateUserPool = CreateUserPool'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cupUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- * 'cupUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool> 
 --
 -- * 'cupVerificationMessageTemplate' - The template for the verification message that the user sees when the app requests permission to access the user's information.
 --
@@ -158,7 +158,7 @@ createUserPool pPoolName_ =
     }
 
 
--- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool> 
 cupUserPoolTags :: Lens' CreateUserPool (HashMap Text Text)
 cupUserPoolTags = lens _cupUserPoolTags (\ s a -> s{_cupUserPoolTags = a}) . _Default . _Map
 
@@ -301,7 +301,7 @@ instance ToQuery CreateUserPool where
 --
 -- /See:/ 'createUserPoolResponse' smart constructor.
 data CreateUserPoolResponse = CreateUserPoolResponse'
-  { _cuprsUserPool       :: !(Maybe UserPoolType)
+  { _cuprsUserPool :: !(Maybe UserPoolType)
   , _cuprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

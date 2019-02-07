@@ -108,10 +108,10 @@ instance ToQuery GetUserPoolMFAConfig where
 
 -- | /See:/ 'getUserPoolMFAConfigResponse' smart constructor.
 data GetUserPoolMFAConfigResponse = GetUserPoolMFAConfigResponse'
-  { _gupmcrsSmsMFAConfiguration           :: !(Maybe SmsMFAConfigType)
+  { _gupmcrsSmsMFAConfiguration :: !(Maybe SmsMFAConfigType)
   , _gupmcrsSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-  , _gupmcrsMFAConfiguration              :: !(Maybe UserPoolMFAType)
-  , _gupmcrsResponseStatus                :: !Int
+  , _gupmcrsMFAConfiguration :: !(Maybe UserPoolMFAType)
+  , _gupmcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the status of a pull request.
+-- Updates the status of a pull request. 
 --
 --
 module Network.AWS.CodeCommit.UpdatePullRequestStatus
@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'updatePullRequestStatus' smart constructor.
 data UpdatePullRequestStatus = UpdatePullRequestStatus'
-  { _uprsPullRequestId     :: !Text
+  { _uprsPullRequestId :: !Text
   , _uprsPullRequestStatus :: !PullRequestStatusEnum
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery UpdatePullRequestStatus where
 -- | /See:/ 'updatePullRequestStatusResponse' smart constructor.
 data UpdatePullRequestStatusResponse = UpdatePullRequestStatusResponse'
   { _uprsrsResponseStatus :: !Int
-  , _uprsrsPullRequest    :: !PullRequest
+  , _uprsrsPullRequest :: !PullRequest
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

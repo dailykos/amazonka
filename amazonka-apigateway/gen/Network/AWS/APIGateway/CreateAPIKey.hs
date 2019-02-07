@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Create an 'ApiKey' resource.
+-- Create an 'ApiKey' resource. 
 --
 --
--- <http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html AWS CLI>
+-- <https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html AWS CLI> 
 module Network.AWS.APIGateway.CreateAPIKey
     (
     -- * Creating a Request
@@ -64,13 +64,13 @@ import Network.AWS.Response
 --
 -- /See:/ 'createAPIKey' smart constructor.
 data CreateAPIKey = CreateAPIKey'
-  { _cakEnabled            :: !(Maybe Bool)
-  , _cakValue              :: !(Maybe Text)
-  , _cakCustomerId         :: !(Maybe Text)
+  { _cakEnabled :: !(Maybe Bool)
+  , _cakValue :: !(Maybe Text)
+  , _cakCustomerId :: !(Maybe Text)
   , _cakGenerateDistinctId :: !(Maybe Bool)
-  , _cakName               :: !(Maybe Text)
-  , _cakStageKeys          :: !(Maybe [StageKey])
-  , _cakDescription        :: !(Maybe Text)
+  , _cakName :: !(Maybe Text)
+  , _cakStageKeys :: !(Maybe [StageKey])
+  , _cakDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

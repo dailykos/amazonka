@@ -56,9 +56,9 @@ import Network.AWS.Response
 -- /See:/ 'validatePipelineDefinition' smart constructor.
 data ValidatePipelineDefinition = ValidatePipelineDefinition'
   { _vpdParameterObjects :: !(Maybe [ParameterObject])
-  , _vpdParameterValues  :: !(Maybe [ParameterValue])
-  , _vpdPipelineId       :: !Text
-  , _vpdPipelineObjects  :: ![PipelineObject]
+  , _vpdParameterValues :: !(Maybe [ParameterValue])
+  , _vpdPipelineId :: !Text
+  , _vpdPipelineObjects :: ![PipelineObject]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -149,10 +149,10 @@ instance ToQuery ValidatePipelineDefinition where
 --
 -- /See:/ 'validatePipelineDefinitionResponse' smart constructor.
 data ValidatePipelineDefinitionResponse = ValidatePipelineDefinitionResponse'
-  { _vpdrsValidationErrors   :: !(Maybe [ValidationError])
+  { _vpdrsValidationErrors :: !(Maybe [ValidationError])
   , _vpdrsValidationWarnings :: !(Maybe [ValidationWarning])
-  , _vpdrsResponseStatus     :: !Int
-  , _vpdrsErrored            :: !Bool
+  , _vpdrsResponseStatus :: !Int
+  , _vpdrsErrored :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -52,9 +52,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'describeSuggesters' smart constructor.
 data DescribeSuggesters = DescribeSuggesters'
-  { _dssDeployed       :: !(Maybe Bool)
+  { _dssDeployed :: !(Maybe Bool)
   , _dssSuggesterNames :: !(Maybe [Text])
-  , _dssDomainName     :: !Text
+  , _dssDomainName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -130,7 +130,7 @@ instance ToQuery DescribeSuggesters where
 -- /See:/ 'describeSuggestersResponse' smart constructor.
 data DescribeSuggestersResponse = DescribeSuggestersResponse'
   { _dssrsResponseStatus :: !Int
-  , _dssrsSuggesters     :: ![SuggesterStatus]
+  , _dssrsSuggesters :: ![SuggesterStatus]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

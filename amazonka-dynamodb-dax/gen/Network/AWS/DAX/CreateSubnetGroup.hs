@@ -48,9 +48,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'createSubnetGroup' smart constructor.
 data CreateSubnetGroup = CreateSubnetGroup'
-  { _csgDescription     :: !(Maybe Text)
+  { _csgDescription :: !(Maybe Text)
   , _csgSubnetGroupName :: !Text
-  , _csgSubnetIds       :: ![Text]
+  , _csgSubnetIds :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -60,7 +60,7 @@ data CreateSubnetGroup = CreateSubnetGroup'
 --
 -- * 'csgDescription' - A description for the subnet group
 --
--- * 'csgSubnetGroupName' - A name for the subnet group. This value is stored as a lowercase string.
+-- * 'csgSubnetGroupName' - A name for the subnet group. This value is stored as a lowercase string. 
 --
 -- * 'csgSubnetIds' - A list of VPC subnet IDs for the subnet group.
 createSubnetGroup
@@ -78,7 +78,7 @@ createSubnetGroup pSubnetGroupName_ =
 csgDescription :: Lens' CreateSubnetGroup (Maybe Text)
 csgDescription = lens _csgDescription (\ s a -> s{_csgDescription = a})
 
--- | A name for the subnet group. This value is stored as a lowercase string.
+-- | A name for the subnet group. This value is stored as a lowercase string. 
 csgSubnetGroupName :: Lens' CreateSubnetGroup Text
 csgSubnetGroupName = lens _csgSubnetGroupName (\ s a -> s{_csgSubnetGroupName = a})
 
@@ -124,7 +124,7 @@ instance ToQuery CreateSubnetGroup where
 
 -- | /See:/ 'createSubnetGroupResponse' smart constructor.
 data CreateSubnetGroupResponse = CreateSubnetGroupResponse'
-  { _csgrsSubnetGroup    :: !(Maybe SubnetGroup)
+  { _csgrsSubnetGroup :: !(Maybe SubnetGroup)
   , _csgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

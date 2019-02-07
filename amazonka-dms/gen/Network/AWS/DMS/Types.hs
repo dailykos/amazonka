@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -44,6 +44,9 @@ module Network.AWS.DMS.Types
     -- * DmsSSLModeValue
     , DmsSSLModeValue (..)
 
+    -- * MessageFormatValue
+    , MessageFormatValue (..)
+
     -- * MigrationTypeValue
     , MigrationTypeValue (..)
 
@@ -52,6 +55,9 @@ module Network.AWS.DMS.Types
 
     -- * RefreshSchemasStatusTypeValue
     , RefreshSchemasStatusTypeValue (..)
+
+    -- * ReloadOptionValue
+    , ReloadOptionValue (..)
 
     -- * ReplicationEndpointTypeValue
     , ReplicationEndpointTypeValue (..)
@@ -98,21 +104,37 @@ module Network.AWS.DMS.Types
     , cEndpointARN
     , cLastFailureMessage
 
+    -- * DmsTransferSettings
+    , DmsTransferSettings
+    , dmsTransferSettings
+    , dtsServiceAccessRoleARN
+    , dtsBucketName
+
     -- * DynamoDBSettings
     , DynamoDBSettings
     , dynamoDBSettings
     , ddsServiceAccessRoleARN
 
+    -- * ElasticsearchSettings
+    , ElasticsearchSettings
+    , elasticsearchSettings
+    , esFullLoadErrorPercentage
+    , esErrorRetryDuration
+    , esServiceAccessRoleARN
+    , esEndpointURI
+
     -- * Endpoint
     , Endpoint
     , endpoint
     , eStatus
+    , eDmsTransferSettings
     , eServerName
     , eCertificateARN
     , eServiceAccessRoleARN
     , eEngineDisplayName
     , eExtraConnectionAttributes
     , eEndpointType
+    , eElasticsearchSettings
     , eUsername
     , eExternalTableDefinition
     , eEngineName
@@ -121,6 +143,7 @@ module Network.AWS.DMS.Types
     , eSSLMode
     , eDatabaseName
     , eS3Settings
+    , eKinesisSettings
     , eEndpointIdentifier
     , eExternalId
     , eDynamoDBSettings
@@ -160,6 +183,13 @@ module Network.AWS.DMS.Types
     , filter'
     , fName
     , fValues
+
+    -- * KinesisSettings
+    , KinesisSettings
+    , kinesisSettings
+    , ksServiceAccessRoleARN
+    , ksStreamARN
+    , ksMessageFormat
 
     -- * MongoDBSettings
     , MongoDBSettings
@@ -218,6 +248,7 @@ module Network.AWS.DMS.Types
     , riSecondaryAvailabilityZone
     , riReplicationInstanceARN
     , riAllocatedStorage
+    , riDNSNameServers
     , riReplicationInstancePublicIPAddress
     , riReplicationInstanceClass
     , riReplicationInstanceIdentifier
@@ -325,6 +356,7 @@ module Network.AWS.DMS.Types
     , tsValidationFailedRecords
     , tsValidationSuspendedRecords
     , tsSchemaName
+    , tsValidationStateDetails
     , tsTableState
     , tsFullLoadErrorRows
     , tsDdls

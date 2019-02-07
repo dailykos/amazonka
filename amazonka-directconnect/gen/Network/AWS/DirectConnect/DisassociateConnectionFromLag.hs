@@ -21,7 +21,7 @@
 -- Disassociates a connection from a link aggregation group (LAG). The connection is interrupted and re-established as a standalone connection (the connection is not deleted; to delete the connection, use the 'DeleteConnection' request). If the LAG has associated virtual interfaces or hosted connections, they remain associated with the LAG. A disassociated connection owned by an AWS Direct Connect partner is automatically converted to an interconnect.
 --
 --
--- If disassociating the connection will cause the LAG to fall below its setting for minimum number of operational connections, the request fails, except when it's the last member of the LAG. If all connections are disassociated, the LAG continues to exist as an empty LAG with no physical connections.
+-- If disassociating the connection would cause the LAG to fall below its setting for minimum number of operational connections, the request fails, except when it's the last member of the LAG. If all connections are disassociated, the LAG continues to exist as an empty LAG with no physical connections. 
 --
 module Network.AWS.DirectConnect.DisassociateConnectionFromLag
     (
@@ -40,13 +40,16 @@ module Network.AWS.DirectConnect.DisassociateConnectionFromLag
     , cVlan
     , cLocation
     , cAwsDevice
+    , cHasLogicalRedundancy
     , cConnectionId
     , cLoaIssueTime
     , cPartnerName
     , cConnectionName
     , cBandwidth
+    , cJumboFrameCapable
     , cOwnerAccount
     , cRegion
+    , cAwsDeviceV2
     , cConnectionState
     ) where
 
@@ -57,14 +60,10 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Container for the parameters to the DisassociateConnectionFromLag operation.
---
---
---
--- /See:/ 'disassociateConnectionFromLag' smart constructor.
+-- | /See:/ 'disassociateConnectionFromLag' smart constructor.
 data DisassociateConnectionFromLag = DisassociateConnectionFromLag'
   { _dcflConnectionId :: !Text
-  , _dcflLagId        :: !Text
+  , _dcflLagId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -72,9 +71,9 @@ data DisassociateConnectionFromLag = DisassociateConnectionFromLag'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcflConnectionId' - The ID of the connection to disassociate from the LAG. Example: dxcon-abc123 Default: None
+-- * 'dcflConnectionId' - The ID of the connection. For example, dxcon-abc123.
 --
--- * 'dcflLagId' - The ID of the LAG. Example: dxlag-abc123 Default: None
+-- * 'dcflLagId' - The ID of the LAG. For example, dxlag-abc123.
 disassociateConnectionFromLag
     :: Text -- ^ 'dcflConnectionId'
     -> Text -- ^ 'dcflLagId'
@@ -84,11 +83,11 @@ disassociateConnectionFromLag pConnectionId_ pLagId_ =
     {_dcflConnectionId = pConnectionId_, _dcflLagId = pLagId_}
 
 
--- | The ID of the connection to disassociate from the LAG. Example: dxcon-abc123 Default: None
+-- | The ID of the connection. For example, dxcon-abc123.
 dcflConnectionId :: Lens' DisassociateConnectionFromLag Text
 dcflConnectionId = lens _dcflConnectionId (\ s a -> s{_dcflConnectionId = a})
 
--- | The ID of the LAG. Example: dxlag-abc123 Default: None
+-- | The ID of the LAG. For example, dxlag-abc123.
 dcflLagId :: Lens' DisassociateConnectionFromLag Text
 dcflLagId = lens _dcflLagId (\ s a -> s{_dcflLagId = a})
 

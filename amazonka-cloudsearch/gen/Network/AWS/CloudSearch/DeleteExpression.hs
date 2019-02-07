@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'deleteExpression' smart constructor.
 data DeleteExpression = DeleteExpression'
-  { _delDomainName     :: !Text
+  { _delDomainName :: !Text
   , _delExpressionName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,7 +114,7 @@ instance ToQuery DeleteExpression where
 -- /See:/ 'deleteExpressionResponse' smart constructor.
 data DeleteExpressionResponse = DeleteExpressionResponse'
   { _delrsResponseStatus :: !Int
-  , _delrsExpression     :: !ExpressionStatus
+  , _delrsExpression :: !ExpressionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

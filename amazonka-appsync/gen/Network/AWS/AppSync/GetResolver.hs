@@ -48,8 +48,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'getResolver' smart constructor.
 data GetResolver = GetResolver'
-  { _grApiId     :: !Text
-  , _grTypeName  :: !Text
+  { _grApiId :: !Text
+  , _grTypeName :: !Text
   , _grFieldName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -116,7 +116,7 @@ instance ToQuery GetResolver where
 
 -- | /See:/ 'getResolverResponse' smart constructor.
 data GetResolverResponse = GetResolverResponse'
-  { _grrsResolver       :: !(Maybe Resolver)
+  { _grrsResolver :: !(Maybe Resolver)
   , _grrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

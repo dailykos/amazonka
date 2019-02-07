@@ -55,9 +55,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'listDatasets' smart constructor.
 data ListDatasets = ListDatasets'
-  { _ldNextToken      :: !(Maybe Text)
-  , _ldMaxResults     :: !(Maybe Int)
-  , _ldIdentityId     :: !Text
+  { _ldNextToken :: !(Maybe Text)
+  , _ldMaxResults :: !(Maybe Int)
+  , _ldIdentityId :: !Text
   , _ldIdentityPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,9 +140,9 @@ instance ToQuery ListDatasets where
 --
 -- /See:/ 'listDatasetsResponse' smart constructor.
 data ListDatasetsResponse = ListDatasetsResponse'
-  { _ldrsCount          :: !(Maybe Int)
-  , _ldrsNextToken      :: !(Maybe Text)
-  , _ldrsDatasets       :: !(Maybe [Dataset])
+  { _ldrsCount :: !(Maybe Int)
+  , _ldrsNextToken :: !(Maybe Text)
+  , _ldrsDatasets :: !(Maybe [Dataset])
   , _ldrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

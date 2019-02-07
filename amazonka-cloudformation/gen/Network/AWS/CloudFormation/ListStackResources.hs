@@ -128,9 +128,9 @@ instance ToQuery ListStackResources where
 --
 -- /See:/ 'listStackResourcesResponse' smart constructor.
 data ListStackResourcesResponse = ListStackResourcesResponse'
-  { _lsrrsNextToken              :: !(Maybe Text)
+  { _lsrrsNextToken :: !(Maybe Text)
   , _lsrrsStackResourceSummaries :: !(Maybe [StackResourceSummary])
-  , _lsrrsResponseStatus         :: !Int
+  , _lsrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

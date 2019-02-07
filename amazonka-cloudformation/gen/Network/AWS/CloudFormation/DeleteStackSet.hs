@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For more information about how to do this, see 'DeleteStackInstances' .
+-- Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For more information about how to do this, see 'DeleteStackInstances' . 
 --
 --
 module Network.AWS.CloudFormation.DeleteStackSet

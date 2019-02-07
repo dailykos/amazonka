@@ -21,8 +21,10 @@
 -- Describes the load balancers for the specified Auto Scaling group.
 --
 --
--- Note that this operation describes only Classic Load Balancers. If you have Application Load Balancers, use 'DescribeLoadBalancerTargetGroups' instead.
+-- This operation describes only Classic Load Balancers. If you have Application Load Balancers, use 'DescribeLoadBalancerTargetGroups' instead.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AutoScaling.DescribeLoadBalancers
     (
     -- * Creating a Request
@@ -45,14 +47,15 @@ module Network.AWS.AutoScaling.DescribeLoadBalancers
 import Network.AWS.AutoScaling.Types
 import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLoadBalancers' smart constructor.
 data DescribeLoadBalancers = DescribeLoadBalancers'
-  { _dlbNextToken            :: !(Maybe Text)
-  , _dlbMaxRecords           :: !(Maybe Int)
+  { _dlbNextToken :: !(Maybe Text)
+  , _dlbMaxRecords :: !(Maybe Int)
   , _dlbAutoScalingGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -89,6 +92,13 @@ dlbMaxRecords = lens _dlbMaxRecords (\ s a -> s{_dlbMaxRecords = a})
 dlbAutoScalingGroupName :: Lens' DescribeLoadBalancers Text
 dlbAutoScalingGroupName = lens _dlbAutoScalingGroupName (\ s a -> s{_dlbAutoScalingGroupName = a})
 
+instance AWSPager DescribeLoadBalancers where
+        page rq rs
+          | stop (rs ^. dlbrsNextToken) = Nothing
+          | stop (rs ^. dlbrsLoadBalancers) = Nothing
+          | otherwise =
+            Just $ rq & dlbNextToken .~ rs ^. dlbrsNextToken
+
 instance AWSRequest DescribeLoadBalancers where
         type Rs DescribeLoadBalancers =
              DescribeLoadBalancersResponse
@@ -123,8 +133,8 @@ instance ToQuery DescribeLoadBalancers where
 
 -- | /See:/ 'describeLoadBalancersResponse' smart constructor.
 data DescribeLoadBalancersResponse = DescribeLoadBalancersResponse'
-  { _dlbrsLoadBalancers  :: !(Maybe [LoadBalancerState])
-  , _dlbrsNextToken      :: !(Maybe Text)
+  { _dlbrsLoadBalancers :: !(Maybe [LoadBalancerState])
+  , _dlbrsNextToken :: !(Maybe Text)
   , _dlbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

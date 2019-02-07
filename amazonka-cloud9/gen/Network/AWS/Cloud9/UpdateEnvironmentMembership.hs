@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'updateEnvironmentMembership' smart constructor.
 data UpdateEnvironmentMembership = UpdateEnvironmentMembership'
   { _uemEnvironmentId :: !Text
-  , _uemUserARN       :: !Text
-  , _uemPermissions   :: !MemberPermissions
+  , _uemUserARN :: !Text
+  , _uemPermissions :: !MemberPermissions
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -128,7 +128,7 @@ instance ToQuery UpdateEnvironmentMembership where
 
 -- | /See:/ 'updateEnvironmentMembershipResponse' smart constructor.
 data UpdateEnvironmentMembershipResponse = UpdateEnvironmentMembershipResponse'
-  { _uemrsMembership     :: !(Maybe EnvironmentMember)
+  { _uemrsMembership :: !(Maybe EnvironmentMember)
   , _uemrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

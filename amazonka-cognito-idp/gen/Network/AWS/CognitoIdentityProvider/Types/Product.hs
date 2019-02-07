@@ -27,7 +27,7 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'accountTakeoverActionType' smart constructor.
 data AccountTakeoverActionType = AccountTakeoverActionType'
-  { _atatNotify      :: !Bool
+  { _atatNotify :: !Bool
   , _atatEventAction :: !AccountTakeoverEventActionType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -80,8 +80,8 @@ instance ToJSON AccountTakeoverActionType where
 --
 -- /See:/ 'accountTakeoverActionsType' smart constructor.
 data AccountTakeoverActionsType = AccountTakeoverActionsType'
-  { _atatLowAction    :: !(Maybe AccountTakeoverActionType)
-  , _atatHighAction   :: !(Maybe AccountTakeoverActionType)
+  { _atatLowAction :: !(Maybe AccountTakeoverActionType)
+  , _atatHighAction :: !(Maybe AccountTakeoverActionType)
   , _atatMediumAction :: !(Maybe AccountTakeoverActionType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,7 +144,7 @@ instance ToJSON AccountTakeoverActionsType where
 -- /See:/ 'accountTakeoverRiskConfigurationType' smart constructor.
 data AccountTakeoverRiskConfigurationType = AccountTakeoverRiskConfigurationType'
   { _atrctNotifyConfiguration :: !(Maybe NotifyConfigurationType)
-  , _atrctActions             :: !AccountTakeoverActionsType
+  , _atrctActions :: !AccountTakeoverActionsType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -202,9 +202,9 @@ instance ToJSON AccountTakeoverRiskConfigurationType
 --
 -- /See:/ 'adminCreateUserConfigType' smart constructor.
 data AdminCreateUserConfigType = AdminCreateUserConfigType'
-  { _acuctAllowAdminCreateUserOnly  :: !(Maybe Bool)
+  { _acuctAllowAdminCreateUserOnly :: !(Maybe Bool)
   , _acuctUnusedAccountValidityDays :: !(Maybe Nat)
-  , _acuctInviteMessageTemplate     :: !(Maybe MessageTemplateType)
+  , _acuctInviteMessageTemplate :: !(Maybe MessageTemplateType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -270,9 +270,9 @@ instance ToJSON AdminCreateUserConfigType where
 -- /See:/ 'analyticsConfigurationType' smart constructor.
 data AnalyticsConfigurationType = AnalyticsConfigurationType'
   { _actUserDataShared :: !(Maybe Bool)
-  , _actApplicationId  :: !Text
-  , _actRoleARN        :: !Text
-  , _actExternalId     :: !Text
+  , _actApplicationId :: !Text
+  , _actRoleARN :: !Text
+  , _actExternalId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -384,7 +384,7 @@ instance ToJSON AnalyticsMetadataType where
 -- /See:/ 'attributeType' smart constructor.
 data AttributeType = AttributeType'
   { _atValue :: !(Maybe (Sensitive Text))
-  , _atName  :: !Text
+  , _atName :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -432,14 +432,14 @@ instance ToJSON AttributeType where
 --
 -- /See:/ 'authEventType' smart constructor.
 data AuthEventType = AuthEventType'
-  { _aetEventRisk          :: !(Maybe EventRiskType)
-  , _aetEventResponse      :: !(Maybe EventResponseType)
-  , _aetEventContextData   :: !(Maybe EventContextDataType)
+  { _aetEventRisk :: !(Maybe EventRiskType)
+  , _aetEventResponse :: !(Maybe EventResponseType)
+  , _aetEventContextData :: !(Maybe EventContextDataType)
   , _aetChallengeResponses :: !(Maybe [ChallengeResponseType])
-  , _aetEventType          :: !(Maybe EventType)
-  , _aetCreationDate       :: !(Maybe POSIX)
-  , _aetEventFeedback      :: !(Maybe EventFeedbackType)
-  , _aetEventId            :: !(Maybe Text)
+  , _aetEventType :: !(Maybe EventType)
+  , _aetCreationDate :: !(Maybe POSIX)
+  , _aetEventFeedback :: !(Maybe EventFeedbackType)
+  , _aetEventId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -459,7 +459,7 @@ data AuthEventType = AuthEventType'
 --
 -- * 'aetCreationDate' - The creation date
 --
--- * 'aetEventFeedback' - A flag specifying the user feedback captured at the time of an event request is good or bad.
+-- * 'aetEventFeedback' - A flag specifying the user feedback captured at the time of an event request is good or bad. 
 --
 -- * 'aetEventId' - The event ID.
 authEventType
@@ -501,7 +501,7 @@ aetEventType = lens _aetEventType (\ s a -> s{_aetEventType = a})
 aetCreationDate :: Lens' AuthEventType (Maybe UTCTime)
 aetCreationDate = lens _aetCreationDate (\ s a -> s{_aetCreationDate = a}) . mapping _Time
 
--- | A flag specifying the user feedback captured at the time of an event request is good or bad.
+-- | A flag specifying the user feedback captured at the time of an event request is good or bad. 
 aetEventFeedback :: Lens' AuthEventType (Maybe EventFeedbackType)
 aetEventFeedback = lens _aetEventFeedback (\ s a -> s{_aetEventFeedback = a})
 
@@ -532,12 +532,12 @@ instance NFData AuthEventType where
 --
 -- /See:/ 'authenticationResultType' smart constructor.
 data AuthenticationResultType = AuthenticationResultType'
-  { _artAccessToken       :: !(Maybe (Sensitive Text))
-  , _artRefreshToken      :: !(Maybe (Sensitive Text))
+  { _artAccessToken :: !(Maybe (Sensitive Text))
+  , _artRefreshToken :: !(Maybe (Sensitive Text))
   , _artNewDeviceMetadata :: !(Maybe NewDeviceMetadataType)
-  , _artExpiresIn         :: !(Maybe Int)
-  , _artTokenType         :: !(Maybe Text)
-  , _artIdToken           :: !(Maybe (Sensitive Text))
+  , _artExpiresIn :: !(Maybe Int)
+  , _artTokenType :: !(Maybe Text)
+  , _artIdToken :: !(Maybe (Sensitive Text))
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -551,7 +551,7 @@ data AuthenticationResultType = AuthenticationResultType'
 --
 -- * 'artNewDeviceMetadata' - The new device metadata from an authentication result.
 --
--- * 'artExpiresIn' - The expiration period of the authentication result.
+-- * 'artExpiresIn' - The expiration period of the authentication result in seconds.
 --
 -- * 'artTokenType' - The token type.
 --
@@ -581,7 +581,7 @@ artRefreshToken = lens _artRefreshToken (\ s a -> s{_artRefreshToken = a}) . map
 artNewDeviceMetadata :: Lens' AuthenticationResultType (Maybe NewDeviceMetadataType)
 artNewDeviceMetadata = lens _artNewDeviceMetadata (\ s a -> s{_artNewDeviceMetadata = a})
 
--- | The expiration period of the authentication result.
+-- | The expiration period of the authentication result in seconds.
 artExpiresIn :: Lens' AuthenticationResultType (Maybe Int)
 artExpiresIn = lens _artExpiresIn (\ s a -> s{_artExpiresIn = a})
 
@@ -614,7 +614,7 @@ instance NFData AuthenticationResultType where
 --
 -- /See:/ 'challengeResponseType' smart constructor.
 data ChallengeResponseType = ChallengeResponseType'
-  { _crtChallengeName     :: !(Maybe ChallengeName)
+  { _crtChallengeName :: !(Maybe ChallengeName)
   , _crtChallengeResponse :: !(Maybe ChallengeResponse)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -659,9 +659,9 @@ instance NFData ChallengeResponseType where
 --
 -- /See:/ 'codeDeliveryDetailsType' smart constructor.
 data CodeDeliveryDetailsType = CodeDeliveryDetailsType'
-  { _cddtDestination    :: !(Maybe Text)
+  { _cddtDestination :: !(Maybe Text)
   , _cddtDeliveryMedium :: !(Maybe DeliveryMediumType)
-  , _cddtAttributeName  :: !(Maybe Text)
+  , _cddtAttributeName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -762,7 +762,7 @@ instance ToJSON CompromisedCredentialsActionsType
 -- /See:/ 'compromisedCredentialsRiskConfigurationType' smart constructor.
 data CompromisedCredentialsRiskConfigurationType = CompromisedCredentialsRiskConfigurationType'
   { _ccrctEventFilter :: !(Maybe [EventFilterType])
-  , _ccrctActions     :: !CompromisedCredentialsActionsType
+  , _ccrctActions :: !CompromisedCredentialsActionsType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -825,9 +825,9 @@ instance ToJSON
 -- /See:/ 'contextDataType' smart constructor.
 data ContextDataType = ContextDataType'
   { _cdtEncodedData :: !(Maybe Text)
-  , _cdtIPAddress   :: !Text
-  , _cdtServerName  :: !Text
-  , _cdtServerPath  :: !Text
+  , _cdtIPAddress :: !Text
+  , _cdtServerName :: !Text
+  , _cdtServerPath :: !Text
   , _cdtHTTPHeaders :: ![HTTPHeader]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -842,7 +842,7 @@ data ContextDataType = ContextDataType'
 --
 -- * 'cdtServerName' - Your server endpoint where this API is invoked.
 --
--- * 'cdtServerPath' - Your server path where this API is invoked.
+-- * 'cdtServerPath' - Your server path where this API is invoked. 
 --
 -- * 'cdtHTTPHeaders' - HttpHeaders received on your server in same order.
 contextDataType
@@ -872,7 +872,7 @@ cdtIPAddress = lens _cdtIPAddress (\ s a -> s{_cdtIPAddress = a})
 cdtServerName :: Lens' ContextDataType Text
 cdtServerName = lens _cdtServerName (\ s a -> s{_cdtServerName = a})
 
--- | Your server path where this API is invoked.
+-- | Your server path where this API is invoked. 
 cdtServerPath :: Lens' ContextDataType Text
 cdtServerPath = lens _cdtServerPath (\ s a -> s{_cdtServerPath = a})
 
@@ -894,13 +894,55 @@ instance ToJSON ContextDataType where
                   Just ("ServerPath" .= _cdtServerPath),
                   Just ("HttpHeaders" .= _cdtHTTPHeaders)])
 
+-- | The configuration for a custom domain that hosts the sign-up and sign-in webpages for your application.
+--
+--
+--
+-- /See:/ 'customDomainConfigType' smart constructor.
+newtype CustomDomainConfigType = CustomDomainConfigType'
+  { _cdctCertificateARN :: Text
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'CustomDomainConfigType' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'cdctCertificateARN' - The Amazon Resource Name (ARN) of an AWS Certificate Manager SSL certificate. You use this certificate for the subdomain of your custom domain.
+customDomainConfigType
+    :: Text -- ^ 'cdctCertificateARN'
+    -> CustomDomainConfigType
+customDomainConfigType pCertificateARN_ =
+  CustomDomainConfigType' {_cdctCertificateARN = pCertificateARN_}
+
+
+-- | The Amazon Resource Name (ARN) of an AWS Certificate Manager SSL certificate. You use this certificate for the subdomain of your custom domain.
+cdctCertificateARN :: Lens' CustomDomainConfigType Text
+cdctCertificateARN = lens _cdctCertificateARN (\ s a -> s{_cdctCertificateARN = a})
+
+instance FromJSON CustomDomainConfigType where
+        parseJSON
+          = withObject "CustomDomainConfigType"
+              (\ x ->
+                 CustomDomainConfigType' <$> (x .: "CertificateArn"))
+
+instance Hashable CustomDomainConfigType where
+
+instance NFData CustomDomainConfigType where
+
+instance ToJSON CustomDomainConfigType where
+        toJSON CustomDomainConfigType'{..}
+          = object
+              (catMaybes
+                 [Just ("CertificateArn" .= _cdctCertificateARN)])
+
 -- | The configuration for the user pool's device tracking.
 --
 --
 --
 -- /See:/ 'deviceConfigurationType' smart constructor.
 data DeviceConfigurationType = DeviceConfigurationType'
-  { _dctChallengeRequiredOnNewDevice     :: !(Maybe Bool)
+  { _dctChallengeRequiredOnNewDevice :: !(Maybe Bool)
   , _dctDeviceOnlyRememberedOnUserPrompt :: !(Maybe Bool)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -957,7 +999,7 @@ instance ToJSON DeviceConfigurationType where
 -- /See:/ 'deviceSecretVerifierConfigType' smart constructor.
 data DeviceSecretVerifierConfigType = DeviceSecretVerifierConfigType'
   { _dsvctPasswordVerifier :: !(Maybe Text)
-  , _dsvctSalt             :: !(Maybe Text)
+  , _dsvctSalt :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1001,10 +1043,10 @@ instance ToJSON DeviceSecretVerifierConfigType where
 --
 -- /See:/ 'deviceType' smart constructor.
 data DeviceType = DeviceType'
-  { _dtDeviceLastModifiedDate      :: !(Maybe POSIX)
-  , _dtDeviceCreateDate            :: !(Maybe POSIX)
-  , _dtDeviceAttributes            :: !(Maybe [AttributeType])
-  , _dtDeviceKey                   :: !(Maybe Text)
+  { _dtDeviceLastModifiedDate :: !(Maybe POSIX)
+  , _dtDeviceCreateDate :: !(Maybe POSIX)
+  , _dtDeviceAttributes :: !(Maybe [AttributeType])
+  , _dtDeviceKey :: !(Maybe Text)
   , _dtDeviceLastAuthenticatedDate :: !(Maybe POSIX)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -1075,13 +1117,14 @@ instance NFData DeviceType where
 --
 -- /See:/ 'domainDescriptionType' smart constructor.
 data DomainDescriptionType = DomainDescriptionType'
-  { _ddtStatus                 :: !(Maybe DomainStatusType)
+  { _ddtStatus :: !(Maybe DomainStatusType)
   , _ddtCloudFrontDistribution :: !(Maybe Text)
-  , _ddtUserPoolId             :: !(Maybe Text)
-  , _ddtDomain                 :: !(Maybe Text)
-  , _ddtAWSAccountId           :: !(Maybe Text)
-  , _ddtVersion                :: !(Maybe Text)
-  , _ddtS3Bucket               :: !(Maybe Text)
+  , _ddtUserPoolId :: !(Maybe Text)
+  , _ddtDomain :: !(Maybe Text)
+  , _ddtAWSAccountId :: !(Maybe Text)
+  , _ddtCustomDomainConfig :: !(Maybe CustomDomainConfigType)
+  , _ddtVersion :: !(Maybe Text)
+  , _ddtS3Bucket :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1099,6 +1142,8 @@ data DomainDescriptionType = DomainDescriptionType'
 --
 -- * 'ddtAWSAccountId' - The AWS account ID for the user pool owner.
 --
+-- * 'ddtCustomDomainConfig' - Undocumented member.
+--
 -- * 'ddtVersion' - The app version.
 --
 -- * 'ddtS3Bucket' - The S3 bucket where the static files for this domain are stored.
@@ -1111,6 +1156,7 @@ domainDescriptionType =
     , _ddtUserPoolId = Nothing
     , _ddtDomain = Nothing
     , _ddtAWSAccountId = Nothing
+    , _ddtCustomDomainConfig = Nothing
     , _ddtVersion = Nothing
     , _ddtS3Bucket = Nothing
     }
@@ -1136,6 +1182,10 @@ ddtDomain = lens _ddtDomain (\ s a -> s{_ddtDomain = a})
 ddtAWSAccountId :: Lens' DomainDescriptionType (Maybe Text)
 ddtAWSAccountId = lens _ddtAWSAccountId (\ s a -> s{_ddtAWSAccountId = a})
 
+-- | Undocumented member.
+ddtCustomDomainConfig :: Lens' DomainDescriptionType (Maybe CustomDomainConfigType)
+ddtCustomDomainConfig = lens _ddtCustomDomainConfig (\ s a -> s{_ddtCustomDomainConfig = a})
+
 -- | The app version.
 ddtVersion :: Lens' DomainDescriptionType (Maybe Text)
 ddtVersion = lens _ddtVersion (\ s a -> s{_ddtVersion = a})
@@ -1153,6 +1203,7 @@ instance FromJSON DomainDescriptionType where
                      <*> (x .:? "UserPoolId")
                      <*> (x .:? "Domain")
                      <*> (x .:? "AWSAccountId")
+                     <*> (x .:? "CustomDomainConfig")
                      <*> (x .:? "Version")
                      <*> (x .:? "S3Bucket"))
 
@@ -1166,7 +1217,7 @@ instance NFData DomainDescriptionType where
 --
 -- /See:/ 'emailConfigurationType' smart constructor.
 data EmailConfigurationType = EmailConfigurationType'
-  { _ectSourceARN           :: !(Maybe Text)
+  { _ectSourceARN :: !(Maybe Text)
   , _ectReplyToEmailAddress :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1219,11 +1270,11 @@ instance ToJSON EmailConfigurationType where
 --
 -- /See:/ 'eventContextDataType' smart constructor.
 data EventContextDataType = EventContextDataType'
-  { _ecdtIPAddress  :: !(Maybe Text)
-  , _ecdtCountry    :: !(Maybe Text)
-  , _ecdtCity       :: !(Maybe Text)
+  { _ecdtIPAddress :: !(Maybe Text)
+  , _ecdtCountry :: !(Maybe Text)
+  , _ecdtCity :: !(Maybe Text)
   , _ecdtDeviceName :: !(Maybe Text)
-  , _ecdtTimezone   :: !(Maybe Text)
+  , _ecdtTimezone :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1292,9 +1343,9 @@ instance NFData EventContextDataType where
 --
 -- /See:/ 'eventFeedbackType' smart constructor.
 data EventFeedbackType = EventFeedbackType'
-  { _eftFeedbackDate  :: !(Maybe POSIX)
+  { _eftFeedbackDate :: !(Maybe POSIX)
   , _eftFeedbackValue :: !FeedbackValueType
-  , _eftProvider      :: !Text
+  , _eftProvider :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1349,7 +1400,7 @@ instance NFData EventFeedbackType where
 --
 -- /See:/ 'eventRiskType' smart constructor.
 data EventRiskType = EventRiskType'
-  { _ertRiskLevel    :: !(Maybe RiskLevelType)
+  { _ertRiskLevel :: !(Maybe RiskLevelType)
   , _ertRiskDecision :: !(Maybe RiskDecisionType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1393,12 +1444,12 @@ instance NFData EventRiskType where
 -- /See:/ 'groupType' smart constructor.
 data GroupType = GroupType'
   { _gtLastModifiedDate :: !(Maybe POSIX)
-  , _gtUserPoolId       :: !(Maybe Text)
-  , _gtCreationDate     :: !(Maybe POSIX)
-  , _gtPrecedence       :: !(Maybe Nat)
-  , _gtGroupName        :: !(Maybe Text)
-  , _gtDescription      :: !(Maybe Text)
-  , _gtRoleARN          :: !(Maybe Text)
+  , _gtUserPoolId :: !(Maybe Text)
+  , _gtCreationDate :: !(Maybe POSIX)
+  , _gtPrecedence :: !(Maybe Nat)
+  , _gtGroupName :: !(Maybe Text)
+  , _gtDescription :: !(Maybe Text)
+  , _gtRoleARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1484,7 +1535,7 @@ instance NFData GroupType where
 -- /See:/ 'hTTPHeader' smart constructor.
 data HTTPHeader = HTTPHeader'
   { _httphHeaderValue :: !(Maybe Text)
-  , _httphHeaderName  :: !(Maybe Text)
+  , _httphHeaderName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1527,13 +1578,13 @@ instance ToJSON HTTPHeader where
 -- /See:/ 'identityProviderType' smart constructor.
 data IdentityProviderType = IdentityProviderType'
   { _iptLastModifiedDate :: !(Maybe POSIX)
-  , _iptUserPoolId       :: !(Maybe Text)
-  , _iptProviderType     :: !(Maybe IdentityProviderTypeType)
-  , _iptCreationDate     :: !(Maybe POSIX)
-  , _iptIdpIdentifiers   :: !(Maybe [Text])
+  , _iptUserPoolId :: !(Maybe Text)
+  , _iptProviderType :: !(Maybe IdentityProviderTypeType)
+  , _iptCreationDate :: !(Maybe POSIX)
+  , _iptIdpIdentifiers :: !(Maybe [Text])
   , _iptAttributeMapping :: !(Maybe (Map Text Text))
-  , _iptProviderDetails  :: !(Maybe (Map Text Text))
-  , _iptProviderName     :: !(Maybe Text)
+  , _iptProviderDetails :: !(Maybe (Map Text Text))
+  , _iptProviderName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1626,16 +1677,16 @@ instance NFData IdentityProviderType where
 --
 -- /See:/ 'lambdaConfigType' smart constructor.
 data LambdaConfigType = LambdaConfigType'
-  { _lctPreAuthentication           :: !(Maybe Text)
-  , _lctCreateAuthChallenge         :: !(Maybe Text)
+  { _lctPreAuthentication :: !(Maybe Text)
+  , _lctCreateAuthChallenge :: !(Maybe Text)
   , _lctVerifyAuthChallengeResponse :: !(Maybe Text)
-  , _lctPostAuthentication          :: !(Maybe Text)
-  , _lctCustomMessage               :: !(Maybe Text)
-  , _lctDefineAuthChallenge         :: !(Maybe Text)
-  , _lctPostConfirmation            :: !(Maybe Text)
-  , _lctPreTokenGeneration          :: !(Maybe Text)
-  , _lctUserMigration               :: !(Maybe Text)
-  , _lctPreSignUp                   :: !(Maybe Text)
+  , _lctPostAuthentication :: !(Maybe Text)
+  , _lctCustomMessage :: !(Maybe Text)
+  , _lctDefineAuthChallenge :: !(Maybe Text)
+  , _lctPostConfirmation :: !(Maybe Text)
+  , _lctPreTokenGeneration :: !(Maybe Text)
+  , _lctUserMigration :: !(Maybe Text)
+  , _lctPreSignUp :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1764,7 +1815,7 @@ instance ToJSON LambdaConfigType where
 -- /See:/ 'mfaOptionType' smart constructor.
 data MFAOptionType = MFAOptionType'
   { _motDeliveryMedium :: !(Maybe DeliveryMediumType)
-  , _motAttributeName  :: !(Maybe Text)
+  , _motAttributeName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1814,7 +1865,7 @@ instance ToJSON MFAOptionType where
 -- /See:/ 'messageTemplateType' smart constructor.
 data MessageTemplateType = MessageTemplateType'
   { _mttEmailSubject :: !(Maybe Text)
-  , _mttSMSMessage   :: !(Maybe Text)
+  , _mttSMSMessage :: !(Maybe Text)
   , _mttEmailMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1877,7 +1928,7 @@ instance ToJSON MessageTemplateType where
 -- /See:/ 'newDeviceMetadataType' smart constructor.
 data NewDeviceMetadataType = NewDeviceMetadataType'
   { _ndmtDeviceGroupKey :: !(Maybe Text)
-  , _ndmtDeviceKey      :: !(Maybe Text)
+  , _ndmtDeviceKey :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1921,11 +1972,11 @@ instance NFData NewDeviceMetadataType where
 -- /See:/ 'notifyConfigurationType' smart constructor.
 data NotifyConfigurationType = NotifyConfigurationType'
   { _nctNoActionEmail :: !(Maybe NotifyEmailType)
-  , _nctFrom          :: !(Maybe Text)
-  , _nctReplyTo       :: !(Maybe Text)
-  , _nctBlockEmail    :: !(Maybe NotifyEmailType)
-  , _nctMFAEmail      :: !(Maybe NotifyEmailType)
-  , _nctSourceARN     :: !Text
+  , _nctFrom :: !(Maybe Text)
+  , _nctReplyTo :: !(Maybe Text)
+  , _nctBlockEmail :: !(Maybe NotifyEmailType)
+  , _nctMFAEmail :: !(Maybe NotifyEmailType)
+  , _nctSourceARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2016,7 +2067,7 @@ instance ToJSON NotifyConfigurationType where
 data NotifyEmailType = NotifyEmailType'
   { _netTextBody :: !(Maybe Text)
   , _netHTMLBody :: !(Maybe Text)
-  , _netSubject  :: !Text
+  , _netSubject :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2128,11 +2179,11 @@ instance ToJSON NumberAttributeConstraintsType where
 --
 -- /See:/ 'passwordPolicyType' smart constructor.
 data PasswordPolicyType = PasswordPolicyType'
-  { _pptRequireNumbers   :: !(Maybe Bool)
+  { _pptRequireNumbers :: !(Maybe Bool)
   , _pptRequireUppercase :: !(Maybe Bool)
   , _pptRequireLowercase :: !(Maybe Bool)
-  , _pptMinimumLength    :: !(Maybe Nat)
-  , _pptRequireSymbols   :: !(Maybe Bool)
+  , _pptMinimumLength :: !(Maybe Nat)
+  , _pptRequireSymbols :: !(Maybe Bool)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2213,9 +2264,9 @@ instance ToJSON PasswordPolicyType where
 -- /See:/ 'providerDescription' smart constructor.
 data ProviderDescription = ProviderDescription'
   { _pdLastModifiedDate :: !(Maybe POSIX)
-  , _pdProviderType     :: !(Maybe IdentityProviderTypeType)
-  , _pdCreationDate     :: !(Maybe POSIX)
-  , _pdProviderName     :: !(Maybe Text)
+  , _pdProviderType :: !(Maybe IdentityProviderTypeType)
+  , _pdCreationDate :: !(Maybe POSIX)
+  , _pdProviderName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2277,8 +2328,8 @@ instance NFData ProviderDescription where
 -- /See:/ 'providerUserIdentifierType' smart constructor.
 data ProviderUserIdentifierType = ProviderUserIdentifierType'
   { _puitProviderAttributeValue :: !(Maybe Text)
-  , _puitProviderAttributeName  :: !(Maybe Text)
-  , _puitProviderName           :: !(Maybe Text)
+  , _puitProviderAttributeName :: !(Maybe Text)
+  , _puitProviderName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2333,7 +2384,7 @@ instance ToJSON ProviderUserIdentifierType where
 --
 -- /See:/ 'resourceServerScopeType' smart constructor.
 data ResourceServerScopeType = ResourceServerScopeType'
-  { _rsstScopeName        :: !Text
+  { _rsstScopeName :: !Text
   , _rsstScopeDescription :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2388,8 +2439,8 @@ instance ToJSON ResourceServerScopeType where
 data ResourceServerType = ResourceServerType'
   { _rstUserPoolId :: !(Maybe Text)
   , _rstIdentifier :: !(Maybe Text)
-  , _rstScopes     :: !(Maybe [ResourceServerScopeType])
-  , _rstName       :: !(Maybe Text)
+  , _rstScopes :: !(Maybe [ResourceServerScopeType])
+  , _rstName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2473,7 +2524,7 @@ data RiskConfigurationType = RiskConfigurationType'
 --
 -- * 'rctUserPoolId' - The user pool ID.
 --
--- * 'rctCompromisedCredentialsRiskConfiguration' - The compromised credentials risk configuration object including the @EventFilter@ and the @EventAction@
+-- * 'rctCompromisedCredentialsRiskConfiguration' - The compromised credentials risk configuration object including the @EventFilter@ and the @EventAction@ 
 riskConfigurationType
     :: RiskConfigurationType
 riskConfigurationType =
@@ -2507,7 +2558,7 @@ rctLastModifiedDate = lens _rctLastModifiedDate (\ s a -> s{_rctLastModifiedDate
 rctUserPoolId :: Lens' RiskConfigurationType (Maybe Text)
 rctUserPoolId = lens _rctUserPoolId (\ s a -> s{_rctUserPoolId = a})
 
--- | The compromised credentials risk configuration object including the @EventFilter@ and the @EventAction@
+-- | The compromised credentials risk configuration object including the @EventFilter@ and the @EventAction@ 
 rctCompromisedCredentialsRiskConfiguration :: Lens' RiskConfigurationType (Maybe CompromisedCredentialsRiskConfigurationType)
 rctCompromisedCredentialsRiskConfiguration = lens _rctCompromisedCredentialsRiskConfiguration (\ s a -> s{_rctCompromisedCredentialsRiskConfiguration = a})
 
@@ -2590,7 +2641,7 @@ instance ToJSON RiskExceptionConfigurationType where
 --
 -- /See:/ 'sMSMFASettingsType' smart constructor.
 data SMSMFASettingsType = SMSMFASettingsType'
-  { _smsmstEnabled      :: !(Maybe Bool)
+  { _smsmstEnabled :: !(Maybe Bool)
   , _smsmstPreferredMFA :: !(Maybe Bool)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2634,12 +2685,12 @@ instance ToJSON SMSMFASettingsType where
 -- /See:/ 'schemaAttributeType' smart constructor.
 data SchemaAttributeType = SchemaAttributeType'
   { _satNumberAttributeConstraints :: !(Maybe NumberAttributeConstraintsType)
-  , _satRequired                   :: !(Maybe Bool)
-  , _satAttributeDataType          :: !(Maybe AttributeDataType)
+  , _satRequired :: !(Maybe Bool)
+  , _satAttributeDataType :: !(Maybe AttributeDataType)
   , _satStringAttributeConstraints :: !(Maybe StringAttributeConstraintsType)
-  , _satName                       :: !(Maybe Text)
-  , _satDeveloperOnlyAttribute     :: !(Maybe Bool)
-  , _satMutable                    :: !(Maybe Bool)
+  , _satName :: !(Maybe Text)
+  , _satDeveloperOnlyAttribute :: !(Maybe Bool)
+  , _satMutable :: !(Maybe Bool)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2659,7 +2710,7 @@ data SchemaAttributeType = SchemaAttributeType'
 --
 -- * 'satDeveloperOnlyAttribute' - Specifies whether the attribute type is developer only.
 --
--- * 'satMutable' - Specifies whether the attribute can be changed once it has been created.
+-- * 'satMutable' - Specifies whether the value of the attribute can be changed. For any user pool attribute that's mapped to an identity provider attribute, you must set this parameter to @true@ . Amazon Cognito updates mapped attributes when users sign in to your application through an identity provider. If an attribute is immutable, Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html Specifying Identity Provider Attribute Mappings for Your User Pool> .
 schemaAttributeType
     :: SchemaAttributeType
 schemaAttributeType =
@@ -2698,7 +2749,7 @@ satName = lens _satName (\ s a -> s{_satName = a})
 satDeveloperOnlyAttribute :: Lens' SchemaAttributeType (Maybe Bool)
 satDeveloperOnlyAttribute = lens _satDeveloperOnlyAttribute (\ s a -> s{_satDeveloperOnlyAttribute = a})
 
--- | Specifies whether the attribute can be changed once it has been created.
+-- | Specifies whether the value of the attribute can be changed. For any user pool attribute that's mapped to an identity provider attribute, you must set this parameter to @true@ . Amazon Cognito updates mapped attributes when users sign in to your application through an identity provider. If an attribute is immutable, Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html Specifying Identity Provider Attribute Mappings for Your User Pool> .
 satMutable :: Lens' SchemaAttributeType (Maybe Bool)
 satMutable = lens _satMutable (\ s a -> s{_satMutable = a})
 
@@ -2740,7 +2791,7 @@ instance ToJSON SchemaAttributeType where
 --
 -- /See:/ 'smsConfigurationType' smart constructor.
 data SmsConfigurationType = SmsConfigurationType'
-  { _sctExternalId   :: !(Maybe Text)
+  { _sctExternalId :: !(Maybe Text)
   , _sctSNSCallerARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2793,7 +2844,7 @@ instance ToJSON SmsConfigurationType where
 -- /See:/ 'smsMFAConfigType' smart constructor.
 data SmsMFAConfigType = SmsMFAConfigType'
   { _smctSmsAuthenticationMessage :: !(Maybe Text)
-  , _smctSmsConfiguration         :: !(Maybe SmsConfigurationType)
+  , _smctSmsConfiguration :: !(Maybe SmsConfigurationType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2885,7 +2936,7 @@ instance ToJSON SoftwareTokenMFAConfigType where
 --
 -- /See:/ 'softwareTokenMFASettingsType' smart constructor.
 data SoftwareTokenMFASettingsType = SoftwareTokenMFASettingsType'
-  { _stmstEnabled      :: !(Maybe Bool)
+  { _stmstEnabled :: !(Maybe Bool)
   , _stmstPreferredMFA :: !(Maybe Bool)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2982,13 +3033,13 @@ instance ToJSON StringAttributeConstraintsType where
 --
 -- /See:/ 'uICustomizationType' smart constructor.
 data UICustomizationType = UICustomizationType'
-  { _uictClientId         :: !(Maybe (Sensitive Text))
+  { _uictClientId :: !(Maybe (Sensitive Text))
   , _uictLastModifiedDate :: !(Maybe POSIX)
-  , _uictUserPoolId       :: !(Maybe Text)
-  , _uictCSS              :: !(Maybe Text)
-  , _uictCSSVersion       :: !(Maybe Text)
-  , _uictImageURL         :: !(Maybe Text)
-  , _uictCreationDate     :: !(Maybe POSIX)
+  , _uictUserPoolId :: !(Maybe Text)
+  , _uictCSS :: !(Maybe Text)
+  , _uictCSSVersion :: !(Maybe Text)
+  , _uictImageURL :: !(Maybe Text)
+  , _uictCreationDate :: !(Maybe POSIX)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -3106,19 +3157,19 @@ instance ToJSON UserContextDataType where
 --
 -- /See:/ 'userImportJobType' smart constructor.
 data UserImportJobType = UserImportJobType'
-  { _uijtStatus                :: !(Maybe UserImportJobStatusType)
-  , _uijtSkippedUsers          :: !(Maybe Integer)
-  , _uijtJobId                 :: !(Maybe Text)
-  , _uijtUserPoolId            :: !(Maybe Text)
-  , _uijtJobName               :: !(Maybe Text)
-  , _uijtPreSignedURL          :: !(Maybe Text)
-  , _uijtFailedUsers           :: !(Maybe Integer)
-  , _uijtStartDate             :: !(Maybe POSIX)
-  , _uijtCompletionMessage     :: !(Maybe Text)
-  , _uijtCreationDate          :: !(Maybe POSIX)
-  , _uijtCompletionDate        :: !(Maybe POSIX)
+  { _uijtStatus :: !(Maybe UserImportJobStatusType)
+  , _uijtSkippedUsers :: !(Maybe Integer)
+  , _uijtJobId :: !(Maybe Text)
+  , _uijtUserPoolId :: !(Maybe Text)
+  , _uijtJobName :: !(Maybe Text)
+  , _uijtPreSignedURL :: !(Maybe Text)
+  , _uijtFailedUsers :: !(Maybe Integer)
+  , _uijtStartDate :: !(Maybe POSIX)
+  , _uijtCompletionMessage :: !(Maybe Text)
+  , _uijtCreationDate :: !(Maybe POSIX)
+  , _uijtCompletionDate :: !(Maybe POSIX)
   , _uijtCloudWatchLogsRoleARN :: !(Maybe Text)
-  , _uijtImportedUsers         :: !(Maybe Integer)
+  , _uijtImportedUsers :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -3296,7 +3347,7 @@ instance ToJSON UserPoolAddOnsType where
 --
 -- /See:/ 'userPoolClientDescription' smart constructor.
 data UserPoolClientDescription = UserPoolClientDescription'
-  { _upcdClientId   :: !(Maybe (Sensitive Text))
+  { _upcdClientId :: !(Maybe (Sensitive Text))
   , _upcdUserPoolId :: !(Maybe Text)
   , _upcdClientName :: !(Maybe Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
@@ -3351,24 +3402,24 @@ instance NFData UserPoolClientDescription where
 --
 -- /See:/ 'userPoolClientType' smart constructor.
 data UserPoolClientType = UserPoolClientType'
-  { _upctRefreshTokenValidity            :: !(Maybe Nat)
-  , _upctClientId                        :: !(Maybe (Sensitive Text))
-  , _upctExplicitAuthFlows               :: !(Maybe [ExplicitAuthFlowsType])
-  , _upctClientSecret                    :: !(Maybe (Sensitive Text))
-  , _upctLastModifiedDate                :: !(Maybe POSIX)
-  , _upctSupportedIdentityProviders      :: !(Maybe [Text])
-  , _upctLogoutURLs                      :: !(Maybe [Text])
+  { _upctRefreshTokenValidity :: !(Maybe Nat)
+  , _upctClientId :: !(Maybe (Sensitive Text))
+  , _upctExplicitAuthFlows :: !(Maybe [ExplicitAuthFlowsType])
+  , _upctClientSecret :: !(Maybe (Sensitive Text))
+  , _upctLastModifiedDate :: !(Maybe POSIX)
+  , _upctSupportedIdentityProviders :: !(Maybe [Text])
+  , _upctLogoutURLs :: !(Maybe [Text])
   , _upctAllowedOAuthFlowsUserPoolClient :: !(Maybe Bool)
-  , _upctUserPoolId                      :: !(Maybe Text)
-  , _upctDefaultRedirectURI              :: !(Maybe Text)
-  , _upctWriteAttributes                 :: !(Maybe [Text])
-  , _upctCreationDate                    :: !(Maybe POSIX)
-  , _upctReadAttributes                  :: !(Maybe [Text])
-  , _upctAllowedOAuthScopes              :: !(Maybe [Text])
-  , _upctAllowedOAuthFlows               :: !(Maybe [OAuthFlowType])
-  , _upctAnalyticsConfiguration          :: !(Maybe AnalyticsConfigurationType)
-  , _upctClientName                      :: !(Maybe Text)
-  , _upctCallbackURLs                    :: !(Maybe [Text])
+  , _upctUserPoolId :: !(Maybe Text)
+  , _upctDefaultRedirectURI :: !(Maybe Text)
+  , _upctWriteAttributes :: !(Maybe [Text])
+  , _upctCreationDate :: !(Maybe POSIX)
+  , _upctReadAttributes :: !(Maybe [Text])
+  , _upctAllowedOAuthScopes :: !(Maybe [Text])
+  , _upctAllowedOAuthFlows :: !(Maybe [OAuthFlowType])
+  , _upctAnalyticsConfiguration :: !(Maybe AnalyticsConfigurationType)
+  , _upctClientName :: !(Maybe Text)
+  , _upctCallbackURLs :: !(Maybe [Text])
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -3394,7 +3445,7 @@ data UserPoolClientType = UserPoolClientType'
 --
 -- * 'upctUserPoolId' - The user pool ID for the user pool client.
 --
--- * 'upctDefaultRedirectURI' - The default redirect URI. Must be in the @CallbackURLs@ list.
+-- * 'upctDefaultRedirectURI' - The default redirect URI. Must be in the @CallbackURLs@ list. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 --
 -- * 'upctWriteAttributes' - The writeable attributes.
 --
@@ -3410,7 +3461,7 @@ data UserPoolClientType = UserPoolClientType'
 --
 -- * 'upctClientName' - The client name from the user pool request of the client type.
 --
--- * 'upctCallbackURLs' - A list of allowed callback URLs for the identity providers.
+-- * 'upctCallbackURLs' - A list of allowed redirect (callback) URLs for the identity providers. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 userPoolClientType
     :: UserPoolClientType
 userPoolClientType =
@@ -3472,7 +3523,7 @@ upctAllowedOAuthFlowsUserPoolClient = lens _upctAllowedOAuthFlowsUserPoolClient 
 upctUserPoolId :: Lens' UserPoolClientType (Maybe Text)
 upctUserPoolId = lens _upctUserPoolId (\ s a -> s{_upctUserPoolId = a})
 
--- | The default redirect URI. Must be in the @CallbackURLs@ list.
+-- | The default redirect URI. Must be in the @CallbackURLs@ list. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 upctDefaultRedirectURI :: Lens' UserPoolClientType (Maybe Text)
 upctDefaultRedirectURI = lens _upctDefaultRedirectURI (\ s a -> s{_upctDefaultRedirectURI = a})
 
@@ -3504,7 +3555,7 @@ upctAnalyticsConfiguration = lens _upctAnalyticsConfiguration (\ s a -> s{_upctA
 upctClientName :: Lens' UserPoolClientType (Maybe Text)
 upctClientName = lens _upctClientName (\ s a -> s{_upctClientName = a})
 
--- | A list of allowed callback URLs for the identity providers.
+-- | A list of allowed redirect (callback) URLs for the identity providers. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 upctCallbackURLs :: Lens' UserPoolClientType [Text]
 upctCallbackURLs = lens _upctCallbackURLs (\ s a -> s{_upctCallbackURLs = a}) . _Default . _Coerce
 
@@ -3541,12 +3592,12 @@ instance NFData UserPoolClientType where
 --
 -- /See:/ 'userPoolDescriptionType' smart constructor.
 data UserPoolDescriptionType = UserPoolDescriptionType'
-  { _updtStatus           :: !(Maybe StatusType)
+  { _updtStatus :: !(Maybe StatusType)
   , _updtLastModifiedDate :: !(Maybe POSIX)
-  , _updtName             :: !(Maybe Text)
-  , _updtId               :: !(Maybe Text)
-  , _updtCreationDate     :: !(Maybe POSIX)
-  , _updtLambdaConfig     :: !(Maybe LambdaConfigType)
+  , _updtName :: !(Maybe Text)
+  , _updtId :: !(Maybe Text)
+  , _updtCreationDate :: !(Maybe POSIX)
+  , _updtLambdaConfig :: !(Maybe LambdaConfigType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -3663,33 +3714,35 @@ instance ToJSON UserPoolPolicyType where
 --
 -- /See:/ 'userPoolType' smart constructor.
 data UserPoolType = UserPoolType'
-  { _uptStatus                      :: !(Maybe StatusType)
-  , _uptUserPoolTags                :: !(Maybe (Map Text Text))
-  , _uptEmailConfigurationFailure   :: !(Maybe Text)
-  , _uptLastModifiedDate            :: !(Maybe POSIX)
+  { _uptStatus :: !(Maybe StatusType)
+  , _uptUserPoolTags :: !(Maybe (Map Text Text))
+  , _uptEmailConfigurationFailure :: !(Maybe Text)
+  , _uptLastModifiedDate :: !(Maybe POSIX)
   , _uptVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
-  , _uptEstimatedNumberOfUsers      :: !(Maybe Int)
-  , _uptDomain                      :: !(Maybe Text)
-  , _uptEmailVerificationMessage    :: !(Maybe Text)
-  , _uptSmsAuthenticationMessage    :: !(Maybe Text)
-  , _uptUserPoolAddOns              :: !(Maybe UserPoolAddOnsType)
-  , _uptSchemaAttributes            :: !(Maybe (List1 SchemaAttributeType))
-  , _uptEmailVerificationSubject    :: !(Maybe Text)
-  , _uptUsernameAttributes          :: !(Maybe [UsernameAttributeType])
-  , _uptAliasAttributes             :: !(Maybe [AliasAttributeType])
-  , _uptEmailConfiguration          :: !(Maybe EmailConfigurationType)
-  , _uptSmsVerificationMessage      :: !(Maybe Text)
-  , _uptName                        :: !(Maybe Text)
-  , _uptMFAConfiguration            :: !(Maybe UserPoolMFAType)
-  , _uptId                          :: !(Maybe Text)
-  , _uptSmsConfigurationFailure     :: !(Maybe Text)
-  , _uptCreationDate                :: !(Maybe POSIX)
-  , _uptLambdaConfig                :: !(Maybe LambdaConfigType)
-  , _uptSmsConfiguration            :: !(Maybe SmsConfigurationType)
-  , _uptAdminCreateUserConfig       :: !(Maybe AdminCreateUserConfigType)
-  , _uptDeviceConfiguration         :: !(Maybe DeviceConfigurationType)
-  , _uptAutoVerifiedAttributes      :: !(Maybe [VerifiedAttributeType])
-  , _uptPolicies                    :: !(Maybe UserPoolPolicyType)
+  , _uptEstimatedNumberOfUsers :: !(Maybe Int)
+  , _uptARN :: !(Maybe Text)
+  , _uptDomain :: !(Maybe Text)
+  , _uptCustomDomain :: !(Maybe Text)
+  , _uptEmailVerificationMessage :: !(Maybe Text)
+  , _uptSmsAuthenticationMessage :: !(Maybe Text)
+  , _uptUserPoolAddOns :: !(Maybe UserPoolAddOnsType)
+  , _uptSchemaAttributes :: !(Maybe (List1 SchemaAttributeType))
+  , _uptEmailVerificationSubject :: !(Maybe Text)
+  , _uptUsernameAttributes :: !(Maybe [UsernameAttributeType])
+  , _uptAliasAttributes :: !(Maybe [AliasAttributeType])
+  , _uptEmailConfiguration :: !(Maybe EmailConfigurationType)
+  , _uptSmsVerificationMessage :: !(Maybe Text)
+  , _uptName :: !(Maybe Text)
+  , _uptMFAConfiguration :: !(Maybe UserPoolMFAType)
+  , _uptId :: !(Maybe Text)
+  , _uptSmsConfigurationFailure :: !(Maybe Text)
+  , _uptCreationDate :: !(Maybe POSIX)
+  , _uptLambdaConfig :: !(Maybe LambdaConfigType)
+  , _uptSmsConfiguration :: !(Maybe SmsConfigurationType)
+  , _uptAdminCreateUserConfig :: !(Maybe AdminCreateUserConfigType)
+  , _uptDeviceConfiguration :: !(Maybe DeviceConfigurationType)
+  , _uptAutoVerifiedAttributes :: !(Maybe [VerifiedAttributeType])
+  , _uptPolicies :: !(Maybe UserPoolPolicyType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -3699,7 +3752,7 @@ data UserPoolType = UserPoolType'
 --
 -- * 'uptStatus' - The status of a user pool.
 --
--- * 'uptUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- * 'uptUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool> 
 --
 -- * 'uptEmailConfigurationFailure' - The reason why the email configuration cannot send the messages to your users.
 --
@@ -3709,7 +3762,11 @@ data UserPoolType = UserPoolType'
 --
 -- * 'uptEstimatedNumberOfUsers' - A number estimating the size of the user pool.
 --
+-- * 'uptARN' - The Amazon Resource Name (ARN) for the user pool.
+--
 -- * 'uptDomain' - Holds the domain prefix if the user pool has a domain associated with it.
+--
+-- * 'uptCustomDomain' - Undocumented member.
 --
 -- * 'uptEmailVerificationMessage' - The contents of the email verification message.
 --
@@ -3739,7 +3796,7 @@ data UserPoolType = UserPoolType'
 --
 -- * 'uptCreationDate' - The date the user pool was created.
 --
--- * 'uptLambdaConfig' - The AWS Lambda triggers associated with tue user pool.
+-- * 'uptLambdaConfig' - The AWS Lambda triggers associated with the user pool.
 --
 -- * 'uptSmsConfiguration' - The SMS configuration.
 --
@@ -3760,7 +3817,9 @@ userPoolType =
     , _uptLastModifiedDate = Nothing
     , _uptVerificationMessageTemplate = Nothing
     , _uptEstimatedNumberOfUsers = Nothing
+    , _uptARN = Nothing
     , _uptDomain = Nothing
+    , _uptCustomDomain = Nothing
     , _uptEmailVerificationMessage = Nothing
     , _uptSmsAuthenticationMessage = Nothing
     , _uptUserPoolAddOns = Nothing
@@ -3788,7 +3847,7 @@ userPoolType =
 uptStatus :: Lens' UserPoolType (Maybe StatusType)
 uptStatus = lens _uptStatus (\ s a -> s{_uptStatus = a})
 
--- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool> 
 uptUserPoolTags :: Lens' UserPoolType (HashMap Text Text)
 uptUserPoolTags = lens _uptUserPoolTags (\ s a -> s{_uptUserPoolTags = a}) . _Default . _Map
 
@@ -3808,9 +3867,17 @@ uptVerificationMessageTemplate = lens _uptVerificationMessageTemplate (\ s a -> 
 uptEstimatedNumberOfUsers :: Lens' UserPoolType (Maybe Int)
 uptEstimatedNumberOfUsers = lens _uptEstimatedNumberOfUsers (\ s a -> s{_uptEstimatedNumberOfUsers = a})
 
+-- | The Amazon Resource Name (ARN) for the user pool.
+uptARN :: Lens' UserPoolType (Maybe Text)
+uptARN = lens _uptARN (\ s a -> s{_uptARN = a})
+
 -- | Holds the domain prefix if the user pool has a domain associated with it.
 uptDomain :: Lens' UserPoolType (Maybe Text)
 uptDomain = lens _uptDomain (\ s a -> s{_uptDomain = a})
+
+-- | Undocumented member.
+uptCustomDomain :: Lens' UserPoolType (Maybe Text)
+uptCustomDomain = lens _uptCustomDomain (\ s a -> s{_uptCustomDomain = a})
 
 -- | The contents of the email verification message.
 uptEmailVerificationMessage :: Lens' UserPoolType (Maybe Text)
@@ -3868,7 +3935,7 @@ uptSmsConfigurationFailure = lens _uptSmsConfigurationFailure (\ s a -> s{_uptSm
 uptCreationDate :: Lens' UserPoolType (Maybe UTCTime)
 uptCreationDate = lens _uptCreationDate (\ s a -> s{_uptCreationDate = a}) . mapping _Time
 
--- | The AWS Lambda triggers associated with tue user pool.
+-- | The AWS Lambda triggers associated with the user pool.
 uptLambdaConfig :: Lens' UserPoolType (Maybe LambdaConfigType)
 uptLambdaConfig = lens _uptLambdaConfig (\ s a -> s{_uptLambdaConfig = a})
 
@@ -3903,7 +3970,9 @@ instance FromJSON UserPoolType where
                      <*> (x .:? "LastModifiedDate")
                      <*> (x .:? "VerificationMessageTemplate")
                      <*> (x .:? "EstimatedNumberOfUsers")
+                     <*> (x .:? "Arn")
                      <*> (x .:? "Domain")
+                     <*> (x .:? "CustomDomain")
                      <*> (x .:? "EmailVerificationMessage")
                      <*> (x .:? "SmsAuthenticationMessage")
                      <*> (x .:? "UserPoolAddOns")
@@ -3935,12 +4004,12 @@ instance NFData UserPoolType where
 --
 -- /See:/ 'userType' smart constructor.
 data UserType = UserType'
-  { _utEnabled              :: !(Maybe Bool)
-  , _utUserStatus           :: !(Maybe UserStatusType)
-  , _utUsername             :: !(Maybe (Sensitive Text))
-  , _utUserCreateDate       :: !(Maybe POSIX)
-  , _utAttributes           :: !(Maybe [AttributeType])
-  , _utMFAOptions           :: !(Maybe [MFAOptionType])
+  { _utEnabled :: !(Maybe Bool)
+  , _utUserStatus :: !(Maybe UserStatusType)
+  , _utUsername :: !(Maybe (Sensitive Text))
+  , _utUserCreateDate :: !(Maybe POSIX)
+  , _utAttributes :: !(Maybe [AttributeType])
+  , _utMFAOptions :: !(Maybe [MFAOptionType])
   , _utUserLastModifiedDate :: !(Maybe POSIX)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -4027,11 +4096,11 @@ instance NFData UserType where
 -- /See:/ 'verificationMessageTemplateType' smart constructor.
 data VerificationMessageTemplateType = VerificationMessageTemplateType'
   { _vmttDefaultEmailOption :: !(Maybe DefaultEmailOptionType)
-  , _vmttEmailSubject       :: !(Maybe Text)
+  , _vmttEmailSubject :: !(Maybe Text)
   , _vmttEmailSubjectByLink :: !(Maybe Text)
-  , _vmttSmsMessage         :: !(Maybe Text)
+  , _vmttSmsMessage :: !(Maybe Text)
   , _vmttEmailMessageByLink :: !(Maybe Text)
-  , _vmttEmailMessage       :: !(Maybe Text)
+  , _vmttEmailMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

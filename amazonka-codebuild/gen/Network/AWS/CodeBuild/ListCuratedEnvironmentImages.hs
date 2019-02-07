@@ -92,7 +92,7 @@ instance ToQuery ListCuratedEnvironmentImages where
 
 -- | /See:/ 'listCuratedEnvironmentImagesResponse' smart constructor.
 data ListCuratedEnvironmentImagesResponse = ListCuratedEnvironmentImagesResponse'
-  { _lceirsPlatforms      :: !(Maybe [EnvironmentPlatform])
+  { _lceirsPlatforms :: !(Maybe [EnvironmentPlatform])
   , _lceirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

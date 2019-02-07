@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get the configuration information about an origin access identity.
+-- Get the configuration information about an origin access identity. 
 --
 --
 module Network.AWS.CloudFront.GetCloudFrontOriginAccessIdentityConfig
@@ -59,7 +59,7 @@ newtype GetCloudFrontOriginAccessIdentityConfig = GetCloudFrontOriginAccessIdent
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcfoaicId' - The identity's ID.
+-- * 'gcfoaicId' - The identity's ID. 
 getCloudFrontOriginAccessIdentityConfig
     :: Text -- ^ 'gcfoaicId'
     -> GetCloudFrontOriginAccessIdentityConfig
@@ -67,7 +67,7 @@ getCloudFrontOriginAccessIdentityConfig pId_ =
   GetCloudFrontOriginAccessIdentityConfig' {_gcfoaicId = pId_}
 
 
--- | The identity's ID.
+-- | The identity's ID. 
 gcfoaicId :: Lens' GetCloudFrontOriginAccessIdentityConfig Text
 gcfoaicId = lens _gcfoaicId (\ s a -> s{_gcfoaicId = a})
 
@@ -102,7 +102,7 @@ instance ToPath
          where
         toPath GetCloudFrontOriginAccessIdentityConfig'{..}
           = mconcat
-              ["/2017-10-30/origin-access-identity/cloudfront/",
+              ["/2018-11-05/origin-access-identity/cloudfront/",
                toBS _gcfoaicId, "/config"]
 
 instance ToQuery
@@ -126,7 +126,7 @@ data GetCloudFrontOriginAccessIdentityConfigResponse = GetCloudFrontOriginAccess
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcfoaicrsCloudFrontOriginAccessIdentityConfig' - The origin access identity's configuration information.
+-- * 'gcfoaicrsCloudFrontOriginAccessIdentityConfig' - The origin access identity's configuration information. 
 --
 -- * 'gcfoaicrsETag' - The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
 --
@@ -142,7 +142,7 @@ getCloudFrontOriginAccessIdentityConfigResponse pResponseStatus_ =
     }
 
 
--- | The origin access identity's configuration information.
+-- | The origin access identity's configuration information. 
 gcfoaicrsCloudFrontOriginAccessIdentityConfig :: Lens' GetCloudFrontOriginAccessIdentityConfigResponse (Maybe CloudFrontOriginAccessIdentityConfig)
 gcfoaicrsCloudFrontOriginAccessIdentityConfig = lens _gcfoaicrsCloudFrontOriginAccessIdentityConfig (\ s a -> s{_gcfoaicrsCloudFrontOriginAccessIdentityConfig = a})
 

@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -16,14 +16,21 @@ module Network.AWS.Comprehend.Types
       comprehend
 
     -- * Errors
+    , _ResourceUnavailableException
     , _InvalidRequestException
+    , _ResourceLimitExceededException
     , _TooManyRequestsException
     , _InternalServerException
     , _BatchSizeLimitExceededException
     , _UnsupportedLanguageException
     , _JobNotFoundException
     , _InvalidFilterException
+    , _ResourceNotFoundException
     , _TextSizeLimitExceededException
+    , _ResourceInUseException
+
+    -- * Re-exported Types
+    , module Network.AWS.Comprehend.Internal
 
     -- * EntityType
     , EntityType (..)
@@ -37,8 +44,17 @@ module Network.AWS.Comprehend.Types
     -- * LanguageCode
     , LanguageCode (..)
 
+    -- * ModelStatus
+    , ModelStatus (..)
+
+    -- * PartOfSpeechTagType
+    , PartOfSpeechTagType (..)
+
     -- * SentimentType
     , SentimentType (..)
+
+    -- * SyntaxLanguageCode
+    , SyntaxLanguageCode (..)
 
     -- * BatchDetectDominantLanguageItemResult
     , BatchDetectDominantLanguageItemResult
@@ -61,9 +77,15 @@ module Network.AWS.Comprehend.Types
     -- * BatchDetectSentimentItemResult
     , BatchDetectSentimentItemResult
     , batchDetectSentimentItemResult
-    , bdsirSentiment
-    , bdsirSentimentScore
+    , bSentiment
+    , bSentimentScore
+    , bIndex
+
+    -- * BatchDetectSyntaxItemResult
+    , BatchDetectSyntaxItemResult
+    , batchDetectSyntaxItemResult
     , bdsirIndex
+    , bdsirSyntaxTokens
 
     -- * BatchItemError
     , BatchItemError
@@ -72,11 +94,120 @@ module Network.AWS.Comprehend.Types
     , bieErrorMessage
     , bieIndex
 
+    -- * ClassifierEvaluationMetrics
+    , ClassifierEvaluationMetrics
+    , classifierEvaluationMetrics
+    , cemRecall
+    , cemPrecision
+    , cemF1Score
+    , cemAccuracy
+
+    -- * ClassifierMetadata
+    , ClassifierMetadata
+    , classifierMetadata
+    , cmNumberOfLabels
+    , cmEvaluationMetrics
+    , cmNumberOfTrainedDocuments
+    , cmNumberOfTestDocuments
+
+    -- * DocumentClassificationJobFilter
+    , DocumentClassificationJobFilter
+    , documentClassificationJobFilter
+    , dcjfSubmitTimeAfter
+    , dcjfSubmitTimeBefore
+    , dcjfJobName
+    , dcjfJobStatus
+
+    -- * DocumentClassificationJobProperties
+    , DocumentClassificationJobProperties
+    , documentClassificationJobProperties
+    , dcjpJobId
+    , dcjpDocumentClassifierARN
+    , dcjpJobName
+    , dcjpInputDataConfig
+    , dcjpEndTime
+    , dcjpOutputDataConfig
+    , dcjpDataAccessRoleARN
+    , dcjpJobStatus
+    , dcjpMessage
+    , dcjpSubmitTime
+
+    -- * DocumentClassifierFilter
+    , DocumentClassifierFilter
+    , documentClassifierFilter
+    , dcfStatus
+    , dcfSubmitTimeAfter
+    , dcfSubmitTimeBefore
+
+    -- * DocumentClassifierInputDataConfig
+    , DocumentClassifierInputDataConfig
+    , documentClassifierInputDataConfig
+    , dcidcS3URI
+
+    -- * DocumentClassifierProperties
+    , DocumentClassifierProperties
+    , documentClassifierProperties
+    , dcpStatus
+    , dcpLanguageCode
+    , dcpClassifierMetadata
+    , dcpTrainingEndTime
+    , dcpDocumentClassifierARN
+    , dcpInputDataConfig
+    , dcpEndTime
+    , dcpTrainingStartTime
+    , dcpDataAccessRoleARN
+    , dcpMessage
+    , dcpSubmitTime
+
     -- * DominantLanguage
     , DominantLanguage
     , dominantLanguage
     , dlLanguageCode
     , dlScore
+
+    -- * DominantLanguageDetectionJobFilter
+    , DominantLanguageDetectionJobFilter
+    , dominantLanguageDetectionJobFilter
+    , dldjfSubmitTimeAfter
+    , dldjfSubmitTimeBefore
+    , dldjfJobName
+    , dldjfJobStatus
+
+    -- * DominantLanguageDetectionJobProperties
+    , DominantLanguageDetectionJobProperties
+    , dominantLanguageDetectionJobProperties
+    , dldjpJobId
+    , dldjpJobName
+    , dldjpInputDataConfig
+    , dldjpEndTime
+    , dldjpOutputDataConfig
+    , dldjpDataAccessRoleARN
+    , dldjpJobStatus
+    , dldjpMessage
+    , dldjpSubmitTime
+
+    -- * EntitiesDetectionJobFilter
+    , EntitiesDetectionJobFilter
+    , entitiesDetectionJobFilter
+    , edjfSubmitTimeAfter
+    , edjfSubmitTimeBefore
+    , edjfJobName
+    , edjfJobStatus
+
+    -- * EntitiesDetectionJobProperties
+    , EntitiesDetectionJobProperties
+    , entitiesDetectionJobProperties
+    , edjpLanguageCode
+    , edjpJobId
+    , edjpEntityRecognizerARN
+    , edjpJobName
+    , edjpInputDataConfig
+    , edjpEndTime
+    , edjpOutputDataConfig
+    , edjpDataAccessRoleARN
+    , edjpJobStatus
+    , edjpMessage
+    , edjpSubmitTime
 
     -- * Entity
     , Entity
@@ -86,6 +217,76 @@ module Network.AWS.Comprehend.Types
     , eScore
     , eEndOffset
     , eType
+
+    -- * EntityRecognizerAnnotations
+    , EntityRecognizerAnnotations
+    , entityRecognizerAnnotations
+    , eraS3URI
+
+    -- * EntityRecognizerDocuments
+    , EntityRecognizerDocuments
+    , entityRecognizerDocuments
+    , erdS3URI
+
+    -- * EntityRecognizerEntityList
+    , EntityRecognizerEntityList
+    , entityRecognizerEntityList
+    , erelS3URI
+
+    -- * EntityRecognizerEvaluationMetrics
+    , EntityRecognizerEvaluationMetrics
+    , entityRecognizerEvaluationMetrics
+    , eremRecall
+    , eremPrecision
+    , eremF1Score
+
+    -- * EntityRecognizerFilter
+    , EntityRecognizerFilter
+    , entityRecognizerFilter
+    , erfStatus
+    , erfSubmitTimeAfter
+    , erfSubmitTimeBefore
+
+    -- * EntityRecognizerInputDataConfig
+    , EntityRecognizerInputDataConfig
+    , entityRecognizerInputDataConfig
+    , eridcAnnotations
+    , eridcEntityList
+    , eridcEntityTypes
+    , eridcDocuments
+
+    -- * EntityRecognizerMetadata
+    , EntityRecognizerMetadata
+    , entityRecognizerMetadata
+    , ermEntityTypes
+    , ermEvaluationMetrics
+    , ermNumberOfTrainedDocuments
+    , ermNumberOfTestDocuments
+
+    -- * EntityRecognizerMetadataEntityTypesListItem
+    , EntityRecognizerMetadataEntityTypesListItem
+    , entityRecognizerMetadataEntityTypesListItem
+    , ermetliType
+
+    -- * EntityRecognizerProperties
+    , EntityRecognizerProperties
+    , entityRecognizerProperties
+    , erpStatus
+    , erpLanguageCode
+    , erpTrainingEndTime
+    , erpEntityRecognizerARN
+    , erpInputDataConfig
+    , erpEndTime
+    , erpTrainingStartTime
+    , erpDataAccessRoleARN
+    , erpRecognizerMetadata
+    , erpMessage
+    , erpSubmitTime
+
+    -- * EntityTypesListItem
+    , EntityTypesListItem
+    , entityTypesListItem
+    , etliType
 
     -- * InputDataConfig
     , InputDataConfig
@@ -101,10 +302,60 @@ module Network.AWS.Comprehend.Types
     , kpScore
     , kpEndOffset
 
+    -- * KeyPhrasesDetectionJobFilter
+    , KeyPhrasesDetectionJobFilter
+    , keyPhrasesDetectionJobFilter
+    , kpdjfSubmitTimeAfter
+    , kpdjfSubmitTimeBefore
+    , kpdjfJobName
+    , kpdjfJobStatus
+
+    -- * KeyPhrasesDetectionJobProperties
+    , KeyPhrasesDetectionJobProperties
+    , keyPhrasesDetectionJobProperties
+    , kpdjpLanguageCode
+    , kpdjpJobId
+    , kpdjpJobName
+    , kpdjpInputDataConfig
+    , kpdjpEndTime
+    , kpdjpOutputDataConfig
+    , kpdjpDataAccessRoleARN
+    , kpdjpJobStatus
+    , kpdjpMessage
+    , kpdjpSubmitTime
+
     -- * OutputDataConfig
     , OutputDataConfig
     , outputDataConfig
     , odcS3URI
+
+    -- * PartOfSpeechTag
+    , PartOfSpeechTag
+    , partOfSpeechTag
+    , postTag
+    , postScore
+
+    -- * SentimentDetectionJobFilter
+    , SentimentDetectionJobFilter
+    , sentimentDetectionJobFilter
+    , sdjfSubmitTimeAfter
+    , sdjfSubmitTimeBefore
+    , sdjfJobName
+    , sdjfJobStatus
+
+    -- * SentimentDetectionJobProperties
+    , SentimentDetectionJobProperties
+    , sentimentDetectionJobProperties
+    , sdjpLanguageCode
+    , sdjpJobId
+    , sdjpJobName
+    , sdjpInputDataConfig
+    , sdjpEndTime
+    , sdjpOutputDataConfig
+    , sdjpDataAccessRoleARN
+    , sdjpJobStatus
+    , sdjpMessage
+    , sdjpSubmitTime
 
     -- * SentimentScore
     , SentimentScore
@@ -113,6 +364,15 @@ module Network.AWS.Comprehend.Types
     , ssNegative
     , ssNeutral
     , ssPositive
+
+    -- * SyntaxToken
+    , SyntaxToken
+    , syntaxToken
+    , stBeginOffset
+    , stText
+    , stTokenId
+    , stEndOffset
+    , stPartOfSpeech
 
     -- * TopicsDetectionJobFilter
     , TopicsDetectionJobFilter
@@ -136,6 +396,7 @@ module Network.AWS.Comprehend.Types
     , tdjpSubmitTime
     ) where
 
+import Network.AWS.Comprehend.Internal
 import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Comprehend.Types.Sum
 import Network.AWS.Lens
@@ -181,12 +442,28 @@ comprehend =
       | otherwise = Nothing
 
 
+-- | The specified resource is not available. Check to see if the resource is in the @TRAINED@ state and try your request again.
+--
+--
+_ResourceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceUnavailableException =
+  _MatchServiceError comprehend "ResourceUnavailableException"
+
+
 -- | The request is invalid.
 --
 --
 _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException =
   _MatchServiceError comprehend "InvalidRequestException"
+
+
+-- | The maximum number of recognizers per account has been exceeded. Review the recognizers, perform cleanup, and then try your request again.
+--
+--
+_ResourceLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceLimitExceededException =
+  _MatchServiceError comprehend "ResourceLimitExceededException"
 
 
 -- | The number of requests exceeds the limit. Resubmit your request later.
@@ -213,7 +490,7 @@ _BatchSizeLimitExceededException =
   _MatchServiceError comprehend "BatchSizeLimitExceededException"
 
 
--- | Amazon Comprehend can't process the language of the input text. For all APIs except @DetectDominantLanguage@ , Amazon Comprehend accepts only English or Spanish text. For the @DetectDominantLanguage@ API, Amazon Comprehend detects 100 languages. For a list of languages, see 'how-languages'
+-- | Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs (such as @CreateEntityRecognizer@ ), only English is accepted. For most other APIs, Amazon Comprehend accepts only English or Spanish text. 
 --
 --
 _UnsupportedLanguageException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -228,11 +505,19 @@ _JobNotFoundException :: AsError a => Getting (First ServiceError) a ServiceErro
 _JobNotFoundException = _MatchServiceError comprehend "JobNotFoundException"
 
 
--- | The filter specified for the @ListTopicDetectionJobs@ operation is invalid. Specify a different filter.
+-- | The filter specified for the @ListDocumentClassificationJobs@ operation is invalid. Specify a different filter.
 --
 --
 _InvalidFilterException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidFilterException = _MatchServiceError comprehend "InvalidFilterException"
+
+
+-- | The specified resource ARN was not found. Check the ARN and try your request again.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException =
+  _MatchServiceError comprehend "ResourceNotFoundException"
 
 
 -- | The size of the input text exceeds the limit. Use a smaller document.
@@ -241,4 +526,11 @@ _InvalidFilterException = _MatchServiceError comprehend "InvalidFilterException"
 _TextSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _TextSizeLimitExceededException =
   _MatchServiceError comprehend "TextSizeLimitExceededException"
+
+
+-- | The specified name is already in use. Use a different name and try your request again.
+--
+--
+_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException = _MatchServiceError comprehend "ResourceInUseException"
 

@@ -49,9 +49,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateAuthEventFeedback' smart constructor.
 data UpdateAuthEventFeedback = UpdateAuthEventFeedback'
-  { _uaefUserPoolId    :: !Text
-  , _uaefUsername      :: !(Sensitive Text)
-  , _uaefEventId       :: !Text
+  { _uaefUserPoolId :: !Text
+  , _uaefUsername :: !(Sensitive Text)
+  , _uaefEventId :: !Text
   , _uaefFeedbackToken :: !(Sensitive Text)
   , _uaefFeedbackValue :: !FeedbackValueType
   } deriving (Eq, Show, Data, Typeable, Generic)

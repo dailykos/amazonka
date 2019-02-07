@@ -54,7 +54,7 @@ import Network.AWS.Response
 -- /See:/ 'batchGetApplicationRevisions' smart constructor.
 data BatchGetApplicationRevisions = BatchGetApplicationRevisions'
   { _bgarApplicationName :: !Text
-  , _bgarRevisions       :: ![RevisionLocation]
+  , _bgarRevisions :: ![RevisionLocation]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -129,9 +129,9 @@ instance ToQuery BatchGetApplicationRevisions where
 -- /See:/ 'batchGetApplicationRevisionsResponse' smart constructor.
 data BatchGetApplicationRevisionsResponse = BatchGetApplicationRevisionsResponse'
   { _bgarrsApplicationName :: !(Maybe Text)
-  , _bgarrsRevisions       :: !(Maybe [RevisionInfo])
-  , _bgarrsErrorMessage    :: !(Maybe Text)
-  , _bgarrsResponseStatus  :: !Int
+  , _bgarrsRevisions :: !(Maybe [RevisionInfo])
+  , _bgarrsErrorMessage :: !(Maybe Text)
+  , _bgarrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -143,7 +143,7 @@ data BatchGetApplicationRevisionsResponse = BatchGetApplicationRevisionsResponse
 --
 -- * 'bgarrsRevisions' - Additional information about the revisions, including the type and location.
 --
--- * 'bgarrsErrorMessage' - Information about errors that may have occurred during the API call.
+-- * 'bgarrsErrorMessage' - Information about errors that might have occurred during the API call.
 --
 -- * 'bgarrsResponseStatus' - -- | The response status code.
 batchGetApplicationRevisionsResponse
@@ -166,7 +166,7 @@ bgarrsApplicationName = lens _bgarrsApplicationName (\ s a -> s{_bgarrsApplicati
 bgarrsRevisions :: Lens' BatchGetApplicationRevisionsResponse [RevisionInfo]
 bgarrsRevisions = lens _bgarrsRevisions (\ s a -> s{_bgarrsRevisions = a}) . _Default . _Coerce
 
--- | Information about errors that may have occurred during the API call.
+-- | Information about errors that might have occurred during the API call.
 bgarrsErrorMessage :: Lens' BatchGetApplicationRevisionsResponse (Maybe Text)
 bgarrsErrorMessage = lens _bgarrsErrorMessage (\ s a -> s{_bgarrsErrorMessage = a})
 

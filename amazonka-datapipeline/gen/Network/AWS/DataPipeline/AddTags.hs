@@ -51,7 +51,7 @@ import Network.AWS.Response
 -- /See:/ 'addTags' smart constructor.
 data AddTags = AddTags'
   { _atPipelineId :: !Text
-  , _atTags       :: ![Tag]
+  , _atTags :: ![Tag]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

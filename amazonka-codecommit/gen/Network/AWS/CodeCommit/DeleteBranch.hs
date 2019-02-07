@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a branch from a repository, unless that branch is the default branch for the repository.
+-- Deletes a branch from a repository, unless that branch is the default branch for the repository. 
 --
 --
 module Network.AWS.CodeCommit.DeleteBranch
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteBranch' smart constructor.
 data DeleteBranch = DeleteBranch'
   { _dbRepositoryName :: !Text
-  , _dbBranchName     :: !Text
+  , _dbBranchName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -121,7 +121,7 @@ instance ToQuery DeleteBranch where
 --
 -- /See:/ 'deleteBranchResponse' smart constructor.
 data DeleteBranchResponse = DeleteBranchResponse'
-  { _dbrsDeletedBranch  :: !(Maybe BranchInfo)
+  { _dbrsDeletedBranch :: !(Maybe BranchInfo)
   , _dbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

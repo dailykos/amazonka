@@ -50,11 +50,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateVPCEConfiguration' smart constructor.
 data UpdateVPCEConfiguration = UpdateVPCEConfiguration'
-  { _uvecVpceServiceName              :: !(Maybe Text)
-  , _uvecVpceConfigurationName        :: !(Maybe Text)
-  , _uvecServiceDNSName               :: !(Maybe Text)
+  { _uvecVpceServiceName :: !(Maybe Text)
+  , _uvecVpceConfigurationName :: !(Maybe Text)
+  , _uvecServiceDNSName :: !(Maybe Text)
   , _uvecVpceConfigurationDescription :: !(Maybe Text)
-  , _uvecArn                          :: !Text
+  , _uvecArn :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -149,7 +149,7 @@ instance ToQuery UpdateVPCEConfiguration where
 -- | /See:/ 'updateVPCEConfigurationResponse' smart constructor.
 data UpdateVPCEConfigurationResponse = UpdateVPCEConfigurationResponse'
   { _uvecrsVpceConfiguration :: !(Maybe VPCEConfiguration)
-  , _uvecrsResponseStatus    :: !Int
+  , _uvecrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteFieldLevelEncryptionProfile' smart constructor.
 data DeleteFieldLevelEncryptionProfile = DeleteFieldLevelEncryptionProfile'
   { _dflepIfMatch :: !(Maybe Text)
-  , _dflepId      :: !Text
+  , _dflepId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -95,7 +95,7 @@ instance ToPath DeleteFieldLevelEncryptionProfile
          where
         toPath DeleteFieldLevelEncryptionProfile'{..}
           = mconcat
-              ["/2017-10-30/field-level-encryption-profile/",
+              ["/2018-11-05/field-level-encryption-profile/",
                toBS _dflepId]
 
 instance ToQuery DeleteFieldLevelEncryptionProfile

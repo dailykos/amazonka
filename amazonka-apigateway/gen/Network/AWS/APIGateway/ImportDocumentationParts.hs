@@ -46,16 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Import documentation parts from an external (e.g., Swagger) definition file.
+-- | Import documentation parts from an external (e.g., OpenAPI) definition file. 
 --
 --
 --
 -- /See:/ 'importDocumentationParts' smart constructor.
 data ImportDocumentationParts = ImportDocumentationParts'
-  { _idpMode           :: !(Maybe PutMode)
+  { _idpMode :: !(Maybe PutMode)
   , _idpFailOnWarnings :: !(Maybe Bool)
-  , _idpRestAPIId      :: !Text
-  , _idpBody           :: !ByteString
+  , _idpRestAPIId :: !Text
+  , _idpBody :: !ByteString
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -69,7 +69,7 @@ data ImportDocumentationParts = ImportDocumentationParts'
 --
 -- * 'idpRestAPIId' - [Required] The string identifier of the associated 'RestApi' .
 --
--- * 'idpBody' - [Required] Raw byte array representing the to-be-imported documentation parts. To import from a Swagger file, this is a JSON object.
+-- * 'idpBody' - [Required] Raw byte array representing the to-be-imported documentation parts. To import from an OpenAPI file, this is a JSON object.
 importDocumentationParts
     :: Text -- ^ 'idpRestAPIId'
     -> ByteString -- ^ 'idpBody'
@@ -95,7 +95,7 @@ idpFailOnWarnings = lens _idpFailOnWarnings (\ s a -> s{_idpFailOnWarnings = a})
 idpRestAPIId :: Lens' ImportDocumentationParts Text
 idpRestAPIId = lens _idpRestAPIId (\ s a -> s{_idpRestAPIId = a})
 
--- | [Required] Raw byte array representing the to-be-imported documentation parts. To import from a Swagger file, this is a JSON object.
+-- | [Required] Raw byte array representing the to-be-imported documentation parts. To import from an OpenAPI file, this is a JSON object.
 idpBody :: Lens' ImportDocumentationParts ByteString
 idpBody = lens _idpBody (\ s a -> s{_idpBody = a})
 
@@ -139,12 +139,12 @@ instance ToQuery ImportDocumentationParts where
 -- | A collection of the imported 'DocumentationPart' identifiers.
 --
 --
--- This is used to return the result when documentation parts in an external (e.g., Swagger) file are imported into API Gateway<http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , <http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/ documentationpart:import> , 'DocumentationPart'
+-- This is used to return the result when documentation parts in an external (e.g., OpenAPI) file are imported into API Gateway<https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , <https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/ documentationpart:import> , 'DocumentationPart' 
 --
 -- /See:/ 'importDocumentationPartsResponse' smart constructor.
 data ImportDocumentationPartsResponse = ImportDocumentationPartsResponse'
-  { _idprsIds            :: !(Maybe [Text])
-  , _idprsWarnings       :: !(Maybe [Text])
+  { _idprsIds :: !(Maybe [Text])
+  , _idprsWarnings :: !(Maybe [Text])
   , _idprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

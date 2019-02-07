@@ -47,16 +47,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createReplicationSubnetGroup' smart constructor.
 data CreateReplicationSubnetGroup = CreateReplicationSubnetGroup'
-  { _crsgTags                              :: !(Maybe [Tag])
-  , _crsgReplicationSubnetGroupIdentifier  :: !Text
+  { _crsgTags :: !(Maybe [Tag])
+  , _crsgReplicationSubnetGroupIdentifier :: !Text
   , _crsgReplicationSubnetGroupDescription :: !Text
-  , _crsgSubnetIds                         :: ![Text]
+  , _crsgSubnetIds :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -66,7 +66,7 @@ data CreateReplicationSubnetGroup = CreateReplicationSubnetGroup'
 --
 -- * 'crsgTags' - The tag to be assigned to the subnet group.
 --
--- * 'crsgReplicationSubnetGroupIdentifier' - The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@
+-- * 'crsgReplicationSubnetGroupIdentifier' - The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@ 
 --
 -- * 'crsgReplicationSubnetGroupDescription' - The description for the subnet group.
 --
@@ -89,7 +89,7 @@ createReplicationSubnetGroup pReplicationSubnetGroupIdentifier_ pReplicationSubn
 crsgTags :: Lens' CreateReplicationSubnetGroup [Tag]
 crsgTags = lens _crsgTags (\ s a -> s{_crsgTags = a}) . _Default . _Coerce
 
--- | The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@
+-- | The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@ 
 crsgReplicationSubnetGroupIdentifier :: Lens' CreateReplicationSubnetGroup Text
 crsgReplicationSubnetGroupIdentifier = lens _crsgReplicationSubnetGroupIdentifier (\ s a -> s{_crsgReplicationSubnetGroupIdentifier = a})
 
@@ -146,14 +146,14 @@ instance ToPath CreateReplicationSubnetGroup where
 instance ToQuery CreateReplicationSubnetGroup where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createReplicationSubnetGroupResponse' smart constructor.
 data CreateReplicationSubnetGroupResponse = CreateReplicationSubnetGroupResponse'
   { _crsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-  , _crsgrsResponseStatus         :: !Int
+  , _crsgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

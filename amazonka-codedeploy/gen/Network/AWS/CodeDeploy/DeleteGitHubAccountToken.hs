@@ -109,7 +109,7 @@ instance ToQuery DeleteGitHubAccountToken where
 --
 -- /See:/ 'deleteGitHubAccountTokenResponse' smart constructor.
 data DeleteGitHubAccountTokenResponse = DeleteGitHubAccountTokenResponse'
-  { _dghatrsTokenName      :: !(Maybe Text)
+  { _dghatrsTokenName :: !(Maybe Text)
   , _dghatrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

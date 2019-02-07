@@ -49,10 +49,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'createResourceServer' smart constructor.
 data CreateResourceServer = CreateResourceServer'
-  { _crsScopes     :: !(Maybe [ResourceServerScopeType])
+  { _crsScopes :: !(Maybe [ResourceServerScopeType])
   , _crsUserPoolId :: !Text
   , _crsIdentifier :: !Text
-  , _crsName       :: !Text
+  , _crsName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

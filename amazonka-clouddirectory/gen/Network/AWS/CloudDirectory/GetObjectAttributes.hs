@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'getObjectAttributes' smart constructor.
 data GetObjectAttributes = GetObjectAttributes'
   { _goaConsistencyLevel :: !(Maybe ConsistencyLevel)
-  , _goaDirectoryARN     :: !Text
-  , _goaObjectReference  :: !ObjectReference
-  , _goaSchemaFacet      :: !SchemaFacet
-  , _goaAttributeNames   :: ![Text]
+  , _goaDirectoryARN :: !Text
+  , _goaObjectReference :: !ObjectReference
+  , _goaSchemaFacet :: !SchemaFacet
+  , _goaAttributeNames :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -145,7 +145,7 @@ instance ToQuery GetObjectAttributes where
 
 -- | /See:/ 'getObjectAttributesResponse' smart constructor.
 data GetObjectAttributesResponse = GetObjectAttributesResponse'
-  { _goarsAttributes     :: !(Maybe [AttributeKeyAndValue])
+  { _goarsAttributes :: !(Maybe [AttributeKeyAndValue])
   , _goarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

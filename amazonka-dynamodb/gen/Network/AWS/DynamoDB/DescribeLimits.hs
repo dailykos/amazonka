@@ -137,11 +137,11 @@ instance ToQuery DescribeLimits where
 --
 -- /See:/ 'describeLimitsResponse' smart constructor.
 data DescribeLimitsResponse = DescribeLimitsResponse'
-  { _dlrsTableMaxWriteCapacityUnits   :: !(Maybe Nat)
-  , _dlrsTableMaxReadCapacityUnits    :: !(Maybe Nat)
+  { _dlrsTableMaxWriteCapacityUnits :: !(Maybe Nat)
+  , _dlrsTableMaxReadCapacityUnits :: !(Maybe Nat)
   , _dlrsAccountMaxWriteCapacityUnits :: !(Maybe Nat)
-  , _dlrsAccountMaxReadCapacityUnits  :: !(Maybe Nat)
-  , _dlrsResponseStatus               :: !Int
+  , _dlrsAccountMaxReadCapacityUnits :: !(Maybe Nat)
+  , _dlrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

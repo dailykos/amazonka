@@ -61,12 +61,12 @@ import Network.AWS.Response
 --
 -- /See:/ 'getUsage' smart constructor.
 data GetUsage = GetUsage'
-  { _guKeyId       :: !(Maybe Text)
-  , _guLimit       :: !(Maybe Int)
-  , _guPosition    :: !(Maybe Text)
+  { _guKeyId :: !(Maybe Text)
+  , _guLimit :: !(Maybe Int)
+  , _guPosition :: !(Maybe Text)
   , _guUsagePlanId :: !Text
-  , _guStartDate   :: !Text
-  , _guEndDate     :: !Text
+  , _guStartDate :: !Text
+  , _guEndDate :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

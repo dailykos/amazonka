@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'renewOffering' smart constructor.
 data RenewOffering = RenewOffering'
-  { _roQuantity   :: !(Maybe Int)
+  { _roQuantity :: !(Maybe Int)
   , _roOfferingId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery RenewOffering where
 -- /See:/ 'renewOfferingResponse' smart constructor.
 data RenewOfferingResponse = RenewOfferingResponse'
   { _rorsOfferingTransaction :: !(Maybe OfferingTransaction)
-  , _rorsResponseStatus      :: !Int
+  , _rorsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

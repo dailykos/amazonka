@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see <http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> .
+-- Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see <http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> . 
 --
 --
 module Network.AWS.Comprehend.DetectDominantLanguage
@@ -102,7 +102,7 @@ instance ToQuery DetectDominantLanguage where
 
 -- | /See:/ 'detectDominantLanguageResponse' smart constructor.
 data DetectDominantLanguageResponse = DetectDominantLanguageResponse'
-  { _ddlrsLanguages      :: !(Maybe [DominantLanguage])
+  { _ddlrsLanguages :: !(Maybe [DominantLanguage])
   , _ddlrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

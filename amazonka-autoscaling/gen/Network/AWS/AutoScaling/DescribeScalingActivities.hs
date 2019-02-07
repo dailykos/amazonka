@@ -53,10 +53,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeScalingActivities' smart constructor.
 data DescribeScalingActivities = DescribeScalingActivities'
-  { _desNextToken            :: !(Maybe Text)
+  { _desNextToken :: !(Maybe Text)
   , _desAutoScalingGroupName :: !(Maybe Text)
-  , _desMaxRecords           :: !(Maybe Int)
-  , _desActivityIds          :: !(Maybe [Text])
+  , _desMaxRecords :: !(Maybe Int)
+  , _desActivityIds :: !(Maybe [Text])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -70,7 +70,7 @@ data DescribeScalingActivities = DescribeScalingActivities'
 --
 -- * 'desMaxRecords' - The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
 --
--- * 'desActivityIds' - The activity IDs of the desired scaling activities. If you omit this parameter, all activities for the past six weeks are described. If you specify an Auto Scaling group, the results are limited to that group. The list of requested activities cannot contain more than 50 items. If unknown activities are requested, they are ignored with no error.
+-- * 'desActivityIds' - The activity IDs of the desired scaling activities. You can specify up to 50 IDs. If you omit this parameter, all activities for the past six weeks are described. If unknown activities are requested, they are ignored with no error. If you specify an Auto Scaling group, the results are limited to that group.
 describeScalingActivities
     :: DescribeScalingActivities
 describeScalingActivities =
@@ -94,7 +94,7 @@ desAutoScalingGroupName = lens _desAutoScalingGroupName (\ s a -> s{_desAutoScal
 desMaxRecords :: Lens' DescribeScalingActivities (Maybe Int)
 desMaxRecords = lens _desMaxRecords (\ s a -> s{_desMaxRecords = a})
 
--- | The activity IDs of the desired scaling activities. If you omit this parameter, all activities for the past six weeks are described. If you specify an Auto Scaling group, the results are limited to that group. The list of requested activities cannot contain more than 50 items. If unknown activities are requested, they are ignored with no error.
+-- | The activity IDs of the desired scaling activities. You can specify up to 50 IDs. If you omit this parameter, all activities for the past six weeks are described. If unknown activities are requested, they are ignored with no error. If you specify an Auto Scaling group, the results are limited to that group.
 desActivityIds :: Lens' DescribeScalingActivities [Text]
 desActivityIds = lens _desActivityIds (\ s a -> s{_desActivityIds = a}) . _Default . _Coerce
 
@@ -141,9 +141,9 @@ instance ToQuery DescribeScalingActivities where
 
 -- | /See:/ 'describeScalingActivitiesResponse' smart constructor.
 data DescribeScalingActivitiesResponse = DescribeScalingActivitiesResponse'
-  { _dsasrsNextToken      :: !(Maybe Text)
+  { _dsasrsNextToken :: !(Maybe Text)
   , _dsasrsResponseStatus :: !Int
-  , _dsasrsActivities     :: ![Activity]
+  , _dsasrsActivities :: ![Activity]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

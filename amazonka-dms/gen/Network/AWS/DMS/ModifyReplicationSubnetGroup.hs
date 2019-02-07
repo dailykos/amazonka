@@ -46,15 +46,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyReplicationSubnetGroup' smart constructor.
 data ModifyReplicationSubnetGroup = ModifyReplicationSubnetGroup'
   { _mrsgReplicationSubnetGroupDescription :: !(Maybe Text)
-  , _mrsgReplicationSubnetGroupIdentifier  :: !Text
-  , _mrsgSubnetIds                         :: ![Text]
+  , _mrsgReplicationSubnetGroupIdentifier :: !Text
+  , _mrsgSubnetIds :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -133,14 +133,14 @@ instance ToPath ModifyReplicationSubnetGroup where
 instance ToQuery ModifyReplicationSubnetGroup where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyReplicationSubnetGroupResponse' smart constructor.
 data ModifyReplicationSubnetGroupResponse = ModifyReplicationSubnetGroupResponse'
   { _mrsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-  , _mrsgrsResponseStatus         :: !Int
+  , _mrsgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

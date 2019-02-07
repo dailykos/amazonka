@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the notification types that are supported by Auto Scaling.
+-- Describes the notification types that are supported by Amazon EC2 Auto Scaling.
 --
 --
 module Network.AWS.AutoScaling.DescribeAutoScalingNotificationTypes
@@ -99,7 +99,7 @@ instance ToQuery DescribeAutoScalingNotificationTypes
 -- | /See:/ 'describeAutoScalingNotificationTypesResponse' smart constructor.
 data DescribeAutoScalingNotificationTypesResponse = DescribeAutoScalingNotificationTypesResponse'
   { _dasntrsAutoScalingNotificationTypes :: !(Maybe [Text])
-  , _dasntrsResponseStatus               :: !Int
+  , _dasntrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

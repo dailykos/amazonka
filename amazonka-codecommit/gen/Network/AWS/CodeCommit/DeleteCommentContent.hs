@@ -103,7 +103,7 @@ instance ToQuery DeleteCommentContent where
 
 -- | /See:/ 'deleteCommentContentResponse' smart constructor.
 data DeleteCommentContentResponse = DeleteCommentContentResponse'
-  { _dccrsComment        :: !(Maybe Comment)
+  { _dccrsComment :: !(Maybe Comment)
   , _dccrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -47,8 +47,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateSkillGroup' smart constructor.
 data UpdateSkillGroup = UpdateSkillGroup'
-  { _usgSkillGroupARN  :: !(Maybe Text)
-  , _usgDescription    :: !(Maybe Text)
+  { _usgSkillGroupARN :: !(Maybe Text)
+  , _usgDescription :: !(Maybe Text)
   , _usgSkillGroupName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -57,7 +57,7 @@ data UpdateSkillGroup = UpdateSkillGroup'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'usgSkillGroupARN' - The ARN of the skill group to update.
+-- * 'usgSkillGroupARN' - The ARN of the skill group to update. 
 --
 -- * 'usgDescription' - The updated description for the skill group.
 --
@@ -72,7 +72,7 @@ updateSkillGroup =
     }
 
 
--- | The ARN of the skill group to update.
+-- | The ARN of the skill group to update. 
 usgSkillGroupARN :: Lens' UpdateSkillGroup (Maybe Text)
 usgSkillGroupARN = lens _usgSkillGroupARN (\ s a -> s{_usgSkillGroupARN = a})
 

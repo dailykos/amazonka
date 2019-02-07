@@ -59,7 +59,7 @@ import Network.AWS.Response
 -- /See:/ 'updateAPIKey' smart constructor.
 data UpdateAPIKey = UpdateAPIKey'
   { _uakPatchOperations :: !(Maybe [PatchOperation])
-  , _uakApiKey          :: !Text
+  , _uakApiKey :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

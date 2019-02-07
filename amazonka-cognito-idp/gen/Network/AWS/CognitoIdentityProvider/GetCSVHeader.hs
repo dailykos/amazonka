@@ -112,8 +112,8 @@ instance ToQuery GetCSVHeader where
 --
 -- /See:/ 'getCSVHeaderResponse' smart constructor.
 data GetCSVHeaderResponse = GetCSVHeaderResponse'
-  { _gchrsUserPoolId     :: !(Maybe Text)
-  , _gchrsCSVHeader      :: !(Maybe [Text])
+  { _gchrsUserPoolId :: !(Maybe Text)
+  , _gchrsCSVHeader :: !(Maybe [Text])
   , _gchrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

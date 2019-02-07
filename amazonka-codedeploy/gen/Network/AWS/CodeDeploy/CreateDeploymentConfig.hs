@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a deployment configuration.
+-- Creates a deployment configuration. 
 --
 --
 module Network.AWS.CodeDeploy.CreateDeploymentConfig
@@ -53,8 +53,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'createDeploymentConfig' smart constructor.
 data CreateDeploymentConfig = CreateDeploymentConfig'
-  { _cdcComputePlatform      :: !(Maybe ComputePlatform)
-  , _cdcMinimumHealthyHosts  :: !(Maybe MinimumHealthyHosts)
+  { _cdcComputePlatform :: !(Maybe ComputePlatform)
+  , _cdcMinimumHealthyHosts :: !(Maybe MinimumHealthyHosts)
   , _cdcTrafficRoutingConfig :: !(Maybe TrafficRoutingConfig)
   , _cdcDeploymentConfigName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -68,7 +68,7 @@ data CreateDeploymentConfig = CreateDeploymentConfig'
 --
 -- * 'cdcMinimumHealthyHosts' - The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value. The type parameter takes either of the following values:     * HOST_COUNT: The value parameter represents the minimum number of healthy instances as an absolute value.     * FLEET_PERCENT: The value parameter represents the minimum number of healthy instances as a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances. The value parameter takes an integer. For example, to set a minimum of 95% healthy instance, specify a type of FLEET_PERCENT and a value of 95.
 --
--- * 'cdcTrafficRoutingConfig' - The configuration that specifies how the deployment traffic will be routed.
+-- * 'cdcTrafficRoutingConfig' - The configuration that specifies how the deployment traffic is routed.
 --
 -- * 'cdcDeploymentConfigName' - The name of the deployment configuration to create.
 createDeploymentConfig
@@ -91,7 +91,7 @@ cdcComputePlatform = lens _cdcComputePlatform (\ s a -> s{_cdcComputePlatform = 
 cdcMinimumHealthyHosts :: Lens' CreateDeploymentConfig (Maybe MinimumHealthyHosts)
 cdcMinimumHealthyHosts = lens _cdcMinimumHealthyHosts (\ s a -> s{_cdcMinimumHealthyHosts = a})
 
--- | The configuration that specifies how the deployment traffic will be routed.
+-- | The configuration that specifies how the deployment traffic is routed.
 cdcTrafficRoutingConfig :: Lens' CreateDeploymentConfig (Maybe TrafficRoutingConfig)
 cdcTrafficRoutingConfig = lens _cdcTrafficRoutingConfig (\ s a -> s{_cdcTrafficRoutingConfig = a})
 
@@ -149,7 +149,7 @@ instance ToQuery CreateDeploymentConfig where
 -- /See:/ 'createDeploymentConfigResponse' smart constructor.
 data CreateDeploymentConfigResponse = CreateDeploymentConfigResponse'
   { _cdcrsDeploymentConfigId :: !(Maybe Text)
-  , _cdcrsResponseStatus     :: !Int
+  , _cdcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates a budget. You can change every part of a budget except for the @budgetName@ and the @calculatedSpend@ . When a budget is modified, the @calculatedSpend@ drops to zero until AWS has new usage data to use for forecasting.
+-- Updates a budget. You can change every part of a budget except for the @budgetName@ and the @calculatedSpend@ . When you modify a budget, the @calculatedSpend@ drops to zero until AWS has new usage data to use for forecasting.
 --
 --
 module Network.AWS.Budgets.UpdateBudget
@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of UpdateBudget
+-- | Request of UpdateBudget 
 --
 --
 --
@@ -113,7 +113,7 @@ instance ToPath UpdateBudget where
 instance ToQuery UpdateBudget where
         toQuery = const mempty
 
--- | Response of UpdateBudget
+-- | Response of UpdateBudget 
 --
 --
 --

@@ -51,12 +51,12 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateInstanceProfile' smart constructor.
 data UpdateInstanceProfile = UpdateInstanceProfile'
-  { _uipRebootAfterUse                :: !(Maybe Bool)
-  , _uipName                          :: !(Maybe Text)
-  , _uipPackageCleanup                :: !(Maybe Bool)
+  { _uipRebootAfterUse :: !(Maybe Bool)
+  , _uipName :: !(Maybe Text)
+  , _uipPackageCleanup :: !(Maybe Bool)
   , _uipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
-  , _uipDescription                   :: !(Maybe Text)
-  , _uipArn                           :: !Text
+  , _uipDescription :: !(Maybe Text)
+  , _uipArn :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -158,7 +158,7 @@ instance ToQuery UpdateInstanceProfile where
 -- | /See:/ 'updateInstanceProfileResponse' smart constructor.
 data UpdateInstanceProfileResponse = UpdateInstanceProfileResponse'
   { _uiprsInstanceProfile :: !(Maybe InstanceProfile)
-  , _uiprsResponseStatus  :: !Int
+  , _uiprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

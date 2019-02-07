@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getStages' smart constructor.
 data GetStages = GetStages'
   { _gsDeploymentId :: !(Maybe Text)
-  , _gsRestAPIId    :: !Text
+  , _gsRestAPIId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -109,11 +109,11 @@ instance ToQuery GetStages where
 -- | A list of 'Stage' resources that are associated with the 'ApiKey' resource.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html Deploying API in Stages>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html Deploying API in Stages> 
 --
 -- /See:/ 'getStagesResponse' smart constructor.
 data GetStagesResponse = GetStagesResponse'
-  { _gsrsItem           :: !(Maybe [Stage])
+  { _gsrsItem :: !(Maybe [Stage])
   , _gsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

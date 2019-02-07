@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a given schema. Schemas in a development and published state can only be deleted.
+-- Deletes a given schema. Schemas in a development and published state can only be deleted. 
 --
 --
 module Network.AWS.CloudDirectory.DeleteSchema
@@ -94,7 +94,7 @@ instance ToQuery DeleteSchema where
 
 -- | /See:/ 'deleteSchemaResponse' smart constructor.
 data DeleteSchemaResponse = DeleteSchemaResponse'
-  { _dsrsSchemaARN      :: !(Maybe Text)
+  { _dsrsSchemaARN :: !(Maybe Text)
   , _dsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

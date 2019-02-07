@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a paginated list of @TypedLink@ facet names for a particular schema. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- Returns a paginated list of @TypedLink@ facet names for a particular schema. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 --
 --
@@ -52,9 +52,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'listTypedLinkFacetNames' smart constructor.
 data ListTypedLinkFacetNames = ListTypedLinkFacetNames'
-  { _ltlfnNextToken  :: !(Maybe Text)
+  { _ltlfnNextToken :: !(Maybe Text)
   , _ltlfnMaxResults :: !(Maybe Nat)
-  , _ltlfnSchemaARN  :: !Text
+  , _ltlfnSchemaARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -134,8 +134,8 @@ instance ToQuery ListTypedLinkFacetNames where
 
 -- | /See:/ 'listTypedLinkFacetNamesResponse' smart constructor.
 data ListTypedLinkFacetNamesResponse = ListTypedLinkFacetNamesResponse'
-  { _ltlfnrsNextToken      :: !(Maybe Text)
-  , _ltlfnrsFacetNames     :: !(Maybe [Text])
+  { _ltlfnrsNextToken :: !(Maybe Text)
+  , _ltlfnrsFacetNames :: !(Maybe [Text])
   , _ltlfnrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

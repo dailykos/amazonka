@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'getIntrospectionSchema' smart constructor.
 data GetIntrospectionSchema = GetIntrospectionSchema'
-  { _gisApiId  :: !Text
+  { _gisApiId :: !Text
   , _gisFormat :: !OutputType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -106,7 +106,7 @@ instance ToQuery GetIntrospectionSchema where
 
 -- | /See:/ 'getIntrospectionSchemaResponse' smart constructor.
 data GetIntrospectionSchemaResponse = GetIntrospectionSchemaResponse'
-  { _gisrsSchema         :: !(Maybe ByteString)
+  { _gisrsSchema :: !(Maybe ByteString)
   , _gisrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

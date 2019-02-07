@@ -47,8 +47,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteResolver' smart constructor.
 data DeleteResolver = DeleteResolver'
-  { _drApiId     :: !Text
-  , _drTypeName  :: !Text
+  { _drApiId :: !Text
+  , _drTypeName :: !Text
   , _drFieldName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -21,9 +21,9 @@
 -- Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are @ENABLED@ on all tables at table creation. If point in time recovery is enabled, @PointInTimeRecoveryStatus@ will be set to ENABLED.
 --
 --
--- Once continuous backups and point in time recovery are enabled, you can restore to any point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ .
+-- Once continuous backups and point in time recovery are enabled, you can restore to any point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ . 
 --
--- @LatestRestorableDateTime@ is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days.
+-- @LatestRestorableDateTime@ is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days. 
 --
 -- You can call @DescribeContinuousBackups@ at a maximum rate of 10 times per second.
 --
@@ -111,7 +111,7 @@ instance ToQuery DescribeContinuousBackups where
 -- | /See:/ 'describeContinuousBackupsResponse' smart constructor.
 data DescribeContinuousBackupsResponse = DescribeContinuousBackupsResponse'
   { _dcbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
-  , _dcbrsResponseStatus               :: !Int
+  , _dcbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -119,7 +119,7 @@ data DescribeContinuousBackupsResponse = DescribeContinuousBackupsResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcbrsContinuousBackupsDescription' - @ContinuousBackupsDescription@ can be one of the following : ENABLED, DISABLED.
+-- * 'dcbrsContinuousBackupsDescription' - Represents the continuous backups and point in time recovery settings on the table.
 --
 -- * 'dcbrsResponseStatus' - -- | The response status code.
 describeContinuousBackupsResponse
@@ -132,7 +132,7 @@ describeContinuousBackupsResponse pResponseStatus_ =
     }
 
 
--- | @ContinuousBackupsDescription@ can be one of the following : ENABLED, DISABLED.
+-- | Represents the continuous backups and point in time recovery settings on the table.
 dcbrsContinuousBackupsDescription :: Lens' DescribeContinuousBackupsResponse (Maybe ContinuousBackupsDescription)
 dcbrsContinuousBackupsDescription = lens _dcbrsContinuousBackupsDescription (\ s a -> s{_dcbrsContinuousBackupsDescription = a})
 

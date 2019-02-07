@@ -50,14 +50,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeEndpointTypes' smart constructor.
 data DescribeEndpointTypes = DescribeEndpointTypes'
-  { _detFilters    :: !(Maybe [Filter])
-  , _detMarker     :: !(Maybe Text)
+  { _detFilters :: !(Maybe [Filter])
+  , _detMarker :: !(Maybe Text)
   , _detMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -68,7 +68,7 @@ data DescribeEndpointTypes = DescribeEndpointTypes'
 --
 -- * 'detFilters' - Filters applied to the describe action. Valid filter names: engine-name | endpoint-type
 --
--- * 'detMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'detMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'detMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeEndpointTypes
@@ -82,7 +82,7 @@ describeEndpointTypes =
 detFilters :: Lens' DescribeEndpointTypes [Filter]
 detFilters = lens _detFilters (\ s a -> s{_detFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 detMarker :: Lens' DescribeEndpointTypes (Maybe Text)
 detMarker = lens _detMarker (\ s a -> s{_detMarker = a})
 
@@ -137,15 +137,15 @@ instance ToPath DescribeEndpointTypes where
 instance ToQuery DescribeEndpointTypes where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeEndpointTypesResponse' smart constructor.
 data DescribeEndpointTypesResponse = DescribeEndpointTypesResponse'
   { _detrsSupportedEndpointTypes :: !(Maybe [SupportedEndpointType])
-  , _detrsMarker                 :: !(Maybe Text)
-  , _detrsResponseStatus         :: !Int
+  , _detrsMarker :: !(Maybe Text)
+  , _detrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -155,7 +155,7 @@ data DescribeEndpointTypesResponse = DescribeEndpointTypesResponse'
 --
 -- * 'detrsSupportedEndpointTypes' - The type of endpoints that are supported.
 --
--- * 'detrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'detrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'detrsResponseStatus' - -- | The response status code.
 describeEndpointTypesResponse
@@ -173,7 +173,7 @@ describeEndpointTypesResponse pResponseStatus_ =
 detrsSupportedEndpointTypes :: Lens' DescribeEndpointTypesResponse [SupportedEndpointType]
 detrsSupportedEndpointTypes = lens _detrsSupportedEndpointTypes (\ s a -> s{_detrsSupportedEndpointTypes = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 detrsMarker :: Lens' DescribeEndpointTypesResponse (Maybe Text)
 detrsMarker = lens _detrsMarker (\ s a -> s{_detrsMarker = a})
 

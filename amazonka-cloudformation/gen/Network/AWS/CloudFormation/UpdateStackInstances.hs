@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the parameter values for stack instances for the specified accounts, within the specified regions. A stack instance refers to a stack in a specific account and region.
+-- Updates the parameter values for stack instances for the specified accounts, within the specified regions. A stack instance refers to a stack in a specific account and region. 
 --
 --
--- You can only update stack instances in regions and accounts where they already exist; to create additional stack instances, use <http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html CreateStackInstances> .
+-- You can only update stack instances in regions and accounts where they already exist; to create additional stack instances, use <http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html CreateStackInstances> . 
 --
 -- During stack set updates, any parameters overridden for a stack instance are not updated, but retain their overridden value.
 --
@@ -58,11 +58,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateStackInstances' smart constructor.
 data UpdateStackInstances = UpdateStackInstances'
   { _usiOperationPreferences :: !(Maybe StackSetOperationPreferences)
-  , _usiOperationId          :: !(Maybe Text)
-  , _usiParameterOverrides   :: !(Maybe [Parameter])
-  , _usiStackSetName         :: !Text
-  , _usiAccounts             :: ![Text]
-  , _usiRegions              :: ![Text]
+  , _usiOperationId :: !(Maybe Text)
+  , _usiParameterOverrides :: !(Maybe [Parameter])
+  , _usiStackSetName :: !Text
+  , _usiAccounts :: ![Text]
+  , _usiRegions :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -72,7 +72,7 @@ data UpdateStackInstances = UpdateStackInstances'
 --
 -- * 'usiOperationPreferences' - Preferences for how AWS CloudFormation performs this stack set operation.
 --
--- * 'usiOperationId' - The unique identifier for this stack set operation.  The operation ID also functions as an idempotency token, to ensure that AWS CloudFormation performs the stack set operation only once, even if you retry the request multiple times. You might retry stack set operation requests to ensure that AWS CloudFormation successfully received them. If you don't specify an operation ID, the SDK generates one automatically.
+-- * 'usiOperationId' - The unique identifier for this stack set operation.  The operation ID also functions as an idempotency token, to ensure that AWS CloudFormation performs the stack set operation only once, even if you retry the request multiple times. You might retry stack set operation requests to ensure that AWS CloudFormation successfully received them. If you don't specify an operation ID, the SDK generates one automatically. 
 --
 -- * 'usiParameterOverrides' - A list of input parameters whose values you want to update for the specified stack instances.  Any overridden parameter values will be applied to all stack instances in the specified accounts and regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during stack instance update operations:     * To override the current value for a parameter, include the parameter and specify its value.     * To leave a parameter set to its present value, you can do one of the following:     * Do not include the parameter in the list.     * Include the parameter and specify @UsePreviousValue@ as @true@ . (You cannot specify both a value and set @UsePreviousValue@ to @true@ .)     * To set all overridden parameter back to the values specified in the stack set, specify a parameter list but do not include any parameters.     * To leave all parameters set to their present values, do not specify this property at all. During stack set updates, any parameter values overridden for a stack instance are not updated, but retain their overridden value. You can only override the parameter /values/ that are specified in the stack set; to add or delete a parameter itself, use @UpdateStackSet@ to update the stack set template. If you add a parameter to a template, before you can override the parameter value specified in the stack set you must first use <http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html UpdateStackSet> to update all stack instances with the updated template and parameter value specified in the stack set. Once a stack instance has been updated with the new parameter, you can then override the parameter value using @UpdateStackInstances@ .
 --
@@ -99,7 +99,7 @@ updateStackInstances pStackSetName_ =
 usiOperationPreferences :: Lens' UpdateStackInstances (Maybe StackSetOperationPreferences)
 usiOperationPreferences = lens _usiOperationPreferences (\ s a -> s{_usiOperationPreferences = a})
 
--- | The unique identifier for this stack set operation.  The operation ID also functions as an idempotency token, to ensure that AWS CloudFormation performs the stack set operation only once, even if you retry the request multiple times. You might retry stack set operation requests to ensure that AWS CloudFormation successfully received them. If you don't specify an operation ID, the SDK generates one automatically.
+-- | The unique identifier for this stack set operation.  The operation ID also functions as an idempotency token, to ensure that AWS CloudFormation performs the stack set operation only once, even if you retry the request multiple times. You might retry stack set operation requests to ensure that AWS CloudFormation successfully received them. If you don't specify an operation ID, the SDK generates one automatically. 
 usiOperationId :: Lens' UpdateStackInstances (Maybe Text)
 usiOperationId = lens _usiOperationId (\ s a -> s{_usiOperationId = a})
 
@@ -155,7 +155,7 @@ instance ToQuery UpdateStackInstances where
 
 -- | /See:/ 'updateStackInstancesResponse' smart constructor.
 data UpdateStackInstancesResponse = UpdateStackInstancesResponse'
-  { _usirsOperationId    :: !(Maybe Text)
+  { _usirsOperationId :: !(Maybe Text)
   , _usirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,7 +164,7 @@ data UpdateStackInstancesResponse = UpdateStackInstancesResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'usirsOperationId' - The unique identifier for this stack set operation.
+-- * 'usirsOperationId' - The unique identifier for this stack set operation. 
 --
 -- * 'usirsResponseStatus' - -- | The response status code.
 updateStackInstancesResponse
@@ -175,7 +175,7 @@ updateStackInstancesResponse pResponseStatus_ =
     {_usirsOperationId = Nothing, _usirsResponseStatus = pResponseStatus_}
 
 
--- | The unique identifier for this stack set operation.
+-- | The unique identifier for this stack set operation. 
 usirsOperationId :: Lens' UpdateStackInstancesResponse (Maybe Text)
 usirsOperationId = lens _usirsOperationId (\ s a -> s{_usirsOperationId = a})
 

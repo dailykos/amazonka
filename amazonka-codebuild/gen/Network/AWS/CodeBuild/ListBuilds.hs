@@ -121,8 +121,8 @@ instance ToQuery ListBuilds where
 
 -- | /See:/ 'listBuildsResponse' smart constructor.
 data ListBuildsResponse = ListBuildsResponse'
-  { _lbrsIds            :: !(Maybe (List1 Text))
-  , _lbrsNextToken      :: !(Maybe Text)
+  { _lbrsIds :: !(Maybe (List1 Text))
+  , _lbrsNextToken :: !(Maybe Text)
   , _lbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

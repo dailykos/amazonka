@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -67,6 +67,7 @@ module Network.AWS.Batch.Types
     -- * AttemptContainerDetail
     , AttemptContainerDetail
     , attemptContainerDetail
+    , acdNetworkInterfaces
     , acdTaskARN
     , acdContainerInstanceARN
     , acdReason
@@ -103,18 +104,20 @@ module Network.AWS.Batch.Types
     -- * ComputeResource
     , ComputeResource
     , computeResource
+    , crSecurityGroupIds
     , crEc2KeyPair
     , crBidPercentage
     , crSpotIAMFleetRole
     , crImageId
+    , crLaunchTemplate
     , crDesiredvCPUs
+    , crPlacementGroup
     , crTags
     , crType
     , crMinvCPUs
     , crMaxvCPUs
     , crInstanceTypes
     , crSubnets
-    , crSecurityGroupIds
     , crInstanceRole
 
     -- * ComputeResourceUpdate
@@ -130,11 +133,13 @@ module Network.AWS.Batch.Types
     , cdImage
     , cdCommand
     , cdEnvironment
+    , cdNetworkInterfaces
     , cdTaskARN
     , cdUlimits
     , cdContainerInstanceARN
     , cdPrivileged
     , cdJobRoleARN
+    , cdInstanceType
     , cdMemory
     , cdUser
     , cdReason
@@ -150,24 +155,26 @@ module Network.AWS.Batch.Types
     , containerOverrides
     , coCommand
     , coEnvironment
+    , coInstanceType
     , coMemory
     , coVcpus
 
     -- * ContainerProperties
     , ContainerProperties
     , containerProperties
+    , cpImage
     , cpCommand
     , cpEnvironment
     , cpUlimits
     , cpPrivileged
     , cpJobRoleARN
+    , cpInstanceType
+    , cpMemory
     , cpUser
     , cpMountPoints
+    , cpVcpus
     , cpReadonlyRootFilesystem
     , cpVolumes
-    , cpImage
-    , cpVcpus
-    , cpMemory
 
     -- * ContainerSummary
     , ContainerSummary
@@ -188,6 +195,7 @@ module Network.AWS.Batch.Types
     , jddParameters
     , jddTimeout
     , jddContainerProperties
+    , jddNodeProperties
     , jddJobDefinitionName
     , jddJobDefinitionARN
     , jddRevision
@@ -208,10 +216,12 @@ module Network.AWS.Batch.Types
     , jdAttempts
     , jdDependsOn
     , jdContainer
+    , jdNodeDetails
     , jdParameters
     , jdStatusReason
     , jdArrayProperties
     , jdTimeout
+    , jdNodeProperties
     , jdJobName
     , jdJobId
     , jdJobQueue
@@ -240,6 +250,7 @@ module Network.AWS.Batch.Types
     , jsContainer
     , jsStatusReason
     , jsArrayProperties
+    , jsNodeProperties
     , jsJobId
     , jsJobName
 
@@ -254,12 +265,63 @@ module Network.AWS.Batch.Types
     , kvpValue
     , kvpName
 
+    -- * LaunchTemplateSpecification
+    , LaunchTemplateSpecification
+    , launchTemplateSpecification
+    , ltsLaunchTemplateName
+    , ltsLaunchTemplateId
+    , ltsVersion
+
     -- * MountPoint
     , MountPoint
     , mountPoint
     , mpContainerPath
     , mpSourceVolume
     , mpReadOnly
+
+    -- * NetworkInterface
+    , NetworkInterface
+    , networkInterface
+    , niIpv6Address
+    , niPrivateIPv4Address
+    , niAttachmentId
+
+    -- * NodeDetails
+    , NodeDetails
+    , nodeDetails
+    , ndNodeIndex
+    , ndIsMainNode
+
+    -- * NodeOverrides
+    , NodeOverrides
+    , nodeOverrides
+    , noNodePropertyOverrides
+
+    -- * NodeProperties
+    , NodeProperties
+    , nodeProperties
+    , npNumNodes
+    , npMainNode
+    , npNodeRangeProperties
+
+    -- * NodePropertiesSummary
+    , NodePropertiesSummary
+    , nodePropertiesSummary
+    , npsNumNodes
+    , npsNodeIndex
+    , npsIsMainNode
+
+    -- * NodePropertyOverride
+    , NodePropertyOverride
+    , nodePropertyOverride
+    , npoContainerOverrides
+    , npoTargetNodes
+
+    -- * NodeRangeProperty
+    , NodeRangeProperty
+    , nodeRangeProperty
+    , nrpContainer
+    , nrpTargetNodes
 
     -- * RetryStrategy
     , RetryStrategy
@@ -332,7 +394,7 @@ _ServerException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServerException = _MatchServiceError batch "ServerException" . hasStatus 500
 
 
--- | These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid.
+-- | These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid. 
 --
 --
 _ClientException :: AsError a => Getting (First ServiceError) a ServiceError

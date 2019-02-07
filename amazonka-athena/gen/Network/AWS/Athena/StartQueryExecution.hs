@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- | /See:/ 'startQueryExecution' smart constructor.
 data StartQueryExecution = StartQueryExecution'
   { _sqeQueryExecutionContext :: !(Maybe QueryExecutionContext)
-  , _sqeClientRequestToken    :: !(Maybe Text)
-  , _sqeQueryString           :: !Text
-  , _sqeResultConfiguration   :: !ResultConfiguration
+  , _sqeClientRequestToken :: !(Maybe Text)
+  , _sqeQueryString :: !Text
+  , _sqeResultConfiguration :: !ResultConfiguration
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -141,7 +141,7 @@ instance ToQuery StartQueryExecution where
 -- | /See:/ 'startQueryExecutionResponse' smart constructor.
 data StartQueryExecutionResponse = StartQueryExecutionResponse'
   { _sqersQueryExecutionId :: !(Maybe Text)
-  , _sqersResponseStatus   :: !Int
+  , _sqersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

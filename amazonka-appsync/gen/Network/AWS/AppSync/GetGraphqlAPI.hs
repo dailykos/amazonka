@@ -94,7 +94,7 @@ instance ToQuery GetGraphqlAPI where
 
 -- | /See:/ 'getGraphqlAPIResponse' smart constructor.
 data GetGraphqlAPIResponse = GetGraphqlAPIResponse'
-  { _ggarsGraphqlAPI     :: !(Maybe GraphqlAPI)
+  { _ggarsGraphqlAPI :: !(Maybe GraphqlAPI)
   , _ggarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

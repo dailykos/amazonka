@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-apigatewayv2",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.APIGatewayV2.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

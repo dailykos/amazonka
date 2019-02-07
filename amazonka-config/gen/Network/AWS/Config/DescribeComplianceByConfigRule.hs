@@ -62,7 +62,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -70,7 +70,7 @@ import Network.AWS.Response
 data DescribeComplianceByConfigRule = DescribeComplianceByConfigRule'
   { _dcbcrConfigRuleNames :: !(Maybe [Text])
   , _dcbcrComplianceTypes :: !(Maybe [ComplianceType])
-  , _dcbcrNextToken       :: !(Maybe Text)
+  , _dcbcrNextToken :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -157,15 +157,15 @@ instance ToPath DescribeComplianceByConfigRule where
 instance ToQuery DescribeComplianceByConfigRule where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeComplianceByConfigRuleResponse' smart constructor.
 data DescribeComplianceByConfigRuleResponse = DescribeComplianceByConfigRuleResponse'
   { _dcbcrrsComplianceByConfigRules :: !(Maybe [ComplianceByConfigRule])
-  , _dcbcrrsNextToken               :: !(Maybe Text)
-  , _dcbcrrsResponseStatus          :: !Int
+  , _dcbcrrsNextToken :: !(Maybe Text)
+  , _dcbcrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

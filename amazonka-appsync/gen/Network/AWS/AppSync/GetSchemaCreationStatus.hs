@@ -99,8 +99,8 @@ instance ToQuery GetSchemaCreationStatus where
 
 -- | /See:/ 'getSchemaCreationStatusResponse' smart constructor.
 data GetSchemaCreationStatusResponse = GetSchemaCreationStatusResponse'
-  { _gscsrsStatus         :: !(Maybe SchemaStatus)
-  , _gscsrsDetails        :: !(Maybe Text)
+  { _gscsrsStatus :: !(Maybe SchemaStatus)
+  , _gscsrsDetails :: !(Maybe Text)
   , _gscsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -14,7 +14,9 @@
 -- Amazon Athena is an interactive query service that lets you use standard SQL to analyze data directly in Amazon S3. You can point Athena at your data in Amazon S3 and run ad-hoc queries and get results in seconds. Athena is serverless, so there is no infrastructure to set up or manage. You pay only for the queries you run. Athena scales automatically—executing queries in parallel—so results are fast, even with large datasets and complex queries. For more information, see <http://docs.aws.amazon.com/athena/latest/ug/what-is.html What is Amazon Athena> in the /Amazon Athena User Guide/ .
 --
 --
--- For code samples using the AWS SDK for Java, see <http://docs.aws.amazon.com/athena/latest/ug/code-samples.html Examples and Code Samples> in the /Amazon Athena User Guide/ .
+-- If you connect to Athena using the JDBC driver, use version 1.1.0 of the driver or later with the Amazon Athena API. Earlier version drivers do not support the API. For more information and to download the driver, see <https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html Accessing Amazon Athena with JDBC> .
+--
+-- For code samples using the AWS SDK for Java, see <https://docs.aws.amazon.com/athena/latest/ug/code-samples.html Examples and Code Samples> in the /Amazon Athena User Guide/ .
 --
 module Network.AWS.Athena
     (
@@ -39,31 +41,31 @@ module Network.AWS.Athena
     -- * Operations
     -- $operations
 
-    -- ** GetNamedQuery
+    -- ** GetNamedQuery 
     , module Network.AWS.Athena.GetNamedQuery
 
-    -- ** CreateNamedQuery
+    -- ** CreateNamedQuery 
     , module Network.AWS.Athena.CreateNamedQuery
 
     -- ** ListNamedQueries (Paginated)
     , module Network.AWS.Athena.ListNamedQueries
 
-    -- ** DeleteNamedQuery
+    -- ** DeleteNamedQuery 
     , module Network.AWS.Athena.DeleteNamedQuery
 
-    -- ** StartQueryExecution
+    -- ** StartQueryExecution 
     , module Network.AWS.Athena.StartQueryExecution
 
-    -- ** BatchGetNamedQuery
+    -- ** BatchGetNamedQuery 
     , module Network.AWS.Athena.BatchGetNamedQuery
 
-    -- ** GetQueryExecution
+    -- ** GetQueryExecution 
     , module Network.AWS.Athena.GetQueryExecution
 
-    -- ** BatchGetQueryExecution
+    -- ** BatchGetQueryExecution 
     , module Network.AWS.Athena.BatchGetQueryExecution
 
-    -- ** StopQueryExecution
+    -- ** StopQueryExecution 
     , module Network.AWS.Athena.StopQueryExecution
 
     -- ** GetQueryResults (Paginated)
@@ -82,6 +84,9 @@ module Network.AWS.Athena
 
     -- ** QueryExecutionState
     , QueryExecutionState (..)
+
+    -- ** StatementType
+    , StatementType (..)
 
     -- ** ColumnInfo
     , ColumnInfo
@@ -124,6 +129,7 @@ module Network.AWS.Athena
     , qeQueryExecutionContext
     , qeResultConfiguration
     , qeQuery
+    , qeStatementType
     , qeStatistics
     , qeQueryExecutionId
 

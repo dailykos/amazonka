@@ -54,10 +54,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'searchProfiles' smart constructor.
 data SearchProfiles = SearchProfiles'
-  { _spFilters      :: !(Maybe [Filter])
+  { _spFilters :: !(Maybe [Filter])
   , _spSortCriteria :: !(Maybe [Sort])
-  , _spNextToken    :: !(Maybe Text)
-  , _spMaxResults   :: !(Maybe Nat)
+  , _spNextToken :: !(Maybe Text)
+  , _spMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -65,7 +65,7 @@ data SearchProfiles = SearchProfiles'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'spFilters' - The filters to use to list a specified set of room profiles. Supported filter keys are ProfileName and Address. Required.
+-- * 'spFilters' - The filters to use to list a specified set of room profiles. Supported filter keys are ProfileName and Address. Required. 
 --
 -- * 'spSortCriteria' - The sort order to use in listing the specified set of room profiles. Supported sort keys are ProfileName and Address.
 --
@@ -83,7 +83,7 @@ searchProfiles =
     }
 
 
--- | The filters to use to list a specified set of room profiles. Supported filter keys are ProfileName and Address. Required.
+-- | The filters to use to list a specified set of room profiles. Supported filter keys are ProfileName and Address. Required. 
 spFilters :: Lens' SearchProfiles [Filter]
 spFilters = lens _spFilters (\ s a -> s{_spFilters = a}) . _Default . _Coerce
 
@@ -147,9 +147,9 @@ instance ToQuery SearchProfiles where
 
 -- | /See:/ 'searchProfilesResponse' smart constructor.
 data SearchProfilesResponse = SearchProfilesResponse'
-  { _sprsProfiles       :: !(Maybe [ProfileData])
-  , _sprsNextToken      :: !(Maybe Text)
-  , _sprsTotalCount     :: !(Maybe Int)
+  { _sprsProfiles :: !(Maybe [ProfileData])
+  , _sprsNextToken :: !(Maybe Text)
+  , _sprsTotalCount :: !(Maybe Int)
   , _sprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

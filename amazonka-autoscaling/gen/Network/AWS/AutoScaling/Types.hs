@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -71,6 +71,7 @@ module Network.AWS.AutoScaling.Types
     , asgNewInstancesProtectedFromScaleIn
     , asgVPCZoneIdentifier
     , asgTargetGroupARNs
+    , asgMixedInstancesPolicy
     , asgEnabledMetrics
     , asgLaunchConfigurationName
     , asgInstances
@@ -134,6 +135,13 @@ module Network.AWS.AutoScaling.Types
     , emGranularity
     , emMetric
 
+    -- * FailedScheduledUpdateGroupActionRequest
+    , FailedScheduledUpdateGroupActionRequest
+    , failedScheduledUpdateGroupActionRequest
+    , fsugarErrorCode
+    , fsugarErrorMessage
+    , fsugarScheduledActionName
+
     -- * Filter
     , Filter
     , filter'
@@ -155,6 +163,16 @@ module Network.AWS.AutoScaling.Types
     , InstanceMonitoring
     , instanceMonitoring
     , imEnabled
+
+    -- * InstancesDistribution
+    , InstancesDistribution
+    , instancesDistribution
+    , idSpotAllocationStrategy
+    , idSpotInstancePools
+    , idSpotMaxPrice
+    , idOnDemandBaseCapacity
+    , idOnDemandAllocationStrategy
+    , idOnDemandPercentageAboveBaseCapacity
 
     -- * LaunchConfiguration
     , LaunchConfiguration
@@ -178,6 +196,17 @@ module Network.AWS.AutoScaling.Types
     , lcImageId
     , lcInstanceType
     , lcCreatedTime
+
+    -- * LaunchTemplate
+    , LaunchTemplate
+    , launchTemplate
+    , ltOverrides
+    , ltLaunchTemplateSpecification
+
+    -- * LaunchTemplateOverrides
+    , LaunchTemplateOverrides
+    , launchTemplateOverrides
+    , ltoInstanceType
 
     -- * LaunchTemplateSpecification
     , LaunchTemplateSpecification
@@ -238,6 +267,12 @@ module Network.AWS.AutoScaling.Types
     , metricGranularityType
     , mgtGranularity
 
+    -- * MixedInstancesPolicy
+    , MixedInstancesPolicy
+    , mixedInstancesPolicy
+    , mipLaunchTemplate
+    , mipInstancesDistribution
+
     -- * NotificationConfiguration
     , NotificationConfiguration
     , notificationConfiguration
@@ -293,6 +328,17 @@ module Network.AWS.AutoScaling.Types
     , sugaMinSize
     , sugaAutoScalingGroupName
     , sugaEndTime
+
+    -- * ScheduledUpdateGroupActionRequest
+    , ScheduledUpdateGroupActionRequest
+    , scheduledUpdateGroupActionRequest
+    , sugarStartTime
+    , sugarMaxSize
+    , sugarRecurrence
+    , sugarDesiredCapacity
+    , sugarMinSize
+    , sugarEndTime
+    , sugarScheduledActionName
 
     -- * StepAdjustment
     , StepAdjustment

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Authorizes the aggregator account and region to collect data from the source account and region.
+-- Authorizes the aggregator account and region to collect data from the source account and region. 
 --
 --
 module Network.AWS.Config.PutAggregationAuthorization
@@ -121,7 +121,7 @@ instance ToQuery PutAggregationAuthorization where
 -- | /See:/ 'putAggregationAuthorizationResponse' smart constructor.
 data PutAggregationAuthorizationResponse = PutAggregationAuthorizationResponse'
   { _paarsAggregationAuthorization :: !(Maybe AggregationAuthorization)
-  , _paarsResponseStatus           :: !Int
+  , _paarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -129,7 +129,7 @@ data PutAggregationAuthorizationResponse = PutAggregationAuthorizationResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'paarsAggregationAuthorization' - Returns an AggregationAuthorization object.
+-- * 'paarsAggregationAuthorization' - Returns an AggregationAuthorization object. 
 --
 -- * 'paarsResponseStatus' - -- | The response status code.
 putAggregationAuthorizationResponse
@@ -142,7 +142,7 @@ putAggregationAuthorizationResponse pResponseStatus_ =
     }
 
 
--- | Returns an AggregationAuthorization object.
+-- | Returns an AggregationAuthorization object. 
 paarsAggregationAuthorization :: Lens' PutAggregationAuthorizationResponse (Maybe AggregationAuthorization)
 paarsAggregationAuthorization = lens _paarsAggregationAuthorization (\ s a -> s{_paarsAggregationAuthorization = a})
 

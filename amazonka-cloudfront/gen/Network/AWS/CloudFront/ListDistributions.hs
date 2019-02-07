@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- List distributions.
+-- List distributions. 
 --
 --
 --
@@ -48,13 +48,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The request to list your distributions.
+-- | The request to list your distributions. 
 --
 --
 --
 -- /See:/ 'listDistributions' smart constructor.
 data ListDistributions = ListDistributions'
-  { _ldMarker   :: !(Maybe Text)
+  { _ldMarker :: !(Maybe Text)
   , _ldMaxItems :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,20 +109,20 @@ instance ToHeaders ListDistributions where
         toHeaders = const mempty
 
 instance ToPath ListDistributions where
-        toPath = const "/2017-10-30/distribution"
+        toPath = const "/2018-11-05/distribution"
 
 instance ToQuery ListDistributions where
         toQuery ListDistributions'{..}
           = mconcat
               ["Marker" =: _ldMarker, "MaxItems" =: _ldMaxItems]
 
--- | The returned result of the corresponding request.
+-- | The returned result of the corresponding request. 
 --
 --
 --
 -- /See:/ 'listDistributionsResponse' smart constructor.
 data ListDistributionsResponse = ListDistributionsResponse'
-  { _ldrsResponseStatus   :: !Int
+  { _ldrsResponseStatus :: !Int
   , _ldrsDistributionList :: !DistributionList
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ data ListDistributionsResponse = ListDistributionsResponse'
 --
 -- * 'ldrsResponseStatus' - -- | The response status code.
 --
--- * 'ldrsDistributionList' - The @DistributionList@ type.
+-- * 'ldrsDistributionList' - The @DistributionList@ type. 
 listDistributionsResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> DistributionList -- ^ 'ldrsDistributionList'
@@ -149,7 +149,7 @@ listDistributionsResponse pResponseStatus_ pDistributionList_ =
 ldrsResponseStatus :: Lens' ListDistributionsResponse Int
 ldrsResponseStatus = lens _ldrsResponseStatus (\ s a -> s{_ldrsResponseStatus = a})
 
--- | The @DistributionList@ type.
+-- | The @DistributionList@ type. 
 ldrsDistributionList :: Lens' ListDistributionsResponse DistributionList
 ldrsDistributionList = lens _ldrsDistributionList (\ s a -> s{_ldrsDistributionList = a})
 

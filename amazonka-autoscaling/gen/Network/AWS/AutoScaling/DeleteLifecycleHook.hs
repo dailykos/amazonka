@@ -48,7 +48,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteLifecycleHook' smart constructor.
 data DeleteLifecycleHook = DeleteLifecycleHook'
-  { _delLifecycleHookName    :: !Text
+  { _delLifecycleHookName :: !Text
   , _delAutoScalingGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

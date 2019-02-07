@@ -112,7 +112,7 @@ instance ToQuery BatchGetOnPremisesInstances where
 --
 -- /See:/ 'batchGetOnPremisesInstancesResponse' smart constructor.
 data BatchGetOnPremisesInstancesResponse = BatchGetOnPremisesInstancesResponse'
-  { _bgopirsInstanceInfos  :: !(Maybe [InstanceInfo])
+  { _bgopirsInstanceInfos :: !(Maybe [InstanceInfo])
   , _bgopirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

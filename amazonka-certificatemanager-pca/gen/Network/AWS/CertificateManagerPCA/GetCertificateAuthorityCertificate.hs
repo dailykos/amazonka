@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the certificate and certificate chain for your private certificate authority (CA). Both the certificate and the chain are base64 PEM-encoded. The chain does not include the CA certificate. Each certificate in the chain signs the one before it.
+-- Retrieves the certificate and certificate chain for your private certificate authority (CA). Both the certificate and the chain are base64 PEM-encoded. The chain does not include the CA certificate. Each certificate in the chain signs the one before it. 
 --
 --
 module Network.AWS.CertificateManagerPCA.GetCertificateAuthorityCertificate
@@ -55,7 +55,7 @@ newtype GetCertificateAuthorityCertificate = GetCertificateAuthorityCertificate'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcacCertificateAuthorityARN' - The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
+-- * 'gcacCertificateAuthorityARN' - The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 getCertificateAuthorityCertificate
     :: Text -- ^ 'gcacCertificateAuthorityARN'
     -> GetCertificateAuthorityCertificate
@@ -64,7 +64,7 @@ getCertificateAuthorityCertificate pCertificateAuthorityARN_ =
     {_gcacCertificateAuthorityARN = pCertificateAuthorityARN_}
 
 
--- | The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
+-- | The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 gcacCertificateAuthorityARN :: Lens' GetCertificateAuthorityCertificate Text
 gcacCertificateAuthorityARN = lens _gcacCertificateAuthorityARN (\ s a -> s{_gcacCertificateAuthorityARN = a})
 
@@ -117,9 +117,9 @@ instance ToQuery GetCertificateAuthorityCertificate
 
 -- | /See:/ 'getCertificateAuthorityCertificateResponse' smart constructor.
 data GetCertificateAuthorityCertificateResponse = GetCertificateAuthorityCertificateResponse'
-  { _gcacrsCertificate      :: !(Maybe Text)
+  { _gcacrsCertificate :: !(Maybe Text)
   , _gcacrsCertificateChain :: !(Maybe Text)
-  , _gcacrsResponseStatus   :: !Int
+  , _gcacrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -129,7 +129,7 @@ data GetCertificateAuthorityCertificateResponse = GetCertificateAuthorityCertifi
 --
 -- * 'gcacrsCertificate' - Base64-encoded certificate authority (CA) certificate.
 --
--- * 'gcacrsCertificateChain' - Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate.
+-- * 'gcacrsCertificateChain' - Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. 
 --
 -- * 'gcacrsResponseStatus' - -- | The response status code.
 getCertificateAuthorityCertificateResponse
@@ -147,7 +147,7 @@ getCertificateAuthorityCertificateResponse pResponseStatus_ =
 gcacrsCertificate :: Lens' GetCertificateAuthorityCertificateResponse (Maybe Text)
 gcacrsCertificate = lens _gcacrsCertificate (\ s a -> s{_gcacrsCertificate = a})
 
--- | Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate.
+-- | Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. 
 gcacrsCertificateChain :: Lens' GetCertificateAuthorityCertificateResponse (Maybe Text)
 gcacrsCertificateChain = lens _gcacrsCertificateChain (\ s a -> s{_gcacrsCertificateChain = a})
 

@@ -49,10 +49,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateAPIKey' smart constructor.
 data UpdateAPIKey = UpdateAPIKey'
-  { _uakExpires     :: !(Maybe Integer)
+  { _uakExpires :: !(Maybe Integer)
   , _uakDescription :: !(Maybe Text)
-  , _uakApiId       :: !Text
-  , _uakId          :: !Text
+  , _uakApiId :: !Text
+  , _uakId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -64,7 +64,7 @@ data UpdateAPIKey = UpdateAPIKey'
 --
 -- * 'uakDescription' - A description of the purpose of the API key.
 --
--- * 'uakApiId' - The ID for the GraphQL API
+-- * 'uakApiId' - The ID for the GraphQL API.
 --
 -- * 'uakId' - The API key ID.
 updateAPIKey
@@ -88,7 +88,7 @@ uakExpires = lens _uakExpires (\ s a -> s{_uakExpires = a})
 uakDescription :: Lens' UpdateAPIKey (Maybe Text)
 uakDescription = lens _uakDescription (\ s a -> s{_uakDescription = a})
 
--- | The ID for the GraphQL API
+-- | The ID for the GraphQL API.
 uakApiId :: Lens' UpdateAPIKey Text
 uakApiId = lens _uakApiId (\ s a -> s{_uakApiId = a})
 
@@ -134,7 +134,7 @@ instance ToQuery UpdateAPIKey where
 
 -- | /See:/ 'updateAPIKeyResponse' smart constructor.
 data UpdateAPIKeyResponse = UpdateAPIKeyResponse'
-  { _uakrsApiKey         :: !(Maybe APIKey)
+  { _uakrsApiKey :: !(Maybe APIKey)
   , _uakrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

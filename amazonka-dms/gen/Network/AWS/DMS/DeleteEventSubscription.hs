@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes an AWS DMS event subscription.
+-- Deletes an AWS DMS event subscription. 
 --
 --
 module Network.AWS.DMS.DeleteEventSubscription
@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -106,14 +106,14 @@ instance ToPath DeleteEventSubscription where
 instance ToQuery DeleteEventSubscription where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteEventSubscriptionResponse' smart constructor.
 data DeleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'
   { _desersEventSubscription :: !(Maybe EventSubscription)
-  , _desersResponseStatus    :: !Int
+  , _desersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

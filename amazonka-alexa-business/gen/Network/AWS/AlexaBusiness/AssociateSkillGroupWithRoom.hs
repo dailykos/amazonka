@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'associateSkillGroupWithRoom' smart constructor.
 data AssociateSkillGroupWithRoom = AssociateSkillGroupWithRoom'
   { _asgwrSkillGroupARN :: !(Maybe Text)
-  , _asgwrRoomARN       :: !(Maybe Text)
+  , _asgwrRoomARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

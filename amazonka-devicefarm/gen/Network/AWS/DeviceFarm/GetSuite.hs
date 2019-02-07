@@ -107,7 +107,7 @@ instance ToQuery GetSuite where
 --
 -- /See:/ 'getSuiteResponse' smart constructor.
 data GetSuiteResponse = GetSuiteResponse'
-  { _gsrsSuite          :: !(Maybe Suite)
+  { _gsrsSuite :: !(Maybe Suite)
   , _gsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

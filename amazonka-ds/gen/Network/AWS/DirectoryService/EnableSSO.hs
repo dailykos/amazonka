@@ -51,8 +51,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'enableSSO' smart constructor.
 data EnableSSO = EnableSSO'
-  { _esUserName    :: !(Maybe Text)
-  , _esPassword    :: !(Maybe (Sensitive Text))
+  { _esUserName :: !(Maybe Text)
+  , _esPassword :: !(Maybe (Sensitive Text))
   , _esDirectoryId :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 

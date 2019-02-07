@@ -56,9 +56,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'describeStackResources' smart constructor.
 data DescribeStackResources = DescribeStackResources'
-  { _dsrLogicalResourceId  :: !(Maybe Text)
+  { _dsrLogicalResourceId :: !(Maybe Text)
   , _dsrPhysicalResourceId :: !(Maybe Text)
-  , _dsrStackName          :: !(Maybe Text)
+  , _dsrStackName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

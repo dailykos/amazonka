@@ -115,8 +115,8 @@ instance ToQuery ListChangeSets where
 --
 -- /See:/ 'listChangeSetsResponse' smart constructor.
 data ListChangeSetsResponse = ListChangeSetsResponse'
-  { _lcsrsNextToken      :: !(Maybe Text)
-  , _lcsrsSummaries      :: !(Maybe [ChangeSetSummary])
+  { _lcsrsNextToken :: !(Maybe Text)
+  , _lcsrsSummaries :: !(Maybe [ChangeSetSummary])
   , _lcsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -99,7 +99,7 @@ instance ToQuery StopBuild where
 
 -- | /See:/ 'stopBuildResponse' smart constructor.
 data StopBuildResponse = StopBuildResponse'
-  { _sbrsBuild          :: !(Maybe Build)
+  { _sbrsBuild :: !(Maybe Build)
   , _sbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

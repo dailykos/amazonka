@@ -27,9 +27,9 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'agentConfigurationStatus' smart constructor.
 data AgentConfigurationStatus = AgentConfigurationStatus'
-  { _acsAgentId            :: !(Maybe Text)
+  { _acsAgentId :: !(Maybe Text)
   , _acsOperationSucceeded :: !(Maybe Bool)
-  , _acsDescription        :: !(Maybe Text)
+  , _acsDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -39,7 +39,7 @@ data AgentConfigurationStatus = AgentConfigurationStatus'
 --
 -- * 'acsAgentId' - The agent/connector ID.
 --
--- * 'acsOperationSucceeded' - Information about the status of the @StartDataCollection@ and @StopDataCollection@ operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command.
+-- * 'acsOperationSucceeded' - Information about the status of the @StartDataCollection@ and @StopDataCollection@ operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. 
 --
 -- * 'acsDescription' - A description of the operation performed.
 agentConfigurationStatus
@@ -56,7 +56,7 @@ agentConfigurationStatus =
 acsAgentId :: Lens' AgentConfigurationStatus (Maybe Text)
 acsAgentId = lens _acsAgentId (\ s a -> s{_acsAgentId = a})
 
--- | Information about the status of the @StartDataCollection@ and @StopDataCollection@ operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command.
+-- | Information about the status of the @StartDataCollection@ and @StopDataCollection@ operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. 
 acsOperationSucceeded :: Lens' AgentConfigurationStatus (Maybe Bool)
 acsOperationSucceeded = lens _acsOperationSucceeded (\ s a -> s{_acsOperationSucceeded = a})
 
@@ -82,16 +82,16 @@ instance NFData AgentConfigurationStatus where
 --
 -- /See:/ 'agentInfo' smart constructor.
 data AgentInfo = AgentInfo'
-  { _aiHostName             :: !(Maybe Text)
-  , _aiLastHealthPingTime   :: !(Maybe Text)
+  { _aiHostName :: !(Maybe Text)
+  , _aiLastHealthPingTime :: !(Maybe Text)
   , _aiAgentNetworkInfoList :: !(Maybe [AgentNetworkInfo])
-  , _aiConnectorId          :: !(Maybe Text)
-  , _aiHealth               :: !(Maybe AgentStatus)
-  , _aiAgentId              :: !(Maybe Text)
-  , _aiVersion              :: !(Maybe Text)
-  , _aiCollectionStatus     :: !(Maybe Text)
-  , _aiRegisteredTime       :: !(Maybe Text)
-  , _aiAgentType            :: !(Maybe Text)
+  , _aiConnectorId :: !(Maybe Text)
+  , _aiHealth :: !(Maybe AgentStatus)
+  , _aiAgentId :: !(Maybe Text)
+  , _aiVersion :: !(Maybe Text)
+  , _aiCollectionStatus :: !(Maybe Text)
+  , _aiRegisteredTime :: !(Maybe Text)
+  , _aiAgentType :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -200,7 +200,7 @@ instance NFData AgentInfo where
 --
 -- /See:/ 'agentNetworkInfo' smart constructor.
 data AgentNetworkInfo = AgentNetworkInfo'
-  { _aniIpAddress  :: !(Maybe Text)
+  { _aniIpAddress :: !(Maybe Text)
   , _aniMacAddress :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -237,17 +237,72 @@ instance Hashable AgentNetworkInfo where
 
 instance NFData AgentNetworkInfo where
 
+-- | Error messages returned for each import task that you deleted as a response for this command.
+--
+--
+--
+-- /See:/ 'batchDeleteImportDataError' smart constructor.
+data BatchDeleteImportDataError = BatchDeleteImportDataError'
+  { _bdideImportTaskId :: !(Maybe Text)
+  , _bdideErrorCode :: !(Maybe BatchDeleteImportDataErrorCode)
+  , _bdideErrorDescription :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'BatchDeleteImportDataError' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bdideImportTaskId' - The unique import ID associated with the error that occurred.
+--
+-- * 'bdideErrorCode' - The type of error that occurred for a specific import task.
+--
+-- * 'bdideErrorDescription' - The description of the error that occurred for a specific import task.
+batchDeleteImportDataError
+    :: BatchDeleteImportDataError
+batchDeleteImportDataError =
+  BatchDeleteImportDataError'
+    { _bdideImportTaskId = Nothing
+    , _bdideErrorCode = Nothing
+    , _bdideErrorDescription = Nothing
+    }
+
+
+-- | The unique import ID associated with the error that occurred.
+bdideImportTaskId :: Lens' BatchDeleteImportDataError (Maybe Text)
+bdideImportTaskId = lens _bdideImportTaskId (\ s a -> s{_bdideImportTaskId = a})
+
+-- | The type of error that occurred for a specific import task.
+bdideErrorCode :: Lens' BatchDeleteImportDataError (Maybe BatchDeleteImportDataErrorCode)
+bdideErrorCode = lens _bdideErrorCode (\ s a -> s{_bdideErrorCode = a})
+
+-- | The description of the error that occurred for a specific import task.
+bdideErrorDescription :: Lens' BatchDeleteImportDataError (Maybe Text)
+bdideErrorDescription = lens _bdideErrorDescription (\ s a -> s{_bdideErrorDescription = a})
+
+instance FromJSON BatchDeleteImportDataError where
+        parseJSON
+          = withObject "BatchDeleteImportDataError"
+              (\ x ->
+                 BatchDeleteImportDataError' <$>
+                   (x .:? "importTaskId") <*> (x .:? "errorCode") <*>
+                     (x .:? "errorDescription"))
+
+instance Hashable BatchDeleteImportDataError where
+
+instance NFData BatchDeleteImportDataError where
+
 -- | Tags for a configuration item. Tags are metadata that help you categorize IT assets.
 --
 --
 --
 -- /See:/ 'configurationTag' smart constructor.
 data ConfigurationTag = ConfigurationTag'
-  { _ctTimeOfCreation    :: !(Maybe POSIX)
-  , _ctConfigurationId   :: !(Maybe Text)
+  { _ctTimeOfCreation :: !(Maybe POSIX)
+  , _ctConfigurationId :: !(Maybe Text)
   , _ctConfigurationType :: !(Maybe ConfigurationItemType)
-  , _ctValue             :: !(Maybe Text)
-  , _ctKey               :: !(Maybe Text)
+  , _ctValue :: !(Maybe Text)
+  , _ctKey :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -311,19 +366,119 @@ instance Hashable ConfigurationTag where
 
 instance NFData ConfigurationTag where
 
+-- | A list of continuous export descriptions.
+--
+--
+--
+-- /See:/ 'continuousExportDescription' smart constructor.
+data ContinuousExportDescription = ContinuousExportDescription'
+  { _cedStatus :: !(Maybe ContinuousExportStatus)
+  , _cedStartTime :: !(Maybe POSIX)
+  , _cedSchemaStorageConfig :: !(Maybe (Map Text Text))
+  , _cedStatusDetail :: !(Maybe Text)
+  , _cedStopTime :: !(Maybe POSIX)
+  , _cedDataSource :: !(Maybe DataSource)
+  , _cedS3Bucket :: !(Maybe Text)
+  , _cedExportId :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ContinuousExportDescription' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'cedStatus' - Describes the status of the export. Can be one of the following values:     * START_IN_PROGRESS - setting up resources to start continuous export.     * START_FAILED - an error occurred setting up continuous export. To recover, call start-continuous-export again.     * ACTIVE - data is being exported to the customer bucket.     * ERROR - an error occurred during export. To fix the issue, call stop-continuous-export and start-continuous-export.     * STOP_IN_PROGRESS - stopping the export.     * STOP_FAILED - an error occurred stopping the export. To recover, call stop-continuous-export again.     * INACTIVE - the continuous export has been stopped. Data is no longer being exported to the customer bucket.
+--
+-- * 'cedStartTime' - The timestamp representing when the continuous export was started.
+--
+-- * 'cedSchemaStorageConfig' - An object which describes how the data is stored.     * @databaseName@ - the name of the Glue database used to store the schema.
+--
+-- * 'cedStatusDetail' - Contains information about any errors that have occurred. This data type can have the following values:     * ACCESS_DENIED - You don’t have permission to start Data Exploration in Amazon Athena. Contact your AWS administrator for help. For more information, see <http://docs.aws.amazon.com/application-discovery/latest/userguide/setting-up.html Setting Up AWS Application Discovery Service> in the Application Discovery Service User Guide.     * DELIVERY_STREAM_LIMIT_FAILURE - You reached the limit for Amazon Kinesis Data Firehose delivery streams. Reduce the number of streams or request a limit increase and try again. For more information, see <http://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html Kinesis Data Streams Limits> in the Amazon Kinesis Data Streams Developer Guide.     * FIREHOSE_ROLE_MISSING - The Data Exploration feature is in an error state because your IAM User is missing the AWSApplicationDiscoveryServiceFirehose role. Turn on Data Exploration in Amazon Athena and try again. For more information, see <http://docs.aws.amazon.com/application-discovery/latest/userguide/setting-up.html#setting-up-user-policy Step 3: Provide Application Discovery Service Access to Non-Administrator Users by Attaching Policies> in the Application Discovery Service User Guide.     * FIREHOSE_STREAM_DOES_NOT_EXIST - The Data Exploration feature is in an error state because your IAM User is missing one or more of the Kinesis data delivery streams.     * INTERNAL_FAILURE - The Data Exploration feature is in an error state because of an internal failure. Try again later. If this problem persists, contact AWS Support.     * S3_BUCKET_LIMIT_FAILURE - You reached the limit for Amazon S3 buckets. Reduce the number of Amazon S3 buckets or request a limit increase and try again. For more information, see <http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html Bucket Restrictions and Limitations> in the Amazon Simple Storage Service Developer Guide.
+--
+-- * 'cedStopTime' - The timestamp that represents when this continuous export was stopped.
+--
+-- * 'cedDataSource' - The type of data collector used to gather this data (currently only offered for AGENT).
+--
+-- * 'cedS3Bucket' - The name of the s3 bucket where the export data parquet files are stored.
+--
+-- * 'cedExportId' - The unique ID assigned to this export.
+continuousExportDescription
+    :: ContinuousExportDescription
+continuousExportDescription =
+  ContinuousExportDescription'
+    { _cedStatus = Nothing
+    , _cedStartTime = Nothing
+    , _cedSchemaStorageConfig = Nothing
+    , _cedStatusDetail = Nothing
+    , _cedStopTime = Nothing
+    , _cedDataSource = Nothing
+    , _cedS3Bucket = Nothing
+    , _cedExportId = Nothing
+    }
+
+
+-- | Describes the status of the export. Can be one of the following values:     * START_IN_PROGRESS - setting up resources to start continuous export.     * START_FAILED - an error occurred setting up continuous export. To recover, call start-continuous-export again.     * ACTIVE - data is being exported to the customer bucket.     * ERROR - an error occurred during export. To fix the issue, call stop-continuous-export and start-continuous-export.     * STOP_IN_PROGRESS - stopping the export.     * STOP_FAILED - an error occurred stopping the export. To recover, call stop-continuous-export again.     * INACTIVE - the continuous export has been stopped. Data is no longer being exported to the customer bucket.
+cedStatus :: Lens' ContinuousExportDescription (Maybe ContinuousExportStatus)
+cedStatus = lens _cedStatus (\ s a -> s{_cedStatus = a})
+
+-- | The timestamp representing when the continuous export was started.
+cedStartTime :: Lens' ContinuousExportDescription (Maybe UTCTime)
+cedStartTime = lens _cedStartTime (\ s a -> s{_cedStartTime = a}) . mapping _Time
+
+-- | An object which describes how the data is stored.     * @databaseName@ - the name of the Glue database used to store the schema.
+cedSchemaStorageConfig :: Lens' ContinuousExportDescription (HashMap Text Text)
+cedSchemaStorageConfig = lens _cedSchemaStorageConfig (\ s a -> s{_cedSchemaStorageConfig = a}) . _Default . _Map
+
+-- | Contains information about any errors that have occurred. This data type can have the following values:     * ACCESS_DENIED - You don’t have permission to start Data Exploration in Amazon Athena. Contact your AWS administrator for help. For more information, see <http://docs.aws.amazon.com/application-discovery/latest/userguide/setting-up.html Setting Up AWS Application Discovery Service> in the Application Discovery Service User Guide.     * DELIVERY_STREAM_LIMIT_FAILURE - You reached the limit for Amazon Kinesis Data Firehose delivery streams. Reduce the number of streams or request a limit increase and try again. For more information, see <http://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html Kinesis Data Streams Limits> in the Amazon Kinesis Data Streams Developer Guide.     * FIREHOSE_ROLE_MISSING - The Data Exploration feature is in an error state because your IAM User is missing the AWSApplicationDiscoveryServiceFirehose role. Turn on Data Exploration in Amazon Athena and try again. For more information, see <http://docs.aws.amazon.com/application-discovery/latest/userguide/setting-up.html#setting-up-user-policy Step 3: Provide Application Discovery Service Access to Non-Administrator Users by Attaching Policies> in the Application Discovery Service User Guide.     * FIREHOSE_STREAM_DOES_NOT_EXIST - The Data Exploration feature is in an error state because your IAM User is missing one or more of the Kinesis data delivery streams.     * INTERNAL_FAILURE - The Data Exploration feature is in an error state because of an internal failure. Try again later. If this problem persists, contact AWS Support.     * S3_BUCKET_LIMIT_FAILURE - You reached the limit for Amazon S3 buckets. Reduce the number of Amazon S3 buckets or request a limit increase and try again. For more information, see <http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html Bucket Restrictions and Limitations> in the Amazon Simple Storage Service Developer Guide.
+cedStatusDetail :: Lens' ContinuousExportDescription (Maybe Text)
+cedStatusDetail = lens _cedStatusDetail (\ s a -> s{_cedStatusDetail = a})
+
+-- | The timestamp that represents when this continuous export was stopped.
+cedStopTime :: Lens' ContinuousExportDescription (Maybe UTCTime)
+cedStopTime = lens _cedStopTime (\ s a -> s{_cedStopTime = a}) . mapping _Time
+
+-- | The type of data collector used to gather this data (currently only offered for AGENT).
+cedDataSource :: Lens' ContinuousExportDescription (Maybe DataSource)
+cedDataSource = lens _cedDataSource (\ s a -> s{_cedDataSource = a})
+
+-- | The name of the s3 bucket where the export data parquet files are stored.
+cedS3Bucket :: Lens' ContinuousExportDescription (Maybe Text)
+cedS3Bucket = lens _cedS3Bucket (\ s a -> s{_cedS3Bucket = a})
+
+-- | The unique ID assigned to this export.
+cedExportId :: Lens' ContinuousExportDescription (Maybe Text)
+cedExportId = lens _cedExportId (\ s a -> s{_cedExportId = a})
+
+instance FromJSON ContinuousExportDescription where
+        parseJSON
+          = withObject "ContinuousExportDescription"
+              (\ x ->
+                 ContinuousExportDescription' <$>
+                   (x .:? "status") <*> (x .:? "startTime") <*>
+                     (x .:? "schemaStorageConfig" .!= mempty)
+                     <*> (x .:? "statusDetail")
+                     <*> (x .:? "stopTime")
+                     <*> (x .:? "dataSource")
+                     <*> (x .:? "s3Bucket")
+                     <*> (x .:? "exportId"))
+
+instance Hashable ContinuousExportDescription where
+
+instance NFData ContinuousExportDescription where
+
 -- | Inventory data for installed discovery agents.
 --
 --
 --
 -- /See:/ 'customerAgentInfo' smart constructor.
 data CustomerAgentInfo = CustomerAgentInfo'
-  { _caiActiveAgents      :: !Int
-  , _caiHealthyAgents     :: !Int
+  { _caiActiveAgents :: !Int
+  , _caiHealthyAgents :: !Int
   , _caiBlackListedAgents :: !Int
-  , _caiShutdownAgents    :: !Int
-  , _caiUnhealthyAgents   :: !Int
-  , _caiTotalAgents       :: !Int
-  , _caiUnknownAgents     :: !Int
+  , _caiShutdownAgents :: !Int
+  , _caiUnhealthyAgents :: !Int
+  , _caiTotalAgents :: !Int
+  , _caiUnknownAgents :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -415,13 +570,13 @@ instance NFData CustomerAgentInfo where
 --
 -- /See:/ 'customerConnectorInfo' smart constructor.
 data CustomerConnectorInfo = CustomerConnectorInfo'
-  { _cciActiveConnectors      :: !Int
-  , _cciHealthyConnectors     :: !Int
+  { _cciActiveConnectors :: !Int
+  , _cciHealthyConnectors :: !Int
   , _cciBlackListedConnectors :: !Int
-  , _cciShutdownConnectors    :: !Int
-  , _cciUnhealthyConnectors   :: !Int
-  , _cciTotalConnectors       :: !Int
-  , _cciUnknownConnectors     :: !Int
+  , _cciShutdownConnectors :: !Int
+  , _cciUnhealthyConnectors :: !Int
+  , _cciTotalConnectors :: !Int
+  , _cciUnknownConnectors :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -514,8 +669,8 @@ instance NFData CustomerConnectorInfo where
 --
 -- /See:/ 'exportFilter' smart constructor.
 data ExportFilter = ExportFilter'
-  { _efName      :: !Text
-  , _efValues    :: ![Text]
+  { _efName :: !Text
+  , _efValues :: ![Text]
   , _efCondition :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -528,7 +683,7 @@ data ExportFilter = ExportFilter'
 --
 -- * 'efValues' - A single @agentId@ for a Discovery Agent. An @agentId@ can be found using the <http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html DescribeAgents> action. Typically an ADS @agentId@ is in the form @o-0123456789abcdef0@ .
 --
--- * 'efCondition' - Supported condition: @EQUALS@
+-- * 'efCondition' - Supported condition: @EQUALS@ 
 exportFilter
     :: Text -- ^ 'efName'
     -> Text -- ^ 'efCondition'
@@ -546,7 +701,7 @@ efName = lens _efName (\ s a -> s{_efName = a})
 efValues :: Lens' ExportFilter [Text]
 efValues = lens _efValues (\ s a -> s{_efValues = a}) . _Coerce
 
--- | Supported condition: @EQUALS@
+-- | Supported condition: @EQUALS@ 
 efCondition :: Lens' ExportFilter Text
 efCondition = lens _efCondition (\ s a -> s{_efCondition = a})
 
@@ -569,13 +724,13 @@ instance ToJSON ExportFilter where
 -- /See:/ 'exportInfo' smart constructor.
 data ExportInfo = ExportInfo'
   { _eiConfigurationsDownloadURL :: !(Maybe Text)
-  , _eiRequestedStartTime        :: !(Maybe POSIX)
-  , _eiRequestedEndTime          :: !(Maybe POSIX)
-  , _eiIsTruncated               :: !(Maybe Bool)
-  , _eiExportId                  :: !Text
-  , _eiExportStatus              :: !ExportStatus
-  , _eiStatusMessage             :: !Text
-  , _eiExportRequestTime         :: !POSIX
+  , _eiRequestedStartTime :: !(Maybe POSIX)
+  , _eiRequestedEndTime :: !(Maybe POSIX)
+  , _eiIsTruncated :: !(Maybe Bool)
+  , _eiExportId :: !Text
+  , _eiExportStatus :: !ExportStatus
+  , _eiStatusMessage :: !Text
+  , _eiExportRequestTime :: !POSIX
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -670,13 +825,13 @@ instance NFData ExportInfo where
 -- | A filter that can use conditional operators.
 --
 --
--- For more information about filters, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html Querying Discovered Configuration Items> .
+-- For more information about filters, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html Querying Discovered Configuration Items> . 
 --
 --
 -- /See:/ 'filter'' smart constructor.
 data Filter = Filter'
-  { _fName      :: !Text
-  , _fValues    :: ![Text]
+  { _fName :: !Text
+  , _fValues :: ![Text]
   , _fCondition :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -722,17 +877,205 @@ instance ToJSON Filter where
                   Just ("values" .= _fValues),
                   Just ("condition" .= _fCondition)])
 
+-- | An array of information related to the import task request that includes status information, times, IDs, the Amazon S3 Object URL for the import file, and more.
+--
+--
+--
+-- /See:/ 'importTask' smart constructor.
+data ImportTask = ImportTask'
+  { _itApplicationImportSuccess :: !(Maybe Int)
+  , _itStatus :: !(Maybe ImportStatus)
+  , _itServerImportSuccess :: !(Maybe Int)
+  , _itImportCompletionTime :: !(Maybe POSIX)
+  , _itName :: !(Maybe Text)
+  , _itApplicationImportFailure :: !(Maybe Int)
+  , _itErrorsAndFailedEntriesZip :: !(Maybe Text)
+  , _itImportTaskId :: !(Maybe Text)
+  , _itImportDeletedTime :: !(Maybe POSIX)
+  , _itServerImportFailure :: !(Maybe Int)
+  , _itClientRequestToken :: !(Maybe Text)
+  , _itImportURL :: !(Maybe Text)
+  , _itImportRequestTime :: !(Maybe POSIX)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ImportTask' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'itApplicationImportSuccess' - The total number of application records in the import file that were successfully imported.
+--
+-- * 'itStatus' - The status of the import task. An import can have the status of @IMPORT_COMPLETE@ and still have some records fail to import from the overall request. More information can be found in the downloadable archive defined in the @errorsAndFailedEntriesZip@ field, or in the Migration Hub management console.
+--
+-- * 'itServerImportSuccess' - The total number of server records in the import file that were successfully imported.
+--
+-- * 'itImportCompletionTime' - The time that the import task request finished, presented in the Unix time stamp format.
+--
+-- * 'itName' - A descriptive name for an import task. You can use this name to filter future requests related to this import task, such as identifying applications and servers that were included in this import task. We recommend that you use a meaningful name for each import task.
+--
+-- * 'itApplicationImportFailure' - The total number of application records in the import file that failed to be imported.
+--
+-- * 'itErrorsAndFailedEntriesZip' - A link to a compressed archive folder (in the ZIP format) that contains an error log and a file of failed records. You can use these two files to quickly identify records that failed, why they failed, and correct those records. Afterward, you can upload the corrected file to your Amazon S3 bucket and create another import task request. This field also includes authorization information so you can confirm the authenticity of the compressed archive before you download it. If some records failed to be imported we recommend that you correct the records in the failed entries file and then imports that failed entries file. This prevents you frmo having to correct and update the larger original file and attempt importing it again.
+--
+-- * 'itImportTaskId' - The unique ID for a specific import task. These IDs aren't globally unique, but they are unique within an AWS account.
+--
+-- * 'itImportDeletedTime' - The time that the import task request was deleted, presented in the Unix time stamp format.
+--
+-- * 'itServerImportFailure' - The total number of server records in the import file that failed to be imported.
+--
+-- * 'itClientRequestToken' - A unique token used to prevent the same import request from occurring more than once. If you didn't provide a token, a token was automatically generated when the import task request was sent.
+--
+-- * 'itImportURL' - The URL for your import file that you've uploaded to Amazon S3.
+--
+-- * 'itImportRequestTime' - The time that the import task request was made, presented in the Unix time stamp format.
+importTask
+    :: ImportTask
+importTask =
+  ImportTask'
+    { _itApplicationImportSuccess = Nothing
+    , _itStatus = Nothing
+    , _itServerImportSuccess = Nothing
+    , _itImportCompletionTime = Nothing
+    , _itName = Nothing
+    , _itApplicationImportFailure = Nothing
+    , _itErrorsAndFailedEntriesZip = Nothing
+    , _itImportTaskId = Nothing
+    , _itImportDeletedTime = Nothing
+    , _itServerImportFailure = Nothing
+    , _itClientRequestToken = Nothing
+    , _itImportURL = Nothing
+    , _itImportRequestTime = Nothing
+    }
+
+
+-- | The total number of application records in the import file that were successfully imported.
+itApplicationImportSuccess :: Lens' ImportTask (Maybe Int)
+itApplicationImportSuccess = lens _itApplicationImportSuccess (\ s a -> s{_itApplicationImportSuccess = a})
+
+-- | The status of the import task. An import can have the status of @IMPORT_COMPLETE@ and still have some records fail to import from the overall request. More information can be found in the downloadable archive defined in the @errorsAndFailedEntriesZip@ field, or in the Migration Hub management console.
+itStatus :: Lens' ImportTask (Maybe ImportStatus)
+itStatus = lens _itStatus (\ s a -> s{_itStatus = a})
+
+-- | The total number of server records in the import file that were successfully imported.
+itServerImportSuccess :: Lens' ImportTask (Maybe Int)
+itServerImportSuccess = lens _itServerImportSuccess (\ s a -> s{_itServerImportSuccess = a})
+
+-- | The time that the import task request finished, presented in the Unix time stamp format.
+itImportCompletionTime :: Lens' ImportTask (Maybe UTCTime)
+itImportCompletionTime = lens _itImportCompletionTime (\ s a -> s{_itImportCompletionTime = a}) . mapping _Time
+
+-- | A descriptive name for an import task. You can use this name to filter future requests related to this import task, such as identifying applications and servers that were included in this import task. We recommend that you use a meaningful name for each import task.
+itName :: Lens' ImportTask (Maybe Text)
+itName = lens _itName (\ s a -> s{_itName = a})
+
+-- | The total number of application records in the import file that failed to be imported.
+itApplicationImportFailure :: Lens' ImportTask (Maybe Int)
+itApplicationImportFailure = lens _itApplicationImportFailure (\ s a -> s{_itApplicationImportFailure = a})
+
+-- | A link to a compressed archive folder (in the ZIP format) that contains an error log and a file of failed records. You can use these two files to quickly identify records that failed, why they failed, and correct those records. Afterward, you can upload the corrected file to your Amazon S3 bucket and create another import task request. This field also includes authorization information so you can confirm the authenticity of the compressed archive before you download it. If some records failed to be imported we recommend that you correct the records in the failed entries file and then imports that failed entries file. This prevents you frmo having to correct and update the larger original file and attempt importing it again.
+itErrorsAndFailedEntriesZip :: Lens' ImportTask (Maybe Text)
+itErrorsAndFailedEntriesZip = lens _itErrorsAndFailedEntriesZip (\ s a -> s{_itErrorsAndFailedEntriesZip = a})
+
+-- | The unique ID for a specific import task. These IDs aren't globally unique, but they are unique within an AWS account.
+itImportTaskId :: Lens' ImportTask (Maybe Text)
+itImportTaskId = lens _itImportTaskId (\ s a -> s{_itImportTaskId = a})
+
+-- | The time that the import task request was deleted, presented in the Unix time stamp format.
+itImportDeletedTime :: Lens' ImportTask (Maybe UTCTime)
+itImportDeletedTime = lens _itImportDeletedTime (\ s a -> s{_itImportDeletedTime = a}) . mapping _Time
+
+-- | The total number of server records in the import file that failed to be imported.
+itServerImportFailure :: Lens' ImportTask (Maybe Int)
+itServerImportFailure = lens _itServerImportFailure (\ s a -> s{_itServerImportFailure = a})
+
+-- | A unique token used to prevent the same import request from occurring more than once. If you didn't provide a token, a token was automatically generated when the import task request was sent.
+itClientRequestToken :: Lens' ImportTask (Maybe Text)
+itClientRequestToken = lens _itClientRequestToken (\ s a -> s{_itClientRequestToken = a})
+
+-- | The URL for your import file that you've uploaded to Amazon S3.
+itImportURL :: Lens' ImportTask (Maybe Text)
+itImportURL = lens _itImportURL (\ s a -> s{_itImportURL = a})
+
+-- | The time that the import task request was made, presented in the Unix time stamp format.
+itImportRequestTime :: Lens' ImportTask (Maybe UTCTime)
+itImportRequestTime = lens _itImportRequestTime (\ s a -> s{_itImportRequestTime = a}) . mapping _Time
+
+instance FromJSON ImportTask where
+        parseJSON
+          = withObject "ImportTask"
+              (\ x ->
+                 ImportTask' <$>
+                   (x .:? "applicationImportSuccess") <*>
+                     (x .:? "status")
+                     <*> (x .:? "serverImportSuccess")
+                     <*> (x .:? "importCompletionTime")
+                     <*> (x .:? "name")
+                     <*> (x .:? "applicationImportFailure")
+                     <*> (x .:? "errorsAndFailedEntriesZip")
+                     <*> (x .:? "importTaskId")
+                     <*> (x .:? "importDeletedTime")
+                     <*> (x .:? "serverImportFailure")
+                     <*> (x .:? "clientRequestToken")
+                     <*> (x .:? "importUrl")
+                     <*> (x .:? "importRequestTime"))
+
+instance Hashable ImportTask where
+
+instance NFData ImportTask where
+
+-- | A name-values pair of elements you can use to filter the results when querying your import tasks. Currently, wildcards are not supported for filters.
+--
+--
+--
+-- /See:/ 'importTaskFilter' smart constructor.
+data ImportTaskFilter = ImportTaskFilter'
+  { _itfValues :: !(Maybe (List1 Text))
+  , _itfName :: !(Maybe ImportTaskFilterName)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ImportTaskFilter' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'itfValues' - An array of strings that you can provide to match against a specific name, status, or import task ID to filter the results for your import task queries.
+--
+-- * 'itfName' - The name, status, or import task ID for a specific import task.
+importTaskFilter
+    :: ImportTaskFilter
+importTaskFilter = ImportTaskFilter' {_itfValues = Nothing, _itfName = Nothing}
+
+
+-- | An array of strings that you can provide to match against a specific name, status, or import task ID to filter the results for your import task queries.
+itfValues :: Lens' ImportTaskFilter (Maybe (NonEmpty Text))
+itfValues = lens _itfValues (\ s a -> s{_itfValues = a}) . mapping _List1
+
+-- | The name, status, or import task ID for a specific import task.
+itfName :: Lens' ImportTaskFilter (Maybe ImportTaskFilterName)
+itfName = lens _itfName (\ s a -> s{_itfName = a})
+
+instance Hashable ImportTaskFilter where
+
+instance NFData ImportTaskFilter where
+
+instance ToJSON ImportTaskFilter where
+        toJSON ImportTaskFilter'{..}
+          = object
+              (catMaybes
+                 [("values" .=) <$> _itfValues,
+                  ("name" .=) <$> _itfName])
+
 -- | Details about neighboring servers.
 --
 --
 --
 -- /See:/ 'neighborConnectionDetail' smart constructor.
 data NeighborConnectionDetail = NeighborConnectionDetail'
-  { _ncdTransportProtocol   :: !(Maybe Text)
-  , _ncdDestinationPort     :: !(Maybe Int)
-  , _ncdSourceServerId      :: !Text
+  { _ncdTransportProtocol :: !(Maybe Text)
+  , _ncdDestinationPort :: !(Maybe Int)
+  , _ncdSourceServerId :: !Text
   , _ncdDestinationServerId :: !Text
-  , _ncdConnectionsCount    :: !Integer
+  , _ncdConnectionsCount :: !Integer
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -849,7 +1192,7 @@ instance ToJSON OrderByElement where
 --
 -- /See:/ 'tag' smart constructor.
 data Tag = Tag'
-  { _tagKey   :: !Text
+  { _tagKey :: !Text
   , _tagValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -893,7 +1236,7 @@ instance ToJSON Tag where
 --
 -- /See:/ 'tagFilter' smart constructor.
 data TagFilter = TagFilter'
-  { _tfName   :: !Text
+  { _tfName :: !Text
   , _tfValues :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

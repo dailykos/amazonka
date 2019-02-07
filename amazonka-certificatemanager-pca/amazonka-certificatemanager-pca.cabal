@@ -57,6 +57,7 @@ library
         , Network.AWS.CertificateManagerPCA.IssueCertificate
         , Network.AWS.CertificateManagerPCA.ListCertificateAuthorities
         , Network.AWS.CertificateManagerPCA.ListTags
+        , Network.AWS.CertificateManagerPCA.RestoreCertificateAuthority
         , Network.AWS.CertificateManagerPCA.RevokeCertificate
         , Network.AWS.CertificateManagerPCA.TagCertificateAuthority
         , Network.AWS.CertificateManagerPCA.Types

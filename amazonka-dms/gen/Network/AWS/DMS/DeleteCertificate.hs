@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified certificate.
+-- Deletes the specified certificate. 
 --
 --
 module Network.AWS.DMS.DeleteCertificate
@@ -103,7 +103,7 @@ instance ToQuery DeleteCertificate where
 
 -- | /See:/ 'deleteCertificateResponse' smart constructor.
 data DeleteCertificateResponse = DeleteCertificateResponse'
-  { _dccrsCertificate    :: !(Maybe Certificate)
+  { _dccrsCertificate :: !(Maybe Certificate)
   , _dccrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

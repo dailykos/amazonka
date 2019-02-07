@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'adminRemoveUserFromGroup' smart constructor.
 data AdminRemoveUserFromGroup = AdminRemoveUserFromGroup'
   { _arufgUserPoolId :: !Text
-  , _arufgUsername   :: !(Sensitive Text)
-  , _arufgGroupName  :: !Text
+  , _arufgUsername :: !(Sensitive Text)
+  , _arufgGroupName :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

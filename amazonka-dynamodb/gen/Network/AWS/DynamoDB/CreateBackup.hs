@@ -21,17 +21,17 @@
 -- Creates a backup for an existing table.
 --
 --
--- Each time you create an On-Demand Backup, the entire table data is backed up. There is no limit to the number of on-demand backups that can be taken.
+-- Each time you create an On-Demand Backup, the entire table data is backed up. There is no limit to the number of on-demand backups that can be taken. 
 --
--- When you create an On-Demand Backup, a time marker of the request is cataloged, and the backup is created asynchronously, by applying all changes until the time of the request to the last full table snapshot. Backup requests are processed instantaneously and become available for restore within minutes.
+-- When you create an On-Demand Backup, a time marker of the request is cataloged, and the backup is created asynchronously, by applying all changes until the time of the request to the last full table snapshot. Backup requests are processed instantaneously and become available for restore within minutes. 
 --
 -- You can call @CreateBackup@ at a maximum rate of 50 times per second.
 --
 -- All backups in DynamoDB work without consuming any provisioned throughput on the table.
 --
--- If you submit a backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all data committed to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may not contain data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal consistency.
+-- If you submit a backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all data committed to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may not contain data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal consistency. 
 --
--- Along with data, the following are also included on the backups:
+-- Along with data, the following are also included on the backups: 
 --
 --     * Global secondary indexes (GSIs)
 --
@@ -69,7 +69,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'createBackup' smart constructor.
 data CreateBackup = CreateBackup'
-  { _cbTableName  :: !Text
+  { _cbTableName :: !Text
   , _cbBackupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery CreateBackup where
 
 -- | /See:/ 'createBackupResponse' smart constructor.
 data CreateBackupResponse = CreateBackupResponse'
-  { _cbrsBackupDetails  :: !(Maybe BackupDetails)
+  { _cbrsBackupDetails :: !(Maybe BackupDetails)
   , _cbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

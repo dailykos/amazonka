@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeLaunchConfigurations' smart constructor.
 data DescribeLaunchConfigurations = DescribeLaunchConfigurations'
   { _dlcLaunchConfigurationNames :: !(Maybe [Text])
-  , _dlcNextToken                :: !(Maybe Text)
-  , _dlcMaxRecords               :: !(Maybe Int)
+  , _dlcNextToken :: !(Maybe Text)
+  , _dlcMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -135,8 +135,8 @@ instance ToQuery DescribeLaunchConfigurations where
 
 -- | /See:/ 'describeLaunchConfigurationsResponse' smart constructor.
 data DescribeLaunchConfigurationsResponse = DescribeLaunchConfigurationsResponse'
-  { _dlcrsNextToken            :: !(Maybe Text)
-  , _dlcrsResponseStatus       :: !Int
+  { _dlcrsNextToken :: !(Maybe Text)
+  , _dlcrsResponseStatus :: !Int
   , _dlcrsLaunchConfigurations :: ![LaunchConfiguration]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

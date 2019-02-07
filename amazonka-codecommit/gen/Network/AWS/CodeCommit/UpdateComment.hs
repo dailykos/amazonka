@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateComment' smart constructor.
 data UpdateComment = UpdateComment'
   { _ucCommentId :: !Text
-  , _ucContent   :: !Text
+  , _ucContent :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -112,7 +112,7 @@ instance ToQuery UpdateComment where
 
 -- | /See:/ 'updateCommentResponse' smart constructor.
 data UpdateCommentResponse = UpdateCommentResponse'
-  { _ucrsComment        :: !(Maybe Comment)
+  { _ucrsComment :: !(Maybe Comment)
   , _ucrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

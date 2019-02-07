@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-amplify",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.Amplify.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

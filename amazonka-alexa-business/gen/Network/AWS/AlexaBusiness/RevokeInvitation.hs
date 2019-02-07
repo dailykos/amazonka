@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'revokeInvitation' smart constructor.
 data RevokeInvitation = RevokeInvitation'
   { _riEnrollmentId :: !(Maybe Text)
-  , _riUserARN      :: !(Maybe Text)
+  , _riUserARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

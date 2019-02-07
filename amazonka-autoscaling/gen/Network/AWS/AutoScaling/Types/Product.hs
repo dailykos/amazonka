@@ -27,16 +27,16 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'activity' smart constructor.
 data Activity = Activity'
-  { _aProgress             :: !(Maybe Int)
-  , _aStatusMessage        :: !(Maybe Text)
-  , _aEndTime              :: !(Maybe ISO8601)
-  , _aDetails              :: !(Maybe Text)
-  , _aDescription          :: !(Maybe Text)
-  , _aActivityId           :: !Text
+  { _aProgress :: !(Maybe Int)
+  , _aStatusMessage :: !(Maybe Text)
+  , _aEndTime :: !(Maybe ISO8601)
+  , _aDetails :: !(Maybe Text)
+  , _aDescription :: !(Maybe Text)
+  , _aActivityId :: !Text
   , _aAutoScalingGroupName :: !Text
-  , _aCause                :: !Text
-  , _aStartTime            :: !ISO8601
-  , _aStatusCode           :: !ScalingActivityStatusCode
+  , _aCause :: !Text
+  , _aStartTime :: !ISO8601
+  , _aStatusCode :: !ScalingActivityStatusCode
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -145,7 +145,7 @@ instance NFData Activity where
 -- | Describes a policy adjustment type.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html Dynamic Scaling> in the /Auto Scaling User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html Dynamic Scaling> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 --
 -- /See:/ 'adjustmentType' smart constructor.
@@ -183,7 +183,7 @@ instance NFData AdjustmentType where
 -- /See:/ 'alarm' smart constructor.
 data Alarm = Alarm'
   { _aAlarmName :: !(Maybe Text)
-  , _aAlarmARN  :: !(Maybe Text)
+  , _aAlarmARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -222,30 +222,31 @@ instance NFData Alarm where
 --
 -- /See:/ 'autoScalingGroup' smart constructor.
 data AutoScalingGroup = AutoScalingGroup'
-  { _asgStatus                           :: !(Maybe Text)
-  , _asgTerminationPolicies              :: !(Maybe [Text])
-  , _asgHealthCheckGracePeriod           :: !(Maybe Int)
-  , _asgServiceLinkedRoleARN             :: !(Maybe Text)
+  { _asgStatus :: !(Maybe Text)
+  , _asgTerminationPolicies :: !(Maybe [Text])
+  , _asgHealthCheckGracePeriod :: !(Maybe Int)
+  , _asgServiceLinkedRoleARN :: !(Maybe Text)
   , _asgNewInstancesProtectedFromScaleIn :: !(Maybe Bool)
-  , _asgVPCZoneIdentifier                :: !(Maybe Text)
-  , _asgTargetGroupARNs                  :: !(Maybe [Text])
-  , _asgEnabledMetrics                   :: !(Maybe [EnabledMetric])
-  , _asgLaunchConfigurationName          :: !(Maybe Text)
-  , _asgInstances                        :: !(Maybe [Instance])
-  , _asgLaunchTemplate                   :: !(Maybe LaunchTemplateSpecification)
-  , _asgAutoScalingGroupARN              :: !(Maybe Text)
-  , _asgPlacementGroup                   :: !(Maybe Text)
-  , _asgSuspendedProcesses               :: !(Maybe [SuspendedProcess])
-  , _asgLoadBalancerNames                :: !(Maybe [Text])
-  , _asgTags                             :: !(Maybe [TagDescription])
-  , _asgAutoScalingGroupName             :: !Text
-  , _asgMinSize                          :: !Int
-  , _asgMaxSize                          :: !Int
-  , _asgDesiredCapacity                  :: !Int
-  , _asgDefaultCooldown                  :: !Int
-  , _asgAvailabilityZones                :: !(List1 Text)
-  , _asgHealthCheckType                  :: !Text
-  , _asgCreatedTime                      :: !ISO8601
+  , _asgVPCZoneIdentifier :: !(Maybe Text)
+  , _asgTargetGroupARNs :: !(Maybe [Text])
+  , _asgMixedInstancesPolicy :: !(Maybe MixedInstancesPolicy)
+  , _asgEnabledMetrics :: !(Maybe [EnabledMetric])
+  , _asgLaunchConfigurationName :: !(Maybe Text)
+  , _asgInstances :: !(Maybe [Instance])
+  , _asgLaunchTemplate :: !(Maybe LaunchTemplateSpecification)
+  , _asgAutoScalingGroupARN :: !(Maybe Text)
+  , _asgPlacementGroup :: !(Maybe Text)
+  , _asgSuspendedProcesses :: !(Maybe [SuspendedProcess])
+  , _asgLoadBalancerNames :: !(Maybe [Text])
+  , _asgTags :: !(Maybe [TagDescription])
+  , _asgAutoScalingGroupName :: !Text
+  , _asgMinSize :: !Int
+  , _asgMaxSize :: !Int
+  , _asgDesiredCapacity :: !Int
+  , _asgDefaultCooldown :: !Int
+  , _asgAvailabilityZones :: !(List1 Text)
+  , _asgHealthCheckType :: !Text
+  , _asgCreatedTime :: !ISO8601
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -257,7 +258,7 @@ data AutoScalingGroup = AutoScalingGroup'
 --
 -- * 'asgTerminationPolicies' - The termination policies for the group.
 --
--- * 'asgHealthCheckGracePeriod' - The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
+-- * 'asgHealthCheckGracePeriod' - The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
 --
 -- * 'asgServiceLinkedRoleARN' - The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
 --
@@ -266,6 +267,8 @@ data AutoScalingGroup = AutoScalingGroup'
 -- * 'asgVPCZoneIdentifier' - One or more subnet IDs, if applicable, separated by commas. If you specify @VPCZoneIdentifier@ and @AvailabilityZones@ , ensure that the Availability Zones of the subnets match the values for @AvailabilityZones@ .
 --
 -- * 'asgTargetGroupARNs' - The Amazon Resource Names (ARN) of the target groups for your load balancer.
+--
+-- * 'asgMixedInstancesPolicy' - The mixed instances policy for the group. 
 --
 -- * 'asgEnabledMetrics' - The metrics enabled for the group.
 --
@@ -277,7 +280,7 @@ data AutoScalingGroup = AutoScalingGroup'
 --
 -- * 'asgAutoScalingGroupARN' - The Amazon Resource Name (ARN) of the Auto Scaling group.
 --
--- * 'asgPlacementGroup' - The name of the placement group into which you'll launch your instances, if any. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html Placement Groups> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- * 'asgPlacementGroup' - The name of the placement group into which to launch your instances, if any. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html Placement Groups> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 -- * 'asgSuspendedProcesses' - The suspended processes associated with the group.
 --
@@ -319,6 +322,7 @@ autoScalingGroup pAutoScalingGroupName_ pMinSize_ pMaxSize_ pDesiredCapacity_ pD
     , _asgNewInstancesProtectedFromScaleIn = Nothing
     , _asgVPCZoneIdentifier = Nothing
     , _asgTargetGroupARNs = Nothing
+    , _asgMixedInstancesPolicy = Nothing
     , _asgEnabledMetrics = Nothing
     , _asgLaunchConfigurationName = Nothing
     , _asgInstances = Nothing
@@ -347,7 +351,7 @@ asgStatus = lens _asgStatus (\ s a -> s{_asgStatus = a})
 asgTerminationPolicies :: Lens' AutoScalingGroup [Text]
 asgTerminationPolicies = lens _asgTerminationPolicies (\ s a -> s{_asgTerminationPolicies = a}) . _Default . _Coerce
 
--- | The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
+-- | The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
 asgHealthCheckGracePeriod :: Lens' AutoScalingGroup (Maybe Int)
 asgHealthCheckGracePeriod = lens _asgHealthCheckGracePeriod (\ s a -> s{_asgHealthCheckGracePeriod = a})
 
@@ -366,6 +370,10 @@ asgVPCZoneIdentifier = lens _asgVPCZoneIdentifier (\ s a -> s{_asgVPCZoneIdentif
 -- | The Amazon Resource Names (ARN) of the target groups for your load balancer.
 asgTargetGroupARNs :: Lens' AutoScalingGroup [Text]
 asgTargetGroupARNs = lens _asgTargetGroupARNs (\ s a -> s{_asgTargetGroupARNs = a}) . _Default . _Coerce
+
+-- | The mixed instances policy for the group. 
+asgMixedInstancesPolicy :: Lens' AutoScalingGroup (Maybe MixedInstancesPolicy)
+asgMixedInstancesPolicy = lens _asgMixedInstancesPolicy (\ s a -> s{_asgMixedInstancesPolicy = a})
 
 -- | The metrics enabled for the group.
 asgEnabledMetrics :: Lens' AutoScalingGroup [EnabledMetric]
@@ -387,7 +395,7 @@ asgLaunchTemplate = lens _asgLaunchTemplate (\ s a -> s{_asgLaunchTemplate = a})
 asgAutoScalingGroupARN :: Lens' AutoScalingGroup (Maybe Text)
 asgAutoScalingGroupARN = lens _asgAutoScalingGroupARN (\ s a -> s{_asgAutoScalingGroupARN = a})
 
--- | The name of the placement group into which you'll launch your instances, if any. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html Placement Groups> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- | The name of the placement group into which to launch your instances, if any. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html Placement Groups> in the /Amazon Elastic Compute Cloud User Guide/ .
 asgPlacementGroup :: Lens' AutoScalingGroup (Maybe Text)
 asgPlacementGroup = lens _asgPlacementGroup (\ s a -> s{_asgPlacementGroup = a})
 
@@ -448,6 +456,7 @@ instance FromXML AutoScalingGroup where
                 <*>
                 (x .@? "TargetGroupARNs" .!@ mempty >>=
                    may (parseXMLList "member"))
+                <*> (x .@? "MixedInstancesPolicy")
                 <*>
                 (x .@? "EnabledMetrics" .!@ mempty >>=
                    may (parseXMLList "member"))
@@ -489,13 +498,13 @@ instance NFData AutoScalingGroup where
 -- /See:/ 'autoScalingInstanceDetails' smart constructor.
 data AutoScalingInstanceDetails = AutoScalingInstanceDetails'
   { _asidLaunchConfigurationName :: !(Maybe Text)
-  , _asidLaunchTemplate          :: !(Maybe LaunchTemplateSpecification)
-  , _asidInstanceId              :: !Text
-  , _asidAutoScalingGroupName    :: !Text
-  , _asidAvailabilityZone        :: !Text
-  , _asidLifecycleState          :: !Text
-  , _asidHealthStatus            :: !Text
-  , _asidProtectedFromScaleIn    :: !Bool
+  , _asidLaunchTemplate :: !(Maybe LaunchTemplateSpecification)
+  , _asidInstanceId :: !Text
+  , _asidAutoScalingGroupName :: !Text
+  , _asidAvailabilityZone :: !Text
+  , _asidLifecycleState :: !Text
+  , _asidHealthStatus :: !Text
+  , _asidProtectedFromScaleIn :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -513,11 +522,11 @@ data AutoScalingInstanceDetails = AutoScalingInstanceDetails'
 --
 -- * 'asidAvailabilityZone' - The Availability Zone for the instance.
 --
--- * 'asidLifecycleState' - The lifecycle state for the instance. For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html Auto Scaling Lifecycle> in the /Auto Scaling User Guide/ .
+-- * 'asidLifecycleState' - The lifecycle state for the instance. For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html Auto Scaling Lifecycle> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
--- * 'asidHealthStatus' - The last reported health status of this instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.
+-- * 'asidHealthStatus' - The last reported health status of this instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Amazon EC2 Auto Scaling should terminate and replace it.
 --
--- * 'asidProtectedFromScaleIn' - Indicates whether the instance is protected from termination by Auto Scaling when scaling in.
+-- * 'asidProtectedFromScaleIn' - Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.
 autoScalingInstanceDetails
     :: Text -- ^ 'asidInstanceId'
     -> Text -- ^ 'asidAutoScalingGroupName'
@@ -559,15 +568,15 @@ asidAutoScalingGroupName = lens _asidAutoScalingGroupName (\ s a -> s{_asidAutoS
 asidAvailabilityZone :: Lens' AutoScalingInstanceDetails Text
 asidAvailabilityZone = lens _asidAvailabilityZone (\ s a -> s{_asidAvailabilityZone = a})
 
--- | The lifecycle state for the instance. For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html Auto Scaling Lifecycle> in the /Auto Scaling User Guide/ .
+-- | The lifecycle state for the instance. For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html Auto Scaling Lifecycle> in the /Amazon EC2 Auto Scaling User Guide/ .
 asidLifecycleState :: Lens' AutoScalingInstanceDetails Text
 asidLifecycleState = lens _asidLifecycleState (\ s a -> s{_asidLifecycleState = a})
 
--- | The last reported health status of this instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.
+-- | The last reported health status of this instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Amazon EC2 Auto Scaling should terminate and replace it.
 asidHealthStatus :: Lens' AutoScalingInstanceDetails Text
 asidHealthStatus = lens _asidHealthStatus (\ s a -> s{_asidHealthStatus = a})
 
--- | Indicates whether the instance is protected from termination by Auto Scaling when scaling in.
+-- | Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.
 asidProtectedFromScaleIn :: Lens' AutoScalingInstanceDetails Bool
 asidProtectedFromScaleIn = lens _asidProtectedFromScaleIn (\ s a -> s{_asidProtectedFromScaleIn = a})
 
@@ -594,9 +603,9 @@ instance NFData AutoScalingInstanceDetails where
 -- /See:/ 'blockDeviceMapping' smart constructor.
 data BlockDeviceMapping = BlockDeviceMapping'
   { _bdmVirtualName :: !(Maybe Text)
-  , _bdmNoDevice    :: !(Maybe Bool)
-  , _bdmEBS         :: !(Maybe EBS)
-  , _bdmDeviceName  :: !Text
+  , _bdmNoDevice :: !(Maybe Bool)
+  , _bdmEBS :: !(Maybe EBS)
+  , _bdmDeviceName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -606,7 +615,7 @@ data BlockDeviceMapping = BlockDeviceMapping'
 --
 -- * 'bdmVirtualName' - The name of the virtual device (for example, @ephemeral0@ ).
 --
--- * 'bdmNoDevice' - Suppresses a device mapping. If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling launches a replacement instance if the instance fails the health check.
+-- * 'bdmNoDevice' - Suppresses a device mapping. If this parameter is true for the root device, the instance might fail the EC2 health check. In that case, Amazon EC2 Auto Scaling launches a replacement instance.
 --
 -- * 'bdmEBS' - The information about the Amazon EBS volume.
 --
@@ -627,7 +636,7 @@ blockDeviceMapping pDeviceName_ =
 bdmVirtualName :: Lens' BlockDeviceMapping (Maybe Text)
 bdmVirtualName = lens _bdmVirtualName (\ s a -> s{_bdmVirtualName = a})
 
--- | Suppresses a device mapping. If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling launches a replacement instance if the instance fails the health check.
+-- | Suppresses a device mapping. If this parameter is true for the root device, the instance might fail the EC2 health check. In that case, Amazon EC2 Auto Scaling launches a replacement instance.
 bdmNoDevice :: Lens' BlockDeviceMapping (Maybe Bool)
 bdmNoDevice = lens _bdmNoDevice (\ s a -> s{_bdmNoDevice = a})
 
@@ -664,10 +673,10 @@ instance ToQuery BlockDeviceMapping where
 -- /See:/ 'customizedMetricSpecification' smart constructor.
 data CustomizedMetricSpecification = CustomizedMetricSpecification'
   { _cmsDimensions :: !(Maybe [MetricDimension])
-  , _cmsUnit       :: !(Maybe Text)
+  , _cmsUnit :: !(Maybe Text)
   , _cmsMetricName :: !Text
-  , _cmsNamespace  :: !Text
-  , _cmsStatistic  :: !MetricStatistic
+  , _cmsNamespace :: !Text
+  , _cmsStatistic :: !MetricStatistic
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -749,11 +758,11 @@ instance ToQuery CustomizedMetricSpecification where
 -- /See:/ 'ebs' smart constructor.
 data EBS = EBS'
   { _ebsDeleteOnTermination :: !(Maybe Bool)
-  , _ebsVolumeSize          :: !(Maybe Nat)
-  , _ebsIOPS                :: !(Maybe Nat)
-  , _ebsEncrypted           :: !(Maybe Bool)
-  , _ebsVolumeType          :: !(Maybe Text)
-  , _ebsSnapshotId          :: !(Maybe Text)
+  , _ebsVolumeSize :: !(Maybe Nat)
+  , _ebsIOPS :: !(Maybe Nat)
+  , _ebsEncrypted :: !(Maybe Bool)
+  , _ebsVolumeType :: !(Maybe Text)
+  , _ebsSnapshotId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -769,7 +778,7 @@ data EBS = EBS'
 --
 -- * 'ebsEncrypted' - Indicates whether the volume should be encrypted. Encrypted EBS volumes must be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or an unencrypted volume from an encrypted snapshot. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
--- * 'ebsVolumeType' - The volume type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> in the /Amazon Elastic Compute Cloud User Guide/ . Valid values: @standard@ | @io1@ | @gp2@  Default: @standard@
+-- * 'ebsVolumeType' - The volume type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> in the /Amazon Elastic Compute Cloud User Guide/ . Valid values: @standard@ | @io1@ | @gp2@ 
 --
 -- * 'ebsSnapshotId' - The ID of the snapshot.
 ebs
@@ -801,7 +810,7 @@ ebsIOPS = lens _ebsIOPS (\ s a -> s{_ebsIOPS = a}) . mapping _Nat
 ebsEncrypted :: Lens' EBS (Maybe Bool)
 ebsEncrypted = lens _ebsEncrypted (\ s a -> s{_ebsEncrypted = a})
 
--- | The volume type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> in the /Amazon Elastic Compute Cloud User Guide/ . Valid values: @standard@ | @io1@ | @gp2@  Default: @standard@
+-- | The volume type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> in the /Amazon Elastic Compute Cloud User Guide/ . Valid values: @standard@ | @io1@ | @gp2@ 
 ebsVolumeType :: Lens' EBS (Maybe Text)
 ebsVolumeType = lens _ebsVolumeType (\ s a -> s{_ebsVolumeType = a})
 
@@ -839,7 +848,7 @@ instance ToQuery EBS where
 -- /See:/ 'enabledMetric' smart constructor.
 data EnabledMetric = EnabledMetric'
   { _emGranularity :: !(Maybe Text)
-  , _emMetric      :: !(Maybe Text)
+  , _emMetric :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -849,7 +858,7 @@ data EnabledMetric = EnabledMetric'
 --
 -- * 'emGranularity' - The granularity of the metric. The only valid value is @1Minute@ .
 --
--- * 'emMetric' - One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@
+-- * 'emMetric' - One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@ 
 enabledMetric
     :: EnabledMetric
 enabledMetric = EnabledMetric' {_emGranularity = Nothing, _emMetric = Nothing}
@@ -859,7 +868,7 @@ enabledMetric = EnabledMetric' {_emGranularity = Nothing, _emMetric = Nothing}
 emGranularity :: Lens' EnabledMetric (Maybe Text)
 emGranularity = lens _emGranularity (\ s a -> s{_emGranularity = a})
 
--- | One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@
+-- | One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@ 
 emMetric :: Lens' EnabledMetric (Maybe Text)
 emMetric = lens _emMetric (\ s a -> s{_emMetric = a})
 
@@ -872,6 +881,66 @@ instance Hashable EnabledMetric where
 
 instance NFData EnabledMetric where
 
+-- | Describes a scheduled action that could not be created, updated, or deleted.
+--
+--
+--
+-- /See:/ 'failedScheduledUpdateGroupActionRequest' smart constructor.
+data FailedScheduledUpdateGroupActionRequest = FailedScheduledUpdateGroupActionRequest'
+  { _fsugarErrorCode :: !(Maybe Text)
+  , _fsugarErrorMessage :: !(Maybe Text)
+  , _fsugarScheduledActionName :: !Text
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'FailedScheduledUpdateGroupActionRequest' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fsugarErrorCode' - The error code.
+--
+-- * 'fsugarErrorMessage' - The error message accompanying the error code.
+--
+-- * 'fsugarScheduledActionName' - The name of the scheduled action.
+failedScheduledUpdateGroupActionRequest
+    :: Text -- ^ 'fsugarScheduledActionName'
+    -> FailedScheduledUpdateGroupActionRequest
+failedScheduledUpdateGroupActionRequest pScheduledActionName_ =
+  FailedScheduledUpdateGroupActionRequest'
+    { _fsugarErrorCode = Nothing
+    , _fsugarErrorMessage = Nothing
+    , _fsugarScheduledActionName = pScheduledActionName_
+    }
+
+
+-- | The error code.
+fsugarErrorCode :: Lens' FailedScheduledUpdateGroupActionRequest (Maybe Text)
+fsugarErrorCode = lens _fsugarErrorCode (\ s a -> s{_fsugarErrorCode = a})
+
+-- | The error message accompanying the error code.
+fsugarErrorMessage :: Lens' FailedScheduledUpdateGroupActionRequest (Maybe Text)
+fsugarErrorMessage = lens _fsugarErrorMessage (\ s a -> s{_fsugarErrorMessage = a})
+
+-- | The name of the scheduled action.
+fsugarScheduledActionName :: Lens' FailedScheduledUpdateGroupActionRequest Text
+fsugarScheduledActionName = lens _fsugarScheduledActionName (\ s a -> s{_fsugarScheduledActionName = a})
+
+instance FromXML
+           FailedScheduledUpdateGroupActionRequest
+         where
+        parseXML x
+          = FailedScheduledUpdateGroupActionRequest' <$>
+              (x .@? "ErrorCode") <*> (x .@? "ErrorMessage") <*>
+                (x .@ "ScheduledActionName")
+
+instance Hashable
+           FailedScheduledUpdateGroupActionRequest
+         where
+
+instance NFData
+           FailedScheduledUpdateGroupActionRequest
+         where
+
 -- | Describes a filter.
 --
 --
@@ -879,7 +948,7 @@ instance NFData EnabledMetric where
 -- /See:/ 'filter'' smart constructor.
 data Filter = Filter'
   { _fValues :: !(Maybe [Text])
-  , _fName   :: !Text
+  , _fName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -922,12 +991,12 @@ instance ToQuery Filter where
 -- /See:/ 'instance'' smart constructor.
 data Instance = Instance'
   { _iLaunchConfigurationName :: !(Maybe Text)
-  , _iLaunchTemplate          :: !(Maybe LaunchTemplateSpecification)
-  , _iInstanceId              :: !Text
-  , _iAvailabilityZone        :: !Text
-  , _iLifecycleState          :: !LifecycleState
-  , _iHealthStatus            :: !Text
-  , _iProtectedFromScaleIn    :: !Bool
+  , _iLaunchTemplate :: !(Maybe LaunchTemplateSpecification)
+  , _iInstanceId :: !Text
+  , _iAvailabilityZone :: !Text
+  , _iLifecycleState :: !LifecycleState
+  , _iHealthStatus :: !Text
+  , _iProtectedFromScaleIn :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -943,11 +1012,11 @@ data Instance = Instance'
 --
 -- * 'iAvailabilityZone' - The Availability Zone in which the instance is running.
 --
--- * 'iLifecycleState' - A description of the current lifecycle state. Note that the @Quarantined@ state is not used.
+-- * 'iLifecycleState' - A description of the current lifecycle state. The @Quarantined@ state is not used.
 --
--- * 'iHealthStatus' - The last reported health status of the instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.
+-- * 'iHealthStatus' - The last reported health status of the instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and that Amazon EC2 Auto Scaling should terminate and replace it.
 --
--- * 'iProtectedFromScaleIn' - Indicates whether the instance is protected from termination by Auto Scaling when scaling in.
+-- * 'iProtectedFromScaleIn' - Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.
 instance'
     :: Text -- ^ 'iInstanceId'
     -> Text -- ^ 'iAvailabilityZone'
@@ -983,15 +1052,15 @@ iInstanceId = lens _iInstanceId (\ s a -> s{_iInstanceId = a})
 iAvailabilityZone :: Lens' Instance Text
 iAvailabilityZone = lens _iAvailabilityZone (\ s a -> s{_iAvailabilityZone = a})
 
--- | A description of the current lifecycle state. Note that the @Quarantined@ state is not used.
+-- | A description of the current lifecycle state. The @Quarantined@ state is not used.
 iLifecycleState :: Lens' Instance LifecycleState
 iLifecycleState = lens _iLifecycleState (\ s a -> s{_iLifecycleState = a})
 
--- | The last reported health status of the instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.
+-- | The last reported health status of the instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and that Amazon EC2 Auto Scaling should terminate and replace it.
 iHealthStatus :: Lens' Instance Text
 iHealthStatus = lens _iHealthStatus (\ s a -> s{_iHealthStatus = a})
 
--- | Indicates whether the instance is protected from termination by Auto Scaling when scaling in.
+-- | Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.
 iProtectedFromScaleIn :: Lens' Instance Bool
 iProtectedFromScaleIn = lens _iProtectedFromScaleIn (\ s a -> s{_iProtectedFromScaleIn = a})
 
@@ -1046,31 +1115,127 @@ instance ToQuery InstanceMonitoring where
         toQuery InstanceMonitoring'{..}
           = mconcat ["Enabled" =: _imEnabled]
 
+-- | Describes an instances distribution for an Auto Scaling group with 'MixedInstancesPolicy' .
+--
+--
+-- The instances distribution specifies the distribution of On-Demand Instances and Spot Instances, the maximum price to pay for Spot Instances, and how the Auto Scaling group allocates instance types.
+--
+--
+-- /See:/ 'instancesDistribution' smart constructor.
+data InstancesDistribution = InstancesDistribution'
+  { _idSpotAllocationStrategy :: !(Maybe Text)
+  , _idSpotInstancePools :: !(Maybe Int)
+  , _idSpotMaxPrice :: !(Maybe Text)
+  , _idOnDemandBaseCapacity :: !(Maybe Int)
+  , _idOnDemandAllocationStrategy :: !(Maybe Text)
+  , _idOnDemandPercentageAboveBaseCapacity :: !(Maybe Int)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'InstancesDistribution' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idSpotAllocationStrategy' - Indicates how to allocate Spot capacity across Spot pools. The only valid value is @lowest-price@ , which is also the default value. The Auto Scaling group selects the cheapest Spot pools and evenly allocates your Spot capacity across the number of Spot pools that you specify. 
+--
+-- * 'idSpotInstancePools' - The number of Spot pools to use to allocate your Spot capacity. The Spot pools are determined from the different instance types in the __Overrides__ array of 'LaunchTemplate' .  The range is 1–20 and the default is 2. 
+--
+-- * 'idSpotMaxPrice' - The maximum price per unit hour that you are willing to pay for a Spot Instance. If you leave this value blank (which is the default), the maximum Spot price is set at the On-Demand price. 
+--
+-- * 'idOnDemandBaseCapacity' - The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales. The default value is 0. If you leave this parameter set to 0, On-Demand Instances are launched as a percentage of the Auto Scaling group's desired capacity, per the __OnDemandPercentageAboveBaseCapacity__ setting.
+--
+-- * 'idOnDemandAllocationStrategy' - Indicates how to allocate instance types to fulfill On-Demand capacity.  The only valid value is @prioritized@ , which is also the default value. This strategy uses the order of instance types in the __Overrides__ array of 'LaunchTemplate' to define the launch priority of each instance type. The first instance type in the array is prioritized higher than the last. If all your On-Demand capacity cannot be fulfilled using your highest priority instance, then the Auto Scaling groups launches the remaining capacity using the second priority instance type, and so on. 
+--
+-- * 'idOnDemandPercentageAboveBaseCapacity' - Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond __OnDemandBaseCapacity__ .  The range is 0–100. The default value is 100. If you leave this parameter set to 100, the percentages are 100% for On-Demand Instances and 0% for Spot Instances. 
+instancesDistribution
+    :: InstancesDistribution
+instancesDistribution =
+  InstancesDistribution'
+    { _idSpotAllocationStrategy = Nothing
+    , _idSpotInstancePools = Nothing
+    , _idSpotMaxPrice = Nothing
+    , _idOnDemandBaseCapacity = Nothing
+    , _idOnDemandAllocationStrategy = Nothing
+    , _idOnDemandPercentageAboveBaseCapacity = Nothing
+    }
+
+
+-- | Indicates how to allocate Spot capacity across Spot pools. The only valid value is @lowest-price@ , which is also the default value. The Auto Scaling group selects the cheapest Spot pools and evenly allocates your Spot capacity across the number of Spot pools that you specify. 
+idSpotAllocationStrategy :: Lens' InstancesDistribution (Maybe Text)
+idSpotAllocationStrategy = lens _idSpotAllocationStrategy (\ s a -> s{_idSpotAllocationStrategy = a})
+
+-- | The number of Spot pools to use to allocate your Spot capacity. The Spot pools are determined from the different instance types in the __Overrides__ array of 'LaunchTemplate' .  The range is 1–20 and the default is 2. 
+idSpotInstancePools :: Lens' InstancesDistribution (Maybe Int)
+idSpotInstancePools = lens _idSpotInstancePools (\ s a -> s{_idSpotInstancePools = a})
+
+-- | The maximum price per unit hour that you are willing to pay for a Spot Instance. If you leave this value blank (which is the default), the maximum Spot price is set at the On-Demand price. 
+idSpotMaxPrice :: Lens' InstancesDistribution (Maybe Text)
+idSpotMaxPrice = lens _idSpotMaxPrice (\ s a -> s{_idSpotMaxPrice = a})
+
+-- | The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales. The default value is 0. If you leave this parameter set to 0, On-Demand Instances are launched as a percentage of the Auto Scaling group's desired capacity, per the __OnDemandPercentageAboveBaseCapacity__ setting.
+idOnDemandBaseCapacity :: Lens' InstancesDistribution (Maybe Int)
+idOnDemandBaseCapacity = lens _idOnDemandBaseCapacity (\ s a -> s{_idOnDemandBaseCapacity = a})
+
+-- | Indicates how to allocate instance types to fulfill On-Demand capacity.  The only valid value is @prioritized@ , which is also the default value. This strategy uses the order of instance types in the __Overrides__ array of 'LaunchTemplate' to define the launch priority of each instance type. The first instance type in the array is prioritized higher than the last. If all your On-Demand capacity cannot be fulfilled using your highest priority instance, then the Auto Scaling groups launches the remaining capacity using the second priority instance type, and so on. 
+idOnDemandAllocationStrategy :: Lens' InstancesDistribution (Maybe Text)
+idOnDemandAllocationStrategy = lens _idOnDemandAllocationStrategy (\ s a -> s{_idOnDemandAllocationStrategy = a})
+
+-- | Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond __OnDemandBaseCapacity__ .  The range is 0–100. The default value is 100. If you leave this parameter set to 100, the percentages are 100% for On-Demand Instances and 0% for Spot Instances. 
+idOnDemandPercentageAboveBaseCapacity :: Lens' InstancesDistribution (Maybe Int)
+idOnDemandPercentageAboveBaseCapacity = lens _idOnDemandPercentageAboveBaseCapacity (\ s a -> s{_idOnDemandPercentageAboveBaseCapacity = a})
+
+instance FromXML InstancesDistribution where
+        parseXML x
+          = InstancesDistribution' <$>
+              (x .@? "SpotAllocationStrategy") <*>
+                (x .@? "SpotInstancePools")
+                <*> (x .@? "SpotMaxPrice")
+                <*> (x .@? "OnDemandBaseCapacity")
+                <*> (x .@? "OnDemandAllocationStrategy")
+                <*> (x .@? "OnDemandPercentageAboveBaseCapacity")
+
+instance Hashable InstancesDistribution where
+
+instance NFData InstancesDistribution where
+
+instance ToQuery InstancesDistribution where
+        toQuery InstancesDistribution'{..}
+          = mconcat
+              ["SpotAllocationStrategy" =:
+                 _idSpotAllocationStrategy,
+               "SpotInstancePools" =: _idSpotInstancePools,
+               "SpotMaxPrice" =: _idSpotMaxPrice,
+               "OnDemandBaseCapacity" =: _idOnDemandBaseCapacity,
+               "OnDemandAllocationStrategy" =:
+                 _idOnDemandAllocationStrategy,
+               "OnDemandPercentageAboveBaseCapacity" =:
+                 _idOnDemandPercentageAboveBaseCapacity]
+
 -- | Describes a launch configuration.
 --
 --
 --
 -- /See:/ 'launchConfiguration' smart constructor.
 data LaunchConfiguration = LaunchConfiguration'
-  { _lcAssociatePublicIPAddress     :: !(Maybe Bool)
-  , _lcSecurityGroups               :: !(Maybe [Text])
-  , _lcSpotPrice                    :: !(Maybe Text)
-  , _lcInstanceMonitoring           :: !(Maybe InstanceMonitoring)
-  , _lcKeyName                      :: !(Maybe Text)
+  { _lcAssociatePublicIPAddress :: !(Maybe Bool)
+  , _lcSecurityGroups :: !(Maybe [Text])
+  , _lcSpotPrice :: !(Maybe Text)
+  , _lcInstanceMonitoring :: !(Maybe InstanceMonitoring)
+  , _lcKeyName :: !(Maybe Text)
   , _lcClassicLinkVPCSecurityGroups :: !(Maybe [Text])
-  , _lcRAMDiskId                    :: !(Maybe Text)
-  , _lcKernelId                     :: !(Maybe Text)
-  , _lcEBSOptimized                 :: !(Maybe Bool)
-  , _lcUserData                     :: !(Maybe Text)
-  , _lcClassicLinkVPCId             :: !(Maybe Text)
-  , _lcIAMInstanceProfile           :: !(Maybe Text)
-  , _lcLaunchConfigurationARN       :: !(Maybe Text)
-  , _lcPlacementTenancy             :: !(Maybe Text)
-  , _lcBlockDeviceMappings          :: !(Maybe [BlockDeviceMapping])
-  , _lcLaunchConfigurationName      :: !Text
-  , _lcImageId                      :: !Text
-  , _lcInstanceType                 :: !Text
-  , _lcCreatedTime                  :: !ISO8601
+  , _lcRAMDiskId :: !(Maybe Text)
+  , _lcKernelId :: !(Maybe Text)
+  , _lcEBSOptimized :: !(Maybe Bool)
+  , _lcUserData :: !(Maybe Text)
+  , _lcClassicLinkVPCId :: !(Maybe Text)
+  , _lcIAMInstanceProfile :: !(Maybe Text)
+  , _lcLaunchConfigurationARN :: !(Maybe Text)
+  , _lcPlacementTenancy :: !(Maybe Text)
+  , _lcBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
+  , _lcLaunchConfigurationName :: !Text
+  , _lcImageId :: !Text
+  , _lcInstanceType :: !Text
+  , _lcCreatedTime :: !ISO8601
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1253,15 +1418,107 @@ instance Hashable LaunchConfiguration where
 
 instance NFData LaunchConfiguration where
 
--- | Describes a launch template.
+-- | Describes a launch template and overrides. 
 --
+--
+-- The overrides are used to override the instance type specified by the launch template with multiple instance types that can be used to launch On-Demand Instances and Spot Instances. 
+--
+--
+-- /See:/ 'launchTemplate' smart constructor.
+data LaunchTemplate = LaunchTemplate'
+  { _ltOverrides :: !(Maybe [LaunchTemplateOverrides])
+  , _ltLaunchTemplateSpecification :: !(Maybe LaunchTemplateSpecification)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'LaunchTemplate' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ltOverrides' - Any parameters that you specify override the same parameters in the launch template. Currently, the only supported override is instance type.  You must specify between 2 and 20 overrides.
+--
+-- * 'ltLaunchTemplateSpecification' - The launch template to use. You must specify either the launch template ID or launch template name in the request. 
+launchTemplate
+    :: LaunchTemplate
+launchTemplate =
+  LaunchTemplate'
+    {_ltOverrides = Nothing, _ltLaunchTemplateSpecification = Nothing}
+
+
+-- | Any parameters that you specify override the same parameters in the launch template. Currently, the only supported override is instance type.  You must specify between 2 and 20 overrides.
+ltOverrides :: Lens' LaunchTemplate [LaunchTemplateOverrides]
+ltOverrides = lens _ltOverrides (\ s a -> s{_ltOverrides = a}) . _Default . _Coerce
+
+-- | The launch template to use. You must specify either the launch template ID or launch template name in the request. 
+ltLaunchTemplateSpecification :: Lens' LaunchTemplate (Maybe LaunchTemplateSpecification)
+ltLaunchTemplateSpecification = lens _ltLaunchTemplateSpecification (\ s a -> s{_ltLaunchTemplateSpecification = a})
+
+instance FromXML LaunchTemplate where
+        parseXML x
+          = LaunchTemplate' <$>
+              (x .@? "Overrides" .!@ mempty >>=
+                 may (parseXMLList "member"))
+                <*> (x .@? "LaunchTemplateSpecification")
+
+instance Hashable LaunchTemplate where
+
+instance NFData LaunchTemplate where
+
+instance ToQuery LaunchTemplate where
+        toQuery LaunchTemplate'{..}
+          = mconcat
+              ["Overrides" =:
+                 toQuery (toQueryList "member" <$> _ltOverrides),
+               "LaunchTemplateSpecification" =:
+                 _ltLaunchTemplateSpecification]
+
+-- | Describes an override for a launch template. 
+--
+--
+--
+-- /See:/ 'launchTemplateOverrides' smart constructor.
+newtype LaunchTemplateOverrides = LaunchTemplateOverrides'
+  { _ltoInstanceType :: Maybe Text
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'LaunchTemplateOverrides' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ltoInstanceType' - The instance type.  For information about available instance types, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes Available Instance Types> in the /Amazon Elastic Compute Cloud User Guide./ 
+launchTemplateOverrides
+    :: LaunchTemplateOverrides
+launchTemplateOverrides = LaunchTemplateOverrides' {_ltoInstanceType = Nothing}
+
+
+-- | The instance type.  For information about available instance types, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes Available Instance Types> in the /Amazon Elastic Compute Cloud User Guide./ 
+ltoInstanceType :: Lens' LaunchTemplateOverrides (Maybe Text)
+ltoInstanceType = lens _ltoInstanceType (\ s a -> s{_ltoInstanceType = a})
+
+instance FromXML LaunchTemplateOverrides where
+        parseXML x
+          = LaunchTemplateOverrides' <$> (x .@? "InstanceType")
+
+instance Hashable LaunchTemplateOverrides where
+
+instance NFData LaunchTemplateOverrides where
+
+instance ToQuery LaunchTemplateOverrides where
+        toQuery LaunchTemplateOverrides'{..}
+          = mconcat ["InstanceType" =: _ltoInstanceType]
+
+-- | Describes a launch template and the launch template version.
+--
+--
+-- The launch template that is specified must be configured for use with an Auto Scaling group. For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html Creating a Launch Template for an Auto Scaling group> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 --
 -- /See:/ 'launchTemplateSpecification' smart constructor.
 data LaunchTemplateSpecification = LaunchTemplateSpecification'
   { _ltsLaunchTemplateName :: !(Maybe Text)
-  , _ltsLaunchTemplateId   :: !(Maybe Text)
-  , _ltsVersion            :: !(Maybe Text)
+  , _ltsLaunchTemplateId :: !(Maybe Text)
+  , _ltsVersion :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1273,7 +1530,7 @@ data LaunchTemplateSpecification = LaunchTemplateSpecification'
 --
 -- * 'ltsLaunchTemplateId' - The ID of the launch template. You must specify either a template ID or a template name.
 --
--- * 'ltsVersion' - The version number, @> Latest@ , or @> Default@ . If the value is @> Latest@ , Auto Scaling selects the latest version of the launch template when launching instances. If the value is @> Default@ , Auto Scaling selects the default version of the launch template when launching instances. The default value is @> Default@ .
+-- * 'ltsVersion' - The version number, @> Latest@ , or @> Default@ . If the value is @> Latest@ , Amazon EC2 Auto Scaling selects the latest version of the launch template when launching instances. If the value is @> Default@ , Amazon EC2 Auto Scaling selects the default version of the launch template when launching instances. The default value is @> Default@ .
 launchTemplateSpecification
     :: LaunchTemplateSpecification
 launchTemplateSpecification =
@@ -1292,7 +1549,7 @@ ltsLaunchTemplateName = lens _ltsLaunchTemplateName (\ s a -> s{_ltsLaunchTempla
 ltsLaunchTemplateId :: Lens' LaunchTemplateSpecification (Maybe Text)
 ltsLaunchTemplateId = lens _ltsLaunchTemplateId (\ s a -> s{_ltsLaunchTemplateId = a})
 
--- | The version number, @> Latest@ , or @> Default@ . If the value is @> Latest@ , Auto Scaling selects the latest version of the launch template when launching instances. If the value is @> Default@ , Auto Scaling selects the default version of the launch template when launching instances. The default value is @> Default@ .
+-- | The version number, @> Latest@ , or @> Default@ . If the value is @> Latest@ , Amazon EC2 Auto Scaling selects the latest version of the launch template when launching instances. If the value is @> Default@ , Amazon EC2 Auto Scaling selects the default version of the launch template when launching instances. The default value is @> Default@ .
 ltsVersion :: Lens' LaunchTemplateSpecification (Maybe Text)
 ltsVersion = lens _ltsVersion (\ s a -> s{_ltsVersion = a})
 
@@ -1314,23 +1571,23 @@ instance ToQuery LaunchTemplateSpecification where
                "LaunchTemplateId" =: _ltsLaunchTemplateId,
                "Version" =: _ltsVersion]
 
--- | Describes a lifecycle hook, which tells Auto Scaling that you want to perform an action whenever it launches instances or whenever it terminates instances.
+-- | Describes a lifecycle hook, which tells Amazon EC2 Auto Scaling that you want to perform an action whenever it launches instances or whenever it terminates instances.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html Auto Scaling Lifecycle Hooks> in the /Auto Scaling User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html Lifecycle Hooks> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 --
 -- /See:/ 'lifecycleHook' smart constructor.
 data LifecycleHook = LifecycleHook'
-  { _lhDefaultResult         :: !(Maybe Text)
-  , _lhLifecycleHookName     :: !(Maybe Text)
-  , _lhHeartbeatTimeout      :: !(Maybe Int)
-  , _lhAutoScalingGroupName  :: !(Maybe Text)
-  , _lhNotificationMetadata  :: !(Maybe Text)
-  , _lhGlobalTimeout         :: !(Maybe Int)
+  { _lhDefaultResult :: !(Maybe Text)
+  , _lhLifecycleHookName :: !(Maybe Text)
+  , _lhHeartbeatTimeout :: !(Maybe Int)
+  , _lhAutoScalingGroupName :: !(Maybe Text)
+  , _lhNotificationMetadata :: !(Maybe Text)
+  , _lhGlobalTimeout :: !(Maybe Int)
   , _lhNotificationTargetARN :: !(Maybe Text)
-  , _lhLifecycleTransition   :: !(Maybe Text)
-  , _lhRoleARN               :: !(Maybe Text)
+  , _lhLifecycleTransition :: !(Maybe Text)
+  , _lhRoleARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1342,17 +1599,17 @@ data LifecycleHook = LifecycleHook'
 --
 -- * 'lhLifecycleHookName' - The name of the lifecycle hook.
 --
--- * 'lhHeartbeatTimeout' - The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
+-- * 'lhHeartbeatTimeout' - The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
 --
 -- * 'lhAutoScalingGroupName' - The name of the Auto Scaling group for the lifecycle hook.
 --
--- * 'lhNotificationMetadata' - Additional information that you want to include any time Auto Scaling sends a message to the notification target.
+-- * 'lhNotificationMetadata' - Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.
 --
 -- * 'lhGlobalTimeout' - The maximum time, in seconds, that an instance can remain in a @Pending:Wait@ or @Terminating:Wait@ state. The maximum is 172800 seconds (48 hours) or 100 times @HeartbeatTimeout@ , whichever is smaller.
 --
--- * 'lhNotificationTargetARN' - The ARN of the target that Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
+-- * 'lhNotificationTargetARN' - The ARN of the target that Amazon EC2 Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
 --
--- * 'lhLifecycleTransition' - The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see 'DescribeLifecycleHookTypes' .
+-- * 'lhLifecycleTransition' - The state of the EC2 instance to which to attach the lifecycle hook. The following are possible values:     * autoscaling:EC2_INSTANCE_LAUNCHING     * autoscaling:EC2_INSTANCE_TERMINATING
 --
 -- * 'lhRoleARN' - The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
 lifecycleHook
@@ -1379,7 +1636,7 @@ lhDefaultResult = lens _lhDefaultResult (\ s a -> s{_lhDefaultResult = a})
 lhLifecycleHookName :: Lens' LifecycleHook (Maybe Text)
 lhLifecycleHookName = lens _lhLifecycleHookName (\ s a -> s{_lhLifecycleHookName = a})
 
--- | The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
+-- | The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
 lhHeartbeatTimeout :: Lens' LifecycleHook (Maybe Int)
 lhHeartbeatTimeout = lens _lhHeartbeatTimeout (\ s a -> s{_lhHeartbeatTimeout = a})
 
@@ -1387,7 +1644,7 @@ lhHeartbeatTimeout = lens _lhHeartbeatTimeout (\ s a -> s{_lhHeartbeatTimeout = 
 lhAutoScalingGroupName :: Lens' LifecycleHook (Maybe Text)
 lhAutoScalingGroupName = lens _lhAutoScalingGroupName (\ s a -> s{_lhAutoScalingGroupName = a})
 
--- | Additional information that you want to include any time Auto Scaling sends a message to the notification target.
+-- | Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.
 lhNotificationMetadata :: Lens' LifecycleHook (Maybe Text)
 lhNotificationMetadata = lens _lhNotificationMetadata (\ s a -> s{_lhNotificationMetadata = a})
 
@@ -1395,11 +1652,11 @@ lhNotificationMetadata = lens _lhNotificationMetadata (\ s a -> s{_lhNotificatio
 lhGlobalTimeout :: Lens' LifecycleHook (Maybe Int)
 lhGlobalTimeout = lens _lhGlobalTimeout (\ s a -> s{_lhGlobalTimeout = a})
 
--- | The ARN of the target that Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
+-- | The ARN of the target that Amazon EC2 Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
 lhNotificationTargetARN :: Lens' LifecycleHook (Maybe Text)
 lhNotificationTargetARN = lens _lhNotificationTargetARN (\ s a -> s{_lhNotificationTargetARN = a})
 
--- | The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see 'DescribeLifecycleHookTypes' .
+-- | The state of the EC2 instance to which to attach the lifecycle hook. The following are possible values:     * autoscaling:EC2_INSTANCE_LAUNCHING     * autoscaling:EC2_INSTANCE_TERMINATING
 lhLifecycleTransition :: Lens' LifecycleHook (Maybe Text)
 lhLifecycleTransition = lens _lhLifecycleTransition (\ s a -> s{_lhLifecycleTransition = a})
 
@@ -1424,21 +1681,21 @@ instance Hashable LifecycleHook where
 
 instance NFData LifecycleHook where
 
--- | Describes a lifecycle hook, which tells Auto Scaling that you want to perform an action whenever it launches instances or whenever it terminates instances.
+-- | Describes a lifecycle hook, which tells Amazon EC2 Auto Scaling that you want to perform an action whenever it launches instances or whenever it terminates instances.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html Auto Scaling Lifecycle Hooks> in the /Auto Scaling User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html Lifecycle Hooks> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 --
 -- /See:/ 'lifecycleHookSpecification' smart constructor.
 data LifecycleHookSpecification = LifecycleHookSpecification'
-  { _lhsDefaultResult         :: !(Maybe Text)
-  , _lhsHeartbeatTimeout      :: !(Maybe Int)
-  , _lhsNotificationMetadata  :: !(Maybe Text)
+  { _lhsDefaultResult :: !(Maybe Text)
+  , _lhsHeartbeatTimeout :: !(Maybe Int)
+  , _lhsNotificationMetadata :: !(Maybe Text)
   , _lhsNotificationTargetARN :: !(Maybe Text)
-  , _lhsRoleARN               :: !(Maybe Text)
-  , _lhsLifecycleHookName     :: !Text
-  , _lhsLifecycleTransition   :: !Text
+  , _lhsRoleARN :: !(Maybe Text)
+  , _lhsLifecycleHookName :: !Text
+  , _lhsLifecycleTransition :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1448,17 +1705,17 @@ data LifecycleHookSpecification = LifecycleHookSpecification'
 --
 -- * 'lhsDefaultResult' - Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The valid values are @CONTINUE@ and @ABANDON@ .
 --
--- * 'lhsHeartbeatTimeout' - The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
+-- * 'lhsHeartbeatTimeout' - The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
 --
--- * 'lhsNotificationMetadata' - Additional information that you want to include any time Auto Scaling sends a message to the notification target.
+-- * 'lhsNotificationMetadata' - Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.
 --
--- * 'lhsNotificationTargetARN' - The ARN of the target that Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
+-- * 'lhsNotificationTargetARN' - The ARN of the target that Amazon EC2 Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
 --
 -- * 'lhsRoleARN' - The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
 --
 -- * 'lhsLifecycleHookName' - The name of the lifecycle hook.
 --
--- * 'lhsLifecycleTransition' - The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see 'DescribeLifecycleHookTypes' .
+-- * 'lhsLifecycleTransition' - The state of the EC2 instance to which you want to attach the lifecycle hook. The possible values are:     * autoscaling:EC2_INSTANCE_LAUNCHING     * autoscaling:EC2_INSTANCE_TERMINATING
 lifecycleHookSpecification
     :: Text -- ^ 'lhsLifecycleHookName'
     -> Text -- ^ 'lhsLifecycleTransition'
@@ -1479,15 +1736,15 @@ lifecycleHookSpecification pLifecycleHookName_ pLifecycleTransition_ =
 lhsDefaultResult :: Lens' LifecycleHookSpecification (Maybe Text)
 lhsDefaultResult = lens _lhsDefaultResult (\ s a -> s{_lhsDefaultResult = a})
 
--- | The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
+-- | The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling 'RecordLifecycleActionHeartbeat' .
 lhsHeartbeatTimeout :: Lens' LifecycleHookSpecification (Maybe Int)
 lhsHeartbeatTimeout = lens _lhsHeartbeatTimeout (\ s a -> s{_lhsHeartbeatTimeout = a})
 
--- | Additional information that you want to include any time Auto Scaling sends a message to the notification target.
+-- | Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.
 lhsNotificationMetadata :: Lens' LifecycleHookSpecification (Maybe Text)
 lhsNotificationMetadata = lens _lhsNotificationMetadata (\ s a -> s{_lhsNotificationMetadata = a})
 
--- | The ARN of the target that Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
+-- | The ARN of the target that Amazon EC2 Auto Scaling sends notifications to when an instance is in the transition state for the lifecycle hook. The notification target can be either an SQS queue or an SNS topic.
 lhsNotificationTargetARN :: Lens' LifecycleHookSpecification (Maybe Text)
 lhsNotificationTargetARN = lens _lhsNotificationTargetARN (\ s a -> s{_lhsNotificationTargetARN = a})
 
@@ -1499,7 +1756,7 @@ lhsRoleARN = lens _lhsRoleARN (\ s a -> s{_lhsRoleARN = a})
 lhsLifecycleHookName :: Lens' LifecycleHookSpecification Text
 lhsLifecycleHookName = lens _lhsLifecycleHookName (\ s a -> s{_lhsLifecycleHookName = a})
 
--- | The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see 'DescribeLifecycleHookTypes' .
+-- | The state of the EC2 instance to which you want to attach the lifecycle hook. The possible values are:     * autoscaling:EC2_INSTANCE_LAUNCHING     * autoscaling:EC2_INSTANCE_TERMINATING
 lhsLifecycleTransition :: Lens' LifecycleHookSpecification Text
 lhsLifecycleTransition = lens _lhsLifecycleTransition (\ s a -> s{_lhsLifecycleTransition = a})
 
@@ -1523,12 +1780,12 @@ instance ToQuery LifecycleHookSpecification where
 --
 -- If you specify a load balancer when creating the Auto Scaling group, the state of the load balancer is @InService@ .
 --
--- If you attach a load balancer to an existing Auto Scaling group, the initial state is @Adding@ . The state transitions to @Added@ after all instances in the group are registered with the load balancer. If ELB health checks are enabled for the load balancer, the state transitions to @InService@ after at least one instance in the group passes the health check. If EC2 health checks are enabled instead, the load balancer remains in the @Added@ state.
+-- If you attach a load balancer to an existing Auto Scaling group, the initial state is @Adding@ . The state transitions to @Added@ after all instances in the group are registered with the load balancer. If Elastic Load Balancing health checks are enabled for the load balancer, the state transitions to @InService@ after at least one instance in the group passes the health check. If EC2 health checks are enabled instead, the load balancer remains in the @Added@ state.
 --
 --
 -- /See:/ 'loadBalancerState' smart constructor.
 data LoadBalancerState = LoadBalancerState'
-  { _lbsState            :: !(Maybe Text)
+  { _lbsState :: !(Maybe Text)
   , _lbsLoadBalancerName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1566,12 +1823,12 @@ instance NFData LoadBalancerState where
 -- | Describes the state of a target group.
 --
 --
--- If you attach a target group to an existing Auto Scaling group, the initial state is @Adding@ . The state transitions to @Added@ after all Auto Scaling instances are registered with the target group. If ELB health checks are enabled, the state transitions to @InService@ after at least one Auto Scaling instance passes the health check. If EC2 health checks are enabled instead, the target group remains in the @Added@ state.
+-- If you attach a target group to an existing Auto Scaling group, the initial state is @Adding@ . The state transitions to @Added@ after all Auto Scaling instances are registered with the target group. If Elastic Load Balancing health checks are enabled, the state transitions to @InService@ after at least one Auto Scaling instance passes the health check. If EC2 health checks are enabled instead, the target group remains in the @Added@ state.
 --
 --
 -- /See:/ 'loadBalancerTargetGroupState' smart constructor.
 data LoadBalancerTargetGroupState = LoadBalancerTargetGroupState'
-  { _lbtgsState                      :: !(Maybe Text)
+  { _lbtgsState :: !(Maybe Text)
   , _lbtgsLoadBalancerTargetGroupARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1622,13 +1879,13 @@ newtype MetricCollectionType = MetricCollectionType'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mctMetric' - One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@
+-- * 'mctMetric' - One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@ 
 metricCollectionType
     :: MetricCollectionType
 metricCollectionType = MetricCollectionType' {_mctMetric = Nothing}
 
 
--- | One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@
+-- | One of the following metrics:     * @GroupMinSize@      * @GroupMaxSize@      * @GroupDesiredCapacity@      * @GroupInServiceInstances@      * @GroupPendingInstances@      * @GroupStandbyInstances@      * @GroupTerminatingInstances@      * @GroupTotalInstances@ 
 mctMetric :: Lens' MetricCollectionType (Maybe Text)
 mctMetric = lens _mctMetric (\ s a -> s{_mctMetric = a})
 
@@ -1646,7 +1903,7 @@ instance NFData MetricCollectionType where
 --
 -- /See:/ 'metricDimension' smart constructor.
 data MetricDimension = MetricDimension'
-  { _mdName  :: !Text
+  { _mdName :: !Text
   , _mdValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1719,15 +1976,66 @@ instance Hashable MetricGranularityType where
 
 instance NFData MetricGranularityType where
 
+-- | Describes a mixed instances policy for an Auto Scaling group. With mixed instances, your Auto Scaling group can provision a combination of On-Demand Instances and Spot Instances across multiple instance types. For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html#asg-purchase-options Using Multiple Instance Types and Purchase Options> in the /Amazon EC2 Auto Scaling User Guide/ .
+--
+--
+-- When you create your Auto Scaling group, you can specify a launch configuration or template as a parameter for the top-level object, or you can specify a mixed instances policy, but not both at the same time.
+--
+--
+-- /See:/ 'mixedInstancesPolicy' smart constructor.
+data MixedInstancesPolicy = MixedInstancesPolicy'
+  { _mipLaunchTemplate :: !(Maybe LaunchTemplate)
+  , _mipInstancesDistribution :: !(Maybe InstancesDistribution)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'MixedInstancesPolicy' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mipLaunchTemplate' - The launch template and overrides. This parameter is required when creating an Auto Scaling group with a mixed instances policy, but is not required when updating the group.
+--
+-- * 'mipInstancesDistribution' - The instances distribution to use.  If you leave this parameter unspecified when creating the group, the default values are used.
+mixedInstancesPolicy
+    :: MixedInstancesPolicy
+mixedInstancesPolicy =
+  MixedInstancesPolicy'
+    {_mipLaunchTemplate = Nothing, _mipInstancesDistribution = Nothing}
+
+
+-- | The launch template and overrides. This parameter is required when creating an Auto Scaling group with a mixed instances policy, but is not required when updating the group.
+mipLaunchTemplate :: Lens' MixedInstancesPolicy (Maybe LaunchTemplate)
+mipLaunchTemplate = lens _mipLaunchTemplate (\ s a -> s{_mipLaunchTemplate = a})
+
+-- | The instances distribution to use.  If you leave this parameter unspecified when creating the group, the default values are used.
+mipInstancesDistribution :: Lens' MixedInstancesPolicy (Maybe InstancesDistribution)
+mipInstancesDistribution = lens _mipInstancesDistribution (\ s a -> s{_mipInstancesDistribution = a})
+
+instance FromXML MixedInstancesPolicy where
+        parseXML x
+          = MixedInstancesPolicy' <$>
+              (x .@? "LaunchTemplate") <*>
+                (x .@? "InstancesDistribution")
+
+instance Hashable MixedInstancesPolicy where
+
+instance NFData MixedInstancesPolicy where
+
+instance ToQuery MixedInstancesPolicy where
+        toQuery MixedInstancesPolicy'{..}
+          = mconcat
+              ["LaunchTemplate" =: _mipLaunchTemplate,
+               "InstancesDistribution" =: _mipInstancesDistribution]
+
 -- | Describes a notification.
 --
 --
 --
 -- /See:/ 'notificationConfiguration' smart constructor.
 data NotificationConfiguration = NotificationConfiguration'
-  { _ncTopicARN             :: !(Maybe Text)
+  { _ncTopicARN :: !(Maybe Text)
   , _ncAutoScalingGroupName :: !(Maybe Text)
-  , _ncNotificationType     :: !(Maybe Text)
+  , _ncNotificationType :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1735,11 +2043,11 @@ data NotificationConfiguration = NotificationConfiguration'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ncTopicARN' - The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.
+-- * 'ncTopicARN' - The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (Amazon SNS) topic.
 --
 -- * 'ncAutoScalingGroupName' - The name of the Auto Scaling group.
 --
--- * 'ncNotificationType' - One of the following event notification types:     * @autoscaling:EC2_INSTANCE_LAUNCH@      * @autoscaling:EC2_INSTANCE_LAUNCH_ERROR@      * @autoscaling:EC2_INSTANCE_TERMINATE@      * @autoscaling:EC2_INSTANCE_TERMINATE_ERROR@      * @autoscaling:TEST_NOTIFICATION@
+-- * 'ncNotificationType' - One of the following event notification types:     * @autoscaling:EC2_INSTANCE_LAUNCH@      * @autoscaling:EC2_INSTANCE_LAUNCH_ERROR@      * @autoscaling:EC2_INSTANCE_TERMINATE@      * @autoscaling:EC2_INSTANCE_TERMINATE_ERROR@      * @autoscaling:TEST_NOTIFICATION@ 
 notificationConfiguration
     :: NotificationConfiguration
 notificationConfiguration =
@@ -1750,7 +2058,7 @@ notificationConfiguration =
     }
 
 
--- | The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.
+-- | The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (Amazon SNS) topic.
 ncTopicARN :: Lens' NotificationConfiguration (Maybe Text)
 ncTopicARN = lens _ncTopicARN (\ s a -> s{_ncTopicARN = a})
 
@@ -1758,7 +2066,7 @@ ncTopicARN = lens _ncTopicARN (\ s a -> s{_ncTopicARN = a})
 ncAutoScalingGroupName :: Lens' NotificationConfiguration (Maybe Text)
 ncAutoScalingGroupName = lens _ncAutoScalingGroupName (\ s a -> s{_ncAutoScalingGroupName = a})
 
--- | One of the following event notification types:     * @autoscaling:EC2_INSTANCE_LAUNCH@      * @autoscaling:EC2_INSTANCE_LAUNCH_ERROR@      * @autoscaling:EC2_INSTANCE_TERMINATE@      * @autoscaling:EC2_INSTANCE_TERMINATE_ERROR@      * @autoscaling:TEST_NOTIFICATION@
+-- | One of the following event notification types:     * @autoscaling:EC2_INSTANCE_LAUNCH@      * @autoscaling:EC2_INSTANCE_LAUNCH_ERROR@      * @autoscaling:EC2_INSTANCE_TERMINATE@      * @autoscaling:EC2_INSTANCE_TERMINATE_ERROR@      * @autoscaling:TEST_NOTIFICATION@ 
 ncNotificationType :: Lens' NotificationConfiguration (Maybe Text)
 ncNotificationType = lens _ncNotificationType (\ s a -> s{_ncNotificationType = a})
 
@@ -1778,7 +2086,7 @@ instance NFData NotificationConfiguration where
 --
 -- /See:/ 'predefinedMetricSpecification' smart constructor.
 data PredefinedMetricSpecification = PredefinedMetricSpecification'
-  { _pmsResourceLabel        :: !(Maybe Text)
+  { _pmsResourceLabel :: !(Maybe Text)
   , _pmsPredefinedMetricType :: !MetricType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1787,7 +2095,7 @@ data PredefinedMetricSpecification = PredefinedMetricSpecification'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pmsResourceLabel' - Identifies the resource associated with the metric type. The following predefined metrics are available:     * @ASGAverageCPUUtilization@ - average CPU utilization of the Auto Scaling group     * @ASGAverageNetworkIn@ - average number of bytes received on all network interfaces by the Auto Scaling group     * @ASGAverageNetworkOut@ - average number of bytes sent out on all network interfaces by the Auto Scaling group     * @ALBRequestCountPerTarget@ - number of requests completed per target in an Application Load Balancer target group For predefined metric types @ASGAverageCPUUtilization@ , @ASGAverageNetworkIn@ , and @ASGAverageNetworkOut@ , the parameter must not be specified as the resource associated with the metric type is the Auto Scaling group. For predefined metric type @ALBRequestCountPerTarget@ , the parameter must be specified in the format: @app//load-balancer-name/ //load-balancer-id/ /targetgroup//target-group-name/ //target-group-id/ @ , where @app//load-balancer-name/ //load-balancer-id/ @ is the final portion of the load balancer ARN, and @targetgroup//target-group-name/ //target-group-id/ @ is the final portion of the target group ARN. The target group must be attached to the Auto Scaling group.
+-- * 'pmsResourceLabel' - Identifies the resource associated with the metric type. The following predefined metrics are available:     * @ASGAverageCPUUtilization@ - Average CPU utilization of the Auto Scaling group.     * @ASGAverageNetworkIn@ - Average number of bytes received on all network interfaces by the Auto Scaling group.     * @ASGAverageNetworkOut@ - Average number of bytes sent out on all network interfaces by the Auto Scaling group.     * @ALBRequestCountPerTarget@ - Number of requests completed per target in an Application Load Balancer target group. For predefined metric types @ASGAverageCPUUtilization@ , @ASGAverageNetworkIn@ , and @ASGAverageNetworkOut@ , the parameter must not be specified as the resource associated with the metric type is the Auto Scaling group. For predefined metric type @ALBRequestCountPerTarget@ , the parameter must be specified in the format: @app//load-balancer-name/ //load-balancer-id/ /targetgroup//target-group-name/ //target-group-id/ @ , where @app//load-balancer-name/ //load-balancer-id/ @ is the final portion of the load balancer ARN, and @targetgroup//target-group-name/ //target-group-id/ @ is the final portion of the target group ARN. The target group must be attached to the Auto Scaling group.
 --
 -- * 'pmsPredefinedMetricType' - The metric type.
 predefinedMetricSpecification
@@ -1800,7 +2108,7 @@ predefinedMetricSpecification pPredefinedMetricType_ =
     }
 
 
--- | Identifies the resource associated with the metric type. The following predefined metrics are available:     * @ASGAverageCPUUtilization@ - average CPU utilization of the Auto Scaling group     * @ASGAverageNetworkIn@ - average number of bytes received on all network interfaces by the Auto Scaling group     * @ASGAverageNetworkOut@ - average number of bytes sent out on all network interfaces by the Auto Scaling group     * @ALBRequestCountPerTarget@ - number of requests completed per target in an Application Load Balancer target group For predefined metric types @ASGAverageCPUUtilization@ , @ASGAverageNetworkIn@ , and @ASGAverageNetworkOut@ , the parameter must not be specified as the resource associated with the metric type is the Auto Scaling group. For predefined metric type @ALBRequestCountPerTarget@ , the parameter must be specified in the format: @app//load-balancer-name/ //load-balancer-id/ /targetgroup//target-group-name/ //target-group-id/ @ , where @app//load-balancer-name/ //load-balancer-id/ @ is the final portion of the load balancer ARN, and @targetgroup//target-group-name/ //target-group-id/ @ is the final portion of the target group ARN. The target group must be attached to the Auto Scaling group.
+-- | Identifies the resource associated with the metric type. The following predefined metrics are available:     * @ASGAverageCPUUtilization@ - Average CPU utilization of the Auto Scaling group.     * @ASGAverageNetworkIn@ - Average number of bytes received on all network interfaces by the Auto Scaling group.     * @ASGAverageNetworkOut@ - Average number of bytes sent out on all network interfaces by the Auto Scaling group.     * @ALBRequestCountPerTarget@ - Number of requests completed per target in an Application Load Balancer target group. For predefined metric types @ASGAverageCPUUtilization@ , @ASGAverageNetworkIn@ , and @ASGAverageNetworkOut@ , the parameter must not be specified as the resource associated with the metric type is the Auto Scaling group. For predefined metric type @ALBRequestCountPerTarget@ , the parameter must be specified in the format: @app//load-balancer-name/ //load-balancer-id/ /targetgroup//target-group-name/ //target-group-id/ @ , where @app//load-balancer-name/ //load-balancer-id/ @ is the final portion of the load balancer ARN, and @targetgroup//target-group-name/ //target-group-id/ @ is the final portion of the target group ARN. The target group must be attached to the Auto Scaling group.
 pmsResourceLabel :: Lens' PredefinedMetricSpecification (Maybe Text)
 pmsResourceLabel = lens _pmsResourceLabel (\ s a -> s{_pmsResourceLabel = a})
 
@@ -1827,7 +2135,7 @@ instance ToQuery PredefinedMetricSpecification where
 -- | Describes a process type.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types Auto Scaling Processes> in the /Auto Scaling User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html#process-types Scaling Processes> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 --
 -- /See:/ 'processType' smart constructor.
@@ -1840,14 +2148,14 @@ newtype ProcessType = ProcessType'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ptProcessName' - One of the following processes:     * @Launch@      * @Terminate@      * @AddToLoadBalancer@      * @AlarmNotification@      * @AZRebalance@      * @HealthCheck@      * @ReplaceUnhealthy@      * @ScheduledActions@
+-- * 'ptProcessName' - One of the following processes:     * @Launch@      * @Terminate@      * @AddToLoadBalancer@      * @AlarmNotification@      * @AZRebalance@      * @HealthCheck@      * @ReplaceUnhealthy@      * @ScheduledActions@ 
 processType
     :: Text -- ^ 'ptProcessName'
     -> ProcessType
 processType pProcessName_ = ProcessType' {_ptProcessName = pProcessName_}
 
 
--- | One of the following processes:     * @Launch@      * @Terminate@      * @AddToLoadBalancer@      * @AlarmNotification@      * @AZRebalance@      * @HealthCheck@      * @ReplaceUnhealthy@      * @ScheduledActions@
+-- | One of the following processes:     * @Launch@      * @Terminate@      * @AddToLoadBalancer@      * @AlarmNotification@      * @AZRebalance@      * @HealthCheck@      * @ReplaceUnhealthy@      * @ScheduledActions@ 
 ptProcessName :: Lens' ProcessType Text
 ptProcessName = lens _ptProcessName (\ s a -> s{_ptProcessName = a})
 
@@ -1864,20 +2172,20 @@ instance NFData ProcessType where
 --
 -- /See:/ 'scalingPolicy' smart constructor.
 data ScalingPolicy = ScalingPolicy'
-  { _sMinAdjustmentStep           :: !(Maybe Int)
-  , _sEstimatedInstanceWarmup     :: !(Maybe Int)
-  , _sPolicyName                  :: !(Maybe Text)
-  , _sPolicyType                  :: !(Maybe Text)
-  , _sStepAdjustments             :: !(Maybe [StepAdjustment])
+  { _sMinAdjustmentStep :: !(Maybe Int)
+  , _sEstimatedInstanceWarmup :: !(Maybe Int)
+  , _sPolicyName :: !(Maybe Text)
+  , _sPolicyType :: !(Maybe Text)
+  , _sStepAdjustments :: !(Maybe [StepAdjustment])
   , _sTargetTrackingConfiguration :: !(Maybe TargetTrackingConfiguration)
-  , _sAdjustmentType              :: !(Maybe Text)
-  , _sAutoScalingGroupName        :: !(Maybe Text)
-  , _sScalingAdjustment           :: !(Maybe Int)
-  , _sCooldown                    :: !(Maybe Int)
-  , _sPolicyARN                   :: !(Maybe Text)
-  , _sAlarms                      :: !(Maybe [Alarm])
-  , _sMetricAggregationType       :: !(Maybe Text)
-  , _sMinAdjustmentMagnitude      :: !(Maybe Int)
+  , _sAdjustmentType :: !(Maybe Text)
+  , _sAutoScalingGroupName :: !(Maybe Text)
+  , _sScalingAdjustment :: !(Maybe Int)
+  , _sCooldown :: !(Maybe Int)
+  , _sPolicyARN :: !(Maybe Text)
+  , _sAlarms :: !(Maybe [Alarm])
+  , _sMetricAggregationType :: !(Maybe Text)
+  , _sMinAdjustmentMagnitude :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2017,7 +2325,7 @@ instance NFData ScalingPolicy where
 
 -- | /See:/ 'scalingProcessQuery' smart constructor.
 data ScalingProcessQuery = ScalingProcessQuery'
-  { _spqScalingProcesses     :: !(Maybe [Text])
+  { _spqScalingProcesses :: !(Maybe [Text])
   , _spqAutoScalingGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2026,7 +2334,7 @@ data ScalingProcessQuery = ScalingProcessQuery'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'spqScalingProcesses' - One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@
+-- * 'spqScalingProcesses' - One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@ 
 --
 -- * 'spqAutoScalingGroupName' - The name of the Auto Scaling group.
 scalingProcessQuery
@@ -2039,7 +2347,7 @@ scalingProcessQuery pAutoScalingGroupName_ =
     }
 
 
--- | One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@
+-- | One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@ 
 spqScalingProcesses :: Lens' ScalingProcessQuery [Text]
 spqScalingProcesses = lens _spqScalingProcesses (\ s a -> s{_spqScalingProcesses = a}) . _Default . _Coerce
 
@@ -2059,22 +2367,22 @@ instance ToQuery ScalingProcessQuery where
                    (toQueryList "member" <$> _spqScalingProcesses),
                "AutoScalingGroupName" =: _spqAutoScalingGroupName]
 
--- | Describes a scheduled update to an Auto Scaling group.
+-- | Describes a scheduled scaling action. Used in response to 'DescribeScheduledActions' . 
 --
 --
 --
 -- /See:/ 'scheduledUpdateGroupAction' smart constructor.
 data ScheduledUpdateGroupAction = ScheduledUpdateGroupAction'
-  { _sugaScheduledActionARN   :: !(Maybe Text)
-  , _sugaStartTime            :: !(Maybe ISO8601)
-  , _sugaTime                 :: !(Maybe ISO8601)
-  , _sugaScheduledActionName  :: !(Maybe Text)
-  , _sugaMaxSize              :: !(Maybe Int)
-  , _sugaRecurrence           :: !(Maybe Text)
-  , _sugaDesiredCapacity      :: !(Maybe Int)
-  , _sugaMinSize              :: !(Maybe Int)
+  { _sugaScheduledActionARN :: !(Maybe Text)
+  , _sugaStartTime :: !(Maybe ISO8601)
+  , _sugaTime :: !(Maybe ISO8601)
+  , _sugaScheduledActionName :: !(Maybe Text)
+  , _sugaMaxSize :: !(Maybe Int)
+  , _sugaRecurrence :: !(Maybe Text)
+  , _sugaDesiredCapacity :: !(Maybe Int)
+  , _sugaMinSize :: !(Maybe Int)
   , _sugaAutoScalingGroupName :: !(Maybe Text)
-  , _sugaEndTime              :: !(Maybe ISO8601)
+  , _sugaEndTime :: !(Maybe ISO8601)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2084,7 +2392,7 @@ data ScheduledUpdateGroupAction = ScheduledUpdateGroupAction'
 --
 -- * 'sugaScheduledActionARN' - The Amazon Resource Name (ARN) of the scheduled action.
 --
--- * 'sugaStartTime' - The date and time that the action is scheduled to begin. This date and time can be up to one month in the future. When @StartTime@ and @EndTime@ are specified with @Recurrence@ , they form the boundaries of when the recurring action will start and stop.
+-- * 'sugaStartTime' - The date and time that the action is scheduled to begin. This date and time can be up to one month in the future. When @StartTime@ and @EndTime@ are specified with @Recurrence@ , they form the boundaries of when the recurring action starts and stops.
 --
 -- * 'sugaTime' - This parameter is deprecated.
 --
@@ -2122,7 +2430,7 @@ scheduledUpdateGroupAction =
 sugaScheduledActionARN :: Lens' ScheduledUpdateGroupAction (Maybe Text)
 sugaScheduledActionARN = lens _sugaScheduledActionARN (\ s a -> s{_sugaScheduledActionARN = a})
 
--- | The date and time that the action is scheduled to begin. This date and time can be up to one month in the future. When @StartTime@ and @EndTime@ are specified with @Recurrence@ , they form the boundaries of when the recurring action will start and stop.
+-- | The date and time that the action is scheduled to begin. This date and time can be up to one month in the future. When @StartTime@ and @EndTime@ are specified with @Recurrence@ , they form the boundaries of when the recurring action starts and stops.
 sugaStartTime :: Lens' ScheduledUpdateGroupAction (Maybe UTCTime)
 sugaStartTime = lens _sugaStartTime (\ s a -> s{_sugaStartTime = a}) . mapping _Time
 
@@ -2175,14 +2483,110 @@ instance Hashable ScheduledUpdateGroupAction where
 
 instance NFData ScheduledUpdateGroupAction where
 
+-- | Describes one or more scheduled scaling action updates for a specified Auto Scaling group. Used in combination with 'BatchPutScheduledUpdateGroupAction' . 
+--
+--
+-- When updating a scheduled scaling action, all optional parameters are left unchanged if not specified. 
+--
+--
+-- /See:/ 'scheduledUpdateGroupActionRequest' smart constructor.
+data ScheduledUpdateGroupActionRequest = ScheduledUpdateGroupActionRequest'
+  { _sugarStartTime :: !(Maybe ISO8601)
+  , _sugarMaxSize :: !(Maybe Int)
+  , _sugarRecurrence :: !(Maybe Text)
+  , _sugarDesiredCapacity :: !(Maybe Int)
+  , _sugarMinSize :: !(Maybe Int)
+  , _sugarEndTime :: !(Maybe ISO8601)
+  , _sugarScheduledActionName :: !Text
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ScheduledUpdateGroupActionRequest' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sugarStartTime' - The time for the action to start, in "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only (for example, @2014-06-01T00:00:00Z@ ). If you specify @Recurrence@ and @StartTime@ , Amazon EC2 Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence. If you try to schedule the action in the past, Amazon EC2 Auto Scaling returns an error message.
+--
+-- * 'sugarMaxSize' - The maximum size of the group.
+--
+-- * 'sugarRecurrence' - The recurring schedule for the action, in Unix cron syntax format. For more information about this format, see <http://crontab.org Crontab> .
+--
+-- * 'sugarDesiredCapacity' - The number of EC2 instances that should be running in the group.
+--
+-- * 'sugarMinSize' - The minimum size of the group.
+--
+-- * 'sugarEndTime' - The time for the recurring schedule to end. Amazon EC2 Auto Scaling does not perform the action after this time.
+--
+-- * 'sugarScheduledActionName' - The name of the scaling action.
+scheduledUpdateGroupActionRequest
+    :: Text -- ^ 'sugarScheduledActionName'
+    -> ScheduledUpdateGroupActionRequest
+scheduledUpdateGroupActionRequest pScheduledActionName_ =
+  ScheduledUpdateGroupActionRequest'
+    { _sugarStartTime = Nothing
+    , _sugarMaxSize = Nothing
+    , _sugarRecurrence = Nothing
+    , _sugarDesiredCapacity = Nothing
+    , _sugarMinSize = Nothing
+    , _sugarEndTime = Nothing
+    , _sugarScheduledActionName = pScheduledActionName_
+    }
+
+
+-- | The time for the action to start, in "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only (for example, @2014-06-01T00:00:00Z@ ). If you specify @Recurrence@ and @StartTime@ , Amazon EC2 Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence. If you try to schedule the action in the past, Amazon EC2 Auto Scaling returns an error message.
+sugarStartTime :: Lens' ScheduledUpdateGroupActionRequest (Maybe UTCTime)
+sugarStartTime = lens _sugarStartTime (\ s a -> s{_sugarStartTime = a}) . mapping _Time
+
+-- | The maximum size of the group.
+sugarMaxSize :: Lens' ScheduledUpdateGroupActionRequest (Maybe Int)
+sugarMaxSize = lens _sugarMaxSize (\ s a -> s{_sugarMaxSize = a})
+
+-- | The recurring schedule for the action, in Unix cron syntax format. For more information about this format, see <http://crontab.org Crontab> .
+sugarRecurrence :: Lens' ScheduledUpdateGroupActionRequest (Maybe Text)
+sugarRecurrence = lens _sugarRecurrence (\ s a -> s{_sugarRecurrence = a})
+
+-- | The number of EC2 instances that should be running in the group.
+sugarDesiredCapacity :: Lens' ScheduledUpdateGroupActionRequest (Maybe Int)
+sugarDesiredCapacity = lens _sugarDesiredCapacity (\ s a -> s{_sugarDesiredCapacity = a})
+
+-- | The minimum size of the group.
+sugarMinSize :: Lens' ScheduledUpdateGroupActionRequest (Maybe Int)
+sugarMinSize = lens _sugarMinSize (\ s a -> s{_sugarMinSize = a})
+
+-- | The time for the recurring schedule to end. Amazon EC2 Auto Scaling does not perform the action after this time.
+sugarEndTime :: Lens' ScheduledUpdateGroupActionRequest (Maybe UTCTime)
+sugarEndTime = lens _sugarEndTime (\ s a -> s{_sugarEndTime = a}) . mapping _Time
+
+-- | The name of the scaling action.
+sugarScheduledActionName :: Lens' ScheduledUpdateGroupActionRequest Text
+sugarScheduledActionName = lens _sugarScheduledActionName (\ s a -> s{_sugarScheduledActionName = a})
+
+instance Hashable ScheduledUpdateGroupActionRequest
+         where
+
+instance NFData ScheduledUpdateGroupActionRequest
+         where
+
+instance ToQuery ScheduledUpdateGroupActionRequest
+         where
+        toQuery ScheduledUpdateGroupActionRequest'{..}
+          = mconcat
+              ["StartTime" =: _sugarStartTime,
+               "MaxSize" =: _sugarMaxSize,
+               "Recurrence" =: _sugarRecurrence,
+               "DesiredCapacity" =: _sugarDesiredCapacity,
+               "MinSize" =: _sugarMinSize,
+               "EndTime" =: _sugarEndTime,
+               "ScheduledActionName" =: _sugarScheduledActionName]
+
 -- | Describes an adjustment based on the difference between the value of the aggregated CloudWatch metric and the breach threshold that you've defined for the alarm.
 --
 --
 -- For the following examples, suppose that you have an alarm with a breach threshold of 50:
 --
---     * If you want the adjustment to be triggered when the metric is greater than or equal to 50 and less than 60, specify a lower bound of 0 and an upper bound of 10.
+--     * To trigger the adjustment when the metric is greater than or equal to 50 and less than 60, specify a lower bound of 0 and an upper bound of 10.
 --
---     * If you want the adjustment to be triggered when the metric is greater than 40 and less than or equal to 50, specify a lower bound of -10 and an upper bound of 0.
+--     * To trigger the adjustment when the metric is greater than 40 and less than or equal to 50, specify a lower bound of -10 and an upper bound of 0.
 --
 --
 --
@@ -2190,9 +2594,9 @@ instance NFData ScheduledUpdateGroupAction where
 --
 --     * The ranges of your step adjustments can't overlap or have a gap.
 --
---     * At most one step adjustment can have a null lower bound. If one step adjustment has a negative lower bound, then there must be a step adjustment with a null lower bound.
+--     * At most, one step adjustment can have a null lower bound. If one step adjustment has a negative lower bound, then there must be a step adjustment with a null lower bound.
 --
---     * At most one step adjustment can have a null upper bound. If one step adjustment has a positive upper bound, then there must be a step adjustment with a null upper bound.
+--     * At most, one step adjustment can have a null upper bound. If one step adjustment has a positive upper bound, then there must be a step adjustment with a null upper bound.
 --
 --     * The upper and lower bound can't be null in the same step adjustment.
 --
@@ -2203,7 +2607,7 @@ instance NFData ScheduledUpdateGroupAction where
 data StepAdjustment = StepAdjustment'
   { _saMetricIntervalLowerBound :: !(Maybe Double)
   , _saMetricIntervalUpperBound :: !(Maybe Double)
-  , _saScalingAdjustment        :: !Int
+  , _saScalingAdjustment :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2259,13 +2663,13 @@ instance ToQuery StepAdjustment where
                  _saMetricIntervalUpperBound,
                "ScalingAdjustment" =: _saScalingAdjustment]
 
--- | Describes an Auto Scaling process that has been suspended. For more information, see 'ProcessType' .
+-- | Describes an automatic scaling process that has been suspended. For more information, see 'ProcessType' .
 --
 --
 --
 -- /See:/ 'suspendedProcess' smart constructor.
 data SuspendedProcess = SuspendedProcess'
-  { _spProcessName      :: !(Maybe Text)
+  { _spProcessName :: !(Maybe Text)
   , _spSuspensionReason :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2306,11 +2710,11 @@ instance NFData SuspendedProcess where
 --
 -- /See:/ 'tag' smart constructor.
 data Tag = Tag'
-  { _tagKey               :: !Text
-  , _tagResourceId        :: !Text
-  , _tagResourceType      :: !Text
+  { _tagKey :: !Text
+  , _tagResourceId :: !Text
+  , _tagResourceType :: !Text
   , _tagPropagateAtLaunch :: !Bool
-  , _tagValue             :: !Text
+  , _tagValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2382,11 +2786,11 @@ instance ToQuery Tag where
 --
 -- /See:/ 'tagDescription' smart constructor.
 data TagDescription = TagDescription'
-  { _tdResourceId        :: !Text
-  , _tdResourceType      :: !Text
-  , _tdKey               :: !Text
+  { _tdResourceId :: !Text
+  , _tdResourceType :: !Text
+  , _tdKey :: !Text
   , _tdPropagateAtLaunch :: !Bool
-  , _tdValue             :: !Text
+  , _tdValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2460,8 +2864,8 @@ instance NFData TagDescription where
 data TargetTrackingConfiguration = TargetTrackingConfiguration'
   { _ttcPredefinedMetricSpecification :: !(Maybe PredefinedMetricSpecification)
   , _ttcCustomizedMetricSpecification :: !(Maybe CustomizedMetricSpecification)
-  , _ttcDisableScaleIn                :: !(Maybe Bool)
-  , _ttcTargetValue                   :: !Double
+  , _ttcDisableScaleIn :: !(Maybe Bool)
+  , _ttcTargetValue :: !Double
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2473,7 +2877,7 @@ data TargetTrackingConfiguration = TargetTrackingConfiguration'
 --
 -- * 'ttcCustomizedMetricSpecification' - A customized metric.
 --
--- * 'ttcDisableScaleIn' - Indicates whether scale in by the target tracking policy is disabled. If scale in is disabled, the target tracking policy won't remove instances from the Auto Scaling group. Otherwise, the target tracking policy can remove instances from the Auto Scaling group. The default is disabled.
+-- * 'ttcDisableScaleIn' - Indicates whether scaling in by the target tracking policy is disabled. If scaling in is disabled, the target tracking policy doesn't remove instances from the Auto Scaling group. Otherwise, the target tracking policy can remove instances from the Auto Scaling group. The default is disabled.
 --
 -- * 'ttcTargetValue' - The target value for the metric.
 targetTrackingConfiguration
@@ -2496,7 +2900,7 @@ ttcPredefinedMetricSpecification = lens _ttcPredefinedMetricSpecification (\ s a
 ttcCustomizedMetricSpecification :: Lens' TargetTrackingConfiguration (Maybe CustomizedMetricSpecification)
 ttcCustomizedMetricSpecification = lens _ttcCustomizedMetricSpecification (\ s a -> s{_ttcCustomizedMetricSpecification = a})
 
--- | Indicates whether scale in by the target tracking policy is disabled. If scale in is disabled, the target tracking policy won't remove instances from the Auto Scaling group. Otherwise, the target tracking policy can remove instances from the Auto Scaling group. The default is disabled.
+-- | Indicates whether scaling in by the target tracking policy is disabled. If scaling in is disabled, the target tracking policy doesn't remove instances from the Auto Scaling group. Otherwise, the target tracking policy can remove instances from the Auto Scaling group. The default is disabled.
 ttcDisableScaleIn :: Lens' TargetTrackingConfiguration (Maybe Bool)
 ttcDisableScaleIn = lens _ttcDisableScaleIn (\ s a -> s{_ttcDisableScaleIn = a})
 

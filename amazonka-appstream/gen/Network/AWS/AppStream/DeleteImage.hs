@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified image. You cannot delete an image that is currently in use. After you delete an image, you cannot provision new capacity using the image.
+-- Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.
 --
 --
 module Network.AWS.AppStream.DeleteImage
@@ -100,7 +100,7 @@ instance ToQuery DeleteImage where
 
 -- | /See:/ 'deleteImageResponse' smart constructor.
 data DeleteImageResponse = DeleteImageResponse'
-  { _dirsImage          :: !(Maybe Image)
+  { _dirsImage :: !(Maybe Image)
   , _dirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

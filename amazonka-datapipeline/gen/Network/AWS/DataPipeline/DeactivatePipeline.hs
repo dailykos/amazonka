@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'deactivatePipeline' smart constructor.
 data DeactivatePipeline = DeactivatePipeline'
   { _dCancelActive :: !(Maybe Bool)
-  , _dPipelineId   :: !Text
+  , _dPipelineId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

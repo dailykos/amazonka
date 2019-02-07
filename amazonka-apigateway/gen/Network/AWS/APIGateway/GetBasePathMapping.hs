@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'getBasePathMapping' smart constructor.
 data GetBasePathMapping = GetBasePathMapping'
   { _gbpmDomainName :: !Text
-  , _gbpmBasePath   :: !Text
+  , _gbpmBasePath :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

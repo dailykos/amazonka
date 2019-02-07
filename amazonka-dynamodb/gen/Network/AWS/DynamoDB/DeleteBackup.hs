@@ -103,7 +103,7 @@ instance ToQuery DeleteBackup where
 -- | /See:/ 'deleteBackupResponse' smart constructor.
 data DeleteBackupResponse = DeleteBackupResponse'
   { _dbrsBackupDescription :: !(Maybe BackupDescription)
-  , _dbrsResponseStatus    :: !Int
+  , _dbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

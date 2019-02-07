@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Performs all the read operations in a batch.
+-- Performs all the read operations in a batch. 
 --
 --
 module Network.AWS.CloudDirectory.BatchRead
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'batchRead' smart constructor.
 data BatchRead = BatchRead'
   { _brConsistencyLevel :: !(Maybe ConsistencyLevel)
-  , _brDirectoryARN     :: !Text
-  , _brOperations       :: ![BatchReadOperation]
+  , _brDirectoryARN :: !Text
+  , _brOperations :: ![BatchReadOperation]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -120,7 +120,7 @@ instance ToQuery BatchRead where
 
 -- | /See:/ 'batchReadResponse' smart constructor.
 data BatchReadResponse = BatchReadResponse'
-  { _brrsResponses      :: !(Maybe [BatchReadOperationResponse])
+  { _brrsResponses :: !(Maybe [BatchReadOperationResponse])
   , _brrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

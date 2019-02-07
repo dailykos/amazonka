@@ -27,16 +27,16 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'columnInfo' smart constructor.
 data ColumnInfo = ColumnInfo'
-  { _ciScale         :: !(Maybe Int)
-  , _ciPrecision     :: !(Maybe Int)
-  , _ciSchemaName    :: !(Maybe Text)
-  , _ciCatalogName   :: !(Maybe Text)
+  { _ciScale :: !(Maybe Int)
+  , _ciPrecision :: !(Maybe Int)
+  , _ciSchemaName :: !(Maybe Text)
+  , _ciCatalogName :: !(Maybe Text)
   , _ciCaseSensitive :: !(Maybe Bool)
-  , _ciLabel         :: !(Maybe Text)
-  , _ciTableName     :: !(Maybe Text)
-  , _ciNullable      :: !(Maybe ColumnNullable)
-  , _ciName          :: !Text
-  , _ciType          :: !Text
+  , _ciLabel :: !(Maybe Text)
+  , _ciTableName :: !(Maybe Text)
+  , _ciNullable :: !(Maybe ColumnNullable)
+  , _ciName :: !Text
+  , _ciType :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -174,13 +174,13 @@ instance Hashable Datum where
 
 instance NFData Datum where
 
--- | If query results are encrypted in Amazon S3, indicates the Amazon S3 encryption option used.
+-- | If query results are encrypted in Amazon S3, indicates the encryption option used (for example, @SSE-KMS@ or @CSE-KMS@ ) and key information.
 --
 --
 --
 -- /See:/ 'encryptionConfiguration' smart constructor.
 data EncryptionConfiguration = EncryptionConfiguration'
-  { _ecKMSKey           :: !(Maybe Text)
+  { _ecKMSKey :: !(Maybe Text)
   , _ecEncryptionOption :: !EncryptionOption
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -233,10 +233,10 @@ instance ToJSON EncryptionConfiguration where
 -- /See:/ 'namedQuery' smart constructor.
 data NamedQuery = NamedQuery'
   { _nqNamedQueryId :: !(Maybe Text)
-  , _nqDescription  :: !(Maybe Text)
-  , _nqName         :: !Text
-  , _nqDatabase     :: !Text
-  , _nqQueryString  :: !Text
+  , _nqDescription :: !(Maybe Text)
+  , _nqName :: !Text
+  , _nqDatabase :: !Text
+  , _nqQueryString :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -308,12 +308,13 @@ instance NFData NamedQuery where
 --
 -- /See:/ 'queryExecution' smart constructor.
 data QueryExecution = QueryExecution'
-  { _qeStatus                :: !(Maybe QueryExecutionStatus)
+  { _qeStatus :: !(Maybe QueryExecutionStatus)
   , _qeQueryExecutionContext :: !(Maybe QueryExecutionContext)
-  , _qeResultConfiguration   :: !(Maybe ResultConfiguration)
-  , _qeQuery                 :: !(Maybe Text)
-  , _qeStatistics            :: !(Maybe QueryExecutionStatistics)
-  , _qeQueryExecutionId      :: !(Maybe Text)
+  , _qeResultConfiguration :: !(Maybe ResultConfiguration)
+  , _qeQuery :: !(Maybe Text)
+  , _qeStatementType :: !(Maybe StatementType)
+  , _qeStatistics :: !(Maybe QueryExecutionStatistics)
+  , _qeQueryExecutionId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -329,7 +330,9 @@ data QueryExecution = QueryExecution'
 --
 -- * 'qeQuery' - The SQL query statements which the query execution ran.
 --
--- * 'qeStatistics' - The amount of data scanned during the query execution and the amount of time that it took to execute.
+-- * 'qeStatementType' - The type of query statement that was run. @DDL@ indicates DDL query statements. @DML@ indicates DML (Data Manipulation Language) query statements, such as @CREATE TABLE AS SELECT@ . @UTILITY@ indicates query statements other than DDL and DML, such as @SHOW CREATE TABLE@ , or @DESCRIBE <table>@ .
+--
+-- * 'qeStatistics' - The amount of data scanned during the query execution and the amount of time that it took to execute, and the type of statement that was run.
 --
 -- * 'qeQueryExecutionId' - The unique identifier for each query execution.
 queryExecution
@@ -340,6 +343,7 @@ queryExecution =
     , _qeQueryExecutionContext = Nothing
     , _qeResultConfiguration = Nothing
     , _qeQuery = Nothing
+    , _qeStatementType = Nothing
     , _qeStatistics = Nothing
     , _qeQueryExecutionId = Nothing
     }
@@ -361,7 +365,11 @@ qeResultConfiguration = lens _qeResultConfiguration (\ s a -> s{_qeResultConfigu
 qeQuery :: Lens' QueryExecution (Maybe Text)
 qeQuery = lens _qeQuery (\ s a -> s{_qeQuery = a})
 
--- | The amount of data scanned during the query execution and the amount of time that it took to execute.
+-- | The type of query statement that was run. @DDL@ indicates DDL query statements. @DML@ indicates DML (Data Manipulation Language) query statements, such as @CREATE TABLE AS SELECT@ . @UTILITY@ indicates query statements other than DDL and DML, such as @SHOW CREATE TABLE@ , or @DESCRIBE <table>@ .
+qeStatementType :: Lens' QueryExecution (Maybe StatementType)
+qeStatementType = lens _qeStatementType (\ s a -> s{_qeStatementType = a})
+
+-- | The amount of data scanned during the query execution and the amount of time that it took to execute, and the type of statement that was run.
 qeStatistics :: Lens' QueryExecution (Maybe QueryExecutionStatistics)
 qeStatistics = lens _qeStatistics (\ s a -> s{_qeStatistics = a})
 
@@ -377,6 +385,7 @@ instance FromJSON QueryExecution where
                    (x .:? "Status") <*> (x .:? "QueryExecutionContext")
                      <*> (x .:? "ResultConfiguration")
                      <*> (x .:? "Query")
+                     <*> (x .:? "StatementType")
                      <*> (x .:? "Statistics")
                      <*> (x .:? "QueryExecutionId"))
 
@@ -423,14 +432,14 @@ instance ToJSON QueryExecutionContext where
           = object
               (catMaybes [("Database" .=) <$> _qecDatabase])
 
--- | The amount of data scanned during the query execution and the amount of time that it took to execute.
+-- | The amount of data scanned during the query execution and the amount of time that it took to execute, and the type of statement that was run.
 --
 --
 --
 -- /See:/ 'queryExecutionStatistics' smart constructor.
 data QueryExecutionStatistics = QueryExecutionStatistics'
   { _qesEngineExecutionTimeInMillis :: !(Maybe Integer)
-  , _qesDataScannedInBytes          :: !(Maybe Integer)
+  , _qesDataScannedInBytes :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -476,8 +485,8 @@ instance NFData QueryExecutionStatistics where
 --
 -- /See:/ 'queryExecutionStatus' smart constructor.
 data QueryExecutionStatus = QueryExecutionStatus'
-  { _qesState              :: !(Maybe QueryExecutionState)
-  , _qesStateChangeReason  :: !(Maybe Text)
+  { _qesState :: !(Maybe QueryExecutionState)
+  , _qesStateChangeReason :: !(Maybe Text)
   , _qesSubmissionDateTime :: !(Maybe POSIX)
   , _qesCompletionDateTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -487,7 +496,7 @@ data QueryExecutionStatus = QueryExecutionStatus'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'qesState' - The state of query execution. @SUBMITTED@ indicates that the query is queued for execution. @RUNNING@ indicates that the query is scanning data and returning results. @SUCCEEDED@ indicates that the query completed without error. @FAILED@ indicates that the query experienced an error and did not complete processing. @CANCELLED@ indicates that user input interrupted query execution.
+-- * 'qesState' - The state of query execution. @QUEUED@ state is listed but is not used by Athena and is reserved for future use. @RUNNING@ indicates that the query has been submitted to the service, and Athena will execute the query as soon as resources are available. @SUCCEEDED@ indicates that the query completed without error. @FAILED@ indicates that the query experienced an error and did not complete processing.@CANCELLED@ indicates that user input interrupted query execution. 
 --
 -- * 'qesStateChangeReason' - Further detail about the status of the query.
 --
@@ -505,7 +514,7 @@ queryExecutionStatus =
     }
 
 
--- | The state of query execution. @SUBMITTED@ indicates that the query is queued for execution. @RUNNING@ indicates that the query is scanning data and returning results. @SUCCEEDED@ indicates that the query completed without error. @FAILED@ indicates that the query experienced an error and did not complete processing. @CANCELLED@ indicates that user input interrupted query execution.
+-- | The state of query execution. @QUEUED@ state is listed but is not used by Athena and is reserved for future use. @RUNNING@ indicates that the query has been submitted to the service, and Athena will execute the query as soon as resources are available. @SUCCEEDED@ indicates that the query completed without error. @FAILED@ indicates that the query experienced an error and did not complete processing.@CANCELLED@ indicates that user input interrupted query execution. 
 qesState :: Lens' QueryExecutionStatus (Maybe QueryExecutionState)
 qesState = lens _qesState (\ s a -> s{_qesState = a})
 
@@ -541,7 +550,7 @@ instance NFData QueryExecutionStatus where
 -- /See:/ 'resultConfiguration' smart constructor.
 data ResultConfiguration = ResultConfiguration'
   { _rcEncryptionConfiguration :: !(Maybe EncryptionConfiguration)
-  , _rcOutputLocation          :: !Text
+  , _rcOutputLocation :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -549,9 +558,9 @@ data ResultConfiguration = ResultConfiguration'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcEncryptionConfiguration' - If query results are encrypted in S3, indicates the S3 encryption option used (for example, @SSE-KMS@ or @CSE-KMS@ and key information.
+-- * 'rcEncryptionConfiguration' - If query results are encrypted in Amazon S3, indicates the encryption option used (for example, @SSE-KMS@ or @CSE-KMS@ ) and key information.
 --
--- * 'rcOutputLocation' - The location in S3 where query results are stored.
+-- * 'rcOutputLocation' - The location in Amazon S3 where your query results are stored, such as @s3://path/to/query/bucket/@ . For more information, see <http://docs.aws.amazon.com/athena/latest/ug/querying.html Queries and Query Result Files. > 
 resultConfiguration
     :: Text -- ^ 'rcOutputLocation'
     -> ResultConfiguration
@@ -560,11 +569,11 @@ resultConfiguration pOutputLocation_ =
     {_rcEncryptionConfiguration = Nothing, _rcOutputLocation = pOutputLocation_}
 
 
--- | If query results are encrypted in S3, indicates the S3 encryption option used (for example, @SSE-KMS@ or @CSE-KMS@ and key information.
+-- | If query results are encrypted in Amazon S3, indicates the encryption option used (for example, @SSE-KMS@ or @CSE-KMS@ ) and key information.
 rcEncryptionConfiguration :: Lens' ResultConfiguration (Maybe EncryptionConfiguration)
 rcEncryptionConfiguration = lens _rcEncryptionConfiguration (\ s a -> s{_rcEncryptionConfiguration = a})
 
--- | The location in S3 where query results are stored.
+-- | The location in Amazon S3 where your query results are stored, such as @s3://path/to/query/bucket/@ . For more information, see <http://docs.aws.amazon.com/athena/latest/ug/querying.html Queries and Query Result Files. > 
 rcOutputLocation :: Lens' ResultConfiguration Text
 rcOutputLocation = lens _rcOutputLocation (\ s a -> s{_rcOutputLocation = a})
 
@@ -594,7 +603,7 @@ instance ToJSON ResultConfiguration where
 --
 -- /See:/ 'resultSet' smart constructor.
 data ResultSet = ResultSet'
-  { _rsRows              :: !(Maybe [Row])
+  { _rsRows :: !(Maybe [Row])
   , _rsResultSetMetadata :: !(Maybe ResultSetMetadata)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -631,7 +640,7 @@ instance Hashable ResultSet where
 
 instance NFData ResultSet where
 
--- | The metadata that describes the column structure and data types of a table of query results.
+-- | The metadata that describes the column structure and data types of a table of query results. 
 --
 --
 --
@@ -645,13 +654,13 @@ newtype ResultSetMetadata = ResultSetMetadata'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rsmColumnInfo' - Information about the columns in a query execution result.
+-- * 'rsmColumnInfo' - Information about the columns returned in a query result metadata.
 resultSetMetadata
     :: ResultSetMetadata
 resultSetMetadata = ResultSetMetadata' {_rsmColumnInfo = Nothing}
 
 
--- | Information about the columns in a query execution result.
+-- | Information about the columns returned in a query result metadata.
 rsmColumnInfo :: Lens' ResultSetMetadata [ColumnInfo]
 rsmColumnInfo = lens _rsmColumnInfo (\ s a -> s{_rsmColumnInfo = a}) . _Default . _Coerce
 
@@ -706,7 +715,7 @@ instance NFData Row where
 -- /See:/ 'unprocessedNamedQueryId' smart constructor.
 data UnprocessedNamedQueryId = UnprocessedNamedQueryId'
   { _unqiNamedQueryId :: !(Maybe Text)
-  , _unqiErrorCode    :: !(Maybe Text)
+  , _unqiErrorCode :: !(Maybe Text)
   , _unqiErrorMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -760,9 +769,9 @@ instance NFData UnprocessedNamedQueryId where
 --
 -- /See:/ 'unprocessedQueryExecutionId' smart constructor.
 data UnprocessedQueryExecutionId = UnprocessedQueryExecutionId'
-  { _uqeiErrorCode        :: !(Maybe Text)
+  { _uqeiErrorCode :: !(Maybe Text)
   , _uqeiQueryExecutionId :: !(Maybe Text)
-  , _uqeiErrorMessage     :: !(Maybe Text)
+  , _uqeiErrorMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

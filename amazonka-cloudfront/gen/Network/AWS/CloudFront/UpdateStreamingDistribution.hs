@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update a streaming distribution.
+-- Update a streaming distribution. 
 --
 --
 module Network.AWS.CloudFront.UpdateStreamingDistribution
@@ -53,9 +53,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateStreamingDistribution' smart constructor.
 data UpdateStreamingDistribution = UpdateStreamingDistribution'
-  { _usdIfMatch                     :: !(Maybe Text)
+  { _usdIfMatch :: !(Maybe Text)
   , _usdStreamingDistributionConfig :: !StreamingDistributionConfig
-  , _usdId                          :: !Text
+  , _usdId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -110,7 +110,7 @@ instance NFData UpdateStreamingDistribution where
 instance ToElement UpdateStreamingDistribution where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}StreamingDistributionConfig"
+              "{http://cloudfront.amazonaws.com/doc/2018-11-05/}StreamingDistributionConfig"
               .
               _usdStreamingDistributionConfig
 
@@ -121,7 +121,7 @@ instance ToHeaders UpdateStreamingDistribution where
 instance ToPath UpdateStreamingDistribution where
         toPath UpdateStreamingDistribution'{..}
           = mconcat
-              ["/2017-10-30/streaming-distribution/", toBS _usdId,
+              ["/2018-11-05/streaming-distribution/", toBS _usdId,
                "/config"]
 
 instance ToQuery UpdateStreamingDistribution where
@@ -133,9 +133,9 @@ instance ToQuery UpdateStreamingDistribution where
 --
 -- /See:/ 'updateStreamingDistributionResponse' smart constructor.
 data UpdateStreamingDistributionResponse = UpdateStreamingDistributionResponse'
-  { _usdrsETag                  :: !(Maybe Text)
+  { _usdrsETag :: !(Maybe Text)
   , _usdrsStreamingDistribution :: !(Maybe StreamingDistribution)
-  , _usdrsResponseStatus        :: !Int
+  , _usdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

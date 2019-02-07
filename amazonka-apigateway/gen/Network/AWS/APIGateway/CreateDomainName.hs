@@ -67,15 +67,15 @@ import Network.AWS.Response
 --
 -- /See:/ 'createDomainName' smart constructor.
 data CreateDomainName = CreateDomainName'
-  { _cdnCertificateName         :: !(Maybe Text)
-  , _cdnRegionalCertificateARN  :: !(Maybe Text)
-  , _cdnCertificateARN          :: !(Maybe Text)
-  , _cdnCertificatePrivateKey   :: !(Maybe Text)
+  { _cdnCertificateName :: !(Maybe Text)
+  , _cdnRegionalCertificateARN :: !(Maybe Text)
+  , _cdnCertificateARN :: !(Maybe Text)
+  , _cdnCertificatePrivateKey :: !(Maybe Text)
   , _cdnRegionalCertificateName :: !(Maybe Text)
-  , _cdnCertificateBody         :: !(Maybe Text)
-  , _cdnCertificateChain        :: !(Maybe Text)
-  , _cdnEndpointConfiguration   :: !(Maybe EndpointConfiguration)
-  , _cdnDomainName              :: !Text
+  , _cdnCertificateBody :: !(Maybe Text)
+  , _cdnCertificateChain :: !(Maybe Text)
+  , _cdnEndpointConfiguration :: !(Maybe EndpointConfiguration)
+  , _cdnDomainName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -97,7 +97,7 @@ data CreateDomainName = CreateDomainName'
 --
 -- * 'cdnCertificateChain' - [Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines, used by an edge-optimized endpoint for this domain name. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.
 --
--- * 'cdnEndpointConfiguration' - The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name.
+-- * 'cdnEndpointConfiguration' - The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name. 
 --
 -- * 'cdnDomainName' - [Required] The name of the 'DomainName' resource.
 createDomainName
@@ -145,7 +145,7 @@ cdnCertificateBody = lens _cdnCertificateBody (\ s a -> s{_cdnCertificateBody = 
 cdnCertificateChain :: Lens' CreateDomainName (Maybe Text)
 cdnCertificateChain = lens _cdnCertificateChain (\ s a -> s{_cdnCertificateChain = a})
 
--- | The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name.
+-- | The endpoint configuration of this 'DomainName' showing the endpoint types of the domain name. 
 cdnEndpointConfiguration :: Lens' CreateDomainName (Maybe EndpointConfiguration)
 cdnEndpointConfiguration = lens _cdnEndpointConfiguration (\ s a -> s{_cdnEndpointConfiguration = a})
 

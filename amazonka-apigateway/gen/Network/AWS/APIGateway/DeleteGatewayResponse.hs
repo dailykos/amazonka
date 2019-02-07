@@ -48,7 +48,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'deleteGatewayResponse' smart constructor.
 data DeleteGatewayResponse = DeleteGatewayResponse'
-  { _dgRestAPIId    :: !Text
+  { _dgRestAPIId :: !Text
   , _dgResponseType :: !GatewayResponseType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

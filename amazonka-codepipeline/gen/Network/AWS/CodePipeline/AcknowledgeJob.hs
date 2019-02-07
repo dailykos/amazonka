@@ -121,7 +121,7 @@ instance ToQuery AcknowledgeJob where
 --
 -- /See:/ 'acknowledgeJobResponse' smart constructor.
 data AcknowledgeJobResponse = AcknowledgeJobResponse'
-  { _ajrsStatus         :: !(Maybe JobStatus)
+  { _ajrsStatus :: !(Maybe JobStatus)
   , _ajrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

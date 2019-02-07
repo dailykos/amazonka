@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'createVPCEConfiguration' smart constructor.
 data CreateVPCEConfiguration = CreateVPCEConfiguration'
   { _cvecVpceConfigurationDescription :: !(Maybe Text)
-  , _cvecVpceConfigurationName        :: !Text
-  , _cvecVpceServiceName              :: !Text
-  , _cvecServiceDNSName               :: !Text
+  , _cvecVpceConfigurationName :: !Text
+  , _cvecVpceServiceName :: !Text
+  , _cvecServiceDNSName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -142,7 +142,7 @@ instance ToQuery CreateVPCEConfiguration where
 -- | /See:/ 'createVPCEConfigurationResponse' smart constructor.
 data CreateVPCEConfigurationResponse = CreateVPCEConfigurationResponse'
   { _cvecrsVpceConfiguration :: !(Maybe VPCEConfiguration)
-  , _cvecrsResponseStatus    :: !Int
+  , _cvecrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

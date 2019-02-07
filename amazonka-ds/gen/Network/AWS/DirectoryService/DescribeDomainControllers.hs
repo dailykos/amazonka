@@ -53,10 +53,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeDomainControllers' smart constructor.
 data DescribeDomainControllers = DescribeDomainControllers'
-  { _ddcNextToken           :: !(Maybe Text)
+  { _ddcNextToken :: !(Maybe Text)
   , _ddcDomainControllerIds :: !(Maybe [Text])
-  , _ddcLimit               :: !(Maybe Nat)
-  , _ddcDirectoryId         :: !Text
+  , _ddcLimit :: !(Maybe Nat)
+  , _ddcDirectoryId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -64,7 +64,7 @@ data DescribeDomainControllers = DescribeDomainControllers'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcNextToken' - The /DescribeDomainControllers.NextToken/ value from a previous call to 'DescribeDomainControllers' . Pass null if this is the first call.
+-- * 'ddcNextToken' - The /DescribeDomainControllers.NextToken/ value from a previous call to 'DescribeDomainControllers' . Pass null if this is the first call. 
 --
 -- * 'ddcDomainControllerIds' - A list of identifiers for the domain controllers whose information will be provided.
 --
@@ -83,7 +83,7 @@ describeDomainControllers pDirectoryId_ =
     }
 
 
--- | The /DescribeDomainControllers.NextToken/ value from a previous call to 'DescribeDomainControllers' . Pass null if this is the first call.
+-- | The /DescribeDomainControllers.NextToken/ value from a previous call to 'DescribeDomainControllers' . Pass null if this is the first call. 
 ddcNextToken :: Lens' DescribeDomainControllers (Maybe Text)
 ddcNextToken = lens _ddcNextToken (\ s a -> s{_ddcNextToken = a})
 
@@ -150,9 +150,9 @@ instance ToQuery DescribeDomainControllers where
 
 -- | /See:/ 'describeDomainControllersResponse' smart constructor.
 data DescribeDomainControllersResponse = DescribeDomainControllersResponse'
-  { _ddcrsNextToken         :: !(Maybe Text)
+  { _ddcrsNextToken :: !(Maybe Text)
   , _ddcrsDomainControllers :: !(Maybe [DomainController])
-  , _ddcrsResponseStatus    :: !Int
+  , _ddcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'describeIdentityUsage' smart constructor.
 data DescribeIdentityUsage = DescribeIdentityUsage'
   { _diuIdentityPoolId :: !Text
-  , _diuIdentityId     :: !Text
+  , _diuIdentityId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -114,7 +114,7 @@ instance ToQuery DescribeIdentityUsage where
 --
 -- /See:/ 'describeIdentityUsageResponse' smart constructor.
 data DescribeIdentityUsageResponse = DescribeIdentityUsageResponse'
-  { _diursIdentityUsage  :: !(Maybe IdentityUsage)
+  { _diursIdentityUsage :: !(Maybe IdentityUsage)
   , _diursResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

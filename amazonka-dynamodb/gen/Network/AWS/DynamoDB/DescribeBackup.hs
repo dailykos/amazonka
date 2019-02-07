@@ -103,7 +103,7 @@ instance ToQuery DescribeBackup where
 -- | /See:/ 'describeBackupResponse' smart constructor.
 data DescribeBackupResponse = DescribeBackupResponse'
   { _desrsBackupDescription :: !(Maybe BackupDescription)
-  , _desrsResponseStatus    :: !Int
+  , _desrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -28,7 +28,7 @@ import Network.AWS.Prelude
 -- /See:/ 'accessPoliciesStatus' smart constructor.
 data AccessPoliciesStatus = AccessPoliciesStatus'
   { _apsOptions :: !Text
-  , _apsStatus  :: !OptionStatus
+  , _apsStatus :: !OptionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -70,11 +70,11 @@ instance NFData AccessPoliciesStatus where
 --
 -- /See:/ 'analysisOptions' smart constructor.
 data AnalysisOptions = AnalysisOptions'
-  { _aoAlgorithmicStemming            :: !(Maybe AlgorithmicStemming)
-  , _aoStopwords                      :: !(Maybe Text)
+  { _aoAlgorithmicStemming :: !(Maybe AlgorithmicStemming)
+  , _aoStopwords :: !(Maybe Text)
   , _aoJapaneseTokenizationDictionary :: !(Maybe Text)
-  , _aoSynonyms                       :: !(Maybe Text)
-  , _aoStemmingDictionary             :: !(Maybe Text)
+  , _aoSynonyms :: !(Maybe Text)
+  , _aoStemmingDictionary :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -82,9 +82,9 @@ data AnalysisOptions = AnalysisOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aoAlgorithmicStemming' - The level of algorithmic stemming to perform: @none@ , @minimal@ , @light@ , or @full@ . The available levels vary depending on the language. For more information, see <http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings Language Specific Text Processing Settings> in the /Amazon CloudSearch Developer Guide/
+-- * 'aoAlgorithmicStemming' - The level of algorithmic stemming to perform: @none@ , @minimal@ , @light@ , or @full@ . The available levels vary depending on the language. For more information, see <http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings Language Specific Text Processing Settings> in the /Amazon CloudSearch Developer Guide/ 
 --
--- * 'aoStopwords' - A JSON array of terms to ignore during indexing and searching. For example, @["a", "an", "the", "of"]@ . The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported.
+-- * 'aoStopwords' - A JSON array of terms to ignore during indexing and searching. For example, @["a", "an", "the", "of"]@ . The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported. 
 --
 -- * 'aoJapaneseTokenizationDictionary' - A JSON array that contains a collection of terms, tokens, readings and part of speech for Japanese Tokenizaiton. The Japanese tokenization dictionary enables you to override the default tokenization for selected terms. This is only valid for Japanese language fields.
 --
@@ -103,11 +103,11 @@ analysisOptions =
     }
 
 
--- | The level of algorithmic stemming to perform: @none@ , @minimal@ , @light@ , or @full@ . The available levels vary depending on the language. For more information, see <http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings Language Specific Text Processing Settings> in the /Amazon CloudSearch Developer Guide/
+-- | The level of algorithmic stemming to perform: @none@ , @minimal@ , @light@ , or @full@ . The available levels vary depending on the language. For more information, see <http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings Language Specific Text Processing Settings> in the /Amazon CloudSearch Developer Guide/ 
 aoAlgorithmicStemming :: Lens' AnalysisOptions (Maybe AlgorithmicStemming)
 aoAlgorithmicStemming = lens _aoAlgorithmicStemming (\ s a -> s{_aoAlgorithmicStemming = a})
 
--- | A JSON array of terms to ignore during indexing and searching. For example, @["a", "an", "the", "of"]@ . The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported.
+-- | A JSON array of terms to ignore during indexing and searching. For example, @["a", "an", "the", "of"]@ . The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported. 
 aoStopwords :: Lens' AnalysisOptions (Maybe Text)
 aoStopwords = lens _aoStopwords (\ s a -> s{_aoStopwords = a})
 
@@ -151,8 +151,8 @@ instance ToQuery AnalysisOptions where
 --
 -- /See:/ 'analysisScheme' smart constructor.
 data AnalysisScheme = AnalysisScheme'
-  { _asAnalysisOptions        :: !(Maybe AnalysisOptions)
-  , _asAnalysisSchemeName     :: !Text
+  { _asAnalysisOptions :: !(Maybe AnalysisOptions)
+  , _asAnalysisSchemeName :: !Text
   , _asAnalysisSchemeLanguage :: !AnalysisSchemeLanguage
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -216,7 +216,7 @@ instance ToQuery AnalysisScheme where
 -- /See:/ 'analysisSchemeStatus' smart constructor.
 data AnalysisSchemeStatus = AnalysisSchemeStatus'
   { _assOptions :: !AnalysisScheme
-  , _assStatus  :: !OptionStatus
+  , _assStatus :: !OptionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -259,7 +259,7 @@ instance NFData AnalysisSchemeStatus where
 -- /See:/ 'availabilityOptionsStatus' smart constructor.
 data AvailabilityOptionsStatus = AvailabilityOptionsStatus'
   { _aosOptions :: !Bool
-  , _aosStatus  :: !OptionStatus
+  , _aosStatus :: !OptionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -301,11 +301,11 @@ instance NFData AvailabilityOptionsStatus where
 --
 -- /See:/ 'dateArrayOptions' smart constructor.
 data DateArrayOptions = DateArrayOptions'
-  { _daosSourceFields  :: !(Maybe Text)
+  { _daosSourceFields :: !(Maybe Text)
   , _daosReturnEnabled :: !(Maybe Bool)
-  , _daosFacetEnabled  :: !(Maybe Bool)
+  , _daosFacetEnabled :: !(Maybe Bool)
   , _daosSearchEnabled :: !(Maybe Bool)
-  , _daosDefaultValue  :: !(Maybe Text)
+  , _daosDefaultValue :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -313,7 +313,7 @@ data DateArrayOptions = DateArrayOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daosSourceFields' - A list of source fields to map to the field.
+-- * 'daosSourceFields' - A list of source fields to map to the field. 
 --
 -- * 'daosReturnEnabled' - Whether the contents of the field can be returned in the search results.
 --
@@ -334,7 +334,7 @@ dateArrayOptions =
     }
 
 
--- | A list of source fields to map to the field.
+-- | A list of source fields to map to the field. 
 daosSourceFields :: Lens' DateArrayOptions (Maybe Text)
 daosSourceFields = lens _daosSourceFields (\ s a -> s{_daosSourceFields = a})
 
@@ -381,12 +381,12 @@ instance ToQuery DateArrayOptions where
 --
 -- /See:/ 'dateOptions' smart constructor.
 data DateOptions = DateOptions'
-  { _doSourceField   :: !(Maybe Text)
+  { _doSourceField :: !(Maybe Text)
   , _doReturnEnabled :: !(Maybe Bool)
-  , _doFacetEnabled  :: !(Maybe Bool)
+  , _doFacetEnabled :: !(Maybe Bool)
   , _doSearchEnabled :: !(Maybe Bool)
-  , _doSortEnabled   :: !(Maybe Bool)
-  , _doDefaultValue  :: !(Maybe Text)
+  , _doSortEnabled :: !(Maybe Bool)
+  , _doDefaultValue :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -472,8 +472,8 @@ instance ToQuery DateOptions where
 -- /See:/ 'documentSuggesterOptions' smart constructor.
 data DocumentSuggesterOptions = DocumentSuggesterOptions'
   { _dsoSortExpression :: !(Maybe Text)
-  , _dsoFuzzyMatching  :: !(Maybe SuggesterFuzzyMatching)
-  , _dsoSourceField    :: !Text
+  , _dsoFuzzyMatching :: !(Maybe SuggesterFuzzyMatching)
+  , _dsoSourceField :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -483,9 +483,9 @@ data DocumentSuggesterOptions = DocumentSuggesterOptions'
 --
 -- * 'dsoSortExpression' - An expression that computes a score for each suggestion to control how they are sorted. The scores are rounded to the nearest integer, with a floor of 0 and a ceiling of 2^31-1. A document's relevance score is not computed for suggestions, so sort expressions cannot reference the @_score@ value. To sort suggestions using a numeric field or existing expression, simply specify the name of the field or expression. If no expression is configured for the suggester, the suggestions are sorted with the closest matches listed first.
 --
--- * 'dsoFuzzyMatching' - The level of fuzziness allowed when suggesting matches for a string: @none@ , @low@ , or @high@ . With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none.
+-- * 'dsoFuzzyMatching' - The level of fuzziness allowed when suggesting matches for a string: @none@ , @low@ , or @high@ . With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none. 
 --
--- * 'dsoSourceField' - The name of the index field you want to use for suggestions.
+-- * 'dsoSourceField' - The name of the index field you want to use for suggestions. 
 documentSuggesterOptions
     :: Text -- ^ 'dsoSourceField'
     -> DocumentSuggesterOptions
@@ -501,11 +501,11 @@ documentSuggesterOptions pSourceField_ =
 dsoSortExpression :: Lens' DocumentSuggesterOptions (Maybe Text)
 dsoSortExpression = lens _dsoSortExpression (\ s a -> s{_dsoSortExpression = a})
 
--- | The level of fuzziness allowed when suggesting matches for a string: @none@ , @low@ , or @high@ . With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none.
+-- | The level of fuzziness allowed when suggesting matches for a string: @none@ , @low@ , or @high@ . With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none. 
 dsoFuzzyMatching :: Lens' DocumentSuggesterOptions (Maybe SuggesterFuzzyMatching)
 dsoFuzzyMatching = lens _dsoFuzzyMatching (\ s a -> s{_dsoFuzzyMatching = a})
 
--- | The name of the index field you want to use for suggestions.
+-- | The name of the index field you want to use for suggestions. 
 dsoSourceField :: Lens' DocumentSuggesterOptions Text
 dsoSourceField = lens _dsoSourceField (\ s a -> s{_dsoSourceField = a})
 
@@ -532,18 +532,18 @@ instance ToQuery DocumentSuggesterOptions where
 --
 -- /See:/ 'domainStatus' smart constructor.
 data DomainStatus = DomainStatus'
-  { _dsSearchInstanceCount    :: !(Maybe Nat)
-  , _dsSearchInstanceType     :: !(Maybe Text)
-  , _dsDocService             :: !(Maybe ServiceEndpoint)
-  , _dsARN                    :: !(Maybe Text)
-  , _dsCreated                :: !(Maybe Bool)
-  , _dsSearchService          :: !(Maybe ServiceEndpoint)
-  , _dsLimits                 :: !(Maybe Limits)
-  , _dsSearchPartitionCount   :: !(Maybe Nat)
-  , _dsDeleted                :: !(Maybe Bool)
-  , _dsProcessing             :: !(Maybe Bool)
-  , _dsDomainId               :: !Text
-  , _dsDomainName             :: !Text
+  { _dsSearchInstanceCount :: !(Maybe Nat)
+  , _dsSearchInstanceType :: !(Maybe Text)
+  , _dsDocService :: !(Maybe ServiceEndpoint)
+  , _dsARN :: !(Maybe Text)
+  , _dsCreated :: !(Maybe Bool)
+  , _dsSearchService :: !(Maybe ServiceEndpoint)
+  , _dsLimits :: !(Maybe Limits)
+  , _dsSearchPartitionCount :: !(Maybe Nat)
+  , _dsDeleted :: !(Maybe Bool)
+  , _dsProcessing :: !(Maybe Bool)
+  , _dsDomainId :: !Text
+  , _dsDomainName :: !Text
   , _dsRequiresIndexDocuments :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -679,11 +679,11 @@ instance NFData DomainStatus where
 --
 -- /See:/ 'doubleArrayOptions' smart constructor.
 data DoubleArrayOptions = DoubleArrayOptions'
-  { _daoSourceFields  :: !(Maybe Text)
+  { _daoSourceFields :: !(Maybe Text)
   , _daoReturnEnabled :: !(Maybe Bool)
-  , _daoFacetEnabled  :: !(Maybe Bool)
+  , _daoFacetEnabled :: !(Maybe Bool)
   , _daoSearchEnabled :: !(Maybe Bool)
-  , _daoDefaultValue  :: !(Maybe Double)
+  , _daoDefaultValue :: !(Maybe Double)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -691,7 +691,7 @@ data DoubleArrayOptions = DoubleArrayOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daoSourceFields' - A list of source fields to map to the field.
+-- * 'daoSourceFields' - A list of source fields to map to the field. 
 --
 -- * 'daoReturnEnabled' - Whether the contents of the field can be returned in the search results.
 --
@@ -712,7 +712,7 @@ doubleArrayOptions =
     }
 
 
--- | A list of source fields to map to the field.
+-- | A list of source fields to map to the field. 
 daoSourceFields :: Lens' DoubleArrayOptions (Maybe Text)
 daoSourceFields = lens _daoSourceFields (\ s a -> s{_daoSourceFields = a})
 
@@ -759,12 +759,12 @@ instance ToQuery DoubleArrayOptions where
 --
 -- /See:/ 'doubleOptions' smart constructor.
 data DoubleOptions = DoubleOptions'
-  { _dSourceField   :: !(Maybe Text)
+  { _dSourceField :: !(Maybe Text)
   , _dReturnEnabled :: !(Maybe Bool)
-  , _dFacetEnabled  :: !(Maybe Bool)
+  , _dFacetEnabled :: !(Maybe Bool)
   , _dSearchEnabled :: !(Maybe Bool)
-  , _dSortEnabled   :: !(Maybe Bool)
-  , _dDefaultValue  :: !(Maybe Double)
+  , _dSortEnabled :: !(Maybe Bool)
+  , _dDefaultValue :: !(Maybe Double)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -772,7 +772,7 @@ data DoubleOptions = DoubleOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dSourceField' - The name of the source field to map to the field.
+-- * 'dSourceField' - The name of the source field to map to the field. 
 --
 -- * 'dReturnEnabled' - Whether the contents of the field can be returned in the search results.
 --
@@ -796,7 +796,7 @@ doubleOptions =
     }
 
 
--- | The name of the source field to map to the field.
+-- | The name of the source field to map to the field. 
 dSourceField :: Lens' DoubleOptions (Maybe Text)
 dSourceField = lens _dSourceField (\ s a -> s{_dSourceField = a})
 
@@ -843,13 +843,13 @@ instance ToQuery DoubleOptions where
                "SortEnabled" =: _dSortEnabled,
                "DefaultValue" =: _dDefaultValue]
 
--- | A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results.
+-- | A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. 
 --
 --
 --
 -- /See:/ 'expression' smart constructor.
 data Expression = Expression'
-  { _eExpressionName  :: !Text
+  { _eExpressionName :: !Text
   , _eExpressionValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -900,7 +900,7 @@ instance ToQuery Expression where
 -- /See:/ 'expressionStatus' smart constructor.
 data ExpressionStatus = ExpressionStatus'
   { _esOptions :: !Expression
-  , _esStatus  :: !OptionStatus
+  , _esStatus :: !OptionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -942,19 +942,19 @@ instance NFData ExpressionStatus where
 --
 -- /See:/ 'indexField' smart constructor.
 data IndexField = IndexField'
-  { _ifDoubleArrayOptions  :: !(Maybe DoubleArrayOptions)
-  , _ifDateOptions         :: !(Maybe DateOptions)
-  , _ifTextArrayOptions    :: !(Maybe TextArrayOptions)
-  , _ifDoubleOptions       :: !(Maybe DoubleOptions)
-  , _ifTextOptions         :: !(Maybe TextOptions)
-  , _ifLatLonOptions       :: !(Maybe LatLonOptions)
+  { _ifDoubleArrayOptions :: !(Maybe DoubleArrayOptions)
+  , _ifDateOptions :: !(Maybe DateOptions)
+  , _ifTextArrayOptions :: !(Maybe TextArrayOptions)
+  , _ifDoubleOptions :: !(Maybe DoubleOptions)
+  , _ifTextOptions :: !(Maybe TextOptions)
+  , _ifLatLonOptions :: !(Maybe LatLonOptions)
   , _ifLiteralArrayOptions :: !(Maybe LiteralArrayOptions)
-  , _ifIntArrayOptions     :: !(Maybe IntArrayOptions)
-  , _ifDateArrayOptions    :: !(Maybe DateArrayOptions)
-  , _ifIntOptions          :: !(Maybe IntOptions)
-  , _ifLiteralOptions      :: !(Maybe LiteralOptions)
-  , _ifIndexFieldName      :: !Text
-  , _ifIndexFieldType      :: !IndexFieldType
+  , _ifIntArrayOptions :: !(Maybe IntArrayOptions)
+  , _ifDateArrayOptions :: !(Maybe DateArrayOptions)
+  , _ifIntOptions :: !(Maybe IntOptions)
+  , _ifLiteralOptions :: !(Maybe LiteralOptions)
+  , _ifIndexFieldName :: !Text
+  , _ifIndexFieldType :: !IndexFieldType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -984,7 +984,7 @@ data IndexField = IndexField'
 --
 -- * 'ifLiteralOptions' - Undocumented member.
 --
--- * 'ifIndexFieldName' - A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options.  Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported.  The name @score@ is reserved and cannot be used as a field name. To reference a document's ID, you can use the name @_id@ .
+-- * 'ifIndexFieldName' - A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options.  Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported.  The name @score@ is reserved and cannot be used as a field name. To reference a document's ID, you can use the name @_id@ . 
 --
 -- * 'ifIndexFieldType' - Undocumented member.
 indexField
@@ -1053,7 +1053,7 @@ ifIntOptions = lens _ifIntOptions (\ s a -> s{_ifIntOptions = a})
 ifLiteralOptions :: Lens' IndexField (Maybe LiteralOptions)
 ifLiteralOptions = lens _ifLiteralOptions (\ s a -> s{_ifLiteralOptions = a})
 
--- | A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options.  Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported.  The name @score@ is reserved and cannot be used as a field name. To reference a document's ID, you can use the name @_id@ .
+-- | A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options.  Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported.  The name @score@ is reserved and cannot be used as a field name. To reference a document's ID, you can use the name @_id@ . 
 ifIndexFieldName :: Lens' IndexField Text
 ifIndexFieldName = lens _ifIndexFieldName (\ s a -> s{_ifIndexFieldName = a})
 
@@ -1106,7 +1106,7 @@ instance ToQuery IndexField where
 -- /See:/ 'indexFieldStatus' smart constructor.
 data IndexFieldStatus = IndexFieldStatus'
   { _ifsOptions :: !IndexField
-  , _ifsStatus  :: !OptionStatus
+  , _ifsStatus :: !OptionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1148,11 +1148,11 @@ instance NFData IndexFieldStatus where
 --
 -- /See:/ 'intArrayOptions' smart constructor.
 data IntArrayOptions = IntArrayOptions'
-  { _iaoSourceFields  :: !(Maybe Text)
+  { _iaoSourceFields :: !(Maybe Text)
   , _iaoReturnEnabled :: !(Maybe Bool)
-  , _iaoFacetEnabled  :: !(Maybe Bool)
+  , _iaoFacetEnabled :: !(Maybe Bool)
   , _iaoSearchEnabled :: !(Maybe Bool)
-  , _iaoDefaultValue  :: !(Maybe Integer)
+  , _iaoDefaultValue :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1160,7 +1160,7 @@ data IntArrayOptions = IntArrayOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iaoSourceFields' - A list of source fields to map to the field.
+-- * 'iaoSourceFields' - A list of source fields to map to the field. 
 --
 -- * 'iaoReturnEnabled' - Whether the contents of the field can be returned in the search results.
 --
@@ -1181,7 +1181,7 @@ intArrayOptions =
     }
 
 
--- | A list of source fields to map to the field.
+-- | A list of source fields to map to the field. 
 iaoSourceFields :: Lens' IntArrayOptions (Maybe Text)
 iaoSourceFields = lens _iaoSourceFields (\ s a -> s{_iaoSourceFields = a})
 
@@ -1228,12 +1228,12 @@ instance ToQuery IntArrayOptions where
 --
 -- /See:/ 'intOptions' smart constructor.
 data IntOptions = IntOptions'
-  { _ioSourceField   :: !(Maybe Text)
+  { _ioSourceField :: !(Maybe Text)
   , _ioReturnEnabled :: !(Maybe Bool)
-  , _ioFacetEnabled  :: !(Maybe Bool)
+  , _ioFacetEnabled :: !(Maybe Bool)
   , _ioSearchEnabled :: !(Maybe Bool)
-  , _ioSortEnabled   :: !(Maybe Bool)
-  , _ioDefaultValue  :: !(Maybe Integer)
+  , _ioSortEnabled :: !(Maybe Bool)
+  , _ioDefaultValue :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1241,7 +1241,7 @@ data IntOptions = IntOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ioSourceField' - The name of the source field to map to the field.
+-- * 'ioSourceField' - The name of the source field to map to the field. 
 --
 -- * 'ioReturnEnabled' - Whether the contents of the field can be returned in the search results.
 --
@@ -1265,7 +1265,7 @@ intOptions =
     }
 
 
--- | The name of the source field to map to the field.
+-- | The name of the source field to map to the field. 
 ioSourceField :: Lens' IntOptions (Maybe Text)
 ioSourceField = lens _ioSourceField (\ s a -> s{_ioSourceField = a})
 
@@ -1318,12 +1318,12 @@ instance ToQuery IntOptions where
 --
 -- /See:/ 'latLonOptions' smart constructor.
 data LatLonOptions = LatLonOptions'
-  { _lloSourceField   :: !(Maybe Text)
+  { _lloSourceField :: !(Maybe Text)
   , _lloReturnEnabled :: !(Maybe Bool)
-  , _lloFacetEnabled  :: !(Maybe Bool)
+  , _lloFacetEnabled :: !(Maybe Bool)
   , _lloSearchEnabled :: !(Maybe Bool)
-  , _lloSortEnabled   :: !(Maybe Bool)
-  , _lloDefaultValue  :: !(Maybe Text)
+  , _lloSortEnabled :: !(Maybe Bool)
+  , _lloDefaultValue :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1405,7 +1405,7 @@ instance ToQuery LatLonOptions where
 -- | /See:/ 'limits' smart constructor.
 data Limits = Limits'
   { _lMaximumReplicationCount :: !Nat
-  , _lMaximumPartitionCount   :: !Nat
+  , _lMaximumPartitionCount :: !Nat
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1451,11 +1451,11 @@ instance NFData Limits where
 --
 -- /See:/ 'literalArrayOptions' smart constructor.
 data LiteralArrayOptions = LiteralArrayOptions'
-  { _laoSourceFields  :: !(Maybe Text)
+  { _laoSourceFields :: !(Maybe Text)
   , _laoReturnEnabled :: !(Maybe Bool)
-  , _laoFacetEnabled  :: !(Maybe Bool)
+  , _laoFacetEnabled :: !(Maybe Bool)
   , _laoSearchEnabled :: !(Maybe Bool)
-  , _laoDefaultValue  :: !(Maybe Text)
+  , _laoDefaultValue :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1463,7 +1463,7 @@ data LiteralArrayOptions = LiteralArrayOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'laoSourceFields' - A list of source fields to map to the field.
+-- * 'laoSourceFields' - A list of source fields to map to the field. 
 --
 -- * 'laoReturnEnabled' - Whether the contents of the field can be returned in the search results.
 --
@@ -1484,7 +1484,7 @@ literalArrayOptions =
     }
 
 
--- | A list of source fields to map to the field.
+-- | A list of source fields to map to the field. 
 laoSourceFields :: Lens' LiteralArrayOptions (Maybe Text)
 laoSourceFields = lens _laoSourceFields (\ s a -> s{_laoSourceFields = a})
 
@@ -1531,12 +1531,12 @@ instance ToQuery LiteralArrayOptions where
 --
 -- /See:/ 'literalOptions' smart constructor.
 data LiteralOptions = LiteralOptions'
-  { _loSourceField   :: !(Maybe Text)
+  { _loSourceField :: !(Maybe Text)
   , _loReturnEnabled :: !(Maybe Bool)
-  , _loFacetEnabled  :: !(Maybe Bool)
+  , _loFacetEnabled :: !(Maybe Bool)
   , _loSearchEnabled :: !(Maybe Bool)
-  , _loSortEnabled   :: !(Maybe Bool)
-  , _loDefaultValue  :: !(Maybe Text)
+  , _loSortEnabled :: !(Maybe Bool)
+  , _loDefaultValue :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1622,10 +1622,10 @@ instance ToQuery LiteralOptions where
 -- /See:/ 'optionStatus' smart constructor.
 data OptionStatus = OptionStatus'
   { _osPendingDeletion :: !(Maybe Bool)
-  , _osUpdateVersion   :: !(Maybe Nat)
-  , _osCreationDate    :: !ISO8601
-  , _osUpdateDate      :: !ISO8601
-  , _osState           :: !OptionState
+  , _osUpdateVersion :: !(Maybe Nat)
+  , _osCreationDate :: !ISO8601
+  , _osUpdateDate :: !ISO8601
+  , _osState :: !OptionState
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1695,9 +1695,9 @@ instance NFData OptionStatus where
 --
 -- /See:/ 'scalingParameters' smart constructor.
 data ScalingParameters = ScalingParameters'
-  { _spDesiredInstanceType     :: !(Maybe PartitionInstanceType)
+  { _spDesiredInstanceType :: !(Maybe PartitionInstanceType)
   , _spDesiredReplicationCount :: !(Maybe Nat)
-  , _spDesiredPartitionCount   :: !(Maybe Nat)
+  , _spDesiredPartitionCount :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1751,14 +1751,14 @@ instance ToQuery ScalingParameters where
                  _spDesiredReplicationCount,
                "DesiredPartitionCount" =: _spDesiredPartitionCount]
 
--- | The status and configuration of a search domain's scaling parameters.
+-- | The status and configuration of a search domain's scaling parameters. 
 --
 --
 --
 -- /See:/ 'scalingParametersStatus' smart constructor.
 data ScalingParametersStatus = ScalingParametersStatus'
   { _spsOptions :: !ScalingParameters
-  , _spsStatus  :: !OptionStatus
+  , _spsStatus :: !OptionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1825,13 +1825,13 @@ instance Hashable ServiceEndpoint where
 
 instance NFData ServiceEndpoint where
 
--- | Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: @FuzzyMatching@ , @SortExpression@ .
+-- | Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: @FuzzyMatching@ , @SortExpression@ . 
 --
 --
 --
 -- /See:/ 'suggester' smart constructor.
 data Suggester = Suggester'
-  { _sSuggesterName            :: !Text
+  { _sSuggesterName :: !Text
   , _sDocumentSuggesterOptions :: !DocumentSuggesterOptions
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1886,7 +1886,7 @@ instance ToQuery Suggester where
 -- /See:/ 'suggesterStatus' smart constructor.
 data SuggesterStatus = SuggesterStatus'
   { _ssOptions :: !Suggester
-  , _ssStatus  :: !OptionStatus
+  , _ssStatus :: !OptionStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1928,11 +1928,11 @@ instance NFData SuggesterStatus where
 --
 -- /See:/ 'textArrayOptions' smart constructor.
 data TextArrayOptions = TextArrayOptions'
-  { _taoSourceFields     :: !(Maybe Text)
-  , _taoReturnEnabled    :: !(Maybe Bool)
-  , _taoAnalysisScheme   :: !(Maybe Text)
+  { _taoSourceFields :: !(Maybe Text)
+  , _taoReturnEnabled :: !(Maybe Bool)
+  , _taoAnalysisScheme :: !(Maybe Text)
   , _taoHighlightEnabled :: !(Maybe Bool)
-  , _taoDefaultValue     :: !(Maybe Text)
+  , _taoDefaultValue :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1940,7 +1940,7 @@ data TextArrayOptions = TextArrayOptions'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'taoSourceFields' - A list of source fields to map to the field.
+-- * 'taoSourceFields' - A list of source fields to map to the field. 
 --
 -- * 'taoReturnEnabled' - Whether the contents of the field can be returned in the search results.
 --
@@ -1961,7 +1961,7 @@ textArrayOptions =
     }
 
 
--- | A list of source fields to map to the field.
+-- | A list of source fields to map to the field. 
 taoSourceFields :: Lens' TextArrayOptions (Maybe Text)
 taoSourceFields = lens _taoSourceFields (\ s a -> s{_taoSourceFields = a})
 
@@ -2008,12 +2008,12 @@ instance ToQuery TextArrayOptions where
 --
 -- /See:/ 'textOptions' smart constructor.
 data TextOptions = TextOptions'
-  { _toSourceField      :: !(Maybe Text)
-  , _toReturnEnabled    :: !(Maybe Bool)
-  , _toAnalysisScheme   :: !(Maybe Text)
+  { _toSourceField :: !(Maybe Text)
+  , _toReturnEnabled :: !(Maybe Bool)
+  , _toAnalysisScheme :: !(Maybe Text)
   , _toHighlightEnabled :: !(Maybe Bool)
-  , _toSortEnabled      :: !(Maybe Bool)
-  , _toDefaultValue     :: !(Maybe Text)
+  , _toSortEnabled :: !(Maybe Bool)
+  , _toDefaultValue :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

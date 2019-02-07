@@ -55,8 +55,8 @@ import Network.AWS.Response
 -- /See:/ 'updateDeployment' smart constructor.
 data UpdateDeployment = UpdateDeployment'
   { _udPatchOperations :: !(Maybe [PatchOperation])
-  , _udRestAPIId       :: !Text
-  , _udDeploymentId    :: !Text
+  , _udRestAPIId :: !Text
+  , _udDeploymentId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

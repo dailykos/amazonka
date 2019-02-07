@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociates the specified tags from the specified AppStream 2.0 resource.
+-- Disassociates one or more specified tags from the specified AppStream 2.0 resource.
 --
 --
 -- To list the current tags for your resources, use 'ListTagsForResource' .
@@ -51,7 +51,7 @@ import Network.AWS.Response
 -- | /See:/ 'untagResource' smart constructor.
 data UntagResource = UntagResource'
   { _urResourceARN :: !Text
-  , _urTagKeys     :: !(List1 Text)
+  , _urTagKeys :: !(List1 Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

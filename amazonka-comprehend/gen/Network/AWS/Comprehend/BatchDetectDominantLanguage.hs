@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see <http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> .
+-- Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see <http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> . 
 --
 --
 module Network.AWS.Comprehend.BatchDetectDominantLanguage
@@ -106,8 +106,8 @@ instance ToQuery BatchDetectDominantLanguage where
 -- | /See:/ 'batchDetectDominantLanguageResponse' smart constructor.
 data BatchDetectDominantLanguageResponse = BatchDetectDominantLanguageResponse'
   { _bddlrsResponseStatus :: !Int
-  , _bddlrsResultList     :: ![BatchDetectDominantLanguageItemResult]
-  , _bddlrsErrorList      :: ![BatchItemError]
+  , _bddlrsResultList :: ![BatchDetectDominantLanguageItemResult]
+  , _bddlrsErrorList :: ![BatchItemError]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

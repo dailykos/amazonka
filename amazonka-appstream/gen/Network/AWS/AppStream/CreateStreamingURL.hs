@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a URL to start a streaming session for the specified user.
+-- Creates a temporary URL to start an AppStream 2.0 streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup. 
 --
 --
 module Network.AWS.AppStream.CreateStreamingURL
@@ -53,11 +53,11 @@ import Network.AWS.Response
 -- | /See:/ 'createStreamingURL' smart constructor.
 data CreateStreamingURL = CreateStreamingURL'
   { _csuSessionContext :: !(Maybe Text)
-  , _csuApplicationId  :: !(Maybe Text)
-  , _csuValidity       :: !(Maybe Integer)
-  , _csuStackName      :: !Text
-  , _csuFleetName      :: !Text
-  , _csuUserId         :: !Text
+  , _csuApplicationId :: !(Maybe Text)
+  , _csuValidity :: !(Maybe Integer)
+  , _csuStackName :: !Text
+  , _csuFleetName :: !Text
+  , _csuUserId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -75,7 +75,7 @@ data CreateStreamingURL = CreateStreamingURL'
 --
 -- * 'csuFleetName' - The name of the fleet.
 --
--- * 'csuUserId' - The ID of the user.
+-- * 'csuUserId' - The identifier of the user.
 createStreamingURL
     :: Text -- ^ 'csuStackName'
     -> Text -- ^ 'csuFleetName'
@@ -112,7 +112,7 @@ csuStackName = lens _csuStackName (\ s a -> s{_csuStackName = a})
 csuFleetName :: Lens' CreateStreamingURL Text
 csuFleetName = lens _csuFleetName (\ s a -> s{_csuFleetName = a})
 
--- | The ID of the user.
+-- | The identifier of the user.
 csuUserId :: Lens' CreateStreamingURL Text
 csuUserId = lens _csuUserId (\ s a -> s{_csuUserId = a})
 
@@ -160,8 +160,8 @@ instance ToQuery CreateStreamingURL where
 
 -- | /See:/ 'createStreamingURLResponse' smart constructor.
 data CreateStreamingURLResponse = CreateStreamingURLResponse'
-  { _csursStreamingURL   :: !(Maybe Text)
-  , _csursExpires        :: !(Maybe POSIX)
+  { _csursStreamingURL :: !(Maybe Text)
+  , _csursExpires :: !(Maybe POSIX)
   , _csursResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

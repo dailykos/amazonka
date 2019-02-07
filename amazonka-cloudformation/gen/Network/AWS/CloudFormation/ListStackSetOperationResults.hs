@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns summary information about the results of a stack set operation.
+-- Returns summary information about the results of a stack set operation. 
 --
 --
 module Network.AWS.CloudFormation.ListStackSetOperationResults
@@ -50,10 +50,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'listStackSetOperationResults' smart constructor.
 data ListStackSetOperationResults = ListStackSetOperationResults'
-  { _lssorNextToken    :: !(Maybe Text)
-  , _lssorMaxResults   :: !(Maybe Nat)
+  { _lssorNextToken :: !(Maybe Text)
+  , _lssorMaxResults :: !(Maybe Nat)
   , _lssorStackSetName :: !Text
-  , _lssorOperationId  :: !Text
+  , _lssorOperationId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -135,8 +135,8 @@ instance ToQuery ListStackSetOperationResults where
 
 -- | /See:/ 'listStackSetOperationResultsResponse' smart constructor.
 data ListStackSetOperationResultsResponse = ListStackSetOperationResultsResponse'
-  { _lssorrsNextToken      :: !(Maybe Text)
-  , _lssorrsSummaries      :: !(Maybe [StackSetOperationResultSummary])
+  { _lssorrsNextToken :: !(Maybe Text)
+  , _lssorrsSummaries :: !(Maybe [StackSetOperationResultSummary])
   , _lssorrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

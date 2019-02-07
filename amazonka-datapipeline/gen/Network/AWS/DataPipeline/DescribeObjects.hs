@@ -59,9 +59,9 @@ import Network.AWS.Response
 -- /See:/ 'describeObjects' smart constructor.
 data DescribeObjects = DescribeObjects'
   { _doEvaluateExpressions :: !(Maybe Bool)
-  , _doMarker              :: !(Maybe Text)
-  , _doPipelineId          :: !Text
-  , _doObjectIds           :: ![Text]
+  , _doMarker :: !(Maybe Text)
+  , _doPipelineId :: !Text
+  , _doObjectIds :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -157,9 +157,9 @@ instance ToQuery DescribeObjects where
 --
 -- /See:/ 'describeObjectsResponse' smart constructor.
 data DescribeObjectsResponse = DescribeObjectsResponse'
-  { _dorsHasMoreResults  :: !(Maybe Bool)
-  , _dorsMarker          :: !(Maybe Text)
-  , _dorsResponseStatus  :: !Int
+  { _dorsHasMoreResults :: !(Maybe Bool)
+  , _dorsMarker :: !(Maybe Text)
+  , _dorsResponseStatus :: !Int
   , _dorsPipelineObjects :: ![PipelineObject]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

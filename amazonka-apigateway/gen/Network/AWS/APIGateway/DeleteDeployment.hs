@@ -48,7 +48,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'deleteDeployment' smart constructor.
 data DeleteDeployment = DeleteDeployment'
-  { _ddRestAPIId    :: !Text
+  { _ddRestAPIId :: !Text
   , _ddDeploymentId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

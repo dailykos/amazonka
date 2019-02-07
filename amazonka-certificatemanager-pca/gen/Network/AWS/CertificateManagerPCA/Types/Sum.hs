@@ -79,6 +79,7 @@ instance FromJSON AuditReportStatus where
 data CertificateAuthorityStatus
   = Active
   | Creating
+  | Deleted
   | Disabled
   | Expired
   | Failed
@@ -90,17 +91,19 @@ instance FromText CertificateAuthorityStatus where
     parser = takeLowerText >>= \case
         "active" -> pure Active
         "creating" -> pure Creating
+        "deleted" -> pure Deleted
         "disabled" -> pure Disabled
         "expired" -> pure Expired
         "failed" -> pure Failed
         "pending_certificate" -> pure PendingCertificate
         e -> fromTextError $ "Failure parsing CertificateAuthorityStatus from value: '" <> e
-           <> "'. Accepted values: active, creating, disabled, expired, failed, pending_certificate"
+           <> "'. Accepted values: active, creating, deleted, disabled, expired, failed, pending_certificate"
 
 instance ToText CertificateAuthorityStatus where
     toText = \case
         Active -> "ACTIVE"
         Creating -> "CREATING"
+        Deleted -> "DELETED"
         Disabled -> "DISABLED"
         Expired -> "EXPIRED"
         Failed -> "FAILED"

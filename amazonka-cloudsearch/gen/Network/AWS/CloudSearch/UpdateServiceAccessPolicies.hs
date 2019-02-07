@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateServiceAccessPolicies' smart constructor.
 data UpdateServiceAccessPolicies = UpdateServiceAccessPolicies'
-  { _usapDomainName     :: !Text
+  { _usapDomainName :: !Text
   , _usapAccessPolicies :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -62,7 +62,7 @@ data UpdateServiceAccessPolicies = UpdateServiceAccessPolicies'
 --
 -- * 'usapDomainName' - Undocumented member.
 --
--- * 'usapAccessPolicies' - The access rules you want to configure. These rules replace any existing rules.
+-- * 'usapAccessPolicies' - The access rules you want to configure. These rules replace any existing rules. 
 updateServiceAccessPolicies
     :: Text -- ^ 'usapDomainName'
     -> Text -- ^ 'usapAccessPolicies'
@@ -76,7 +76,7 @@ updateServiceAccessPolicies pDomainName_ pAccessPolicies_ =
 usapDomainName :: Lens' UpdateServiceAccessPolicies Text
 usapDomainName = lens _usapDomainName (\ s a -> s{_usapDomainName = a})
 
--- | The access rules you want to configure. These rules replace any existing rules.
+-- | The access rules you want to configure. These rules replace any existing rules. 
 usapAccessPolicies :: Lens' UpdateServiceAccessPolicies Text
 usapAccessPolicies = lens _usapAccessPolicies (\ s a -> s{_usapAccessPolicies = a})
 

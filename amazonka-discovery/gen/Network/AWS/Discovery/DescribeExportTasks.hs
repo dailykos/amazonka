@@ -21,6 +21,8 @@
 -- Retrieve status of one or more export tasks. You can retrieve the status of up to 100 export tasks.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Discovery.DescribeExportTasks
     (
     -- * Creating a Request
@@ -44,15 +46,16 @@ module Network.AWS.Discovery.DescribeExportTasks
 import Network.AWS.Discovery.Types
 import Network.AWS.Discovery.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeExportTasks' smart constructor.
 data DescribeExportTasks = DescribeExportTasks'
-  { _detFilters    :: !(Maybe [ExportFilter])
-  , _detNextToken  :: !(Maybe Text)
-  , _detExportIds  :: !(Maybe [Text])
+  { _detFilters :: !(Maybe [ExportFilter])
+  , _detNextToken :: !(Maybe Text)
+  , _detExportIds :: !(Maybe [Text])
   , _detMaxResults :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -94,6 +97,13 @@ detExportIds = lens _detExportIds (\ s a -> s{_detExportIds = a}) . _Default . _
 -- | The maximum number of volume results returned by @DescribeExportTasks@ in paginated output. When this parameter is used, @DescribeExportTasks@ only returns @maxResults@ results in a single page along with a @nextToken@ response element.
 detMaxResults :: Lens' DescribeExportTasks (Maybe Int)
 detMaxResults = lens _detMaxResults (\ s a -> s{_detMaxResults = a})
+
+instance AWSPager DescribeExportTasks where
+        page rq rs
+          | stop (rs ^. detrsNextToken) = Nothing
+          | stop (rs ^. detrsExportsInfo) = Nothing
+          | otherwise =
+            Just $ rq & detNextToken .~ rs ^. detrsNextToken
 
 instance AWSRequest DescribeExportTasks where
         type Rs DescribeExportTasks =
@@ -138,8 +148,8 @@ instance ToQuery DescribeExportTasks where
 
 -- | /See:/ 'describeExportTasksResponse' smart constructor.
 data DescribeExportTasksResponse = DescribeExportTasksResponse'
-  { _detrsNextToken      :: !(Maybe Text)
-  , _detrsExportsInfo    :: !(Maybe [ExportInfo])
+  { _detrsNextToken :: !(Maybe Text)
+  , _detrsExportsInfo :: !(Maybe [ExportInfo])
   , _detrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

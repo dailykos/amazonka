@@ -56,12 +56,12 @@ import Network.AWS.Response
 -- /See:/ 'confirmForgotPassword' smart constructor.
 data ConfirmForgotPassword = ConfirmForgotPassword'
   { _cfpAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-  , _cfpUserContextData   :: !(Maybe UserContextDataType)
-  , _cfpSecretHash        :: !(Maybe (Sensitive Text))
-  , _cfpClientId          :: !(Sensitive Text)
-  , _cfpUsername          :: !(Sensitive Text)
-  , _cfpConfirmationCode  :: !Text
-  , _cfpPassword          :: !(Sensitive Text)
+  , _cfpUserContextData :: !(Maybe UserContextDataType)
+  , _cfpSecretHash :: !(Maybe (Sensitive Text))
+  , _cfpClientId :: !(Sensitive Text)
+  , _cfpUsername :: !(Sensitive Text)
+  , _cfpConfirmationCode :: !Text
+  , _cfpPassword :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -79,7 +79,7 @@ data ConfirmForgotPassword = ConfirmForgotPassword'
 --
 -- * 'cfpUsername' - The user name of the user for whom you want to enter a code to retrieve a forgotten password.
 --
--- * 'cfpConfirmationCode' - The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see
+-- * 'cfpConfirmationCode' - The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see 
 --
 -- * 'cfpPassword' - The password sent by a user's request to retrieve a forgotten password.
 confirmForgotPassword
@@ -120,7 +120,7 @@ cfpClientId = lens _cfpClientId (\ s a -> s{_cfpClientId = a}) . _Sensitive
 cfpUsername :: Lens' ConfirmForgotPassword Text
 cfpUsername = lens _cfpUsername (\ s a -> s{_cfpUsername = a}) . _Sensitive
 
--- | The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see
+-- | The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see 
 cfpConfirmationCode :: Lens' ConfirmForgotPassword Text
 cfpConfirmationCode = lens _cfpConfirmationCode (\ s a -> s{_cfpConfirmationCode = a})
 

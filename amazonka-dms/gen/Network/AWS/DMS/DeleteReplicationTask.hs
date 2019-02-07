@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -107,14 +107,14 @@ instance ToPath DeleteReplicationTask where
 instance ToQuery DeleteReplicationTask where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteReplicationTaskResponse' smart constructor.
 data DeleteReplicationTaskResponse = DeleteReplicationTaskResponse'
   { _drtrsReplicationTask :: !(Maybe ReplicationTask)
-  , _drtrsResponseStatus  :: !Int
+  , _drtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

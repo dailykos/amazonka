@@ -99,7 +99,7 @@ instance ToQuery GetDirectoryLimits where
 -- /See:/ 'getDirectoryLimitsResponse' smart constructor.
 data GetDirectoryLimitsResponse = GetDirectoryLimitsResponse'
   { _gdlrsDirectoryLimits :: !(Maybe DirectoryLimits)
-  , _gdlrsResponseStatus  :: !Int
+  , _gdlrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -51,8 +51,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'disableSSO' smart constructor.
 data DisableSSO = DisableSSO'
-  { _dssoUserName    :: !(Maybe Text)
-  , _dssoPassword    :: !(Maybe (Sensitive Text))
+  { _dssoUserName :: !(Maybe Text)
+  , _dssoPassword :: !(Maybe (Sensitive Text))
   , _dssoDirectoryId :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 

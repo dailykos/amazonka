@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Allows a schema to be updated using JSON upload. Only available for development schemas. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat JSON Schema Format> for more information.
+-- Allows a schema to be updated using JSON upload. Only available for development schemas. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json JSON Schema Format> for more information.
 --
 --
 module Network.AWS.CloudDirectory.PutSchemaFromJSON
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'putSchemaFromJSON' smart constructor.
 data PutSchemaFromJSON = PutSchemaFromJSON'
   { _psfjSchemaARN :: !Text
-  , _psfjDocument  :: !Text
+  , _psfjDocument :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -107,7 +107,7 @@ instance ToQuery PutSchemaFromJSON where
 
 -- | /See:/ 'putSchemaFromJSONResponse' smart constructor.
 data PutSchemaFromJSONResponse = PutSchemaFromJSONResponse'
-  { _psfjrsARN            :: !(Maybe Text)
+  { _psfjrsARN :: !(Maybe Text)
   , _psfjrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

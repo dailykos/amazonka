@@ -21,13 +21,13 @@
 -- Adds or removes replicas in the specified global table. The global table must already exist to be able to use this operation. Any replica to be added must be empty, must have the same name as the global table, must have the same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity units.
 --
 --
--- If global secondary indexes are specified, then the following conditions must also be met:
+-- If global secondary indexes are specified, then the following conditions must also be met: 
 --
---     * The global secondary indexes must have the same name.
+--     * The global secondary indexes must have the same name. 
 --
---     * The global secondary indexes must have the same hash key and sort key (if present).
+--     * The global secondary indexes must have the same hash key and sort key (if present). 
 --
---     * The global secondary indexes must have the same provisioned and maximum write capacity units.
+--     * The global secondary indexes must have the same provisioned and maximum write capacity units. 
 --
 --
 --
@@ -58,7 +58,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateGlobalTable' smart constructor.
 data UpdateGlobalTable = UpdateGlobalTable'
   { _ugtGlobalTableName :: !Text
-  , _ugtReplicaUpdates  :: ![ReplicaUpdate]
+  , _ugtReplicaUpdates :: ![ReplicaUpdate]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -125,7 +125,7 @@ instance ToQuery UpdateGlobalTable where
 -- | /See:/ 'updateGlobalTableResponse' smart constructor.
 data UpdateGlobalTableResponse = UpdateGlobalTableResponse'
   { _ugtrsGlobalTableDescription :: !(Maybe GlobalTableDescription)
-  , _ugtrsResponseStatus         :: !Int
+  , _ugtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

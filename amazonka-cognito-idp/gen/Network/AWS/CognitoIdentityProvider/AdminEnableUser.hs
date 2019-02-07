@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'adminEnableUser' smart constructor.
 data AdminEnableUser = AdminEnableUser'
   { _aeuUserPoolId :: !Text
-  , _aeuUsername   :: !(Sensitive Text)
+  , _aeuUsername :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

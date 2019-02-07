@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'disassociateSkillGroupFromRoom' smart constructor.
 data DisassociateSkillGroupFromRoom = DisassociateSkillGroupFromRoom'
   { _dsgfrSkillGroupARN :: !(Maybe Text)
-  , _dsgfrRoomARN       :: !(Maybe Text)
+  , _dsgfrRoomARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

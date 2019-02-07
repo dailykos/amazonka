@@ -27,8 +27,8 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'blobMetadata' smart constructor.
 data BlobMetadata = BlobMetadata'
-  { _bmPath   :: !(Maybe Text)
-  , _bmMode   :: !(Maybe Text)
+  { _bmPath :: !(Maybe Text)
+  , _bmMode :: !(Maybe Text)
   , _bmBlobId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -78,7 +78,7 @@ instance NFData BlobMetadata where
 --
 -- /See:/ 'branchInfo' smart constructor.
 data BranchInfo = BranchInfo'
-  { _biCommitId   :: !(Maybe Text)
+  { _biCommitId :: !(Maybe Text)
   , _biBranchName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,14 +120,14 @@ instance NFData BranchInfo where
 --
 -- /See:/ 'comment' smart constructor.
 data Comment = Comment'
-  { _cLastModifiedDate   :: !(Maybe POSIX)
-  , _cAuthorARN          :: !(Maybe Text)
-  , _cContent            :: !(Maybe Text)
-  , _cCreationDate       :: !(Maybe POSIX)
-  , _cDeleted            :: !(Maybe Bool)
+  { _cLastModifiedDate :: !(Maybe POSIX)
+  , _cAuthorARN :: !(Maybe Text)
+  , _cContent :: !(Maybe Text)
+  , _cCreationDate :: !(Maybe POSIX)
+  , _cDeleted :: !(Maybe Bool)
   , _cClientRequestToken :: !(Maybe Text)
-  , _cCommentId          :: !(Maybe Text)
-  , _cInReplyTo          :: !(Maybe Text)
+  , _cCommentId :: !(Maybe Text)
+  , _cInReplyTo :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -220,13 +220,13 @@ instance NFData Comment where
 --
 -- /See:/ 'commentsForComparedCommit' smart constructor.
 data CommentsForComparedCommit = CommentsForComparedCommit'
-  { _cfccBeforeBlobId   :: !(Maybe Text)
-  , _cfccLocation       :: !(Maybe Location)
-  , _cfccAfterCommitId  :: !(Maybe Text)
-  , _cfccAfterBlobId    :: !(Maybe Text)
+  { _cfccBeforeBlobId :: !(Maybe Text)
+  , _cfccLocation :: !(Maybe Location)
+  , _cfccAfterCommitId :: !(Maybe Text)
+  , _cfccAfterBlobId :: !(Maybe Text)
   , _cfccBeforeCommitId :: !(Maybe Text)
   , _cfccRepositoryName :: !(Maybe Text)
-  , _cfccComments       :: !(Maybe [Comment])
+  , _cfccComments :: !(Maybe [Comment])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -311,14 +311,14 @@ instance NFData CommentsForComparedCommit where
 --
 -- /See:/ 'commentsForPullRequest' smart constructor.
 data CommentsForPullRequest = CommentsForPullRequest'
-  { _cfprBeforeBlobId   :: !(Maybe Text)
-  , _cfprLocation       :: !(Maybe Location)
-  , _cfprAfterCommitId  :: !(Maybe Text)
-  , _cfprPullRequestId  :: !(Maybe Text)
-  , _cfprAfterBlobId    :: !(Maybe Text)
+  { _cfprBeforeBlobId :: !(Maybe Text)
+  , _cfprLocation :: !(Maybe Location)
+  , _cfprAfterCommitId :: !(Maybe Text)
+  , _cfprPullRequestId :: !(Maybe Text)
+  , _cfprAfterBlobId :: !(Maybe Text)
   , _cfprBeforeCommitId :: !(Maybe Text)
   , _cfprRepositoryName :: !(Maybe Text)
-  , _cfprComments       :: !(Maybe [Comment])
+  , _cfprComments :: !(Maybe [Comment])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -330,7 +330,7 @@ data CommentsForPullRequest = CommentsForPullRequest'
 --
 -- * 'cfprLocation' - Location information about the comment on the pull request, including the file name, line number, and whether the version of the file where the comment was made is 'BEFORE' (destination branch) or 'AFTER' (source branch).
 --
--- * 'cfprAfterCommitId' - he full commit ID of the commit that was the tip of the source branch at the time the comment was made.
+-- * 'cfprAfterCommitId' - he full commit ID of the commit that was the tip of the source branch at the time the comment was made. 
 --
 -- * 'cfprPullRequestId' - The system-generated ID of the pull request.
 --
@@ -364,7 +364,7 @@ cfprBeforeBlobId = lens _cfprBeforeBlobId (\ s a -> s{_cfprBeforeBlobId = a})
 cfprLocation :: Lens' CommentsForPullRequest (Maybe Location)
 cfprLocation = lens _cfprLocation (\ s a -> s{_cfprLocation = a})
 
--- | he full commit ID of the commit that was the tip of the source branch at the time the comment was made.
+-- | he full commit ID of the commit that was the tip of the source branch at the time the comment was made. 
 cfprAfterCommitId :: Lens' CommentsForPullRequest (Maybe Text)
 cfprAfterCommitId = lens _cfprAfterCommitId (\ s a -> s{_cfprAfterCommitId = a})
 
@@ -411,13 +411,13 @@ instance NFData CommentsForPullRequest where
 --
 -- /See:/ 'commit' smart constructor.
 data Commit = Commit'
-  { _cCommitId       :: !(Maybe Text)
-  , _cCommitter      :: !(Maybe UserInfo)
-  , _cTreeId         :: !(Maybe Text)
+  { _cCommitId :: !(Maybe Text)
+  , _cCommitter :: !(Maybe UserInfo)
+  , _cTreeId :: !(Maybe Text)
   , _cAdditionalData :: !(Maybe Text)
-  , _cParents        :: !(Maybe [Text])
-  , _cAuthor         :: !(Maybe UserInfo)
-  , _cMessage        :: !(Maybe Text)
+  , _cParents :: !(Maybe [Text])
+  , _cAuthor :: !(Maybe UserInfo)
+  , _cMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -425,7 +425,7 @@ data Commit = Commit'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cCommitId' - The full SHA of the specified commit.
+-- * 'cCommitId' - The full SHA of the specified commit. 
 --
 -- * 'cCommitter' - Information about the person who committed the specified commit, also known as the committer. Information includes the date in timestamp format with GMT offset, the name of the committer, and the email address for the committer, as configured in Git. For more information about the difference between an author and a committer in Git, see <http://git-scm.com/book/ch2-3.html Viewing the Commit History> in Pro Git by Scott Chacon and Ben Straub.
 --
@@ -452,7 +452,7 @@ commit =
     }
 
 
--- | The full SHA of the specified commit.
+-- | The full SHA of the specified commit. 
 cCommitId :: Lens' Commit (Maybe Text)
 cCommitId = lens _cCommitId (\ s a -> s{_cCommitId = a})
 
@@ -502,7 +502,7 @@ instance NFData Commit where
 --
 -- /See:/ 'difference' smart constructor.
 data Difference = Difference'
-  { _dAfterBlob  :: !(Maybe BlobMetadata)
+  { _dAfterBlob :: !(Maybe BlobMetadata)
   , _dBeforeBlob :: !(Maybe BlobMetadata)
   , _dChangeType :: !(Maybe ChangeTypeEnum)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -548,6 +548,125 @@ instance Hashable Difference where
 
 instance NFData Difference where
 
+-- | Returns information about a file in a repository.
+--
+--
+--
+-- /See:/ 'file' smart constructor.
+data File = File'
+  { _fAbsolutePath :: !(Maybe Text)
+  , _fFileMode :: !(Maybe FileModeTypeEnum)
+  , _fBlobId :: !(Maybe Text)
+  , _fRelativePath :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'File' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fAbsolutePath' - The fully-qualified path to the file in the repository.
+--
+-- * 'fFileMode' - The extrapolated file mode permissions for the file. Valid values include EXECUTABLE and NORMAL.
+--
+-- * 'fBlobId' - The blob ID that contains the file information.
+--
+-- * 'fRelativePath' - The relative path of the file from the folder where the query originated.
+file
+    :: File
+file =
+  File'
+    { _fAbsolutePath = Nothing
+    , _fFileMode = Nothing
+    , _fBlobId = Nothing
+    , _fRelativePath = Nothing
+    }
+
+
+-- | The fully-qualified path to the file in the repository.
+fAbsolutePath :: Lens' File (Maybe Text)
+fAbsolutePath = lens _fAbsolutePath (\ s a -> s{_fAbsolutePath = a})
+
+-- | The extrapolated file mode permissions for the file. Valid values include EXECUTABLE and NORMAL.
+fFileMode :: Lens' File (Maybe FileModeTypeEnum)
+fFileMode = lens _fFileMode (\ s a -> s{_fFileMode = a})
+
+-- | The blob ID that contains the file information.
+fBlobId :: Lens' File (Maybe Text)
+fBlobId = lens _fBlobId (\ s a -> s{_fBlobId = a})
+
+-- | The relative path of the file from the folder where the query originated.
+fRelativePath :: Lens' File (Maybe Text)
+fRelativePath = lens _fRelativePath (\ s a -> s{_fRelativePath = a})
+
+instance FromJSON File where
+        parseJSON
+          = withObject "File"
+              (\ x ->
+                 File' <$>
+                   (x .:? "absolutePath") <*> (x .:? "fileMode") <*>
+                     (x .:? "blobId")
+                     <*> (x .:? "relativePath"))
+
+instance Hashable File where
+
+instance NFData File where
+
+-- | Returns information about a folder in a repository.
+--
+--
+--
+-- /See:/ 'folder' smart constructor.
+data Folder = Folder'
+  { _folAbsolutePath :: !(Maybe Text)
+  , _folTreeId :: !(Maybe Text)
+  , _folRelativePath :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'Folder' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'folAbsolutePath' - The fully-qualified path of the folder in the repository.
+--
+-- * 'folTreeId' - The full SHA-1 pointer of the tree information for the commit that contains the folder.
+--
+-- * 'folRelativePath' - The relative path of the specified folder from the folder where the query originated.
+folder
+    :: Folder
+folder =
+  Folder'
+    { _folAbsolutePath = Nothing
+    , _folTreeId = Nothing
+    , _folRelativePath = Nothing
+    }
+
+
+-- | The fully-qualified path of the folder in the repository.
+folAbsolutePath :: Lens' Folder (Maybe Text)
+folAbsolutePath = lens _folAbsolutePath (\ s a -> s{_folAbsolutePath = a})
+
+-- | The full SHA-1 pointer of the tree information for the commit that contains the folder.
+folTreeId :: Lens' Folder (Maybe Text)
+folTreeId = lens _folTreeId (\ s a -> s{_folTreeId = a})
+
+-- | The relative path of the specified folder from the folder where the query originated.
+folRelativePath :: Lens' Folder (Maybe Text)
+folRelativePath = lens _folRelativePath (\ s a -> s{_folRelativePath = a})
+
+instance FromJSON Folder where
+        parseJSON
+          = withObject "Folder"
+              (\ x ->
+                 Folder' <$>
+                   (x .:? "absolutePath") <*> (x .:? "treeId") <*>
+                     (x .:? "relativePath"))
+
+instance Hashable Folder where
+
+instance NFData Folder where
+
 -- | Returns information about the location of a change or comment in the comparison between two commits or a pull request.
 --
 --
@@ -555,8 +674,8 @@ instance NFData Difference where
 -- /See:/ 'location' smart constructor.
 data Location = Location'
   { _lRelativeFileVersion :: !(Maybe RelativeFileVersionEnum)
-  , _lFilePath            :: !(Maybe Text)
-  , _lFilePosition        :: !(Maybe Integer)
+  , _lFilePath :: !(Maybe Text)
+  , _lFilePosition :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -660,15 +779,15 @@ instance NFData MergeMetadata where
 --
 -- /See:/ 'pullRequest' smart constructor.
 data PullRequest = PullRequest'
-  { _prAuthorARN          :: !(Maybe Text)
-  , _prPullRequestId      :: !(Maybe Text)
-  , _prCreationDate       :: !(Maybe POSIX)
-  , _prPullRequestStatus  :: !(Maybe PullRequestStatusEnum)
-  , _prTitle              :: !(Maybe Text)
+  { _prAuthorARN :: !(Maybe Text)
+  , _prPullRequestId :: !(Maybe Text)
+  , _prCreationDate :: !(Maybe POSIX)
+  , _prPullRequestStatus :: !(Maybe PullRequestStatusEnum)
+  , _prTitle :: !(Maybe Text)
   , _prClientRequestToken :: !(Maybe Text)
-  , _prLastActivityDate   :: !(Maybe POSIX)
+  , _prLastActivityDate :: !(Maybe POSIX)
   , _prPullRequestTargets :: !(Maybe [PullRequestTarget])
-  , _prDescription        :: !(Maybe Text)
+  , _prDescription :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -678,7 +797,7 @@ data PullRequest = PullRequest'
 --
 -- * 'prAuthorARN' - The Amazon Resource Name (ARN) of the user who created the pull request.
 --
--- * 'prPullRequestId' - The system-generated ID of the pull request.
+-- * 'prPullRequestId' - The system-generated ID of the pull request. 
 --
 -- * 'prCreationDate' - The date and time the pull request was originally created, in timestamp format.
 --
@@ -713,7 +832,7 @@ pullRequest =
 prAuthorARN :: Lens' PullRequest (Maybe Text)
 prAuthorARN = lens _prAuthorARN (\ s a -> s{_prAuthorARN = a})
 
--- | The system-generated ID of the pull request.
+-- | The system-generated ID of the pull request. 
 prPullRequestId :: Lens' PullRequest (Maybe Text)
 prPullRequestId = lens _prPullRequestId (\ s a -> s{_prPullRequestId = a})
 
@@ -763,6 +882,72 @@ instance Hashable PullRequest where
 
 instance NFData PullRequest where
 
+-- | Metadata about the pull request that is used when comparing the pull request source with its destination.
+--
+--
+--
+-- /See:/ 'pullRequestCreatedEventMetadata' smart constructor.
+data PullRequestCreatedEventMetadata = PullRequestCreatedEventMetadata'
+  { _prcemDestinationCommitId :: !(Maybe Text)
+  , _prcemMergeBase :: !(Maybe Text)
+  , _prcemRepositoryName :: !(Maybe Text)
+  , _prcemSourceCommitId :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'PullRequestCreatedEventMetadata' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'prcemDestinationCommitId' - The commit ID of the tip of the branch specified as the destination branch when the pull request was created.
+--
+-- * 'prcemMergeBase' - The commit ID of the most recent commit that the source branch and the destination branch have in common.
+--
+-- * 'prcemRepositoryName' - The name of the repository where the pull request was created.
+--
+-- * 'prcemSourceCommitId' - The commit ID on the source branch used when the pull request was created.
+pullRequestCreatedEventMetadata
+    :: PullRequestCreatedEventMetadata
+pullRequestCreatedEventMetadata =
+  PullRequestCreatedEventMetadata'
+    { _prcemDestinationCommitId = Nothing
+    , _prcemMergeBase = Nothing
+    , _prcemRepositoryName = Nothing
+    , _prcemSourceCommitId = Nothing
+    }
+
+
+-- | The commit ID of the tip of the branch specified as the destination branch when the pull request was created.
+prcemDestinationCommitId :: Lens' PullRequestCreatedEventMetadata (Maybe Text)
+prcemDestinationCommitId = lens _prcemDestinationCommitId (\ s a -> s{_prcemDestinationCommitId = a})
+
+-- | The commit ID of the most recent commit that the source branch and the destination branch have in common.
+prcemMergeBase :: Lens' PullRequestCreatedEventMetadata (Maybe Text)
+prcemMergeBase = lens _prcemMergeBase (\ s a -> s{_prcemMergeBase = a})
+
+-- | The name of the repository where the pull request was created.
+prcemRepositoryName :: Lens' PullRequestCreatedEventMetadata (Maybe Text)
+prcemRepositoryName = lens _prcemRepositoryName (\ s a -> s{_prcemRepositoryName = a})
+
+-- | The commit ID on the source branch used when the pull request was created.
+prcemSourceCommitId :: Lens' PullRequestCreatedEventMetadata (Maybe Text)
+prcemSourceCommitId = lens _prcemSourceCommitId (\ s a -> s{_prcemSourceCommitId = a})
+
+instance FromJSON PullRequestCreatedEventMetadata
+         where
+        parseJSON
+          = withObject "PullRequestCreatedEventMetadata"
+              (\ x ->
+                 PullRequestCreatedEventMetadata' <$>
+                   (x .:? "destinationCommitId") <*> (x .:? "mergeBase")
+                     <*> (x .:? "repositoryName")
+                     <*> (x .:? "sourceCommitId"))
+
+instance Hashable PullRequestCreatedEventMetadata
+         where
+
+instance NFData PullRequestCreatedEventMetadata where
+
 -- | Returns information about a pull request event.
 --
 --
@@ -770,6 +955,7 @@ instance NFData PullRequest where
 -- /See:/ 'pullRequestEvent' smart constructor.
 data PullRequestEvent = PullRequestEvent'
   { _prePullRequestMergedStateChangedEventMetadata :: !(Maybe PullRequestMergedStateChangedEventMetadata)
+  , _prePullRequestCreatedEventMetadata :: !(Maybe PullRequestCreatedEventMetadata)
   , _prePullRequestEventType :: !(Maybe PullRequestEventType)
   , _prePullRequestStatusChangedEventMetadata :: !(Maybe PullRequestStatusChangedEventMetadata)
   , _preActorARN :: !(Maybe Text)
@@ -785,6 +971,8 @@ data PullRequestEvent = PullRequestEvent'
 --
 -- * 'prePullRequestMergedStateChangedEventMetadata' - Information about the change in mergability state for the pull request event.
 --
+-- * 'prePullRequestCreatedEventMetadata' - Information about the source and destination branches for the pull request.
+--
 -- * 'prePullRequestEventType' - The type of the pull request event, for example a status change event (PULL_REQUEST_STATUS_CHANGED) or update event (PULL_REQUEST_SOURCE_REFERENCE_UPDATED).
 --
 -- * 'prePullRequestStatusChangedEventMetadata' - Information about the change in status for the pull request event.
@@ -795,12 +983,13 @@ data PullRequestEvent = PullRequestEvent'
 --
 -- * 'preEventDate' - The day and time of the pull request event, in timestamp format.
 --
--- * 'prePullRequestSourceReferenceUpdatedEventMetadata' - Information about the updated source branch for the pull request event.
+-- * 'prePullRequestSourceReferenceUpdatedEventMetadata' - Information about the updated source branch for the pull request event. 
 pullRequestEvent
     :: PullRequestEvent
 pullRequestEvent =
   PullRequestEvent'
     { _prePullRequestMergedStateChangedEventMetadata = Nothing
+    , _prePullRequestCreatedEventMetadata = Nothing
     , _prePullRequestEventType = Nothing
     , _prePullRequestStatusChangedEventMetadata = Nothing
     , _preActorARN = Nothing
@@ -813,6 +1002,10 @@ pullRequestEvent =
 -- | Information about the change in mergability state for the pull request event.
 prePullRequestMergedStateChangedEventMetadata :: Lens' PullRequestEvent (Maybe PullRequestMergedStateChangedEventMetadata)
 prePullRequestMergedStateChangedEventMetadata = lens _prePullRequestMergedStateChangedEventMetadata (\ s a -> s{_prePullRequestMergedStateChangedEventMetadata = a})
+
+-- | Information about the source and destination branches for the pull request.
+prePullRequestCreatedEventMetadata :: Lens' PullRequestEvent (Maybe PullRequestCreatedEventMetadata)
+prePullRequestCreatedEventMetadata = lens _prePullRequestCreatedEventMetadata (\ s a -> s{_prePullRequestCreatedEventMetadata = a})
 
 -- | The type of the pull request event, for example a status change event (PULL_REQUEST_STATUS_CHANGED) or update event (PULL_REQUEST_SOURCE_REFERENCE_UPDATED).
 prePullRequestEventType :: Lens' PullRequestEvent (Maybe PullRequestEventType)
@@ -834,7 +1027,7 @@ prePullRequestId = lens _prePullRequestId (\ s a -> s{_prePullRequestId = a})
 preEventDate :: Lens' PullRequestEvent (Maybe UTCTime)
 preEventDate = lens _preEventDate (\ s a -> s{_preEventDate = a}) . mapping _Time
 
--- | Information about the updated source branch for the pull request event.
+-- | Information about the updated source branch for the pull request event. 
 prePullRequestSourceReferenceUpdatedEventMetadata :: Lens' PullRequestEvent (Maybe PullRequestSourceReferenceUpdatedEventMetadata)
 prePullRequestSourceReferenceUpdatedEventMetadata = lens _prePullRequestSourceReferenceUpdatedEventMetadata (\ s a -> s{_prePullRequestSourceReferenceUpdatedEventMetadata = a})
 
@@ -844,6 +1037,7 @@ instance FromJSON PullRequestEvent where
               (\ x ->
                  PullRequestEvent' <$>
                    (x .:? "pullRequestMergedStateChangedEventMetadata")
+                     <*> (x .:? "pullRequestCreatedEventMetadata")
                      <*> (x .:? "pullRequestEventType")
                      <*> (x .:? "pullRequestStatusChangedEventMetadata")
                      <*> (x .:? "actorArn")
@@ -857,15 +1051,15 @@ instance Hashable PullRequestEvent where
 
 instance NFData PullRequestEvent where
 
--- | Returns information about the change in the merge state for a pull request event.
+-- | Returns information about the change in the merge state for a pull request event. 
 --
 --
 --
 -- /See:/ 'pullRequestMergedStateChangedEventMetadata' smart constructor.
 data PullRequestMergedStateChangedEventMetadata = PullRequestMergedStateChangedEventMetadata'
   { _prmscemDestinationReference :: !(Maybe Text)
-  , _prmscemMergeMetadata        :: !(Maybe MergeMetadata)
-  , _prmscemRepositoryName       :: !(Maybe Text)
+  , _prmscemMergeMetadata :: !(Maybe MergeMetadata)
+  , _prmscemRepositoryName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -926,8 +1120,9 @@ instance NFData
 --
 -- /See:/ 'pullRequestSourceReferenceUpdatedEventMetadata' smart constructor.
 data PullRequestSourceReferenceUpdatedEventMetadata = PullRequestSourceReferenceUpdatedEventMetadata'
-  { _prsruemAfterCommitId  :: !(Maybe Text)
+  { _prsruemAfterCommitId :: !(Maybe Text)
   , _prsruemBeforeCommitId :: !(Maybe Text)
+  , _prsruemMergeBase :: !(Maybe Text)
   , _prsruemRepositoryName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -940,6 +1135,8 @@ data PullRequestSourceReferenceUpdatedEventMetadata = PullRequestSourceReference
 --
 -- * 'prsruemBeforeCommitId' - The full commit ID of the commit in the destination branch that was the tip of the branch at the time the pull request was updated.
 --
+-- * 'prsruemMergeBase' - The commit ID of the most recent commit that the source branch and the destination branch have in common.
+--
 -- * 'prsruemRepositoryName' - The name of the repository where the pull request was updated.
 pullRequestSourceReferenceUpdatedEventMetadata
     :: PullRequestSourceReferenceUpdatedEventMetadata
@@ -947,6 +1144,7 @@ pullRequestSourceReferenceUpdatedEventMetadata =
   PullRequestSourceReferenceUpdatedEventMetadata'
     { _prsruemAfterCommitId = Nothing
     , _prsruemBeforeCommitId = Nothing
+    , _prsruemMergeBase = Nothing
     , _prsruemRepositoryName = Nothing
     }
 
@@ -958,6 +1156,10 @@ prsruemAfterCommitId = lens _prsruemAfterCommitId (\ s a -> s{_prsruemAfterCommi
 -- | The full commit ID of the commit in the destination branch that was the tip of the branch at the time the pull request was updated.
 prsruemBeforeCommitId :: Lens' PullRequestSourceReferenceUpdatedEventMetadata (Maybe Text)
 prsruemBeforeCommitId = lens _prsruemBeforeCommitId (\ s a -> s{_prsruemBeforeCommitId = a})
+
+-- | The commit ID of the most recent commit that the source branch and the destination branch have in common.
+prsruemMergeBase :: Lens' PullRequestSourceReferenceUpdatedEventMetadata (Maybe Text)
+prsruemMergeBase = lens _prsruemMergeBase (\ s a -> s{_prsruemMergeBase = a})
 
 -- | The name of the repository where the pull request was updated.
 prsruemRepositoryName :: Lens' PullRequestSourceReferenceUpdatedEventMetadata (Maybe Text)
@@ -972,6 +1174,7 @@ instance FromJSON
               (\ x ->
                  PullRequestSourceReferenceUpdatedEventMetadata' <$>
                    (x .:? "afterCommitId") <*> (x .:? "beforeCommitId")
+                     <*> (x .:? "mergeBase")
                      <*> (x .:? "repositoryName"))
 
 instance Hashable
@@ -1029,12 +1232,13 @@ instance NFData PullRequestStatusChangedEventMetadata
 --
 -- /See:/ 'pullRequestTarget' smart constructor.
 data PullRequestTarget = PullRequestTarget'
-  { _prtSourceCommit         :: !(Maybe Text)
+  { _prtSourceCommit :: !(Maybe Text)
   , _prtDestinationReference :: !(Maybe Text)
-  , _prtMergeMetadata        :: !(Maybe MergeMetadata)
-  , _prtDestinationCommit    :: !(Maybe Text)
-  , _prtRepositoryName       :: !(Maybe Text)
-  , _prtSourceReference      :: !(Maybe Text)
+  , _prtMergeMetadata :: !(Maybe MergeMetadata)
+  , _prtMergeBase :: !(Maybe Text)
+  , _prtDestinationCommit :: !(Maybe Text)
+  , _prtRepositoryName :: !(Maybe Text)
+  , _prtSourceReference :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1044,9 +1248,11 @@ data PullRequestTarget = PullRequestTarget'
 --
 -- * 'prtSourceCommit' - The full commit ID of the tip of the source branch used to create the pull request. If the pull request branch is updated by a push while the pull request is open, the commit ID will change to reflect the new tip of the branch.
 --
--- * 'prtDestinationReference' - The branch of the repository where the pull request changes will be merged into. Also known as the destination branch.
+-- * 'prtDestinationReference' - The branch of the repository where the pull request changes will be merged into. Also known as the destination branch. 
 --
 -- * 'prtMergeMetadata' - Returns metadata about the state of the merge, including whether the merge has been made.
+--
+-- * 'prtMergeBase' - The commit ID of the most recent commit that the source branch and the destination branch have in common.
 --
 -- * 'prtDestinationCommit' - The full commit ID that is the tip of the destination branch. This is the commit where the pull request was or will be merged.
 --
@@ -1060,6 +1266,7 @@ pullRequestTarget =
     { _prtSourceCommit = Nothing
     , _prtDestinationReference = Nothing
     , _prtMergeMetadata = Nothing
+    , _prtMergeBase = Nothing
     , _prtDestinationCommit = Nothing
     , _prtRepositoryName = Nothing
     , _prtSourceReference = Nothing
@@ -1070,13 +1277,17 @@ pullRequestTarget =
 prtSourceCommit :: Lens' PullRequestTarget (Maybe Text)
 prtSourceCommit = lens _prtSourceCommit (\ s a -> s{_prtSourceCommit = a})
 
--- | The branch of the repository where the pull request changes will be merged into. Also known as the destination branch.
+-- | The branch of the repository where the pull request changes will be merged into. Also known as the destination branch. 
 prtDestinationReference :: Lens' PullRequestTarget (Maybe Text)
 prtDestinationReference = lens _prtDestinationReference (\ s a -> s{_prtDestinationReference = a})
 
 -- | Returns metadata about the state of the merge, including whether the merge has been made.
 prtMergeMetadata :: Lens' PullRequestTarget (Maybe MergeMetadata)
 prtMergeMetadata = lens _prtMergeMetadata (\ s a -> s{_prtMergeMetadata = a})
+
+-- | The commit ID of the most recent commit that the source branch and the destination branch have in common.
+prtMergeBase :: Lens' PullRequestTarget (Maybe Text)
+prtMergeBase = lens _prtMergeBase (\ s a -> s{_prtMergeBase = a})
 
 -- | The full commit ID that is the tip of the destination branch. This is the commit where the pull request was or will be merged.
 prtDestinationCommit :: Lens' PullRequestTarget (Maybe Text)
@@ -1098,6 +1309,7 @@ instance FromJSON PullRequestTarget where
                    (x .:? "sourceCommit") <*>
                      (x .:? "destinationReference")
                      <*> (x .:? "mergeMetadata")
+                     <*> (x .:? "mergeBase")
                      <*> (x .:? "destinationCommit")
                      <*> (x .:? "repositoryName")
                      <*> (x .:? "sourceReference"))
@@ -1113,15 +1325,15 @@ instance NFData PullRequestTarget where
 -- /See:/ 'repositoryMetadata' smart constructor.
 data RepositoryMetadata = RepositoryMetadata'
   { _rmRepositoryDescription :: !(Maybe Text)
-  , _rmLastModifiedDate      :: !(Maybe POSIX)
-  , _rmARN                   :: !(Maybe Text)
-  , _rmCloneURLHTTP          :: !(Maybe Text)
-  , _rmAccountId             :: !(Maybe Text)
-  , _rmDefaultBranch         :: !(Maybe Text)
-  , _rmRepositoryId          :: !(Maybe Text)
-  , _rmRepositoryName        :: !(Maybe Text)
-  , _rmCreationDate          :: !(Maybe POSIX)
-  , _rmCloneURLSSH           :: !(Maybe Text)
+  , _rmLastModifiedDate :: !(Maybe POSIX)
+  , _rmARN :: !(Maybe Text)
+  , _rmCloneURLHTTP :: !(Maybe Text)
+  , _rmAccountId :: !(Maybe Text)
+  , _rmDefaultBranch :: !(Maybe Text)
+  , _rmRepositoryId :: !(Maybe Text)
+  , _rmRepositoryName :: !(Maybe Text)
+  , _rmCreationDate :: !(Maybe POSIX)
+  , _rmCloneURLSSH :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1231,7 +1443,7 @@ instance NFData RepositoryMetadata where
 --
 -- /See:/ 'repositoryNameIdPair' smart constructor.
 data RepositoryNameIdPair = RepositoryNameIdPair'
-  { _rnipRepositoryId   :: !(Maybe Text)
+  { _rnipRepositoryId :: !(Maybe Text)
   , _rnipRepositoryName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1275,11 +1487,11 @@ instance NFData RepositoryNameIdPair where
 --
 -- /See:/ 'repositoryTrigger' smart constructor.
 data RepositoryTrigger = RepositoryTrigger'
-  { _rtBranches       :: !(Maybe [Text])
-  , _rtCustomData     :: !(Maybe Text)
-  , _rtName           :: !Text
+  { _rtBranches :: !(Maybe [Text])
+  , _rtCustomData :: !(Maybe Text)
+  , _rtName :: !Text
   , _rtDestinationARN :: !Text
-  , _rtEvents         :: ![RepositoryTriggerEventEnum]
+  , _rtEvents :: ![RepositoryTriggerEventEnum]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1295,7 +1507,7 @@ data RepositoryTrigger = RepositoryTrigger'
 --
 -- * 'rtDestinationARN' - The ARN of the resource that is the target for a trigger. For example, the ARN of a topic in Amazon Simple Notification Service (SNS).
 --
--- * 'rtEvents' - The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS).
+-- * 'rtEvents' - The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). 
 repositoryTrigger
     :: Text -- ^ 'rtName'
     -> Text -- ^ 'rtDestinationARN'
@@ -1326,7 +1538,7 @@ rtName = lens _rtName (\ s a -> s{_rtName = a})
 rtDestinationARN :: Lens' RepositoryTrigger Text
 rtDestinationARN = lens _rtDestinationARN (\ s a -> s{_rtDestinationARN = a})
 
--- | The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS).
+-- | The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). 
 rtEvents :: Lens' RepositoryTrigger [RepositoryTriggerEventEnum]
 rtEvents = lens _rtEvents (\ s a -> s{_rtEvents = a}) . _Coerce
 
@@ -1362,7 +1574,7 @@ instance ToJSON RepositoryTrigger where
 -- /See:/ 'repositoryTriggerExecutionFailure' smart constructor.
 data RepositoryTriggerExecutionFailure = RepositoryTriggerExecutionFailure'
   { _rtefFailureMessage :: !(Maybe Text)
-  , _rtefTrigger        :: !(Maybe Text)
+  , _rtefTrigger :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1402,6 +1614,125 @@ instance Hashable RepositoryTriggerExecutionFailure
 instance NFData RepositoryTriggerExecutionFailure
          where
 
+-- | Returns information about a submodule reference in a repository folder.
+--
+--
+--
+-- /See:/ 'subModule' smart constructor.
+data SubModule = SubModule'
+  { _smCommitId :: !(Maybe Text)
+  , _smAbsolutePath :: !(Maybe Text)
+  , _smRelativePath :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'SubModule' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'smCommitId' - The commit ID that contains the reference to the submodule.
+--
+-- * 'smAbsolutePath' - The fully qualified path to the folder that contains the reference to the submodule.
+--
+-- * 'smRelativePath' - The relative path of the submodule from the folder where the query originated.
+subModule
+    :: SubModule
+subModule =
+  SubModule'
+    { _smCommitId = Nothing
+    , _smAbsolutePath = Nothing
+    , _smRelativePath = Nothing
+    }
+
+
+-- | The commit ID that contains the reference to the submodule.
+smCommitId :: Lens' SubModule (Maybe Text)
+smCommitId = lens _smCommitId (\ s a -> s{_smCommitId = a})
+
+-- | The fully qualified path to the folder that contains the reference to the submodule.
+smAbsolutePath :: Lens' SubModule (Maybe Text)
+smAbsolutePath = lens _smAbsolutePath (\ s a -> s{_smAbsolutePath = a})
+
+-- | The relative path of the submodule from the folder where the query originated.
+smRelativePath :: Lens' SubModule (Maybe Text)
+smRelativePath = lens _smRelativePath (\ s a -> s{_smRelativePath = a})
+
+instance FromJSON SubModule where
+        parseJSON
+          = withObject "SubModule"
+              (\ x ->
+                 SubModule' <$>
+                   (x .:? "commitId") <*> (x .:? "absolutePath") <*>
+                     (x .:? "relativePath"))
+
+instance Hashable SubModule where
+
+instance NFData SubModule where
+
+-- | Returns information about a symbolic link in a repository folder.
+--
+--
+--
+-- /See:/ 'symbolicLink' smart constructor.
+data SymbolicLink = SymbolicLink'
+  { _slAbsolutePath :: !(Maybe Text)
+  , _slFileMode :: !(Maybe FileModeTypeEnum)
+  , _slBlobId :: !(Maybe Text)
+  , _slRelativePath :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'SymbolicLink' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'slAbsolutePath' - The fully-qualified path to the folder that contains the symbolic link.
+--
+-- * 'slFileMode' - The file mode permissions of the blob that cotains information about the symbolic link.
+--
+-- * 'slBlobId' - The blob ID that contains the information about the symbolic link.
+--
+-- * 'slRelativePath' - The relative path of the symbolic link from the folder where the query originated.
+symbolicLink
+    :: SymbolicLink
+symbolicLink =
+  SymbolicLink'
+    { _slAbsolutePath = Nothing
+    , _slFileMode = Nothing
+    , _slBlobId = Nothing
+    , _slRelativePath = Nothing
+    }
+
+
+-- | The fully-qualified path to the folder that contains the symbolic link.
+slAbsolutePath :: Lens' SymbolicLink (Maybe Text)
+slAbsolutePath = lens _slAbsolutePath (\ s a -> s{_slAbsolutePath = a})
+
+-- | The file mode permissions of the blob that cotains information about the symbolic link.
+slFileMode :: Lens' SymbolicLink (Maybe FileModeTypeEnum)
+slFileMode = lens _slFileMode (\ s a -> s{_slFileMode = a})
+
+-- | The blob ID that contains the information about the symbolic link.
+slBlobId :: Lens' SymbolicLink (Maybe Text)
+slBlobId = lens _slBlobId (\ s a -> s{_slBlobId = a})
+
+-- | The relative path of the symbolic link from the folder where the query originated.
+slRelativePath :: Lens' SymbolicLink (Maybe Text)
+slRelativePath = lens _slRelativePath (\ s a -> s{_slRelativePath = a})
+
+instance FromJSON SymbolicLink where
+        parseJSON
+          = withObject "SymbolicLink"
+              (\ x ->
+                 SymbolicLink' <$>
+                   (x .:? "absolutePath") <*> (x .:? "fileMode") <*>
+                     (x .:? "blobId")
+                     <*> (x .:? "relativePath"))
+
+instance Hashable SymbolicLink where
+
+instance NFData SymbolicLink where
+
 -- | Returns information about a target for a pull request.
 --
 --
@@ -1409,8 +1740,8 @@ instance NFData RepositoryTriggerExecutionFailure
 -- /See:/ 'target' smart constructor.
 data Target = Target'
   { _tDestinationReference :: !(Maybe Text)
-  , _tRepositoryName       :: !Text
-  , _tSourceReference      :: !Text
+  , _tRepositoryName :: !Text
+  , _tSourceReference :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1467,8 +1798,8 @@ instance ToJSON Target where
 -- /See:/ 'userInfo' smart constructor.
 data UserInfo = UserInfo'
   { _uiEmail :: !(Maybe Text)
-  , _uiDate  :: !(Maybe Text)
-  , _uiName  :: !(Maybe Text)
+  , _uiDate :: !(Maybe Text)
+  , _uiName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

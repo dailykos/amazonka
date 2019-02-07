@@ -100,9 +100,9 @@ instance ToQuery GetContact where
 
 -- | /See:/ 'getContactResponse' smart constructor.
 data GetContactResponse = GetContactResponse'
-  { _gcrsContact        :: !(Maybe Contact)
+  { _gcrsContact :: !(Maybe Contact)
   , _gcrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+  } deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetContactResponse' with the minimum fields required to make a request.

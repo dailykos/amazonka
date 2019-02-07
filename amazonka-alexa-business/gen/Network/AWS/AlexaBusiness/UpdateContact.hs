@@ -49,12 +49,12 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateContact' smart constructor.
 data UpdateContact = UpdateContact'
-  { _ucLastName    :: !(Maybe Text)
-  , _ucPhoneNumber :: !(Maybe Text)
-  , _ucFirstName   :: !(Maybe Text)
+  { _ucLastName :: !(Maybe Text)
+  , _ucPhoneNumber :: !(Maybe (Sensitive Text))
+  , _ucFirstName :: !(Maybe Text)
   , _ucDisplayName :: !(Maybe Text)
-  , _ucContactARN  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+  , _ucContactARN :: !Text
+  } deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateContact' with the minimum fields required to make a request.
@@ -89,7 +89,7 @@ ucLastName = lens _ucLastName (\ s a -> s{_ucLastName = a})
 
 -- | The updated phone number of the contact.
 ucPhoneNumber :: Lens' UpdateContact (Maybe Text)
-ucPhoneNumber = lens _ucPhoneNumber (\ s a -> s{_ucPhoneNumber = a})
+ucPhoneNumber = lens _ucPhoneNumber (\ s a -> s{_ucPhoneNumber = a}) . mapping _Sensitive
 
 -- | The updated first name of the contact.
 ucFirstName :: Lens' UpdateContact (Maybe Text)

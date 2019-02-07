@@ -107,7 +107,7 @@ instance ToQuery StopRun where
 --
 -- /See:/ 'stopRunResponse' smart constructor.
 data StopRunResponse = StopRunResponse'
-  { _srsRun            :: !(Maybe Run)
+  { _srsRun :: !(Maybe Run)
   , _srsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

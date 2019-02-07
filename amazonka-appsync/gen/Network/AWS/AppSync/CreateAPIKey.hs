@@ -48,9 +48,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'createAPIKey' smart constructor.
 data CreateAPIKey = CreateAPIKey'
-  { _cakExpires     :: !(Maybe Integer)
+  { _cakExpires :: !(Maybe Integer)
   , _cakDescription :: !(Maybe Text)
-  , _cakApiId       :: !Text
+  , _cakApiId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -119,7 +119,7 @@ instance ToQuery CreateAPIKey where
 
 -- | /See:/ 'createAPIKeyResponse' smart constructor.
 data CreateAPIKeyResponse = CreateAPIKeyResponse'
-  { _cakrsApiKey         :: !(Maybe APIKey)
+  { _cakrsApiKey :: !(Maybe APIKey)
   , _cakrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

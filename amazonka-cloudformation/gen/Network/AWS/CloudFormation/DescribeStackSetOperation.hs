@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the description of the specified stack set operation.
+-- Returns the description of the specified stack set operation. 
 --
 --
 module Network.AWS.CloudFormation.DescribeStackSetOperation
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeStackSetOperation' smart constructor.
 data DescribeStackSetOperation = DescribeStackSetOperation'
   { _dssoStackSetName :: !Text
-  , _dssoOperationId  :: !Text
+  , _dssoOperationId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -58,7 +58,7 @@ data DescribeStackSetOperation = DescribeStackSetOperation'
 --
 -- * 'dssoStackSetName' - The name or the unique stack ID of the stack set for the stack operation.
 --
--- * 'dssoOperationId' - The unique ID of the stack set operation.
+-- * 'dssoOperationId' - The unique ID of the stack set operation. 
 describeStackSetOperation
     :: Text -- ^ 'dssoStackSetName'
     -> Text -- ^ 'dssoOperationId'
@@ -72,7 +72,7 @@ describeStackSetOperation pStackSetName_ pOperationId_ =
 dssoStackSetName :: Lens' DescribeStackSetOperation Text
 dssoStackSetName = lens _dssoStackSetName (\ s a -> s{_dssoStackSetName = a})
 
--- | The unique ID of the stack set operation.
+-- | The unique ID of the stack set operation. 
 dssoOperationId :: Lens' DescribeStackSetOperation Text
 dssoOperationId = lens _dssoOperationId (\ s a -> s{_dssoOperationId = a})
 
@@ -108,7 +108,7 @@ instance ToQuery DescribeStackSetOperation where
 -- | /See:/ 'describeStackSetOperationResponse' smart constructor.
 data DescribeStackSetOperationResponse = DescribeStackSetOperationResponse'
   { _dssorsStackSetOperation :: !(Maybe StackSetOperation)
-  , _dssorsResponseStatus    :: !Int
+  , _dssorsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

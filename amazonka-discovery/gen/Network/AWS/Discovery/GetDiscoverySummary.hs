@@ -21,6 +21,8 @@
 -- Retrieves a short summary of discovered assets.
 --
 --
+-- This API operation takes no request parameters and is called as is at the command prompt as shown in the example.
+--
 module Network.AWS.Discovery.GetDiscoverySummary
     (
     -- * Creating a Request
@@ -100,13 +102,13 @@ instance ToQuery GetDiscoverySummary where
 
 -- | /See:/ 'getDiscoverySummaryResponse' smart constructor.
 data GetDiscoverySummaryResponse = GetDiscoverySummaryResponse'
-  { _gdsrsServers                     :: !(Maybe Integer)
-  , _gdsrsServersMappedtoTags         :: !(Maybe Integer)
+  { _gdsrsServers :: !(Maybe Integer)
+  , _gdsrsServersMappedtoTags :: !(Maybe Integer)
   , _gdsrsServersMappedToApplications :: !(Maybe Integer)
-  , _gdsrsConnectorSummary            :: !(Maybe CustomerConnectorInfo)
-  , _gdsrsAgentSummary                :: !(Maybe CustomerAgentInfo)
-  , _gdsrsApplications                :: !(Maybe Integer)
-  , _gdsrsResponseStatus              :: !Int
+  , _gdsrsConnectorSummary :: !(Maybe CustomerConnectorInfo)
+  , _gdsrsAgentSummary :: !(Maybe CustomerAgentInfo)
+  , _gdsrsApplications :: !(Maybe Integer)
+  , _gdsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

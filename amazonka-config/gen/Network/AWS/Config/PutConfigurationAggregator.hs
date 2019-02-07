@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'putConfigurationAggregator' smart constructor.
 data PutConfigurationAggregator = PutConfigurationAggregator'
   { _pcaOrganizationAggregationSource :: !(Maybe OrganizationAggregationSource)
-  , _pcaAccountAggregationSources     :: !(Maybe [AccountAggregationSource])
-  , _pcaConfigurationAggregatorName   :: !Text
+  , _pcaAccountAggregationSources :: !(Maybe [AccountAggregationSource])
+  , _pcaConfigurationAggregatorName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -60,7 +60,7 @@ data PutConfigurationAggregator = PutConfigurationAggregator'
 --
 -- * 'pcaOrganizationAggregationSource' - An OrganizationAggregationSource object.
 --
--- * 'pcaAccountAggregationSources' - A list of AccountAggregationSource object.
+-- * 'pcaAccountAggregationSources' - A list of AccountAggregationSource object. 
 --
 -- * 'pcaConfigurationAggregatorName' - The name of the configuration aggregator.
 putConfigurationAggregator
@@ -78,7 +78,7 @@ putConfigurationAggregator pConfigurationAggregatorName_ =
 pcaOrganizationAggregationSource :: Lens' PutConfigurationAggregator (Maybe OrganizationAggregationSource)
 pcaOrganizationAggregationSource = lens _pcaOrganizationAggregationSource (\ s a -> s{_pcaOrganizationAggregationSource = a})
 
--- | A list of AccountAggregationSource object.
+-- | A list of AccountAggregationSource object. 
 pcaAccountAggregationSources :: Lens' PutConfigurationAggregator [AccountAggregationSource]
 pcaAccountAggregationSources = lens _pcaAccountAggregationSources (\ s a -> s{_pcaAccountAggregationSources = a}) . _Default . _Coerce
 
@@ -132,7 +132,7 @@ instance ToQuery PutConfigurationAggregator where
 -- | /See:/ 'putConfigurationAggregatorResponse' smart constructor.
 data PutConfigurationAggregatorResponse = PutConfigurationAggregatorResponse'
   { _pcarsConfigurationAggregator :: !(Maybe ConfigurationAggregator)
-  , _pcarsResponseStatus          :: !Int
+  , _pcarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

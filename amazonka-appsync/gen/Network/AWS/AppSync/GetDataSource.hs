@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'getDataSource' smart constructor.
 data GetDataSource = GetDataSource'
   { _gdsApiId :: !Text
-  , _gdsName  :: !Text
+  , _gdsName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -106,7 +106,7 @@ instance ToQuery GetDataSource where
 
 -- | /See:/ 'getDataSourceResponse' smart constructor.
 data GetDataSourceResponse = GetDataSourceResponse'
-  { _gdsrsDataSource     :: !(Maybe DataSource)
+  { _gdsrsDataSource :: !(Maybe DataSource)
   , _gdsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

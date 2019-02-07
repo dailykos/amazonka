@@ -21,6 +21,8 @@
 -- Lists the resolvers for a given API and type.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AppSync.ListResolvers
     (
     -- * Creating a Request
@@ -44,16 +46,17 @@ module Network.AWS.AppSync.ListResolvers
 import Network.AWS.AppSync.Types
 import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResolvers' smart constructor.
 data ListResolvers = ListResolvers'
-  { _lrNextToken  :: !(Maybe Text)
+  { _lrNextToken :: !(Maybe Text)
   , _lrMaxResults :: !(Maybe Nat)
-  , _lrApiId      :: !Text
-  , _lrTypeName   :: !Text
+  , _lrApiId :: !Text
+  , _lrTypeName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -61,7 +64,7 @@ data ListResolvers = ListResolvers'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- * 'lrNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 --
 -- * 'lrMaxResults' - The maximum number of results you want the request to return.
 --
@@ -81,7 +84,7 @@ listResolvers pApiId_ pTypeName_ =
     }
 
 
--- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 lrNextToken :: Lens' ListResolvers (Maybe Text)
 lrNextToken = lens _lrNextToken (\ s a -> s{_lrNextToken = a})
 
@@ -96,6 +99,13 @@ lrApiId = lens _lrApiId (\ s a -> s{_lrApiId = a})
 -- | The type name.
 lrTypeName :: Lens' ListResolvers Text
 lrTypeName = lens _lrTypeName (\ s a -> s{_lrTypeName = a})
+
+instance AWSPager ListResolvers where
+        page rq rs
+          | stop (rs ^. lrrsNextToken) = Nothing
+          | stop (rs ^. lrrsResolvers) = Nothing
+          | otherwise =
+            Just $ rq & lrNextToken .~ rs ^. lrrsNextToken
 
 instance AWSRequest ListResolvers where
         type Rs ListResolvers = ListResolversResponse
@@ -133,8 +143,8 @@ instance ToQuery ListResolvers where
 
 -- | /See:/ 'listResolversResponse' smart constructor.
 data ListResolversResponse = ListResolversResponse'
-  { _lrrsNextToken      :: !(Maybe Text)
-  , _lrrsResolvers      :: !(Maybe [Resolver])
+  { _lrrsNextToken :: !(Maybe Text)
+  , _lrrsResolvers :: !(Maybe [Resolver])
   , _lrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

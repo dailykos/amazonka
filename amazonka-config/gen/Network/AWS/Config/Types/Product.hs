@@ -27,9 +27,9 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'accountAggregationSource' smart constructor.
 data AccountAggregationSource = AccountAggregationSource'
-  { _aasAWSRegions    :: !(Maybe (List1 Text))
+  { _aasAWSRegions :: !(Maybe (List1 Text))
   , _aasAllAWSRegions :: !(Maybe Bool)
-  , _aasAccountIds    :: !(List1 Text)
+  , _aasAccountIds :: !(List1 Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -39,9 +39,9 @@ data AccountAggregationSource = AccountAggregationSource'
 --
 -- * 'aasAWSRegions' - The source regions being aggregated.
 --
--- * 'aasAllAWSRegions' - If true, aggreagate existing AWS Config regions and future regions.
+-- * 'aasAllAWSRegions' - If true, aggregate existing AWS Config regions and future regions.
 --
--- * 'aasAccountIds' - The 12-digit account ID of the account being aggregated.
+-- * 'aasAccountIds' - The 12-digit account ID of the account being aggregated. 
 accountAggregationSource
     :: NonEmpty Text -- ^ 'aasAccountIds'
     -> AccountAggregationSource
@@ -57,11 +57,11 @@ accountAggregationSource pAccountIds_ =
 aasAWSRegions :: Lens' AccountAggregationSource (Maybe (NonEmpty Text))
 aasAWSRegions = lens _aasAWSRegions (\ s a -> s{_aasAWSRegions = a}) . mapping _List1
 
--- | If true, aggreagate existing AWS Config regions and future regions.
+-- | If true, aggregate existing AWS Config regions and future regions.
 aasAllAWSRegions :: Lens' AccountAggregationSource (Maybe Bool)
 aasAllAWSRegions = lens _aasAllAWSRegions (\ s a -> s{_aasAllAWSRegions = a})
 
--- | The 12-digit account ID of the account being aggregated.
+-- | The 12-digit account ID of the account being aggregated. 
 aasAccountIds :: Lens' AccountAggregationSource (NonEmpty Text)
 aasAccountIds = lens _aasAccountIds (\ s a -> s{_aasAccountIds = a}) . _List1
 
@@ -93,10 +93,10 @@ instance ToJSON AccountAggregationSource where
 --
 -- /See:/ 'aggregateComplianceByConfigRule' smart constructor.
 data AggregateComplianceByConfigRule = AggregateComplianceByConfigRule'
-  { _acbcrCompliance     :: !(Maybe Compliance)
+  { _acbcrCompliance :: !(Maybe Compliance)
   , _acbcrConfigRuleName :: !(Maybe Text)
-  , _acbcrAccountId      :: !(Maybe Text)
-  , _acbcrAWSRegion      :: !(Maybe Text)
+  , _acbcrAccountId :: !(Maybe Text)
+  , _acbcrAWSRegion :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -159,7 +159,7 @@ instance NFData AggregateComplianceByConfigRule where
 --
 -- /See:/ 'aggregateComplianceCount' smart constructor.
 data AggregateComplianceCount = AggregateComplianceCount'
-  { _accGroupName         :: !(Maybe Text)
+  { _accGroupName :: !(Maybe Text)
   , _accComplianceSummary :: !(Maybe ComplianceSummary)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -197,19 +197,19 @@ instance Hashable AggregateComplianceCount where
 
 instance NFData AggregateComplianceCount where
 
--- | The details of an AWS Config evaluation for an account ID and region in an aggregator. Provides the AWS resource that was evaluated, the compliance of the resource, related time stamps, and supplementary information.
+-- | The details of an AWS Config evaluation for an account ID and region in an aggregator. Provides the AWS resource that was evaluated, the compliance of the resource, related time stamps, and supplementary information. 
 --
 --
 --
 -- /See:/ 'aggregateEvaluationResult' smart constructor.
 data AggregateEvaluationResult = AggregateEvaluationResult'
   { _aerEvaluationResultIdentifier :: !(Maybe EvaluationResultIdentifier)
-  , _aerAnnotation                 :: !(Maybe Text)
-  , _aerConfigRuleInvokedTime      :: !(Maybe POSIX)
-  , _aerResultRecordedTime         :: !(Maybe POSIX)
-  , _aerAccountId                  :: !(Maybe Text)
-  , _aerComplianceType             :: !(Maybe ComplianceType)
-  , _aerAWSRegion                  :: !(Maybe Text)
+  , _aerAnnotation :: !(Maybe Text)
+  , _aerConfigRuleInvokedTime :: !(Maybe POSIX)
+  , _aerResultRecordedTime :: !(Maybe POSIX)
+  , _aerAccountId :: !(Maybe Text)
+  , _aerComplianceType :: !(Maybe ComplianceType)
+  , _aerAWSRegion :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -289,19 +289,106 @@ instance Hashable AggregateEvaluationResult where
 
 instance NFData AggregateEvaluationResult where
 
+-- | The details that identify a resource that is collected by AWS Config aggregator, including the resource type, ID, (if available) the custom resource name, the source account, and source region.
+--
+--
+--
+-- /See:/ 'aggregateResourceIdentifier' smart constructor.
+data AggregateResourceIdentifier = AggregateResourceIdentifier'
+  { _ariResourceName :: !(Maybe Text)
+  , _ariSourceAccountId :: !Text
+  , _ariSourceRegion :: !Text
+  , _ariResourceId :: !Text
+  , _ariResourceType :: !ResourceType
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'AggregateResourceIdentifier' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ariResourceName' - The name of the AWS resource.
+--
+-- * 'ariSourceAccountId' - The 12-digit account ID of the source account.
+--
+-- * 'ariSourceRegion' - The source region where data is aggregated.
+--
+-- * 'ariResourceId' - The ID of the AWS resource.
+--
+-- * 'ariResourceType' - The type of the AWS resource.
+aggregateResourceIdentifier
+    :: Text -- ^ 'ariSourceAccountId'
+    -> Text -- ^ 'ariSourceRegion'
+    -> Text -- ^ 'ariResourceId'
+    -> ResourceType -- ^ 'ariResourceType'
+    -> AggregateResourceIdentifier
+aggregateResourceIdentifier pSourceAccountId_ pSourceRegion_ pResourceId_ pResourceType_ =
+  AggregateResourceIdentifier'
+    { _ariResourceName = Nothing
+    , _ariSourceAccountId = pSourceAccountId_
+    , _ariSourceRegion = pSourceRegion_
+    , _ariResourceId = pResourceId_
+    , _ariResourceType = pResourceType_
+    }
+
+
+-- | The name of the AWS resource.
+ariResourceName :: Lens' AggregateResourceIdentifier (Maybe Text)
+ariResourceName = lens _ariResourceName (\ s a -> s{_ariResourceName = a})
+
+-- | The 12-digit account ID of the source account.
+ariSourceAccountId :: Lens' AggregateResourceIdentifier Text
+ariSourceAccountId = lens _ariSourceAccountId (\ s a -> s{_ariSourceAccountId = a})
+
+-- | The source region where data is aggregated.
+ariSourceRegion :: Lens' AggregateResourceIdentifier Text
+ariSourceRegion = lens _ariSourceRegion (\ s a -> s{_ariSourceRegion = a})
+
+-- | The ID of the AWS resource.
+ariResourceId :: Lens' AggregateResourceIdentifier Text
+ariResourceId = lens _ariResourceId (\ s a -> s{_ariResourceId = a})
+
+-- | The type of the AWS resource.
+ariResourceType :: Lens' AggregateResourceIdentifier ResourceType
+ariResourceType = lens _ariResourceType (\ s a -> s{_ariResourceType = a})
+
+instance FromJSON AggregateResourceIdentifier where
+        parseJSON
+          = withObject "AggregateResourceIdentifier"
+              (\ x ->
+                 AggregateResourceIdentifier' <$>
+                   (x .:? "ResourceName") <*> (x .: "SourceAccountId")
+                     <*> (x .: "SourceRegion")
+                     <*> (x .: "ResourceId")
+                     <*> (x .: "ResourceType"))
+
+instance Hashable AggregateResourceIdentifier where
+
+instance NFData AggregateResourceIdentifier where
+
+instance ToJSON AggregateResourceIdentifier where
+        toJSON AggregateResourceIdentifier'{..}
+          = object
+              (catMaybes
+                 [("ResourceName" .=) <$> _ariResourceName,
+                  Just ("SourceAccountId" .= _ariSourceAccountId),
+                  Just ("SourceRegion" .= _ariSourceRegion),
+                  Just ("ResourceId" .= _ariResourceId),
+                  Just ("ResourceType" .= _ariResourceType)])
+
 -- | The current sync status between the source and the aggregator account.
 --
 --
 --
 -- /See:/ 'aggregatedSourceStatus' smart constructor.
 data AggregatedSourceStatus = AggregatedSourceStatus'
-  { _assLastErrorCode    :: !(Maybe Text)
+  { _assLastErrorCode :: !(Maybe Text)
   , _assLastUpdateStatus :: !(Maybe AggregatedSourceStatusType)
-  , _assSourceType       :: !(Maybe AggregatedSourceType)
-  , _assSourceId         :: !(Maybe Text)
+  , _assSourceType :: !(Maybe AggregatedSourceType)
+  , _assSourceId :: !(Maybe Text)
   , _assLastErrorMessage :: !(Maybe Text)
-  , _assAWSRegion        :: !(Maybe Text)
-  , _assLastUpdateTime   :: !(Maybe POSIX)
+  , _assAWSRegion :: !(Maybe Text)
+  , _assLastUpdateTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -387,10 +474,10 @@ instance NFData AggregatedSourceStatus where
 --
 -- /See:/ 'aggregationAuthorization' smart constructor.
 data AggregationAuthorization = AggregationAuthorization'
-  { _aaCreationTime                :: !(Maybe POSIX)
-  , _aaAuthorizedAWSRegion         :: !(Maybe Text)
+  { _aaCreationTime :: !(Maybe POSIX)
+  , _aaAuthorizedAWSRegion :: !(Maybe Text)
   , _aaAggregationAuthorizationARN :: !(Maybe Text)
-  , _aaAuthorizedAccountId         :: !(Maybe Text)
+  , _aaAuthorizedAccountId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -452,20 +539,20 @@ instance NFData AggregationAuthorization where
 --
 -- /See:/ 'baseConfigurationItem' smart constructor.
 data BaseConfigurationItem = BaseConfigurationItem'
-  { _bciResourceId                   :: !(Maybe Text)
-  , _bciResourceType                 :: !(Maybe ResourceType)
-  , _bciConfigurationStateId         :: !(Maybe Text)
-  , _bciArn                          :: !(Maybe Text)
-  , _bciResourceName                 :: !(Maybe Text)
-  , _bciResourceCreationTime         :: !(Maybe POSIX)
-  , _bciConfigurationItemStatus      :: !(Maybe ConfigurationItemStatus)
+  { _bciResourceId :: !(Maybe Text)
+  , _bciResourceType :: !(Maybe ResourceType)
+  , _bciConfigurationStateId :: !(Maybe Text)
+  , _bciArn :: !(Maybe Text)
+  , _bciResourceName :: !(Maybe Text)
+  , _bciResourceCreationTime :: !(Maybe POSIX)
+  , _bciConfigurationItemStatus :: !(Maybe ConfigurationItemStatus)
   , _bciConfigurationItemCaptureTime :: !(Maybe POSIX)
-  , _bciAccountId                    :: !(Maybe Text)
-  , _bciSupplementaryConfiguration   :: !(Maybe (Map Text Text))
-  , _bciAvailabilityZone             :: !(Maybe Text)
-  , _bciVersion                      :: !(Maybe Text)
-  , _bciAwsRegion                    :: !(Maybe Text)
-  , _bciConfiguration                :: !(Maybe Text)
+  , _bciAccountId :: !(Maybe Text)
+  , _bciSupplementaryConfiguration :: !(Maybe (Map Text Text))
+  , _bciAvailabilityZone :: !(Maybe Text)
+  , _bciVersion :: !(Maybe Text)
+  , _bciAwsRegion :: !(Maybe Text)
+  , _bciConfiguration :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -489,7 +576,7 @@ data BaseConfigurationItem = BaseConfigurationItem'
 --
 -- * 'bciConfigurationItemCaptureTime' - The time when the configuration recording was initiated.
 --
--- * 'bciAccountId' - The 12 digit AWS account ID associated with the resource.
+-- * 'bciAccountId' - The 12-digit AWS account ID associated with the resource.
 --
 -- * 'bciSupplementaryConfiguration' - Configuration attributes that AWS Config returns for certain resource types to supplement the information returned for the configuration parameter.
 --
@@ -553,7 +640,7 @@ bciConfigurationItemStatus = lens _bciConfigurationItemStatus (\ s a -> s{_bciCo
 bciConfigurationItemCaptureTime :: Lens' BaseConfigurationItem (Maybe UTCTime)
 bciConfigurationItemCaptureTime = lens _bciConfigurationItemCaptureTime (\ s a -> s{_bciConfigurationItemCaptureTime = a}) . mapping _Time
 
--- | The 12 digit AWS account ID associated with the resource.
+-- | The 12-digit AWS account ID associated with the resource.
 bciAccountId :: Lens' BaseConfigurationItem (Maybe Text)
 bciAccountId = lens _bciAccountId (\ s a -> s{_bciAccountId = a})
 
@@ -607,7 +694,7 @@ instance NFData BaseConfigurationItem where
 -- /See:/ 'compliance' smart constructor.
 data Compliance = Compliance'
   { _cComplianceContributorCount :: !(Maybe ComplianceContributorCount)
-  , _cComplianceType             :: !(Maybe ComplianceType)
+  , _cComplianceType :: !(Maybe ComplianceType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -651,7 +738,7 @@ instance NFData Compliance where
 --
 -- /See:/ 'complianceByConfigRule' smart constructor.
 data ComplianceByConfigRule = ComplianceByConfigRule'
-  { _cbcrCompliance     :: !(Maybe Compliance)
+  { _cbcrCompliance :: !(Maybe Compliance)
   , _cbcrConfigRuleName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -695,9 +782,9 @@ instance NFData ComplianceByConfigRule where
 --
 -- /See:/ 'complianceByResource' smart constructor.
 data ComplianceByResource = ComplianceByResource'
-  { _cbrResourceId   :: !(Maybe Text)
+  { _cbrResourceId :: !(Maybe Text)
   , _cbrResourceType :: !(Maybe Text)
-  , _cbrCompliance   :: !(Maybe Compliance)
+  , _cbrCompliance :: !(Maybe Compliance)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -795,8 +882,8 @@ instance NFData ComplianceContributorCount where
 -- /See:/ 'complianceSummary' smart constructor.
 data ComplianceSummary = ComplianceSummary'
   { _csComplianceSummaryTimestamp :: !(Maybe POSIX)
-  , _csCompliantResourceCount     :: !(Maybe ComplianceContributorCount)
-  , _csNonCompliantResourceCount  :: !(Maybe ComplianceContributorCount)
+  , _csCompliantResourceCount :: !(Maybe ComplianceContributorCount)
+  , _csNonCompliantResourceCount :: !(Maybe ComplianceContributorCount)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -850,7 +937,7 @@ instance NFData ComplianceSummary where
 --
 -- /See:/ 'complianceSummaryByResourceType' smart constructor.
 data ComplianceSummaryByResourceType = ComplianceSummaryByResourceType'
-  { _csbrtResourceType      :: !(Maybe Text)
+  { _csbrtResourceType :: !(Maybe Text)
   , _csbrtComplianceSummary :: !(Maybe ComplianceSummary)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -897,12 +984,12 @@ instance NFData ComplianceSummaryByResourceType where
 --
 -- /See:/ 'configExportDeliveryInfo' smart constructor.
 data ConfigExportDeliveryInfo = ConfigExportDeliveryInfo'
-  { _cediLastErrorCode      :: !(Maybe Text)
-  , _cediLastAttemptTime    :: !(Maybe POSIX)
+  { _cediLastErrorCode :: !(Maybe Text)
+  , _cediLastAttemptTime :: !(Maybe POSIX)
   , _cediLastSuccessfulTime :: !(Maybe POSIX)
-  , _cediLastStatus         :: !(Maybe DeliveryStatus)
-  , _cediLastErrorMessage   :: !(Maybe Text)
-  , _cediNextDeliveryTime   :: !(Maybe POSIX)
+  , _cediLastStatus :: !(Maybe DeliveryStatus)
+  , _cediLastErrorMessage :: !(Maybe Text)
+  , _cediNextDeliveryTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -981,15 +1068,16 @@ instance NFData ConfigExportDeliveryInfo where
 --
 -- /See:/ 'configRule' smart constructor.
 data ConfigRule = ConfigRule'
-  { _crInputParameters           :: !(Maybe Text)
-  , _crConfigRuleName            :: !(Maybe Text)
+  { _crInputParameters :: !(Maybe Text)
+  , _crConfigRuleName :: !(Maybe Text)
+  , _crCreatedBy :: !(Maybe Text)
   , _crMaximumExecutionFrequency :: !(Maybe MaximumExecutionFrequency)
-  , _crConfigRuleId              :: !(Maybe Text)
-  , _crScope                     :: !(Maybe Scope)
-  , _crConfigRuleState           :: !(Maybe ConfigRuleState)
-  , _crDescription               :: !(Maybe Text)
-  , _crConfigRuleARN             :: !(Maybe Text)
-  , _crSource                    :: !Source
+  , _crConfigRuleId :: !(Maybe Text)
+  , _crScope :: !(Maybe Scope)
+  , _crConfigRuleState :: !(Maybe ConfigRuleState)
+  , _crDescription :: !(Maybe Text)
+  , _crConfigRuleARN :: !(Maybe Text)
+  , _crSource :: !Source
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1000,6 +1088,8 @@ data ConfigRule = ConfigRule'
 -- * 'crInputParameters' - A string, in JSON format, that is passed to the AWS Config rule Lambda function.
 --
 -- * 'crConfigRuleName' - The name that you assign to the AWS Config rule. The name is required if you are adding a new rule.
+--
+-- * 'crCreatedBy' - Service principal name of the service that created the rule.
 --
 -- * 'crMaximumExecutionFrequency' - The maximum frequency with which AWS Config runs evaluations for a rule. You can specify a value for @MaximumExecutionFrequency@ when:     * You are using an AWS managed rule that is triggered at a periodic frequency.     * Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see 'ConfigSnapshotDeliveryProperties' .
 --
@@ -1021,6 +1111,7 @@ configRule pSource_ =
   ConfigRule'
     { _crInputParameters = Nothing
     , _crConfigRuleName = Nothing
+    , _crCreatedBy = Nothing
     , _crMaximumExecutionFrequency = Nothing
     , _crConfigRuleId = Nothing
     , _crScope = Nothing
@@ -1038,6 +1129,10 @@ crInputParameters = lens _crInputParameters (\ s a -> s{_crInputParameters = a})
 -- | The name that you assign to the AWS Config rule. The name is required if you are adding a new rule.
 crConfigRuleName :: Lens' ConfigRule (Maybe Text)
 crConfigRuleName = lens _crConfigRuleName (\ s a -> s{_crConfigRuleName = a})
+
+-- | Service principal name of the service that created the rule.
+crCreatedBy :: Lens' ConfigRule (Maybe Text)
+crCreatedBy = lens _crCreatedBy (\ s a -> s{_crCreatedBy = a})
 
 -- | The maximum frequency with which AWS Config runs evaluations for a rule. You can specify a value for @MaximumExecutionFrequency@ when:     * You are using an AWS managed rule that is triggered at a periodic frequency.     * Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see 'ConfigSnapshotDeliveryProperties' .
 crMaximumExecutionFrequency :: Lens' ConfigRule (Maybe MaximumExecutionFrequency)
@@ -1074,6 +1169,7 @@ instance FromJSON ConfigRule where
                  ConfigRule' <$>
                    (x .:? "InputParameters") <*>
                      (x .:? "ConfigRuleName")
+                     <*> (x .:? "CreatedBy")
                      <*> (x .:? "MaximumExecutionFrequency")
                      <*> (x .:? "ConfigRuleId")
                      <*> (x .:? "Scope")
@@ -1092,6 +1188,7 @@ instance ToJSON ConfigRule where
               (catMaybes
                  [("InputParameters" .=) <$> _crInputParameters,
                   ("ConfigRuleName" .=) <$> _crConfigRuleName,
+                  ("CreatedBy" .=) <$> _crCreatedBy,
                   ("MaximumExecutionFrequency" .=) <$>
                     _crMaximumExecutionFrequency,
                   ("ConfigRuleId" .=) <$> _crConfigRuleId,
@@ -1108,9 +1205,9 @@ instance ToJSON ConfigRule where
 -- /See:/ 'configRuleComplianceFilters' smart constructor.
 data ConfigRuleComplianceFilters = ConfigRuleComplianceFilters'
   { _crcfConfigRuleName :: !(Maybe Text)
-  , _crcfAccountId      :: !(Maybe Text)
+  , _crcfAccountId :: !(Maybe Text)
   , _crcfComplianceType :: !(Maybe ComplianceType)
-  , _crcfAWSRegion      :: !(Maybe Text)
+  , _crcfAWSRegion :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1120,11 +1217,11 @@ data ConfigRuleComplianceFilters = ConfigRuleComplianceFilters'
 --
 -- * 'crcfConfigRuleName' - The name of the AWS Config rule.
 --
--- * 'crcfAccountId' - The 12-digit account ID of the source account.
+-- * 'crcfAccountId' - The 12-digit account ID of the source account. 
 --
 -- * 'crcfComplianceType' - The rule compliance status. For the @ConfigRuleComplianceFilters@ data type, AWS Config supports only @COMPLIANT@ and @NON_COMPLIANT@ . AWS Config does not support the @NOT_APPLICABLE@ and the @INSUFFICIENT_DATA@ values.
 --
--- * 'crcfAWSRegion' - The source region where the data is aggregated.
+-- * 'crcfAWSRegion' - The source region where the data is aggregated. 
 configRuleComplianceFilters
     :: ConfigRuleComplianceFilters
 configRuleComplianceFilters =
@@ -1140,7 +1237,7 @@ configRuleComplianceFilters =
 crcfConfigRuleName :: Lens' ConfigRuleComplianceFilters (Maybe Text)
 crcfConfigRuleName = lens _crcfConfigRuleName (\ s a -> s{_crcfConfigRuleName = a})
 
--- | The 12-digit account ID of the source account.
+-- | The 12-digit account ID of the source account. 
 crcfAccountId :: Lens' ConfigRuleComplianceFilters (Maybe Text)
 crcfAccountId = lens _crcfAccountId (\ s a -> s{_crcfAccountId = a})
 
@@ -1148,7 +1245,7 @@ crcfAccountId = lens _crcfAccountId (\ s a -> s{_crcfAccountId = a})
 crcfComplianceType :: Lens' ConfigRuleComplianceFilters (Maybe ComplianceType)
 crcfComplianceType = lens _crcfComplianceType (\ s a -> s{_crcfComplianceType = a})
 
--- | The source region where the data is aggregated.
+-- | The source region where the data is aggregated. 
 crcfAWSRegion :: Lens' ConfigRuleComplianceFilters (Maybe Text)
 crcfAWSRegion = lens _crcfAWSRegion (\ s a -> s{_crcfAWSRegion = a})
 
@@ -1220,17 +1317,17 @@ instance ToJSON ConfigRuleComplianceSummaryFilters
 --
 -- /See:/ 'configRuleEvaluationStatus' smart constructor.
 data ConfigRuleEvaluationStatus = ConfigRuleEvaluationStatus'
-  { _cresLastErrorCode                :: !(Maybe Text)
-  , _cresLastFailedEvaluationTime     :: !(Maybe POSIX)
-  , _cresFirstActivatedTime           :: !(Maybe POSIX)
+  { _cresLastErrorCode :: !(Maybe Text)
+  , _cresLastFailedEvaluationTime :: !(Maybe POSIX)
+  , _cresFirstActivatedTime :: !(Maybe POSIX)
   , _cresLastSuccessfulEvaluationTime :: !(Maybe POSIX)
-  , _cresConfigRuleName               :: !(Maybe Text)
-  , _cresLastErrorMessage             :: !(Maybe Text)
-  , _cresConfigRuleId                 :: !(Maybe Text)
-  , _cresLastFailedInvocationTime     :: !(Maybe POSIX)
-  , _cresFirstEvaluationStarted       :: !(Maybe Bool)
+  , _cresConfigRuleName :: !(Maybe Text)
+  , _cresLastErrorMessage :: !(Maybe Text)
+  , _cresConfigRuleId :: !(Maybe Text)
+  , _cresLastFailedInvocationTime :: !(Maybe POSIX)
+  , _cresFirstEvaluationStarted :: !(Maybe Bool)
   , _cresLastSuccessfulInvocationTime :: !(Maybe POSIX)
-  , _cresConfigRuleARN                :: !(Maybe Text)
+  , _cresConfigRuleARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1357,11 +1454,11 @@ instance NFData ConfigRuleEvaluationStatus where
 --
 --     * For example, you want your rule to run evaluations when AWS Config delivers the configuration snapshot.
 --
---     * You specify the @MaximumExecutionFrequency@ value for @Six_Hours@ .
+--     * You specify the @MaximumExecutionFrequency@ value for @Six_Hours@ . 
 --
 --     * You then specify the delivery channel @deliveryFrequency@ value for @TwentyFour_Hours@ .
 --
---     * Because the value for @deliveryFrequency@ is less frequent than @MaximumExecutionFrequency@ , AWS Config invokes evaluations for the rule every 24 hours.
+--     * Because the value for @deliveryFrequency@ is less frequent than @MaximumExecutionFrequency@ , AWS Config invokes evaluations for the rule every 24 hours. 
 --
 --
 --
@@ -1419,10 +1516,10 @@ instance ToJSON ConfigSnapshotDeliveryProperties
 --
 -- /See:/ 'configStreamDeliveryInfo' smart constructor.
 data ConfigStreamDeliveryInfo = ConfigStreamDeliveryInfo'
-  { _csdiLastErrorCode        :: !(Maybe Text)
+  { _csdiLastErrorCode :: !(Maybe Text)
   , _csdiLastStatusChangeTime :: !(Maybe POSIX)
-  , _csdiLastStatus           :: !(Maybe DeliveryStatus)
-  , _csdiLastErrorMessage     :: !(Maybe Text)
+  , _csdiLastStatus :: !(Maybe DeliveryStatus)
+  , _csdiLastErrorMessage :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1478,18 +1575,18 @@ instance Hashable ConfigStreamDeliveryInfo where
 
 instance NFData ConfigStreamDeliveryInfo where
 
--- | The details about the configuration aggregator, including information about source accounts, regions, and metadata of the aggregator.
+-- | The details about the configuration aggregator, including information about source accounts, regions, and metadata of the aggregator. 
 --
 --
 --
 -- /See:/ 'configurationAggregator' smart constructor.
 data ConfigurationAggregator = ConfigurationAggregator'
-  { _caConfigurationAggregatorARN    :: !(Maybe Text)
-  , _caCreationTime                  :: !(Maybe POSIX)
+  { _caConfigurationAggregatorARN :: !(Maybe Text)
+  , _caCreationTime :: !(Maybe POSIX)
   , _caOrganizationAggregationSource :: !(Maybe OrganizationAggregationSource)
-  , _caLastUpdatedTime               :: !(Maybe POSIX)
-  , _caAccountAggregationSources     :: !(Maybe [AccountAggregationSource])
-  , _caConfigurationAggregatorName   :: !(Maybe Text)
+  , _caLastUpdatedTime :: !(Maybe POSIX)
+  , _caAccountAggregationSources :: !(Maybe [AccountAggregationSource])
+  , _caConfigurationAggregatorName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1567,24 +1664,24 @@ instance NFData ConfigurationAggregator where
 --
 -- /See:/ 'configurationItem' smart constructor.
 data ConfigurationItem = ConfigurationItem'
-  { _ciResourceId                   :: !(Maybe Text)
-  , _ciResourceType                 :: !(Maybe ResourceType)
-  , _ciConfigurationStateId         :: !(Maybe Text)
-  , _ciArn                          :: !(Maybe Text)
-  , _ciResourceName                 :: !(Maybe Text)
-  , _ciResourceCreationTime         :: !(Maybe POSIX)
-  , _ciConfigurationItemStatus      :: !(Maybe ConfigurationItemStatus)
+  { _ciResourceId :: !(Maybe Text)
+  , _ciResourceType :: !(Maybe ResourceType)
+  , _ciConfigurationStateId :: !(Maybe Text)
+  , _ciArn :: !(Maybe Text)
+  , _ciResourceName :: !(Maybe Text)
+  , _ciResourceCreationTime :: !(Maybe POSIX)
+  , _ciConfigurationItemStatus :: !(Maybe ConfigurationItemStatus)
   , _ciConfigurationItemCaptureTime :: !(Maybe POSIX)
-  , _ciAccountId                    :: !(Maybe Text)
-  , _ciSupplementaryConfiguration   :: !(Maybe (Map Text Text))
-  , _ciAvailabilityZone             :: !(Maybe Text)
-  , _ciRelationships                :: !(Maybe [Relationship])
-  , _ciVersion                      :: !(Maybe Text)
-  , _ciAwsRegion                    :: !(Maybe Text)
-  , _ciRelatedEvents                :: !(Maybe [Text])
-  , _ciConfiguration                :: !(Maybe Text)
-  , _ciConfigurationItemMD5Hash     :: !(Maybe Text)
-  , _ciTags                         :: !(Maybe (Map Text Text))
+  , _ciAccountId :: !(Maybe Text)
+  , _ciSupplementaryConfiguration :: !(Maybe (Map Text Text))
+  , _ciAvailabilityZone :: !(Maybe Text)
+  , _ciRelationships :: !(Maybe [Relationship])
+  , _ciVersion :: !(Maybe Text)
+  , _ciAwsRegion :: !(Maybe Text)
+  , _ciRelatedEvents :: !(Maybe [Text])
+  , _ciConfiguration :: !(Maybe Text)
+  , _ciConfigurationItemMD5Hash :: !(Maybe Text)
+  , _ciTags :: !(Maybe (Map Text Text))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1757,9 +1854,9 @@ instance NFData ConfigurationItem where
 --
 -- /See:/ 'configurationRecorder' smart constructor.
 data ConfigurationRecorder = ConfigurationRecorder'
-  { _crName           :: !(Maybe Text)
+  { _crName :: !(Maybe Text)
   , _crRecordingGroup :: !(Maybe RecordingGroup)
-  , _crRoleARN        :: !(Maybe Text)
+  , _crRoleARN :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1817,14 +1914,14 @@ instance ToJSON ConfigurationRecorder where
 --
 -- /See:/ 'configurationRecorderStatus' smart constructor.
 data ConfigurationRecorderStatus = ConfigurationRecorderStatus'
-  { _crsLastErrorCode        :: !(Maybe Text)
-  , _crsLastStopTime         :: !(Maybe POSIX)
+  { _crsLastErrorCode :: !(Maybe Text)
+  , _crsLastStopTime :: !(Maybe POSIX)
   , _crsLastStatusChangeTime :: !(Maybe POSIX)
-  , _crsRecording            :: !(Maybe Bool)
-  , _crsLastStatus           :: !(Maybe RecorderStatus)
-  , _crsLastErrorMessage     :: !(Maybe Text)
-  , _crsName                 :: !(Maybe Text)
-  , _crsLastStartTime        :: !(Maybe POSIX)
+  , _crsRecording :: !(Maybe Bool)
+  , _crsLastStatus :: !(Maybe RecorderStatus)
+  , _crsLastErrorMessage :: !(Maybe Text)
+  , _crsName :: !(Maybe Text)
+  , _crsLastStartTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -1998,15 +2095,15 @@ instance ToJSON DeliveryChannel where
 -- | The status of a specified delivery channel.
 --
 --
--- Valid values: @Success@ | @Failure@
+-- Valid values: @Success@ | @Failure@ 
 --
 --
 -- /See:/ 'deliveryChannelStatus' smart constructor.
 data DeliveryChannelStatus = DeliveryChannelStatus'
   { _dcsConfigSnapshotDeliveryInfo :: !(Maybe ConfigExportDeliveryInfo)
-  , _dcsConfigStreamDeliveryInfo   :: !(Maybe ConfigStreamDeliveryInfo)
-  , _dcsConfigHistoryDeliveryInfo  :: !(Maybe ConfigExportDeliveryInfo)
-  , _dcsName                       :: !(Maybe Text)
+  , _dcsConfigStreamDeliveryInfo :: !(Maybe ConfigStreamDeliveryInfo)
+  , _dcsConfigHistoryDeliveryInfo :: !(Maybe ConfigExportDeliveryInfo)
+  , _dcsName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2068,11 +2165,11 @@ instance NFData DeliveryChannelStatus where
 --
 -- /See:/ 'evaluation' smart constructor.
 data Evaluation = Evaluation'
-  { _eAnnotation             :: !(Maybe Text)
+  { _eAnnotation :: !(Maybe Text)
   , _eComplianceResourceType :: !Text
-  , _eComplianceResourceId   :: !Text
-  , _eComplianceType         :: !ComplianceType
-  , _eOrderingTimestamp      :: !POSIX
+  , _eComplianceResourceId :: !Text
+  , _eComplianceType :: !ComplianceType
+  , _eOrderingTimestamp :: !POSIX
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2160,11 +2257,11 @@ instance ToJSON Evaluation where
 -- /See:/ 'evaluationResult' smart constructor.
 data EvaluationResult = EvaluationResult'
   { _erEvaluationResultIdentifier :: !(Maybe EvaluationResultIdentifier)
-  , _erAnnotation                 :: !(Maybe Text)
-  , _erConfigRuleInvokedTime      :: !(Maybe POSIX)
-  , _erResultRecordedTime         :: !(Maybe POSIX)
-  , _erResultToken                :: !(Maybe Text)
-  , _erComplianceType             :: !(Maybe ComplianceType)
+  , _erAnnotation :: !(Maybe Text)
+  , _erConfigRuleInvokedTime :: !(Maybe POSIX)
+  , _erResultRecordedTime :: !(Maybe POSIX)
+  , _erResultToken :: !(Maybe Text)
+  , _erComplianceType :: !(Maybe ComplianceType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2243,7 +2340,7 @@ instance NFData EvaluationResult where
 -- /See:/ 'evaluationResultIdentifier' smart constructor.
 data EvaluationResultIdentifier = EvaluationResultIdentifier'
   { _eriEvaluationResultQualifier :: !(Maybe EvaluationResultQualifier)
-  , _eriOrderingTimestamp         :: !(Maybe POSIX)
+  , _eriOrderingTimestamp :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2287,8 +2384,8 @@ instance NFData EvaluationResultIdentifier where
 --
 -- /See:/ 'evaluationResultQualifier' smart constructor.
 data EvaluationResultQualifier = EvaluationResultQualifier'
-  { _erqResourceId     :: !(Maybe Text)
-  , _erqResourceType   :: !(Maybe Text)
+  { _erqResourceId :: !(Maybe Text)
+  , _erqResourceType :: !(Maybe Text)
   , _erqConfigRuleName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2336,15 +2433,61 @@ instance Hashable EvaluationResultQualifier where
 
 instance NFData EvaluationResultQualifier where
 
+-- | The count of resources that are grouped by the group name.
+--
+--
+--
+-- /See:/ 'groupedResourceCount' smart constructor.
+data GroupedResourceCount = GroupedResourceCount'
+  { _grcGroupName :: !Text
+  , _grcResourceCount :: !Integer
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'GroupedResourceCount' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'grcGroupName' - The name of the group that can be region, account ID, or resource type. For example, region1, region2 if the region was chosen as @GroupByKey@ .
+--
+-- * 'grcResourceCount' - The number of resources in the group.
+groupedResourceCount
+    :: Text -- ^ 'grcGroupName'
+    -> Integer -- ^ 'grcResourceCount'
+    -> GroupedResourceCount
+groupedResourceCount pGroupName_ pResourceCount_ =
+  GroupedResourceCount'
+    {_grcGroupName = pGroupName_, _grcResourceCount = pResourceCount_}
+
+
+-- | The name of the group that can be region, account ID, or resource type. For example, region1, region2 if the region was chosen as @GroupByKey@ .
+grcGroupName :: Lens' GroupedResourceCount Text
+grcGroupName = lens _grcGroupName (\ s a -> s{_grcGroupName = a})
+
+-- | The number of resources in the group.
+grcResourceCount :: Lens' GroupedResourceCount Integer
+grcResourceCount = lens _grcResourceCount (\ s a -> s{_grcResourceCount = a})
+
+instance FromJSON GroupedResourceCount where
+        parseJSON
+          = withObject "GroupedResourceCount"
+              (\ x ->
+                 GroupedResourceCount' <$>
+                   (x .: "GroupName") <*> (x .: "ResourceCount"))
+
+instance Hashable GroupedResourceCount where
+
+instance NFData GroupedResourceCount where
+
 -- | This object contains regions to setup the aggregator and an IAM role to retrieve organization details.
 --
 --
 --
 -- /See:/ 'organizationAggregationSource' smart constructor.
 data OrganizationAggregationSource = OrganizationAggregationSource'
-  { _oasAWSRegions    :: !(Maybe (List1 Text))
+  { _oasAWSRegions :: !(Maybe (List1 Text))
   , _oasAllAWSRegions :: !(Maybe Bool)
-  , _oasRoleARN       :: !Text
+  , _oasRoleARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2354,7 +2497,7 @@ data OrganizationAggregationSource = OrganizationAggregationSource'
 --
 -- * 'oasAWSRegions' - The source regions being aggregated.
 --
--- * 'oasAllAWSRegions' - If true, aggreagate existing AWS Config regions and future regions.
+-- * 'oasAllAWSRegions' - If true, aggregate existing AWS Config regions and future regions.
 --
 -- * 'oasRoleARN' - ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
 organizationAggregationSource
@@ -2372,7 +2515,7 @@ organizationAggregationSource pRoleARN_ =
 oasAWSRegions :: Lens' OrganizationAggregationSource (Maybe (NonEmpty Text))
 oasAWSRegions = lens _oasAWSRegions (\ s a -> s{_oasAWSRegions = a}) . mapping _List1
 
--- | If true, aggreagate existing AWS Config regions and future regions.
+-- | If true, aggregate existing AWS Config regions and future regions.
 oasAllAWSRegions :: Lens' OrganizationAggregationSource (Maybe Bool)
 oasAllAWSRegions = lens _oasAllAWSRegions (\ s a -> s{_oasAllAWSRegions = a})
 
@@ -2417,7 +2560,7 @@ data PendingAggregationRequest = PendingAggregationRequest'
 --
 -- * 'parRequesterAccountId' - The 12-digit account ID of the account requesting to aggregate data.
 --
--- * 'parRequesterAWSRegion' - The region requesting to aggregate data.
+-- * 'parRequesterAWSRegion' - The region requesting to aggregate data. 
 pendingAggregationRequest
     :: PendingAggregationRequest
 pendingAggregationRequest =
@@ -2429,7 +2572,7 @@ pendingAggregationRequest =
 parRequesterAccountId :: Lens' PendingAggregationRequest (Maybe Text)
 parRequesterAccountId = lens _parRequesterAccountId (\ s a -> s{_parRequesterAccountId = a})
 
--- | The region requesting to aggregate data.
+-- | The region requesting to aggregate data. 
 parRequesterAWSRegion :: Lens' PendingAggregationRequest (Maybe Text)
 parRequesterAWSRegion = lens _parRequesterAWSRegion (\ s a -> s{_parRequesterAWSRegion = a})
 
@@ -2465,9 +2608,9 @@ instance NFData PendingAggregationRequest where
 --
 -- /See:/ 'recordingGroup' smart constructor.
 data RecordingGroup = RecordingGroup'
-  { _rgAllSupported               :: !(Maybe Bool)
+  { _rgAllSupported :: !(Maybe Bool)
   , _rgIncludeGlobalResourceTypes :: !(Maybe Bool)
-  , _rgResourceTypes              :: !(Maybe [ResourceType])
+  , _rgResourceTypes :: !(Maybe [ResourceType])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2530,9 +2673,9 @@ instance ToJSON RecordingGroup where
 --
 -- /See:/ 'relationship' smart constructor.
 data Relationship = Relationship'
-  { _rResourceId       :: !(Maybe Text)
-  , _rResourceType     :: !(Maybe ResourceType)
-  , _rResourceName     :: !(Maybe Text)
+  { _rResourceId :: !(Maybe Text)
+  , _rResourceType :: !(Maybe ResourceType)
+  , _rResourceName :: !(Maybe Text)
   , _rRelationshipName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2595,7 +2738,7 @@ instance NFData Relationship where
 -- /See:/ 'resourceCount' smart constructor.
 data ResourceCount = ResourceCount'
   { _rcResourceType :: !(Maybe ResourceType)
-  , _rcCount        :: !(Maybe Integer)
+  , _rcCount :: !(Maybe Integer)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2630,15 +2773,131 @@ instance Hashable ResourceCount where
 
 instance NFData ResourceCount where
 
+-- | Filters the resource count based on account ID, region, and resource type.
+--
+--
+--
+-- /See:/ 'resourceCountFilters' smart constructor.
+data ResourceCountFilters = ResourceCountFilters'
+  { _rcfResourceType :: !(Maybe ResourceType)
+  , _rcfAccountId :: !(Maybe Text)
+  , _rcfRegion :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ResourceCountFilters' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rcfResourceType' - The type of the AWS resource.
+--
+-- * 'rcfAccountId' - The 12-digit ID of the account.
+--
+-- * 'rcfRegion' - The region where the account is located.
+resourceCountFilters
+    :: ResourceCountFilters
+resourceCountFilters =
+  ResourceCountFilters'
+    {_rcfResourceType = Nothing, _rcfAccountId = Nothing, _rcfRegion = Nothing}
+
+
+-- | The type of the AWS resource.
+rcfResourceType :: Lens' ResourceCountFilters (Maybe ResourceType)
+rcfResourceType = lens _rcfResourceType (\ s a -> s{_rcfResourceType = a})
+
+-- | The 12-digit ID of the account.
+rcfAccountId :: Lens' ResourceCountFilters (Maybe Text)
+rcfAccountId = lens _rcfAccountId (\ s a -> s{_rcfAccountId = a})
+
+-- | The region where the account is located.
+rcfRegion :: Lens' ResourceCountFilters (Maybe Text)
+rcfRegion = lens _rcfRegion (\ s a -> s{_rcfRegion = a})
+
+instance Hashable ResourceCountFilters where
+
+instance NFData ResourceCountFilters where
+
+instance ToJSON ResourceCountFilters where
+        toJSON ResourceCountFilters'{..}
+          = object
+              (catMaybes
+                 [("ResourceType" .=) <$> _rcfResourceType,
+                  ("AccountId" .=) <$> _rcfAccountId,
+                  ("Region" .=) <$> _rcfRegion])
+
+-- | Filters the results by resource account ID, region, resource ID, and resource name.
+--
+--
+--
+-- /See:/ 'resourceFilters' smart constructor.
+data ResourceFilters = ResourceFilters'
+  { _rfResourceId :: !(Maybe Text)
+  , _rfResourceName :: !(Maybe Text)
+  , _rfAccountId :: !(Maybe Text)
+  , _rfRegion :: !(Maybe Text)
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ResourceFilters' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rfResourceId' - The ID of the resource.
+--
+-- * 'rfResourceName' - The name of the resource.
+--
+-- * 'rfAccountId' - The 12-digit source account ID.
+--
+-- * 'rfRegion' - The source region.
+resourceFilters
+    :: ResourceFilters
+resourceFilters =
+  ResourceFilters'
+    { _rfResourceId = Nothing
+    , _rfResourceName = Nothing
+    , _rfAccountId = Nothing
+    , _rfRegion = Nothing
+    }
+
+
+-- | The ID of the resource.
+rfResourceId :: Lens' ResourceFilters (Maybe Text)
+rfResourceId = lens _rfResourceId (\ s a -> s{_rfResourceId = a})
+
+-- | The name of the resource.
+rfResourceName :: Lens' ResourceFilters (Maybe Text)
+rfResourceName = lens _rfResourceName (\ s a -> s{_rfResourceName = a})
+
+-- | The 12-digit source account ID.
+rfAccountId :: Lens' ResourceFilters (Maybe Text)
+rfAccountId = lens _rfAccountId (\ s a -> s{_rfAccountId = a})
+
+-- | The source region.
+rfRegion :: Lens' ResourceFilters (Maybe Text)
+rfRegion = lens _rfRegion (\ s a -> s{_rfRegion = a})
+
+instance Hashable ResourceFilters where
+
+instance NFData ResourceFilters where
+
+instance ToJSON ResourceFilters where
+        toJSON ResourceFilters'{..}
+          = object
+              (catMaybes
+                 [("ResourceId" .=) <$> _rfResourceId,
+                  ("ResourceName" .=) <$> _rfResourceName,
+                  ("AccountId" .=) <$> _rfAccountId,
+                  ("Region" .=) <$> _rfRegion])
+
 -- | The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.
 --
 --
 --
 -- /See:/ 'resourceIdentifier' smart constructor.
 data ResourceIdentifier = ResourceIdentifier'
-  { _riResourceId           :: !(Maybe Text)
-  , _riResourceType         :: !(Maybe ResourceType)
-  , _riResourceName         :: !(Maybe Text)
+  { _riResourceId :: !(Maybe Text)
+  , _riResourceType :: !(Maybe ResourceType)
+  , _riResourceName :: !(Maybe Text)
   , _riResourceDeletionTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2701,7 +2960,7 @@ instance NFData ResourceIdentifier where
 -- /See:/ 'resourceKey' smart constructor.
 data ResourceKey = ResourceKey'
   { _rkResourceType :: !ResourceType
-  , _rkResourceId   :: !Text
+  , _rkResourceId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2711,7 +2970,7 @@ data ResourceKey = ResourceKey'
 --
 -- * 'rkResourceType' - The resource type.
 --
--- * 'rkResourceId' - The ID of the resource (for example., sg-xxxxxx).
+-- * 'rkResourceId' - The ID of the resource (for example., sg-xxxxxx). 
 resourceKey
     :: ResourceType -- ^ 'rkResourceType'
     -> Text -- ^ 'rkResourceId'
@@ -2724,7 +2983,7 @@ resourceKey pResourceType_ pResourceId_ =
 rkResourceType :: Lens' ResourceKey ResourceType
 rkResourceType = lens _rkResourceType (\ s a -> s{_rkResourceType = a})
 
--- | The ID of the resource (for example., sg-xxxxxx).
+-- | The ID of the resource (for example., sg-xxxxxx). 
 rkResourceId :: Lens' ResourceKey Text
 rkResourceId = lens _rkResourceId (\ s a -> s{_rkResourceId = a})
 
@@ -2746,6 +3005,54 @@ instance ToJSON ResourceKey where
                  [Just ("resourceType" .= _rkResourceType),
                   Just ("resourceId" .= _rkResourceId)])
 
+-- | An object with the name of the retention configuration and the retention period in days. The object stores the configuration for data retention in AWS Config.
+--
+--
+--
+-- /See:/ 'retentionConfiguration' smart constructor.
+data RetentionConfiguration = RetentionConfiguration'
+  { _rcName :: !Text
+  , _rcRetentionPeriodInDays :: !Nat
+  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'RetentionConfiguration' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rcName' - The name of the retention configuration object.
+--
+-- * 'rcRetentionPeriodInDays' - Number of days AWS Config stores your historical information.
+retentionConfiguration
+    :: Text -- ^ 'rcName'
+    -> Natural -- ^ 'rcRetentionPeriodInDays'
+    -> RetentionConfiguration
+retentionConfiguration pName_ pRetentionPeriodInDays_ =
+  RetentionConfiguration'
+    { _rcName = pName_
+    , _rcRetentionPeriodInDays = _Nat # pRetentionPeriodInDays_
+    }
+
+
+-- | The name of the retention configuration object.
+rcName :: Lens' RetentionConfiguration Text
+rcName = lens _rcName (\ s a -> s{_rcName = a})
+
+-- | Number of days AWS Config stores your historical information.
+rcRetentionPeriodInDays :: Lens' RetentionConfiguration Natural
+rcRetentionPeriodInDays = lens _rcRetentionPeriodInDays (\ s a -> s{_rcRetentionPeriodInDays = a}) . _Nat
+
+instance FromJSON RetentionConfiguration where
+        parseJSON
+          = withObject "RetentionConfiguration"
+              (\ x ->
+                 RetentionConfiguration' <$>
+                   (x .: "Name") <*> (x .: "RetentionPeriodInDays"))
+
+instance Hashable RetentionConfiguration where
+
+instance NFData RetentionConfiguration where
+
 -- | Defines which resources trigger an evaluation for an AWS Config rule. The scope can include one or more resource types, a combination of a tag key and value, or a combination of one resource type and one resource ID. Specify a scope to constrain which resources trigger an evaluation for a rule. Otherwise, evaluations for the rule are triggered when any resource in your recording group changes in configuration.
 --
 --
@@ -2753,9 +3060,9 @@ instance ToJSON ResourceKey where
 -- /See:/ 'scope' smart constructor.
 data Scope = Scope'
   { _sComplianceResourceTypes :: !(Maybe [Text])
-  , _sComplianceResourceId    :: !(Maybe Text)
-  , _sTagValue                :: !(Maybe Text)
-  , _sTagKey                  :: !(Maybe Text)
+  , _sComplianceResourceId :: !(Maybe Text)
+  , _sTagValue :: !(Maybe Text)
+  , _sTagKey :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -2828,8 +3135,8 @@ instance ToJSON Scope where
 --
 -- /See:/ 'source' smart constructor.
 data Source = Source'
-  { _sSourceDetails    :: !(Maybe [SourceDetail])
-  , _sOwner            :: !Owner
+  { _sSourceDetails :: !(Maybe [SourceDetail])
+  , _sOwner :: !Owner
   , _sSourceIdentifier :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2887,15 +3194,15 @@ instance ToJSON Source where
                   Just ("Owner" .= _sOwner),
                   Just ("SourceIdentifier" .= _sSourceIdentifier)])
 
--- | Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic. You can specify the parameter values for @SourceDetail@ only for custom rules.
+-- | Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic. You can specify the parameter values for @SourceDetail@ only for custom rules. 
 --
 --
 --
 -- /See:/ 'sourceDetail' smart constructor.
 data SourceDetail = SourceDetail'
-  { _sdMessageType               :: !(Maybe MessageType)
+  { _sdMessageType :: !(Maybe MessageType)
   , _sdMaximumExecutionFrequency :: !(Maybe MaximumExecutionFrequency)
-  , _sdEventSource               :: !(Maybe EventSource)
+  , _sdEventSource :: !(Maybe EventSource)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'createPipeline' smart constructor.
 data CreatePipeline = CreatePipeline'
   { _cpDescription :: !(Maybe Text)
-  , _cpTags        :: !(Maybe [Tag])
-  , _cpName        :: !Text
-  , _cpUniqueId    :: !Text
+  , _cpTags :: !(Maybe [Tag])
+  , _cpName :: !Text
+  , _cpUniqueId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -143,7 +143,7 @@ instance ToQuery CreatePipeline where
 -- /See:/ 'createPipelineResponse' smart constructor.
 data CreatePipelineResponse = CreatePipelineResponse'
   { _cprsResponseStatus :: !Int
-  , _cprsPipelineId     :: !Text
+  , _cprsPipelineId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

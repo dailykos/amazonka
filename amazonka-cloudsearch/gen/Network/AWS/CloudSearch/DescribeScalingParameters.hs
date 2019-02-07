@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Container for the parameters to the @'DescribeScalingParameters' @ operation. Specifies the name of the domain you want to describe.
+-- | Container for the parameters to the @'DescribeScalingParameters' @ operation. Specifies the name of the domain you want to describe. 
 --
 --
 --
@@ -104,7 +104,7 @@ instance ToQuery DescribeScalingParameters where
 --
 -- /See:/ 'describeScalingParametersResponse' smart constructor.
 data DescribeScalingParametersResponse = DescribeScalingParametersResponse'
-  { _dsprsResponseStatus    :: !Int
+  { _dsprsResponseStatus :: !Int
   , _dsprsScalingParameters :: !ScalingParametersStatus
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

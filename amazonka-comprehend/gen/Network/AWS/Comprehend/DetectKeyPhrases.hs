@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Detects the key noun phrases found in the text.
+-- Detects the key noun phrases found in the text. 
 --
 --
 module Network.AWS.Comprehend.DetectKeyPhrases
@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'detectKeyPhrases' smart constructor.
 data DetectKeyPhrases = DetectKeyPhrases'
-  { _dkpText         :: !Text
+  { _dkpText :: !Text
   , _dkpLanguageCode :: !LanguageCode
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -58,7 +58,7 @@ data DetectKeyPhrases = DetectKeyPhrases'
 --
 -- * 'dkpText' - A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 --
--- * 'dkpLanguageCode' - The RFC 5646 language code for the input text. If you don't specify a language code, Amazon Comprehend detects the dominant language. If you specify the code for a language that Amazon Comprehend does not support, it returns and @UnsupportedLanguageException@ . For more information about RFC 5646, see <https://tools.ietf.org/html/rfc5646 Tags for Identifying Languages> on the /IETF Tools/ web site.
+-- * 'dkpLanguageCode' - The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.
 detectKeyPhrases
     :: Text -- ^ 'dkpText'
     -> LanguageCode -- ^ 'dkpLanguageCode'
@@ -71,7 +71,7 @@ detectKeyPhrases pText_ pLanguageCode_ =
 dkpText :: Lens' DetectKeyPhrases Text
 dkpText = lens _dkpText (\ s a -> s{_dkpText = a})
 
--- | The RFC 5646 language code for the input text. If you don't specify a language code, Amazon Comprehend detects the dominant language. If you specify the code for a language that Amazon Comprehend does not support, it returns and @UnsupportedLanguageException@ . For more information about RFC 5646, see <https://tools.ietf.org/html/rfc5646 Tags for Identifying Languages> on the /IETF Tools/ web site.
+-- | The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.
 dkpLanguageCode :: Lens' DetectKeyPhrases LanguageCode
 dkpLanguageCode = lens _dkpLanguageCode (\ s a -> s{_dkpLanguageCode = a})
 
@@ -114,7 +114,7 @@ instance ToQuery DetectKeyPhrases where
 
 -- | /See:/ 'detectKeyPhrasesResponse' smart constructor.
 data DetectKeyPhrasesResponse = DetectKeyPhrasesResponse'
-  { _dkprsKeyPhrases     :: !(Maybe [KeyPhrase])
+  { _dkprsKeyPhrases :: !(Maybe [KeyPhrase])
   , _dkprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ data DetectKeyPhrasesResponse = DetectKeyPhrasesResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dkprsKeyPhrases' - A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection.
+-- * 'dkprsKeyPhrases' - A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection. 
 --
 -- * 'dkprsResponseStatus' - -- | The response status code.
 detectKeyPhrasesResponse
@@ -134,7 +134,7 @@ detectKeyPhrasesResponse pResponseStatus_ =
     {_dkprsKeyPhrases = Nothing, _dkprsResponseStatus = pResponseStatus_}
 
 
--- | A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection.
+-- | A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection. 
 dkprsKeyPhrases :: Lens' DetectKeyPhrasesResponse [KeyPhrase]
 dkprsKeyPhrases = lens _dkprsKeyPhrases (\ s a -> s{_dkprsKeyPhrases = a}) . _Default . _Coerce
 

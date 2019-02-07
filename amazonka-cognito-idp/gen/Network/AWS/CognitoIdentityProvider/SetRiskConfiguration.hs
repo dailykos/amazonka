@@ -74,7 +74,7 @@ data SetRiskConfiguration = SetRiskConfiguration'
 --
 -- * 'srcCompromisedCredentialsRiskConfiguration' - The compromised credentials risk configuration.
 --
--- * 'srcUserPoolId' - The user pool ID.
+-- * 'srcUserPoolId' - The user pool ID. 
 setRiskConfiguration
     :: Text -- ^ 'srcUserPoolId'
     -> SetRiskConfiguration
@@ -104,7 +104,7 @@ srcAccountTakeoverRiskConfiguration = lens _srcAccountTakeoverRiskConfiguration 
 srcCompromisedCredentialsRiskConfiguration :: Lens' SetRiskConfiguration (Maybe CompromisedCredentialsRiskConfigurationType)
 srcCompromisedCredentialsRiskConfiguration = lens _srcCompromisedCredentialsRiskConfiguration (\ s a -> s{_srcCompromisedCredentialsRiskConfiguration = a})
 
--- | The user pool ID.
+-- | The user pool ID. 
 srcUserPoolId :: Lens' SetRiskConfiguration Text
 srcUserPoolId = lens _srcUserPoolId (\ s a -> s{_srcUserPoolId = a})
 
@@ -153,7 +153,7 @@ instance ToQuery SetRiskConfiguration where
 
 -- | /See:/ 'setRiskConfigurationResponse' smart constructor.
 data SetRiskConfigurationResponse = SetRiskConfigurationResponse'
-  { _srcrsResponseStatus    :: !Int
+  { _srcrsResponseStatus :: !Int
   , _srcrsRiskConfiguration :: !RiskConfigurationType
   } deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeAutoScalingGroups' smart constructor.
 data DescribeAutoScalingGroups = DescribeAutoScalingGroups'
   { _dasgAutoScalingGroupNames :: !(Maybe [Text])
-  , _dasgNextToken             :: !(Maybe Text)
-  , _dasgMaxRecords            :: !(Maybe Int)
+  , _dasgNextToken :: !(Maybe Text)
+  , _dasgMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -62,7 +62,7 @@ data DescribeAutoScalingGroups = DescribeAutoScalingGroups'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dasgAutoScalingGroupNames' - The names of the Auto Scaling groups. If you omit this parameter, all Auto Scaling groups are described.
+-- * 'dasgAutoScalingGroupNames' - The names of the Auto Scaling groups. You can specify up to @MaxRecords@ names. If you omit this parameter, all Auto Scaling groups are described.
 --
 -- * 'dasgNextToken' - The token for the next set of items to return. (You received this token from a previous call.)
 --
@@ -77,7 +77,7 @@ describeAutoScalingGroups =
     }
 
 
--- | The names of the Auto Scaling groups. If you omit this parameter, all Auto Scaling groups are described.
+-- | The names of the Auto Scaling groups. You can specify up to @MaxRecords@ names. If you omit this parameter, all Auto Scaling groups are described.
 dasgAutoScalingGroupNames :: Lens' DescribeAutoScalingGroups [Text]
 dasgAutoScalingGroupNames = lens _dasgAutoScalingGroupNames (\ s a -> s{_dasgAutoScalingGroupNames = a}) . _Default . _Coerce
 
@@ -133,8 +133,8 @@ instance ToQuery DescribeAutoScalingGroups where
 
 -- | /See:/ 'describeAutoScalingGroupsResponse' smart constructor.
 data DescribeAutoScalingGroupsResponse = DescribeAutoScalingGroupsResponse'
-  { _dasgrsNextToken         :: !(Maybe Text)
-  , _dasgrsResponseStatus    :: !Int
+  { _dasgrsNextToken :: !(Maybe Text)
+  , _dasgrsResponseStatus :: !Int
   , _dasgrsAutoScalingGroups :: ![AutoScalingGroup]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

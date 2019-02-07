@@ -54,9 +54,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'adminGetDevice' smart constructor.
 data AdminGetDevice = AdminGetDevice'
-  { _agdDeviceKey  :: !Text
+  { _agdDeviceKey :: !Text
   , _agdUserPoolId :: !Text
-  , _agdUsername   :: !(Sensitive Text)
+  , _agdUsername :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -138,7 +138,7 @@ instance ToQuery AdminGetDevice where
 -- /See:/ 'adminGetDeviceResponse' smart constructor.
 data AdminGetDeviceResponse = AdminGetDeviceResponse'
   { _agdrsResponseStatus :: !Int
-  , _agdrsDevice         :: !DeviceType
+  , _agdrsDevice :: !DeviceType
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

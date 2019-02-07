@@ -57,7 +57,7 @@ import Network.AWS.Response
 -- /See:/ 'setIdentityPoolConfiguration' smart constructor.
 data SetIdentityPoolConfiguration = SetIdentityPoolConfiguration'
   { _sipcCognitoStreams :: !(Maybe CognitoStreams)
-  , _sipcPushSync       :: !(Maybe PushSync)
+  , _sipcPushSync :: !(Maybe PushSync)
   , _sipcIdentityPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery SetIdentityPoolConfiguration where
 data SetIdentityPoolConfigurationResponse = SetIdentityPoolConfigurationResponse'
   { _sipcrsIdentityPoolId :: !(Maybe Text)
   , _sipcrsCognitoStreams :: !(Maybe CognitoStreams)
-  , _sipcrsPushSync       :: !(Maybe PushSync)
+  , _sipcrsPushSync :: !(Maybe PushSync)
   , _sipcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

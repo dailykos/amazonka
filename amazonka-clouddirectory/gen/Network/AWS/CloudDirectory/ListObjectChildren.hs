@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'listObjectChildren' smart constructor.
 data ListObjectChildren = ListObjectChildren'
   { _locConsistencyLevel :: !(Maybe ConsistencyLevel)
-  , _locNextToken        :: !(Maybe Text)
-  , _locMaxResults       :: !(Maybe Nat)
-  , _locDirectoryARN     :: !Text
-  , _locObjectReference  :: !ObjectReference
+  , _locNextToken :: !(Maybe Text)
+  , _locMaxResults :: !(Maybe Nat)
+  , _locDirectoryARN :: !Text
+  , _locObjectReference :: !ObjectReference
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -145,8 +145,8 @@ instance ToQuery ListObjectChildren where
 
 -- | /See:/ 'listObjectChildrenResponse' smart constructor.
 data ListObjectChildrenResponse = ListObjectChildrenResponse'
-  { _locrsChildren       :: !(Maybe (Map Text Text))
-  , _locrsNextToken      :: !(Maybe Text)
+  { _locrsChildren :: !(Maybe (Map Text Text))
+  , _locrsNextToken :: !(Maybe Text)
   , _locrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

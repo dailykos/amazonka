@@ -27,9 +27,9 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'field' smart constructor.
 data Field = Field'
-  { _fRefValue    :: !(Maybe Text)
+  { _fRefValue :: !(Maybe Text)
   , _fStringValue :: !(Maybe Text)
-  , _fKey         :: !Text
+  , _fKey :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -90,7 +90,7 @@ instance ToJSON Field where
 -- /See:/ 'instanceIdentity' smart constructor.
 data InstanceIdentity = InstanceIdentity'
   { _iiSignature :: !(Maybe Text)
-  , _iiDocument  :: !(Maybe Text)
+  , _iiDocument :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -133,7 +133,7 @@ instance ToJSON InstanceIdentity where
 -- /See:/ 'operator' smart constructor.
 data Operator = Operator'
   { _oValues :: !(Maybe [Text])
-  , _oType   :: !(Maybe OperatorType)
+  , _oType :: !(Maybe OperatorType)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -173,7 +173,7 @@ instance ToJSON Operator where
 --
 -- /See:/ 'parameterAttribute' smart constructor.
 data ParameterAttribute = ParameterAttribute'
-  { _paKey         :: !Text
+  { _paKey :: !Text
   , _paStringValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -225,7 +225,7 @@ instance ToJSON ParameterAttribute where
 --
 -- /See:/ 'parameterObject' smart constructor.
 data ParameterObject = ParameterObject'
-  { _poId         :: !Text
+  { _poId :: !Text
   , _poAttributes :: ![ParameterAttribute]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -234,7 +234,7 @@ data ParameterObject = ParameterObject'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'poId' - The ID of the parameter object.
+-- * 'poId' - The ID of the parameter object. 
 --
 -- * 'poAttributes' - The attributes of the parameter object.
 parameterObject
@@ -243,7 +243,7 @@ parameterObject
 parameterObject pId_ = ParameterObject' {_poId = pId_, _poAttributes = mempty}
 
 
--- | The ID of the parameter object.
+-- | The ID of the parameter object. 
 poId :: Lens' ParameterObject Text
 poId = lens _poId (\ s a -> s{_poId = a})
 
@@ -269,13 +269,13 @@ instance ToJSON ParameterObject where
                  [Just ("id" .= _poId),
                   Just ("attributes" .= _poAttributes)])
 
--- | A value or list of parameter values.
+-- | A value or list of parameter values. 
 --
 --
 --
 -- /See:/ 'parameterValue' smart constructor.
 data ParameterValue = ParameterValue'
-  { _pvId          :: !Text
+  { _pvId :: !Text
   , _pvStringValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -328,10 +328,10 @@ instance ToJSON ParameterValue where
 -- /See:/ 'pipelineDescription' smart constructor.
 data PipelineDescription = PipelineDescription'
   { _pdDescription :: !(Maybe Text)
-  , _pdTags        :: !(Maybe [Tag])
-  , _pdPipelineId  :: !Text
-  , _pdName        :: !Text
-  , _pdFields      :: ![Field]
+  , _pdTags :: !(Maybe [Tag])
+  , _pdPipelineId :: !Text
+  , _pdName :: !Text
+  , _pdFields :: ![Field]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -403,7 +403,7 @@ instance NFData PipelineDescription where
 -- /See:/ 'pipelineIdName' smart constructor.
 data PipelineIdName = PipelineIdName'
   { _pinName :: !(Maybe Text)
-  , _pinId   :: !(Maybe Text)
+  , _pinId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -443,8 +443,8 @@ instance NFData PipelineIdName where
 --
 -- /See:/ 'pipelineObject' smart constructor.
 data PipelineObject = PipelineObject'
-  { _pId     :: !Text
-  , _pName   :: !Text
+  { _pId :: !Text
+  , _pName :: !Text
   , _pFields :: ![Field]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -536,7 +536,7 @@ instance ToJSON Query where
 --
 -- /See:/ 'selector' smart constructor.
 data Selector = Selector'
-  { _sOperator  :: !(Maybe Operator)
+  { _sOperator :: !(Maybe Operator)
   , _sFieldName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -578,7 +578,7 @@ instance ToJSON Selector where
 --
 -- /See:/ 'tag' smart constructor.
 data Tag = Tag'
-  { _tagKey   :: !Text
+  { _tagKey :: !Text
   , _tagValue :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -628,9 +628,9 @@ instance ToJSON Tag where
 -- /See:/ 'taskObject' smart constructor.
 data TaskObject = TaskObject'
   { _toPipelineId :: !(Maybe Text)
-  , _toAttemptId  :: !(Maybe Text)
-  , _toTaskId     :: !(Maybe Text)
-  , _toObjects    :: !(Maybe (Map Text PipelineObject))
+  , _toAttemptId :: !(Maybe Text)
+  , _toTaskId :: !(Maybe Text)
+  , _toObjects :: !(Maybe (Map Text PipelineObject))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -691,7 +691,7 @@ instance NFData TaskObject where
 --
 -- /See:/ 'validationError' smart constructor.
 data ValidationError = ValidationError'
-  { _veId     :: !(Maybe Text)
+  { _veId :: !(Maybe Text)
   , _veErrors :: !(Maybe [Text])
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -734,7 +734,7 @@ instance NFData ValidationError where
 -- /See:/ 'validationWarning' smart constructor.
 data ValidationWarning = ValidationWarning'
   { _vwWarnings :: !(Maybe [Text])
-  , _vwId       :: !(Maybe Text)
+  , _vwId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

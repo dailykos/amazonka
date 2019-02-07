@@ -49,10 +49,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'startSchemaExtension' smart constructor.
 data StartSchemaExtension = StartSchemaExtension'
-  { _sseDirectoryId                         :: !Text
+  { _sseDirectoryId :: !Text
   , _sseCreateSnapshotBeforeSchemaExtension :: !Bool
-  , _sseLdifContent                         :: !Text
-  , _sseDescription                         :: !Text
+  , _sseLdifContent :: !Text
+  , _sseDescription :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -143,7 +143,7 @@ instance ToQuery StartSchemaExtension where
 -- | /See:/ 'startSchemaExtensionResponse' smart constructor.
 data StartSchemaExtensionResponse = StartSchemaExtensionResponse'
   { _ssersSchemaExtensionId :: !(Maybe Text)
-  , _ssersResponseStatus    :: !Int
+  , _ssersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

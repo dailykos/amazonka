@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteGroup' smart constructor.
 data DeleteGroup = DeleteGroup'
-  { _dgGroupName  :: !Text
+  { _dgGroupName :: !Text
   , _dgUserPoolId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

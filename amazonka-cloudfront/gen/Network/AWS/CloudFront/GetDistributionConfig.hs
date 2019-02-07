@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get the configuration information about a distribution.
+-- Get the configuration information about a distribution. 
 --
 --
 module Network.AWS.CloudFront.GetDistributionConfig
@@ -91,7 +91,7 @@ instance ToHeaders GetDistributionConfig where
 instance ToPath GetDistributionConfig where
         toPath GetDistributionConfig'{..}
           = mconcat
-              ["/2017-10-30/distribution/", toBS _gdcId, "/config"]
+              ["/2018-11-05/distribution/", toBS _gdcId, "/config"]
 
 instance ToQuery GetDistributionConfig where
         toQuery = const mempty
@@ -102,9 +102,9 @@ instance ToQuery GetDistributionConfig where
 --
 -- /See:/ 'getDistributionConfigResponse' smart constructor.
 data GetDistributionConfigResponse = GetDistributionConfigResponse'
-  { _gdcrsETag               :: !(Maybe Text)
+  { _gdcrsETag :: !(Maybe Text)
   , _gdcrsDistributionConfig :: !(Maybe DistributionConfig)
-  , _gdcrsResponseStatus     :: !Int
+  , _gdcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

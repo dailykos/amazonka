@@ -21,7 +21,7 @@
 -- Describes the current Auto Scaling resource limits for your AWS account.
 --
 --
--- For information about requesting an increase in these limits, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html Auto Scaling Limits> in the /Auto Scaling User Guide/ .
+-- For information about requesting an increase in these limits, see <http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html Auto Scaling Limits> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.DescribeAccountLimits
     (
@@ -93,11 +93,11 @@ instance ToQuery DescribeAccountLimits where
 
 -- | /See:/ 'describeAccountLimitsResponse' smart constructor.
 data DescribeAccountLimitsResponse = DescribeAccountLimitsResponse'
-  { _dalrsNumberOfLaunchConfigurations    :: !(Maybe Int)
-  , _dalrsNumberOfAutoScalingGroups       :: !(Maybe Int)
-  , _dalrsMaxNumberOfAutoScalingGroups    :: !(Maybe Int)
+  { _dalrsNumberOfLaunchConfigurations :: !(Maybe Int)
+  , _dalrsNumberOfAutoScalingGroups :: !(Maybe Int)
+  , _dalrsMaxNumberOfAutoScalingGroups :: !(Maybe Int)
   , _dalrsMaxNumberOfLaunchConfigurations :: !(Maybe Int)
-  , _dalrsResponseStatus                  :: !Int
+  , _dalrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

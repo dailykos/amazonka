@@ -21,7 +21,7 @@
 -- Simulate the execution of an 'Authorizer' in your 'RestApi' with headers, parameters, and an incoming request body.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html Enable custom authorizers>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html Enable custom authorizers> 
 module Network.AWS.APIGateway.TestInvokeAuthorizer
     (
     -- * Creating a Request
@@ -33,6 +33,7 @@ module Network.AWS.APIGateway.TestInvokeAuthorizer
     , tiaAdditionalContext
     , tiaStageVariables
     , tiaHeaders
+    , tiaMultiValueHeaders
     , tiaRestAPIId
     , tiaAuthorizerId
 
@@ -64,12 +65,13 @@ import Network.AWS.Response
 -- /See:/ 'testInvokeAuthorizer' smart constructor.
 data TestInvokeAuthorizer = TestInvokeAuthorizer'
   { _tiaPathWithQueryString :: !(Maybe Text)
-  , _tiaBody                :: !(Maybe Text)
-  , _tiaAdditionalContext   :: !(Maybe (Map Text Text))
-  , _tiaStageVariables      :: !(Maybe (Map Text Text))
-  , _tiaHeaders             :: !(Maybe (Map Text Text))
-  , _tiaRestAPIId           :: !Text
-  , _tiaAuthorizerId        :: !Text
+  , _tiaBody :: !(Maybe Text)
+  , _tiaAdditionalContext :: !(Maybe (Map Text Text))
+  , _tiaStageVariables :: !(Maybe (Map Text Text))
+  , _tiaHeaders :: !(Maybe (Map Text Text))
+  , _tiaMultiValueHeaders :: !(Maybe (Map Text [Text]))
+  , _tiaRestAPIId :: !Text
+  , _tiaAuthorizerId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -87,6 +89,8 @@ data TestInvokeAuthorizer = TestInvokeAuthorizer'
 --
 -- * 'tiaHeaders' - [Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.
 --
+-- * 'tiaMultiValueHeaders' - [Optional] The headers as a map from string to list of values to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, may be specified.
+--
 -- * 'tiaRestAPIId' - [Required] The string identifier of the associated 'RestApi' .
 --
 -- * 'tiaAuthorizerId' - [Required] Specifies a test invoke authorizer request's 'Authorizer' ID.
@@ -101,6 +105,7 @@ testInvokeAuthorizer pRestAPIId_ pAuthorizerId_ =
     , _tiaAdditionalContext = Nothing
     , _tiaStageVariables = Nothing
     , _tiaHeaders = Nothing
+    , _tiaMultiValueHeaders = Nothing
     , _tiaRestAPIId = pRestAPIId_
     , _tiaAuthorizerId = pAuthorizerId_
     }
@@ -125,6 +130,10 @@ tiaStageVariables = lens _tiaStageVariables (\ s a -> s{_tiaStageVariables = a})
 -- | [Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.
 tiaHeaders :: Lens' TestInvokeAuthorizer (HashMap Text Text)
 tiaHeaders = lens _tiaHeaders (\ s a -> s{_tiaHeaders = a}) . _Default . _Map
+
+-- | [Optional] The headers as a map from string to list of values to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, may be specified.
+tiaMultiValueHeaders :: Lens' TestInvokeAuthorizer (HashMap Text [Text])
+tiaMultiValueHeaders = lens _tiaMultiValueHeaders (\ s a -> s{_tiaMultiValueHeaders = a}) . _Default . _Map
 
 -- | [Required] The string identifier of the associated 'RestApi' .
 tiaRestAPIId :: Lens' TestInvokeAuthorizer Text
@@ -169,7 +178,8 @@ instance ToJSON TestInvokeAuthorizer where
                   ("body" .=) <$> _tiaBody,
                   ("additionalContext" .=) <$> _tiaAdditionalContext,
                   ("stageVariables" .=) <$> _tiaStageVariables,
-                  ("headers" .=) <$> _tiaHeaders])
+                  ("headers" .=) <$> _tiaHeaders,
+                  ("multiValueHeaders" .=) <$> _tiaMultiValueHeaders])
 
 instance ToPath TestInvokeAuthorizer where
         toPath TestInvokeAuthorizer'{..}
@@ -180,19 +190,19 @@ instance ToPath TestInvokeAuthorizer where
 instance ToQuery TestInvokeAuthorizer where
         toQuery = const mempty
 
--- | Represents the response of the test invoke request for a custom 'Authorizer'
+-- | Represents the response of the test invoke request for a custom 'Authorizer' 
 --
 --
 --
 -- /See:/ 'testInvokeAuthorizerResponse' smart constructor.
 data TestInvokeAuthorizerResponse = TestInvokeAuthorizerResponse'
-  { _tiarsLog            :: !(Maybe Text)
-  , _tiarsPrincipalId    :: !(Maybe Text)
-  , _tiarsLatency        :: !(Maybe Integer)
-  , _tiarsAuthorization  :: !(Maybe (Map Text [Text]))
-  , _tiarsClaims         :: !(Maybe (Map Text Text))
-  , _tiarsClientStatus   :: !(Maybe Int)
-  , _tiarsPolicy         :: !(Maybe Text)
+  { _tiarsLog :: !(Maybe Text)
+  , _tiarsPrincipalId :: !(Maybe Text)
+  , _tiarsLatency :: !(Maybe Integer)
+  , _tiarsAuthorization :: !(Maybe (Map Text [Text]))
+  , _tiarsClaims :: !(Maybe (Map Text Text))
+  , _tiarsClientStatus :: !(Maybe Int)
+  , _tiarsPolicy :: !(Maybe Text)
   , _tiarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -203,17 +213,17 @@ data TestInvokeAuthorizerResponse = TestInvokeAuthorizerResponse'
 --
 -- * 'tiarsLog' - The API Gateway execution log for the test authorizer request.
 --
--- * 'tiarsPrincipalId' - The principal identity returned by the 'Authorizer'
+-- * 'tiarsPrincipalId' - The principal identity returned by the 'Authorizer' 
 --
 -- * 'tiarsLatency' - The execution latency of the test authorizer request.
 --
 -- * 'tiarsAuthorization' - Undocumented member.
 --
--- * 'tiarsClaims' - The <http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims open identity claims> , with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.
+-- * 'tiarsClaims' - The <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims open identity claims> , with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.
 --
 -- * 'tiarsClientStatus' - The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.
 --
--- * 'tiarsPolicy' - The JSON policy document returned by the 'Authorizer'
+-- * 'tiarsPolicy' - The JSON policy document returned by the 'Authorizer' 
 --
 -- * 'tiarsResponseStatus' - -- | The response status code.
 testInvokeAuthorizerResponse
@@ -236,7 +246,7 @@ testInvokeAuthorizerResponse pResponseStatus_ =
 tiarsLog :: Lens' TestInvokeAuthorizerResponse (Maybe Text)
 tiarsLog = lens _tiarsLog (\ s a -> s{_tiarsLog = a})
 
--- | The principal identity returned by the 'Authorizer'
+-- | The principal identity returned by the 'Authorizer' 
 tiarsPrincipalId :: Lens' TestInvokeAuthorizerResponse (Maybe Text)
 tiarsPrincipalId = lens _tiarsPrincipalId (\ s a -> s{_tiarsPrincipalId = a})
 
@@ -248,7 +258,7 @@ tiarsLatency = lens _tiarsLatency (\ s a -> s{_tiarsLatency = a})
 tiarsAuthorization :: Lens' TestInvokeAuthorizerResponse (HashMap Text [Text])
 tiarsAuthorization = lens _tiarsAuthorization (\ s a -> s{_tiarsAuthorization = a}) . _Default . _Map
 
--- | The <http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims open identity claims> , with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.
+-- | The <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims open identity claims> , with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.
 tiarsClaims :: Lens' TestInvokeAuthorizerResponse (HashMap Text Text)
 tiarsClaims = lens _tiarsClaims (\ s a -> s{_tiarsClaims = a}) . _Default . _Map
 
@@ -256,7 +266,7 @@ tiarsClaims = lens _tiarsClaims (\ s a -> s{_tiarsClaims = a}) . _Default . _Map
 tiarsClientStatus :: Lens' TestInvokeAuthorizerResponse (Maybe Int)
 tiarsClientStatus = lens _tiarsClientStatus (\ s a -> s{_tiarsClientStatus = a})
 
--- | The JSON policy document returned by the 'Authorizer'
+-- | The JSON policy document returned by the 'Authorizer' 
 tiarsPolicy :: Lens' TestInvokeAuthorizerResponse (Maybe Text)
 tiarsPolicy = lens _tiarsPolicy (\ s a -> s{_tiarsPolicy = a})
 

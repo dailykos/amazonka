@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'tagResource' smart constructor.
 data TagResource = TagResource'
   { _trResourceId :: !Text
-  , _trTagList    :: ![Tag]
+  , _trTagList :: ![Tag]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -55,7 +55,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getVPCLinks' smart constructor.
 data GetVPCLinks = GetVPCLinks'
-  { _gvlLimit    :: !(Maybe Int)
+  { _gvlLimit :: !(Maybe Int)
   , _gvlPosition :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,12 +118,12 @@ instance ToQuery GetVPCLinks where
 -- | The collection of VPC links under the caller's account in a region.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-private-integration.html Getting Started with Private Integrations> , <http://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html Set up Private Integrations>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-private-integration.html Getting Started with Private Integrations> , <https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html Set up Private Integrations> 
 --
 -- /See:/ 'getVPCLinksResponse' smart constructor.
 data GetVPCLinksResponse = GetVPCLinksResponse'
-  { _gvlrsItems          :: !(Maybe [VPCLink])
-  , _gvlrsPosition       :: !(Maybe Text)
+  { _gvlrsItems :: !(Maybe [VPCLink])
+  , _gvlrsPosition :: !(Maybe Text)
   , _gvlrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

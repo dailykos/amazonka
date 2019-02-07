@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'removeIPRoutes' smart constructor.
 data RemoveIPRoutes = RemoveIPRoutes'
   { _rirDirectoryId :: !Text
-  , _rirCidrIPs     :: ![Text]
+  , _rirCidrIPs :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

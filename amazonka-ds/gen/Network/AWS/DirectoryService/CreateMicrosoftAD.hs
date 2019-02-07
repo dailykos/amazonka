@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a Microsoft AD in the AWS cloud.
+-- Creates an AWS Managed Microsoft AD directory.
 --
 --
 -- Before you call /CreateMicrosoftAD/ , ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the /CreateMicrosoftAD/ operation, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference> .
@@ -51,17 +51,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Creates a Microsoft AD in the AWS cloud.
+-- | Creates an AWS Managed Microsoft AD directory.
 --
 --
 --
 -- /See:/ 'createMicrosoftAD' smart constructor.
 data CreateMicrosoftAD = CreateMicrosoftAD'
-  { _cmadEdition     :: !(Maybe DirectoryEdition)
-  , _cmadShortName   :: !(Maybe Text)
+  { _cmadEdition :: !(Maybe DirectoryEdition)
+  , _cmadShortName :: !(Maybe Text)
   , _cmadDescription :: !(Maybe Text)
-  , _cmadName        :: !Text
-  , _cmadPassword    :: !(Sensitive Text)
+  , _cmadName :: !Text
+  , _cmadPassword :: !(Sensitive Text)
   , _cmadVPCSettings :: !DirectoryVPCSettings
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -70,9 +70,9 @@ data CreateMicrosoftAD = CreateMicrosoftAD'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cmadEdition' - AWS Microsoft AD is available in two editions: Standard and Enterprise. Enterprise is the default.
+-- * 'cmadEdition' - AWS Managed Microsoft AD is available in two editions: Standard and Enterprise. Enterprise is the default.
 --
--- * 'cmadShortName' - The NetBIOS name for your domain. A short identifier for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ .
+-- * 'cmadShortName' - The NetBIOS name for your domain. A short identifier for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ . 
 --
 -- * 'cmadDescription' - A textual description for the directory. This label will appear on the AWS console @Directory Details@ page after the directory is created.
 --
@@ -97,11 +97,11 @@ createMicrosoftAD pName_ pPassword_ pVPCSettings_ =
     }
 
 
--- | AWS Microsoft AD is available in two editions: Standard and Enterprise. Enterprise is the default.
+-- | AWS Managed Microsoft AD is available in two editions: Standard and Enterprise. Enterprise is the default.
 cmadEdition :: Lens' CreateMicrosoftAD (Maybe DirectoryEdition)
 cmadEdition = lens _cmadEdition (\ s a -> s{_cmadEdition = a})
 
--- | The NetBIOS name for your domain. A short identifier for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ .
+-- | The NetBIOS name for your domain. A short identifier for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ . 
 cmadShortName :: Lens' CreateMicrosoftAD (Maybe Text)
 cmadShortName = lens _cmadShortName (\ s a -> s{_cmadShortName = a})
 
@@ -167,7 +167,7 @@ instance ToQuery CreateMicrosoftAD where
 --
 -- /See:/ 'createMicrosoftADResponse' smart constructor.
 data CreateMicrosoftADResponse = CreateMicrosoftADResponse'
-  { _cmadrsDirectoryId    :: !(Maybe Text)
+  { _cmadrsDirectoryId :: !(Maybe Text)
   , _cmadrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

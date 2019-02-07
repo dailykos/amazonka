@@ -59,11 +59,11 @@ import Network.AWS.Response
 --
 -- /See:/ 'queryObjects' smart constructor.
 data QueryObjects = QueryObjects'
-  { _qoQuery      :: !(Maybe Query)
-  , _qoMarker     :: !(Maybe Text)
-  , _qoLimit      :: !(Maybe Int)
+  { _qoQuery :: !(Maybe Query)
+  , _qoMarker :: !(Maybe Text)
+  , _qoLimit :: !(Maybe Int)
   , _qoPipelineId :: !Text
-  , _qoSphere     :: !Text
+  , _qoSphere :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -75,7 +75,7 @@ data QueryObjects = QueryObjects'
 --
 -- * 'qoMarker' - The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call @QueryObjects@ with the marker value from the previous call to retrieve the next set of results.
 --
--- * 'qoLimit' - The maximum number of object names that @QueryObjects@ will return in a single call. The default value is 100.
+-- * 'qoLimit' - The maximum number of object names that @QueryObjects@ will return in a single call. The default value is 100. 
 --
 -- * 'qoPipelineId' - The ID of the pipeline.
 --
@@ -102,7 +102,7 @@ qoQuery = lens _qoQuery (\ s a -> s{_qoQuery = a})
 qoMarker :: Lens' QueryObjects (Maybe Text)
 qoMarker = lens _qoMarker (\ s a -> s{_qoMarker = a})
 
--- | The maximum number of object names that @QueryObjects@ will return in a single call. The default value is 100.
+-- | The maximum number of object names that @QueryObjects@ will return in a single call. The default value is 100. 
 qoLimit :: Lens' QueryObjects (Maybe Int)
 qoLimit = lens _qoLimit (\ s a -> s{_qoLimit = a})
 
@@ -168,8 +168,8 @@ instance ToQuery QueryObjects where
 -- /See:/ 'queryObjectsResponse' smart constructor.
 data QueryObjectsResponse = QueryObjectsResponse'
   { _qorsHasMoreResults :: !(Maybe Bool)
-  , _qorsIds            :: !(Maybe [Text])
-  , _qorsMarker         :: !(Maybe Text)
+  , _qorsIds :: !(Maybe [Text])
+  , _qorsMarker :: !(Maybe Text)
   , _qorsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

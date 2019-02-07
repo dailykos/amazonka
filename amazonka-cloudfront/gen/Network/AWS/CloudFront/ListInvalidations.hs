@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists invalidation batches.
+-- Lists invalidation batches. 
 --
 --
 --
@@ -49,14 +49,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The request to list invalidations.
+-- | The request to list invalidations. 
 --
 --
 --
 -- /See:/ 'listInvalidations' smart constructor.
 data ListInvalidations = ListInvalidations'
-  { _liMarker         :: !(Maybe Text)
-  , _liMaxItems       :: !(Maybe Text)
+  { _liMarker :: !(Maybe Text)
+  , _liMaxItems :: !(Maybe Text)
   , _liDistributionId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -65,7 +65,7 @@ data ListInvalidations = ListInvalidations'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'liMarker' - Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set @Marker@ to the value of the @NextMarker@ from the current page's response. This value is the same as the ID of the last invalidation batch on that page.
+-- * 'liMarker' - Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set @Marker@ to the value of the @NextMarker@ from the current page's response. This value is the same as the ID of the last invalidation batch on that page. 
 --
 -- * 'liMaxItems' - The maximum number of invalidation batches that you want in the response body.
 --
@@ -81,7 +81,7 @@ listInvalidations pDistributionId_ =
     }
 
 
--- | Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set @Marker@ to the value of the @NextMarker@ from the current page's response. This value is the same as the ID of the last invalidation batch on that page.
+-- | Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set @Marker@ to the value of the @NextMarker@ from the current page's response. This value is the same as the ID of the last invalidation batch on that page. 
 liMarker :: Lens' ListInvalidations (Maybe Text)
 liMarker = lens _liMarker (\ s a -> s{_liMarker = a})
 
@@ -124,7 +124,7 @@ instance ToHeaders ListInvalidations where
 instance ToPath ListInvalidations where
         toPath ListInvalidations'{..}
           = mconcat
-              ["/2017-10-30/distribution/", toBS _liDistributionId,
+              ["/2018-11-05/distribution/", toBS _liDistributionId,
                "/invalidation"]
 
 instance ToQuery ListInvalidations where
@@ -132,13 +132,13 @@ instance ToQuery ListInvalidations where
           = mconcat
               ["Marker" =: _liMarker, "MaxItems" =: _liMaxItems]
 
--- | The returned result of the corresponding request.
+-- | The returned result of the corresponding request. 
 --
 --
 --
 -- /See:/ 'listInvalidationsResponse' smart constructor.
 data ListInvalidationsResponse = ListInvalidationsResponse'
-  { _lirsResponseStatus   :: !Int
+  { _lirsResponseStatus :: !Int
   , _lirsInvalidationList :: !InvalidationList
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ data ListInvalidationsResponse = ListInvalidationsResponse'
 --
 -- * 'lirsResponseStatus' - -- | The response status code.
 --
--- * 'lirsInvalidationList' - Information about invalidation batches.
+-- * 'lirsInvalidationList' - Information about invalidation batches. 
 listInvalidationsResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> InvalidationList -- ^ 'lirsInvalidationList'
@@ -165,7 +165,7 @@ listInvalidationsResponse pResponseStatus_ pInvalidationList_ =
 lirsResponseStatus :: Lens' ListInvalidationsResponse Int
 lirsResponseStatus = lens _lirsResponseStatus (\ s a -> s{_lirsResponseStatus = a})
 
--- | Information about invalidation batches.
+-- | Information about invalidation batches. 
 lirsInvalidationList :: Lens' ListInvalidationsResponse InvalidationList
 lirsInvalidationList = lens _lirsInvalidationList (\ s a -> s{_lirsInvalidationList = a})
 

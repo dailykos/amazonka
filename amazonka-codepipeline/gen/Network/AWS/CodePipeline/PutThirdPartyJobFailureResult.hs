@@ -49,8 +49,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'putThirdPartyJobFailureResult' smart constructor.
 data PutThirdPartyJobFailureResult = PutThirdPartyJobFailureResult'
-  { _ptpjfrJobId          :: !Text
-  , _ptpjfrClientToken    :: !Text
+  { _ptpjfrJobId :: !Text
+  , _ptpjfrClientToken :: !Text
   , _ptpjfrFailureDetails :: !FailureDetails
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

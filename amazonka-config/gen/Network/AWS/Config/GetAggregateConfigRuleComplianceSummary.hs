@@ -168,9 +168,9 @@ instance ToQuery
 -- | /See:/ 'getAggregateConfigRuleComplianceSummaryResponse' smart constructor.
 data GetAggregateConfigRuleComplianceSummaryResponse = GetAggregateConfigRuleComplianceSummaryResponse'
   { _gacrcsrsAggregateComplianceCounts :: !(Maybe [AggregateComplianceCount])
-  , _gacrcsrsNextToken                 :: !(Maybe Text)
-  , _gacrcsrsGroupByKey                :: !(Maybe Text)
-  , _gacrcsrsResponseStatus            :: !Int
+  , _gacrcsrsNextToken :: !(Maybe Text)
+  , _gacrcsrsGroupByKey :: !(Maybe Text)
+  , _gacrcsrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector directory.
+-- Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.
 --
 --
 module Network.AWS.DirectoryService.UpdateRadius
@@ -50,7 +50,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateRadius' smart constructor.
 data UpdateRadius = UpdateRadius'
-  { _urDirectoryId    :: !Text
+  { _urDirectoryId :: !Text
   , _urRadiusSettings :: !RadiusSettings
   } deriving (Eq, Show, Data, Typeable, Generic)
 

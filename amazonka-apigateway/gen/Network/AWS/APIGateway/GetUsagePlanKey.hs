@@ -54,7 +54,7 @@ import Network.AWS.Response
 -- /See:/ 'getUsagePlanKey' smart constructor.
 data GetUsagePlanKey = GetUsagePlanKey'
   { _gUsagePlanId :: !Text
-  , _gKeyId       :: !Text
+  , _gKeyId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

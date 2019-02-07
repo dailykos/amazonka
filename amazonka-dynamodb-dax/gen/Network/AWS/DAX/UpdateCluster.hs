@@ -52,13 +52,13 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateCluster' smart constructor.
 data UpdateCluster = UpdateCluster'
-  { _ucSecurityGroupIds           :: !(Maybe [Text])
+  { _ucSecurityGroupIds :: !(Maybe [Text])
   , _ucPreferredMaintenanceWindow :: !(Maybe Text)
-  , _ucNotificationTopicStatus    :: !(Maybe Text)
-  , _ucDescription                :: !(Maybe Text)
-  , _ucNotificationTopicARN       :: !(Maybe Text)
-  , _ucParameterGroupName         :: !(Maybe Text)
-  , _ucClusterName                :: !Text
+  , _ucNotificationTopicStatus :: !(Maybe Text)
+  , _ucDescription :: !(Maybe Text)
+  , _ucNotificationTopicARN :: !(Maybe Text)
+  , _ucParameterGroupName :: !(Maybe Text)
+  , _ucClusterName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -167,7 +167,7 @@ instance ToQuery UpdateCluster where
 
 -- | /See:/ 'updateClusterResponse' smart constructor.
 data UpdateClusterResponse = UpdateClusterResponse'
-  { _ucrsCluster        :: !(Maybe Cluster)
+  { _ucrsCluster :: !(Maybe Cluster)
   , _ucrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -52,8 +52,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'listTopicsDetectionJobs' smart constructor.
 data ListTopicsDetectionJobs = ListTopicsDetectionJobs'
-  { _ltdjNextToken  :: !(Maybe Text)
-  , _ltdjFilter     :: !(Maybe TopicsDetectionJobFilter)
+  { _ltdjNextToken :: !(Maybe Text)
+  , _ltdjFilter :: !(Maybe TopicsDetectionJobFilter)
   , _ltdjMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -66,7 +66,7 @@ data ListTopicsDetectionJobs = ListTopicsDetectionJobs'
 --
 -- * 'ltdjFilter' - Filters the jobs that are returned. Jobs can be filtered on their name, status, or the date and time that they were submitted. You can set only one filter at a time.
 --
--- * 'ltdjMaxResults' - The maximum number of results to return in each page.
+-- * 'ltdjMaxResults' - The maximum number of results to return in each page. The default is 100.
 listTopicsDetectionJobs
     :: ListTopicsDetectionJobs
 listTopicsDetectionJobs =
@@ -82,7 +82,7 @@ ltdjNextToken = lens _ltdjNextToken (\ s a -> s{_ltdjNextToken = a})
 ltdjFilter :: Lens' ListTopicsDetectionJobs (Maybe TopicsDetectionJobFilter)
 ltdjFilter = lens _ltdjFilter (\ s a -> s{_ltdjFilter = a})
 
--- | The maximum number of results to return in each page.
+-- | The maximum number of results to return in each page. The default is 100.
 ltdjMaxResults :: Lens' ListTopicsDetectionJobs (Maybe Natural)
 ltdjMaxResults = lens _ltdjMaxResults (\ s a -> s{_ltdjMaxResults = a}) . mapping _Nat
 

@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'cancelUpdateStack' smart constructor.
 data CancelUpdateStack = CancelUpdateStack'
   { _cusClientRequestToken :: !(Maybe Text)
-  , _cusStackName          :: !Text
+  , _cusStackName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

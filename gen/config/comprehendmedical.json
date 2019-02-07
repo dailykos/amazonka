@@ -1,0 +1,10 @@
+{
+    "libraryName": "amazonka-comprehendmedical",
+    "ignoredWaiters": [
+    ],
+    "typeModules": [
+        "Network.AWS.ComprehendMedical.Internal"
+    ],
+    "typeOverrides": {
+    }
+}

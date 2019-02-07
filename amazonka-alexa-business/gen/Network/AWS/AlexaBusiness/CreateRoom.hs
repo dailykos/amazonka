@@ -51,12 +51,12 @@ import Network.AWS.Response
 
 -- | /See:/ 'createRoom' smart constructor.
 data CreateRoom = CreateRoom'
-  { _crProfileARN         :: !(Maybe Text)
+  { _crProfileARN :: !(Maybe Text)
   , _crProviderCalendarId :: !(Maybe Text)
   , _crClientRequestToken :: !(Maybe Text)
-  , _crDescription        :: !(Maybe Text)
-  , _crTags               :: !(Maybe [Tag])
-  , _crRoomName           :: !Text
+  , _crDescription :: !(Maybe Text)
+  , _crTags :: !(Maybe [Tag])
+  , _crRoomName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -68,7 +68,7 @@ data CreateRoom = CreateRoom'
 --
 -- * 'crProviderCalendarId' - The calendar ARN for the room.
 --
--- * 'crClientRequestToken' - A unique, user-specified identifier for this request that ensures idempotency.
+-- * 'crClientRequestToken' - A unique, user-specified identifier for this request that ensures idempotency. 
 --
 -- * 'crDescription' - The description for the room.
 --
@@ -97,7 +97,7 @@ crProfileARN = lens _crProfileARN (\ s a -> s{_crProfileARN = a})
 crProviderCalendarId :: Lens' CreateRoom (Maybe Text)
 crProviderCalendarId = lens _crProviderCalendarId (\ s a -> s{_crProviderCalendarId = a})
 
--- | A unique, user-specified identifier for this request that ensures idempotency.
+-- | A unique, user-specified identifier for this request that ensures idempotency. 
 crClientRequestToken :: Lens' CreateRoom (Maybe Text)
 crClientRequestToken = lens _crClientRequestToken (\ s a -> s{_crClientRequestToken = a})
 
@@ -154,7 +154,7 @@ instance ToQuery CreateRoom where
 
 -- | /See:/ 'createRoomResponse' smart constructor.
 data CreateRoomResponse = CreateRoomResponse'
-  { _crrsRoomARN        :: !(Maybe Text)
+  { _crrsRoomARN :: !(Maybe Text)
   , _crrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

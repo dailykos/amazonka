@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'cancelSchemaExtension' smart constructor.
 data CancelSchemaExtension = CancelSchemaExtension'
-  { _cseDirectoryId       :: !Text
+  { _cseDirectoryId :: !Text
   , _cseSchemaExtensionId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

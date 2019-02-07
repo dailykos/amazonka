@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateTeamMember' smart constructor.
 data UpdateTeamMember = UpdateTeamMember'
   { _utmRemoteAccessAllowed :: !(Maybe Bool)
-  , _utmProjectRole         :: !(Maybe Text)
-  , _utmProjectId           :: !Text
-  , _utmUserARN             :: !Text
+  , _utmProjectRole :: !(Maybe Text)
+  , _utmProjectId :: !Text
+  , _utmUserARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -140,10 +140,10 @@ instance ToQuery UpdateTeamMember where
 
 -- | /See:/ 'updateTeamMemberResponse' smart constructor.
 data UpdateTeamMemberResponse = UpdateTeamMemberResponse'
-  { _utmrsUserARN             :: !(Maybe Text)
+  { _utmrsUserARN :: !(Maybe Text)
   , _utmrsRemoteAccessAllowed :: !(Maybe Bool)
-  , _utmrsProjectRole         :: !(Maybe Text)
-  , _utmrsResponseStatus      :: !Int
+  , _utmrsProjectRole :: !(Maybe Text)
+  , _utmrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

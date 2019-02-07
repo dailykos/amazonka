@@ -54,11 +54,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeEnvironmentMemberships' smart constructor.
 data DescribeEnvironmentMemberships = DescribeEnvironmentMemberships'
-  { _dUserARN       :: !(Maybe Text)
-  , _dNextToken     :: !(Maybe Text)
-  , _dPermissions   :: !(Maybe [Permissions])
+  { _dUserARN :: !(Maybe Text)
+  , _dNextToken :: !(Maybe Text)
+  , _dPermissions :: !(Maybe [Permissions])
   , _dEnvironmentId :: !(Maybe Text)
-  , _dMaxResults    :: !(Maybe Nat)
+  , _dMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -162,8 +162,8 @@ instance ToQuery DescribeEnvironmentMemberships where
 
 -- | /See:/ 'describeEnvironmentMembershipsResponse' smart constructor.
 data DescribeEnvironmentMembershipsResponse = DescribeEnvironmentMembershipsResponse'
-  { _drsNextToken      :: !(Maybe Text)
-  , _drsMemberships    :: !(Maybe [EnvironmentMember])
+  { _drsNextToken :: !(Maybe Text)
+  , _drsMemberships :: !(Maybe [EnvironmentMember])
   , _drsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

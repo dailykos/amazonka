@@ -53,7 +53,7 @@ import Network.AWS.Response
 data ChangePassword = ChangePassword'
   { _cpPreviousPassword :: !(Sensitive Text)
   , _cpProposedPassword :: !(Sensitive Text)
-  , _cpAccessToken      :: !(Sensitive Text)
+  , _cpAccessToken :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

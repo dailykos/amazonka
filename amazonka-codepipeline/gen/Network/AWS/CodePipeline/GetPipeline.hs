@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'getPipeline' smart constructor.
 data GetPipeline = GetPipeline'
   { _gpVersion :: !(Maybe Nat)
-  , _gpName    :: !Text
+  , _gpName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -120,8 +120,8 @@ instance ToQuery GetPipeline where
 --
 -- /See:/ 'getPipelineResponse' smart constructor.
 data GetPipelineResponse = GetPipelineResponse'
-  { _gprsPipeline       :: !(Maybe PipelineDeclaration)
-  , _gprsMetadata       :: !(Maybe PipelineMetadata)
+  { _gprsPipeline :: !(Maybe PipelineDeclaration)
+  , _gprsMetadata :: !(Maybe PipelineMetadata)
   , _gprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ data GetPipelineResponse = GetPipelineResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gprsPipeline' - Represents the structure of actions and stages to be performed in the pipeline.
+-- * 'gprsPipeline' - Represents the structure of actions and stages to be performed in the pipeline. 
 --
 -- * 'gprsMetadata' - Represents the pipeline metadata information returned as part of the output of a GetPipeline action.
 --
@@ -146,7 +146,7 @@ getPipelineResponse pResponseStatus_ =
     }
 
 
--- | Represents the structure of actions and stages to be performed in the pipeline.
+-- | Represents the structure of actions and stages to be performed in the pipeline. 
 gprsPipeline :: Lens' GetPipelineResponse (Maybe PipelineDeclaration)
 gprsPipeline = lens _gprsPipeline (\ s a -> s{_gprsPipeline = a})
 

@@ -54,7 +54,7 @@ import Network.AWS.Response
 -- /See:/ 'describeConditionalForwarders' smart constructor.
 data DescribeConditionalForwarders = DescribeConditionalForwarders'
   { _dcfRemoteDomainNames :: !(Maybe [Text])
-  , _dcfDirectoryId       :: !Text
+  , _dcfDirectoryId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -128,7 +128,7 @@ instance ToQuery DescribeConditionalForwarders where
 -- /See:/ 'describeConditionalForwardersResponse' smart constructor.
 data DescribeConditionalForwardersResponse = DescribeConditionalForwardersResponse'
   { _dcfrsConditionalForwarders :: !(Maybe [ConditionalForwarder])
-  , _dcfrsResponseStatus        :: !Int
+  , _dcfrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

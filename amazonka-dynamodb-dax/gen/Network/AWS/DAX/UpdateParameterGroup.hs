@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateParameterGroup' smart constructor.
 data UpdateParameterGroup = UpdateParameterGroup'
-  { _upgParameterGroupName  :: !Text
+  { _upgParameterGroupName :: !Text
   , _upgParameterNameValues :: ![ParameterNameValue]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a 'TypedLinkFacet' . For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- Creates a 'TypedLinkFacet' . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 --
 module Network.AWS.CloudDirectory.CreateTypedLinkFacet
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'createTypedLinkFacet' smart constructor.
 data CreateTypedLinkFacet = CreateTypedLinkFacet'
   { _ctlfSchemaARN :: !Text
-  , _ctlfFacet     :: !TypedLinkFacet
+  , _ctlfFacet :: !TypedLinkFacet
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

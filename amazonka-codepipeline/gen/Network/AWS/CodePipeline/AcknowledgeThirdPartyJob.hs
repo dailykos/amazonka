@@ -52,8 +52,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'acknowledgeThirdPartyJob' smart constructor.
 data AcknowledgeThirdPartyJob = AcknowledgeThirdPartyJob'
-  { _atpjJobId       :: !Text
-  , _atpjNonce       :: !Text
+  { _atpjJobId :: !Text
+  , _atpjNonce :: !Text
   , _atpjClientToken :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,7 +136,7 @@ instance ToQuery AcknowledgeThirdPartyJob where
 --
 -- /See:/ 'acknowledgeThirdPartyJobResponse' smart constructor.
 data AcknowledgeThirdPartyJobResponse = AcknowledgeThirdPartyJobResponse'
-  { _atpjrsStatus         :: !(Maybe JobStatus)
+  { _atpjrsStatus :: !(Maybe JobStatus)
   , _atpjrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

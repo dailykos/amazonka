@@ -99,7 +99,7 @@ instance ToQuery GetProfile where
 
 -- | /See:/ 'getProfileResponse' smart constructor.
 data GetProfileResponse = GetProfileResponse'
-  { _gprsProfile        :: !(Maybe Profile)
+  { _gprsProfile :: !(Maybe Profile)
   , _gprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

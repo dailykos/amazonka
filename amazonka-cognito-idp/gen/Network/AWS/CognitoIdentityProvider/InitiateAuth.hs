@@ -58,12 +58,12 @@ import Network.AWS.Response
 --
 -- /See:/ 'initiateAuth' smart constructor.
 data InitiateAuth = InitiateAuth'
-  { _iaClientMetadata    :: !(Maybe (Map Text Text))
+  { _iaClientMetadata :: !(Maybe (Map Text Text))
   , _iaAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-  , _iaUserContextData   :: !(Maybe UserContextDataType)
-  , _iaAuthParameters    :: !(Maybe (Map Text Text))
-  , _iaAuthFlow          :: !AuthFlowType
-  , _iaClientId          :: !(Sensitive Text)
+  , _iaUserContextData :: !(Maybe UserContextDataType)
+  , _iaAuthParameters :: !(Maybe (Map Text Text))
+  , _iaAuthFlow :: !AuthFlowType
+  , _iaClientId :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -77,7 +77,7 @@ data InitiateAuth = InitiateAuth'
 --
 -- * 'iaUserContextData' - Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
 --
--- * 'iaAuthParameters' - The authentication parameters. These are inputs corresponding to the @AuthFlow@ that you are invoking. The required values depend on the value of @AuthFlow@ :     * For @USER_SRP_AUTH@ : @USERNAME@ (required), @SRP_A@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @REFRESH_TOKEN_AUTH/REFRESH_TOKEN@ : @REFRESH_TOKEN@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @CUSTOM_AUTH@ : @USERNAME@ (required), @SECRET_HASH@ (if app client is configured with client secret), @DEVICE_KEY@
+-- * 'iaAuthParameters' - The authentication parameters. These are inputs corresponding to the @AuthFlow@ that you are invoking. The required values depend on the value of @AuthFlow@ :     * For @USER_SRP_AUTH@ : @USERNAME@ (required), @SRP_A@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @REFRESH_TOKEN_AUTH/REFRESH_TOKEN@ : @REFRESH_TOKEN@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @CUSTOM_AUTH@ : @USERNAME@ (required), @SECRET_HASH@ (if app client is configured with client secret), @DEVICE_KEY@ 
 --
 -- * 'iaAuthFlow' - The authentication flow for this call to execute. The API action will depend on this value. For example:      * @REFRESH_TOKEN_AUTH@ will take in a valid refresh token and return new tokens.     * @USER_SRP_AUTH@ will take in @USERNAME@ and @SRP_A@ and return the SRP variables to be used for next challenge execution.     * @USER_PASSWORD_AUTH@ will take in @USERNAME@ and @PASSWORD@ and return the next challenge or tokens. Valid values include:     * @USER_SRP_AUTH@ : Authentication flow for the Secure Remote Password (SRP) protocol.     * @REFRESH_TOKEN_AUTH@ /@REFRESH_TOKEN@ : Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.     * @CUSTOM_AUTH@ : Custom authentication flow.     * @USER_PASSWORD_AUTH@ : Non-SRP authentication flow; USERNAME and PASSWORD are passed directly. If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME is not found in the user pool.  @ADMIN_NO_SRP_AUTH@ is not a valid value.
 --
@@ -109,7 +109,7 @@ iaAnalyticsMetadata = lens _iaAnalyticsMetadata (\ s a -> s{_iaAnalyticsMetadata
 iaUserContextData :: Lens' InitiateAuth (Maybe UserContextDataType)
 iaUserContextData = lens _iaUserContextData (\ s a -> s{_iaUserContextData = a})
 
--- | The authentication parameters. These are inputs corresponding to the @AuthFlow@ that you are invoking. The required values depend on the value of @AuthFlow@ :     * For @USER_SRP_AUTH@ : @USERNAME@ (required), @SRP_A@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @REFRESH_TOKEN_AUTH/REFRESH_TOKEN@ : @REFRESH_TOKEN@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @CUSTOM_AUTH@ : @USERNAME@ (required), @SECRET_HASH@ (if app client is configured with client secret), @DEVICE_KEY@
+-- | The authentication parameters. These are inputs corresponding to the @AuthFlow@ that you are invoking. The required values depend on the value of @AuthFlow@ :     * For @USER_SRP_AUTH@ : @USERNAME@ (required), @SRP_A@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @REFRESH_TOKEN_AUTH/REFRESH_TOKEN@ : @REFRESH_TOKEN@ (required), @SECRET_HASH@ (required if the app client is configured with a client secret), @DEVICE_KEY@      * For @CUSTOM_AUTH@ : @USERNAME@ (required), @SECRET_HASH@ (if app client is configured with client secret), @DEVICE_KEY@ 
 iaAuthParameters :: Lens' InitiateAuth (HashMap Text Text)
 iaAuthParameters = lens _iaAuthParameters (\ s a -> s{_iaAuthParameters = a}) . _Default . _Map
 
@@ -171,11 +171,11 @@ instance ToQuery InitiateAuth where
 --
 -- /See:/ 'initiateAuthResponse' smart constructor.
 data InitiateAuthResponse = InitiateAuthResponse'
-  { _iarsChallengeName        :: !(Maybe ChallengeNameType)
-  , _iarsChallengeParameters  :: !(Maybe (Map Text Text))
+  { _iarsChallengeName :: !(Maybe ChallengeNameType)
+  , _iarsChallengeParameters :: !(Maybe (Map Text Text))
   , _iarsAuthenticationResult :: !(Maybe AuthenticationResultType)
-  , _iarsSession              :: !(Maybe Text)
-  , _iarsResponseStatus       :: !Int
+  , _iarsSession :: !(Maybe Text)
+  , _iarsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

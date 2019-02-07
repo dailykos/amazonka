@@ -52,9 +52,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeAutoScalingInstances' smart constructor.
 data DescribeAutoScalingInstances = DescribeAutoScalingInstances'
-  { _dasiNextToken   :: !(Maybe Text)
+  { _dasiNextToken :: !(Maybe Text)
   , _dasiInstanceIds :: !(Maybe [Text])
-  , _dasiMaxRecords  :: !(Maybe Int)
+  , _dasiMaxRecords :: !(Maybe Int)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -64,7 +64,7 @@ data DescribeAutoScalingInstances = DescribeAutoScalingInstances'
 --
 -- * 'dasiNextToken' - The token for the next set of items to return. (You received this token from a previous call.)
 --
--- * 'dasiInstanceIds' - The instances to describe; up to 50 instance IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.
+-- * 'dasiInstanceIds' - The IDs of the instances. You can specify up to @MaxRecords@ IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.
 --
 -- * 'dasiMaxRecords' - The maximum number of items to return with this call. The default value is 50 and the maximum value is 50.
 describeAutoScalingInstances
@@ -81,7 +81,7 @@ describeAutoScalingInstances =
 dasiNextToken :: Lens' DescribeAutoScalingInstances (Maybe Text)
 dasiNextToken = lens _dasiNextToken (\ s a -> s{_dasiNextToken = a})
 
--- | The instances to describe; up to 50 instance IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.
+-- | The IDs of the instances. You can specify up to @MaxRecords@ IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.
 dasiInstanceIds :: Lens' DescribeAutoScalingInstances [Text]
 dasiInstanceIds = lens _dasiInstanceIds (\ s a -> s{_dasiInstanceIds = a}) . _Default . _Coerce
 
@@ -134,9 +134,9 @@ instance ToQuery DescribeAutoScalingInstances where
 
 -- | /See:/ 'describeAutoScalingInstancesResponse' smart constructor.
 data DescribeAutoScalingInstancesResponse = DescribeAutoScalingInstancesResponse'
-  { _dasirsNextToken            :: !(Maybe Text)
+  { _dasirsNextToken :: !(Maybe Text)
   , _dasirsAutoScalingInstances :: !(Maybe [AutoScalingInstanceDetails])
-  , _dasirsResponseStatus       :: !Int
+  , _dasirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

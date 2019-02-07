@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'deleteType' smart constructor.
 data DeleteType = DeleteType'
-  { _dtApiId    :: !Text
+  { _dtApiId :: !Text
   , _dtTypeName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

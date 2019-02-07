@@ -56,9 +56,9 @@ import Network.AWS.Response
 -- /See:/ 'registerDevice' smart constructor.
 data RegisterDevice = RegisterDevice'
   { _rdIdentityPoolId :: !Text
-  , _rdIdentityId     :: !Text
-  , _rdPlatform       :: !Platform
-  , _rdToken          :: !Text
+  , _rdIdentityId :: !Text
+  , _rdPlatform :: !Platform
+  , _rdToken :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -146,7 +146,7 @@ instance ToQuery RegisterDevice where
 --
 -- /See:/ 'registerDeviceResponse' smart constructor.
 data RegisterDeviceResponse = RegisterDeviceResponse'
-  { _rdrsDeviceId       :: !(Maybe Text)
+  { _rdrsDeviceId :: !(Maybe Text)
   , _rdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

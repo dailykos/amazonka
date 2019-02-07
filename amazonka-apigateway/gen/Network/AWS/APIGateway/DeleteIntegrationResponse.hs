@@ -50,7 +50,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'deleteIntegrationResponse' smart constructor.
 data DeleteIntegrationResponse = DeleteIntegrationResponse'
-  { _diRestAPIId  :: !Text
+  { _diRestAPIId :: !Text
   , _diResourceId :: !Text
   , _diHttpMethod :: !Text
   , _diStatusCode :: !Text

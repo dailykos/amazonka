@@ -139,6 +139,7 @@ library
         , Network.AWS.CognitoIdentityProvider.UpdateUserAttributes
         , Network.AWS.CognitoIdentityProvider.UpdateUserPool
         , Network.AWS.CognitoIdentityProvider.UpdateUserPoolClient
+        , Network.AWS.CognitoIdentityProvider.UpdateUserPoolDomain
         , Network.AWS.CognitoIdentityProvider.VerifySoftwareToken
         , Network.AWS.CognitoIdentityProvider.VerifyUserAttribute
         , Network.AWS.CognitoIdentityProvider.Waiters

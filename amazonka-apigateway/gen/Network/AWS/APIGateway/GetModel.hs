@@ -55,7 +55,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getModel' smart constructor.
 data GetModel = GetModel'
-  { _ggFlatten   :: !(Maybe Bool)
+  { _ggFlatten :: !(Maybe Bool)
   , _ggRestAPIId :: !Text
   , _ggModelName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)

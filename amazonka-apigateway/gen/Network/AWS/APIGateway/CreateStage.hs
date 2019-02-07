@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new 'Stage' resource that references a pre-existing 'Deployment' for the API.
+-- Creates a new 'Stage' resource that references a pre-existing 'Deployment' for the API. 
 --
 --
 module Network.AWS.APIGateway.CreateStage
@@ -29,6 +29,7 @@ module Network.AWS.APIGateway.CreateStage
     -- * Request Lenses
     , cVariables
     , cDocumentationVersion
+    , cTracingEnabled
     , cCacheClusterSize
     , cCanarySettings
     , cCacheClusterEnabled
@@ -47,11 +48,13 @@ module Network.AWS.APIGateway.CreateStage
     , sAccessLogSettings
     , sDocumentationVersion
     , sClientCertificateId
+    , sTracingEnabled
     , sCreatedDate
     , sCacheClusterStatus
     , sMethodSettings
     , sLastUpdatedDate
     , sCacheClusterSize
+    , sWebACLARN
     , sCanarySettings
     , sCacheClusterEnabled
     , sStageName
@@ -72,16 +75,17 @@ import Network.AWS.Response
 --
 -- /See:/ 'createStage' smart constructor.
 data CreateStage = CreateStage'
-  { _cVariables            :: !(Maybe (Map Text Text))
+  { _cVariables :: !(Maybe (Map Text Text))
   , _cDocumentationVersion :: !(Maybe Text)
-  , _cCacheClusterSize     :: !(Maybe CacheClusterSize)
-  , _cCanarySettings       :: !(Maybe CanarySettings)
-  , _cCacheClusterEnabled  :: !(Maybe Bool)
-  , _cDescription          :: !(Maybe Text)
-  , _cTags                 :: !(Maybe (Map Text Text))
-  , _cRestAPIId            :: !Text
-  , _cStageName            :: !Text
-  , _cDeploymentId         :: !Text
+  , _cTracingEnabled :: !(Maybe Bool)
+  , _cCacheClusterSize :: !(Maybe CacheClusterSize)
+  , _cCanarySettings :: !(Maybe CanarySettings)
+  , _cCacheClusterEnabled :: !(Maybe Bool)
+  , _cDescription :: !(Maybe Text)
+  , _cTags :: !(Maybe (Map Text Text))
+  , _cRestAPIId :: !Text
+  , _cStageName :: !Text
+  , _cDeploymentId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -92,6 +96,8 @@ data CreateStage = CreateStage'
 -- * 'cVariables' - A map that defines the stage variables for the new 'Stage' resource. Variable names can have alphanumeric and underscore characters, and the values must match @[A-Za-z0-9-._~:/?#&=,]+@ .
 --
 -- * 'cDocumentationVersion' - The version of the associated API documentation.
+--
+-- * 'cTracingEnabled' - Specifies whether active tracing with X-ray is enabled for the 'Stage' .
 --
 -- * 'cCacheClusterSize' - The stage's cache cluster size.
 --
@@ -117,6 +123,7 @@ createStage pRestAPIId_ pStageName_ pDeploymentId_ =
   CreateStage'
     { _cVariables = Nothing
     , _cDocumentationVersion = Nothing
+    , _cTracingEnabled = Nothing
     , _cCacheClusterSize = Nothing
     , _cCanarySettings = Nothing
     , _cCacheClusterEnabled = Nothing
@@ -135,6 +142,10 @@ cVariables = lens _cVariables (\ s a -> s{_cVariables = a}) . _Default . _Map
 -- | The version of the associated API documentation.
 cDocumentationVersion :: Lens' CreateStage (Maybe Text)
 cDocumentationVersion = lens _cDocumentationVersion (\ s a -> s{_cDocumentationVersion = a})
+
+-- | Specifies whether active tracing with X-ray is enabled for the 'Stage' .
+cTracingEnabled :: Lens' CreateStage (Maybe Bool)
+cTracingEnabled = lens _cTracingEnabled (\ s a -> s{_cTracingEnabled = a})
 
 -- | The stage's cache cluster size.
 cCacheClusterSize :: Lens' CreateStage (Maybe CacheClusterSize)
@@ -190,6 +201,7 @@ instance ToJSON CreateStage where
                  [("variables" .=) <$> _cVariables,
                   ("documentationVersion" .=) <$>
                     _cDocumentationVersion,
+                  ("tracingEnabled" .=) <$> _cTracingEnabled,
                   ("cacheClusterSize" .=) <$> _cCacheClusterSize,
                   ("canarySettings" .=) <$> _cCanarySettings,
                   ("cacheClusterEnabled" .=) <$> _cCacheClusterEnabled,

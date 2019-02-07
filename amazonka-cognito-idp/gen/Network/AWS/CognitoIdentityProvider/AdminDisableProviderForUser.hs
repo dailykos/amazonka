@@ -23,7 +23,7 @@
 --
 -- This action is enabled only for admin access and requires developer credentials.
 --
--- The @ProviderName@ must match the value specified when creating an IdP for the pool.
+-- The @ProviderName@ must match the value specified when creating an IdP for the pool. 
 --
 -- To disable a native username + password user, the @ProviderName@ value must be @Cognito@ and the @ProviderAttributeName@ must be @Cognito_Subject@ , with the @ProviderAttributeValue@ being the name that is used in the user pool for the user.
 --
@@ -57,7 +57,7 @@ import Network.AWS.Response
 -- | /See:/ 'adminDisableProviderForUser' smart constructor.
 data AdminDisableProviderForUser = AdminDisableProviderForUser'
   { _adpfuUserPoolId :: !Text
-  , _adpfuUser       :: !ProviderUserIdentifierType
+  , _adpfuUser :: !ProviderUserIdentifierType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

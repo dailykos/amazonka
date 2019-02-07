@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'untagProject' smart constructor.
 data UntagProject = UntagProject'
-  { _uId   :: !Text
+  { _uId :: !Text
   , _uTags :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

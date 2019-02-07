@@ -61,18 +61,18 @@ import Network.AWS.Response
 --
 -- /See:/ 'createRemoteAccessSession' smart constructor.
 data CreateRemoteAccessSession = CreateRemoteAccessSession'
-  { _crasClientId            :: !(Maybe Text)
-  , _crasSkipAppResign       :: !(Maybe Bool)
-  , _crasInstanceARN         :: !(Maybe Text)
+  { _crasClientId :: !(Maybe Text)
+  , _crasSkipAppResign :: !(Maybe Bool)
+  , _crasInstanceARN :: !(Maybe Text)
   , _crasRemoteRecordEnabled :: !(Maybe Bool)
-  , _crasRemoteRecordAppARN  :: !(Maybe Text)
-  , _crasSshPublicKey        :: !(Maybe Text)
-  , _crasName                :: !(Maybe Text)
-  , _crasRemoteDebugEnabled  :: !(Maybe Bool)
-  , _crasConfiguration       :: !(Maybe CreateRemoteAccessSessionConfiguration)
-  , _crasInteractionMode     :: !(Maybe InteractionMode)
-  , _crasProjectARN          :: !Text
-  , _crasDeviceARN           :: !Text
+  , _crasRemoteRecordAppARN :: !(Maybe Text)
+  , _crasSshPublicKey :: !(Maybe Text)
+  , _crasName :: !(Maybe Text)
+  , _crasRemoteDebugEnabled :: !(Maybe Bool)
+  , _crasConfiguration :: !(Maybe CreateRemoteAccessSessionConfiguration)
+  , _crasInteractionMode :: !(Maybe InteractionMode)
+  , _crasProjectARN :: !Text
+  , _crasDeviceARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -230,7 +230,7 @@ instance ToQuery CreateRemoteAccessSession where
 -- /See:/ 'createRemoteAccessSessionResponse' smart constructor.
 data CreateRemoteAccessSessionResponse = CreateRemoteAccessSessionResponse'
   { _crasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
-  , _crasrsResponseStatus      :: !Int
+  , _crasrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

@@ -88,7 +88,7 @@ instance ToHeaders ListTagsForResource where
         toHeaders = const mempty
 
 instance ToPath ListTagsForResource where
-        toPath = const "/2017-10-30/tagging"
+        toPath = const "/2018-11-05/tagging"
 
 instance ToQuery ListTagsForResource where
         toQuery ListTagsForResource'{..}
@@ -101,7 +101,7 @@ instance ToQuery ListTagsForResource where
 -- /See:/ 'listTagsForResourceResponse' smart constructor.
 data ListTagsForResourceResponse = ListTagsForResourceResponse'
   { _ltfrrsResponseStatus :: !Int
-  , _ltfrrsTags           :: !Tags
+  , _ltfrrsTags :: !Tags
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

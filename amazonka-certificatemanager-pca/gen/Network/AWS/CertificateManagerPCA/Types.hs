@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -88,6 +88,7 @@ module Network.AWS.CertificateManagerPCA.Types
     , caCreatedAt
     , caSerial
     , caNotBefore
+    , caRestorableUntil
     , caType
     , caRevocationConfiguration
     , caLastStateChangeAt
@@ -283,7 +284,7 @@ _ResourceNotFoundException =
   _MatchServiceError certificateManagerPCA "ResourceNotFoundException"
 
 
--- | The private CA is in a state during which a report cannot be generated.
+-- | The private CA is in a state during which a report or certificate cannot be generated.
 --
 --
 _InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError

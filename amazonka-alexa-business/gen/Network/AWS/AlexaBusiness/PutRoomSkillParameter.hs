@@ -47,8 +47,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'putRoomSkillParameter' smart constructor.
 data PutRoomSkillParameter = PutRoomSkillParameter'
-  { _prspRoomARN            :: !(Maybe Text)
-  , _prspSkillId            :: !Text
+  { _prspRoomARN :: !(Maybe Text)
+  , _prspSkillId :: !Text
   , _prspRoomSkillParameter :: !RoomSkillParameter
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -48,7 +48,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'putJobFailureResult' smart constructor.
 data PutJobFailureResult = PutJobFailureResult'
-  { _pjfrJobId          :: !Text
+  { _pjfrJobId :: !Text
   , _pjfrFailureDetails :: !FailureDetails
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

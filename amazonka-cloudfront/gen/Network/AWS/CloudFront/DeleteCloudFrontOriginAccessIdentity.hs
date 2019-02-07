@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete an origin access identity.
+-- Delete an origin access identity. 
 --
 --
 module Network.AWS.CloudFront.DeleteCloudFrontOriginAccessIdentity
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteCloudFrontOriginAccessIdentity' smart constructor.
 data DeleteCloudFrontOriginAccessIdentity = DeleteCloudFrontOriginAccessIdentity'
   { _dcfoaiIfMatch :: !(Maybe Text)
-  , _dcfoaiId      :: !Text
+  , _dcfoaiId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -103,7 +103,7 @@ instance ToPath DeleteCloudFrontOriginAccessIdentity
          where
         toPath DeleteCloudFrontOriginAccessIdentity'{..}
           = mconcat
-              ["/2017-10-30/origin-access-identity/cloudfront/",
+              ["/2018-11-05/origin-access-identity/cloudfront/",
                toBS _dcfoaiId]
 
 instance ToQuery DeleteCloudFrontOriginAccessIdentity

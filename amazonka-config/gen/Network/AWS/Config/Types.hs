@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -24,6 +24,7 @@ module Network.AWS.Config.Types
     , _OrganizationAccessDeniedException
     , _NoSuchConfigurationAggregatorException
     , _InvalidRoleException
+    , _OversizedConfigurationItemException
     , _LastDeliveryChannelDeleteFailedException
     , _InvalidLimitException
     , _InvalidDeliveryChannelNameException
@@ -31,10 +32,12 @@ module Network.AWS.Config.Types
     , _InvalidResultTokenException
     , _NoSuchDeliveryChannelException
     , _NoSuchConfigRuleException
+    , _NoSuchRetentionConfigurationException
     , _OrganizationAllFeaturesNotEnabledException
     , _InsufficientPermissionsException
     , _ResourceNotDiscoveredException
     , _InvalidNextTokenException
+    , _MaxNumberOfRetentionConfigurationsExceededException
     , _MaxNumberOfConfigRulesExceededException
     , _NoAvailableConfigurationRecorderException
     , _NoSuchBucketException
@@ -88,6 +91,9 @@ module Network.AWS.Config.Types
     -- * RecorderStatus
     , RecorderStatus (..)
 
+    -- * ResourceCountGroupKey
+    , ResourceCountGroupKey (..)
+
     -- * ResourceType
     , ResourceType (..)
 
@@ -122,6 +128,15 @@ module Network.AWS.Config.Types
     , aerAccountId
     , aerComplianceType
     , aerAWSRegion
+
+    -- * AggregateResourceIdentifier
+    , AggregateResourceIdentifier
+    , aggregateResourceIdentifier
+    , ariResourceName
+    , ariSourceAccountId
+    , ariSourceRegion
+    , ariResourceId
+    , ariResourceType
 
     -- * AggregatedSourceStatus
     , AggregatedSourceStatus
@@ -213,6 +228,7 @@ module Network.AWS.Config.Types
     , configRule
     , crInputParameters
     , crConfigRuleName
+    , crCreatedBy
     , crMaximumExecutionFrequency
     , crConfigRuleId
     , crScope
@@ -363,6 +379,12 @@ module Network.AWS.Config.Types
     , erqResourceType
     , erqConfigRuleName
 
+    -- * GroupedResourceCount
+    , GroupedResourceCount
+    , groupedResourceCount
+    , grcGroupName
+    , grcResourceCount
+
     -- * OrganizationAggregationSource
     , OrganizationAggregationSource
     , organizationAggregationSource
@@ -397,6 +419,21 @@ module Network.AWS.Config.Types
     , rcResourceType
     , rcCount
 
+    -- * ResourceCountFilters
+    , ResourceCountFilters
+    , resourceCountFilters
+    , rcfResourceType
+    , rcfAccountId
+    , rcfRegion
+
+    -- * ResourceFilters
+    , ResourceFilters
+    , resourceFilters
+    , rfResourceId
+    , rfResourceName
+    , rfAccountId
+    , rfRegion
+
     -- * ResourceIdentifier
     , ResourceIdentifier
     , resourceIdentifier
@@ -410,6 +447,12 @@ module Network.AWS.Config.Types
     , resourceKey
     , rkResourceType
     , rkResourceId
+
+    -- * RetentionConfiguration
+    , RetentionConfiguration
+    , retentionConfiguration
+    , rcName
+    , rcRetentionPeriodInDays
 
     -- * Scope
     , Scope
@@ -541,6 +584,14 @@ _InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceErro
 _InvalidRoleException = _MatchServiceError config "InvalidRoleException"
 
 
+-- | The configuration item size is outside the allowable range.
+--
+--
+_OversizedConfigurationItemException :: AsError a => Getting (First ServiceError) a ServiceError
+_OversizedConfigurationItemException =
+  _MatchServiceError config "OversizedConfigurationItemException"
+
+
 -- | You cannot delete the delivery channel you specified because the configuration recorder is running.
 --
 --
@@ -596,6 +647,14 @@ _NoSuchConfigRuleException =
   _MatchServiceError config "NoSuchConfigRuleException"
 
 
+-- | You have specified a retention configuration that does not exist.
+--
+--
+_NoSuchRetentionConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchRetentionConfigurationException =
+  _MatchServiceError config "NoSuchRetentionConfigurationException"
+
+
 -- | The configuration aggregator cannot be created because organization does not have all features enabled.
 --
 --
@@ -632,6 +691,16 @@ _ResourceNotDiscoveredException =
 _InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextTokenException =
   _MatchServiceError config "InvalidNextTokenException"
+
+
+-- | Failed to add the retention configuration because a retention configuration with that name already exists.
+--
+--
+_MaxNumberOfRetentionConfigurationsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxNumberOfRetentionConfigurationsExceededException =
+  _MatchServiceError
+    config
+    "MaxNumberOfRetentionConfigurationsExceededException"
 
 
 -- | Failed to add the AWS Config rule because the account already contains the maximum number of 50 rules. Consider deleting any deactivated rules before you add new rules.
@@ -721,8 +790,10 @@ _InvalidS3KeyPrefixException =
   _MatchServiceError config "InvalidS3KeyPrefixException"
 
 
--- | This exception is thrown if an evaluation is in progress or if you call the 'StartConfigRulesEvaluation' API more than once per minute.
+-- | For @StartConfigRulesEvaluation@ API, this exception is thrown if an evaluation is in progress or if you call the 'StartConfigRulesEvaluation' API more than once per minute.
 --
+--
+-- For @PutConfigurationAggregator@ API, this exception is thrown if the number of accounts and aggregators exceeds the limit.
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException = _MatchServiceError config "LimitExceededException"

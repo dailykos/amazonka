@@ -48,9 +48,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'detachObject' smart constructor.
 data DetachObject = DetachObject'
-  { _detDirectoryARN    :: !Text
+  { _detDirectoryARN :: !Text
   , _detParentReference :: !ObjectReference
-  , _detLinkName        :: !Text
+  , _detLinkName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -125,7 +125,7 @@ instance ToQuery DetachObject where
 -- | /See:/ 'detachObjectResponse' smart constructor.
 data DetachObjectResponse = DetachObjectResponse'
   { _detrsDetachedObjectIdentifier :: !(Maybe Text)
-  , _detrsResponseStatus           :: !Int
+  , _detrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

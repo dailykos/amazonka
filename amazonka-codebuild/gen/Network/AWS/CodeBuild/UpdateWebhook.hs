@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the webhook associated with an AWS CodeBuild build project.
+-- Updates the webhook associated with an AWS CodeBuild build project. 
 --
 --
 module Network.AWS.CodeBuild.UpdateWebhook
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data UpdateWebhook = UpdateWebhook'
   { _uwBranchFilter :: !(Maybe Text)
   , _uwRotateSecret :: !(Maybe Bool)
-  , _uwProjectName  :: !Text
+  , _uwProjectName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -58,9 +58,9 @@ data UpdateWebhook = UpdateWebhook'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uwBranchFilter' - A regular expression used to determine which branches in a repository are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If it doesn't match, then it is not. If branchFilter is empty, then all branches are built.
+-- * 'uwBranchFilter' - A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If @branchFilter@ is empty, then all branches are built.
 --
--- * 'uwRotateSecret' - A boolean value that specifies whether the associated repository's secret token should be updated.
+-- * 'uwRotateSecret' - A boolean value that specifies whether the associated GitHub repository's secret token should be updated. If you use Bitbucket for your repository, @rotateSecret@ is ignored. 
 --
 -- * 'uwProjectName' - The name of the AWS CodeBuild project.
 updateWebhook
@@ -74,11 +74,11 @@ updateWebhook pProjectName_ =
     }
 
 
--- | A regular expression used to determine which branches in a repository are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If it doesn't match, then it is not. If branchFilter is empty, then all branches are built.
+-- | A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If @branchFilter@ is empty, then all branches are built.
 uwBranchFilter :: Lens' UpdateWebhook (Maybe Text)
 uwBranchFilter = lens _uwBranchFilter (\ s a -> s{_uwBranchFilter = a})
 
--- | A boolean value that specifies whether the associated repository's secret token should be updated.
+-- | A boolean value that specifies whether the associated GitHub repository's secret token should be updated. If you use Bitbucket for your repository, @rotateSecret@ is ignored. 
 uwRotateSecret :: Lens' UpdateWebhook (Maybe Bool)
 uwRotateSecret = lens _uwRotateSecret (\ s a -> s{_uwRotateSecret = a})
 
@@ -124,7 +124,7 @@ instance ToQuery UpdateWebhook where
 
 -- | /See:/ 'updateWebhookResponse' smart constructor.
 data UpdateWebhookResponse = UpdateWebhookResponse'
-  { _uwrsWebhook        :: !(Maybe Webhook)
+  { _uwrsWebhook :: !(Maybe Webhook)
   , _uwrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ data UpdateWebhookResponse = UpdateWebhookResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uwrsWebhook' - Information about a repository's webhook that is associated with a project in AWS CodeBuild.
+-- * 'uwrsWebhook' - Information about a repository's webhook that is associated with a project in AWS CodeBuild. 
 --
 -- * 'uwrsResponseStatus' - -- | The response status code.
 updateWebhookResponse
@@ -144,7 +144,7 @@ updateWebhookResponse pResponseStatus_ =
     {_uwrsWebhook = Nothing, _uwrsResponseStatus = pResponseStatus_}
 
 
--- | Information about a repository's webhook that is associated with a project in AWS CodeBuild.
+-- | Information about a repository's webhook that is associated with a project in AWS CodeBuild. 
 uwrsWebhook :: Lens' UpdateWebhookResponse (Maybe Webhook)
 uwrsWebhook = lens _uwrsWebhook (\ s a -> s{_uwrsWebhook = a})
 

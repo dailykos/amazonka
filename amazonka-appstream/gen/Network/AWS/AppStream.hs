@@ -11,9 +11,17 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon AppStream 2.0__
+-- __Amazon AppStream 2.0__ 
 --
--- You can use Amazon AppStream 2.0 to stream desktop applications to any device running a web browser, without rewriting them.
+-- This is the /Amazon AppStream 2.0 API Reference/ . It provides descriptions and syntax for each of the actions and data types in AppStream 2.0. AppStream 2.0 is a fully managed application streaming service. You centrally manage your desktop applications on AppStream 2.0 and securely deliver them to any computer. AppStream 2.0 manages the AWS resources required to host and run your applications, scales automatically, and provides access to your users on demand.
+--
+-- To learn more about AppStream 2.0, see the following resources:
+--
+--     * <http://aws.amazon.com/appstream2 Amazon AppStream 2.0 product page> 
+--
+--     * <http://aws.amazon.com/documentation/appstream2 Amazon AppStream 2.0 documentation> 
+--
+--
 --
 module Network.AWS.AppStream
     (
@@ -68,106 +76,142 @@ module Network.AWS.AppStream
     -- * Operations
     -- $operations
 
-    -- ** DisassociateFleet
+    -- ** DisassociateFleet 
     , module Network.AWS.AppStream.DisassociateFleet
 
-    -- ** ListAssociatedFleets
+    -- ** ListAssociatedFleets (Paginated)
     , module Network.AWS.AppStream.ListAssociatedFleets
 
-    -- ** DeleteStack
+    -- ** DeleteStack 
     , module Network.AWS.AppStream.DeleteStack
 
-    -- ** UpdateStack
+    -- ** UpdateStack 
     , module Network.AWS.AppStream.UpdateStack
 
-    -- ** CreateDirectoryConfig
+    -- ** CreateDirectoryConfig 
     , module Network.AWS.AppStream.CreateDirectoryConfig
 
-    -- ** ListAssociatedStacks
+    -- ** DescribeUsers (Paginated)
+    , module Network.AWS.AppStream.DescribeUsers
+
+    -- ** ListAssociatedStacks (Paginated)
     , module Network.AWS.AppStream.ListAssociatedStacks
 
-    -- ** DeleteFleet
+    -- ** DeleteFleet 
     , module Network.AWS.AppStream.DeleteFleet
 
-    -- ** UpdateFleet
+    -- ** UpdateFleet 
     , module Network.AWS.AppStream.UpdateFleet
 
-    -- ** DeleteImageBuilder
+    -- ** DeleteImageBuilder 
     , module Network.AWS.AppStream.DeleteImageBuilder
 
-    -- ** AssociateFleet
+    -- ** AssociateFleet 
     , module Network.AWS.AppStream.AssociateFleet
 
-    -- ** CreateImageBuilder
+    -- ** CreateImageBuilder 
     , module Network.AWS.AppStream.CreateImageBuilder
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.AppStream.ListTagsForResource
 
-    -- ** DescribeDirectoryConfigs
+    -- ** DescribeDirectoryConfigs (Paginated)
     , module Network.AWS.AppStream.DescribeDirectoryConfigs
 
-    -- ** CreateImageBuilderStreamingURL
+    -- ** CreateImageBuilderStreamingURL 
     , module Network.AWS.AppStream.CreateImageBuilderStreamingURL
 
-    -- ** DescribeSessions
+    -- ** DescribeSessions (Paginated)
     , module Network.AWS.AppStream.DescribeSessions
 
-    -- ** DescribeStacks
+    -- ** DescribeStacks (Paginated)
     , module Network.AWS.AppStream.DescribeStacks
 
-    -- ** DescribeFleets
+    -- ** DescribeFleets (Paginated)
     , module Network.AWS.AppStream.DescribeFleets
 
-    -- ** DescribeImageBuilders
+    -- ** DescribeImageBuilders (Paginated)
     , module Network.AWS.AppStream.DescribeImageBuilders
 
-    -- ** StopFleet
+    -- ** EnableUser 
+    , module Network.AWS.AppStream.EnableUser
+
+    -- ** DescribeUserStackAssociations (Paginated)
+    , module Network.AWS.AppStream.DescribeUserStackAssociations
+
+    -- ** UpdateImagePermissions 
+    , module Network.AWS.AppStream.UpdateImagePermissions
+
+    -- ** DeleteImagePermissions 
+    , module Network.AWS.AppStream.DeleteImagePermissions
+
+    -- ** StopFleet 
     , module Network.AWS.AppStream.StopFleet
 
-    -- ** StartImageBuilder
+    -- ** StartImageBuilder 
     , module Network.AWS.AppStream.StartImageBuilder
 
-    -- ** DeleteDirectoryConfig
+    -- ** BatchAssociateUserStack 
+    , module Network.AWS.AppStream.BatchAssociateUserStack
+
+    -- ** DescribeImagePermissions 
+    , module Network.AWS.AppStream.DescribeImagePermissions
+
+    -- ** DeleteDirectoryConfig 
     , module Network.AWS.AppStream.DeleteDirectoryConfig
 
-    -- ** UpdateDirectoryConfig
+    -- ** UpdateDirectoryConfig 
     , module Network.AWS.AppStream.UpdateDirectoryConfig
 
-    -- ** CreateFleet
+    -- ** CreateFleet 
     , module Network.AWS.AppStream.CreateFleet
 
-    -- ** CreateStack
+    -- ** CreateStack 
     , module Network.AWS.AppStream.CreateStack
 
-    -- ** CopyImage
+    -- ** CopyImage 
     , module Network.AWS.AppStream.CopyImage
 
-    -- ** ExpireSession
+    -- ** ExpireSession 
     , module Network.AWS.AppStream.ExpireSession
 
-    -- ** TagResource
+    -- ** CreateUser 
+    , module Network.AWS.AppStream.CreateUser
+
+    -- ** DisableUser 
+    , module Network.AWS.AppStream.DisableUser
+
+    -- ** DeleteUser 
+    , module Network.AWS.AppStream.DeleteUser
+
+    -- ** TagResource 
     , module Network.AWS.AppStream.TagResource
 
-    -- ** CreateStreamingURL
+    -- ** CreateStreamingURL 
     , module Network.AWS.AppStream.CreateStreamingURL
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.AppStream.UntagResource
 
-    -- ** StartFleet
+    -- ** StartFleet 
     , module Network.AWS.AppStream.StartFleet
 
-    -- ** StopImageBuilder
+    -- ** StopImageBuilder 
     , module Network.AWS.AppStream.StopImageBuilder
 
-    -- ** DeleteImage
+    -- ** DeleteImage 
     , module Network.AWS.AppStream.DeleteImage
 
-    -- ** DescribeImages
+    -- ** BatchDisassociateUserStack 
+    , module Network.AWS.AppStream.BatchDisassociateUserStack
+
+    -- ** DescribeImages (Paginated)
     , module Network.AWS.AppStream.DescribeImages
 
     -- * Types
+
+    -- ** Action
+    , Action (..)
 
     -- ** AuthenticationType
     , AuthenticationType (..)
@@ -196,6 +240,12 @@ module Network.AWS.AppStream
     -- ** ImageStateChangeReasonCode
     , ImageStateChangeReasonCode (..)
 
+    -- ** MessageAction
+    , MessageAction (..)
+
+    -- ** Permission
+    , Permission (..)
+
     -- ** PlatformType
     , PlatformType (..)
 
@@ -211,19 +261,35 @@ module Network.AWS.AppStream
     -- ** StorageConnectorType
     , StorageConnectorType (..)
 
+    -- ** UserStackAssociationErrorCode
+    , UserStackAssociationErrorCode (..)
+
     -- ** VisibilityType
     , VisibilityType (..)
 
     -- ** Application
     , Application
     , application
+    , appEnabled
+    , appLaunchPath
+    , appLaunchParameters
+    , appName
+    , appDisplayName
+    , appMetadata
+    , appIconURL
+
+    -- ** ApplicationSettings
+    , ApplicationSettings
+    , applicationSettings
+    , aSettingsGroup
     , aEnabled
-    , aLaunchPath
-    , aLaunchParameters
-    , aName
-    , aDisplayName
-    , aMetadata
-    , aIconURL
+
+    -- ** ApplicationSettingsResponse
+    , ApplicationSettingsResponse
+    , applicationSettingsResponse
+    , asEnabled
+    , asSettingsGroup
+    , asS3BucketName
 
     -- ** ComputeCapacity
     , ComputeCapacity
@@ -261,13 +327,14 @@ module Network.AWS.AppStream
     , fCreatedTime
     , fFleetType
     , fVPCConfig
+    , fImageARN
     , fFleetErrors
     , fDisplayName
     , fEnableDefaultInternetAccess
+    , fImageName
     , fDescription
     , fARN
     , fName
-    , fImageName
     , fInstanceType
     , fComputeCapacityStatus
     , fState
@@ -282,6 +349,7 @@ module Network.AWS.AppStream
     , Image
     , image
     , iState
+    , iImagePermissions
     , iPlatform
     , iPublicBaseImageReleasedDate
     , iStateChangeReason
@@ -321,11 +389,23 @@ module Network.AWS.AppStream
     , ibscrCode
     , ibscrMessage
 
+    -- ** ImagePermissions
+    , ImagePermissions
+    , imagePermissions
+    , ipAllowFleet
+    , ipAllowImageBuilder
+
     -- ** ImageStateChangeReason
     , ImageStateChangeReason
     , imageStateChangeReason
     , iscrCode
     , iscrMessage
+
+    -- ** NetworkAccessConfiguration
+    , NetworkAccessConfiguration
+    , networkAccessConfiguration
+    , nacEniId
+    , nacEniPrivateIPAddress
 
     -- ** ResourceError
     , ResourceError
@@ -343,6 +423,7 @@ module Network.AWS.AppStream
     -- ** Session
     , Session
     , session
+    , sNetworkAccessConfiguration
     , sAuthenticationType
     , sId
     , sUserId
@@ -350,9 +431,17 @@ module Network.AWS.AppStream
     , sFleetName
     , sState
 
+    -- ** SharedImagePermissions
+    , SharedImagePermissions
+    , sharedImagePermissions
+    , sipSharedAccountId
+    , sipImagePermissions
+
     -- ** Stack
     , Stack
     , stack
+    , sUserSettings
+    , sApplicationSettings
     , sFeedbackURL
     , sARN
     , sCreatedTime
@@ -372,8 +461,42 @@ module Network.AWS.AppStream
     -- ** StorageConnector
     , StorageConnector
     , storageConnector
+    , scDomains
     , scResourceIdentifier
     , scConnectorType
+
+    -- ** User
+    , User
+    , user
+    , uStatus
+    , uEnabled
+    , uLastName
+    , uARN
+    , uCreatedTime
+    , uUserName
+    , uFirstName
+    , uAuthenticationType
+
+    -- ** UserSetting
+    , UserSetting
+    , userSetting
+    , usAction
+    , usPermission
+
+    -- ** UserStackAssociation
+    , UserStackAssociation
+    , userStackAssociation
+    , usaSendEmailNotification
+    , usaStackName
+    , usaUserName
+    , usaAuthenticationType
+
+    -- ** UserStackAssociationError
+    , UserStackAssociationError
+    , userStackAssociationError
+    , usaeUserStackAssociation
+    , usaeErrorCode
+    , usaeErrorMessage
 
     -- ** VPCConfig
     , VPCConfig
@@ -383,6 +506,8 @@ module Network.AWS.AppStream
     ) where
 
 import Network.AWS.AppStream.AssociateFleet
+import Network.AWS.AppStream.BatchAssociateUserStack
+import Network.AWS.AppStream.BatchDisassociateUserStack
 import Network.AWS.AppStream.CopyImage
 import Network.AWS.AppStream.CreateDirectoryConfig
 import Network.AWS.AppStream.CreateFleet
@@ -390,18 +515,26 @@ import Network.AWS.AppStream.CreateImageBuilder
 import Network.AWS.AppStream.CreateImageBuilderStreamingURL
 import Network.AWS.AppStream.CreateStack
 import Network.AWS.AppStream.CreateStreamingURL
+import Network.AWS.AppStream.CreateUser
 import Network.AWS.AppStream.DeleteDirectoryConfig
 import Network.AWS.AppStream.DeleteFleet
 import Network.AWS.AppStream.DeleteImage
 import Network.AWS.AppStream.DeleteImageBuilder
+import Network.AWS.AppStream.DeleteImagePermissions
 import Network.AWS.AppStream.DeleteStack
+import Network.AWS.AppStream.DeleteUser
 import Network.AWS.AppStream.DescribeDirectoryConfigs
 import Network.AWS.AppStream.DescribeFleets
 import Network.AWS.AppStream.DescribeImageBuilders
+import Network.AWS.AppStream.DescribeImagePermissions
 import Network.AWS.AppStream.DescribeImages
 import Network.AWS.AppStream.DescribeSessions
 import Network.AWS.AppStream.DescribeStacks
+import Network.AWS.AppStream.DescribeUserStackAssociations
+import Network.AWS.AppStream.DescribeUsers
+import Network.AWS.AppStream.DisableUser
 import Network.AWS.AppStream.DisassociateFleet
+import Network.AWS.AppStream.EnableUser
 import Network.AWS.AppStream.ExpireSession
 import Network.AWS.AppStream.ListAssociatedFleets
 import Network.AWS.AppStream.ListAssociatedStacks
@@ -415,6 +548,7 @@ import Network.AWS.AppStream.Types
 import Network.AWS.AppStream.UntagResource
 import Network.AWS.AppStream.UpdateDirectoryConfig
 import Network.AWS.AppStream.UpdateFleet
+import Network.AWS.AppStream.UpdateImagePermissions
 import Network.AWS.AppStream.UpdateStack
 import Network.AWS.AppStream.Waiters
 

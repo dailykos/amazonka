@@ -143,9 +143,6 @@ module Network.AWS.CloudFront
     -- ** FieldLevelEncryptionProfileAlreadyExists
     , _FieldLevelEncryptionProfileAlreadyExists
 
-    -- ** ResourceInUse
-    , _ResourceInUse
-
     -- ** InvalidRequiredProtocol
     , _InvalidRequiredProtocol
 
@@ -202,6 +199,9 @@ module Network.AWS.CloudFront
 
     -- ** InvalidProtocolSettings
     , _InvalidProtocolSettings
+
+    -- ** TooManyOriginGroupsPerDistribution
+    , _TooManyOriginGroupsPerDistribution
 
     -- ** TooManyPublicKeys
     , _TooManyPublicKeys
@@ -278,142 +278,139 @@ module Network.AWS.CloudFront
     -- * Operations
     -- $operations
 
-    -- ** DeleteStreamingDistribution
+    -- ** DeleteStreamingDistribution 
     , module Network.AWS.CloudFront.DeleteStreamingDistribution
 
-    -- ** UpdateStreamingDistribution
+    -- ** UpdateStreamingDistribution 
     , module Network.AWS.CloudFront.UpdateStreamingDistribution
 
-    -- ** ListPublicKeys
+    -- ** ListPublicKeys 
     , module Network.AWS.CloudFront.ListPublicKeys
 
-    -- ** GetFieldLevelEncryptionConfig
+    -- ** GetFieldLevelEncryptionConfig 
     , module Network.AWS.CloudFront.GetFieldLevelEncryptionConfig
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.CloudFront.ListTagsForResource
 
-    -- ** CreatePublicKey
+    -- ** CreatePublicKey 
     , module Network.AWS.CloudFront.CreatePublicKey
 
-    -- ** GetPublicKeyConfig
+    -- ** GetPublicKeyConfig 
     , module Network.AWS.CloudFront.GetPublicKeyConfig
 
-    -- ** CreateDistributionWithTags
+    -- ** CreateDistributionWithTags 
     , module Network.AWS.CloudFront.CreateDistributionWithTags
 
-    -- ** CreateFieldLevelEncryptionConfig
+    -- ** CreateFieldLevelEncryptionConfig 
     , module Network.AWS.CloudFront.CreateFieldLevelEncryptionConfig
 
-    -- ** GetFieldLevelEncryption
+    -- ** GetFieldLevelEncryption 
     , module Network.AWS.CloudFront.GetFieldLevelEncryption
 
-    -- ** GetPublicKey
+    -- ** GetPublicKey 
     , module Network.AWS.CloudFront.GetPublicKey
 
-    -- ** DeleteFieldLevelEncryptionConfig
+    -- ** DeleteFieldLevelEncryptionConfig 
     , module Network.AWS.CloudFront.DeleteFieldLevelEncryptionConfig
 
-    -- ** UpdateFieldLevelEncryptionConfig
+    -- ** UpdateFieldLevelEncryptionConfig 
     , module Network.AWS.CloudFront.UpdateFieldLevelEncryptionConfig
 
-    -- ** CreateDistribution
+    -- ** CreateDistribution 
     , module Network.AWS.CloudFront.CreateDistribution
 
-    -- ** GetFieldLevelEncryptionProfile
+    -- ** GetFieldLevelEncryptionProfile 
     , module Network.AWS.CloudFront.GetFieldLevelEncryptionProfile
 
-    -- ** GetDistributionConfig
+    -- ** GetDistributionConfig 
     , module Network.AWS.CloudFront.GetDistributionConfig
 
-    -- ** CreateStreamingDistributionWithTags
+    -- ** CreateStreamingDistributionWithTags 
     , module Network.AWS.CloudFront.CreateStreamingDistributionWithTags
 
-    -- ** DeleteFieldLevelEncryptionProfile
+    -- ** DeleteFieldLevelEncryptionProfile 
     , module Network.AWS.CloudFront.DeleteFieldLevelEncryptionProfile
 
-    -- ** UpdateFieldLevelEncryptionProfile
+    -- ** UpdateFieldLevelEncryptionProfile 
     , module Network.AWS.CloudFront.UpdateFieldLevelEncryptionProfile
 
-    -- ** DeleteServiceLinkedRole
-    , module Network.AWS.CloudFront.DeleteServiceLinkedRole
-
-    -- ** CreateFieldLevelEncryptionProfile
+    -- ** CreateFieldLevelEncryptionProfile 
     , module Network.AWS.CloudFront.CreateFieldLevelEncryptionProfile
 
-    -- ** GetDistribution
+    -- ** GetDistribution 
     , module Network.AWS.CloudFront.GetDistribution
 
-    -- ** GetFieldLevelEncryptionProfileConfig
+    -- ** GetFieldLevelEncryptionProfileConfig 
     , module Network.AWS.CloudFront.GetFieldLevelEncryptionProfileConfig
 
-    -- ** UpdateCloudFrontOriginAccessIdentity
+    -- ** UpdateCloudFrontOriginAccessIdentity 
     , module Network.AWS.CloudFront.UpdateCloudFrontOriginAccessIdentity
 
-    -- ** DeleteCloudFrontOriginAccessIdentity
+    -- ** DeleteCloudFrontOriginAccessIdentity 
     , module Network.AWS.CloudFront.DeleteCloudFrontOriginAccessIdentity
 
     -- ** ListStreamingDistributions (Paginated)
     , module Network.AWS.CloudFront.ListStreamingDistributions
 
-    -- ** DeletePublicKey
+    -- ** DeletePublicKey 
     , module Network.AWS.CloudFront.DeletePublicKey
 
-    -- ** UpdatePublicKey
+    -- ** UpdatePublicKey 
     , module Network.AWS.CloudFront.UpdatePublicKey
 
-    -- ** GetStreamingDistributionConfig
+    -- ** GetStreamingDistributionConfig 
     , module Network.AWS.CloudFront.GetStreamingDistributionConfig
 
-    -- ** GetCloudFrontOriginAccessIdentityConfig
+    -- ** GetCloudFrontOriginAccessIdentityConfig 
     , module Network.AWS.CloudFront.GetCloudFrontOriginAccessIdentityConfig
 
-    -- ** CreateStreamingDistribution
+    -- ** CreateStreamingDistribution 
     , module Network.AWS.CloudFront.CreateStreamingDistribution
 
-    -- ** CreateCloudFrontOriginAccessIdentity
+    -- ** CreateCloudFrontOriginAccessIdentity 
     , module Network.AWS.CloudFront.CreateCloudFrontOriginAccessIdentity
 
     -- ** ListCloudFrontOriginAccessIdentities (Paginated)
     , module Network.AWS.CloudFront.ListCloudFrontOriginAccessIdentities
 
-    -- ** GetInvalidation
+    -- ** GetInvalidation 
     , module Network.AWS.CloudFront.GetInvalidation
 
     -- ** ListInvalidations (Paginated)
     , module Network.AWS.CloudFront.ListInvalidations
 
-    -- ** CreateInvalidation
+    -- ** CreateInvalidation 
     , module Network.AWS.CloudFront.CreateInvalidation
 
-    -- ** GetCloudFrontOriginAccessIdentity
+    -- ** GetCloudFrontOriginAccessIdentity 
     , module Network.AWS.CloudFront.GetCloudFrontOriginAccessIdentity
 
-    -- ** ListFieldLevelEncryptionConfigs
+    -- ** ListFieldLevelEncryptionConfigs 
     , module Network.AWS.CloudFront.ListFieldLevelEncryptionConfigs
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.CloudFront.TagResource
 
-    -- ** GetStreamingDistribution
+    -- ** GetStreamingDistribution 
     , module Network.AWS.CloudFront.GetStreamingDistribution
 
-    -- ** UpdateDistribution
+    -- ** UpdateDistribution 
     , module Network.AWS.CloudFront.UpdateDistribution
 
-    -- ** DeleteDistribution
+    -- ** DeleteDistribution 
     , module Network.AWS.CloudFront.DeleteDistribution
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.CloudFront.UntagResource
 
-    -- ** ListDistributionsByWebACLId
+    -- ** ListDistributionsByWebACLId 
     , module Network.AWS.CloudFront.ListDistributionsByWebACLId
 
     -- ** ListDistributions (Paginated)
     , module Network.AWS.CloudFront.ListDistributions
 
-    -- ** ListFieldLevelEncryptionProfiles
+    -- ** ListFieldLevelEncryptionProfiles 
     , module Network.AWS.CloudFront.ListFieldLevelEncryptionProfiles
 
     -- * Types
@@ -629,6 +626,7 @@ module Network.AWS.CloudFront
     , DistributionConfig
     , distributionConfig
     , dcHTTPVersion
+    , dcOriginGroups
     , dcAliases
     , dcDefaultRootObject
     , dcPriceClass
@@ -664,6 +662,7 @@ module Network.AWS.CloudFront
     -- ** DistributionSummary
     , DistributionSummary
     , distributionSummary
+    , dsOriginGroups
     , dsId
     , dsARN
     , dsStatus
@@ -827,6 +826,7 @@ module Network.AWS.CloudFront
     -- ** LambdaFunctionAssociation
     , LambdaFunctionAssociation
     , lambdaFunctionAssociation
+    , lfaIncludeBody
     , lfaLambdaFunctionARN
     , lfaEventType
 
@@ -860,6 +860,35 @@ module Network.AWS.CloudFront
     , ochHeaderName
     , ochHeaderValue
 
+    -- ** OriginGroup
+    , OriginGroup
+    , originGroup
+    , ogId
+    , ogFailoverCriteria
+    , ogMembers
+
+    -- ** OriginGroupFailoverCriteria
+    , OriginGroupFailoverCriteria
+    , originGroupFailoverCriteria
+    , ogfcStatusCodes
+
+    -- ** OriginGroupMember
+    , OriginGroupMember
+    , originGroupMember
+    , ogmOriginId
+
+    -- ** OriginGroupMembers
+    , OriginGroupMembers
+    , originGroupMembers
+    , ogmQuantity
+    , ogmItems
+
+    -- ** OriginGroups
+    , OriginGroups
+    , originGroups
+    , ogItems
+    , ogQuantity
+
     -- ** OriginSSLProtocols
     , OriginSSLProtocols
     , originSSLProtocols
@@ -869,8 +898,8 @@ module Network.AWS.CloudFront
     -- ** Origins
     , Origins
     , origins
-    , oItems
     , oQuantity
+    , oItems
 
     -- ** Paths
     , Paths
@@ -955,6 +984,12 @@ module Network.AWS.CloudFront
     , signer
     , sAWSAccountNumber
     , sKeyPairIds
+
+    -- ** StatusCodes
+    , StatusCodes
+    , statusCodes
+    , scQuantity
+    , scItems
 
     -- ** StreamingDistribution
     , StreamingDistribution
@@ -1066,7 +1101,6 @@ import Network.AWS.CloudFront.DeleteDistribution
 import Network.AWS.CloudFront.DeleteFieldLevelEncryptionConfig
 import Network.AWS.CloudFront.DeleteFieldLevelEncryptionProfile
 import Network.AWS.CloudFront.DeletePublicKey
-import Network.AWS.CloudFront.DeleteServiceLinkedRole
 import Network.AWS.CloudFront.DeleteStreamingDistribution
 import Network.AWS.CloudFront.GetCloudFrontOriginAccessIdentity
 import Network.AWS.CloudFront.GetCloudFrontOriginAccessIdentityConfig

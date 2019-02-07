@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an index object. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html Indexing> for more information.
+-- Creates an index object. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html Indexing and search> for more information.
 --
 --
 module Network.AWS.CloudDirectory.CreateIndex
@@ -50,11 +50,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'createIndex' smart constructor.
 data CreateIndex = CreateIndex'
-  { _ciParentReference             :: !(Maybe ObjectReference)
-  , _ciLinkName                    :: !(Maybe Text)
-  , _ciDirectoryARN                :: !Text
+  { _ciParentReference :: !(Maybe ObjectReference)
+  , _ciLinkName :: !(Maybe Text)
+  , _ciDirectoryARN :: !Text
   , _ciOrderedIndexedAttributeList :: ![AttributeKey]
-  , _ciIsUnique                    :: !Bool
+  , _ciIsUnique :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -143,7 +143,7 @@ instance ToQuery CreateIndex where
 -- | /See:/ 'createIndexResponse' smart constructor.
 data CreateIndexResponse = CreateIndexResponse'
   { _cirsObjectIdentifier :: !(Maybe Text)
-  , _cirsResponseStatus   :: !Int
+  , _cirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

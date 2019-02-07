@@ -52,8 +52,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'getTags' smart constructor.
 data GetTags = GetTags'
-  { _gtLimit       :: !(Maybe Int)
-  , _gtPosition    :: !(Maybe Text)
+  { _gtLimit :: !(Maybe Int)
+  , _gtPosition :: !(Maybe Text)
   , _gtResourceARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ instance ToQuery GetTags where
 --
 -- /See:/ 'getTagsResponse' smart constructor.
 data GetTagsResponse = GetTagsResponse'
-  { _gtrsTags           :: !(Maybe (Map Text Text))
+  { _gtrsTags :: !(Maybe (Map Text Text))
   , _gtrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

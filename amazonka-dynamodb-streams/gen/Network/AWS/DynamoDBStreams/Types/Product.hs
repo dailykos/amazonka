@@ -29,15 +29,15 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'attributeValue' smart constructor.
 data AttributeValue = AttributeValue'
-  { _avL    :: !(Maybe [AttributeValue])
-  , _avNS   :: !(Maybe [Text])
-  , _avM    :: !(Maybe (Map Text AttributeValue))
+  { _avL :: !(Maybe [AttributeValue])
+  , _avNS :: !(Maybe [Text])
+  , _avM :: !(Maybe (Map Text AttributeValue))
   , _avNULL :: !(Maybe Bool)
-  , _avN    :: !(Maybe Text)
-  , _avBS   :: !(Maybe [Base64])
-  , _avB    :: !(Maybe Base64)
-  , _avSS   :: !(Maybe [Text])
-  , _avS    :: !(Maybe Text)
+  , _avN :: !(Maybe Text)
+  , _avBS :: !(Maybe [Base64])
+  , _avB :: !(Maybe Base64)
+  , _avSS :: !(Maybe [Text])
+  , _avS :: !(Maybe Text)
   , _avBOOL :: !(Maybe Bool)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,7 +148,7 @@ instance NFData AttributeValue where
 -- /See:/ 'identity' smart constructor.
 data Identity = Identity'
   { _iPrincipalId :: !(Maybe Text)
-  , _iType        :: !(Maybe Text)
+  , _iType :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -192,7 +192,7 @@ instance NFData Identity where
 -- /See:/ 'keySchemaElement' smart constructor.
 data KeySchemaElement = KeySchemaElement'
   { _kseAttributeName :: !Text
-  , _kseKeyType       :: !KeyType
+  , _kseKeyType :: !KeyType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -239,11 +239,11 @@ instance NFData KeySchemaElement where
 data Record = Record'
   { _rUserIdentity :: !(Maybe Identity)
   , _rEventVersion :: !(Maybe Text)
-  , _rDynamodb     :: !(Maybe StreamRecord)
-  , _rAwsRegion    :: !(Maybe Text)
-  , _rEventName    :: !(Maybe OperationType)
-  , _rEventSource  :: !(Maybe Text)
-  , _rEventId      :: !(Maybe Text)
+  , _rDynamodb :: !(Maybe StreamRecord)
+  , _rAwsRegion :: !(Maybe Text)
+  , _rEventName :: !(Maybe OperationType)
+  , _rEventSource :: !(Maybe Text)
+  , _rEventId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -329,7 +329,7 @@ instance NFData Record where
 -- /See:/ 'sequenceNumberRange' smart constructor.
 data SequenceNumberRange = SequenceNumberRange'
   { _snrStartingSequenceNumber :: !(Maybe Text)
-  , _snrEndingSequenceNumber   :: !(Maybe Text)
+  , _snrEndingSequenceNumber :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -373,9 +373,9 @@ instance NFData SequenceNumberRange where
 --
 -- /See:/ 'shard' smart constructor.
 data Shard = Shard'
-  { _sParentShardId       :: !(Maybe Text)
+  { _sParentShardId :: !(Maybe Text)
   , _sSequenceNumberRange :: !(Maybe SequenceNumberRange)
-  , _sShardId             :: !(Maybe Text)
+  , _sShardId :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -430,8 +430,8 @@ instance NFData Shard where
 -- /See:/ 'stream' smart constructor.
 data Stream = Stream'
   { _sStreamLabel :: !(Maybe Text)
-  , _sStreamARN   :: !(Maybe Text)
-  , _sTableName   :: !(Maybe Text)
+  , _sStreamARN :: !(Maybe Text)
+  , _sTableName :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -439,7 +439,7 @@ data Stream = Stream'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sStreamLabel' - A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@
+-- * 'sStreamLabel' - A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@ 
 --
 -- * 'sStreamARN' - The Amazon Resource Name (ARN) for the stream.
 --
@@ -451,7 +451,7 @@ stream =
     {_sStreamLabel = Nothing, _sStreamARN = Nothing, _sTableName = Nothing}
 
 
--- | A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@
+-- | A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@ 
 sStreamLabel :: Lens' Stream (Maybe Text)
 sStreamLabel = lens _sStreamLabel (\ s a -> s{_sStreamLabel = a})
 
@@ -481,14 +481,14 @@ instance NFData Stream where
 --
 -- /See:/ 'streamDescription' smart constructor.
 data StreamDescription = StreamDescription'
-  { _sdLastEvaluatedShardId    :: !(Maybe Text)
-  , _sdStreamLabel             :: !(Maybe Text)
-  , _sdStreamStatus            :: !(Maybe StreamStatus)
-  , _sdKeySchema               :: !(Maybe (List1 KeySchemaElement))
-  , _sdStreamViewType          :: !(Maybe StreamViewType)
-  , _sdStreamARN               :: !(Maybe Text)
-  , _sdShards                  :: !(Maybe [Shard])
-  , _sdTableName               :: !(Maybe Text)
+  { _sdLastEvaluatedShardId :: !(Maybe Text)
+  , _sdStreamLabel :: !(Maybe Text)
+  , _sdStreamStatus :: !(Maybe StreamStatus)
+  , _sdKeySchema :: !(Maybe (List1 KeySchemaElement))
+  , _sdStreamViewType :: !(Maybe StreamViewType)
+  , _sdStreamARN :: !(Maybe Text)
+  , _sdShards :: !(Maybe [Shard])
+  , _sdTableName :: !(Maybe Text)
   , _sdCreationRequestDateTime :: !(Maybe POSIX)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -499,7 +499,7 @@ data StreamDescription = StreamDescription'
 --
 -- * 'sdLastEvaluatedShardId' - The shard ID of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request. If @LastEvaluatedShardId@ is empty, then the "last page" of results has been processed and there is currently no more data to be retrieved. If @LastEvaluatedShardId@ is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when @LastEvaluatedShardId@ is empty.
 --
--- * 'sdStreamLabel' - A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@
+-- * 'sdStreamLabel' - A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@ 
 --
 -- * 'sdStreamStatus' - Indicates the current status of the stream:     * @ENABLING@ - Streams is currently being enabled on the DynamoDB table.     * @ENABLED@ - the stream is enabled.     * @DISABLING@ - Streams is currently being disabled on the DynamoDB table.     * @DISABLED@ - the stream is disabled.
 --
@@ -534,7 +534,7 @@ streamDescription =
 sdLastEvaluatedShardId :: Lens' StreamDescription (Maybe Text)
 sdLastEvaluatedShardId = lens _sdLastEvaluatedShardId (\ s a -> s{_sdLastEvaluatedShardId = a})
 
--- | A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@
+-- | A timestamp, in ISO 8601 format, for this stream. Note that @LatestStreamLabel@ is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:     * the AWS customer ID.     * the table name     * the @StreamLabel@ 
 sdStreamLabel :: Lens' StreamDescription (Maybe Text)
 sdStreamLabel = lens _sdStreamLabel (\ s a -> s{_sdStreamLabel = a})
 
@@ -591,13 +591,13 @@ instance NFData StreamDescription where
 --
 -- /See:/ 'streamRecord' smart constructor.
 data StreamRecord = StreamRecord'
-  { _srSizeBytes                   :: !(Maybe Nat)
-  , _srSequenceNumber              :: !(Maybe Text)
+  { _srSizeBytes :: !(Maybe Nat)
+  , _srSequenceNumber :: !(Maybe Text)
   , _srApproximateCreationDateTime :: !(Maybe POSIX)
-  , _srStreamViewType              :: !(Maybe StreamViewType)
-  , _srKeys                        :: !(Maybe (Map Text AttributeValue))
-  , _srOldImage                    :: !(Maybe (Map Text AttributeValue))
-  , _srNewImage                    :: !(Maybe (Map Text AttributeValue))
+  , _srStreamViewType :: !(Maybe StreamViewType)
+  , _srKeys :: !(Maybe (Map Text AttributeValue))
+  , _srOldImage :: !(Maybe (Map Text AttributeValue))
+  , _srNewImage :: !(Maybe (Map Text AttributeValue))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

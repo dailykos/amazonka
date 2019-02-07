@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CloudDirectory.ListOutgoingTypedLinks
     (
     -- * Creating a Request
@@ -47,6 +49,7 @@ module Network.AWS.CloudDirectory.ListOutgoingTypedLinks
 import Network.AWS.CloudDirectory.Types
 import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -54,12 +57,12 @@ import Network.AWS.Response
 -- | /See:/ 'listOutgoingTypedLinks' smart constructor.
 data ListOutgoingTypedLinks = ListOutgoingTypedLinks'
   { _lotlFilterAttributeRanges :: !(Maybe [TypedLinkAttributeRange])
-  , _lotlConsistencyLevel      :: !(Maybe ConsistencyLevel)
-  , _lotlNextToken             :: !(Maybe Text)
-  , _lotlFilterTypedLink       :: !(Maybe TypedLinkSchemaAndFacetName)
-  , _lotlMaxResults            :: !(Maybe Nat)
-  , _lotlDirectoryARN          :: !Text
-  , _lotlObjectReference       :: !ObjectReference
+  , _lotlConsistencyLevel :: !(Maybe ConsistencyLevel)
+  , _lotlNextToken :: !(Maybe Text)
+  , _lotlFilterTypedLink :: !(Maybe TypedLinkSchemaAndFacetName)
+  , _lotlMaxResults :: !(Maybe Nat)
+  , _lotlDirectoryARN :: !Text
+  , _lotlObjectReference :: !ObjectReference
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -124,6 +127,13 @@ lotlDirectoryARN = lens _lotlDirectoryARN (\ s a -> s{_lotlDirectoryARN = a})
 lotlObjectReference :: Lens' ListOutgoingTypedLinks ObjectReference
 lotlObjectReference = lens _lotlObjectReference (\ s a -> s{_lotlObjectReference = a})
 
+instance AWSPager ListOutgoingTypedLinks where
+        page rq rs
+          | stop (rs ^. lotlrsNextToken) = Nothing
+          | stop (rs ^. lotlrsTypedLinkSpecifiers) = Nothing
+          | otherwise =
+            Just $ rq & lotlNextToken .~ rs ^. lotlrsNextToken
+
 instance AWSRequest ListOutgoingTypedLinks where
         type Rs ListOutgoingTypedLinks =
              ListOutgoingTypedLinksResponse
@@ -168,8 +178,8 @@ instance ToQuery ListOutgoingTypedLinks where
 -- | /See:/ 'listOutgoingTypedLinksResponse' smart constructor.
 data ListOutgoingTypedLinksResponse = ListOutgoingTypedLinksResponse'
   { _lotlrsTypedLinkSpecifiers :: !(Maybe [TypedLinkSpecifier])
-  , _lotlrsNextToken           :: !(Maybe Text)
-  , _lotlrsResponseStatus      :: !Int
+  , _lotlrsNextToken :: !(Maybe Text)
+  , _lotlrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

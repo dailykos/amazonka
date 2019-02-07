@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get the configuration information about a streaming distribution.
+-- Get the configuration information about a streaming distribution. 
 --
 --
 module Network.AWS.CloudFront.GetStreamingDistributionConfig
@@ -95,7 +95,7 @@ instance ToHeaders GetStreamingDistributionConfig
 instance ToPath GetStreamingDistributionConfig where
         toPath GetStreamingDistributionConfig'{..}
           = mconcat
-              ["/2017-10-30/streaming-distribution/", toBS _gsdcId,
+              ["/2018-11-05/streaming-distribution/", toBS _gsdcId,
                "/config"]
 
 instance ToQuery GetStreamingDistributionConfig where
@@ -108,8 +108,8 @@ instance ToQuery GetStreamingDistributionConfig where
 -- /See:/ 'getStreamingDistributionConfigResponse' smart constructor.
 data GetStreamingDistributionConfigResponse = GetStreamingDistributionConfigResponse'
   { _gsdcrsStreamingDistributionConfig :: !(Maybe StreamingDistributionConfig)
-  , _gsdcrsETag                        :: !(Maybe Text)
-  , _gsdcrsResponseStatus              :: !Int
+  , _gsdcrsETag :: !(Maybe Text)
+  , _gsdcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -119,7 +119,7 @@ data GetStreamingDistributionConfigResponse = GetStreamingDistributionConfigResp
 --
 -- * 'gsdcrsStreamingDistributionConfig' - The streaming distribution's configuration information.
 --
--- * 'gsdcrsETag' - The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
+-- * 'gsdcrsETag' - The current version of the configuration. For example: @E2QWRUHAPOMQZL@ . 
 --
 -- * 'gsdcrsResponseStatus' - -- | The response status code.
 getStreamingDistributionConfigResponse
@@ -137,7 +137,7 @@ getStreamingDistributionConfigResponse pResponseStatus_ =
 gsdcrsStreamingDistributionConfig :: Lens' GetStreamingDistributionConfigResponse (Maybe StreamingDistributionConfig)
 gsdcrsStreamingDistributionConfig = lens _gsdcrsStreamingDistributionConfig (\ s a -> s{_gsdcrsStreamingDistributionConfig = a})
 
--- | The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
+-- | The current version of the configuration. For example: @E2QWRUHAPOMQZL@ . 
 gsdcrsETag :: Lens' GetStreamingDistributionConfigResponse (Maybe Text)
 gsdcrsETag = lens _gsdcrsETag (\ s a -> s{_gsdcrsETag = a})
 

@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
@@ -108,14 +108,14 @@ instance ToPath DescribeRefreshSchemasStatus where
 instance ToQuery DescribeRefreshSchemasStatus where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeRefreshSchemasStatusResponse' smart constructor.
 data DescribeRefreshSchemasStatusResponse = DescribeRefreshSchemasStatusResponse'
   { _drssrsRefreshSchemasStatus :: !(Maybe RefreshSchemasStatus)
-  , _drssrsResponseStatus       :: !Int
+  , _drssrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

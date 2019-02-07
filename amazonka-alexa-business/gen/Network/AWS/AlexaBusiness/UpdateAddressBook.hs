@@ -47,8 +47,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateAddressBook' smart constructor.
 data UpdateAddressBook = UpdateAddressBook'
-  { _uabName           :: !(Maybe Text)
-  , _uabDescription    :: !(Maybe Text)
+  { _uabName :: !(Maybe Text)
+  , _uabDescription :: !(Maybe Text)
   , _uabAddressBookARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

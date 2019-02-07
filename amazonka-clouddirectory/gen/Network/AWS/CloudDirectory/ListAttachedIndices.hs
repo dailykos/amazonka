@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- | /See:/ 'listAttachedIndices' smart constructor.
 data ListAttachedIndices = ListAttachedIndices'
   { _laiConsistencyLevel :: !(Maybe ConsistencyLevel)
-  , _laiNextToken        :: !(Maybe Text)
-  , _laiMaxResults       :: !(Maybe Nat)
-  , _laiDirectoryARN     :: !Text
-  , _laiTargetReference  :: !ObjectReference
+  , _laiNextToken :: !(Maybe Text)
+  , _laiMaxResults :: !(Maybe Nat)
+  , _laiDirectoryARN :: !Text
+  , _laiTargetReference :: !ObjectReference
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -157,8 +157,8 @@ instance ToQuery ListAttachedIndices where
 -- | /See:/ 'listAttachedIndicesResponse' smart constructor.
 data ListAttachedIndicesResponse = ListAttachedIndicesResponse'
   { _lairsIndexAttachments :: !(Maybe [IndexAttachment])
-  , _lairsNextToken        :: !(Maybe Text)
-  , _lairsResponseStatus   :: !Int
+  , _lairsNextToken :: !(Maybe Text)
+  , _lairsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

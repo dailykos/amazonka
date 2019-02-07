@@ -47,61 +47,61 @@ module Network.AWS.DataPipeline
     -- * Operations
     -- $operations
 
-    -- ** DescribePipelines
+    -- ** DescribePipelines 
     , module Network.AWS.DataPipeline.DescribePipelines
 
     -- ** QueryObjects (Paginated)
     , module Network.AWS.DataPipeline.QueryObjects
 
-    -- ** RemoveTags
+    -- ** RemoveTags 
     , module Network.AWS.DataPipeline.RemoveTags
 
-    -- ** DeletePipeline
+    -- ** DeletePipeline 
     , module Network.AWS.DataPipeline.DeletePipeline
 
     -- ** ListPipelines (Paginated)
     , module Network.AWS.DataPipeline.ListPipelines
 
-    -- ** EvaluateExpression
+    -- ** EvaluateExpression 
     , module Network.AWS.DataPipeline.EvaluateExpression
 
-    -- ** GetPipelineDefinition
+    -- ** GetPipelineDefinition 
     , module Network.AWS.DataPipeline.GetPipelineDefinition
 
-    -- ** PollForTask
+    -- ** PollForTask 
     , module Network.AWS.DataPipeline.PollForTask
 
-    -- ** DeactivatePipeline
+    -- ** DeactivatePipeline 
     , module Network.AWS.DataPipeline.DeactivatePipeline
 
-    -- ** AddTags
+    -- ** AddTags 
     , module Network.AWS.DataPipeline.AddTags
 
     -- ** DescribeObjects (Paginated)
     , module Network.AWS.DataPipeline.DescribeObjects
 
-    -- ** ReportTaskRunnerHeartbeat
+    -- ** ReportTaskRunnerHeartbeat 
     , module Network.AWS.DataPipeline.ReportTaskRunnerHeartbeat
 
-    -- ** ActivatePipeline
+    -- ** ActivatePipeline 
     , module Network.AWS.DataPipeline.ActivatePipeline
 
-    -- ** SetTaskStatus
+    -- ** SetTaskStatus 
     , module Network.AWS.DataPipeline.SetTaskStatus
 
-    -- ** SetStatus
+    -- ** SetStatus 
     , module Network.AWS.DataPipeline.SetStatus
 
-    -- ** ReportTaskProgress
+    -- ** ReportTaskProgress 
     , module Network.AWS.DataPipeline.ReportTaskProgress
 
-    -- ** CreatePipeline
+    -- ** CreatePipeline 
     , module Network.AWS.DataPipeline.CreatePipeline
 
-    -- ** PutPipelineDefinition
+    -- ** PutPipelineDefinition 
     , module Network.AWS.DataPipeline.PutPipelineDefinition
 
-    -- ** ValidatePipelineDefinition
+    -- ** ValidatePipelineDefinition 
     , module Network.AWS.DataPipeline.ValidatePipelineDefinition
 
     -- * Types

@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'associateContactWithAddressBook' smart constructor.
 data AssociateContactWithAddressBook = AssociateContactWithAddressBook'
-  { _acwabContactARN     :: !Text
+  { _acwabContactARN :: !Text
   , _acwabAddressBookARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

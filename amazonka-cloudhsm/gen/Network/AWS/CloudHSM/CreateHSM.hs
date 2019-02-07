@@ -65,13 +65,13 @@ import Network.AWS.Response
 --
 -- /See:/ 'createHSM' smart constructor.
 data CreateHSM = CreateHSM'
-  { _chClientToken      :: !(Maybe Text)
-  , _chSyslogIP         :: !(Maybe Text)
-  , _chExternalId       :: !(Maybe Text)
-  , _chEniIP            :: !(Maybe Text)
-  , _chSubnetId         :: !Text
-  , _chSSHKey           :: !Text
-  , _chIAMRoleARN       :: !Text
+  { _chClientToken :: !(Maybe Text)
+  , _chSyslogIP :: !(Maybe Text)
+  , _chExternalId :: !(Maybe Text)
+  , _chEniIP :: !(Maybe Text)
+  , _chSubnetId :: !Text
+  , _chSSHKey :: !Text
+  , _chIAMRoleARN :: !Text
   , _chSubscriptionType :: !SubscriptionType
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -193,7 +193,7 @@ instance ToQuery CreateHSM where
 --
 -- /See:/ 'createHSMResponse' smart constructor.
 data CreateHSMResponse = CreateHSMResponse'
-  { _chrsHSMARN         :: !(Maybe Text)
+  { _chrsHSMARN :: !(Maybe Text)
   , _chrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

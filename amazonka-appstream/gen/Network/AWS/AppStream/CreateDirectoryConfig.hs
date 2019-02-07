@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a directory configuration.
+-- Creates a Directory Config object in AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
 --
 --
 module Network.AWS.AppStream.CreateDirectoryConfig
@@ -48,9 +48,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'createDirectoryConfig' smart constructor.
 data CreateDirectoryConfig = CreateDirectoryConfig'
-  { _cdcDirectoryName                        :: !Text
+  { _cdcDirectoryName :: !Text
   , _cdcOrganizationalUnitDistinguishedNames :: ![Text]
-  , _cdcServiceAccountCredentials            :: !ServiceAccountCredentials
+  , _cdcServiceAccountCredentials :: !ServiceAccountCredentials
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -132,7 +132,7 @@ instance ToQuery CreateDirectoryConfig where
 -- | /See:/ 'createDirectoryConfigResponse' smart constructor.
 data CreateDirectoryConfigResponse = CreateDirectoryConfigResponse'
   { _cdcrsDirectoryConfig :: !(Maybe DirectoryConfig)
-  , _cdcrsResponseStatus  :: !Int
+  , _cdcrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

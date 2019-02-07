@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'setAlarmState' smart constructor.
 data SetAlarmState = SetAlarmState'
   { _sasStateReasonData :: !(Maybe Text)
-  , _sasAlarmName       :: !Text
-  , _sasStateValue      :: !StateValue
-  , _sasStateReason     :: !Text
+  , _sasAlarmName :: !Text
+  , _sasStateValue :: !StateValue
+  , _sasStateReason :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

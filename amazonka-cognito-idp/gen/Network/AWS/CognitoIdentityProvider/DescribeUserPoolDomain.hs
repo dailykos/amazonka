@@ -102,7 +102,7 @@ instance ToQuery DescribeUserPoolDomain where
 -- | /See:/ 'describeUserPoolDomainResponse' smart constructor.
 data DescribeUserPoolDomainResponse = DescribeUserPoolDomainResponse'
   { _drsDomainDescription :: !(Maybe DomainDescriptionType)
-  , _drsResponseStatus    :: !Int
+  , _drsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

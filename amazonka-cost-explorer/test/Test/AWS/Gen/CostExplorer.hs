@@ -14,11 +14,11 @@
 module Test.AWS.Gen.CostExplorer where
 
 import Data.Proxy
-import Network.AWS.CostExplorer
-import Test.AWS.CostExplorer.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.CostExplorer
+import Test.AWS.CostExplorer.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.
@@ -36,6 +36,9 @@ import Test.Tasty
 --
 --         , requestGetReservationCoverage $
 --             getReservationCoverage
+--
+--         , requestGetCostForecast $
+--             getCostForecast
 --
 --         , requestGetDimensionValues $
 --             getDimensionValues
@@ -57,6 +60,9 @@ import Test.Tasty
 --
 --         , responseGetReservationCoverage $
 --             getReservationCoverageResponse
+--
+--         , responseGetCostForecast $
+--             getCostForecastResponse
 --
 --         , responseGetDimensionValues $
 --             getDimensionValuesResponse
@@ -86,6 +92,11 @@ requestGetReservationCoverage :: GetReservationCoverage -> TestTree
 requestGetReservationCoverage = req
     "GetReservationCoverage"
     "fixture/GetReservationCoverage.yaml"
+
+requestGetCostForecast :: GetCostForecast -> TestTree
+requestGetCostForecast = req
+    "GetCostForecast"
+    "fixture/GetCostForecast.yaml"
 
 requestGetDimensionValues :: GetDimensionValues -> TestTree
 requestGetDimensionValues = req
@@ -124,6 +135,13 @@ responseGetReservationCoverage = res
     "fixture/GetReservationCoverageResponse.proto"
     costExplorer
     (Proxy :: Proxy GetReservationCoverage)
+
+responseGetCostForecast :: GetCostForecastResponse -> TestTree
+responseGetCostForecast = res
+    "GetCostForecastResponse"
+    "fixture/GetCostForecastResponse.proto"
+    costExplorer
+    (Proxy :: Proxy GetCostForecast)
 
 responseGetDimensionValues :: GetDimensionValuesResponse -> TestTree
 responseGetDimensionValues = res

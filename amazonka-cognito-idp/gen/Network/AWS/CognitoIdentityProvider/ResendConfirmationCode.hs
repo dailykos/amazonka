@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- /See:/ 'resendConfirmationCode' smart constructor.
 data ResendConfirmationCode = ResendConfirmationCode'
   { _rccAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-  , _rccUserContextData   :: !(Maybe UserContextDataType)
-  , _rccSecretHash        :: !(Maybe (Sensitive Text))
-  , _rccClientId          :: !(Sensitive Text)
-  , _rccUsername          :: !(Sensitive Text)
+  , _rccUserContextData :: !(Maybe UserContextDataType)
+  , _rccSecretHash :: !(Maybe (Sensitive Text))
+  , _rccClientId :: !(Sensitive Text)
+  , _rccUsername :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -157,7 +157,7 @@ instance ToQuery ResendConfirmationCode where
 -- /See:/ 'resendConfirmationCodeResponse' smart constructor.
 data ResendConfirmationCodeResponse = ResendConfirmationCodeResponse'
   { _rccrsCodeDeliveryDetails :: !(Maybe CodeDeliveryDetailsType)
-  , _rccrsResponseStatus      :: !Int
+  , _rccrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

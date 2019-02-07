@@ -51,7 +51,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteUserAttributes' smart constructor.
 data DeleteUserAttributes = DeleteUserAttributes'
   { _duaUserAttributeNames :: ![Text]
-  , _duaAccessToken        :: !(Sensitive Text)
+  , _duaAccessToken :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

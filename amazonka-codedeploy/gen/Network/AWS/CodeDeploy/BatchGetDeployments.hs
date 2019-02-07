@@ -44,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a BatchGetDeployments operation.
+-- | Represents the input of a BatchGetDeployments operation. 
 --
 --
 --
@@ -58,13 +58,13 @@ newtype BatchGetDeployments = BatchGetDeployments'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgdDeploymentIds' - A list of deployment IDs, separated by spaces.
+-- * 'bgdDeploymentIds' - A list of deployment IDs, separated by spaces. 
 batchGetDeployments
     :: BatchGetDeployments
 batchGetDeployments = BatchGetDeployments' {_bgdDeploymentIds = mempty}
 
 
--- | A list of deployment IDs, separated by spaces.
+-- | A list of deployment IDs, separated by spaces. 
 bgdDeploymentIds :: Lens' BatchGetDeployments [Text]
 bgdDeploymentIds = lens _bgdDeploymentIds (\ s a -> s{_bgdDeploymentIds = a}) . _Coerce
 
@@ -105,14 +105,14 @@ instance ToPath BatchGetDeployments where
 instance ToQuery BatchGetDeployments where
         toQuery = const mempty
 
--- | Represents the output of a BatchGetDeployments operation.
+-- | Represents the output of a BatchGetDeployments operation. 
 --
 --
 --
 -- /See:/ 'batchGetDeploymentsResponse' smart constructor.
 data BatchGetDeploymentsResponse = BatchGetDeploymentsResponse'
   { _bgdrsDeploymentsInfo :: !(Maybe [DeploymentInfo])
-  , _bgdrsResponseStatus  :: !Int
+  , _bgdrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -120,7 +120,7 @@ data BatchGetDeploymentsResponse = BatchGetDeploymentsResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgdrsDeploymentsInfo' - Information about the deployments.
+-- * 'bgdrsDeploymentsInfo' - Information about the deployments. 
 --
 -- * 'bgdrsResponseStatus' - -- | The response status code.
 batchGetDeploymentsResponse
@@ -131,7 +131,7 @@ batchGetDeploymentsResponse pResponseStatus_ =
     {_bgdrsDeploymentsInfo = Nothing, _bgdrsResponseStatus = pResponseStatus_}
 
 
--- | Information about the deployments.
+-- | Information about the deployments. 
 bgdrsDeploymentsInfo :: Lens' BatchGetDeploymentsResponse [DeploymentInfo]
 bgdrsDeploymentsInfo = lens _bgdrsDeploymentsInfo (\ s a -> s{_bgdrsDeploymentsInfo = a}) . _Default . _Coerce
 

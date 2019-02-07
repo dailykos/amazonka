@@ -57,7 +57,7 @@ import Network.AWS.Response
 -- /See:/ 'updateUsagePlan' smart constructor.
 data UpdateUsagePlan = UpdateUsagePlan'
   { _uupPatchOperations :: !(Maybe [PatchOperation])
-  , _uupUsagePlanId     :: !Text
+  , _uupUsagePlanId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

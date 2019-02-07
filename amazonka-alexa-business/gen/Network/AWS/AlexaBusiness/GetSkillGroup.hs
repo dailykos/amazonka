@@ -100,7 +100,7 @@ instance ToQuery GetSkillGroup where
 
 -- | /See:/ 'getSkillGroupResponse' smart constructor.
 data GetSkillGroupResponse = GetSkillGroupResponse'
-  { _gsgrsSkillGroup     :: !(Maybe SkillGroup)
+  { _gsgrsSkillGroup :: !(Maybe SkillGroup)
   , _gsgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

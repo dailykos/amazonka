@@ -99,7 +99,7 @@ instance ToQuery GetAppliedSchemaVersion where
 -- | /See:/ 'getAppliedSchemaVersionResponse' smart constructor.
 data GetAppliedSchemaVersionResponse = GetAppliedSchemaVersionResponse'
   { _gasvrsAppliedSchemaARN :: !(Maybe Text)
-  , _gasvrsResponseStatus   :: !Int
+  , _gasvrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

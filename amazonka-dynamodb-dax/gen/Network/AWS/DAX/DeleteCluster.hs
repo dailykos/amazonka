@@ -100,7 +100,7 @@ instance ToQuery DeleteCluster where
 
 -- | /See:/ 'deleteClusterResponse' smart constructor.
 data DeleteClusterResponse = DeleteClusterResponse'
-  { _drsCluster        :: !(Maybe Cluster)
+  { _drsCluster :: !(Maybe Cluster)
   , _drsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

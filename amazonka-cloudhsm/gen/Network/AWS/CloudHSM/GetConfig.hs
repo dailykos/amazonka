@@ -54,9 +54,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'getConfig' smart constructor.
 data GetConfig = GetConfig'
-  { _gcClientARN     :: !Text
+  { _gcClientARN :: !Text
   , _gcClientVersion :: !ClientVersion
-  , _gcHAPGList      :: ![Text]
+  , _gcHAPGList :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -133,9 +133,9 @@ instance ToQuery GetConfig where
 
 -- | /See:/ 'getConfigResponse' smart constructor.
 data GetConfigResponse = GetConfigResponse'
-  { _gcrsConfigFile     :: !(Maybe Text)
-  , _gcrsConfigCred     :: !(Maybe Text)
-  , _gcrsConfigType     :: !(Maybe Text)
+  { _gcrsConfigFile :: !(Maybe Text)
+  , _gcrsConfigCred :: !(Maybe Text)
+  , _gcrsConfigType :: !(Maybe Text)
   , _gcrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -21,6 +21,8 @@
 -- Returns the detailed parameter list for a particular parameter group.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DAX.DescribeParameters
     (
     -- * Creating a Request
@@ -44,15 +46,16 @@ module Network.AWS.DAX.DescribeParameters
 import Network.AWS.DAX.Types
 import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeParameters' smart constructor.
 data DescribeParameters = DescribeParameters'
-  { _dpNextToken          :: !(Maybe Text)
-  , _dpSource             :: !(Maybe Text)
-  , _dpMaxResults         :: !(Maybe Int)
+  { _dpNextToken :: !(Maybe Text)
+  , _dpSource :: !(Maybe Text)
+  , _dpMaxResults :: !(Maybe Int)
   , _dpParameterGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -95,6 +98,13 @@ dpMaxResults = lens _dpMaxResults (\ s a -> s{_dpMaxResults = a})
 -- | The name of the parameter group.
 dpParameterGroupName :: Lens' DescribeParameters Text
 dpParameterGroupName = lens _dpParameterGroupName (\ s a -> s{_dpParameterGroupName = a})
+
+instance AWSPager DescribeParameters where
+        page rq rs
+          | stop (rs ^. dprsNextToken) = Nothing
+          | stop (rs ^. dprsParameters) = Nothing
+          | otherwise =
+            Just $ rq & dpNextToken .~ rs ^. dprsNextToken
 
 instance AWSRequest DescribeParameters where
         type Rs DescribeParameters =
@@ -139,8 +149,8 @@ instance ToQuery DescribeParameters where
 
 -- | /See:/ 'describeParametersResponse' smart constructor.
 data DescribeParametersResponse = DescribeParametersResponse'
-  { _dprsNextToken      :: !(Maybe Text)
-  , _dprsParameters     :: !(Maybe [Parameter])
+  { _dprsNextToken :: !(Maybe Text)
+  , _dprsParameters :: !(Maybe [Parameter])
   , _dprsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes the association of tags from a DAX resource. You can call @UntagResource@ up to 5 times per second, per account.
+-- Removes the association of tags from a DAX resource. You can call @UntagResource@ up to 5 times per second, per account. 
 --
 --
 module Network.AWS.DAX.UntagResource
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'untagResource' smart constructor.
 data UntagResource = UntagResource'
   { _urResourceName :: !Text
-  , _urTagKeys      :: ![Text]
+  , _urTagKeys :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -111,7 +111,7 @@ instance ToQuery UntagResource where
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
 data UntagResourceResponse = UntagResourceResponse'
-  { _urrsTags           :: !(Maybe [Tag])
+  { _urrsTags :: !(Maybe [Tag])
   , _urrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

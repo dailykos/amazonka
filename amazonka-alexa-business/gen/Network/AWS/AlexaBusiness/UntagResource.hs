@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
 data UntagResource = UntagResource'
-  { _urARN     :: !Text
+  { _urARN :: !Text
   , _urTagKeys :: ![Text]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -55,20 +55,20 @@ data UntagResource = UntagResource'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'urARN' - The ARN of the resource from which to remove metadata tags. Required.
+-- * 'urARN' - The ARN of the resource from which to remove metadata tags. Required. 
 --
--- * 'urTagKeys' - The tags to be removed from the specified resource. Do not provide system tags. Required.
+-- * 'urTagKeys' - The tags to be removed from the specified resource. Do not provide system tags. Required. 
 untagResource
     :: Text -- ^ 'urARN'
     -> UntagResource
 untagResource pARN_ = UntagResource' {_urARN = pARN_, _urTagKeys = mempty}
 
 
--- | The ARN of the resource from which to remove metadata tags. Required.
+-- | The ARN of the resource from which to remove metadata tags. Required. 
 urARN :: Lens' UntagResource Text
 urARN = lens _urARN (\ s a -> s{_urARN = a})
 
--- | The tags to be removed from the specified resource. Do not provide system tags. Required.
+-- | The tags to be removed from the specified resource. Do not provide system tags. Required. 
 urTagKeys :: Lens' UntagResource [Text]
 urTagKeys = lens _urTagKeys (\ s a -> s{_urTagKeys = a}) . _Coerce
 

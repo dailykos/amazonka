@@ -52,9 +52,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'listFacetNames' smart constructor.
 data ListFacetNames = ListFacetNames'
-  { _lfnNextToken  :: !(Maybe Text)
+  { _lfnNextToken :: !(Maybe Text)
   , _lfnMaxResults :: !(Maybe Nat)
-  , _lfnSchemaARN  :: !Text
+  , _lfnSchemaARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -132,8 +132,8 @@ instance ToQuery ListFacetNames where
 
 -- | /See:/ 'listFacetNamesResponse' smart constructor.
 data ListFacetNamesResponse = ListFacetNamesResponse'
-  { _lfnrsNextToken      :: !(Maybe Text)
-  , _lfnrsFacetNames     :: !(Maybe [Text])
+  { _lfnrsNextToken :: !(Maybe Text)
+  , _lfnrsFacetNames :: !(Maybe [Text])
   , _lfnrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

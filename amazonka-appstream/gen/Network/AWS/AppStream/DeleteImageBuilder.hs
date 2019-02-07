@@ -101,7 +101,7 @@ instance ToQuery DeleteImageBuilder where
 
 -- | /See:/ 'deleteImageBuilderResponse' smart constructor.
 data DeleteImageBuilderResponse = DeleteImageBuilderResponse'
-  { _dibrsImageBuilder   :: !(Maybe ImageBuilder)
+  { _dibrsImageBuilder :: !(Maybe ImageBuilder)
   , _dibrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon DynamoDB__
+-- __Amazon DynamoDB__ 
 --
 -- Amazon DynamoDB Streams provides API actions for accessing streams and processing stream records. To learn more about application development with Streams, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html Capturing Table Activity with DynamoDB Streams> in the Amazon DynamoDB Developer Guide.
 --
@@ -44,16 +44,16 @@ module Network.AWS.DynamoDBStreams
     -- * Operations
     -- $operations
 
-    -- ** GetShardIterator
+    -- ** GetShardIterator 
     , module Network.AWS.DynamoDBStreams.GetShardIterator
 
-    -- ** GetRecords
+    -- ** GetRecords 
     , module Network.AWS.DynamoDBStreams.GetRecords
 
-    -- ** ListStreams
+    -- ** ListStreams 
     , module Network.AWS.DynamoDBStreams.ListStreams
 
-    -- ** DescribeStream
+    -- ** DescribeStream 
     , module Network.AWS.DynamoDBStreams.DescribeStream
 
     -- * Types

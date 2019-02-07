@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a paginated list of all attribute definitions for a particular 'TypedLinkFacet' . For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- Returns a paginated list of all attribute definitions for a particular 'TypedLinkFacet' . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 --
 --
@@ -53,10 +53,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'listTypedLinkFacetAttributes' smart constructor.
 data ListTypedLinkFacetAttributes = ListTypedLinkFacetAttributes'
-  { _ltlfaNextToken  :: !(Maybe Text)
+  { _ltlfaNextToken :: !(Maybe Text)
   , _ltlfaMaxResults :: !(Maybe Nat)
-  , _ltlfaSchemaARN  :: !Text
-  , _ltlfaName       :: !Text
+  , _ltlfaSchemaARN :: !Text
+  , _ltlfaName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -146,8 +146,8 @@ instance ToQuery ListTypedLinkFacetAttributes where
 
 -- | /See:/ 'listTypedLinkFacetAttributesResponse' smart constructor.
 data ListTypedLinkFacetAttributesResponse = ListTypedLinkFacetAttributesResponse'
-  { _ltlfarsNextToken      :: !(Maybe Text)
-  , _ltlfarsAttributes     :: !(Maybe [TypedLinkAttributeDefinition])
+  { _ltlfarsNextToken :: !(Maybe Text)
+  , _ltlfarsAttributes :: !(Maybe [TypedLinkAttributeDefinition])
   , _ltlfarsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

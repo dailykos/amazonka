@@ -54,8 +54,8 @@ import Network.AWS.Response
 -- /See:/ 'listDevices' smart constructor.
 data ListDevices = ListDevices'
   { _ldPaginationToken :: !(Maybe Text)
-  , _ldLimit           :: !(Maybe Nat)
-  , _ldAccessToken     :: !(Sensitive Text)
+  , _ldLimit :: !(Maybe Nat)
+  , _ldAccessToken :: !(Sensitive Text)
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 
@@ -137,8 +137,8 @@ instance ToQuery ListDevices where
 -- /See:/ 'listDevicesResponse' smart constructor.
 data ListDevicesResponse = ListDevicesResponse'
   { _ldrsPaginationToken :: !(Maybe Text)
-  , _ldrsDevices         :: !(Maybe [DeviceType])
-  , _ldrsResponseStatus  :: !Int
+  , _ldrsDevices :: !(Maybe [DeviceType])
+  , _ldrsResponseStatus :: !Int
   } deriving (Eq, Show, Data, Typeable, Generic)
 
 

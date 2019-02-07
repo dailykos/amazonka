@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the budgets associated with an account.
+-- Lists the budgets that are associated with an account.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Budgets.DescribeBudgets
     (
     -- * Creating a Request
@@ -43,19 +45,20 @@ module Network.AWS.Budgets.DescribeBudgets
 import Network.AWS.Budgets.Types
 import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of DescribeBudgets
+-- | Request of DescribeBudgets 
 --
 --
 --
 -- /See:/ 'describeBudgets' smart constructor.
 data DescribeBudgets = DescribeBudgets'
-  { _dbNextToken  :: !(Maybe Text)
+  { _dbNextToken :: !(Maybe Text)
   , _dbMaxResults :: !(Maybe Nat)
-  , _dbAccountId  :: !Text
+  , _dbAccountId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -63,9 +66,9 @@ data DescribeBudgets = DescribeBudgets'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dbNextToken' - The pagination token that indicates the next set of results to retrieve.
+-- * 'dbNextToken' - The pagination token that you include in your request to indicate the next set of results that you want to retrieve.
 --
--- * 'dbMaxResults' - Optional integer. Specifies the maximum number of results to return in response.
+-- * 'dbMaxResults' - An optional integer that represents how many entries a paginated response contains. The maximum is 100.
 --
 -- * 'dbAccountId' - The @accountId@ that is associated with the budgets that you want descriptions of.
 describeBudgets
@@ -79,17 +82,24 @@ describeBudgets pAccountId_ =
     }
 
 
--- | The pagination token that indicates the next set of results to retrieve.
+-- | The pagination token that you include in your request to indicate the next set of results that you want to retrieve.
 dbNextToken :: Lens' DescribeBudgets (Maybe Text)
 dbNextToken = lens _dbNextToken (\ s a -> s{_dbNextToken = a})
 
--- | Optional integer. Specifies the maximum number of results to return in response.
+-- | An optional integer that represents how many entries a paginated response contains. The maximum is 100.
 dbMaxResults :: Lens' DescribeBudgets (Maybe Natural)
 dbMaxResults = lens _dbMaxResults (\ s a -> s{_dbMaxResults = a}) . mapping _Nat
 
 -- | The @accountId@ that is associated with the budgets that you want descriptions of.
 dbAccountId :: Lens' DescribeBudgets Text
 dbAccountId = lens _dbAccountId (\ s a -> s{_dbAccountId = a})
+
+instance AWSPager DescribeBudgets where
+        page rq rs
+          | stop (rs ^. dbrsNextToken) = Nothing
+          | stop (rs ^. dbrsBudgets) = Nothing
+          | otherwise =
+            Just $ rq & dbNextToken .~ rs ^. dbrsNextToken
 
 instance AWSRequest DescribeBudgets where
         type Rs DescribeBudgets = DescribeBudgetsResponse
@@ -129,14 +139,14 @@ instance ToPath DescribeBudgets where
 instance ToQuery DescribeBudgets where
         toQuery = const mempty
 
--- | Response of DescribeBudgets
+-- | Response of DescribeBudgets 
 --
 --
 --
 -- /See:/ 'describeBudgetsResponse' smart constructor.
 data DescribeBudgetsResponse = DescribeBudgetsResponse'
-  { _dbrsNextToken      :: !(Maybe Text)
-  , _dbrsBudgets        :: !(Maybe [Budget])
+  { _dbrsNextToken :: !(Maybe Text)
+  , _dbrsBudgets :: !(Maybe [Budget])
   , _dbrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,7 +155,7 @@ data DescribeBudgetsResponse = DescribeBudgetsResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dbrsNextToken' - The pagination token that indicates the next set of results that you can retrieve.
+-- * 'dbrsNextToken' - The pagination token in the service response that indicates the next set of results that you can retrieve.
 --
 -- * 'dbrsBudgets' - A list of budgets.
 --
@@ -161,7 +171,7 @@ describeBudgetsResponse pResponseStatus_ =
     }
 
 
--- | The pagination token that indicates the next set of results that you can retrieve.
+-- | The pagination token in the service response that indicates the next set of results that you can retrieve.
 dbrsNextToken :: Lens' DescribeBudgetsResponse (Maybe Text)
 dbrsNextToken = lens _dbrsNextToken (\ s a -> s{_dbrsNextToken = a})
 

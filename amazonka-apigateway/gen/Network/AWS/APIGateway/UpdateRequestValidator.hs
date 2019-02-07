@@ -54,8 +54,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'updateRequestValidator' smart constructor.
 data UpdateRequestValidator = UpdateRequestValidator'
-  { _urvPatchOperations    :: !(Maybe [PatchOperation])
-  , _urvRestAPIId          :: !Text
+  { _urvPatchOperations :: !(Maybe [PatchOperation])
+  , _urvRestAPIId :: !Text
   , _urvRequestValidatorId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

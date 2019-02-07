@@ -23,7 +23,7 @@
 --
 --     * Using the path
 --
---     * Using @ObjectIdentifier@
+--     * Using @ObjectIdentifier@ 
 --
 --
 --
@@ -55,10 +55,10 @@ import Network.AWS.Response
 
 -- | /See:/ 'attachObject' smart constructor.
 data AttachObject = AttachObject'
-  { _aoDirectoryARN    :: !Text
+  { _aoDirectoryARN :: !Text
   , _aoParentReference :: !ObjectReference
-  , _aoChildReference  :: !ObjectReference
-  , _aoLinkName        :: !Text
+  , _aoChildReference :: !ObjectReference
+  , _aoLinkName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -141,7 +141,7 @@ instance ToQuery AttachObject where
 -- | /See:/ 'attachObjectResponse' smart constructor.
 data AttachObjectResponse = AttachObjectResponse'
   { _aorsAttachedObjectIdentifier :: !(Maybe Text)
-  , _aorsResponseStatus           :: !Int
+  , _aorsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

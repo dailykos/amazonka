@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'describeServiceAccessPolicies' smart constructor.
 data DescribeServiceAccessPolicies = DescribeServiceAccessPolicies'
-  { _dsapDeployed   :: !(Maybe Bool)
+  { _dsapDeployed :: !(Maybe Bool)
   , _dsapDomainName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

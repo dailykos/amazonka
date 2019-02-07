@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'getDeploymentGroup' smart constructor.
 data GetDeploymentGroup = GetDeploymentGroup'
-  { _gdgApplicationName     :: !Text
+  { _gdgApplicationName :: !Text
   , _gdgDeploymentGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -60,9 +60,9 @@ data GetDeploymentGroup = GetDeploymentGroup'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdgApplicationName' - The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+-- * 'gdgApplicationName' - The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 --
--- * 'gdgDeploymentGroupName' - The name of an existing deployment group for the specified application.
+-- * 'gdgDeploymentGroupName' - The name of a deployment group for the specified application.
 getDeploymentGroup
     :: Text -- ^ 'gdgApplicationName'
     -> Text -- ^ 'gdgDeploymentGroupName'
@@ -74,11 +74,11 @@ getDeploymentGroup pApplicationName_ pDeploymentGroupName_ =
     }
 
 
--- | The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+-- | The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 gdgApplicationName :: Lens' GetDeploymentGroup Text
 gdgApplicationName = lens _gdgApplicationName (\ s a -> s{_gdgApplicationName = a})
 
--- | The name of an existing deployment group for the specified application.
+-- | The name of a deployment group for the specified application.
 gdgDeploymentGroupName :: Lens' GetDeploymentGroup Text
 gdgDeploymentGroupName = lens _gdgDeploymentGroupName (\ s a -> s{_gdgDeploymentGroupName = a})
 
@@ -128,7 +128,7 @@ instance ToQuery GetDeploymentGroup where
 -- /See:/ 'getDeploymentGroupResponse' smart constructor.
 data GetDeploymentGroupResponse = GetDeploymentGroupResponse'
   { _gdgrsDeploymentGroupInfo :: !(Maybe DeploymentGroupInfo)
-  , _gdgrsResponseStatus      :: !Int
+  , _gdgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

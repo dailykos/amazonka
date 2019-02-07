@@ -56,8 +56,8 @@ import Network.AWS.Response
 -- /See:/ 'updateResource' smart constructor.
 data UpdateResource = UpdateResource'
   { _urPatchOperations :: !(Maybe [PatchOperation])
-  , _urRestAPIId       :: !Text
-  , _urResourceId      :: !Text
+  , _urRestAPIId :: !Text
+  , _urResourceId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

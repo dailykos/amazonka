@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an object in a 'Directory' . Additionally attaches the object to a parent, if a parent reference and @LinkName@ is specified. An object is simply a collection of 'Facet' attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet.
+-- Creates an object in a 'Directory' . Additionally attaches the object to a parent, if a parent reference and @LinkName@ is specified. An object is simply a collection of 'Facet' attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet. 
 --
 --
 module Network.AWS.CloudDirectory.CreateObject
@@ -50,11 +50,11 @@ import Network.AWS.Response
 
 -- | /See:/ 'createObject' smart constructor.
 data CreateObject = CreateObject'
-  { _coParentReference     :: !(Maybe ObjectReference)
+  { _coParentReference :: !(Maybe ObjectReference)
   , _coObjectAttributeList :: !(Maybe [AttributeKeyAndValue])
-  , _coLinkName            :: !(Maybe Text)
-  , _coDirectoryARN        :: !Text
-  , _coSchemaFacets        :: ![SchemaFacet]
+  , _coLinkName :: !(Maybe Text)
+  , _coDirectoryARN :: !Text
+  , _coSchemaFacets :: ![SchemaFacet]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -141,7 +141,7 @@ instance ToQuery CreateObject where
 -- | /See:/ 'createObjectResponse' smart constructor.
 data CreateObjectResponse = CreateObjectResponse'
   { _corsObjectIdentifier :: !(Maybe Text)
-  , _corsResponseStatus   :: !Int
+  , _corsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

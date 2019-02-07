@@ -51,6 +51,7 @@ library
         , Network.AWS.CodeCommit.CreateRepository
         , Network.AWS.CodeCommit.DeleteBranch
         , Network.AWS.CodeCommit.DeleteCommentContent
+        , Network.AWS.CodeCommit.DeleteFile
         , Network.AWS.CodeCommit.DeleteRepository
         , Network.AWS.CodeCommit.DescribePullRequestEvents
         , Network.AWS.CodeCommit.GetBlob
@@ -60,6 +61,8 @@ library
         , Network.AWS.CodeCommit.GetCommentsForPullRequest
         , Network.AWS.CodeCommit.GetCommit
         , Network.AWS.CodeCommit.GetDifferences
+        , Network.AWS.CodeCommit.GetFile
+        , Network.AWS.CodeCommit.GetFolder
         , Network.AWS.CodeCommit.GetMergeConflicts
         , Network.AWS.CodeCommit.GetPullRequest
         , Network.AWS.CodeCommit.GetRepository

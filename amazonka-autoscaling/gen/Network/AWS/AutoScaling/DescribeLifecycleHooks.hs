@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeLifecycleHooks' smart constructor.
 data DescribeLifecycleHooks = DescribeLifecycleHooks'
-  { _dlhLifecycleHookNames   :: !(Maybe [Text])
+  { _dlhLifecycleHookNames :: !(Maybe [Text])
   , _dlhAutoScalingGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

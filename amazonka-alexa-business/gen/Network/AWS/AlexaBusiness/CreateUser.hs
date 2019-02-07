@@ -51,12 +51,12 @@ import Network.AWS.Response
 
 -- | /See:/ 'createUser' smart constructor.
 data CreateUser = CreateUser'
-  { _cuEmail              :: !(Maybe Text)
-  , _cuLastName           :: !(Maybe Text)
-  , _cuFirstName          :: !(Maybe Text)
+  { _cuEmail :: !(Maybe Text)
+  , _cuLastName :: !(Maybe Text)
+  , _cuFirstName :: !(Maybe Text)
   , _cuClientRequestToken :: !(Maybe Text)
-  , _cuTags               :: !(Maybe [Tag])
-  , _cuUserId             :: !Text
+  , _cuTags :: !(Maybe [Tag])
+  , _cuUserId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -70,7 +70,7 @@ data CreateUser = CreateUser'
 --
 -- * 'cuFirstName' - The first name for the user.
 --
--- * 'cuClientRequestToken' - A unique, user-specified identifier for this request that ensures idempotency.
+-- * 'cuClientRequestToken' - A unique, user-specified identifier for this request that ensures idempotency. 
 --
 -- * 'cuTags' - The tags for the user.
 --
@@ -101,7 +101,7 @@ cuLastName = lens _cuLastName (\ s a -> s{_cuLastName = a})
 cuFirstName :: Lens' CreateUser (Maybe Text)
 cuFirstName = lens _cuFirstName (\ s a -> s{_cuFirstName = a})
 
--- | A unique, user-specified identifier for this request that ensures idempotency.
+-- | A unique, user-specified identifier for this request that ensures idempotency. 
 cuClientRequestToken :: Lens' CreateUser (Maybe Text)
 cuClientRequestToken = lens _cuClientRequestToken (\ s a -> s{_cuClientRequestToken = a})
 
@@ -154,7 +154,7 @@ instance ToQuery CreateUser where
 
 -- | /See:/ 'createUserResponse' smart constructor.
 data CreateUserResponse = CreateUserResponse'
-  { _cursUserARN        :: !(Maybe Text)
+  { _cursUserARN :: !(Maybe Text)
   , _cursResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

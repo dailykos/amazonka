@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Submits an AWS Batch job from a job definition. Parameters specified during 'SubmitJob' override parameters defined in the job definition.
+-- Submits an AWS Batch job from a job definition. Parameters specified during 'SubmitJob' override parameters defined in the job definition. 
 --
 --
 module Network.AWS.Batch.SubmitJob
@@ -27,6 +27,7 @@ module Network.AWS.Batch.SubmitJob
       submitJob
     , SubmitJob
     -- * Request Lenses
+    , sjNodeOverrides
     , sjContainerOverrides
     , sjRetryStrategy
     , sjDependsOn
@@ -55,15 +56,16 @@ import Network.AWS.Response
 
 -- | /See:/ 'submitJob' smart constructor.
 data SubmitJob = SubmitJob'
-  { _sjContainerOverrides :: !(Maybe ContainerOverrides)
-  , _sjRetryStrategy      :: !(Maybe RetryStrategy)
-  , _sjDependsOn          :: !(Maybe [JobDependency])
-  , _sjParameters         :: !(Maybe (Map Text Text))
-  , _sjArrayProperties    :: !(Maybe ArrayProperties)
-  , _sjTimeout            :: !(Maybe JobTimeout)
-  , _sjJobName            :: !Text
-  , _sjJobQueue           :: !Text
-  , _sjJobDefinition      :: !Text
+  { _sjNodeOverrides :: !(Maybe NodeOverrides)
+  , _sjContainerOverrides :: !(Maybe ContainerOverrides)
+  , _sjRetryStrategy :: !(Maybe RetryStrategy)
+  , _sjDependsOn :: !(Maybe [JobDependency])
+  , _sjParameters :: !(Maybe (Map Text Text))
+  , _sjArrayProperties :: !(Maybe ArrayProperties)
+  , _sjTimeout :: !(Maybe JobTimeout)
+  , _sjJobName :: !Text
+  , _sjJobQueue :: !Text
+  , _sjJobDefinition :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -71,11 +73,13 @@ data SubmitJob = SubmitJob'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'sjNodeOverrides' - A list of node overrides in JSON format that specify the node range to target and the container overrides for that node range.
+--
 -- * 'sjContainerOverrides' - A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a @command@ override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an @environment@ override.
 --
 -- * 'sjRetryStrategy' - The retry strategy to use for failed jobs from this 'SubmitJob' operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.
 --
--- * 'sjDependsOn' - A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a @SEQUENTIAL@ type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an @N_TO_N@ type dependency with a job ID for array jobs so that each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.
+-- * 'sjDependsOn' - A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a @SEQUENTIAL@ type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an @N_TO_N@ type dependency with a job ID for array jobs. In that case, each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.
 --
 -- * 'sjParameters' - Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition.
 --
@@ -83,9 +87,9 @@ data SubmitJob = SubmitJob'
 --
 -- * 'sjTimeout' - The timeout configuration for this 'SubmitJob' operation. You can specify a timeout duration after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it is not retried. The minimum value for the timeout is 60 seconds. This configuration overrides any timeout configuration specified in the job definition. For array jobs, child jobs have the same timeout configuration as the parent job. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html Job Timeouts> in the /Amazon Elastic Container Service Developer Guide/ .
 --
--- * 'sjJobName' - The name of the job. The first character must be alphanumeric, and up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
+-- * 'sjJobName' - The name of the job. The first character must be alphanumeric, and up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. 
 --
--- * 'sjJobQueue' - The job queue into which the job is submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue.
+-- * 'sjJobQueue' - The job queue into which the job is submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue. 
 --
 -- * 'sjJobDefinition' - The job definition used by this job. This value can be either a @name:revision@ or the Amazon Resource Name (ARN) for the job definition.
 submitJob
@@ -95,7 +99,8 @@ submitJob
     -> SubmitJob
 submitJob pJobName_ pJobQueue_ pJobDefinition_ =
   SubmitJob'
-    { _sjContainerOverrides = Nothing
+    { _sjNodeOverrides = Nothing
+    , _sjContainerOverrides = Nothing
     , _sjRetryStrategy = Nothing
     , _sjDependsOn = Nothing
     , _sjParameters = Nothing
@@ -107,6 +112,10 @@ submitJob pJobName_ pJobQueue_ pJobDefinition_ =
     }
 
 
+-- | A list of node overrides in JSON format that specify the node range to target and the container overrides for that node range.
+sjNodeOverrides :: Lens' SubmitJob (Maybe NodeOverrides)
+sjNodeOverrides = lens _sjNodeOverrides (\ s a -> s{_sjNodeOverrides = a})
+
 -- | A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a @command@ override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an @environment@ override.
 sjContainerOverrides :: Lens' SubmitJob (Maybe ContainerOverrides)
 sjContainerOverrides = lens _sjContainerOverrides (\ s a -> s{_sjContainerOverrides = a})
@@ -115,7 +124,7 @@ sjContainerOverrides = lens _sjContainerOverrides (\ s a -> s{_sjContainerOverri
 sjRetryStrategy :: Lens' SubmitJob (Maybe RetryStrategy)
 sjRetryStrategy = lens _sjRetryStrategy (\ s a -> s{_sjRetryStrategy = a})
 
--- | A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a @SEQUENTIAL@ type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an @N_TO_N@ type dependency with a job ID for array jobs so that each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.
+-- | A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a @SEQUENTIAL@ type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an @N_TO_N@ type dependency with a job ID for array jobs. In that case, each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.
 sjDependsOn :: Lens' SubmitJob [JobDependency]
 sjDependsOn = lens _sjDependsOn (\ s a -> s{_sjDependsOn = a}) . _Default . _Coerce
 
@@ -131,11 +140,11 @@ sjArrayProperties = lens _sjArrayProperties (\ s a -> s{_sjArrayProperties = a})
 sjTimeout :: Lens' SubmitJob (Maybe JobTimeout)
 sjTimeout = lens _sjTimeout (\ s a -> s{_sjTimeout = a})
 
--- | The name of the job. The first character must be alphanumeric, and up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
+-- | The name of the job. The first character must be alphanumeric, and up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. 
 sjJobName :: Lens' SubmitJob Text
 sjJobName = lens _sjJobName (\ s a -> s{_sjJobName = a})
 
--- | The job queue into which the job is submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue.
+-- | The job queue into which the job is submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue. 
 sjJobQueue :: Lens' SubmitJob Text
 sjJobQueue = lens _sjJobQueue (\ s a -> s{_sjJobQueue = a})
 
@@ -168,7 +177,8 @@ instance ToJSON SubmitJob where
         toJSON SubmitJob'{..}
           = object
               (catMaybes
-                 [("containerOverrides" .=) <$> _sjContainerOverrides,
+                 [("nodeOverrides" .=) <$> _sjNodeOverrides,
+                  ("containerOverrides" .=) <$> _sjContainerOverrides,
                   ("retryStrategy" .=) <$> _sjRetryStrategy,
                   ("dependsOn" .=) <$> _sjDependsOn,
                   ("parameters" .=) <$> _sjParameters,
@@ -187,8 +197,8 @@ instance ToQuery SubmitJob where
 -- | /See:/ 'submitJobResponse' smart constructor.
 data SubmitJobResponse = SubmitJobResponse'
   { _sjrsResponseStatus :: !Int
-  , _sjrsJobName        :: !Text
-  , _sjrsJobId          :: !Text
+  , _sjrsJobName :: !Text
+  , _sjrsJobId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -198,7 +208,7 @@ data SubmitJobResponse = SubmitJobResponse'
 --
 -- * 'sjrsResponseStatus' - -- | The response status code.
 --
--- * 'sjrsJobName' - The name of the job.
+-- * 'sjrsJobName' - The name of the job. 
 --
 -- * 'sjrsJobId' - The unique identifier for the job.
 submitJobResponse
@@ -218,7 +228,7 @@ submitJobResponse pResponseStatus_ pJobName_ pJobId_ =
 sjrsResponseStatus :: Lens' SubmitJobResponse Int
 sjrsResponseStatus = lens _sjrsResponseStatus (\ s a -> s{_sjrsResponseStatus = a})
 
--- | The name of the job.
+-- | The name of the job. 
 sjrsJobName :: Lens' SubmitJobResponse Text
 sjrsJobName = lens _sjrsJobName (\ s a -> s{_sjrsJobName = a})
 

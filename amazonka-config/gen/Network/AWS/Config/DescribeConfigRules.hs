@@ -49,14 +49,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeConfigRules' smart constructor.
 data DescribeConfigRules = DescribeConfigRules'
   { _dcrConfigRuleNames :: !(Maybe [Text])
-  , _dcrNextToken       :: !(Maybe Text)
+  , _dcrNextToken :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -127,14 +127,14 @@ instance ToPath DescribeConfigRules where
 instance ToQuery DescribeConfigRules where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeConfigRulesResponse' smart constructor.
 data DescribeConfigRulesResponse = DescribeConfigRulesResponse'
-  { _dcrrsConfigRules    :: !(Maybe [ConfigRule])
-  , _dcrrsNextToken      :: !(Maybe Text)
+  { _dcrrsConfigRules :: !(Maybe [ConfigRule])
+  , _dcrrsNextToken :: !(Maybe Text)
   , _dcrrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -51,7 +51,7 @@ import Network.AWS.Response
 --
 -- /See:/ 'defineAnalysisScheme' smart constructor.
 data DefineAnalysisScheme = DefineAnalysisScheme'
-  { _dasaDomainName     :: !Text
+  { _dasaDomainName :: !Text
   , _dasaAnalysisScheme :: !AnalysisScheme
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

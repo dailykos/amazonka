@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- | /See:/ 'mergePullRequestByFastForward' smart constructor.
 data MergePullRequestByFastForward = MergePullRequestByFastForward'
   { _mprbffSourceCommitId :: !(Maybe Text)
-  , _mprbffPullRequestId  :: !Text
+  , _mprbffPullRequestId :: !Text
   , _mprbffRepositoryName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,7 +129,7 @@ instance ToQuery MergePullRequestByFastForward where
 
 -- | /See:/ 'mergePullRequestByFastForwardResponse' smart constructor.
 data MergePullRequestByFastForwardResponse = MergePullRequestByFastForwardResponse'
-  { _mprbffrsPullRequest    :: !(Maybe PullRequest)
+  { _mprbffrsPullRequest :: !(Maybe PullRequest)
   , _mprbffrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

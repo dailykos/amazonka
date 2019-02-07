@@ -50,9 +50,9 @@ import Network.AWS.Response
 
 -- | /See:/ 'updateComputeEnvironment' smart constructor.
 data UpdateComputeEnvironment = UpdateComputeEnvironment'
-  { _uceState              :: !(Maybe CEState)
-  , _uceComputeResources   :: !(Maybe ComputeResourceUpdate)
-  , _uceServiceRole        :: !(Maybe Text)
+  { _uceState :: !(Maybe CEState)
+  , _uceComputeResources :: !(Maybe ComputeResourceUpdate)
+  , _uceServiceRole :: !(Maybe Text)
   , _uceComputeEnvironment :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,8 +138,8 @@ instance ToQuery UpdateComputeEnvironment where
 -- | /See:/ 'updateComputeEnvironmentResponse' smart constructor.
 data UpdateComputeEnvironmentResponse = UpdateComputeEnvironmentResponse'
   { _ucersComputeEnvironmentName :: !(Maybe Text)
-  , _ucersComputeEnvironmentARN  :: !(Maybe Text)
-  , _ucersResponseStatus         :: !Int
+  , _ucersComputeEnvironmentARN :: !(Maybe Text)
+  , _ucersResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -147,9 +147,9 @@ data UpdateComputeEnvironmentResponse = UpdateComputeEnvironmentResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ucersComputeEnvironmentName' - The name of compute environment.
+-- * 'ucersComputeEnvironmentName' - The name of the compute environment.
 --
--- * 'ucersComputeEnvironmentARN' - The Amazon Resource Name (ARN) of the compute environment.
+-- * 'ucersComputeEnvironmentARN' - The Amazon Resource Name (ARN) of the compute environment. 
 --
 -- * 'ucersResponseStatus' - -- | The response status code.
 updateComputeEnvironmentResponse
@@ -163,11 +163,11 @@ updateComputeEnvironmentResponse pResponseStatus_ =
     }
 
 
--- | The name of compute environment.
+-- | The name of the compute environment.
 ucersComputeEnvironmentName :: Lens' UpdateComputeEnvironmentResponse (Maybe Text)
 ucersComputeEnvironmentName = lens _ucersComputeEnvironmentName (\ s a -> s{_ucersComputeEnvironmentName = a})
 
--- | The Amazon Resource Name (ARN) of the compute environment.
+-- | The Amazon Resource Name (ARN) of the compute environment. 
 ucersComputeEnvironmentARN :: Lens' UpdateComputeEnvironmentResponse (Maybe Text)
 ucersComputeEnvironmentARN = lens _ucersComputeEnvironmentARN (\ s a -> s{_ucersComputeEnvironmentARN = a})
 

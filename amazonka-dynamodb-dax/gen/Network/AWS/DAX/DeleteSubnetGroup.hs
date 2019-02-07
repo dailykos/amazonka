@@ -103,7 +103,7 @@ instance ToQuery DeleteSubnetGroup where
 -- | /See:/ 'deleteSubnetGroupResponse' smart constructor.
 data DeleteSubnetGroupResponse = DeleteSubnetGroupResponse'
   { _dsgrsDeletionMessage :: !(Maybe Text)
-  , _dsgrsResponseStatus  :: !Int
+  , _dsgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

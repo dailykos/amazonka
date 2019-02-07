@@ -46,7 +46,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'tagResource' smart constructor.
 data TagResource = TagResource'
-  { _trARN  :: !Text
+  { _trARN :: !Text
   , _trTags :: ![Tag]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -55,20 +55,20 @@ data TagResource = TagResource'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trARN' - The ARN of the resource to which to add metadata tags. Required.
+-- * 'trARN' - The ARN of the resource to which to add metadata tags. Required. 
 --
--- * 'trTags' - The tags to be added to the specified resource. Do not provide system tags. Required.
+-- * 'trTags' - The tags to be added to the specified resource. Do not provide system tags. Required. 
 tagResource
     :: Text -- ^ 'trARN'
     -> TagResource
 tagResource pARN_ = TagResource' {_trARN = pARN_, _trTags = mempty}
 
 
--- | The ARN of the resource to which to add metadata tags. Required.
+-- | The ARN of the resource to which to add metadata tags. Required. 
 trARN :: Lens' TagResource Text
 trARN = lens _trARN (\ s a -> s{_trARN = a})
 
--- | The tags to be added to the specified resource. Do not provide system tags. Required.
+-- | The tags to be added to the specified resource. Do not provide system tags. Required. 
 trTags :: Lens' TagResource [Tag]
 trTags = lens _trTags (\ s a -> s{_trTags = a}) . _Coerce
 

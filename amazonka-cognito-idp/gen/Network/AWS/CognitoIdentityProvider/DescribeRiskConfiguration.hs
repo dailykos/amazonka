@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'describeRiskConfiguration' smart constructor.
 data DescribeRiskConfiguration = DescribeRiskConfiguration'
-  { _drcClientId   :: !(Maybe (Sensitive Text))
+  { _drcClientId :: !(Maybe (Sensitive Text))
   , _drcUserPoolId :: !Text
   } deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -114,7 +114,7 @@ instance ToQuery DescribeRiskConfiguration where
 
 -- | /See:/ 'describeRiskConfigurationResponse' smart constructor.
 data DescribeRiskConfigurationResponse = DescribeRiskConfigurationResponse'
-  { _drcrsResponseStatus    :: !Int
+  { _drcrsResponseStatus :: !Int
   , _drcrsRiskConfiguration :: !RiskConfigurationType
   } deriving (Eq, Show, Data, Typeable, Generic)
 

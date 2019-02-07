@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'listFieldLevelEncryptionProfiles' smart constructor.
 data ListFieldLevelEncryptionProfiles = ListFieldLevelEncryptionProfiles'
-  { _lflepMarker   :: !(Maybe Text)
+  { _lflepMarker :: !(Maybe Text)
   , _lflepMaxItems :: !(Maybe Text)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -56,9 +56,9 @@ data ListFieldLevelEncryptionProfiles = ListFieldLevelEncryptionProfiles'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lflepMarker' - Use this when paginating results to indicate where to begin in your list of profiles. The results include profiles in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last profile on that page).
+-- * 'lflepMarker' - Use this when paginating results to indicate where to begin in your list of profiles. The results include profiles in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last profile on that page). 
 --
--- * 'lflepMaxItems' - The maximum number of field-level encryption profiles you want in the response body.
+-- * 'lflepMaxItems' - The maximum number of field-level encryption profiles you want in the response body. 
 listFieldLevelEncryptionProfiles
     :: ListFieldLevelEncryptionProfiles
 listFieldLevelEncryptionProfiles =
@@ -66,11 +66,11 @@ listFieldLevelEncryptionProfiles =
     {_lflepMarker = Nothing, _lflepMaxItems = Nothing}
 
 
--- | Use this when paginating results to indicate where to begin in your list of profiles. The results include profiles in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last profile on that page).
+-- | Use this when paginating results to indicate where to begin in your list of profiles. The results include profiles in the list that occur after the marker. To get the next page of results, set the @Marker@ to the value of the @NextMarker@ from the current page's response (which is also the ID of the last profile on that page). 
 lflepMarker :: Lens' ListFieldLevelEncryptionProfiles (Maybe Text)
 lflepMarker = lens _lflepMarker (\ s a -> s{_lflepMarker = a})
 
--- | The maximum number of field-level encryption profiles you want in the response body.
+-- | The maximum number of field-level encryption profiles you want in the response body. 
 lflepMaxItems :: Lens' ListFieldLevelEncryptionProfiles (Maybe Text)
 lflepMaxItems = lens _lflepMaxItems (\ s a -> s{_lflepMaxItems = a})
 
@@ -98,7 +98,7 @@ instance ToHeaders ListFieldLevelEncryptionProfiles
 instance ToPath ListFieldLevelEncryptionProfiles
          where
         toPath
-          = const "/2017-10-30/field-level-encryption-profile"
+          = const "/2018-11-05/field-level-encryption-profile"
 
 instance ToQuery ListFieldLevelEncryptionProfiles
          where

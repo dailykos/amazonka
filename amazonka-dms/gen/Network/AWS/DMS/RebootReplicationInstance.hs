@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'rebootReplicationInstance' smart constructor.
 data RebootReplicationInstance = RebootReplicationInstance'
-  { _rriForceFailover          :: !(Maybe Bool)
+  { _rriForceFailover :: !(Maybe Bool)
   , _rriReplicationInstanceARN :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,7 +120,7 @@ instance ToQuery RebootReplicationInstance where
 -- | /See:/ 'rebootReplicationInstanceResponse' smart constructor.
 data RebootReplicationInstanceResponse = RebootReplicationInstanceResponse'
   { _rrirsReplicationInstance :: !(Maybe ReplicationInstance)
-  , _rrirsResponseStatus      :: !Int
+  , _rrirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -128,7 +128,7 @@ data RebootReplicationInstanceResponse = RebootReplicationInstanceResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rrirsReplicationInstance' - The replication instance that is being rebooted.
+-- * 'rrirsReplicationInstance' - The replication instance that is being rebooted. 
 --
 -- * 'rrirsResponseStatus' - -- | The response status code.
 rebootReplicationInstanceResponse
@@ -141,7 +141,7 @@ rebootReplicationInstanceResponse pResponseStatus_ =
     }
 
 
--- | The replication instance that is being rebooted.
+-- | The replication instance that is being rebooted. 
 rrirsReplicationInstance :: Lens' RebootReplicationInstanceResponse (Maybe ReplicationInstance)
 rrirsReplicationInstance = lens _rrirsReplicationInstance (\ s a -> s{_rrirsReplicationInstance = a})
 

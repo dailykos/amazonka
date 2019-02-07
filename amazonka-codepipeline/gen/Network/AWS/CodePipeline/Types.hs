@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -124,6 +124,7 @@ module Network.AWS.CodePipeline.Types
     , actionDeclaration
     , adOutputArtifacts
     , adRunOrder
+    , adRegion
     , adConfiguration
     , adInputArtifacts
     , adRoleARN
@@ -323,10 +324,11 @@ module Network.AWS.CodePipeline.Types
     -- * PipelineDeclaration
     , PipelineDeclaration
     , pipelineDeclaration
+    , pdArtifactStores
+    , pdArtifactStore
     , pdVersion
     , pdName
     , pdRoleARN
-    , pdArtifactStore
     , pdStages
 
     -- * PipelineExecution
@@ -572,7 +574,7 @@ _PipelineVersionNotFoundException =
   _MatchServiceError codePipeline "PipelineVersionNotFoundException"
 
 
--- | The specified stage can't be retried because the pipeline structure or stage state changed after the stage was not completed; the stage contains no failed actions; one or more actions are still in progress; or another retry attempt is already in progress.
+-- | The specified stage can't be retried because the pipeline structure or stage state changed after the stage was not completed; the stage contains no failed actions; one or more actions are still in progress; or another retry attempt is already in progress. 
 --
 --
 _StageNotRetryableException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -580,7 +582,7 @@ _StageNotRetryableException =
   _MatchServiceError codePipeline "StageNotRetryableException"
 
 
--- | The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not belong to the specified pipeline.
+-- | The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not belong to the specified pipeline. 
 --
 --
 _PipelineExecutionNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError

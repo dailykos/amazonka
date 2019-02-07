@@ -57,12 +57,12 @@ import Network.AWS.Response
 
 -- | /See:/ 'postCommentForComparedCommit' smart constructor.
 data PostCommentForComparedCommit = PostCommentForComparedCommit'
-  { _pcfccLocation           :: !(Maybe Location)
-  , _pcfccBeforeCommitId     :: !(Maybe Text)
+  { _pcfccLocation :: !(Maybe Location)
+  , _pcfccBeforeCommitId :: !(Maybe Text)
   , _pcfccClientRequestToken :: !(Maybe Text)
-  , _pcfccRepositoryName     :: !Text
-  , _pcfccAfterCommitId      :: !Text
-  , _pcfccContent            :: !Text
+  , _pcfccRepositoryName :: !Text
+  , _pcfccAfterCommitId :: !Text
+  , _pcfccContent :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -172,13 +172,13 @@ instance ToQuery PostCommentForComparedCommit where
 
 -- | /See:/ 'postCommentForComparedCommitResponse' smart constructor.
 data PostCommentForComparedCommitResponse = PostCommentForComparedCommitResponse'
-  { _pcfccrsBeforeBlobId   :: !(Maybe Text)
-  , _pcfccrsLocation       :: !(Maybe Location)
-  , _pcfccrsAfterCommitId  :: !(Maybe Text)
-  , _pcfccrsAfterBlobId    :: !(Maybe Text)
+  { _pcfccrsBeforeBlobId :: !(Maybe Text)
+  , _pcfccrsLocation :: !(Maybe Location)
+  , _pcfccrsAfterCommitId :: !(Maybe Text)
+  , _pcfccrsAfterBlobId :: !(Maybe Text)
   , _pcfccrsBeforeCommitId :: !(Maybe Text)
   , _pcfccrsRepositoryName :: !(Maybe Text)
-  , _pcfccrsComment        :: !(Maybe Comment)
+  , _pcfccrsComment :: !(Maybe Comment)
   , _pcfccrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

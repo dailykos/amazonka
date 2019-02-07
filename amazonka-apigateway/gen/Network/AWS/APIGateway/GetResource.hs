@@ -55,8 +55,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'getResource' smart constructor.
 data GetResource = GetResource'
-  { _grEmbed      :: !(Maybe [Text])
-  , _grRestAPIId  :: !Text
+  { _grEmbed :: !(Maybe [Text])
+  , _grRestAPIId :: !Text
   , _grResourceId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -41,9 +41,9 @@
 --
 --     * Primary key attributes specified on an item in the request do not match those in the corresponding table's primary key schema.
 --
---     * You try to perform multiple operations on the same item in the same @BatchWriteItem@ request. For example, you cannot put and delete the same item in the same @BatchWriteItem@ request.
+--     * You try to perform multiple operations on the same item in the same @BatchWriteItem@ request. For example, you cannot put and delete the same item in the same @BatchWriteItem@ request. 
 --
---     * Your request contains at least two items with identical hash and range keys (which essentially is two put operations).
+--     * Your request contains at least two items with identical hash and range keys (which essentially is two put operations). 
 --
 --     * There are more than 25 requests in the batch.
 --
@@ -86,9 +86,9 @@ import Network.AWS.Response
 --
 -- /See:/ 'batchWriteItem' smart constructor.
 data BatchWriteItem = BatchWriteItem'
-  { _bwiReturnConsumedCapacity      :: !(Maybe ReturnConsumedCapacity)
+  { _bwiReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
   , _bwiReturnItemCollectionMetrics :: !(Maybe ReturnItemCollectionMetrics)
-  , _bwiRequestItems                :: !(Map Text (List1 WriteRequest))
+  , _bwiRequestItems :: !(Map Text (List1 WriteRequest))
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -171,9 +171,9 @@ instance ToQuery BatchWriteItem where
 -- /See:/ 'batchWriteItemResponse' smart constructor.
 data BatchWriteItemResponse = BatchWriteItemResponse'
   { _bwirsItemCollectionMetrics :: !(Maybe (Map Text [ItemCollectionMetrics]))
-  , _bwirsConsumedCapacity      :: !(Maybe [ConsumedCapacity])
-  , _bwirsUnprocessedItems      :: !(Maybe (Map Text (List1 WriteRequest)))
-  , _bwirsResponseStatus        :: !Int
+  , _bwirsConsumedCapacity :: !(Maybe [ConsumedCapacity])
+  , _bwirsUnprocessedItems :: !(Maybe (Map Text (List1 WriteRequest)))
+  , _bwirsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

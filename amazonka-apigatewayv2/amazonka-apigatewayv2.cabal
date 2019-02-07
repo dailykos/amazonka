@@ -1,0 +1,142 @@
+name:                  amazonka-apigatewayv2
+version:               1.6.1
+synopsis:              Amazon ApiGatewayV2 SDK.
+homepage:              https://github.com/brendanhay/amazonka
+bug-reports:           https://github.com/brendanhay/amazonka/issues
+license:               MPL-2.0
+license-file:          LICENSE
+author:                Brendan Hay
+maintainer:            Brendan Hay <brendan.g.hay+amazonka@gmail.com>
+copyright:             Copyright (c) 2013-2018 Brendan Hay
+category:              Network, AWS, Cloud, Distributed Computing
+build-type:            Simple
+cabal-version:         >= 1.10
+extra-source-files:    README.md fixture/*.yaml fixture/*.proto src/.gitkeep
+description:
+    The types from this library are intended to be used with
+    <http://hackage.haskell.org/package/amazonka amazonka>, which provides
+    mechanisms for specifying AuthN/AuthZ information, sending requests,
+    and receiving responses.
+    .
+    Lenses are used for constructing and manipulating types,
+    due to the depth of nesting of AWS types and transparency regarding
+    de/serialisation into more palatable Haskell values.
+    The provided lenses should be compatible with any of the major lens libraries
+    such as <http://hackage.haskell.org/package/lens lens> or
+    <http://hackage.haskell.org/package/lens-family-core lens-family-core>.
+    .
+    See "Network.AWS.APIGatewayV2" or <https://aws.amazon.com/documentation/ the AWS documentation>
+    to get started.
+
+source-repository head
+    type:              git
+    location:          git://github.com/brendanhay/amazonka.git
+    subdir:            amazonka-apigatewayv2
+
+library
+    default-language:  Haskell2010
+    hs-source-dirs:    src gen
+
+    ghc-options:
+        -Wall
+        -fwarn-incomplete-uni-patterns
+        -fwarn-incomplete-record-updates
+        -funbox-strict-fields
+
+    exposed-modules:
+          Network.AWS.APIGatewayV2
+        , Network.AWS.APIGatewayV2.CreateAPI
+        , Network.AWS.APIGatewayV2.CreateAPIMapping
+        , Network.AWS.APIGatewayV2.CreateAuthorizer
+        , Network.AWS.APIGatewayV2.CreateDeployment
+        , Network.AWS.APIGatewayV2.CreateDomainName
+        , Network.AWS.APIGatewayV2.CreateIntegration
+        , Network.AWS.APIGatewayV2.CreateIntegrationResponse
+        , Network.AWS.APIGatewayV2.CreateModel
+        , Network.AWS.APIGatewayV2.CreateRoute
+        , Network.AWS.APIGatewayV2.CreateRouteResponse
+        , Network.AWS.APIGatewayV2.CreateStage
+        , Network.AWS.APIGatewayV2.DeleteAPI
+        , Network.AWS.APIGatewayV2.DeleteAPIMapping
+        , Network.AWS.APIGatewayV2.DeleteAuthorizer
+        , Network.AWS.APIGatewayV2.DeleteDeployment
+        , Network.AWS.APIGatewayV2.DeleteDomainName
+        , Network.AWS.APIGatewayV2.DeleteIntegration
+        , Network.AWS.APIGatewayV2.DeleteIntegrationResponse
+        , Network.AWS.APIGatewayV2.DeleteModel
+        , Network.AWS.APIGatewayV2.DeleteRoute
+        , Network.AWS.APIGatewayV2.DeleteRouteResponse
+        , Network.AWS.APIGatewayV2.DeleteStage
+        , Network.AWS.APIGatewayV2.GetAPI
+        , Network.AWS.APIGatewayV2.GetAPIMapping
+        , Network.AWS.APIGatewayV2.GetAPIMappings
+        , Network.AWS.APIGatewayV2.GetAPIs
+        , Network.AWS.APIGatewayV2.GetAuthorizer
+        , Network.AWS.APIGatewayV2.GetAuthorizers
+        , Network.AWS.APIGatewayV2.GetDeployment
+        , Network.AWS.APIGatewayV2.GetDeployments
+        , Network.AWS.APIGatewayV2.GetDomainName
+        , Network.AWS.APIGatewayV2.GetDomainNames
+        , Network.AWS.APIGatewayV2.GetIntegration
+        , Network.AWS.APIGatewayV2.GetIntegrationResponse
+        , Network.AWS.APIGatewayV2.GetIntegrationResponses
+        , Network.AWS.APIGatewayV2.GetIntegrations
+        , Network.AWS.APIGatewayV2.GetModel
+        , Network.AWS.APIGatewayV2.GetModelTemplate
+        , Network.AWS.APIGatewayV2.GetModels
+        , Network.AWS.APIGatewayV2.GetRoute
+        , Network.AWS.APIGatewayV2.GetRouteResponse
+        , Network.AWS.APIGatewayV2.GetRouteResponses
+        , Network.AWS.APIGatewayV2.GetRoutes
+        , Network.AWS.APIGatewayV2.GetStage
+        , Network.AWS.APIGatewayV2.GetStages
+        , Network.AWS.APIGatewayV2.Types
+        , Network.AWS.APIGatewayV2.UpdateAPI
+        , Network.AWS.APIGatewayV2.UpdateAPIMapping
+        , Network.AWS.APIGatewayV2.UpdateAuthorizer
+        , Network.AWS.APIGatewayV2.UpdateDeployment
+        , Network.AWS.APIGatewayV2.UpdateDomainName
+        , Network.AWS.APIGatewayV2.UpdateIntegration
+        , Network.AWS.APIGatewayV2.UpdateIntegrationResponse
+        , Network.AWS.APIGatewayV2.UpdateModel
+        , Network.AWS.APIGatewayV2.UpdateRoute
+        , Network.AWS.APIGatewayV2.UpdateRouteResponse
+        , Network.AWS.APIGatewayV2.UpdateStage
+        , Network.AWS.APIGatewayV2.Waiters
+
+    other-modules:
+          Network.AWS.APIGatewayV2.Internal
+        , Network.AWS.APIGatewayV2.Types.Product
+        , Network.AWS.APIGatewayV2.Types.Sum
+
+    build-depends:
+          amazonka-core == 1.6.1.*
+        , base          >= 4.7     && < 5
+
+test-suite amazonka-apigatewayv2-test
+    type:              exitcode-stdio-1.0
+    default-language:  Haskell2010
+    hs-source-dirs:    test
+    main-is:           Main.hs
+
+    ghc-options:       -Wall -threaded
+
+    -- This section is encoded by the template and any modules added by
+    -- hand outside these namespaces will not correctly be added to the
+    -- distribution package.
+    other-modules:
+          Test.AWS.APIGatewayV2
+        , Test.AWS.Gen.APIGatewayV2
+        , Test.AWS.APIGatewayV2.Internal
+
+    build-depends:
+          amazonka-core == 1.6.1.*
+        , amazonka-test == 1.6.1.*
+        , amazonka-apigatewayv2
+        , base
+        , bytestring
+        , tasty
+        , tasty-hunit
+        , text
+        , time
+        , unordered-containers

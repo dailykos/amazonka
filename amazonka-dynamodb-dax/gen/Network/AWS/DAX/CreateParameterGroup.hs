@@ -47,7 +47,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'createParameterGroup' smart constructor.
 data CreateParameterGroup = CreateParameterGroup'
-  { _cpgDescription        :: !(Maybe Text)
+  { _cpgDescription :: !(Maybe Text)
   , _cpgParameterGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

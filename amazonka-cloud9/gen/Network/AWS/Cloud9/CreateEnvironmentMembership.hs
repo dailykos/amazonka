@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'createEnvironmentMembership' smart constructor.
 data CreateEnvironmentMembership = CreateEnvironmentMembership'
   { _cemEnvironmentId :: !Text
-  , _cemUserARN       :: !Text
-  , _cemPermissions   :: !MemberPermissions
+  , _cemUserARN :: !Text
+  , _cemPermissions :: !MemberPermissions
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -128,7 +128,7 @@ instance ToQuery CreateEnvironmentMembership where
 
 -- | /See:/ 'createEnvironmentMembershipResponse' smart constructor.
 data CreateEnvironmentMembershipResponse = CreateEnvironmentMembershipResponse'
-  { _cemrsMembership     :: !(Maybe EnvironmentMember)
+  { _cemrsMembership :: !(Maybe EnvironmentMember)
   , _cemrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

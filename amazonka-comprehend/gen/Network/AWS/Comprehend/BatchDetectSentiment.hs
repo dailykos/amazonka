@@ -48,8 +48,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'batchDetectSentiment' smart constructor.
 data BatchDetectSentiment = BatchDetectSentiment'
-  { _bdsTextList     :: ![Text]
-  , _bdsLanguageCode :: !Text
+  { _bdsTextList :: ![Text]
+  , _bdsLanguageCode :: !LanguageCode
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -59,9 +59,9 @@ data BatchDetectSentiment = BatchDetectSentiment'
 --
 -- * 'bdsTextList' - A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 --
--- * 'bdsLanguageCode' - The language of the input documents. All documents must be in the same language.
+-- * 'bdsLanguageCode' - The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.
 batchDetectSentiment
-    :: Text -- ^ 'bdsLanguageCode'
+    :: LanguageCode -- ^ 'bdsLanguageCode'
     -> BatchDetectSentiment
 batchDetectSentiment pLanguageCode_ =
   BatchDetectSentiment'
@@ -72,8 +72,8 @@ batchDetectSentiment pLanguageCode_ =
 bdsTextList :: Lens' BatchDetectSentiment [Text]
 bdsTextList = lens _bdsTextList (\ s a -> s{_bdsTextList = a}) . _Coerce
 
--- | The language of the input documents. All documents must be in the same language.
-bdsLanguageCode :: Lens' BatchDetectSentiment Text
+-- | The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.
+bdsLanguageCode :: Lens' BatchDetectSentiment LanguageCode
 bdsLanguageCode = lens _bdsLanguageCode (\ s a -> s{_bdsLanguageCode = a})
 
 instance AWSRequest BatchDetectSentiment where
@@ -118,8 +118,8 @@ instance ToQuery BatchDetectSentiment where
 -- | /See:/ 'batchDetectSentimentResponse' smart constructor.
 data BatchDetectSentimentResponse = BatchDetectSentimentResponse'
   { _bdsrsResponseStatus :: !Int
-  , _bdsrsResultList     :: ![BatchDetectSentimentItemResult]
-  , _bdsrsErrorList      :: ![BatchItemError]
+  , _bdsrsResultList :: ![BatchDetectSentimentItemResult]
+  , _bdsrsErrorList :: ![BatchItemError]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

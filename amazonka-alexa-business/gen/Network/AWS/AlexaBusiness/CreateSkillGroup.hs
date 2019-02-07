@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'createSkillGroup' smart constructor.
 data CreateSkillGroup = CreateSkillGroup'
   { _csgClientRequestToken :: !(Maybe Text)
-  , _csgDescription        :: !(Maybe Text)
-  , _csgSkillGroupName     :: !Text
+  , _csgDescription :: !(Maybe Text)
+  , _csgSkillGroupName :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
@@ -58,7 +58,7 @@ data CreateSkillGroup = CreateSkillGroup'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csgClientRequestToken' - A unique, user-specified identifier for this request that ensures idempotency.
+-- * 'csgClientRequestToken' - A unique, user-specified identifier for this request that ensures idempotency. 
 --
 -- * 'csgDescription' - The description for the skill group.
 --
@@ -74,7 +74,7 @@ createSkillGroup pSkillGroupName_ =
     }
 
 
--- | A unique, user-specified identifier for this request that ensures idempotency.
+-- | A unique, user-specified identifier for this request that ensures idempotency. 
 csgClientRequestToken :: Lens' CreateSkillGroup (Maybe Text)
 csgClientRequestToken = lens _csgClientRequestToken (\ s a -> s{_csgClientRequestToken = a})
 
@@ -125,7 +125,7 @@ instance ToQuery CreateSkillGroup where
 
 -- | /See:/ 'createSkillGroupResponse' smart constructor.
 data CreateSkillGroupResponse = CreateSkillGroupResponse'
-  { _csgrsSkillGroupARN  :: !(Maybe Text)
+  { _csgrsSkillGroupARN :: !(Maybe Text)
   , _csgrsResponseStatus :: !Int
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 

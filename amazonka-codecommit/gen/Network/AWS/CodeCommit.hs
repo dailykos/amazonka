@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CodeCommit__
+-- __AWS CodeCommit__ 
 --
 -- This is the /AWS CodeCommit API Reference/ . This reference provides descriptions of the operations and data types for AWS CodeCommit API along with usage examples.
 --
@@ -50,6 +50,12 @@
 --
 --
 -- Files, by calling the following:
+--
+--     * 'DeleteFile' , which deletes the content of a specified file from a specified branch.
+--
+--     * 'GetFile' , which returns the base-64 encoded content of a specified file.
+--
+--     * 'GetFolder' , which returns the contents of a specified folder or directory.
 --
 --     * 'PutFile' , which adds or modifies a file in a specified repository and branch.
 --
@@ -178,6 +184,9 @@ module Network.AWS.CodeCommit
     -- ** MaximumRepositoryNamesExceededException
     , _MaximumRepositoryNamesExceededException
 
+    -- ** FolderDoesNotExistException
+    , _FolderDoesNotExistException
+
     -- ** InvalidRepositoryDescriptionException
     , _InvalidRepositoryDescriptionException
 
@@ -232,6 +241,9 @@ module Network.AWS.CodeCommit
     -- ** InvalidCommentIdException
     , _InvalidCommentIdException
 
+    -- ** FilePathConflictsWithSubmodulePathException
+    , _FilePathConflictsWithSubmodulePathException
+
     -- ** InvalidDescriptionException
     , _InvalidDescriptionException
 
@@ -249,6 +261,12 @@ module Network.AWS.CodeCommit
 
     -- ** DefaultBranchCannotBeDeletedException
     , _DefaultBranchCannotBeDeletedException
+
+    -- ** FolderContentSizeLimitExceededException
+    , _FolderContentSizeLimitExceededException
+
+    -- ** InvalidDeletionParameterException
+    , _InvalidDeletionParameterException
 
     -- ** InvalidPathException
     , _InvalidPathException
@@ -373,6 +391,9 @@ module Network.AWS.CodeCommit
     -- ** CommitIdRequiredException
     , _CommitIdRequiredException
 
+    -- ** FileDoesNotExistException
+    , _FileDoesNotExistException
+
     -- ** InvalidCommitIdException
     , _InvalidCommitIdException
 
@@ -463,112 +484,121 @@ module Network.AWS.CodeCommit
     -- * Operations
     -- $operations
 
-    -- ** MergePullRequestByFastForward
+    -- ** MergePullRequestByFastForward 
     , module Network.AWS.CodeCommit.MergePullRequestByFastForward
 
-    -- ** UpdateRepositoryName
+    -- ** UpdateRepositoryName 
     , module Network.AWS.CodeCommit.UpdateRepositoryName
 
-    -- ** PostCommentForPullRequest
+    -- ** PostCommentForPullRequest 
     , module Network.AWS.CodeCommit.PostCommentForPullRequest
 
-    -- ** GetCommit
+    -- ** GetCommit 
     , module Network.AWS.CodeCommit.GetCommit
 
-    -- ** GetBranch
+    -- ** GetBranch 
     , module Network.AWS.CodeCommit.GetBranch
 
     -- ** GetDifferences (Paginated)
     , module Network.AWS.CodeCommit.GetDifferences
 
-    -- ** GetPullRequest
+    -- ** GetPullRequest 
     , module Network.AWS.CodeCommit.GetPullRequest
 
     -- ** ListPullRequests (Paginated)
     , module Network.AWS.CodeCommit.ListPullRequests
 
-    -- ** GetComment
+    -- ** GetComment 
     , module Network.AWS.CodeCommit.GetComment
 
-    -- ** DeleteBranch
+    -- ** DeleteBranch 
     , module Network.AWS.CodeCommit.DeleteBranch
 
-    -- ** UpdateRepositoryDescription
+    -- ** UpdateRepositoryDescription 
     , module Network.AWS.CodeCommit.UpdateRepositoryDescription
 
-    -- ** CreateBranch
+    -- ** CreateBranch 
     , module Network.AWS.CodeCommit.CreateBranch
 
-    -- ** CreatePullRequest
+    -- ** GetFolder 
+    , module Network.AWS.CodeCommit.GetFolder
+
+    -- ** CreatePullRequest 
     , module Network.AWS.CodeCommit.CreatePullRequest
 
     -- ** ListBranches (Paginated)
     , module Network.AWS.CodeCommit.ListBranches
 
-    -- ** UpdatePullRequestDescription
+    -- ** UpdatePullRequestDescription 
     , module Network.AWS.CodeCommit.UpdatePullRequestDescription
 
     -- ** ListRepositories (Paginated)
     , module Network.AWS.CodeCommit.ListRepositories
 
-    -- ** CreateRepository
+    -- ** CreateRepository 
     , module Network.AWS.CodeCommit.CreateRepository
 
-    -- ** UpdateDefaultBranch
+    -- ** UpdateDefaultBranch 
     , module Network.AWS.CodeCommit.UpdateDefaultBranch
 
-    -- ** PostCommentReply
+    -- ** PostCommentReply 
     , module Network.AWS.CodeCommit.PostCommentReply
 
-    -- ** GetRepository
+    -- ** GetRepository 
     , module Network.AWS.CodeCommit.GetRepository
 
-    -- ** GetRepositoryTriggers
+    -- ** GetRepositoryTriggers 
     , module Network.AWS.CodeCommit.GetRepositoryTriggers
 
-    -- ** PutFile
+    -- ** PutFile 
     , module Network.AWS.CodeCommit.PutFile
+
+    -- ** DeleteFile 
+    , module Network.AWS.CodeCommit.DeleteFile
 
     -- ** GetCommentsForComparedCommit (Paginated)
     , module Network.AWS.CodeCommit.GetCommentsForComparedCommit
 
-    -- ** TestRepositoryTriggers
+    -- ** TestRepositoryTriggers 
     , module Network.AWS.CodeCommit.TestRepositoryTriggers
 
-    -- ** UpdateComment
+    -- ** UpdateComment 
     , module Network.AWS.CodeCommit.UpdateComment
 
-    -- ** PostCommentForComparedCommit
+    -- ** PostCommentForComparedCommit 
     , module Network.AWS.CodeCommit.PostCommentForComparedCommit
 
-    -- ** UpdatePullRequestTitle
+    -- ** UpdatePullRequestTitle 
     , module Network.AWS.CodeCommit.UpdatePullRequestTitle
 
-    -- ** GetBlob
+    -- ** GetBlob 
     , module Network.AWS.CodeCommit.GetBlob
 
-    -- ** PutRepositoryTriggers
+    -- ** PutRepositoryTriggers 
     , module Network.AWS.CodeCommit.PutRepositoryTriggers
 
-    -- ** GetMergeConflicts
+    -- ** GetFile 
+    , module Network.AWS.CodeCommit.GetFile
+
+    -- ** GetMergeConflicts 
     , module Network.AWS.CodeCommit.GetMergeConflicts
 
-    -- ** DeleteRepository
+    -- ** DeleteRepository 
     , module Network.AWS.CodeCommit.DeleteRepository
 
-    -- ** DeleteCommentContent
+    -- ** DeleteCommentContent 
     , module Network.AWS.CodeCommit.DeleteCommentContent
 
     -- ** DescribePullRequestEvents (Paginated)
     , module Network.AWS.CodeCommit.DescribePullRequestEvents
 
-    -- ** BatchGetRepositories
+    -- ** BatchGetRepositories 
     , module Network.AWS.CodeCommit.BatchGetRepositories
 
     -- ** GetCommentsForPullRequest (Paginated)
     , module Network.AWS.CodeCommit.GetCommentsForPullRequest
 
-    -- ** UpdatePullRequestStatus
+    -- ** UpdatePullRequestStatus 
     , module Network.AWS.CodeCommit.UpdatePullRequestStatus
 
     -- * Types
@@ -666,6 +696,21 @@ module Network.AWS.CodeCommit
     , dBeforeBlob
     , dChangeType
 
+    -- ** File
+    , File
+    , file
+    , fAbsolutePath
+    , fFileMode
+    , fBlobId
+    , fRelativePath
+
+    -- ** Folder
+    , Folder
+    , folder
+    , folAbsolutePath
+    , folTreeId
+    , folRelativePath
+
     -- ** Location
     , Location
     , location
@@ -692,10 +737,19 @@ module Network.AWS.CodeCommit
     , prPullRequestTargets
     , prDescription
 
+    -- ** PullRequestCreatedEventMetadata
+    , PullRequestCreatedEventMetadata
+    , pullRequestCreatedEventMetadata
+    , prcemDestinationCommitId
+    , prcemMergeBase
+    , prcemRepositoryName
+    , prcemSourceCommitId
+
     -- ** PullRequestEvent
     , PullRequestEvent
     , pullRequestEvent
     , prePullRequestMergedStateChangedEventMetadata
+    , prePullRequestCreatedEventMetadata
     , prePullRequestEventType
     , prePullRequestStatusChangedEventMetadata
     , preActorARN
@@ -715,6 +769,7 @@ module Network.AWS.CodeCommit
     , pullRequestSourceReferenceUpdatedEventMetadata
     , prsruemAfterCommitId
     , prsruemBeforeCommitId
+    , prsruemMergeBase
     , prsruemRepositoryName
 
     -- ** PullRequestStatusChangedEventMetadata
@@ -728,6 +783,7 @@ module Network.AWS.CodeCommit
     , prtSourceCommit
     , prtDestinationReference
     , prtMergeMetadata
+    , prtMergeBase
     , prtDestinationCommit
     , prtRepositoryName
     , prtSourceReference
@@ -767,6 +823,21 @@ module Network.AWS.CodeCommit
     , rtefFailureMessage
     , rtefTrigger
 
+    -- ** SubModule
+    , SubModule
+    , subModule
+    , smCommitId
+    , smAbsolutePath
+    , smRelativePath
+
+    -- ** SymbolicLink
+    , SymbolicLink
+    , symbolicLink
+    , slAbsolutePath
+    , slFileMode
+    , slBlobId
+    , slRelativePath
+
     -- ** Target
     , Target
     , target
@@ -788,6 +859,7 @@ import Network.AWS.CodeCommit.CreatePullRequest
 import Network.AWS.CodeCommit.CreateRepository
 import Network.AWS.CodeCommit.DeleteBranch
 import Network.AWS.CodeCommit.DeleteCommentContent
+import Network.AWS.CodeCommit.DeleteFile
 import Network.AWS.CodeCommit.DeleteRepository
 import Network.AWS.CodeCommit.DescribePullRequestEvents
 import Network.AWS.CodeCommit.GetBlob
@@ -797,6 +869,8 @@ import Network.AWS.CodeCommit.GetCommentsForComparedCommit
 import Network.AWS.CodeCommit.GetCommentsForPullRequest
 import Network.AWS.CodeCommit.GetCommit
 import Network.AWS.CodeCommit.GetDifferences
+import Network.AWS.CodeCommit.GetFile
+import Network.AWS.CodeCommit.GetFolder
 import Network.AWS.CodeCommit.GetMergeConflicts
 import Network.AWS.CodeCommit.GetPullRequest
 import Network.AWS.CodeCommit.GetRepository

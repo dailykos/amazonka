@@ -52,8 +52,8 @@ import Network.AWS.Response
 --
 -- /See:/ 'reportTaskRunnerHeartbeat' smart constructor.
 data ReportTaskRunnerHeartbeat = ReportTaskRunnerHeartbeat'
-  { _rtrhHostname     :: !(Maybe Text)
-  , _rtrhWorkerGroup  :: !(Maybe Text)
+  { _rtrhHostname :: !(Maybe Text)
+  , _rtrhWorkerGroup :: !(Maybe Text)
   , _rtrhTaskrunnerId :: !Text
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -135,7 +135,7 @@ instance ToQuery ReportTaskRunnerHeartbeat where
 -- /See:/ 'reportTaskRunnerHeartbeatResponse' smart constructor.
 data ReportTaskRunnerHeartbeatResponse = ReportTaskRunnerHeartbeatResponse'
   { _rtrhrsResponseStatus :: !Int
-  , _rtrhrsTerminate      :: !Bool
+  , _rtrhrsTerminate :: !Bool
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 

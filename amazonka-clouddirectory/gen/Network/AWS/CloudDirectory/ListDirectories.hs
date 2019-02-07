@@ -52,8 +52,8 @@ import Network.AWS.Response
 
 -- | /See:/ 'listDirectories' smart constructor.
 data ListDirectories = ListDirectories'
-  { _ldState      :: !(Maybe DirectoryState)
-  , _ldNextToken  :: !(Maybe Text)
+  { _ldState :: !(Maybe DirectoryState)
+  , _ldNextToken :: !(Maybe Text)
   , _ldMaxResults :: !(Maybe Nat)
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,9 +128,9 @@ instance ToQuery ListDirectories where
 
 -- | /See:/ 'listDirectoriesResponse' smart constructor.
 data ListDirectoriesResponse = ListDirectoriesResponse'
-  { _ldrsNextToken      :: !(Maybe Text)
+  { _ldrsNextToken :: !(Maybe Text)
   , _ldrsResponseStatus :: !Int
-  , _ldrsDirectories    :: ![Directory]
+  , _ldrsDirectories :: ![Directory]
   } deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
